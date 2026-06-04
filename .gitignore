@@ -216,3 +216,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Raw exam PDFs are personal/copyrighted Rutgers materials — keep them local.
+# Force-add with `git add -f` if you intentionally want to track one.
+exams/pdfs/*.pdf
