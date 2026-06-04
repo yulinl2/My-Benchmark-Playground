@@ -1,0 +1,282 @@
+
+----- page 1 -----
+Ph.D. Qualifying Exam 2025–Theory
+July 8 2025
+9:30am–2:30pm
+Rules: This is a five-hour exam consisting of FOUR PARTS with equal weights. PART I, II and
+III are closed notes and closed book. For PART IV, you may use ONE page (front and back, 8.5
+by 11 inch paper) “information sheet” for Stat 594. No other references are allowed. No use of cell
+phones, calculators, computers, or other electronic devices is permitted for any reason during the
+time while the exam is being administered, including any time during which you leave the exam
+room for any reason. Show your work and justify your answers clearly. If you use known results
+(e.g., results stated/proven in class), please state them clearly. Please put your name or initials
+on every page. Finally, write your answers clearly and legibly in the space provided after each
+problem, preferably using pens, leaving an impression deep enough for the papers to be scanned.
+1
+
+----- page 2 -----
+Part I
+Instructions:
+• Please only write down correct and concise arguments.
+• Points will be taken off for any incorrect and redundant arguments.
+Problem. Suppose X1, X2, . . . are independent and Sn ≡Pn
+m=1 Xm.
+(i) Use Lindeberg-Feller central limit theorem to show that if supm|Xm| < ∞a.s., and P
+m Var(Xm) =
+∞, then (Sn −ESn)/
+p
+Var(Sn) d→N(0, 1).
+2
+
+----- page 3 -----
+(ii) Construct an explicit example such that the CLT holds for Sn with (Sn−ESn)/√n d→N(0, 1),
+but Var(Sn)/n does not converge to 1.
+3
+
+----- page 4 -----
+Part II
+Instructions:
+• Please only write down correct and concise arguments.
+• Points will be taken off for any incorrect and redundant arguments.
+Problem. Let Sn = Pn
+i=1 ξi be an asymmetric simple random walk starting from 0 with 1/2 <
+p < 1. Let T1 ≡inf{n : Sn = 1}.
+(i) Construct an appropriate martingale to show that
+eθEϕ(θ)−T1 = 1
+holds for all θ ≥0, where ϕ(θ) = E exp(θξ1) = peθ + qe−θ.
+4
+
+----- page 5 -----
+(ii) Use (i) to compute EsT1 for s ∈(0, 1).
+5
+
+----- page 6 -----
+Part III
+Please read the following general instructions carefully.
+1. This part is closed-book and closed-note.
+2. Please work on your solutions independently.
+3. Please show the details of your derivations.
+4. Partial credit will be given if you make reasonable progress but cannot solve the problem
+completely.
+Problem 1. MLE and Hypothesis Testing for Exponential Family. (25 points)
+Consider that we have access to i.i.d. data X1, · · · , Xn following a one-parameter exponential family
+distribution:
+p(x | θ) = h(x) exp {η(θ)T(x) −B(θ)} ,
+for x ∈X,
+where X denotes the support. Assume that η(θ) is a monotonically increasing function of θ, and
+that Pn
+i=1 T(Xi) is a continuous random variable.
+(i) Construct the uniformly most powerful (UMP) test for the hypotheses H0 : θ ≤θ0 versus
+H1 : θ > θ0.
+6
+
+----- page 7 -----
+(ii) Prove that the test constructed in part (i) is uniformly most powerful.
+7
+
+----- page 8 -----
+(iii) Prove or disprove the existence of a uniformly most powerful test for H0 : θ = θ0 versus
+H1 : θ ̸= θ0.
+8
+
+----- page 9 -----
+Problem 2. Efficiency Bound and One-step Estimator. (50 points)
+Consider that X1, · · · , Xn are i.i.d. with density function pθ(·).
+Let ln(θ) denote the negative
+log-likelihood function, and let Hn(θ) denote its Hessian.
+Assume that the required regularity
+conditions are satisfied.
+(i) Suppose our goal is to estimate ψ(θ), where ψ(·) is a function of θ. State the Cram´er-Rao
+lower bound for any unbiased estimator T(X) satisfying E[T(X)] = ψ(θ). Provide a proof for
+your statement.
+9
+
+----- page 10 -----
+(ii) Suppose eθ is an initial estimator of θ satisfying ∥eθ −θ∥2 = op(n−1/4), and that Hn(θ) is
+L-Lipschitz. Construct the Newton-Raphson estimator bθ and show that it is asymptotically
+normal and achieves the Cram´er-Rao lower bound.
+(Hint: In your proof, you may assume that the MLE is asymptotically normal and achieves
+the Cram´er-Rao lower bound.)
+10
+
+----- page 11 -----
+Problem 3. Reweighting Estimator for Distributional Shift. (25 points)
+Let {(Xi, Yi, Ri)}n
+i=1 be i.i.d. observations, where Xi ∈Rd denotes covariates, Yi ∈R denotes a
+response, and Ri ∈{0, 1} is an indicator such that Ri = 1 if Yi is observed and Ri = 0 if Yi is
+missing. Assume the following:
+(a) The conditional distribution of the response given covariates does not depend on the outcome
+missingness indicator:
+Yi | Xi, Ri = 1 d= Yi | Xi, Ri = 0.
+(b) The marginal distribution of the covariates differs between observed and missing responses:
+Xi | Ri = 1 ∼PX,
+Xi | Ri = 0 ∼QX,
+where PX and QX may differ.
+We aim to estimate the target parameter
+β∗= arg min
+β∈Rd E
+h
+(Yi −X⊤
+i β)2 | Ri = 0
+i
+,
+(i) Show that
+E
+h
+(Yi −X⊤
+i β)2 | Ri = 0
+i
+= E
+
+(Yi −X⊤
+i β)2 · fX|R=0(Xi)
+fX|R=1(Xi)
+ Ri = 1
+
+,
+where fX|R=r(·) denotes the conditional density of Xi given Ri = r.
+11
+
+----- page 12 -----
+(ii) Prove that
+fX|R=0(x)
+fX|R=1(x) = P(R = 0 | x)
+P(R = 1 | x) · P(R = 1)
+P(R = 0).
+12
+
+----- page 13 -----
+(iii) Apply (i) and (ii) to construct an estimator of β∗.
+13
+
+----- page 14 -----
+Part IV
+Suppose that (Xi, Yi), i = 1, . . . , n, are independent and identically distributed observations as
+(X, Y ), satisfying a linear regression model
+E(Y |X) = XTβ∗,
+where β∗is a p × 1 vector of unknown parameters. Split X = (Z, W T)T and β∗= (θ∗, α∗T)T, where
+Z and θ∗are scalars. Let ˆβ = (ˆθ, ˆαT)T be a Lasso-penalized least-squares estimator of β∗:
+ˆβ = argminβ∈Rp
+(
+1
+2n
+n
+X
+i=1
+(Yi −XT
+i β)2 + λ∥β∥1
+)
+,
+(1)
+where λ > 0 is a tuning parameter. Suppose in addition that Z is a binary covariate (taking value
+0 or 1). Let ˆγ be a Lasso-penalized maximum likelihood estimator in a logistic regression model of
+Zi on Wi, i = 1, . . . , n:
+ˆγ = argminγ∈Rp−1
+"
+1
+n
+n
+X
+i=1
+{−ZiW T
+i γ + log(1 + eW T
+i γ)} + λγ∥γ∥1
+#
+,
+(2)
+where λγ > 0 is a tuning parameter.
+Consider a (new) debiased Lasso estimator for θ∗:
+˜θ = (Z −expit(Wˆγ))T(Y −Wˆα)/n
+(Z −expit(Wˆγ))TZ/n
+,
+(3)
+where Y = (Y1, . . . , Yn)T, Z = (Z1, . . . , Zn)T, W = (W T
+1 , . . . , W T
+n )T, and expit(u) = eu/(1 + eu)
+and expit(·) can be applied componentwise to a vector. It is of interest to obtain an asymptotic
+expansion for ˜θ in the form
+˜θ −θ∗= (Z −expit(W¯γ))T(Y −Zθ∗−Wα∗)/n
+(Z −expit(W¯γ))TZ/n
++ op(n−1/2),
+where ¯γ = argminγ∈Rp−1E{−ZW Tγ + log(1 + eW Tγ)}.
+From the definition (3), direct calculation gives
+˜θ −θ∗= (Z −expit(Wˆγ))T(Y −Zθ∗−Wˆα)/n
+(Z −expit(Wˆγ))TZ/n
+.
+The following questions are designed to establish
+(Z −expit(Wˆγ))T(Y −Zθ∗−Wˆα)/n
+= (Z −expit(W¯γ))T(Y −Zθ∗−Wα∗)/n + op(n−1/2)
+(4)
+under suitable conditions.
+For each question, you may use the results from the preceding questions, whether
+or not you have answered those questions.
+14
+
+----- page 15 -----
+1) Show that
+|(Z −expit(Wˆγ))T(Y −Zθ∗−Wˆα)/n −(Z −expit(W¯γ))T(Y −Zθ∗−Wα∗)/n|
+≤|(Z −expit(Wˆγ))TW(ˆα −α∗)/n|
+|
+{z
+}
+I
++ |(expit(Wˆγ) −expit(W¯γ))T(Y −Zθ∗−Wα∗)/n|
+|
+{z
+}
+II
+.
+15
+
+----- page 16 -----
+2) Show that under suitable conditions,
+I = Op(1)(|Sβ∗| + |S¯γ|)log(n ∨p)
+n
+.
+State explicitly your conditions, which may be in terms of standard properties of ˆβ and ˆγ, for
+example,
+∥XT(ˆβ −β∗)∥2
+2/n = Op(1)|Sβ∗|log(n ∨p)
+n
+,
+∥ˆβ −β∗∥1 = Op(1)|Sβ∗|
+r
+log(n ∨p)
+n
+,
+∥A(¯γ)WT(ˆγ −¯γ)∥2
+2/n = Op(1)|S¯γ|log(n ∨p)
+n
+,
+∥ˆγ −¯γ∥1 = Op(1)|S¯γ|
+r
+log(n ∨p)
+n
+,
+where A(γ) = diag(expit2(Wγ)), the diagonal matrix with expit2(Wγ) on the diagonal. Through-
+out, expit2(u) =
+d
+duexpit(u) = expit(u)(1 −expit(u)), and expit2(·) can be applied componentwise
+to a vector.
+16
+
+----- page 17 -----
+3) Show that for any u, ˜u ∈R,
+|expit2(u) −expit2(˜u)| ≤expit2(˜u)|u −˜u|,
+and
+|expit(u) −expit(˜u) −expit2(˜u)(u −˜u)| ≤expit2(˜u)(u −˜u)2.
+17
+
+----- page 18 -----
+4) Assume that Y −Zθ∗−W Tα∗is bounded by a constant B0 almost surely. Show that under
+suitable conditions,
+II = Op(1)(|Sβ∗| + |S¯γ|)log(n ∨p)
+n
+.
+State explicitly your conditions.
+Remark. Combining Questions 1), 2) and 4) gives the desired result (4) provided that (|Sβ∗| +
+|S¯γ|)log(n∨p)
+√n
+= o(1). [This remark accentuates the conclusion of what you have done, it is not part
+of the problem which you need to show.]
+18

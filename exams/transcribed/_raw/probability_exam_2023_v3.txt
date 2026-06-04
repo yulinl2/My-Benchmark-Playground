@@ -1,0 +1,310 @@
+
+----- page 1 -----
+PH.D. QUALIFYING EXAM 2023: PROBABILITY
+Rules: This is a four hour exam consisting of two Parts - Part I and Part II, both of which should
+be answered. You may use ONE page (front and back, 8.5 by 11 inch paper) HANDWRITTEN
+“information sheet” for EACH OF THE TWO COURSES (Stat 592 and Stat 654) on which this
+exam is based. No other references are allowed. No use of cell phones, calculators, computers,
+or other electronic devices is permitted for any reason during the time while the exam is being
+administered, including any time during which you leave the exam room for any reason. Show
+your work and justify your answers clearly. If you use known results (e.g., results
+stated/proven in class), please state them clearly. Please put your name or initials on every
+page. Finally, write your answers clearly and legibly in the space provided after each problem,
+preferably using pens, leaving an impression deep enough for the papers to be scanned. Good
+luck!
+Answer sheets start on page 4.
+Date: July 3, 2023
+10 AM to 2 PM.
+1
+
+----- page 2 -----
+2
+PH.D. QUALIFYING EXAM 2023: PROBABILITY
+PART I
+This part consists of three exercises and one problem. Each of the three exercises
+are independent of each other, and independent of the problem. The exercises and
+the problem may be attempted in any order.
+Exercise 1. Let (Xn)n≥1 be a sequence of random variables. Prove the equivalence
+Xn converges in probability to 0 ⇐⇒E[min(1, |Xn|)] →0.
+Exercise 2. Let X be a discrete random variable valued in {1, 2, 3, ..., n} with P(X = j) > 0 for
+all j = 1, ..., n. Prove that for any integer k ∈{1, ..., n −1} and the events E = {X ≥k} and
+F = {X ≥k + 1} we have E[X|E] ≤E[X|F].
+Exercise 3. Consider a random variable X valued on [−1, 1] with density f which is symmetric,
+that is f(x) = f(−x) for all x ∈[−1, 1]. Let Y be a discrete random variable taking only the values
+1 and −1 satisfying P(Y = 1|X = x) =
+1
+1+exp(−x) for every x ∈[−1, 1]. What is the density of the
+random variable V = Y X?
+Problem. Consider a sequence of iid random variables (Xi)i≥1 such that P(Xi > 0) = 1 and
+E[√Xi] < +∞but E[Xi] = +∞. Throughout, we use the notation µ = E[√Xi]. You may use
+without proof that the integral
+R +∞
+1
+1
+uα du is finite for all α > 1, and that limn→+∞(1 −c
+n)n =
+exp(−c) for any real c.
+(1) Applying the law of large numbers to 1
+n
+Pn
+i=1
+√Xi, prove that P(Pn
+i=1 Xi ≤(µ + ε)2n2) →1
+for any constant ε > 0 independent of n.
+In the rest of the problem, the goal is to understand whether a high-probability
+upper bound much smaller than n2 can be proved.
+(2) Consider some fixed constant s ∈(1
+2, 1] and iid (Xi)i≥1 such that P(Xi > u) = u−s for all u ≥1.
+What is the range and the density of Xi?
+Throughout the remaining questions except the last one, the Xi’s are now iid with
+the density derived in part (2).
+(3) Prove that E[√Xi] < +∞.
+(4) For any real y > 1, find an expression of P(maxi=1,...,n Xi > y) as a function of P(X1 > y) and
+n only.
+(5) What is the limit of P(maxi=1,...,n Xi > n1/s) as n →+∞?
+(6) Is it possible, for any sequence of iid random variables Xi satisfying E[√Xi] < +∞, that
+limn→+∞P(Pn
+i=1 Xi ≤Cn1.99) = 1 for a constant C > 0 independent of n?
+
+----- page 3 -----
+PH.D. QUALIFYING EXAM 2023: PROBABILITY
+3
+PART II
+This part consists of one exercise and one problem. The exercise and problem are
+independent. The exercise and the problem may be attempted in any order.
+Exercise. Let U be a discrete random variable valued on {1, 2, 3} with pmf given by P(U = 1) = 1
+2,
+P(U = 2) = 1
+3, P(U = 3) = 1
+6.
+(a) Construct a coupling (X, Y ) by providing the pmf of (X, Y ) as a three-by-three table such
+that
+• X has the same distribution as U,
+• Y has pmf P(Y = 1) = 0 and P(Y = k) = P(U = k|U ≥2) for each k = 2, 3.
+• P(X ≤Y ) = 1 and P(Y ≤X + 1) = 1.
+Your answer only needs to provide the table. All conditions above must be satisfied.
+(b) Prove or disprove that the coupling obtained in the previous question is an optimal coupling
+(in the sense that the TV distance between the two marginals equals P(X ̸= Y )).
+Problem. Throughout, we consider a finite state space X, and irreducible and aperiodic transition
+matrix P on X and a Markov Chain (Xt)t≥0 with transition matrix P.
+Denote by Px[·] the
+probability sign when P[X0 = x] = 1 and define the total variation (TV) distance between two
+probability measures µ(·) and ν(·) as follows:
+∥µ −ν∥TV = 1
+2
+X
+x∈χ
+|µ(x) −ν(x)|.
+We recall the definitions
+d(t) = max
+x∈X ∥P t(x, ·) −π∥TV ,
+¯d(t) =
+max
+x∈X,y∈X ∥P t(x, ·) −P t(y, ·)∥TV
+as well as the mixing time
+tmix = min{t ≥0 : d(t) ≤1/4}.
+Questions:
+(1) Prove that ¯d(t) ≤2d(t) for all t ≥0.
+(2) Prove that d(t) ≤¯d(t) for all t ≥0.
+(3) Prove that d(t + 1) ≤d(t) for all t ≥0.
+(4) Prove that d(ktmix) ≤
+1
+2k for all integers k ≥2. (You may use properties of the distance ¯d(·)
+from the lectures without proving it, but you need to clearly and rigorously state such properties
+before using it).
+(5) Let T ≥2 be an integer. Let Z be a random variable independent of (Xt)t≥0 with uniform
+distribution on {1, 2, 3, ..., T}. In words, XZ is the value of the Markov Chain after Z steps,
+where Z is random and independent of the chain.
+Express as a sum of T terms the probability Px[XZ = y] for each y ∈X.
+(6) We are interested in the following question: How large should the integer T be so that XZ is
+close to π.
+Prove that if T = 7tmix then maxx∈X ∥νx −π∥TV ≤1
+4, where νx is the distribution defined as
+νx(y) = Px[XZ = y].
+Remarks for question (6): You may split a sum over T into 7 “bags” of tmix summands each.
+You may use without proof that 1 + 1
+2 + 1
+4 + 1
+8 + 1
+16 + 1
+32 + · · · = 2. At this question, you will
+get 90% of the credit if you prove instead that T = Ctmix implies maxx∈X ∥νx −π∥TV ≤1
+4 for
+a numerical constant C different than 7, e.g., 8 or 14, provided the numerical constant does not
+depend on anything.
+
+----- page 4 -----
+4
+PH.D. QUALIFYING EXAM 2023: PROBABILITY
+ANSWER SHEET PART I
+This part consists of three exercises and one problem. Each of the three exercises
+are independent of each other, and independent of the problem. The exercises and
+the problem may be attempted in any order.
+Exercise 1. Let (Xn)n≥1 be a sequence of random variables. Prove the equivalence
+Xn converges in probability to 0 ⇐⇒E[min(1, |Xn|)] →0.
+
+----- page 5 -----
+PH.D. QUALIFYING EXAM 2023: PROBABILITY
+5
+Exercise 2. Let X be a discrete random variable valued in {1, 2, 3, ..., n} with P(X = j) > 0 for
+all j = 1, ..., n. Prove that for any integer k ∈{1, ..., n −1} and the events E = {X ≥k} and
+F = {X ≥k + 1} we have E[X|E] ≤E[X|F].
+
+----- page 6 -----
+6
+PH.D. QUALIFYING EXAM 2023: PROBABILITY
+Exercise 3. Consider a random variable X valued on [−1, 1] with density f which is symmetric,
+that is f(x) = f(−x) for all x ∈[−1, 1]. Let Y be a discrete random variable taking only the values
+1 and −1 satisfying P(Y = 1|X = x) =
+1
+1+exp(−x) for every x ∈[−1, 1]. What is the density of the
+random variable V = Y X?
+
+----- page 7 -----
+PH.D. QUALIFYING EXAM 2023: PROBABILITY
+7
+Problem. Consider a sequence of iid random variables (Xi)i≥1 such that P(Xi > 0) = 1 and
+E[√Xi] < +∞but E[Xi] = +∞. Throughout, we use the notation µ = E[√Xi]. You may use
+without proof that the integral
+R +∞
+1
+1
+uα du is finite for all α > 1, and that limn→+∞(1 −c
+n)n =
+exp(−c) for any real c.
+(1) Applying the law of large numbers to 1
+n
+Pn
+i=1
+√Xi, prove that P(Pn
+i=1 Xi ≤(µ + ε)2n2) →1
+for any constant ε > 0 independent of n.
+
+----- page 8 -----
+8
+PH.D. QUALIFYING EXAM 2023: PROBABILITY
+In the rest of the problem, the goal is to understand whether a high-probability
+upper bound much smaller than n2 can be proved.
+(2) Consider some fixed constant s ∈(1
+2, 1] and iid (Xi)i≥1 such that P(Xi > u) = u−s for all u ≥1.
+What is the range and the density of Xi?
+
+----- page 9 -----
+PH.D. QUALIFYING EXAM 2023: PROBABILITY
+9
+Throughout the remaining questions except the last one, the Xi’s are now iid with
+the density derived in part (2).
+(3) Prove that E[√Xi] < +∞.
+
+----- page 10 -----
+10
+PH.D. QUALIFYING EXAM 2023: PROBABILITY
+(4) For any real y > 1, find an expression of P(maxi=1,...,n Xi > y) as a function of P(X1 > y) and
+n only.
+
+----- page 11 -----
+PH.D. QUALIFYING EXAM 2023: PROBABILITY
+11
+(5) What is the limit of P(maxi=1,...,n Xi > n1/s) as n →+∞?
+
+----- page 12 -----
+12
+PH.D. QUALIFYING EXAM 2023: PROBABILITY
+(6) Is it possible, for any sequence of iid random variables Xi satisfying E[√Xi] < +∞, that
+limn→+∞P(Pn
+i=1 Xi ≤Cn1.99) = 1 for a constant C > 0 independent of n?
+
+----- page 13 -----
+PH.D. QUALIFYING EXAM 2023: PROBABILITY
+13
+PART II
+This part consists of one exercise and one problem. The exercise and problem are
+independent. The exercise and the problem may be attempted in any order.
+Exercise. Let U be a discrete random variable valued on {1, 2, 3} with pmf given by P(U = 1) = 1
+2,
+P(U = 2) = 1
+3, P(U = 3) = 1
+6.
+(a) Construct a coupling (X, Y ) by providing the pmf of (X, Y ) as a three-by-three table such
+that
+• X has the same distribution as U,
+• Y has pmf P(Y = 1) = 0 and P(Y = k) = P(U = k|U ≥2) for each k = 2, 3.
+• P(X ≤Y ) = 1 and P(Y ≤X + 1) = 1.
+Your answer only needs to provide the table. All conditions above must be satisfied.
+
+----- page 14 -----
+14
+PH.D. QUALIFYING EXAM 2023: PROBABILITY
+(b) Prove or disprove that the coupling obtained in the previous question is an optimal coupling
+(in the sense that the TV distance between the two marginals equals P(X ̸= Y )).
+
+----- page 15 -----
+PH.D. QUALIFYING EXAM 2023: PROBABILITY
+15
+Problem. Throughout, we consider a finite state space X, and irreducible and aperiodic transition
+matrix P on X and a Markov Chain (Xt)t≥0 with transition matrix P.
+Denote by Px[·] the
+probability sign when P[X0 = x] = 1 and define the total variation (TV) distance between two
+probability measures µ(·) and ν(·) as follows:
+∥µ −ν∥TV = 1
+2
+X
+x∈χ
+|µ(x) −ν(x)|.
+We recall the definitions
+d(t) = max
+x∈X ∥P t(x, ·) −π∥TV ,
+¯d(t) =
+max
+x∈X,y∈X ∥P t(x, ·) −P t(y, ·)∥TV
+as well as the mixing time
+tmix = min{t ≥0 : d(t) ≤1/4}.
+Questions:
+(1) Prove that ¯d(t) ≤2d(t) for all t ≥0.
+
+----- page 16 -----
+16
+PH.D. QUALIFYING EXAM 2023: PROBABILITY
+(2) Prove that d(t) ≤¯d(t) for all t ≥0.
+
+----- page 17 -----
+PH.D. QUALIFYING EXAM 2023: PROBABILITY
+17
+(3) Prove that d(t + 1) ≤d(t) for all t ≥0.
+
+----- page 18 -----
+18
+PH.D. QUALIFYING EXAM 2023: PROBABILITY
+(4) Prove that d(ktmix) ≤
+1
+2k for all integers k ≥2. (You may use properties of the distance ¯d(·)
+from the lectures without proving it, but you need to clearly and rigorously state such properties
+before using it).
+
+----- page 19 -----
+PH.D. QUALIFYING EXAM 2023: PROBABILITY
+19
+(5) Let T ≥2 be an integer. Let Z be a random variable independent of (Xt)t≥0 with uniform
+distribution on {1, 2, 3, ..., T}. In words, XZ is the value of the Markov Chain after Z steps,
+where Z is random and independent of the chain.
+Express as a sum of T terms the probability Px[XZ = y] for each y ∈X.
+
+----- page 20 -----
+20
+PH.D. QUALIFYING EXAM 2023: PROBABILITY
+(6) We are interested in the following question: How large should the integer T be so that XZ is
+close to π.
+Prove that if T = 7tmix then maxx∈X ∥νx −π∥TV ≤1
+4, where νx is the distribution defined as
+νx(y) = Px[XZ = y].
+Remarks for question (6): You may split a sum over T into 7 “bags” of tmix summands each.
+You may use without proof that 1 + 1
+2 + 1
+4 + 1
+8 + 1
+16 + 1
+32 + · · · = 2. At this question, you will
+get 90% of the credit if you prove instead that T = Ctmix implies maxx∈X ∥νx −π∥TV ≤1
+4 for
+a numerical constant C different than 7, e.g., 8 or 14, provided the numerical constant does not
+depend on anything.

@@ -1,0 +1,267 @@
+
+----- page 1 -----
+Ph.D. Qualifying Exam 2023: Statistical Inference
+July 3, 2024
+10 AM to 2 PM
+Rules: This is a four hour exam consisting of TWO PARTS. PART I is based
+on Stat 593 and contains four independent problems. Part II is based
+on Stat 594 and contains one problem with six questions. PART I is
+closed notes, closed book. For PART II, you may use ONE page (front and
+back, 8.5 by 11 inch paper) HANDWRITTEN “information sheet” for Stat
+594. No other references are allowed. No use of cell phones, calculators,
+computers, or other electronic devices is permitted for any reason during
+the time while the exam is being administered, including any time during
+which you leave the exam room for any reason. Show your work and
+justify your answers clearly. If you use known results (e.g., results
+stated/proven in class), please state them clearly. Please put your
+name or initials on every page. Finally, write your answers clearly and legibly
+in the space provided after each problem, preferably using pens, leaving an
+impression deep enough for the papers to be scanned. Good luck!
+1
+
+----- page 2 -----
+PART I
+Please read the following general instructions carefully.
+1. This is a closed-book and closed-note exam.
+2. The exam is part of PhD qualifying exam on statistical inference.
+3. Please work on your solutions independently.
+4. Please show the details of your derivations.
+5. Partial credit will be given if you make some reasonable progress but
+cannot solve the problem completely.
+6. Please only include the derivations that you believe are correct.
+Any
+wrong argument will result in a grade deduction.
+7. ♣indicates that the problem might be slightly more challenging than
+others.
+2
+
+----- page 3 -----
+Problem 1. MLE and Hypothesis Testing for Exponential Family.
+Consider that we have access to the i.i.d. data X1, · · · , Xn following the
+one-parameter exponential family,
+p(x|θ) = h(x) exp{η(θ)T(x) −B(θ)},
+for
+x ∈X
+with X denoting the support. The exponential family has the natural form
+as
+p(x|η) = h(x) exp{ηT(x) −A(η)},
+where η is the canonical parameter.
+(a) Identify the sufficient statistics for θ and compute the MLE estimator for
+θ.
+3
+
+----- page 4 -----
+(b) State the expression for A(η) in terms of θ.
+4
+
+----- page 5 -----
+(c) Assume that T(x) is not a constant function over the support X and η(θ)
+is a one-to-one mapping. Show that the MLE is unique. ♣
+(Hint: show that A(η) is strictly convex.)
+5
+
+----- page 6 -----
+For the remaining problems, assume that η(θ) is strictly monotone in-
+creasing in θ and Pn
+i=1 T(Xi) is a continous random variable.
+(d) Construct the most powerful test for H0 : θ = θ0 versus H1 : θ = θ1 with
+θ1 > θ0.
+6
+
+----- page 7 -----
+(e) Construct the uniformly most powerful test for H0 : θ ≤θ0 versus H1 :
+θ > θ0. (You need to justify why such a test is uniformly most powerful.)
+7
+
+----- page 8 -----
+(f) Prove or disprove the existence of uniformly most powerful test for H0 :
+θ = θ0 versus H1 : θ ̸= θ0.
+8
+
+----- page 9 -----
+Problem 2. MLE and One-step Estimator. Consider that X1, · · · , Xn
+are i.i.d. with the density function pθ(·). Assume the required regularity
+conditions are satisfied.
+1. Define the MLE and prove the asymptotic limiting distribution of MLE.
+(You can assume the consistency of MLE.)
+9
+
+----- page 10 -----
+2. State the one-step estimator and prove it has the same asymptotic dis-
+tribution as the MLE estimator.
+10
+
+----- page 11 -----
+Problem 3. Statistical Inference in High-dimensional Regression.
+Consider the high-dimensional sparse linear regression
+yi = X⊺
+i·β + εi
+for 1 ≤i ≤n
+where β ∈Rp, ∥β∥0 ≤k and εi follows i.i.d normal random variable with
+mean zero and variance σ2.
+1. Define the Lasso estimator bβ and discuss the challenge of statistical in-
+ference with the Lasso estimator.
+11
+
+----- page 12 -----
+2. Write down one form of the debiased Lasso estimator for the j-th regres-
+sion coefficient βj with 1 ≤j ≤p and establish the limiting distribution
+of your chosen debiased Lasso estimator.
+12
+
+----- page 13 -----
+3. Construct a confidence interval for βj, where you need to estimate σ2 in
+a data-dependent way.
+13
+
+----- page 14 -----
+Problem 4. Regression with hidden confounders. Consider the fol-
+lowing structural equation model
+Yi ←Diβ + Hiψ + ei,
+where Yi and Di denote the outcome and treatment variables, Hi denotes
+the hidden variable, and ei denotes the independent random error.
+For
+simplicity, we assume Di, Hi, and ei are centered random variables.
+1. Explain when the OLS estimator is a consistent estimator of β.
+14
+
+----- page 15 -----
+2. Define the instrumental variable and propose a consistent estimator of β
+using an instrumental variable.
+15
+
+----- page 16 -----
+PART II
+Suppose that X1, . . . , Xn are independent and identically distributed
+from a p-variate normal distribution with mean vector 0 and unknown vari-
+ance matrix Σ. Assume that the smallest eigenvalue of Σ is lower bounded
+by a constant σ0 > 0 (hence Σ is non-singular), and the largest eigenvalue
+of Σ is upper bounded by a constant σ1 > 0. For a fixed vector ξ∗∈Rp, it is
+of interest to estimate u∗= Γξ∗, where Γ = Σ−1 is also called the precision
+matrix.
+For p much less than n, a simple estimator of u∗is ˆu = ˆΣ−1ξ∗, where
+ˆΣ = XTX/n, and X is the n × p matrix, X = (X1, . . . , Xn)T. Equivalently,
+ˆu can be determined as
+ˆu = argminu∈Rp
+1
+2uT ˆΣu −uTξ∗
+
+.
+For p close to or larger than n, we consider a Lasso penalized estimator,
+defined as
+ˆuλ = argminu∈Rp
+1
+2uT ˆΣu −uTξ∗+ λ∥u∥1
+
+,
+(1)
+where ∥· ∥1 denotes the L1 norm and λ > 0 is a tuning parameter. The
+Lasso penalized estimator is expected to perform well in the setting where
+the true value u∗is sparse even with p larger than n. In this problem, you
+are asked to study convergence of ˆuλ to u∗.
+For each question, you may use the results from the preceding questions,
+whether or not you have answered those questions. You may also use the
+following result.
+Suppose that the pairs (Zi1, Zi2), i = 1, . . . , n, are independent, and Zij
+is mean-zero and sub-Gaussian with scale parameter τj for i = 1, . . . , n, j =
+1, 2. Then, with Yi = Zi1Zi2,
+P
+(
+1
+n
+
+n
+X
+i=1
+(Yi −E(Yi))
+ ≥y
+)
+≤2 exp
+
+−C−1
+0 n min
+
+y2
+(τ1τ2)2 ,
+y
+τ1τ2
+
+,
+y ≥0,
+(2)
+where C0 > 0 is an absolute constant. Recall that a random variable Z is
+sub-Gaussian with scale parameter τ if
+E(eλ(Z−E(Z))) ≤e
+τ2λ2
+2 ,
+λ ∈R.
+16
+
+----- page 17 -----
+1) Show that u∗TXi is sub-Gaussian with scale parameter √σ1∥u∗∥2,
+where ∥· ∥2 denotes the L2 norm.
+17
+
+----- page 18 -----
+2) Let Ω0 = Ω0(λ0) be the event that
+∥ˆΣu∗−ξ∗∥∞≤λ0,
+where ∥· ∥∞denotes the L∞norm. For any ε ∈(0, 1), find λ0, depending
+on (n, p, ε), such that P(Ω0(λ0)) ≥1−2ε. The dependency of λ0 on (n, p, ε)
+will be suppressed in the notation. [Hint: Use result (2).]
+18
+
+----- page 19 -----
+3) Show that for any u ∈Rp,
+1
+2n∥X(ˆuλ −u)∥2
+2 + (ˆΣu −ξ∗)T(ˆuλ −u) + λ∥ˆuλ∥1 ≤λ∥u∥1.
+19
+
+----- page 20 -----
+4) Take λ = A0λ0 in (1) for a constant A0 > 1. Show that in the event
+Ω0(λ0).
+1
+2n∥X(ˆuλ −u∗)∥2
+2 + (A0 −1)λ0∥ˆuλ −u∗∥1 ≤2A0λ0
+X
+j∈S∗
+|ˆuλ,j −u∗
+j|,
+where uj denotes the jth component of u ∈Rp (hence ˆuλ,j is the jth com-
+ponent of ˆuλ), and S∗= {1 ≤j ≤p : u∗
+j ̸= 0}.
+20
+
+----- page 21 -----
+5) Let ΩComp be the event that the following empirical compatibility
+condition holds for ˆΣ: for some constants ν0 > 0 and η0 > 1, we have
+ν2
+0(
+X
+j∈S∗
+|bj|)2 ≤|S∗|(bT ˆΣb),
+for any vector b = (b1, . . . , bp)T satisfying the cone condition
+X
+j̸∈S∗
+|bj| ≤η0
+X
+j∈S∗
+|bj|,
+where |S∗| denotes the cardinality of S∗. Show that in the event Ω0(λ0) ∩
+ΩComp, for a suitable choice of A0,
+1
+n∥X(ˆuλ −u∗)∥2
+2 ≤M0|S∗|λ2
+0,
+∥ˆuλ −u∗∥1 ≤M0|S∗|λ0,
+(3)
+where M0 > 0 is a constant, depending on (A0, ν0, η0) but not on (n, p, ε).
+21
+
+----- page 22 -----
+6) Outline how you may show that under certain conditions, P(ΩComp) ≥
+1−2ε. You do not need to provide all details, but please indicate your main
+steps and the associated conditions.
+To conclude, combining the results from 2), 5), 6) shows that the error
+bounds in (3) hold with probability at least 1 −4ε.
+22

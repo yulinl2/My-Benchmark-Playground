@@ -1,0 +1,69 @@
+[
+  {
+    "id": "2020-summer-math-stat-q1",
+    "exam": {
+      "year": 2020,
+      "term": "summer",
+      "part": "math-stat"
+    },
+    "number": 1,
+    "topics": [
+      "censored data",
+      "method of moments",
+      "maximum likelihood",
+      "asymptotic normality",
+      "efficiency",
+      "Fisher information"
+    ],
+    "difficulty": "hard",
+    "prompt": "Suppose $(Y_1, \\dots, Y_n)$ are observed, where $Y_i = \\max(0, X_i)$ and $(X_1, \\dots, X_n)$ are i.i.d. $N(\\mu^*, \\sigma^{*2})$ with $(\\mu^*, \\sigma^*)$ unknown. Define $R_i = \\mathbb{1}\\{Y_i > 0\\}$. Let $\\Phi(\\cdot)$ be the $N(0,1)$ CDF. For $\\theta = (\\beta, \\sigma)$ with $\\beta = \\mu/\\sigma$, let $P_\\theta$ denote $N(\\mu, \\sigma^2)$, and $\\theta^* = (\\beta^*, \\sigma^*)$.",
+    "parts": [
+      "(i) Define an estimator $\\hat\\theta_1 = (\\hat\\beta_1, \\hat\\sigma_1)$ as the solution of $\\mathbb{E}_\\theta(R_1) = \\frac1n\\sum_{i=1}^n R_i$ and $\\mathbb{E}_\\theta(R_1 Y_1) = \\frac1n\\sum_{i=1}^n R_i Y_i$. Find closed-form expressions for $(\\hat\\beta_1, \\hat\\sigma_1)$ (you may use $\\Phi$ and its inverse).",
+      "(ii) Show that $(\\hat\\beta_1, \\hat\\sigma_1)$ are consistent estimators of $(\\beta^*, \\sigma^*)$.",
+      "(iii) Show that $\\sqrt{n}(\\hat\\theta_1 - \\theta^*) \\xrightarrow{D} N(0, \\tau_1)$ for some variance $\\tau_1$; find a closed-form expression for $\\tau_1$.",
+      "(iv) Write down the log-likelihood $\\ell(\\theta)$, and compute $\\mathbb{E}_\\theta\\{\\frac1n \\frac{\\partial \\ell(\\theta)}{\\partial \\theta}\\}$ and $n\\operatorname{var}_\\theta\\{\\frac1n \\frac{\\partial \\ell(\\theta)}{\\partial \\theta}\\}$ in closed form.",
+      "(v) The MLE $\\hat\\theta_2 = (\\hat\\beta_2, \\hat\\sigma_2)$ satisfies $\\sqrt{n}(\\hat\\theta_2 - \\theta^*) \\xrightarrow{D} N(0, \\tau_2)$ (you need not prove this). Find a closed-form expression for $\\tau_2$.",
+      "(vi) Show that $\\tau_1 \\ge \\tau_2$. Give a direct proof, instead of invoking the asymptotic efficiency of maximum likelihood estimation."
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/inference_exam_2020.pdf",
+      "page": 2
+    },
+    "verified": false,
+    "notes": "Problem 1 by Prof. Zhiqiang Tan. Transcribed from extracted text."
+  },
+  {
+    "id": "2020-summer-math-stat-q2",
+    "exam": {
+      "year": 2020,
+      "term": "summer",
+      "part": "math-stat"
+    },
+    "number": 2,
+    "topics": [
+      "multivariate normal",
+      "structured covariance",
+      "eigenvalues",
+      "maximum likelihood",
+      "UMVUE",
+      "sufficiency"
+    ],
+    "difficulty": "hard",
+    "prompt": "Let $X_1, \\dots, X_n$ be a random sample from a multivariate $N_q(\\mu, \\Sigma)$ distribution. Consider the model $\\mu = \\eta a$ and $\\Sigma = \\alpha I + \\beta a a'$, where $a \\in \\mathbb{R}^q$ is a fixed vector with $a'a = 1$, and $\\eta, \\alpha, \\beta$ are unknown real parameters.",
+    "parts": [
+      "(a) Find necessary and sufficient conditions on $(\\alpha, \\beta)$ for $\\Sigma > 0$ (positive definite).",
+      "(b) Find the eigenvalues of $\\Sigma$, their corresponding eigenspaces and eigenprojections, and the trace of the eigenprojections.",
+      "(c) Find the MLE $\\hat\\theta = (\\hat\\eta, \\hat\\alpha, \\hat\\beta)$ of $\\theta = (\\eta, \\alpha, \\beta)$. Clearly justify why it is the MLE.",
+      "(d) Find the limiting distribution of $\\sqrt{n}(\\hat\\alpha + \\hat\\beta - \\alpha - \\beta)$.",
+      "(e) Find $\\mathbb{E}(\\hat\\theta)$. Use this to find minimum variance unbiased estimators of $\\eta$, of $\\alpha$ and of $\\beta$. Clearly justify your answers."
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/inference_exam_2020.pdf",
+      "page": 3
+    },
+    "verified": false,
+    "notes": "Problem 2 by Prof. David Tyler. Transcribed from extracted text."
+  }
+]

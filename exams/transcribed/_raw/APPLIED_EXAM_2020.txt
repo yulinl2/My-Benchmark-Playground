@@ -1,0 +1,188 @@
+
+----- page 1 -----
+PH.D. APPLIED QUALIFYING EXAM 2020 (TAKE HOME)
+IMPORTANT - PLEASE READ THESE INSTRUCTIONS CAREFULLY BEFORE
+YOU START:
+This is the Applied Part of the First-Year PhD Qualifying Exam in Statistics. You are permitted
+to consult textbooks and other scholarly resources to help you in completing the assignment, but
+you may not consult or discuss these problems in any way with anyone during the time
+that the exam is being administered. If you draw on information from any outside resources
+(i.e., resources other than class material and notes) then you should clearly cite the source in your
+write-up.
+You should complete the exam alone, in a room separate from any other test-takers. If you
+have technical questions about the two exam problems, you may email Prof.
+Sijian Wang at
+sijian.wang@stat.rutgers.edu (for problem 1) and Prof. Ying Hung at yhung@stat.rutgers.edu (for
+problem 2), cc’ing Prof. Harry Crane (hcrane@stat.rutgers.edu) AND Prof Tirthankar Dasgupta
+(td370@stat.rutgers.edu). If you have questions regarding logistics (e.g., submission instructions
+given below), please email Prof.
+Harry Crane (hcrane@stat.rutgers.edu) AND Prof Tirthankar
+Dasgupta (td370@stat.rutgers.edu).
+Submission Instructions:
+(1) Type up your answers to the two problems in two separate Word or Latex ﬁles.
+(2) Create a folder for each problem. The folder must contain the following:
+(a) A word or pdf ﬁle containing your answers to the problem, including all tables, ﬁgures
+and Appendices.
+(b) An R (or python) ﬁle containing the codes used to generate your results.
+(c) A word or a text ﬁle that gives a summary of the codes submitted.
+(3) Place the two folders into a single folder titled yourlastname yourﬁrstname Appliedexam2020.
+Zip this folder and email it to hcrane@stat.rutgers.edu AND td370@stat.rutgers.edu by 5
+PM July 24, Friday.
+Date: July 23 (9 AM) to July 24 (5 PM).
+1
+
+----- page 2 -----
+2
+PH.D. APPLIED QUALIFYING EXAM 2020 (TAKE HOME)
+Problem 1
+Background
+Alzheimer’s disease (AD) neuropathology, including beta-amyloid plaques, neurodegenration
+and neuroﬁbrillary tangles, begins to develop at least 10-20 years before a clinical diagnosis of
+dementia is given. One hypothesis regarding the reason for failed clinical trials is that the treatment
+is initiated too late in the disease, after neuronal death has occurred. With novel technologies, it
+may now be possible to identify markers (predictors) of AD during a preclinical disease phase
+prior to symptom onset. For example, cerebrospinal ﬂuid (CSF) acquired from the lumbar section
+of the spinal cord can be assayed for proteins associated with beta-amyloid plaques (ab 1 42),
+neurodegeneration (total tau [ttau]) and neuroﬁbrillary tangles (phosphorylated tau [ptau]), all of
+which are in turn are associated with AD.
+In individuals with AD, the typical CSF proﬁle is low ab 1 42 (reﬂecting amyloid protein ac-
+cumulated in plaques in the brain rather than releasing through the CSF) and high total and
+phosphorylated tau (reﬂecting breakdown of neurons due to neuroﬁbrillary tangles). An important
+goal of current studies is to identify AD accurately and reliably in the earliest stages of disease.
+This enables future clinical trials to enroll participants at highest risk for developing AD to test
+if early interventions slow or prevent progression of cognitive decline, leading to AD. To do that,
+it is ﬁrst necessary to know if biomarkers of disease in preclinical AD accurately predict cognitive
+decline.
+Methods
+Data for the current study are drawn from a dataset collected between 2001 and 2016 in a
+community sample of about 1500 late middle-aged adults (mean age at baseline = 54). The co-
+horts were designed to be enriched for higher AD risk (e.g., ˜75% with a family history of AD).
+Participants return for study visits every 2 years (with the exceptions of 4 years between visits 1
+and 2 for a subset and 1 year between visits for older participants/participants with AD or mild
+cognitive impairment (MCI)) and undergo neuropsychological cognitive evaluations and medical
+exams. Lumbar punctures to obtain CSF were conducted on approximately 500 participants as
+part of a linked study.
+Cognitive status at each study visit was determined by a consensus panel based on review of
+cognitive performance at all visits and review of additional information in each participant’s chart.
+Possible cognitive status outcomes include: 0) cognitively normal, 1) early MCI, 2) clinical MCI,
+3) dementia, or 4) impairment-not MCI. CSF samples were assayed for several proteins, including
+ab 1 42, ttau, and ptau. With the exception of Category 4), these outcomes are ordered: 0), 1),
+
+----- page 3 -----
+PH.D. APPLIED QUALIFYING EXAM 2020 (TAKE HOME)
+3
+2) and 3). Patients with Category 4) are not of direct interest and might be deleted for initial
+analyses.
+Note: Mild Cognitive Impairment (MCI) is a state of cognitive impairment that often precedes
+fulminant dementia.
+Many participants with MCI progress to AD, however, some individuals
+stabilize, whereas others even show improvement in cognitive performance back to their personal
+baseline.
+Questions
+Please answer the following questions by clearly describing conclusions (answering the questions
+below), clearly explaining and justifying statistical models/methods used to answer the questions,
+interpretation of results (evidence to your answers) from data analysis and how these results lead
+to your answers. If you are unable to answer questions, recommend what additional information is
+required to ﬁnd answers.
+1) Do CSF biomarkers predict progression from cognitively normal at baseline to cognitively
+impaired (e.g., early MCI, clinical MCI, or dementia) at most recent visit? Do individual
+biomarkers or a combination of biomarkers (ratios provided) better predict cognitive status?
+2) For all participants, what is the course of cognitive status over time as measured by diag-
+nostic category at each visit? How many people worsen (e.g., cognitively normal to MCI
+or dementia, MCI to dementia), how many improve (e.g., dementia to MCI, MCI to cog-
+nitively normal), and how many remain the same? Do CSF biomarker values predict the
+course of cognitive status during the study?
+3) Does the relationship between CSF biomarkers and cognitive status vary depending on age,
+sex, genetic risk for AD (APOE status), parental history of AD, or years of education?
+4) Does deleting patients who start with or develop “impairment-not MCI” (outcome 4) cause
+any scientiﬁc risks to your answers to the above questions?
+5) Write a one page summary describing the key scientiﬁc questions you addressed in parts
+1)-4) above, your approach and overall conclusions.
+Data file
+The data ﬁle AD dataset applied2020.csv contains data on the following variables:
+export_id: De-identified participant ID
+age_at_LP: age at lumbar puncture
+
+----- page 4 -----
+4
+PH.D. APPLIED QUALIFYING EXAM 2020 (TAKE HOME)
+gender: gender
+TotalYearsEducation: years of education completed
+apoe4pos: APOE E4 status (0=no genetic risk; 1=genetic risk)
+Parent_Dementia: 0=no parent with dementia; 1=parent with dementia
+LP1_NPv1_absmonthsdiff: Months between lumbar puncture and study visit 1
+LP1_NPv2_absmonthsdiff: Months between lumbar puncture and study visit 2
+LP1_NPv3_absmonthsdiff: Months between lumbar puncture and study visit 3
+LP1_NPv4_absmonthsdiff: Months between lumbar puncture and study visit 4
+LP1_NPv5_absmonthsdiff: Months between lumbar puncture and study visit 5
+LP1_NPv6_absmonthsdiff: Months between lumbar puncture and study visit 6
+Diagnosis_v1: Cognitive status at visit 1 (0=Cognitively Normal; 1=Early MCI; 2=Clinical MCI;
+3=Dementia; 4=Impaired not MCI)
+Diagnosis_v2: Cognitive status at visit 2 (0=Cognitively Normal; 1=Early MCI; 2=Clinical MCI;
+3=Dementia; 4=Impaired not MCI)
+Diagnosis_v3: Cognitive status at visit 3 (0=Cognitively Normal; 1=Early MCI; 2=Clinical MCI;
+3=Dementia; 4=Impaired not MCI)
+Diagnosis_v4: Cognitive status at visit 4 (0=Cognitively Normal; 1=Early MCI; 2=Clinical MCI;
+3=Dementia; 4=Impaired not MCI)
+Diagnosis_v5: Cognitive status at visit 5 (0=Cognitively Normal; 1=Early MCI; 2=Clinical MCI;
+3=Dementia; 4=Impaired not MCI)
+Diagnosis_v6: Cognitive status at visit 6 (0=Cognitively Normal; 1=Early MCI; 2=Clinical MCI;
+3=Dementia; 4=Impaired not MCI)
+Diagnosis_v7: Cognitive status at visit 7 (0=Cognitively Normal; 1=Early MCI; 2=Clinical MCI;
+3=Dementia; 4=Impaired not MCI)
+LP1_Diagnosis: Cognitive status at visit closest to lumbar puncture (0=Cognitively Normal:
+
+----- page 5 -----
+PH.D. APPLIED QUALIFYING EXAM 2020 (TAKE HOME)
+5
+1=Early MCI; 2=Clinical MCI; 3=Dementia: 4=Impaired not MCI)
+pv_ln_ab_1_42: ab_1_42 (log-transformed)
+pv_htau: ttau (total tau)
+pv_ptau: ptau (phosphorylated tau)
+pv_ptau_by_ab: ptau_by_ab (ratio of phosphorylated tau to ab_1_42)
+pv_ttau_by_ab: ttau_by_ab (ratio of total tau to ab_1_42)
+pv_ab42_by_ab40: ab42_by_ab40 (ratio of ab_1_42 to ab_1_4 ; a normalized ab value)
+Notes:
+• Impaired not MCI = impaired performance on neuropsychological tests, but due to other factors
+(e.g., fatigue, poor eﬀort, lifelong learning disability). Do not include in analyses.
+• 999= missing data
+
+----- page 6 -----
+6
+PH.D. APPLIED QUALIFYING EXAM 2020 (TAKE HOME)
+Problem 2
+Problem 2.1
+(a) Let (X, Y, Z) be a three-dimensional random vector following probability density function
+f(x, y, z), assumed to be known.
+Describe Gibbs sampling algorithm to simulate/generate
+realizations of the random vector (X, Y, Z).
+(b) Show that Gibbs sampling is a special case of Metropolis-Hastings algorithm.
+Problem 2.2 Piston slap is an unwanted engine noise that results from piston secondary motion and is one of
+the leading causes of dissatisfaction of automobile customers. In an attempt to predict piston slap
+noise, an engineer considers six input variables: clearance between the piston and the cylinder liner
+(x1), location of peak pressure (x2), skirt length (x3), skirt proﬁle (x4), skirt ovality (x5), and pin
+oﬀset (x6). Two sets of data are provided in text ﬁle format – one for training (piston slap noise
+training data.txt) and the other for testing (piston slap noise test data.txt). Perform the following
+analysis:
+(1) Fit a smoothing spline for the piston slap noise as a function of x6 with the smoothing param-
+eters speciﬁed by cross-validation. Report the estimated smoothing parameters and plot the
+ﬁtted model as a function of x6.
+(2) Use a bootstrap method to construct a bootstrapped conﬁdence band for the smoothing spline
+obtained in (1).
+(3) Consider a Gaussian process model:
+Y (x) = xT β + Z(x),
+where x = (x1, · · · , x6)T , β is a vector of unknown coeﬃcients, Z(x) is a Gaussian process
+with mean 0 and covariance function deﬁned by cov(Y (x), Y (x + h)) = σ2φ(h; θ), and θ is a
+vector of unknown correlation parameters. Deﬁne the correlation function φ(h; θ) by
+φ(h; θ) = exp(−
+6
+X
+i=1
+θih2
+i ).
+Write down the explicit form of the MLE of parameters β, θ, and σ2 and compute the estimated
+values, writing your own R code (DO NOT use any standard R package for ﬁtting GP regression
+like mlegp or dicekriging).
+(4) Construct the best linear unbiased predictor (BLUP) based on (3) and predict the piston slap
+noise corresponding to each data point in the testing set. Summarize the prediction performance
+using suitable performance measures and comment.

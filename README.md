@@ -42,18 +42,30 @@ about the exam's structure and topics.
 
 ## Workflow
 
-1. **Get the PDFs.** Log into the Rutgers SharePoint repo and download the exam
-   (and solution) PDFs. Drop them in `exams/pdfs/`.
-2. **Scaffold an exam.** Run `python scripts/new_exam.py 2019 fall probability`
-   to create a transcription stub and an empty question file.
-3. **Transcribe.** Fill in the Markdown file in `exams/transcribed/` and the
-   structured entries in `question_bank/questions/`. (I — Claude — can do the
-   transcription for you once the PDFs are in the repo.)
-4. **Build & validate.** Run `python scripts/build_bank.py`. It validates every
+The source PDFs (downloaded from the Rutgers SharePoint) live in
+`Downloads/past-PhD exams/` and `Downloads/past-ms-exams-solution/`.
+
+1. **Extract text.** `pip install pymupdf`, then run
+   `python scripts/extract_pdf_text.py`. This writes a faithful Unicode text
+   dump of every PhD exam to `exams/transcribed/_raw/` (committed, so the
+   transcription is auditable).
+2. **Transcribe into structured entries.** Convert each problem into a question
+   object in `question_bank/questions/<year>_<term>_<part>.json` (LaTeX in the
+   `prompt`/`parts` fields). See `docs/transcription_status.md` for what's done
+   and what's pending.
+3. **Build & validate.** Run `python scripts/build_bank.py`. It validates every
    question against `schema.json`, checks for duplicate IDs, and regenerates
    `question_bank/bank.jsonl` plus a topic/coverage summary.
 
-No external dependencies — everything uses the Python 3 standard library.
+`scripts/new_exam.py <year> <term> <part>` scaffolds an empty transcription +
+question file if you'd rather start from a template.
+
+The three exam strands map to the `part` field as: **probability** →
+`probability`, **statistical inference** → `math-stat`, **applied (take-home)**
+→ `applied`.
+
+Only `extract_pdf_text.py` needs a dependency (PyMuPDF); everything else uses the
+Python 3 standard library.
 
 ## A note on copyright
 

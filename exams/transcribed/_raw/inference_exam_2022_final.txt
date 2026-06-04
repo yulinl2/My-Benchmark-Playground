@@ -1,0 +1,242 @@
+
+----- page 1 -----
+Ph.D. Qualifying Exam 2022: Statistical Inference
+July 20, 2022
+10 AM to 2 PM
+Rules: This is a four hour exam consisting of two problems, both of which
+should be answered. You may use ONE page (front and back, 8.5 by 11 inch
+paper) HANDWRITTEN “information sheet” for EACH COURSE (Stat
+593 and Stat 594) on which this exam is based. No other references are
+allowed. No use of cell phones, calculators, computers, or other electronic
+devices is permitted for any reason during the time while the exam is being
+administered, including any time during which you leave the exam room
+for any reason. Show your work and justify your answers clearly.
+If you use known results (e.g., results stated/proven in class),
+please state them clearly. Please put your name or initials on every page.
+Finally, write your answers clearly and legibly on blank papers, preferably
+using pens, leaving an impression deep enough for the papers to be scanned.
+At the end of the exam, separate out the bunches of pages for problems 1
+and 2, and hand them over to the proctor. Good luck!
+1
+
+----- page 2 -----
+Problem 1
+PART - I
+Let (X1, Y1), . . . , (Xn, Yn) be an iid sample from a bivariate normal N(0, 0, σ2
+1, σ2
+2, ρ)
+distribution, i.e., the marginal means are zero, the marginal variances are
+var(Xj) = σ2
+1 and var(Yj) = σ2
+2, and the correlation coeﬃcient is ρ =
+cor(Xj, Yj) for j = 1, . . . , n. Let θ = (σ2
+1, σ2
+2, ρ) denote the parameter vector
+of interest.
+Thus the joint PDF of each (Xj, Yj) is
+1
+2πσ1σ2
+p
+1 −ρ2 exp
+ 
+−
+1
+2(1 −ρ2)
+ 
+X2
+j
+σ2
+1
++
+Y 2
+j
+σ2
+1
+−2ρXjYj
+σ1σ2
+!!
+(1) Find a complete suﬃcient statistic for θ.
+(2) Show that the MLE of θ is
+bθ = (c
+σ1
+2, c
+σ2
+2, bρ) =
+
+1
+n
+n
+X
+j=1
+X2
+j , 1
+n
+n
+X
+j=1
+Y 2
+j ,
+Pn
+j=1 XjYj
+qPn
+j=1 X2
+j
+Pn
+j=1 Y 2
+j
+
+,
+(3) Show that the statistics c
+σ1
+2, c
+σ2
+2, and bρ in (2) are mutually independent
+if ρ = 0.
+(4) Show that the Likelihood Ratio Test for H0 : ρ = 0 vs. H1 : ρ ̸= 0
+amounts to saying “reject H0 when bρ2 is large”.
+PART II
+For the remaining part of this problem, assume σ2
+1 = σ2
+2 = 1, that is,
+the marginal distributions of X and Y are both standard normal. Only the
+correlation coeﬃcient ρ is the unknown parameter.
+(5) Find the score function S(ρ, X, Y ) for a single pair of observations (X, Y ).
+2
+
+----- page 3 -----
+(6) Find the expected Fisher information I1(ρ) for a single pair of observa-
+tions (X, Y ).
+(7) Show that the maximum likelihood estimator (MLE) of ρ can be obtained
+as a solution of a cubic equation h(ˆρMLE) = 0.
+(8) Write down the Newton-Raphson iteration for solving the ML equation.
+(9) Write down the Fisher scoring iteration for solving the ML equation.
+(10) Obtain the asymptotic distribution of the MLE and use it to obtain a
+large-sample conﬁdence interval for ρ with conﬁdence coeﬃcient 1 −α (you
+may use a plug-in approach).
+(11) Now consider the estimator:
+ˆρ2 = 1
+n
+n
+X
+i=1
+XiYi,
+obtained by substituting ones for the sample variances Pn
+j=1 X2
+j /n and
+Pn
+j=1 Y 2
+j /n in the expression for the sample correlation coeﬃcient bρ in (2).
+Does this estimator have any desirable property that ˆρMLE does not? De-
+rive the asymptotic distribution of this estimator and state whether for large
+samples you would prefer this estimator over the estimator ˆρMLE in (7). Ex-
+plain your answer. (Recall that for X ∼N(0, 1), E(X4) = 3.)
+3
+
+----- page 4 -----
+Problem 2
+Suppose that the training data, (xi, yi), 1 ≤i ≤n, are independent and
+identically distributed observations as (x, y), satisfying a linear regression
+model
+y = xTβ∗+ ε,
+where x is a p × 1 covariate vector, y is a response variable, β∗is a p × 1
+vector of unknown parameters, and ε is a noise variable, independent of x.
+In addition, suppose that the following conditions hold:
+(A1) ε is sub-Gaussian with parameter σ: P(|ε| ≥t) ≤2e−t2/(2σ2) for any
+t > 0.
+(A2) |x| ≤B0 almost surely for a constant B0 > 0.
+Let ˆβ be a Lasso estimator of β∗:
+ˆβ = argminβ∈Rp {ℓn(β) + λ∥β∥1} ,
+(1)
+where ℓn(β) =
+1
+2n
+Pn
+i=1(yi −xT
+i β)2, ∥β∥1 is the L1 norm of β, and λ > 0
+is a (pre-speciﬁed) tuning parameter. Let (x0, y0) be another observation,
+independent and identically distributed as the training data. The questions
+are designed to study the out-of-sample prediction error:
+Eout{(y0 −xT
+0 ˆβ)2},
+(2)
+where Eout(·) is taken with respect to (x0, y0), conditionally on the training
+data {(xi, yi) : i = 1, . . . , n}. Hence (2) should be considered a function of
+the training data. For δ > 0, denote λ0 =
+q
+log(p/δ)
+n
+, with dependency on δ
+suppressed in the notation.
+For each question (i)-(v), you may use the results from the preceding
+questions, whether or not you have answered those questions.
+(i) Show that
+Eout{(y0 −xT
+0 ˆβ)2} = Eout{(y0 −xT
+0β∗)2} + Eout{(xT
+0(ˆβ −β∗))2}.
+4
+
+----- page 5 -----
+(ii) Denote Σ = E(xxT) and ˜Σ = n−1 Pn
+i=1 xixT
+i . For any suﬃciently
+small δ > 0, show that with probability 1 −k1δ for some constant k1 > 0,
+we have
+∥˜Σ −Σ∥max ≤B1λ0,
+(3)
+where B1 > 0 is a constant, depending on B0 and ∥A∥max = max1≤j,k≤p |Ajk|
+for any matrix A with elements Ajk, 1 ≤j, k ≤p. Denote as Ω1 the event
+that (3) holds.
+(iii) Suppose that the following conditions hold:
+(A3) bTΣb ≥ν∗
+0
+2(Pp
+j=1 b2
+j) for any b = (b1, . . . , bp)T ∈Rp, where ν∗
+0 > 0 is a
+constant.
+(A4) |Sβ∗|λ0 ≤η0 for a constant η0 > 0, where Sβ∗denotes the set of nonzero
+elements of β∗and |Sβ∗| denotes the size of Sβ∗.
+Show that in the event Ω1,
+ν2
+0
+
+X
+j∈Sβ∗
+|bj|
+
+
+2
+≤|Sβ∗|(bT ˜Σb),
+(4)
+for any b = (b1, . . . , bp)T ∈Rp satisfying P
+j̸∈Sβ∗|bj| ≤ξ0
+P
+j∈Sβ∗|bj|, where
+ν0 > 0 and ξ0 > 1 are constants, depending on ν∗
+0 and η0. Note that (4)
+involves ˜Σ, not Σ.
+(iv) Assume that conditions (A1)–(A4) hold. Formulate an event Ω2
+such that P(Ω2) ≥1 −k2δ for some constant k2 > 0, and in the event
+Ω1 ∩Ω2, the following result holds for some suitable choice of λ in (1):
+1
+n
+n
+X
+i=1
+(xT
+i (ˆβ −β∗))2 ≤M0|Sβ∗|λ2
+0,
+(5)
+∥ˆβ −β∗∥1 ≤M0|Sβ∗|λ0,
+(6)
+where M0 > 0 is some constant (independent of n, p, δ). Please carefully
+prove P(Ω2) ≥1 −k2δ for your choice of Ω2, but do not need to prove
+(5)–(6).
+(v) For the choice of λ in Question (iv), show that in the event Ω1 ∩Ω2,
+Eout{(y0 −xT
+0 ˆβ)2} ≤Eout{(y0 −xT
+0β∗)2} + M1|Sβ∗|λ2
+0,
+where M1 > 0 is some constant (independent of n, p, δ).
+5

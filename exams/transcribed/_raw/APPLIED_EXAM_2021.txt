@@ -1,0 +1,225 @@
+
+----- page 1 -----
+PH.D. APPLIED QUALIFYING EXAM 2021 (TAKE HOME)
+IMPORTANT - PLEASE READ THESE INSTRUCTIONS CAREFULLY BEFORE
+YOU START:
+This is the Applied Part of the First-Year PhD Qualifying Exam in Statistics. The exam consists
+of three problems - you are required to answer Problem 1 AND ONE OF Problems
+2 and 3. You are permitted to consult textbooks and other scholarly resources to help you in
+completing the assignment, but you may not consult or discuss these problems in any
+way with anyone during the time that the exam is being administered. If you draw on
+information from any outside resources (i.e., resources other than class material and notes) then
+you should clearly cite the source in your write-up.
+You should complete the exam alone, in a room separate from any other test-takers. If you
+have technical questions about the two exam problems, you may email Prof.
+Zhiqiang Tan at
+ztan@stat.rutgers.edu (for problem 1) and Prof. Ying Hung at yhung@stat.rutgers.edu (for prob-
+lems 2-3), cc’ing Prof. Harry Crane (hcrane@stat.rutgers.edu) AND Prof Tirthankar Dasgupta
+(td370@stat.rutgers.edu). If you have questions regarding logistics (e.g., submission instructions
+given below), please email Prof.
+Harry Crane (hcrane@stat.rutgers.edu) AND Prof Tirthankar
+Dasgupta (td370@stat.rutgers.edu).
+Submission Instructions:
+(1) Type up your answers to the two problems in two separate Word or Latex ﬁles.
+(2) Create a folder for each problem. The folder must contain the following:
+(a) A word or pdf ﬁle containing your answers to the problem, including all tables, ﬁgures
+and Appendices.
+(b) An R (or python) ﬁle containing the codes used to generate your results.
+(c) A word or a text ﬁle that gives a summary of the codes submitted.
+(3) Place the two folders into a single folder titled yourlastname yourﬁrstname Appliedexam2021.
+Zip this folder and email it to hcrane@stat.rutgers.edu AND td370@stat.rutgers.edu by 5
+PM July 23, Friday.
+Date: July 22 (9 AM) to July 23 (5 PM).
+1
+
+----- page 2 -----
+2
+PH.D. APPLIED QUALIFYING EXAM 2021 (TAKE HOME)
+Problem 1
+Let (Xi, Yi), i = 1, . . . , n, be independent and identically distributed as (X, Y ), where Y is
+Bernoulli (1
+2) taking value 0 or 1, and X is a 2 × 1 vector distributed as follows: X given Y = 0 is
+bivariate normal with mean vector (−6, −6) and diagonal variance matrix (52, 152), and X given
+Y = 1 is bivariate normal with mean vector (6, 6) and diagonal variance matrix (52, 102).
+Suppose that the observed data are Sℓ= {(Xi, Yi) : i = 1, . . . , n1} and Su = {Xi : i =
+n1 + 1, . . . , n}. That is, Sℓis a labeled dataset of size n1 and Su is an unlabled dataset of size
+n2 = n −n1. Consider a logistic regression model:
+P(Y = 1|X = x) =
+exp(β0 + βTx)
+1 + exp(β0 + βTx),
+(1)
+where β0 and β are unknown parameters. Let (ˆβ0, ˆβ) be the maximum likelihood estimator (MLE)
+in model (1) based on only the labeled data Sℓ, that is, a maximizer of the log-likelihood on the
+labeled data:
+n1
+X
+i=1
+{Yi log π(Xi; β0, β) + (1 −Yi) log(1 −π(Xi; β0, β)} .
+Alternatively, deﬁne (˜β0, ˜β) as a solution to
+0 = 1
+n1
+n1
+X
+i=1
+Yi(1, XT
+i )T −1
+n
+n
+X
+i=1
+π(Xi; β0, β)(1, XT
+i )T,
+where π(x; β0, β) denotes the right-hand side in (1). We are interested in studying the performance
+of (˜β0, ˜β) compared with (ˆβ0, ˆβ).
+For a simulation study, generate training and test data as follows in R (please run these codes
+exactly with the random seed):
+#-----------------------------------
+set.seed(1)
+### training data
+n <- 1000
+n1 <- 100
+ys <- rbinom(n, size=1, prob=0.5)
+ny0 <- sum(ys==0)
+ny1 <- sum(ys==1)
+xs <- matrix(NA, nrow=n, ncol=2)
+xs[ys==0, ] <- cbind( rnorm(ny0, mean=-6, sd=5), rnorm(ny0, mean=-6, sd=15) )
+xs[ys==1, ] <- cbind( rnorm(ny1, mean=6, sd=5), rnorm(ny1, mean=6, sd=10) )
+
+----- page 3 -----
+PH.D. APPLIED QUALIFYING EXAM 2021 (TAKE HOME)
+3
+# labeled data for training
+cbind( xs[1:n1,], ys[1:n1] )
+# unlabled data for training
+cbind( xs[-(1:n1),] )
+### test data
+ntest <- 10000
+ytest <- rbinom(ntest, size=1, prob=0.5)
+ntest.y0 <- sum(ytest==0)
+ntest.y1 <- sum(ytest==1)
+xtest <- matrix(NA, nrow=ntest, ncol=2)
+xtest[ytest==0, ] <-
+cbind( rnorm(ntest.y0, mean=-6, sd=5), rnorm(ntest.y0, mean=-6, sd=15) )
+xtest[ytest==1, ] <-
+cbind( rnorm(ntest.y1, mean=6, sd=5), rnorm(ntest.y1, mean=6, sd=10) )
+# test data
+cbind( xtest, ytest )
+#-----------------------------------
+For all questions requiring coding, please provide both your R codes and output.
+1) Explain why model (1) is misspeciﬁed in the preceding setting, that is, there are no values
+of (β0, β) such that (1) holds for all x.
+2) Report
+• the estimates (ˆβ0, ˆβ) on training data,
+• the average log-likelihood and classiﬁcation accuracy using the ﬁtted model on test data.
+The average log-likelihood on test data is the log-likelihood in model (1) divided by the test data
+size. The classiﬁcation accuracy is the proportion of correctly classiﬁed observations, where x is
+classiﬁed as 1 if the ﬁtted probability of y = 1 is greater than 1
+2, or classiﬁed as 0 otherwise.
+3) Find a loss function L(β0, β) such that (˜β0, ˜β) can be equivalently obtained as a minimizer
+to L(β0, β).
+4) Write your R function to compute the estimates (˜β0, ˜β), using Newton-Raphson.
+
+----- page 4 -----
+4
+PH.D. APPLIED QUALIFYING EXAM 2021 (TAKE HOME)
+5) Report
+• the estimates (˜β0, ˜β) on training data,
+• the average log-likelihood and classiﬁcation accuracy using the ﬁtted model on test data.
+6) Plot the training data (labled and unlabeled) and draw the following classiﬁcation lines: the
+line based on (ˆβ0, ˆβ), the line based (˜β0, ˜β), and the line based on the MLE in model (1) using xs
+and ys. Present your plot in an informative way as much as you can.
+
+----- page 5 -----
+PH.D. APPLIED QUALIFYING EXAM 2021 (TAKE HOME)
+5
+Problem 2
+(1) Assume that there are N observations from K classes in p ≥1 dimensions.
+The p-
+dimensional input is in the form on an N ×p matrix with each row denoting an observation
+and columns 1 to p representing p input variables. Let xi denote the ith row of the input
+matrix. For each i, the class label is denoted by Yi, where Yi ∈{1, . . . , K} and i = 1, · · · , N.
+Show that the total covariance can be decomposed as follows:
+(N −1)Σt =
+N
+X
+i=1
+(xi −ˆµ)(xi −ˆµ)T = (N −K)Σw + (N −1)Σb,
+where Σw = PK
+k=1
+P
+Yi=k(xi −ˆµk)(xi −ˆµk)T /(N −K) is the within class covariance matrix
+and Σb = P
+k Nk(ˆµk −ˆµ)(ˆµk −ˆµ)T /(N −1) is the between class covariance matrix, Nk is the
+sample size in class k, ˆµk = P
+Yi=k xi/Nk is the sample mean in class k, and ˆµ = PN
+i=1 xi/N.
+(2) The idea of Fisher’s reduced rank LDA is to ﬁnd directions v by solving the following
+maximization problem:
+max vT Σbv
+vT Σwv.
+Show that this is equivalent to solving the following eigenvalue problem:
+Σ−1
+w Σbv = λv.
+(3) Randomly generate 100 observations from each of the following three classes in a 128-
+dimensional space using your own code. You will use the simulated observations in parts
+(4) and (5) of this problem.
+Class 1: Gaussian with mean θ1 = [3, 0, 0, · · · , 0],
+P(X|Y = 1) = N(θ1, diag(0.5, 2, 2, 2, · · · , 2)), and P(Y = 1) = 1/3.
+Class 2: Gaussian with mean θ2 = [0, −3, 0, · · · , 0],
+P(X|Y = 2) = N(θ2, diag(0.5, 2, 2, 2, · · · , 2)), and P(Y = 2) = 1/3.
+Class 3: Gaussian with mean θ3 = [−1, 0, 0, · · · , 0],
+P(X|Y = 3) = N(θ3, diag(0.5, 2, 2, 2, · · · , 2)), and P(Y = 3) = 1/3.
+(4) Based on the 300 observations in (3), write your own code to perform Fisher’s reduced
+rank LDA. Create a visualization of your results by projecting the data onto the ﬁrst two
+directions and label the three classes by diﬀerent colors.
+(5) Perform PCA. Create a visualization of your results by projecting the data onto the ﬁrst
+two principal directions and label the three classes by diﬀerent colors. Comment on the
+diﬀerence between (4) and (5) and explain the reason in a couple of sentences.
+
+----- page 6 -----
+6
+PH.D. APPLIED QUALIFYING EXAM 2021 (TAKE HOME)
+Problem 3
+The engine block and head joint sealing assembly is one of the most crucial and fundamental
+structural design in the automotive internal combustion engine. To best simulate the engine assem-
+bly process and operating conditions, a ﬁnite element model was developed to capture the complexity
+of part geometry, the compliance in the components, non-linear material material properties, and
+contact interface between the parts. Eight factors are selected for experimentation: gasket thickness
+(x1), number of contour zones (x2), zone-to-zone transition (x3), bead proﬁle (x4), coining depth
+(x5), deck face surface ﬂatness (x6), load/deﬂection variation (x7), and head bolt force variation
+(x8). A 27-run experiment is designed for these eight factors and the response is the gap lift (y).
+The data obtained from this experiment can be found in the ﬁle
+engine_experiment_data.txt
+.
+NOTE: Do NOT directly use the existing GP packages for the estimation and
+prediction while answering the following questions
+(1) Consider a Gaussian process model:
+Y (x) = µ + Z(x),
+where µ is unknown, x = (x1, · · · , x8)T , Z(x) is a Gaussian process with mean 0 and
+covariance function deﬁned by cov(Y ((x + h), Y (x)) = σ2φ(h; θ), and θ is a vector of
+unknown correlation parameters. Deﬁne the correlation function φ(h; θ) by
+φ(h; θ) = exp(−
+8
+X
+i=1
+θih2
+i ).
+Write down the mathematical expressions for MLEs for parameters µ, θ, and σ2 (no proof
+required) and report the estimated values using the engine experiment data.
+(2) Write down the best linear unbiased predictor (BLUP) and the (plugin) predictive distri-
+bution (no proof required).
+(3) Based on the BLUP in (2), report the leave-one-out cross validation prediction error for the
+engine experiment data. Submit your codes following guidelines on the instructions page.
+(4) Change model (1) to
+Y (x) = β0 + x1β1 + x6β2 + Z(x),
+where β0, β1, and β2 are unknown coeﬃcients. Repeat (2)-(3).
+(5) Suggest a ﬁnal model that better ﬁts the engine experiment data by comparing models (1)
+and (4) on the basis of suitable performance measures.
+
+----- page 7 -----
+PH.D. APPLIED QUALIFYING EXAM 2021 (TAKE HOME)
+7
+(6) Based on the ﬁnal model identiﬁed in (5), plot the BLUP as a function of x1 and add the
+95% predictive conﬁdence bands. Submit the codes used to generate these bands.
+(7) Based on the ﬁnal model, ﬁnd the optimal settings of the eight factors that minimize the
+gap lift, explaining the algorithm and providing the code.

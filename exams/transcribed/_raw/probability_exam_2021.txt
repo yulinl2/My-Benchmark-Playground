@@ -1,0 +1,133 @@
+
+----- page 1 -----
+PH.D. QUALIFYING EXAM 2021: PROBABILITY
+Rules: This is a four hour exam consisting of two problems, both of which
+should be answered. You can take the exam at any location where you have
+the facility to scan or take pictures of your answers and convert them into
+pdf ﬁles. You are allowed to use any material of your choice prepared before
+the time of the exam, but use of online materials or consulting anyone else
+during the exam is not be permitted. If you have any questions during the
+exam, please email Professors Harry Crane (hcrane@stat.rutgers.edu) and
+Tirthankar Dasgupta (td370@rutgers.edu).
+Please make sure to handwrite your answers clearly and legibly on blank
+papers, preferably using pens, leaving an impression deep enough for the
+papers to be scanned. Typed answers are not permitted.
+Create two pdf ﬁles for your answers - one for each problem. Both the pdf
+ﬁles containing your answers should be emailed to td370@stat.rutgers.edu
+and hcrane@stat.rutgers.edu by 2:15 PM (or at an earlier time based on
+your location as agreed upon in your communication with the Graduate
+Directors).
+Show your work and justify your answers clearly.
+If
+you use known results (e.g., results stated/proven in class), please
+state them clearly. Good luck!
+Date: July 19, 2021, 10 AM to 2 PM.
+1
+
+----- page 2 -----
+2
+PH.D. QUALIFYING EXAM 2021: PROBABILITY
+Problem 1
+Note: This problem is about distributional properties of order statistics.
+Let x = (x1, . . . , xn) be a sample of real numbers. The order statistics for
+the sample x are the real numbers x(1), . . . , x(n) obtained by arranging the
+elements of x in increasing order, i.e.,
+x(1) < · · · < x(n).
+For the ﬁrst three parts of this problem, we let U1, . . . , Un be i.i.d. Uniform[0, 1]
+random variables and write
+U(1) < . . . < U(n)
+to denote their order statistics. Deﬁne
+Y1 := U(1)−0,
+Y2 := U(2)−U(1),
+. . .
+, Yi := U(i)−U(i−1),
+. . .
+, Yn+1 := 1−U(n)
+as the spacings of the order statistics.
+Question 1: For k = 2, 3, 4, . . ., let
+S(k)
+n
+:=
+n+1
+X
+i=1
+Y k
+i
+be the sum of the kth powers of the spacings for a sample of size n. Show
+that there exist constants bk > 0 and ck > 0 such that
+(1)
+nbkS(k)
+n
+→P ck
+as n →∞.
+Identify the constants bk and ck, and point out that b2 < b3 < . . . .
+Hint for Question 1: For each n, the joint distribution of spacings Y1, . . . , Yn+1
+is the same as that of the random variables X1/Tn+1, . . . , Xn+1/Tn+1 where
+X1, . . . , Xn+1 are i.i.d. standard exponential random variables and Tn+1 :=
+X1 + · · · + Xn+1. You may use this fact without proof.
+Question 2: State and prove a CLT to accompany (1).
+Question 3: Let Mn := max(Y1, . . . , Yn+1) be the maximum of the spacings
+for a sample of size n. Show that Mn →P 0 as n →∞.
+For the rest of this problem, we assume the following setup. Let J =
+(x0, ∞) be a subinterval of R = (−∞, ∞), with x0 ﬁnite or −∞. Let f be a
+continuous, strictly positive probability density on J, X = (X1, . . . , Xn) be
+a random sample from a distribution with density f, and (X(1), . . . , X(n))
+be the order statistics for the sample X.
+Question 4: Suppose the above setup holds. Let k be a given positive
+integer less than n and let y ∈J. Show that the conditional joint distribution
+of (X(k+1), . . . , X(n)) given X(k) = y is the same as the joint distribution of
+
+----- page 3 -----
+PH.D. QUALIFYING EXAM 2021: PROBABILITY
+3
+the order statistics of a random sample of size n −k from the density
+fy(x) := f(x)I(y,∞)(x)
+R ∞
+y f(t)dt
+,
+where
+I(y,∞)(x) :=
+
+1,
+y < x < ∞,
+0,
+otherwise.
+Note: Even if you were unable to answer Question 4, you should make use
+of it in the ﬁnal part of this problem.
+Question 5: For this question suppose that the setup of the problem holds
+with J = (0, ∞) and f(x) = exp(−x)I(0,∞)(x), the density of the unit-rate
+exponential distribution. Let 1 ≤j ≤n be given. Find the distribution of
+Sn,j :=
+n
+X
+k=j+1
+(X(k) −X(j)).
+
+----- page 4 -----
+4
+PH.D. QUALIFYING EXAM 2021: PROBABILITY
+Problem 2
+Consider a simple symmetric random walk starting at 0 on Z, in other words,
+S0 = 0, Sn = Pn
+i=1 Xi for n ≥1 where X1, X2, . . . are i.i.d. random variables
+uniformly distributed on {−1, 1}.
+PART 1
+Question 1: Show that {Sn} is a Markov chain. Specify its state space and
+transition probability distribution.
+Question 2: Does {Sn} have a stationary distribution? Prove your answer.
+Question 3: For any state x, show that
+P(Sn = x for inﬁnitely many n) = 1.
+PART 2
+For the remaining questions, let A be a ﬁxed constant, and N be the stopping
+time
+N := min{n : Sn ≥n
+2 + A},
+with N := ∞if Sn < n
+2 + A for every n. Our target is to prove
+P(N < ∞) ≤e−A.
+Question 4: Let Zn := eSn−n
+2 −A. Prove that Zn is a supermartingale.
+Question 5: Prove that P(Sn ≥n
+2 + A for some n ≤k) ≤e−A. (Hint: Use
+Markov’s inequality. It may be helpful to deﬁne Nk := min{N, k}.)
+Question 6: Prove that P(N < ∞) ≤e−A.

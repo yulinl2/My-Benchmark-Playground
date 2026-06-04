@@ -1,0 +1,67 @@
+[
+  {
+    "id": "2021-summer-math-stat-q1",
+    "exam": {
+      "year": 2021,
+      "term": "summer",
+      "part": "math-stat"
+    },
+    "number": 1,
+    "topics": [
+      "contiguity",
+      "local asymptotic normality",
+      "Neyman-Pearson lemma",
+      "Kullback-Leibler divergence",
+      "Chernoff-Stein lemma",
+      "hypothesis testing"
+    ],
+    "difficulty": "hard",
+    "prompt": "Instructions: if you cannot solve one claim completely, provide as many partial details as possible; your final score for this problem is $\\min\\{100, \\text{raw score}\\}$.",
+    "parts": [
+      "**Part I (75 points). (1)** Let $\\{P_n\\}, \\{Q_n\\}$ be sequences of probability measures on $(\\Omega_n, \\mathcal{A}_n)$. (a) State the definition for $\\{P_n\\}$ to be contiguous with respect to $\\{Q_n\\}$, denoted $P_n \\triangleleft Q_n$. (b) Let $\\chi^2(P\\|Q) \\equiv \\mathbb{E}_Q[(dP/dQ - 1)^2]$ be the chi-squared divergence. Show that $P_n \\triangleleft Q_n$, assuming $\\sup_n \\chi^2(P_n\\|Q_n) < \\infty$.",
+      "**(2)** Let $(P_\\theta : \\theta \\in \\Theta)$ be a parametric model indexed by an open set $\\Theta \\subset \\mathbb{R}^k$. (a) State the definition for $(P_\\theta)$ to be locally asymptotically normal (LAN) at $\\theta$. (b) Verify the LAN condition assuming $(P_\\theta)$ is 'smooth' enough (specify the smoothness conditions).",
+      "**(3)** (a) State the Neyman-Pearson lemma. (b) Given $\\theta_0, \\theta_1 \\in \\mathbb{R}^p$, compute the minimum of the sum of type I and type II errors for testing $H_0 : \\theta = \\theta_0$ vs $H_1 : \\theta = \\theta_1$ when the observation is from the Gaussian location model $\\{N(\\theta, I_p) : \\theta \\in \\mathbb{R}^p\\}$.",
+      "**Part II (75 points).** Let $P, Q$ be probability measures on $(\\mathcal{X}, \\mathcal{A})$, $P_n = P^{\\otimes n}$, $Q_n = Q^{\\otimes n}$, with $D_{KL}(P\\|Q) < \\infty$. A test $\\Psi : \\mathcal{X}^n \\to \\{0,1\\}$. For $\\alpha \\in (0,1)$ define $R_\\alpha \\equiv \\liminf_{n\\to\\infty}\\big(-\\frac1n \\log \\inf_{\\Psi : \\mathbb{E}_P\\Psi \\le \\alpha} \\mathbb{E}_Q(1 - \\Psi)\\big)$. (1) Using the Neyman-Pearson lemma, show that $R_\\alpha \\ge D_{KL}(P\\|Q)$. Hint: prove that for any fixed $\\varepsilon > 0$, $R_\\alpha \\ge D_{KL}(P\\|Q) - \\varepsilon$.",
+      "**(2)** Prove the inequality: for any event $A$ and $x > 0$, $P(A) - x \\cdot Q(A) \\le P\\big(\\log\\frac{dP}{dQ} > \\log x\\big)$. Hint: write the left-hand side in integral form.",
+      "**(3)** Choose an appropriate $x > 0$ in (2) to conclude the reversed inequality $R_\\alpha \\le D_{KL}(P\\|Q)$. (This establishes the Chernoff-Stein lemma: $R_\\alpha = D_{KL}(P\\|Q)$.)"
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/inference_exam_2021.pdf",
+      "page": 2
+    },
+    "verified": false,
+    "notes": "Profs. Crane & Dasgupta administered; contiguity/LAN/Chernoff-Stein. Transcribed from extracted text."
+  },
+  {
+    "id": "2021-summer-math-stat-q2",
+    "exam": {
+      "year": 2021,
+      "term": "summer",
+      "part": "math-stat"
+    },
+    "number": 2,
+    "topics": [
+      "linear regression",
+      "equicorrelated errors",
+      "BLUE",
+      "maximum likelihood",
+      "minimal sufficient statistic",
+      "completeness"
+    ],
+    "difficulty": "hard",
+    "prompt": "Consider the following regression problem. Let $y_1, \\dots, y_n$ be jointly normal with $\\mathbb{E}(y_i) = \\beta x_i$, where $x_1, \\dots, x_n$ are known constants, $\\operatorname{var}(y_i) = \\sigma^2$, and $\\operatorname{corr}(y_i, y_j) = \\rho$ for $i \\ne j$. The parameters satisfy $\\beta \\in \\mathbb{R}$, $\\sigma^2 > 0$, and $-1/(n-1) < \\rho < 1$.\n\nUseful linear-algebra fact: for $I_n$ the identity, $a \\in \\mathbb{R}^n$, and $b \\ne -1/(a^T a)$, $(I_n + b\\, a a^T)^{-1} = I_n + c\\, a a^T$ for some $c \\in \\mathbb{R}$.",
+    "parts": [
+      "1. For known $\\rho$ with $(\\beta, \\sigma^2)$ unknown: if it exists, find the minimum variance unbiased estimator of $\\beta$ among all linear estimators $\\hat\\beta = a_1 y_1 + \\cdots + a_n y_n$. If it does not exist, justify why not.",
+      "2. For known $\\beta$ with $(\\sigma^2, \\rho)$ unknown: find the MLE for $(\\sigma^2, \\rho)$. Clearly justify why it is the MLE.",
+      "3. For $(\\beta, \\sigma^2, \\rho)$ all unknown: (a) Find the minimal sufficient statistic, and find necessary and sufficient conditions on $x_1,\\dots,x_n$ for the minimal sufficient statistic to be complete. (b) If they exist, find the MLE for $(\\beta, \\sigma^2, \\rho)$ in the two cases (i) $x_1 = \\cdots = x_n$, and (ii) $x_1 + \\cdots + x_n = 0$. If the MLE does not exist, justify why not."
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/inference_exam_2021.pdf",
+      "page": 4
+    },
+    "verified": false,
+    "notes": "Transcribed from extracted text."
+  }
+]

@@ -1,0 +1,453 @@
+
+----- page 1 -----
+Ph.D. Applied Qualifying Exam 2024 (Take Home)
+July 4 (9 AM) to July 5 (5 PM)
+IMPORTANT - PLEASE READ THESE INSTRUCTIONS CAREFULLY BEFORE
+YOU START:
+This is the Applied Part of the First-Year PhD Qualifying Exam in Statistics. The exam consists
+of two problems, both of which you need to answer. You are permitted to consult textbooks and
+other scholarly resources to help you in completing the assignment, but you may not consult or
+discuss these problems in any way with anyone during the time that the exam is being
+administered. If you draw on information from any outside resources (i.e., resources other than
+class material and notes) then you should clearly cite the source in your write-up.
+You should complete the exam alone, in a room separate from any other test-takers. If you have
+questions, please email Prof Zhiqiang Tan (ztan@stat.rutgers.edu) for problem 1 and Prof. Han Xiao
+(hxiao@stat.rutgers.edu) for problem 2, cc’ing Prof Tirthankar Dasgupta (td370@stat.rutgers.edu).
+Submission Instructions:
+1. Create a folder containing the following:
+(a) A word or pdf file containing your answers to the two problems, including all tables,
+figures and Appendices (this may be generated from an R markdown file).
+(b) An R (or python) file containing the codes used to generate your results, or an R mark-
+down file from which your output html or pdf is generated.
+(c) A word or a text file that gives a summary of the codes submitted (not required if you
+submit an R markdown file).
+2. Name the folder yourlastname yourfirstname Appliedexam2024. Zip this folder and
+email it to hxiao@stat.rutgers.edu AND td370@stat.rutgers.edu by 5 PM July 5, Friday.
+1
+
+----- page 2 -----
+Problem 1
+Suppose that X1, . . . , Xn are independent and identically distributed from a p-variate normal
+distribution with mean vector 0 and unknown variance matrix Σ (assumed to be non-singular).
+For a fixed vector ξ∗∈Rp, it is of interest to estimate u∗= Ωξ∗, where Ω= Σ−1 is also called the
+precision matrix.
+For p much less than n, a simple estimator of u∗is ˆu = ˆΣ−1ξ∗, where ˆΣ = XTX/n, and X is
+the n × p matrix, X = (X1, . . . , Xn)T. Equivalently, ˆu can be determined as
+ˆu = argminu∈Rp
+1
+2uT ˆΣu −uTξ∗
+
+.
+For p close to or larger than n, we consider a Lasso penalized estimator, defined as
+ˆuλ = argminu∈Rp
+1
+2uT ˆΣu −uTξ∗+ λ∥u∥1
+
+,
+(1)
+where ∥· ∥1 denotes the L1 norm and λ > 0 is a tuning parameter. The Lasso penalized estimator
+is expected to perform well in the setting where the true value u∗is sparse even with p larger
+than n. In this problem, you are asked to work out numerical algorithms for computing ˆuλ for a
+pre-specified λ.
+1) For fixed λ > 0, what is the stationary condition satisfied by ˆuλ as a minimizer in (1)?
+2) Derive a coordinate descent algorithm for computing ˆuλ.
+Specifically, denote as u0 =
+(u0
+1, . . . , u0
+p)T the current estimate/iterate. Provide the formula for updating the jth component of
+u0 while fixing the remaining components for any j.
+3) Derive a proximal gradient algorithm for computing ˆuλ. Specifically, provide the formula for
+updating the current iterate u0 to the next, depending on a step size τ.
+For a numerical experiment, generate the following data in R (please run these codes exactly
+with the random seed):
+#-----------------------------------
+library(MASS)
+set.seed(1)
+### training data
+n <- 600
+p <- 600
+2
+
+----- page 3 -----
+# generate Sigma
+rho <- 0.3
+Sigma <- matrix(rep(0.3, p^2), nrow = p, ncol = p)
+diag(Sigma) <- 1
+# generate matrix X and vector xi0 (xi_star in the above description)
+X <- mvrnorm(n, rep(0,p), Sigma = Sigma)
+xi0 <- Sigma %*% c(-1,1,-1,1,1,rep(0, p-5))
+#-----------------------------------
+For all questions requiring coding, please provide both your R codes and output. Set the initial
+value to 0 (a zero vector). The termination criterion for iterations is when the L1 norm of the
+difference between current and updated iterates is less than 10−5.
+4) Write your R function to implement the coordinate descent algorithm from 2). Fix the choice
+of the Lasso tuning parameter, λ = 1.2
+q
+log(p)
+n
+. Report your results including
+ the number of iterations,
+ the final iterate (only in the first 10 components), and
+ plots of the iterates (only in the jth components, j = 2, 4, 6, 8, 10).
+Note that an iteration is completed when all the components of u0 are successively updated once.
+Check that the stationary condition from 1) is properly satisfied.
+5) Write your R function to implement the proximal gradient algorithm from 3).
+Fix the
+choice of the Lasso tuning parameter, λ = 1.2
+q
+log(p)
+n
+, and use three choices of the step size,
+τ = [0.01, 0.005, 0.001]. For each step size, report your results as in 4), and check that the stationary
+condition from 1) is properly satisfied.
+Problem 2
+This problem considers a real experiment conducted on 24 rats, 14 receiving a treatment, and
+10 being in the control group. The measurements are taken on five sites (labeled as A-E) on the
+back of the rat from shoulder to tail. There are in total n = 104 measurements. The data are
+strictly positive strength measurements having a moderately large dynamic range from 3.8 to 82.5,
+so you will do a log transformation first. The data is stored in ‘‘qe 2024.txt’’ as a data frame,
+which you can load by read.table(file="qe 2024.txt",header=T). The data is represented in
+3
+
+----- page 4 -----
+the wide format, so you will see some missing values (which is why there are only 104 measurements
+instead of 5 × 24 = 120). However, the analyses you will do are based on regression models, so
+there will not be any missing value issue. You will try to identify the treatment effect and site
+effects from the experimental data according to the instructions below. Let 1 ≤i ≤24 be the
+index of the rats, and 1 ≤s ≤5 be the index of the sites. For each rat i, let t(i) = 1 if it receives
+the treatment, and t(i) = 0 if it is in the control group. For this dataset, t(i) = 1 for 1 ≤i ≤14,
+and t(i) = 0 for 15 ≤i ≤24. We use yis to denote the log measurement of the i-th rat at site s.
+(a) In the first regression model, assume
+yis = m0 + µt(i) + ϵis,
+ϵis
+iid
+∼N(0, σ2
+0).
+(2)
+In other words, all measurements are viewed as independent normal random variables of the
+same variance σ2
+0, with a common mean for the treatment group and another common mean
+for the control group. When you fit this regression model, use dummy variables for µt(i) with
+the constraint µ0 = 0. Report ˆσ2
+0. Perform the test H0 : µ1 = 0 vs H1 : µ1 ̸= 0, and report
+the p-value.
+(b) Since the measurements are taken from five different sites of each rat, it is reasonable to
+consider the effect of the site, so the second regression model assumes
+yis = β0 + γt(i) + βs + ϵis,
+ϵis
+iid
+∼N(0, σ2).
+(3)
+Once again use dummy variables for γt(i) with the constraint γ0 = 0. Report the fitted model.
+Perform the test H0 : γ1 = 0 vs H1 : γ1 ̸= 0, and report the p-value.
+(c) It is also reasonable to believe there could be correlations among the measurements from
+different sites on the same rat. The simplest way to introduce the correlation is to assume
+that the measurements on the same rat are equally correlated. Therefore, the third regression
+model assumes
+yis = β0 + γt(i) + βs + ϵis,
+(4)
+where
+Cov(ϵis, ϵjr) = σ2
+1δijδsr + σ2
+2δij,
+(5)
+where δij is the Kronecker symbol for equality of subscripts, and all ϵis are assumed to have a
+joint normal distribution. You will perform some derivation and analysis based on this model
+in (c)–(h).
+Represent model (4) in the form
+y = Xβ + ϵ.
+(6)
+4
+
+----- page 5 -----
+You should use dummy variables for γt(i) and βs, and set γ0 = 0, β1 = 0. So X is a n × 6
+matrix, and β = (β0, γ1, β2, β3, β4, β5)′. Let si be the number of measurements available for
+the i-th rat. Order the elements of y by listing the s1 measurement of the first rat, and then
+the s2 measurements of the second rat, and so on and so forth. Report the design matrix X.
+(d) We use k as the index of the vector y in (4), and define i(k) as the rat index of the k-th
+element of y. For example, i(1) = · · · = i(4) = 1, i(5) = · · · = i(8) = 2. Let Z = (zkj) be
+the n × 24 matrix whose j-the column is defined as zkj = 1 if i(k) = j and 0 otherwise. For
+example,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+z11
+z21
+z31
+z41
+z51
+z61
+z71
+z81
+z91
+...
+zn1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1
+1
+1
+1
+0
+0
+0
+0
+0
+...
+0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+z12
+z22
+z32
+z42
+z52
+z62
+z72
+z82
+z92
+...
+zn2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+0
+0
+0
+0
+1
+1
+1
+1
+0
+...
+0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.
+Show that Cov(ϵ) = σ2
+1In + σ2
+2ZZ′, where σ2
+2 and σ2
+2 are defined in (5).
+(e) For any matrix, we use col(·) to denote the linear subspace spanned by its columns. Find
+an orthogonal matrix U = [U1, U2, U⊥] such that col(U1) = col(X) and col(U1, U2) =
+col(X, Z). What are the dimensions of U1, U2 and U⊥?
+(f) Show that
+U ′
+⊥y ∼N(0, σ2
+1I).
+Find the MLE of σ2
+1 based on U ′
+⊥y.
+(g) You have now found ˆσ2
+1 in (f). Take ˆσ2
+2 = .148 as granted, so Cov(ϵ) is estimated as
+d
+Cov(ϵ) = ˆσ2
+1In + ˆσ2
+2ZZ′.
+(h) Now use d
+Cov(ϵ) to fit the model (6) using generalized least squares. Report the fitted model.
+Perform the test H0 : γ1 = 0 vs H1 : γ1 ̸= 0, and report the p-value.
+(i) Compare and comment on the three analyses.
+5
