@@ -15,24 +15,24 @@ exams (`probability` / `math-stat`); **applied** is the take-home exam.
 | Year | Source PDF | Status |
 | ---- | ---------- | ------ |
 | 2018 | `probability_exam_2018.pdf` | ✅ transcribed (2 problems) |
-| 2019 | `probability_exam_2019.pdf` | ⬜ raw text only |
+| 2019 | `probability_exam_2019.pdf` | ✅ transcribed (2 problems) |
 | 2020 | `probability_exam_2020.pdf` | ✅ transcribed (2 problems) |
-| 2021 | `probability_exam_2021.pdf` | ⬜ raw text only |
+| 2021 | `probability_exam_2021.pdf` | ✅ transcribed (2 problems) |
 | 2022 | `probability_exam_2022_final.pdf` | ✅ transcribed (2 problems) |
-| 2023 | `probability_exam_2023_v3.pdf` | ⬜ raw text only |
-| 2024 | `probability_exam_2024_v1.pdf` | ⬜ raw text only |
+| 2023 | `probability_exam_2023_v3.pdf` | ✅ transcribed (6 exercises/problems) |
+| 2024 | `probability_exam_2024_v1.pdf` | ✅ transcribed (4 problems) |
 
 ### Statistical inference (`part: math-stat`)
 
 | Year | Source PDF | Status |
 | ---- | ---------- | ------ |
-| 2018 | `Inference_exam_2018.pdf` | ⬜ raw text only |
-| 2019 | `inference_exam_2019.pdf` | ⬜ raw text only |
+| 2018 | `Inference_exam_2018.pdf` | ✅ transcribed (2 problems) |
+| 2019 | `inference_exam_2019.pdf` | ✅ transcribed (2 problems) |
 | 2020 | `inference_exam_2020.pdf` | ✅ transcribed (2 problems) |
 | 2021 | `inference_exam_2021.pdf` | ✅ transcribed (2 problems) |
-| 2022 | `inference_exam_2022_final.pdf` | ⬜ raw text only |
-| 2023 | `inference_exam_2023_v2.pdf` | ⬜ raw text only |
-| 2024 | `inference_exam_2024_v1.pdf` | ⬜ raw text only |
+| 2022 | `inference_exam_2022_final.pdf` | ✅ transcribed (2 problems) |
+| 2023 | `inference_exam_2023_v2.pdf` | ✅ transcribed (2 problems) |
+| 2024 | `inference_exam_2024_v1.pdf` | ✅ transcribed (5 problems) |
 
 ### Applied take-home (`part: applied`)
 
@@ -50,7 +50,7 @@ exams (`probability` / `math-stat`); **applied** is the take-home exam.
 
 | Component | Source PDF | Status |
 | --------- | ---------- | ------ |
-| Theory | `qe_2025_theory.pdf` | ⬜ raw text only |
+| Theory | `qe_2025_theory.pdf` | ✅ transcribed (6 problems, 4 parts) |
 | Applied | `qe_2025_applied.pdf` | ⬜ raw text only |
 
 > Note: the applied exams are packet-style (data-analysis prompts shipped with

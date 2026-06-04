@@ -1,0 +1,171 @@
+[
+  {
+    "id": "2023-summer-probability-q1",
+    "exam": {
+      "year": 2023,
+      "term": "summer",
+      "part": "probability"
+    },
+    "number": 1,
+    "topics": [
+      "convergence in probability",
+      "bounded convergence"
+    ],
+    "difficulty": "easy",
+    "prompt": "Part I, Exercise 1. Let $(X_n)_{n\\ge1}$ be a sequence of random variables.",
+    "parts": [
+      "Prove the equivalence: $X_n \\xrightarrow{P} 0 \\iff \\mathbb{E}[\\min(1, |X_n|)] \\to 0$."
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/probability_exam_2023_v3.pdf",
+      "page": 2
+    },
+    "verified": false,
+    "notes": "Transcribed from extracted text."
+  },
+  {
+    "id": "2023-summer-probability-q2",
+    "exam": {
+      "year": 2023,
+      "term": "summer",
+      "part": "probability"
+    },
+    "number": 2,
+    "topics": [
+      "conditional expectation",
+      "monotonicity",
+      "discrete distributions"
+    ],
+    "difficulty": "easy",
+    "prompt": "Part I, Exercise 2. Let $X$ be a discrete random variable valued in $\\{1, 2, \\dots, n\\}$ with $P(X = j) > 0$ for all $j$.",
+    "parts": [
+      "For any integer $k \\in \\{1, \\dots, n-1\\}$ and events $E = \\{X \\ge k\\}$, $F = \\{X \\ge k+1\\}$, prove $\\mathbb{E}[X \\mid E] \\le \\mathbb{E}[X \\mid F]$."
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/probability_exam_2023_v3.pdf",
+      "page": 2
+    },
+    "verified": false,
+    "notes": "Transcribed from extracted text."
+  },
+  {
+    "id": "2023-summer-probability-q3",
+    "exam": {
+      "year": 2023,
+      "term": "summer",
+      "part": "probability"
+    },
+    "number": 3,
+    "topics": [
+      "density transformation",
+      "symmetry",
+      "conditional distribution"
+    ],
+    "difficulty": "medium",
+    "prompt": "Part I, Exercise 3. Let $X$ be valued on $[-1, 1]$ with symmetric density $f$ ($f(x) = f(-x)$). Let $Y$ take values $\\pm 1$ with $P(Y = 1 \\mid X = x) = \\frac{1}{1 + \\exp(-x)}$ for every $x \\in [-1, 1]$.",
+    "parts": [
+      "Find the density of the random variable $V = YX$."
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/probability_exam_2023_v3.pdf",
+      "page": 2
+    },
+    "verified": false,
+    "notes": "Transcribed from extracted text."
+  },
+  {
+    "id": "2023-summer-probability-q4",
+    "exam": {
+      "year": 2023,
+      "term": "summer",
+      "part": "probability"
+    },
+    "number": 4,
+    "topics": [
+      "heavy tails",
+      "law of large numbers",
+      "Pareto distribution",
+      "maxima",
+      "infinite mean"
+    ],
+    "difficulty": "hard",
+    "prompt": "Part I, Problem. Let $(X_i)_{i\\ge1}$ be i.i.d. with $P(X_i > 0) = 1$, $\\mathbb{E}[\\sqrt{X_i}] < \\infty$ but $\\mathbb{E}[X_i] = +\\infty$; write $\\mu = \\mathbb{E}[\\sqrt{X_i}]$. You may use that $\\int_1^{+\\infty} u^{-\\alpha}\\,du < \\infty$ for $\\alpha > 1$ and $\\lim_n (1 - c/n)^n = e^{-c}$.",
+    "parts": [
+      "(1) Applying the LLN to $\\frac1n\\sum_{i=1}^n \\sqrt{X_i}$, prove $P(\\sum_{i=1}^n X_i \\le (\\mu + \\varepsilon)^2 n^2) \\to 1$ for any constant $\\varepsilon > 0$.",
+      "(2) For fixed $s \\in (\\tfrac12, 1]$ and i.i.d. $(X_i)$ with $P(X_i > u) = u^{-s}$ for $u \\ge 1$, find the range and density of $X_i$. (Use this density for parts 3-5.)",
+      "(3) Prove $\\mathbb{E}[\\sqrt{X_i}] < \\infty$.",
+      "(4) For real $y > 1$, express $P(\\max_{i\\le n} X_i > y)$ as a function of $P(X_1 > y)$ and $n$ only.",
+      "(5) Find $\\lim_{n\\to\\infty} P(\\max_{i\\le n} X_i > n^{1/s})$.",
+      "(6) Is it possible, for any i.i.d. $(X_i)$ with $\\mathbb{E}[\\sqrt{X_i}] < \\infty$, that $\\lim_n P(\\sum_{i=1}^n X_i \\le C n^{1.99}) = 1$ for a constant $C > 0$?"
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/probability_exam_2023_v3.pdf",
+      "page": 2
+    },
+    "verified": false,
+    "notes": "Transcribed from extracted text."
+  },
+  {
+    "id": "2023-summer-probability-q5",
+    "exam": {
+      "year": 2023,
+      "term": "summer",
+      "part": "probability"
+    },
+    "number": 5,
+    "topics": [
+      "coupling",
+      "optimal coupling",
+      "total variation distance"
+    ],
+    "difficulty": "medium",
+    "prompt": "Part II, Exercise. Let $U$ be valued on $\\{1, 2, 3\\}$ with pmf $P(U=1) = \\tfrac12$, $P(U=2) = \\tfrac13$, $P(U=3) = \\tfrac16$.",
+    "parts": [
+      "(a) Construct a coupling $(X, Y)$ — give its pmf as a $3 \\times 3$ table — such that $X \\stackrel{d}{=} U$; $Y$ has $P(Y=1) = 0$ and $P(Y=k) = P(U=k \\mid U \\ge 2)$ for $k = 2, 3$; $P(X \\le Y) = 1$ and $P(Y \\le X + 1) = 1$.",
+      "(b) Prove or disprove that this coupling is optimal (i.e. the TV distance between the marginals equals $P(X \\ne Y)$)."
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/probability_exam_2023_v3.pdf",
+      "page": 13
+    },
+    "verified": false,
+    "notes": "Transcribed from extracted text."
+  },
+  {
+    "id": "2023-summer-probability-q6",
+    "exam": {
+      "year": 2023,
+      "term": "summer",
+      "part": "probability"
+    },
+    "number": 6,
+    "topics": [
+      "Markov chains",
+      "mixing time",
+      "total variation distance",
+      "stationary distribution"
+    ],
+    "difficulty": "hard",
+    "prompt": "Part II, Problem. For a finite state space $\\mathcal{X}$, irreducible aperiodic transition matrix $P$, and chain $(X_t)_{t\\ge0}$, with $\\|\\mu - \\nu\\|_{TV} = \\tfrac12\\sum_x |\\mu(x) - \\nu(x)|$, define $d(t) = \\max_x \\|P^t(x, \\cdot) - \\pi\\|_{TV}$, $\\bar d(t) = \\max_{x, y}\\|P^t(x, \\cdot) - P^t(y, \\cdot)\\|_{TV}$, and $t_{\\mathrm{mix}} = \\min\\{t \\ge 0 : d(t) \\le 1/4\\}$.",
+    "parts": [
+      "(1) Prove $\\bar d(t) \\le 2 d(t)$ for all $t \\ge 0$.",
+      "(2) Prove $d(t) \\le \\bar d(t)$ for all $t \\ge 0$.",
+      "(3) Prove $d(t+1) \\le d(t)$ for all $t \\ge 0$.",
+      "(4) Prove $d(k\\, t_{\\mathrm{mix}}) \\le \\frac{1}{2^k}$ for all integers $k \\ge 2$ (state clearly any property of $\\bar d(\\cdot)$ you use).",
+      "(5) Let $T \\ge 2$ be an integer and $Z \\sim \\mathrm{Unif}\\{1, \\dots, T\\}$ independent of the chain. Express $\\mathbb{P}_x[X_Z = y]$ as a sum of $T$ terms.",
+      "(6) Prove that if $T = 7\\, t_{\\mathrm{mix}}$ then $\\max_x \\|\\nu_x - \\pi\\|_{TV} \\le \\tfrac14$, where $\\nu_x(y) = \\mathbb{P}_x[X_Z = y]$. (Hint: split the sum into 7 bags of $t_{\\mathrm{mix}}$ terms; $\\sum_{k\\ge0} 2^{-k} = 2$. 90% credit for $T = C\\, t_{\\mathrm{mix}}$ with any absolute constant $C$.)"
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/probability_exam_2023_v3.pdf",
+      "page": 13
+    },
+    "verified": false,
+    "notes": "Transcribed from extracted text."
+  }
+]

@@ -1,0 +1,127 @@
+[
+  {
+    "id": "2024-summer-probability-q1",
+    "exam": {
+      "year": 2024,
+      "term": "summer",
+      "part": "probability"
+    },
+    "number": 1,
+    "topics": [
+      "uniform distribution",
+      "geometric distribution",
+      "expectation",
+      "variance"
+    ],
+    "difficulty": "easy",
+    "prompt": "Part I, Problem 1. Let $X \\sim \\mathrm{Uniform}[0,1]$, and let $N$ be the first decimal place whose digit is non-zero (e.g. $X = 0.00532 \\Rightarrow N = 3$).",
+    "parts": [
+      "Find the mean and variance of $N$. Give the final answer as two simple numerical values."
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/probability_exam_2024_v1.pdf",
+      "page": 2
+    },
+    "verified": false,
+    "notes": "Transcribed from extracted text."
+  },
+  {
+    "id": "2024-summer-probability-q2",
+    "exam": {
+      "year": 2024,
+      "term": "summer",
+      "part": "probability"
+    },
+    "number": 2,
+    "topics": [
+      "geometric distribution",
+      "moment generating function",
+      "convolution",
+      "continuity"
+    ],
+    "difficulty": "medium",
+    "prompt": "Part I, Problem 2. $X$ has a Geometric$(p)$ distribution if $f(x; p) = (1-p)^{x-1} p$ for $x \\in \\{1, 2, \\dots\\}$. Let $X_1, X_2$ be independent with $X_j \\sim$ Geometric$(p_j)$, and $Y = X_1 + X_2$.",
+    "parts": [
+      "(a) Find the MGF of $Y$ if it exists, or verify it does not.",
+      "(b) Find the pmf of $Y$ in simple closed form.",
+      "(c) Prove or disprove: for each fixed $y \\in \\{1, 2, \\dots\\}$, the pmf $f(y; p_1, p_2)$ is continuous as $p_1 \\to p_2$."
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/probability_exam_2024_v1.pdf",
+      "page": 3
+    },
+    "verified": false,
+    "notes": "Transcribed from extracted text."
+  },
+  {
+    "id": "2024-summer-probability-q3",
+    "exam": {
+      "year": 2024,
+      "term": "summer",
+      "part": "probability"
+    },
+    "number": 3,
+    "topics": [
+      "density",
+      "normalizing constant",
+      "moments",
+      "moment generating function",
+      "product distribution"
+    ],
+    "difficulty": "medium",
+    "prompt": "Part I, Problem 3. Suppose $X$ has density $f(x) = c\\, \\frac{\\log x}{x^2}$ for $x > 1$.",
+    "parts": [
+      "(a) Find the normalizing constant $c$.",
+      "(b) Find $\\mathbb{E}[X^k]$ for $k = 1, 2, \\dots$ if it exists, or verify it does not.",
+      "(c) Find the MGF of $X$ if it exists, or verify it does not.",
+      "(d) If $X_1, X_2$ are independent copies of $X$, find the density of $Y = X_1 X_2$."
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/probability_exam_2024_v1.pdf",
+      "page": 6
+    },
+    "verified": false,
+    "notes": "Transcribed from extracted text."
+  },
+  {
+    "id": "2024-summer-probability-q4",
+    "exam": {
+      "year": 2024,
+      "term": "summer",
+      "part": "probability"
+    },
+    "number": 4,
+    "topics": [
+      "Glauber dynamics",
+      "Ising model",
+      "Markov chains",
+      "monotone coupling",
+      "mixing time",
+      "Metropolis"
+    ],
+    "difficulty": "hard",
+    "prompt": "Part II. Let $(V, E)$ be a finite undirected graph, $V = \\{1, \\dots, n\\}$, with $v \\sim v'$ iff $\\{v, v'\\} \\in E$. State space $\\mathcal{X} = \\{-1, 1\\}^n$ (spin configurations). Define $H(x) = \\sum_{\\{v,v'\\}\\in E}\\mathbb{1}\\{x(v) \\ne x(v')\\} = \\tfrac12\\sum_{\\{v,v'\\}\\in E}(1 - x(v)x(v'))$ and $\\pi(x) = \\frac{e^{-H(x)}}{\\sum_y e^{-H(y)}}$. The update $X_{t+1} = f_{t+1}(x_t)$: sample $v_{t+1} \\sim \\mathrm{Unif}(V)$, $S_{t+1} \\sim \\mathrm{Unif}\\{-1,1\\}$, $U_{t+1} \\sim \\mathrm{Unif}[0,1]$; propose $y$ with $y(v_{t+1}) = S_{t+1}$, $y(w) = x_t(w)$ otherwise; accept ($f_{t+1}(x_t) = y$) if $U_{t+1} \\le \\min\\{1, e^{-H(y)}/e^{-H(x_t)}\\}$, else reject. $P(x, z) = P(f_{t+1}(x) = z)$.",
+    "parts": [
+      "(1) Compute $P(x, z)$ for $z \\ne x$ with $P(x, z) > 0$ (need not compute $P(x, x)$).",
+      "(2) Prove $\\pi$ is stationary for this chain.",
+      "(3) With $N_{t+1} \\subset V$ the neighbors of $v_{t+1}$ and $y$ the proposed move, show $\\frac{e^{-H(y)}}{e^{-H(x_t)}} = \\exp(\\tfrac12\\sum_{w \\in N_{t+1}}(S_{t+1} - x_t(v_{t+1})) x_t(w))$.",
+      "(4) Write $x \\preceq y$ if $x(v) \\le y(v)$ for all $v$. Prove that if $x \\preceq z$ then $P(f_{t+1}(x) \\preceq f_{t+1}(z)) = 1$ (handle $S_{t+1} = \\pm1$ separately) — i.e. the dynamics is monotone.",
+      "(5) Let $\\underline x = (-1, \\dots, -1)$, $\\bar x = (1, \\dots, 1)$. Prove $F = f_t \\circ \\cdots \\circ f_1$ is constant iff $F(\\underline x) = F(\\bar x)$. Let $T = \\min\\{t \\ge 1 : f_t \\circ \\cdots \\circ f_1(\\underline x) = f_t \\circ \\cdots \\circ f_1(\\bar x)\\}$.",
+      "(6) For $z \\in \\mathcal{X}$, let $h(z)$ be the max number $k$ of distinct states $x_1 \\preceq \\cdots \\preceq x_k = z$. Prove that if $x_t \\preceq y_t$ and $x_t \\ne y_t$ then $h(x_t) + 1 \\le h(y_t)$.",
+      "(7) With $X_t = f_t \\circ \\cdots \\circ f_1(\\underline x)$, $Y_t = f_t \\circ \\cdots \\circ f_1(\\bar x)$ (so $\\{T > t\\} = \\{X_t \\ne Y_t\\}$), prove $P(T > t) \\le \\mathbb{E}[h(Y_t) - h(X_t)]$.",
+      "(8) Prove $0 \\le h(z) \\le |V|$ and $\\mathbb{E}[h(Y_t) - h(X_t)] \\le |V|\\,\\bar d(t)$.",
+      "(9) If $|V| = 2L$ ($L > 1$ integer) and $k \\ge 0$, prove $P(T > t_{\\mathrm{mix}}(k + L)) \\le \\frac{1}{2^k}$ (state the properties of $d, \\bar d, t_{\\mathrm{mix}}$ used).",
+      "(10) Prove $\\mathbb{E}[T] \\le c\\, L\\, t_{\\mathrm{mix}}$ for an absolute constant $c > 0$ (you may first show any nonnegative $U$ with $P(U > k) \\le 1/2^k$ for all integers $k \\ge 0$ has finite expectation)."
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/probability_exam_2024_v1.pdf",
+      "page": 10
+    },
+    "verified": false,
+    "notes": "Glauber/Metropolis monotone coupling and coupling-from-the-past bound. Transcribed from extracted text."
+  }
+]

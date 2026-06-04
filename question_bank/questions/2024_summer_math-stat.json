@@ -1,0 +1,157 @@
+[
+  {
+    "id": "2024-summer-math-stat-q1",
+    "exam": {
+      "year": 2024,
+      "term": "summer",
+      "part": "math-stat"
+    },
+    "number": 1,
+    "topics": [
+      "exponential family",
+      "sufficient statistic",
+      "maximum likelihood",
+      "convexity",
+      "most powerful test",
+      "UMP test"
+    ],
+    "difficulty": "hard",
+    "prompt": "Part I, Problem 1 (MLE and Hypothesis Testing for Exponential Family). Let $X_1, \\dots, X_n$ be i.i.d. from a one-parameter exponential family $p(x \\mid \\theta) = h(x)\\exp\\{\\eta(\\theta) T(x) - B(\\theta)\\}$, with natural form $p(x \\mid \\eta) = h(x)\\exp\\{\\eta T(x) - A(\\eta)\\}$ ($\\eta$ canonical).",
+    "parts": [
+      "(a) Identify the sufficient statistic for $\\theta$ and compute the MLE of $\\theta$.",
+      "(b) State $A(\\eta)$ in terms of $\\theta$.",
+      "(c) ($\\clubsuit$) Assume $T(x)$ is not constant on the support and $\\eta(\\theta)$ is one-to-one. Show the MLE is unique. (Hint: show $A(\\eta)$ is strictly convex.)",
+      "(For (d)-(f) assume $\\eta(\\theta)$ strictly increasing and $\\sum_i T(X_i)$ continuous.) (d) Construct the most powerful test for $H_0 : \\theta = \\theta_0$ vs $H_1 : \\theta = \\theta_1$ with $\\theta_1 > \\theta_0$.",
+      "(e) Construct the UMP test for $H_0 : \\theta \\le \\theta_0$ vs $H_1 : \\theta > \\theta_0$ and justify why it is UMP.",
+      "(f) Prove or disprove the existence of a UMP test for $H_0 : \\theta = \\theta_0$ vs $H_1 : \\theta \\ne \\theta_0$."
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/inference_exam_2024_v1.pdf",
+      "page": 3
+    },
+    "verified": false,
+    "notes": "PDF header mislabels year as 2023; exam is dated July 3, 2024. Stat 593. Transcribed from extracted text."
+  },
+  {
+    "id": "2024-summer-math-stat-q2",
+    "exam": {
+      "year": 2024,
+      "term": "summer",
+      "part": "math-stat"
+    },
+    "number": 2,
+    "topics": [
+      "maximum likelihood",
+      "asymptotic normality",
+      "one-step estimator",
+      "efficiency"
+    ],
+    "difficulty": "medium",
+    "prompt": "Part I, Problem 2 (MLE and One-step Estimator). Let $X_1, \\dots, X_n$ be i.i.d. with density $p_\\theta(\\cdot)$, regularity conditions satisfied.",
+    "parts": [
+      "1. Define the MLE and prove its asymptotic limiting distribution (you may assume consistency of the MLE).",
+      "2. State the one-step estimator and prove it has the same asymptotic distribution as the MLE."
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/inference_exam_2024_v1.pdf",
+      "page": 9
+    },
+    "verified": false,
+    "notes": "Transcribed from extracted text."
+  },
+  {
+    "id": "2024-summer-math-stat-q3",
+    "exam": {
+      "year": 2024,
+      "term": "summer",
+      "part": "math-stat"
+    },
+    "number": 3,
+    "topics": [
+      "high-dimensional regression",
+      "Lasso",
+      "debiased Lasso",
+      "confidence intervals",
+      "variance estimation"
+    ],
+    "difficulty": "hard",
+    "prompt": "Part I, Problem 3 (Inference in High-dimensional Regression). Consider $y_i = X_{i\\cdot}^\\top \\beta + \\varepsilon_i$, $1 \\le i \\le n$, with $\\beta \\in \\mathbb{R}^p$, $\\|\\beta\\|_0 \\le k$, $\\varepsilon_i \\stackrel{iid}{\\sim} N(0, \\sigma^2)$.",
+    "parts": [
+      "1. Define the Lasso estimator $\\hat\\beta$ and discuss the challenge of statistical inference with it.",
+      "2. Write one form of the debiased Lasso estimator for $\\beta_j$ ($1 \\le j \\le p$) and establish its limiting distribution.",
+      "3. Construct a confidence interval for $\\beta_j$, estimating $\\sigma^2$ in a data-dependent way."
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/inference_exam_2024_v1.pdf",
+      "page": 11
+    },
+    "verified": false,
+    "notes": "Transcribed from extracted text."
+  },
+  {
+    "id": "2024-summer-math-stat-q4",
+    "exam": {
+      "year": 2024,
+      "term": "summer",
+      "part": "math-stat"
+    },
+    "number": 4,
+    "topics": [
+      "causal inference",
+      "hidden confounders",
+      "OLS consistency",
+      "instrumental variables",
+      "structural equation model"
+    ],
+    "difficulty": "medium",
+    "prompt": "Part I, Problem 4 (Regression with hidden confounders). Consider the structural equation model $Y_i \\leftarrow D_i\\beta + H_i\\psi + e_i$, where $Y_i$ is the outcome, $D_i$ the treatment, $H_i$ a hidden variable, and $e_i$ independent error; assume $D_i, H_i, e_i$ are centered.",
+    "parts": [
+      "1. Explain when the OLS estimator is a consistent estimator of $\\beta$.",
+      "2. Define the instrumental variable and propose a consistent estimator of $\\beta$ using an instrumental variable."
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/inference_exam_2024_v1.pdf",
+      "page": 14
+    },
+    "verified": false,
+    "notes": "Transcribed from extracted text."
+  },
+  {
+    "id": "2024-summer-math-stat-q5",
+    "exam": {
+      "year": 2024,
+      "term": "summer",
+      "part": "math-stat"
+    },
+    "number": 5,
+    "topics": [
+      "precision matrix",
+      "Lasso",
+      "sub-Gaussian",
+      "compatibility condition",
+      "oracle inequality",
+      "high-dimensional"
+    ],
+    "difficulty": "hard",
+    "prompt": "Part II. Let $X_1, \\dots, X_n$ be i.i.d. $N(0, \\Sigma)$ in $\\mathbb{R}^p$ with eigenvalues of $\\Sigma$ in $[\\sigma_0, \\sigma_1]$. For fixed $\\xi^* \\in \\mathbb{R}^p$, estimate $u^* = \\Gamma\\xi^*$ where $\\Gamma = \\Sigma^{-1}$ (precision matrix). With $\\hat\\Sigma = X^TX/n$, consider $\\hat u_\\lambda = \\arg\\min_u\\{\\tfrac12 u^T\\hat\\Sigma u - u^T\\xi^* + \\lambda\\|u\\|_1\\}$. You may use the sub-Gaussian product concentration bound (2) given in the exam.",
+    "parts": [
+      "1) Show $u^{*T}X_i$ is sub-Gaussian with scale parameter $\\sqrt{\\sigma_1}\\|u^*\\|_2$.",
+      "2) Let $\\Omega_0(\\lambda_0)$ be the event $\\|\\hat\\Sigma u^* - \\xi^*\\|_\\infty \\le \\lambda_0$. For $\\varepsilon \\in (0,1)$, find $\\lambda_0$ depending on $(n, p, \\varepsilon)$ with $P(\\Omega_0(\\lambda_0)) \\ge 1 - 2\\varepsilon$. (Hint: use the given concentration bound.)",
+      "3) Show that for any $u \\in \\mathbb{R}^p$: $\\frac{1}{2n}\\|X(\\hat u_\\lambda - u)\\|_2^2 + (\\hat\\Sigma u - \\xi^*)^T(\\hat u_\\lambda - u) + \\lambda\\|\\hat u_\\lambda\\|_1 \\le \\lambda\\|u\\|_1$.",
+      "4) Take $\\lambda = A_0\\lambda_0$, $A_0 > 1$. Show that on $\\Omega_0(\\lambda_0)$: $\\frac{1}{2n}\\|X(\\hat u_\\lambda - u^*)\\|_2^2 + (A_0 - 1)\\lambda_0\\|\\hat u_\\lambda - u^*\\|_1 \\le 2A_0\\lambda_0\\sum_{j\\in S^*}|\\hat u_{\\lambda,j} - u^*_j|$, where $S^* = \\{j : u^*_j \\ne 0\\}$.",
+      "5) Let $\\Omega_{\\mathrm{Comp}}$ be the empirical compatibility event: $\\nu_0^2(\\sum_{j\\in S^*}|b_j|)^2 \\le |S^*|(b^T\\hat\\Sigma b)$ for all $b$ with $\\sum_{j\\notin S^*}|b_j| \\le \\eta_0\\sum_{j\\in S^*}|b_j|$. Show that on $\\Omega_0(\\lambda_0) \\cap \\Omega_{\\mathrm{Comp}}$, for suitable $A_0$: $\\frac1n\\|X(\\hat u_\\lambda - u^*)\\|_2^2 \\le M_0|S^*|\\lambda_0^2$ and $\\|\\hat u_\\lambda - u^*\\|_1 \\le M_0|S^*|\\lambda_0$.",
+      "6) Outline how to show $P(\\Omega_{\\mathrm{Comp}}) \\ge 1 - 2\\varepsilon$ under suitable conditions (main steps + conditions only)."
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/inference_exam_2024_v1.pdf",
+      "page": 16
+    },
+    "verified": false,
+    "notes": "Stat 594. Transcribed from extracted text."
+  }
+]

@@ -1,0 +1,66 @@
+[
+  {
+    "id": "2023-summer-math-stat-q1",
+    "exam": {
+      "year": 2023,
+      "term": "summer",
+      "part": "math-stat"
+    },
+    "number": 1,
+    "topics": [
+      "linear model",
+      "Neyman-Pearson",
+      "power",
+      "Bernstein-von Mises",
+      "posterior",
+      "ridge"
+    ],
+    "difficulty": "hard",
+    "prompt": "Problem 1. Consider the linear model $Y = X\\theta + \\varepsilon$, where $X \\in \\mathbb{R}^{n\\times p}$, $\\theta \\in \\mathbb{R}^p$ unknown, and $\\varepsilon \\sim N(0, I_n)$.",
+    "parts": [
+      "1. Fix $\\theta_0, \\theta_1 \\in \\mathbb{R}^p$. Compute the maximal power of any level-$\\alpha$ test for $H_0 : \\theta = \\theta_0$ vs $H_1 : \\theta = \\theta_1$.",
+      "2. Place a prior $N(0, \\Lambda)$ on $\\theta$ ($\\Lambda$ nonsingular). (a) Assuming $X^\\top X / n \\to \\Sigma$ as $n \\to \\infty$ ($p$ fixed; holds a.s. if rows are i.i.d. $N(0, \\Sigma)$), prove directly a Bernstein-von Mises theorem for the posterior $\\Pi(\\theta \\mid Y)$. (b) For $\\Lambda = \\lambda I_p$, find the posterior mean as $\\lambda \\to \\infty$ when $X$ is full rank."
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/inference_exam_2023_v2.pdf",
+      "page": 2
+    },
+    "verified": false,
+    "notes": "Stat 593/594. Transcribed from extracted text."
+  },
+  {
+    "id": "2023-summer-math-stat-q2",
+    "exam": {
+      "year": 2023,
+      "term": "summer",
+      "part": "math-stat"
+    },
+    "number": 2,
+    "topics": [
+      "control variates",
+      "least squares",
+      "asymptotic normality",
+      "Lasso",
+      "high-dimensional",
+      "influence function"
+    ],
+    "difficulty": "hard",
+    "prompt": "Problem 2. Observe i.i.d. $(x_i, y_i)$, $1 \\le i \\le n$, as $(x, y)$ where $y$ is a response and $x = (x^{(1)}, \\dots, x^{(p)})^T$ has $\\mathbb{E}(x^{(j)}) = 0$ for all $j$. The goal is to estimate $\\alpha^* = \\mathbb{E}(y)$ using the covariates as control variates (auxiliary variables). You may use results from preceding parts regardless of whether you answered them.",
+    "parts": [
+      "(i) For the least-squares $(\\hat\\alpha, \\hat\\beta) = \\arg\\min \\frac{1}{2n}\\sum_i (y_i - \\alpha - x_i^T\\beta)^2$, show $\\hat\\alpha = \\bar y - \\bar x^T \\hat\\beta$.",
+      "(ii) With $\\Sigma = \\mathbb{E}(xx^T)$ nonsingular, $p$ fixed: show $\\sqrt{n}(\\hat\\alpha - \\alpha^*) \\xrightarrow{d} N(0, V)$ and find $\\varphi(x, y)$ with $V = \\mathbb{E}\\{\\varphi^2(x, y)\\}$.",
+      "(iii) (now possibly $p > n$) For the Lasso $(\\tilde\\alpha, \\tilde\\beta) = \\arg\\min\\{\\frac{1}{2n}\\sum_i(y_i - \\alpha - x_i^T\\beta)^2 + \\lambda\\|\\beta\\|_1\\}$, show $\\tilde\\alpha = \\bar y - \\bar x^T \\tilde\\beta$.",
+      "(iv) Assume $|x^{(j)}| \\le B_0$ a.s. Formulate (as weak as possible) technical conditions under which the standard Lasso error bounds (the displayed $\\ell_2$-prediction and $\\ell_1$ bounds, with $\\lambda_0 = \\sqrt{\\log(1+p)/n}$) hold. You need not prove them.",
+      "(v) For $\\delta > 0$, formulate an event $\\Omega_0$ with $P(\\Omega_0) \\ge 1 - 2\\delta$ such that the stated basic inequality holds with $\\lambda = A_0\\lambda_{0,\\delta}$, $A_0 > 1$, where $\\lambda_{0,\\delta} = C_0\\sqrt{\\log((1+p)/\\delta)/n}$; state $C_0$ explicitly.",
+      "(vi) Assuming the Lasso bounds hold, show $\\sqrt{n}(\\tilde\\alpha - \\alpha^*) \\xrightarrow{d} N(0, V)$ (same $V$ as (ii)) provided $(1 + |S_{\\beta^*}|)\\log(1+p) = o(n^{1/2})$."
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/inference_exam_2023_v2.pdf",
+      "page": 8
+    },
+    "verified": false,
+    "notes": "Transcribed from extracted text."
+  }
+]
