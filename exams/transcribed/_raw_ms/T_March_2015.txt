@@ -1,0 +1,48 @@
+
+----- page 1 -----
+ 
+MASTER’S COMPREHENSIVE EXAMINATION 
+Part I Theory (2 hours) March 28th, 2015 
+Instructions: Attempt any three out of the following four questions on both pages. 
+Mention which three you would like to have graded. Open book and open notes. 
+ 
+ 
+1. Suppose that X is a random vector with a multivariate normal distribution such that 
+ ∑-1/2(X – μ) has zero mean and variance covariance matrix equal to the identity ( N(0,I) ). 
+Suppose we observe a sample Y1,…,Yn  from the distribution of the vector X=(X1, X2,…, 
+Xp) T and suppose that μ=( 𝜇1, 𝜇2,…, 𝜇p)T  and ∑=(σij) 
+1,
+, ,
+1,
+, .
+i
+p j
+p
+
+
+  
+Find the method of moments (MOM) estimators of 𝜇1, 𝜇2,…, 𝜇p  and σij  i≤j.  
+ 
+2.  Let X be a sample of size=1 from a Poisson distribution with parameter , and let h() = 
+𝑒−3. 
+ 
+(a) Check if T= (-2)X  is an unbiased estimator of  h(). 
+(b) Give some bad property of the above estimator, which is unrelated to the question 
+of bias. 
+ 
+3. My first serve percentage for tennis was 42 percent good serves.  I took lessons and 
+afterwards tried 100 serves.  I got 48 good serves.  Did I improve?  (Test at  = 0.05). 
+ 
+ 
+4. Let  
+1,
+,
+n
+Y
+Y  be i.i.d. normally distributed with mean µ, and standard deviation  σ.   
+a) Find the maximum likelihood estimate of   σ. 
+b) Find the maximum likelihood estimate of   µ  + 1.645 σ         (that is the 95th percentile of 
+the   distribution of Y). 
+ 
+ 
+ 

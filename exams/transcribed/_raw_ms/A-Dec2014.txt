@@ -1,0 +1,94 @@
+
+----- page 1 -----
+MASTER’S COMPREHENSIVE EXAMINATION 
+ 
+Part II Applied (90 minutes) December, 6th 2014 
+Instructions: Attempt any three out of the following four questions on both pages. 
+Mention which three you would like to have graded. Open book and open notes. 
+ 
+ 
+1 
+1. Rutgers Scientists have discovered how to generate a new atomic particle they 
+have named the “SNOOKI”).   SNOOKIs decay quickly after being generated having 
+an exponential decay function.  The probability a SNOOKI decays at “t” seconds 
+after it is generated is te-at for a > 0 unknown.  It is impossible to observe the exact 
+time of decay of a given particle, but Rutgers can determine if a SNOOKI has 
+decayed prior to 10 seconds.  For 25 SNOOKIs that were generated, 5 decayed in 
+less than 10 seconds and 20 had not.   Give a point estimate for and a 95% 
+confidence interval for a, the parameter of the decay function. 
+ 
+2. A researcher seeks to compare the sodium content in beef, chicken and turkey 
+hotdogs. The researcher takes a random sample of 20 beef hotdogs, 20 poultry 
+hotdogs, and 20 mixed meat hotdogs, and measures their sodium content.  Assume 
+sodium content is normally distributed.  The following is the data on the means 
+and standard deviations of sodium content: 
+                            n         Mean           Standard Deviation       
+Beef                    20        400                   100 
+Poultry                20        480                    90 
+Mixed Meat        20        410                    85 
+ 
+a) Test the null hypothesis that for sodium content, Ho:  Mean Beef=Mean Poultry = Mean 
+Mixed meat, versus the alternative hypothesis Not Ho. 
+b) A school lunch program wants to compare the sodium content of a hotdog in two alternative 
+diets: 
+Diet A:  A Mixed Meat Hotdog 
+Diet B: half the time serve a Beef Hotdog, and half the time serve a Poultry Hotdog 
+Test the Null hypothesis that there is no difference in the average sodium content in the hotdog 
+in the two diets, versus the alternative hypothesis that there is a difference. 
+ 
+3.  A radiologist examines mammograms to detect breast cancer tumors.  The goal is to detect 
+tumors in their very early stages when they are very small.  A company developed a computer 
+program to be used by a medical technician to examine mammograms for the same purpose.  A 
+researcher had a sample of 100 mammograms that were determined (by subsequent biopsies) to 
+have tiny tumors.  The researcher had a radiologist review the 100 mammograms and for each 
+state whether or not tumors were detected.  The researcher also had a non-medical technician 
+use the computer program to analyze the same 100 mammograms, and for each state whether 
+or not tumors were detected.  The null hypothesis is that the radiologist and computer program 
+would equally often correctly detect tiny tumors.  The research hypothesis is that the medical 
+technician with the computer program would correctly detect tiny tumors more often than the 
+radiologist.  The researcher found that the radiologist detected tiny tumors in 65 of the 
+mammograms, while the medical technician detected tumors in 80 of the mammograms.  There 
+were 5 mammograms where neither the radiologist, nor the medical technician with computer 
+detected tumors.  Carry out the test at the 0.05 level of significance.  Show the details of your 
+analysis including formula used and substitutions into formula.
+
+----- page 2 -----
+. 
+ 
+ 
+2 
+4.  Below are data on numbers of; AIDs Cases, AIDs Cases caused by PCP and AIDS Cases 
+caused by KS for two American cities.  (Note AIDS cannot be caused by both PCP and KS at 
+the same time).  
+ 
+CITY 
+AIDS CASES 
+TOTAL 
+CAUSED BY PCP 
+CAUSED BY KS 
+Des Moines 
+200 
+30 
+30 
+El Paso 
+200 
+20 
+50 
+ 
+                      Let pD  be the portion of AIDS cases in Des Moines caused by PCP 
+                             pE  be the portion of AIDS cases in El Paso caused by PCP 
+ 
+                                           kD  be the portion of AIDS cases in Des Moines caused by KS 
+                             kE  be the portion of AIDS cases in El Paso caused by KS 
+ 
+ 
+a. Dr. LP believes that pE = pD .  Use the data above to give a large sample test of a 
+two sided alternative hypothesis against the appropriate null at α=0.05 
+ 
+ 
+b. Dr. PL believes kD = 2pD. Use the data above to give a large sample test of a two 
+sided alternative hypothesis against the appropriate null at α=0.05 
+ 
+ 
+ 
+ 

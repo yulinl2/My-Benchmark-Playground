@@ -60,9 +60,26 @@ exams (`probability` / `math-stat`); **applied** is the take-home exam.
 
 ## Past MS exams
 
-`Downloads/past-ms-exams-solution/` holds ~150 MS theory/applied exam and
-solution PDFs spanning 1972–2025. These are a separate, larger transcription
-effort and are **not yet started**.
+`Downloads/past-ms-exams-solution/` holds **161** MS theory/applied exam and
+solution PDFs spanning 1972–2025. Raw text for every PDF with a text layer has
+been extracted to `exams/transcribed/_raw_ms/`. The archive splits as:
+
+- **111 PDFs have an extractable text layer** (machine-readable). However there
+  is heavy duplication — the `ms<year>.<mm>.pXpa.pdf` files are the same exams as
+  the named `T_*` (theory) and `A-*`/`Applied*` (applied) files, and several
+  `*_Q & A.pdf` files repeat. The distinct readable MS exams number roughly ~45.
+- **50 PDFs are fully scanned images** (0 extractable characters) — almost all
+  the 1972–2009 exams plus a few solution scans. These require **OCR** (e.g. a
+  visual PDF pass) before they can be transcribed.
+
+**Status: not yet transcribed into the bank.** Recommended plan:
+1. De-duplicate the readable set to ~45 distinct theory/applied MS exams and
+   transcribe those (they are short — 1–3 pages, a few problems each).
+2. OCR the 50 scanned exams as a separate pass.
+
+The MS exams use a different format (separate Theory and Applied papers, often
+with solutions). When transcribed they should set `part` to `math-stat` (theory)
+or `applied`, and may use the `solution` field where the PDF includes answers.
 
 ## Notes on quality
 

@@ -1,0 +1,63 @@
+
+----- page 1 -----
+Master Exam Spring 2019
+Problem 1. Let X1, . . . , Xn be i.i.d. with pdf
+f(x|θ) = θx−2,
+0 < θ ≤x ≤∞.
+(1) Find a suﬃcient statistic for θ.
+(2) Find the MLE and the method of moments estimator of θ.
+Solution. (1) Since f(X|θ) = θn(Q
+i X−2
+i ) · 1[θ,∞)(X(1)) where X(1) <
+. . . < X(n) is the order statistic, X(1) is a suﬃcient statistic.
+(2) To maximize the log likelihood function L(θ|X) = log f(X|θ),
+we only need to take the MLE as ˆθMLE
+n
+= X(1). On the other hand,
+since EX =
+R ∞
+θ θx−2 · x dx = ∞, the method of moments estimator
+does not exist.
+Problem 2. Let X1, . . . , Xn be i.i.d. with pdf
+f(x|θ) = θxθ−1,
+0 ≤x ≤1, 0 < θ < ∞.
+(1) Find the maximum likelihood estimator ˆθn of θ.
+(2) Evaluate Eˆθn and Var(ˆθn). Is ˆθn unbiased? Is ˆθn consistent?
+Solution. (1) The log likelihood function is
+L(θ) = n log θ + (θ −1)
+X
+i
+log Xi.
+Hence by solving
+0 = L′(θ) = n
+θ +
+X
+i
+log Xi,
+we have
+ˆθn =
+
+−1
+n
+X
+i
+log Xi
+−1
+.
+Since L′′(ˆθn) < 0, ˆθn is indeed the MLE.
+(2) Since Yi ≡−log Xi ∼exp(1/θ) and therefore −P
+i log Xi ∼
+Gamma(n, 1/θ) ≡T, it follows that ˆθn =d n/T. Hence,
+Eˆθn = nE(1/T) = nθn
+Γ(θ)
+Z ∞
+0
+(1/t)tn−1e−θt dt =
+n
+n −1 · θ,
+Var(ˆθn) = · · · =
+n
+(n −1)(n −2)θ2 →0,
+as n →∞. This shows that ˆθn is not unbiased, but is asymptotically
+consistent.
+1

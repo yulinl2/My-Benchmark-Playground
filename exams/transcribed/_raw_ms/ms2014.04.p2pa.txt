@@ -1,0 +1,196 @@
+
+----- page 1 -----
+ 
+1
+MASTER’S COMPREHENSIVE EXAMINATION 
+ 
+Part II Applied (90 minutes) March 29th, 2014 
+Instructions: Attempt any three out of the following four questions on both pages. 
+Mention which three you would like to have graded. Open book and open notes. 
+ 
+1.  It is the year 2016 in the United States and Chris Christie (Christie) is running in the 
+Republican primary for the presidential nomination.    There are only 3 States left in the 
+voting; Texas, Ohio and Pennsylvania. Christie’s statisticians from Rutgers gave him the 
+following probabilities to win: 
+PROBABILITIES FOR CHRISTIE TO WIN EACH STATE 
+    P = 0.55 to Win Ohio,        P = 0.65 to Win Texas,  
+                         P= 0.61 to Win Pennsylvania      
+PROBABILITIES FOR CHRISTIE TO WIN TWO STATES TOGETHER  
+    P= 0.32 to {Win Ohio ∩ Win Pennsylvania}  
+    P= 0.32 to {Win Ohio ∩ Win Texas}  
+    P= 0.37 to {Win Pennsylvania ∩ Win Texas}  
+PROBABILITIES FOR CHRISTIE TO WIN ALL THREE STATES 
+    P= 0.20 to Win All three States  together 
+ 
+ A.  Is Christie more likely to win Pennsylvania if he wins Texas or if he loses  
+       Texas? No credit if you do not explain your answer correctly. 
+ 
+B. Texas has 70 delegates, Ohio has 60 and Pennsylvania has 50.  A candidate gets all  
+       of a State’s delegates for winning a State and none otherwise. Christie needs 120 more  
+       delegates to win the Republican nomination.  What is the expectation and the  
+        variance of the probability he will win the Republican nomination? 
+ 
+ 
+ 
+2. 400 points are independently chosen on a square.  
+ 
+ 
+ 
+ 
+    
+ 
+ A.  If 329 of the 400 points are within the inscribed circle test the null hypothesis of the 
+probability to fall within the circle is random versus the alternative that it is greater than 
+by chance alone relative to area of the circle at α = 0.05. 
+ 
+B. Now consider only the 329 independent points inside the inscribed circle.  
+Suppose the radius of this circle is 1 and the sample mean distance of a point from 
+the center of the circle (C) is X =0.65 with a variance of 
+2
+S =0.056 (you can use 
+this sample variance to estimate the variance for the population).  Give a large 
+sample test of the two sided null hypothesis on whether or not the points are 
+closer to the center of the circle than they should be by chance alone if the points 
+were randomly distributed inside the circle. 
+ 
+* 
+    C 
+ 
+      
+
+----- page 2 -----
+ 
+2
+ 
+ 
+ 
+ 
+3.  A researcher investigates the relation between the circumference of a tree and its age. 
+She  picks a random sample of 30  oak tree stumps and 30 pine tree stumps.  She codes 
+TreeType = 1 if Pine,  TreeType = 0 if Oak.  For each tree stump she measures the 
+Circumference (in inches) of the stump, and the Age (in years) of the tree.   See computer 
+printout of least-square fit of model below.   Use the information in the computer printout 
+to back up your answers. 
+a) Estimate the average circumference of Oak trees that are 95 years old  
+b) Describe the difference between pine and oak trees in the growth rate (inches in 
+circumference per year of age).  Is this difference statistically significant?    
+ 
+Response: 
+Circumference  
+Root Mean Square Error 
+1.982884 
+Observations (or Sum Wgts)     60 
+ 
+Parameter Estimates 
+Term  
+ 
+Estimate 
+Std Error 
+t Ratio Prob>|t| 
+ 
+Intercept 
+ 
+-1.351916 
+3.612092 
+-0.37 0.7096  
+Age 
+ 
+ 
+0.2945472 
+0.036335 
+8.11 
+<.0001  
+TreeType 
+ 
+-12.57464 
+4.415263 
+-2.85 0.0061  
+Age*TreeType 
+0.1841789 
+0.04923 
+3.74 
+0.0004  
+ 
+Effect Test 
+Source  
+  
+DF 
+Sum of Squares   F Ratio 
+Prob>F 
+ 
+Age 
+  
+ 
+1 
+258.37039 
+   65.7125 
+<.0001  
+TreeType 
+  
+1 
+31.89132 
+     8.1111 
+0.0061  
+Age*TreeType 
+1 
+55.03262 
+   13.9967 
+0.0004  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+----- page 3 -----
+ 
+3
+ 
+ 
+ 
+ 
+4.   A medical researcher seeks to compare different  treatments for damaged knees.   
+Each treatment consists of a surgical technique followed by physical therapy.   The 
+experiment consists of three factors:  Surgical technique (2 levels), Physical Therapy 
+method (3 levels), and Doctors (5 levels).  Surgical technique  and Physical Therapy 
+method are fixed factors, while Doctor is a random factor.   The design is a  2x3x5  
+factorial design.   150 patient are assigned completely at random, 5 patients to each of the 
+30 combinations of levels of the factors.  The response variable is a measure of recovery;  
+it  is normally distributed.   
+The researcher uses a standard ANOVA program that computes the F-ratios by taking  
+(MS Source of variability / (MS error).  This printout is given below.  The researcher sees 
+from the F-ratios in this printout that the Main effects and their interactions are all 
+significant. 
+a) Compute the correct F-ratios, and state the conclusions. 
+b) Explain to the researcher your reanalysis, and what if anything can be done. 
+  
+Standard ANOVA Printout from Computer 
+Source of Variability                                df                       MS               F-ratio                   
+ 
+Surgical Technique (S)                                1                      40.00             16.67 * 
+Physical Therapy approach( (P)                  2                      18.00               7.50 * 
+Doctor (D)                                                   4                        6.00               2.50 * 
+SP                                                                 2                      12.00               5.00 * 
+SD                                                                4                        6.00               2.50 * 
+PD                                                                 8                       5.80               2.42 * 
+SPD                                                               8                       4.20               1.75   NS 
+Error                                                            120                     2.40 
+Total                                                            149 
+  
+ 
+ 
+ 
+ 

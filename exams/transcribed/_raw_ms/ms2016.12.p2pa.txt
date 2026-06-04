@@ -1,0 +1,133 @@
+
+----- page 1 -----
+MASTER’S COMPREHENSIVE EXAMINATION 
+ 
+Part II Applied (2 hours) December 3rd, 2016. 
+Instructions: Attempt any three out of the following four questions on both pages. 
+Mention which three you would like to have graded. Open book and open notes. 
+ 
+1.  People want to compare two plantations for pesticide levels in bananas. They have 
+tested the levels of 6 randomly chosen bunches of bananas each from these two 
+plantations.    From each bunch, two randomly chosen bananas are tested. The following 
+pesticide level results are observed for the two bananas within each Bunch 
+ 
+PLANTATION A  - Bunch-1  20, 24  Bunch-2  30, 24  Bunch-3  19, 19  Bunch-4  12, 18  
+Bunch-5 27, 21  Bunch-6  15, 23 
+ 
+PLANTATION B  - Bunch-1  20, 14  Bunch-2  20, 24  Bunch-3  16, 14  Bunch-4  17, 13  
+Bunch-5 17, 15  Bunch-6  19, 17 
+ 
+You can assume the observations are independently normally distributed with equal 
+variance 
+A. Give a 95% confidence interval for the mean level of pesticides in Bananas from 
+Plantation A 
+B. Give the best statistical test of whether mean pesticide levels differ in Plantation 
+A and B at a two sided α=0.05 
+_______________________________________________________________________ 
+2) Anchovies (a small fish) are a famous chefs delight. The chef rates the taste quality of 
+5 different brands of anchovies. The brands came packaged in both a jar and a can. The 
+chef rates 10 combinations of brand/packaging from 1 to l0 (where 10 is the best taste).  
+ 
+The following is the ratings: 
+ Brand  
+ 
+ 
+Rating  
+Agostino Recca (Jar)   
+   2  
+Agostino Recca (Can)  
+   4 
+Crown Prince (Jar) 
+               1  
+Crown Prince (Can)   
+   2 
+ Merro (Jar)   
+ 
+   6 
+ Merro (Can)  
+ 
+   9 
+ Ortiz (Jar)  
+ 
+ 
+   8 
+ Ortiz (Can)   
+ 
+ 10 
+ Roland (Jar)  
+ 
+   1 
+Roland (Can)  
+ 
+   3 
+ 
+ We want to test if there is evidence that the method of packing (Jar versus Can) is related 
+to a difference between the tastiness (to the Chef) of anchovies. State the Null Hypothesis 
+State the Alternative Hypothesis Explain what test statistic you would use, compute it, 
+and explain how you would get a p-value for it. 
+ 
+ 
+OVER 
+ 
+1 
+
+----- page 2 -----
+ 
+________________________________________________________________ 
+3. A researcher at a large university hypothesizes that the proportion of students 
+who spend more than $200 in the past semester on books is greater for students 
+in the social sciences that for students in the humanities. 
+The researcher draws independent random samples of 60 students from each of 
+the areas:  
+Humanities Social Sciences 
+Statistic             Humanities       Social Sciences      
+sample size  
+ 
+60 
+ 
+ 60 
+ 
+Median  
+ 
+$160  
+$200 
+ 
+ Q1 
+ 
+ 
+ $120   
+$170  
+ 
+Q3  
+ 
+ 
+$200  
+ $246  
+ 
+Carry out a test at the 0.05 level of significance to see if there is evidence to 
+support the researcher's hypothesis.   The Null Hypothesis is that there is no 
+difference between humanities and social sciences in the proportion of the 
+Universities students in the past semester who spend more than $200 on books. 
+ ________________________________________________________________ 
+4.  Three types of Fish live in Rutgers pond; Busch-fish, Livingston-fish and 
+Douglas-fish. Drs. HD and DH each recorded fish caught in Rutgers pond from 
+randomly chosen samples.   
+• Out of a random sample of 120 fish recorded by Dr. HD, 40 were Douglas, 40 
+were Livingston and 40 were Busch.    
+• Dr. DH recorded results from a different independent random sample. But he did 
+not record the number of Busch fish   Thus out of 90 fish that were either Douglas 
+or Livingston, Dr. HD recorded 60 Livingston and 30 Douglas 
+ 
+Assume that the fish recorded by Drs. HD and DH both random, independent of each 
+other and obtained under the same probabilities to be a Douglas, Livingston or a Busch. 
+ 
+A. Use this data from Drs. HD and DH to find the best point estimates for the 
+probability that the species of a fish caught at Rutgers pond were i) Douglas, ii) 
+Livingston and iii) Busch 
+ 
+B. Give a large sample 95% confidence interval for the probability that the species of 
+a fish caught at Rutgers Pond is a Busch 
+                        
+ 
+ 
+2 

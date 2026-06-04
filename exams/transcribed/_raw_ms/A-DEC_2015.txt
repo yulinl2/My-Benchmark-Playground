@@ -1,0 +1,147 @@
+
+----- page 1 -----
+MASTER’S COMPREHENSIVE EXAMINATION 
+ 
+Part II Applied (2 hours) December 5th, 2015 
+Instructions: Attempt any three out of the following four questions on both pages. 
+Mention which three you would like to have graded. Open book and open notes. 
+ 
+1)  A researcher is studying the changes from 1850 to 1950 in lead in hair of children and 
+adults using two independent samples.  The studies only gave the summary numbers below, 
+and it was impossible to get the original raw data.  The response variable Y is the amount 
+of lead in milligrams per gram of hair is approximately normally distributed, and has 
+homogeneous variance. 
+1850 Study:         100 adults,  sample mean = 3.30,         sample standard deviation = 0.47 
+                               20 children: sample mean = 1.50,       sample standard deviation = 0.42 
+1950 Study:           50 adults :  sample mean = 1.50,        sample standard deviation = 0.44 
+                               50 children: sample mean = 1.70,       sample standard deviation = 0.45 
+ 
+a) test whether there has been a change from 1850 to 1950 in lead exposure in the 
+population as a whole 
+ 
+b) test whether adults have higher exposure than children 
+ 
+c) summarize your results in an appropriate table.  In addition summarize in a few   
+sentences what the data shows.   
+________________________________________________________________________________ 
+2)  Dr. Jones obtained least squares linear regression estimates for parameters of this linear 
+model with an interaction term Y  = a + b1 X1  + b2 X2  + b12 X1 X2 + ε  using 94 adults;  
+where  Y is hematocrit, X1 is sex (0=female, 1=male)  X2 is age centered about 30, [age in 
+years  – 30] ;  a, b1, b2, and b12 and are unknown constants; and ε is identically  independently 
+normally distributed error with mean 0 and unknown variance σ2 . You can assume that all of 
+these previous assumptions are valid. He obtained the following estimates: 
+ 
+PARAMETER 
+ESTIMATE 
+STD-ERROR 
+a 
+40 
+1.1 
+b1 
+-0.1 
+0.025 
+b2 
+-2 
+0.5 
+b12 
+-0.5 
+0.025 
+  
+and 
+2ˆ
+10
+σ
+=
+ 
+ 
+A. Give a 95% confidence interval for σ2 or if you cannot answer the question from 
+the information given explain what additional information you would need to 
+answer the question 
+ 
+B. Given a 95% confidence interval for the mean hemoglobin of a 30 year old woman 
+or if you cannot answer the question from the information given explain what 
+additional information you would need to answer the question 
+___________________________________________________________________ 
+ 
+1 
+
+----- page 2 -----
+ 
+3)  Dr. Lee has developed The “Dooku-Test” (DT) for infection by the Dooku virus.    
+I. He tests 1,000 persons who truly have the Dooku virus with the DT and 
+• correctly identifies that 990 have the Dooku virus  
+• falsely identifies that 10 do not have the Dooku virus 
+II. He then tests 1,000 persons who truly don’t have the Dooku virus with the DT and 
+• correctly identifies that 990 do not  have the Dooku virus  
+• falsely identifies that 10 do have the Dooku virus 
+            
+  Remember that the numbers in I and II are sample estimates. Suppose in the United States 
+that exactly 1/1000 of the persons (0.001) are infected with the Dooku virus (which means 
+0.999 are not).  You should take this number to be known rather than an estimate 
+A. Give the best point estimates for the: 
+a. Probability that a US person is both infected with the Dooku virus and would 
+test positive for Dooku by the DT.  
+ 
+b. Probability that a US person is both not infected with the Dooku virus and 
+would test positive for Dooku by the DT.  
+[ 
+B. Give a large sample 95% confidence interval for the point estimate in A-a. up above  
+(Do this only for the estimate in A-a, not for the estimate in A-b)   
+ 
+C. If a randomly chosen US person tests positive for the Dooku virus by the DT, give 
+the best point estimate for the probability they are really infected with that virus.            
+_____________________________________________________________________ 
+ 
+ 
+PROBLEM 4 IS ON THE NEXT PAGE
+ 
+2 
+
+----- page 3 -----
+4)   A researcher is studying the effect of two medicines on reducing Cholesterol; 30 
+individuals are randomly divided into 3 groups of 10 each.  The first group gets Medication 
+A, the second gets Medication B, and the third gets a placebo.  Cholesterol levels (in mg/dl) 
+ae measured for each individual at two times i) before taking the medicine/placebo and ii) 
+after taking the medicine/placebo.  The response variate Y is reduction in Cholesterol level 
+(Before level – After level).  The ages of individuals ranged from 30 to 70, with an overall 
+average of 47.87 years.  The following least-squares model is fit to the data:  (The errors 
+are normally distributed and independent of the variables). 
+          E(Y) = β0 + β1 X1 + β2 X2 + β3 Age + β4 X1*Age +  β5 X2*Age                       (1) 
+Where medication groups are coded as follows:                    
+                                                          X1            X2           
+                     Placebo                       -1              -1 
+                     Medicine A                  1               0 
+                     Medicine B                  0               1 
+ 
+The results on the fit of the full model (1) are:  
+ 
+ 
+Sum of Squares of Error =  4,117;  Sum of Squares of model = 20,457 
+Term                                 Estimate                         Standard Error 
+Intercept                           64.75                                      10.31 
+X1                                       41.14                                        3.41 
+X2                                       65.82                                        3.41 
+Age                                      1.73                                         0.21 
+(Age -  47.87)*X1                        0.40                                         0.32 
+(Age -  47.87)*X2                         1.61                                         0.28 
+ 
+ a) Use the full  model 1 to estimate the average Y for 60 year olds using Medicine A.  
+  
+b) for the full model 1, test (at α = 0.05) which terms are statistically significant. 
+ 
+c) The model without the interaction terms is 
+        E(Y) = β0 +  β1 X1 + β2 X2 + β3 Age                                                                (2) 
+ The Sums of Squares of error for model (2) is 14,551.   Using this information together 
+with the corresponding information for model (1), test whether we can drop the two 
+interaction effects, and just use model 2  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+3 

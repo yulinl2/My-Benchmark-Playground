@@ -1,0 +1,44 @@
+
+----- page 1 -----
+MASTERS COMPREHENSIVE EXAMINATION
+Part I Theory (2 hours) 2 December 2017
+Instructions: Attempt any three out of the following four questions on both pages. Tell us
+explicitly which three you would like to have graded. Open book and open notes.
+1. Let X, Y be continuous random variables with joint pdf
+fX,Y (x, y) =
+ x + y
+if 0 < x < 1, 0 < y < 1
+0
+otherwise.
+a. Find the marginal density functions of X and Y .
+b. Find V ar(X).
+c. Find the Cov(X, Y ).
+d. Are X and Y independent? (Why?)
+e. Find the conditional density function of X given Y .
+f. Find E(X|Y = 1/2).
+2. Let X1, X2, ... , Xn be i.i.d. continuous random variables each with density function
+f(x|θ) =
+ (θ + 1)xθ
+for 0 < x < 1
+0
+otherwise.
+a. Find the joint density function of X1, X2, ... , Xn.
+b. Find a suﬃcient statistic for θ.
+c. Find the maximum likelihood estimator of θ.
+3. Suppose that the number X of side eﬀects for a patient receiving a certain cancer treat-
+ment follows a Poison distribution with p.d.f. p(x) = λx exp(−λ)/x! for x = 0, 1, 2, . . .,
+and λ > 0. Suppose that λ is a random variable with an exponential distribution with
+mean 1.
+a. Calculate the unconditional mean and variance of X.
+b. Calculate the unconditional discrete density of X.
+c. Repeat part b for the more general case when λ has an exponential distribution with
+mean q.
+4. Suppose that X is an independent observation from a distribution with p.d.f. given by:
+f(x) = 2µx −µ + 1, where |µ| ≤1 and 0 < x < 1.
+a. Construct the most powerful (MP) test of size α for testing the null hypothesis
+H0 : µ = 0 vs. the alternative Ha : µ = 1.
+b. Construct the uniformly most powerful (UMP) test of size α for testing the null
+hypothesis H0 : µ ≤0 vs. the alternative Ha : µ > 0.
+c. Suppose that the rejection region for testing H0 : µ ≤0 vs. the alternative Ha : µ > 0
+is RR = {X > 0.5}. What are the power and size of this test?
+1

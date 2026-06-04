@@ -1,0 +1,185 @@
+
+----- page 1 -----
+MASTER’S COMPREHENSIVE EXAMINATION 
+ 
+Part II Applied (2 hours) March 28th, 2015 
+Instructions: Attempt any three out of the following four questions on both pages. 
+Mention which three you would like to have graded. Open book and open notes. 
+ 
+ 
+1.  A supermarket buyer seeks to compare the proportion of cracked eggs in a shipment from two 
+suppliers A and B.   The buyer’s research hypothesis is that B has a greater proportion of cracked 
+eggs.   The eggs come 12   to a carton, and the buyer picks a simple random sample of 15 cartons 
+from each supplier.   The following are the results: 
+ 
+Number of cracked eggs                 Number of cartons with X cracked eggs 
+In Carton    X                                   Supplier A                        Supplier B 
+      0                                                       13                                      10 
+      1                                                         2                                        0 
+      2                                                         0                                        0 
+      3                                                         0                                        0 
+      4                                                         0                                        5 
+               Total cartons                           15                                       15 
+ 
+               Total Eggs                             180                                     180 
+               Total cracked eggs                    2                                       20 
+ 
+For each of the following tests state whether it is appropriate or not to test H0 of no difference 
+in proportions of cracked eggs, versus Ha that B has a greater proportion of cracked eggs.    
+(circle Yes or No)  If No, explain why: 
+ 
+a) A t-test for the difference of two proportions, based on independent samples of n1 = n2 =180 
+eggs.   Yes or No.    ________________________________________________ 
+ 
+b) Wilcoxon-rank sum test for the difference of the mean number of cracked eggs per carton 
+from supplier A vs supplier B Yes or No.    _____________________________________ 
+ 
+c) McNemar’s test for the difference of paired proportions. 
+ Yes or No.    ___________________________________________________________ 
+ 
+d) Fisher’s Exact test for the following 2x2 table.  
+                                                Supplier A       Supplier B 
+          All good eggs                   13                        10 
+          Some cracked  eggs            2                         5 
+Yes or No.    ___________________________________________________________ 
+ 
+e) A t-test for the difference of the mean number of cracked eggs per carton from supplier A vs 
+supplier  B Yes or No.    ___________________________________________________ 
+ 
+________________________________________________________________________ 
+
+----- page 2 -----
+ 
+2.  The amount of rent a snack salesman for a stand at “sleaze-side beach” on any given day 
+during April 2015 is based on the weather that day as follows 
+                $25 for the day if it rains 
+                $100 for the day if it is cloudy but does not rain 
+                $175 for the day if it is sunny 
+He has data for April from the past 10 years and observed that; it rains 25% of the days, is 
+cloudy not raining 60% of the days and is sunny 15% of the days.  You can take these 
+numbers to be constant and representative of what will happen in 2015 .  
+ 
+A. For any given day, what is the expected amount he pays and the variance of this? 
+ 
+B. Assume that the weather on each of the 30 days of April is independent from that of the 
+other days and estimate the probability the salesman will have to pay more than $3,000 in 
+rent for April? 
+____________________________________________________________________ 
+ 
+3. Dr. Bill Tirecheck wants to compare two adjacent facilities Tombo’s Tire Rack and Giso’s 
+Tire Shop on maintaining air pressure in the tires over time.   For five consecutive months a 
+new tire is sent to each place on the first day of that month. The air pressure of that tire is 
+measured at 10 AM on the first day of the of the month and then again at 10 AM on the last 
+day of the month.   There are strong random calendar effects on measured tire pressure 
+including temperature and humidity.  These factors randomly differ day to day, but as both 
+facilities are next to each other, these factors  are the same for both facilities on the same 
+given day.   The following results were seen. 
+TOMBO’S TIRE RACK 
+ 
+GISO’S TIRE SHOP 
+Month 
+New Tire 
+Sent 
+Tire Pressure on Day 
+of Month 
+ 
+Month 
+New Tire 
+Sent 
+Tire Pressure on Day 
+of Month 
+1st Day 
+Last Day 
+1st Day 
+Last Day 
+Jan 2016 
+14 
+10 
+Jan 2016 
+13 
+10 
+Feb 2016 
+20 
+15 
+Feb 2016 
+16 
+13 
+Mar 2016 
+20 
+16 
+Mar 2016 
+19 
+19 
+Apr 2016 
+22 
+17 
+Apr 2016 
+20 
+17 
+May 2016 27 
+25 
+May 2016 27 
+25 
+ 
+To answer the questions below, you can assume that the observations are normally distributed 
+with constant variance and except as noted above are independent 
+ 
+A.   Dr.  Tirecheck believes that tires sent to “Tombo’s Tire Rack” systematically had higher 
+pressure to begin with than did those sent to “Giso’s Tire Shop”.    State H0 and Ha and test at 
+α=0.05. 
+ 
+B.  Dr. Tirecheck also believes that there was a difference in change in tire pressure form the first 
+to last day between “Tombo’s Tire Rack” and “Giso’s Tire Shop”. State H0 and Ha and test at 
+α=0.05. 
+_______________________________________________________________________ 
+
+----- page 3 -----
+ 
+4.  A researcher wants to compare the effectiveness of three anti-wrinkle creams as used for 
+different age groups.   The response variable is a numerical measure on a ratio scale of the 
+reduction of wrinkles.  6 doctors participate in the study.  2 doctors are assigned at random to 
+each cream.   Each doctor has 4 participating patients aged 40-45,  4 participating patients aged 
+50-55, and 4 participating patients aged 60-65.  The researcher views the doctors as a random 
+sample of doctors, and the patients as a random sample of their patients within those age groups.  
+The data layout is as follows. 
+ 
+                        Cream 1                               Cream 2                                Cream 3 
+           Doctor 1     Doctor 2        Doctor 3        Doctor 4         Doctor 5         Doctor 6 
+ 
+40-45          4  
+ 4 
+ 
+4 
+ 
+4 
+ 
+4 
+ 
+4 
+ 
+ 
+50-55         4  
+ 4 
+ 
+4 
+ 
+4 
+ 
+4 
+ 
+4 
+ 
+60-65         4  
+4 
+ 
+4 
+ 
+4 
+ 
+4 
+ 
+4 
+ 
+Write out the ANOVA table showing source of variability, degrees of freedom, Expected Mean 
+Squares, and show which F ratios to take. 
+ 

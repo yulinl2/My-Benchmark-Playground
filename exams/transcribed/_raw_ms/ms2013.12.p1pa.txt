@@ -1,0 +1,82 @@
+
+----- page 1 -----
+MASTER’S COMPREHENSIVE EXAMINATION
+Part I Theory (90 minutes) December 7th, 2013
+Instructions: Attempt any three out of the following four questions on
+both pages.
+Mention which three you would like to have graded. Open book and open
+notes.
+1.  (a)  Suppose that X is a Cauchy random variables with density
+2
+1
+( )
+,   
+.
+(1
+)
+f x
+x
+x
+π
+=
+−∞<
+< ∞
++
+Find the density of  
+1/
+.
+Y
+X
+=
+(b)  Suppose that 
+1
+2
+,
+W W are independent exponential random variables with density
+Let 
+1
+2
+min{
+,
+}
+U
+W W
+=
+and let 
+1
+2
+1
+max{
+,
+}
+min{
+,
+}.
+V
+W W
+W W
+=
+−
+  Find the joint density of (U,V).   
+Are U and V independent?  Justify your answer. 
+2.   (a)  Twenty five people are at a party.  Each person writes their name on a piece of paper and places 
+the paper in a blank envelope.  The envelopes are then randomly distributed to the people at the 
+party, so that each person receives one envelope.  What is the expected number of people to 
+receive the envelope that contains their own name?
+(b) One evening, Bob does laundry and washes n pairs of socks (so there are 2n socks in total).  At the
+end of the evening, when Bob is folding clothes, he discovers that some of his socks have been 
+lost and only 
+2
+k
+n
+≤
+socks remain.  Assuming that each individual sock was equally likely to be 
+lost, find an expression for the expected number of the original pairs of socks that Bob manages 
+to recover.
+3.  Let F(x)  be a continuous distribution function (cdf) and let U  be a uniform(0,1) random 
+variable.  Show that F(x) is the cdf of the random variable X = F-1(U).
+4.   Let X1,…., Xn be a random sample from a Uniform(1, λ)
+(i)
+Write down the density function of Xi and the likelihood of λ. 
+(ii)
+Give the MLE of λ and show that it is a biased estimator of λ.

@@ -1,0 +1,247 @@
+
+----- page 1 -----
+ 
+MASTER’S COMPREHENSIVE EXAMINATION 
+Part I Theory (2 hours) December 5th, 2015 
+Instructions: Attempt any three out of the following four questions on both pages. 
+Mention which three you would like to have graded. Open book and open notes. 
+ 
+1. Consider a game of ring toss with the n players and m posts.  Each player has 1 ring and 
+randomly chooses a post at which to toss his or her ring.  Each player has probability p of 
+hitting the chosen post (and probability 0 of hitting any other post); the player receives 
+one point if they hit the post.  The game is over when each of the n players has tossed his 
+or her ring. 
+(a)  What is the expected number of total points earned by all players in the game? 
+(b) What is the expected number of distinct posts hit at the end of the game? 
+ 
+2.  Let 
+1
+2
+,
+X
+X  be two independent observations with each having density 
+/
+2
+( ;
+)
+.
+x
+x
+e
+x
+f
+x
+β
+β
+β
+−
+=
+      
+(a) Find a sufficient statistic. 
+(b) Find the MLE of β . 
+ 
+3. (a)  Suppose that 
+~
+Y
+ geometric (p) has probability mass function (pmf) 
+ 
+1
+( )
+ P (
+)
+(1
+)
+, 
+1,2,3,
+k
+p k
+Y
+k
+p
+p k
+−
+=
+=
+=
+−
+=
+ 
+The expectation of Y is 
+1
+E( )
+Y
+p
+=
+ (you do not have to show this).  If k is a non-negative 
+integer, what is the conditional expectation E( |
+)?
+Y Y
+k
+>
+  Justify your answer. 
+ 
+(b)  Suppose that 
+1,
+,
+n
+W
+W
+
+ are independent random variables and that, for 
+1,
+, ,
+~
+i
+i
+n W
+= 
+ geometric (
+)
+ip
+ has probability mass function (pmf)  
+ 
+1
+( )
+(
+)
+(1
+)
+,  
+1,2,3,
+k
+i
+i
+i
+i
+p k
+P W
+k
+p
+p
+k
+−
+=
+=
+=
+−
+=
+  
+Let 
+1
+min{
+,
+,
+}.
+n
+W
+W
+W
+=
+
+ What is the pmf of 
+?
+W
+  Hint:  You might find it easiest to 
+compute the probability 
+(
+)
+P W
+k
+>
+ first, then find the pmf 
+( )
+(
+).
+p k
+P W
+k
+=
+=
+  
+ 
+c)  Suppose that 
+1
+2
+,
+W W  are independent exponential random variables with density 
+ 
+( )
+,  0
+.
+w
+f w
+e
+w
+−
+=
+≤
+< ∞  
+Let 
+1
+2
+1
+2
+1
+2
+min{
+,
+} and 
+max{
+,
+}
+min{W ,
+}.
+U
+W W
+V
+W W
+W
+=
+=
+−
+  Find the joint density of ( ,
+).
+U V
+  
+Are U and V independent?  Justify your answer. 
+ 
+ 
+4. Let  
+2
+3
+,
+,
+i
+X
+X
+X  be independent 
+( ,1).
+N µ
+  Carry out the likelihood ratio test of size 
+1
+.05  of  
+0  vs  
+  :  
+0
+H
+α
+µ
+µ
+=
+=
+≠
+ given observations 
+1
+2
+3
+1, 
+1, 
+3.
+X
+X
+X
+=
+= −
+=
+  
+ 

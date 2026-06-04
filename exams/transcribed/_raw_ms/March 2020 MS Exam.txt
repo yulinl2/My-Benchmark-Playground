@@ -1,0 +1,112 @@
+
+----- page 1 -----
+. 
+ 
+STATISTICS MASTER’S COMPREHENSIVE EXAMINATION 
+March 28th, 2020 
+Instructions: Attempt any five out of the following six questions on the 2 pages. 
+Mention which five you would like to have graded.  Open book and notes. 
+ 
+ 
+ 
+---------------------------------------------------------------------------------------------------------- 
+ 
+ 
+--------------------------------------------------------------------------------------------------------- 
+ 
+3.   a. The effectiveness of a COVID-19 vaccine is being studied in a high risk area; of 90  
+          people examined 18 had COVID-19 and 45 had been vaccinated.  Of the 18 people  
+          with COVID-19 only 3 had been vaccinated.  Can we conclude that vaccination  
+           and contracting COVID-19 are independent? 
+b. A researcher studying the COVID-19 virus predicts that there are 3 different 
+clades (A, B and C) and that they should exist in a 6:1:1 ratio.  (NOTE - Each 
+infected person only has one Clade of the virus) To test this assumption, 48 
+persons infected with COVID-19 are randomly sampled and the viruses tested 
+with the following numbers observed:  Clade-A N=30, Clade-B N=6, Clade-C 
+N=12.  Do these data suggest that the 6:1:1 ratio of Clade-A to Clade-B to Clade-
+C is reasonable? 
+c. Use the data in part b to create a 95% confidence interval for the proportion of 
+infected persons that have Clade-C.  
+ 
+--------------------------------------------------------------------------------------------------------- 
+4. let X be a worker’s test score from the FDA training class and Y be the standardized 
+hourly output on N95 masks from that worker.  Evaluation of N=10 independent workers 
+gives the following: 
+ΣX = 550      ΣY = 680      ΣX2 = 38,500        ΣY2 = 56,000   ΣXY = 45,500 
+Assume a multivariate normal distribution holds. 
+a. Determine the  parameter estimates for the standard linear regression of Y on X 
+b. Is there sufficient evidence to conclude that the slope of the above line is different 
+from 0 at α=0.02? 
+c. Find the 98% confidence interval for the value of Y of the individual with X = 40 
+d. What is the correlation between X and Y 
+ 
+--------------------------------------------------------------------------------------------------------- 
+
+----- page 2 -----
+. 
+ 
+Problem 5  
+At a chemical plant that galvanizes electricity towers we measure two variables hourly, 
+the concentration of a certain chemical and the loss of stack. We are concerned that these 
+variables may contain outliers. The data is. 
+CONCENTRATION 
+LOSS 
+62 
+18 
+62 
+19 
+62 
+18 
+79 
+15 
+58 
+14 
+50 
+7 
+50 
+8 
+58 
+14 
+50 
+8 
+50 
+9 
+58 
+13 
+58 
+11 
+50 
+8 
+62 
+20 
+56 
+15 
+58 
+15 
+58 
+12 
+(1) Use Grubbs’ test and call 𝑥𝑥𝑗𝑗 an outlier if  |𝑧𝑧𝑗𝑗|>3.5, where 𝑧𝑧𝑗𝑗is the z-score 
+corresponding to 𝑥𝑥𝑗𝑗. This is done separately for each variable in the data set. 
+(2) Use the resistant z-score rule and call 𝑥𝑥𝑗𝑗 an outlier if  |𝑧𝑧𝑗𝑗
+∗|>3.5, where 𝑧𝑧𝑗𝑗
+∗ is the 
+resistant z-score corresponding to 𝑥𝑥𝑗𝑗. (Hint: The resistant z-score is similar to the z-score 
+but instead of mean and standard deviation it uses the median and the median absolute 
+deviation.) 
+(3) Identify the outliers in (1) and (2) and explain why these two methods may produce 
+different results. Draw a scatter plot of CONCENTRATION vs LOSS and search for 
+outliers visually. Check if you get the same answer as the Grubbs’ test or the resistant z-
+score rule. 
+ 
+--------------------------------------------------------------------------------------------------------- 
+Problem 6. Given a random sample of n independent observations  {𝑋𝑋1, … , 𝑋𝑋𝑛𝑛} from a 
+distribution with density  
+𝑓𝑓(𝑥𝑥) = ൜𝜆𝜆𝑘𝑘𝑘𝑘𝑘𝑘−1𝑒𝑒−𝜆𝜆𝑥𝑥𝑘𝑘         0 < 𝑥𝑥< ∞
+0                            𝑂𝑂𝑂𝑂ℎ𝑒𝑒𝑒𝑒𝑒𝑒𝑒𝑒𝑒𝑒𝑒𝑒
+ 
+ 
+(1) Write down the likelihood function for 𝜆𝜆  and the corresponding likelihood 
+equations for estimating 𝜆𝜆 . Give the explicit form of the MLE of 𝜆𝜆. 
+ 
+(2) Write down the likelihood function for 𝑘𝑘  and the corresponding likelihood  
+equations for estimating 𝑘𝑘 . Is there an explicit form for the MLE of 𝑘𝑘? 

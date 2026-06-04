@@ -19,6 +19,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "Downloads" / "past-PhD exams"
 OUT = ROOT / "exams" / "transcribed" / "_raw"
+MS_SRC = ROOT / "Downloads" / "past-ms-exams-solution"
+MS_OUT = ROOT / "exams" / "transcribed" / "_raw_ms"
 
 
 def main() -> int:
@@ -32,21 +34,28 @@ def main() -> int:
         print(f"error: {SRC.relative_to(ROOT)} not found.", file=sys.stderr)
         return 1
 
-    OUT.mkdir(parents=True, exist_ok=True)
-    pdfs = sorted(SRC.rglob("*.pdf"))
-    if not pdfs:
-        print(f"No PDFs found under {SRC.relative_to(ROOT)}/.")
-        return 0
-
-    for pdf in pdfs:
-        doc = fitz.open(pdf)
-        chunks = []
-        for i, page in enumerate(doc):
-            chunks.append(f"\n----- page {i + 1} -----\n{page.get_text()}")
-        doc.close()
-        out_path = OUT / (pdf.stem + ".txt")
-        out_path.write_text("".join(chunks), encoding="utf-8")
-        print(f"{pdf.stem}: {len(chunks)} page(s) -> {out_path.relative_to(ROOT)}")
+    total = 0
+    for src, out in [(SRC, OUT), (MS_SRC, MS_OUT)]:
+        if not src.exists():
+            continue
+        out.mkdir(parents=True, exist_ok=True)
+        pdfs = sorted(src.rglob("*.pdf"))
+        for pdf in pdfs:
+            doc = fitz.open(pdf)
+            chunks = []
+            for i, page in enumerate(doc):
+                chunks.append(f"\n----- page {i + 1} -----\n{page.get_text()}")
+            doc.close()
+            text = "".join(chunks)
+            # Skip scanned PDFs with no extractable text layer (need OCR).
+            if len(text.strip()) < 20:
+                print(f"{pdf.stem}: SCANNED (no text layer) -> skipped (needs OCR)")
+                continue
+            out_path = out / (pdf.stem + ".txt")
+            out_path.write_text(text, encoding="utf-8")
+            total += 1
+            print(f"{pdf.stem}: {len(chunks)} page(s) -> {out_path.relative_to(ROOT)}")
+    print(f"\nWrote raw text for {total} PDF(s).")
     return 0
 
 

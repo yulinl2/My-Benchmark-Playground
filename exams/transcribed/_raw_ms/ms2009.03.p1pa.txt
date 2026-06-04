@@ -1,0 +1,136 @@
+
+----- page 1 -----
+Master’s Exam – Theory
+3/2009
+1. a)  Let U be a random variable which can assume the values 1,2,3,4,5 each with 
+probability .2.  Find the c.d.f. of U at 4.5
+b) Given the following c.d.f. find {
+3}.
+P X 
+( )
+0 for 
+1
+F x
+x
+
+
+( )
+0 for 
+1
+1  for 1
+3
+10
+4  for 3
+7
+10
+9  for 7
+8
+10
+1 for 
+8
+F x
+x
+x
+x
+x
+x
+
+
+
+
+
+
+
+ﾣ
+
+
+ﾣ
+
+
+2. Let 
+1
+2
+3
+,
+,
+Y Y Y  be a random sample of size 3 from a distribution with density
+( )
+(
+1)
+,      0
+1,
+1.
+Yf
+y
+y
+y
+
+
+
+
+
+
+
+
+a) Find a one-dimensional sufficient statistics.
+b) Find the MLE of .
+
+3. A certain type of flashlight is sold with the four batteries included.  A random 
+sample of 100 flashlights is obtained and the number of defective batteries in each 
+is determined, resulting in the following data:
+Number defective
+ 0
+ 1
+ 2
+ 3
+ 4
+Frequency
+20
+20
+20
+20
+20
+Let X be the number of defective batteries in a randomly selected flashlight.  Let 
+(  defectives),
+ip
+P i
+
+ and consider testing
+4
+0
+4
+:
+(1
+)
+,    
+0,1,2,3,4.
+i
+i
+i
+H
+p
+i
+i 
+
+
+
+
+
+
+
+
+Find the estimated frequency in the category 2 defective.
+
+----- page 2 -----
+4. a)  Five chips labeled 1  2  3  4  5 are in a hat.  Two chips are chosen at random 
+without replacement from the hat.  Let S be the sum of the two chips.  Find 
+the probability that S=6.
+b) On a 3 part exam the probability is ½ of correctly answering the first part. 
+The probability of correctly answering the second part given that the first part 
+is correct is ¾;  probability of correct on the second part given first part is 
+incorrect is ¼.  Finally, probability of correctly answering the third part
+2/5 given both previous parts are missed.
+1/5 given part 2 is wrong, part 1 is correct.
+4/5 given part 1 is wrong, part 2 is correct.
+3/5 given part 1 is correct, part 2 is correct.
+Find the probability that only part 2 is correct.

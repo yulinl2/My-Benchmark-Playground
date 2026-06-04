@@ -1,0 +1,65 @@
+
+----- page 1 -----
+ 
+MASTER’S COMPREHENSIVE EXAMINATION 
+ 
+Part I  
+Theory (90 minutes) 
+December 4, 2010 
+ 
+ Instructions: Attempt any three out of the following four questions. Mention which three you 
+would like to have graded. Open book and open notes. 
+1) A bowl on my desk has 5 cashew nuts, 5 walnuts, and 5 peanuts.  I pick nuts at random from the 
+bowl, one at a time, and eat them as I pick them. 
+a) Given that I have eaten exactly 5 nuts, what is the expected number of cashews left in 
+the bowl? 
+b) Given I have eaten exactly 5 nuts, what is the probability that I have eaten at least one 
+of each type of nut? 
+c) Given I have eaten exactly 5 nuts, what is the expected number of different types of 
+nuts I have eaten? 
+ 
+2) Let the waiting time until a light bulb fails be exponential, with expected waiting time of 1000 
+hours.  Assume that the lifetimes of light bulbs are independent of each other.  Four new 
+lightbulbs are put in a room, and all four lights are turned on and kept on. 
+a) What is the expected waiting time until at least 2 of the 4 light bulbs fail? 
+b) What is the expected number of light bulbs that fail in the first 1000 hours? 
+c) What is the probability that in the first 2000 hours that at least 3 of the light bulbs fail? 
+ 
+3)  (a)  Results of my last 8 tennis matches were as follows:  win, lose, lose, lose, lose, lose, lose, 
+lose.  Find the exact P-value using a sign test to determine if my probability of winning is the 
+same as my probability of losing vs the alternative that these probabilities are different. 
+ 
+(b)  Find the approximate P-value that my probability to win is the same as that to lose if I won 
+only 10 matches out of my last 100. 
+ 
+4)  Let 
+1
+2
+3
+,
+,
+Y Y Y  be a random sample of size 3 from a distribution with density 
+  
+( )
+(
+1)
+,   0
+1,
+1.
+Yf
+y
+y
+y
+θ
+θ
+θ
+=
++
+<
+<
+> −
+ 
+a)  Find a one-dimensional sufficient statistics. 
+ 
+b) Find the MLE of .
+θ  

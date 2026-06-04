@@ -1,0 +1,71 @@
+
+----- page 1 -----
+Master Exam 2018
+Problem 1. Let X1, . . . , Xn be i.i.d. from a uniform distribution on
+[0, θ].
+(1) Find the maximum likelihood estimator ˆθ of θ.
+(2) Show that ˆθ/θ is a pivotal quantity and use it to set a 1 −α
+conﬁdence interval for θ.
+Solution. (1) The likelihood function is θ−n1X(n)≤θ so is maximized
+at ˆθ = X(n).
+(2) For any x ∈(0, 1),
+P(ˆθ/θ ≤x) = P(X(n) ≤xθ) =
+n
+Y
+i=1
+P(Xi ≤xθ) = xn,
+so ˆθ/θ is pivotal.
+The (α/2)-th and (1 −α/2)-th quantiles for this
+distribution are (α/2)1/n and (1 −α/2)1/n. So
+1 −α = P
+
+(α/2)1/n ≤ˆθ/θ ≤(1 −α/2)1/n
+= P
+
+θ ∈
+
+ˆθ
+(1 −α/2)1/n,
+ˆθ
+(α/2)1/n
+
+.
+Hence
+
+ˆθ
+(1 −α/2)1/n,
+ˆθ
+(α/2)1/n
+
+is the desired 1 −α conﬁdence interval for θ.
+Problem 2. Let Y1, . . . , Yn be a random sample from an absolutely
+continuous distribution with density
+fθ(x) = 2x
+θ2 1(0,θ).
+(1) Find a one-dimensional suﬃcient statistic T.
+(2) Determine the density of T.
+Solution. (1) Let T (x) = max {x1, . . . , xn}, and M (x) = min {x1, . . . , xn}.
+Then the joint density will be positive if and only if M (x) > 0 and
+T (x) < θ. So the joint density can be written as
+n
+Y
+i=1
+(2xi) 1M(x)>01T(x)<θ/θ2n.
+T = T (X) is suﬃcient by the factorization theorem.
+1
+
+----- page 2 -----
+2
+(2) For t ∈(0, θ),
+P (Xi ≤t) =
+Z t
+0
+2x
+θ2 dx = t2
+θ2.
+So
+P (T ≤t) = P (X1 ≤t, . . . , Xn ≤t)
+= P (X1 ≤t) × · · · × P (Xn ≤t) = t2n
+θ2n.
+Taking the derivative of this with respect to t, T has density
+t 7→2nt2n−1/θ2n, t ∈(0, θ) .

@@ -1,0 +1,173 @@
+
+----- page 1 -----
+MASTER’S COMPREHENSIVE EXAMINATION 
+ 
+Part II Applied (90 minutes) April 2, 2011 
+Instructions: Attempt any three out of the following four questions on both pages. 
+Mention which three you would like to have graded. Open book and open notes. 
+ 
+1: Consider the following two Latin square designs of order 4 and answer Questions A, B and C 
+                Design (I)                                                            Design (II) 
+                  Column                                                                Column 
+Row        1      2      3       4                                  Row          1      2      3      4 
+  1           A      B      C       D                                   1           A     C      B      D                    
+  2           D      A      B       C                                   2           D     B      C      A                   
+  3           C       D      A      B                                   3           C     A      D      B                   
+4        B       C      D      A                                   4           B     D      A      C                  
+ 
+ 
+A.  Do you see any potential shortcomings for using design (I)? 
+ 
+ 
+Now Consider Latin square design (II) up above and the data as follows.  
+                                     Column 
+Row         1        2         3        4 
+   1          235    236     218   268 
+   2          251    241     227   229 
+   3          234    273     274   226 
+   4          195    270     230   225 
+ 
+Recall that the linear model for this Latin square design is  
+                          
+ijl
+l
+j
+i
+ijl
+y
+ε
+τ
+β
+α
+η
++
++
++
++
+=
+, 
+,4
+,...,
+1
+;4
+,...,
+1
+;4
+,...,
+1
+=
+=
+=
+l
+j
+i
+ 
+                Where l = Latin letter in the (
+j
+i, ) cell of the Latin square,
+i
+i =
+α
+throw effect,    
+j
+j =
+β
+the column effect, 
+l
+l =
+τ
+th treatment (i.e., Latin letter) effect, 
+ijl
+ε are independent 
+)
+,0
+(
+2
+σ
+N
+. Assume the zero-sum constraints 
+∑
+=
+∑
+∑
+=
+=
+=
+=
+=
+4
+1
+4
+1
+4
+1
+0
+l
+l
+i
+j
+j
+i
+τ
+β
+α
+.  
+ 
+B.  Calculate 
+3ˆα , 
+1ˆβ , 
+2ˆτ , you can use the fact 
+5.
+239
+=
+•
+•
+•y
+. 
+ 
+C.  What is the error/residual degrees of freedom for this design?  
+ 
+ 
+ 
+ 
+ 
+OVER
+
+----- page 2 -----
+2  Assume that the Distributions of profits, P in a year per acre for Wheat farms in Minnesota 
+are distributed N(u,σ)  with u = 1000 X  and σ   = 300 X where X is the number of inches of 
+rain per year that acre received. NOTE – For these questions do not worry about the size of 
+the farm you can assume that all farms are 1 acre in size 
+ 
+A.  If X ~ U[10, 20] give the overall expectation and variance of P in a one acre farm  
+ 
+B. Let A and B be two 1 acre farms in Minnesota.   Let XA =15 for farm A and XB =20. 
+What is the Distribution of PA – PB  if   
+• PA and PB are independent 
+• Corr PA, PB is 1  
+ 
+3: There are three coins in a barrel. These coins, when flipped, will come up heads with 
+respective probabilities 0.4, 0.5, and 0.9. A coin is randomly selected from among these three 
+and is then flipped ten times 
+a.  What is the probability of having 0 heads? 
+b.  Let N be the number of heads obtained on the ten flips. Find P(N=n), where n=0,1,…,10. 
+c. If you can win one dollar each time a head appears, how much money should you lose 
+each time a tail appears in order to have an expected gain of 0? 
+d.  Now the rule is changed. We select one coin each time at random and continue this 
+process for 10 times with replacement. What is P(N=n)?  
+ 
+ 
+4. A rocket company is firing missile into a square region with each side of length of 2r that 
+has an inscribed circle with a radius r as shown below. 
+ 
+One of the scientists believes that the rockets are biased to go towards the upper left and 
+away from the lower right.  Specifically that the rocket is more likely to land in Region I 
+than it is to land in Region II.   
+ 
+A. State the scientist’s Null and Alternative Hypothesis and all the assumptions needed 
+to test these. 
+B. What are the expected numbers of rockets each that land in Region I and in Region II 
+if HO is true 
+C. Out of 1,000 shots, fired, 63 have landed in Region I and 44 have landed in Region II.  
+Give a best large sample statistical test of the Null Hypothesis against the Alternative 
+at  α = 0.05 

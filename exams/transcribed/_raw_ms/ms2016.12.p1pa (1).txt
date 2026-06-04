@@ -1,0 +1,50 @@
+
+----- page 1 -----
+MASTER’S COMPREHENSIVE EXAMINATION
+Part I Theory (2 hours) December 3rd, 2016
+Instructions: Attempt any three out of the following four questions
+on both pages.
+Mention which three you would like to have graded. Open book and
+open notes.
+1.  Suppose that X1, X2,…, Xn
+  are n independent random variables  such that Xi
+  is distributed by a
+Poisson distribution with mean  μi=λiθ  , where the λi ’s are given constants. 
+(I)
+Please calculate both the maximum likelihood estimator (MLE) of θ and the least 
+squares (LS) estimator of θ.
+(II)
+Is the maximum likelihood estimator of θ  unbiased? If not so, please calculate the 
+bias.
+(III)
+Calculate also the bias of the least square estimator of θ . Compare the biases of 
+these two estimtors.   Is the bias a good criterion for comparing two estimators or 
+should we look at some other criteria that also involves the variance?
+_______________________________________________________________________________________________________
+______________________________________________________________________________________________________
+3.  Suppose we have 10 coins such that if the i-th coin is flipped, heads will appear with 
+probability i/10, i = 1, 2, ..., 10.
+(i) If all 10 coins are flipped, what is the expected number of heads? 
+(ii) When one of the coins is randomly selected and flipped, it shows head. What is the 
+conditional probability that it was the fifth coin, i.e., P{5th|heads}?
+______________________________________________________________________________________________________
+4.  Suppose that Y has a log-normal distribution with density f ( y )=
+1
+y √2π σ
+2 e
+−(log( y)−μ )
+2
+2σ 2
+, y>0  
+(i)
+Show that Z = log(Y) has a   Normal (μ ,σ
+2)     distribution.
+(ii)
+Calculate the expected value and variance of Y.
+(iii)
+Show that if  Y1, Y2,…, Yn
+  are independent and with the same distribution as Y  then
+∏
+i=1
+n
+Y i  has also a log-normal distribution.

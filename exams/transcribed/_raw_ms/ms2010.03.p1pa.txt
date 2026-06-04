@@ -1,0 +1,82 @@
+
+----- page 1 -----
+MASTER’S COMPREHENSIVE EXAMINATION 
+ 
+Part I  
+Theory (90 minutes) 
+April 10, 2010 
+ 
+Instructions:  Attempt any three out of the following four questions.  Mention which three you 
+would like to have graded.  Open book and open notes. 
+ 
+1. [Estimation] let X have the Poisson distribution with unknown mean . 
+ 
+(a) 
+Is 2X  a maximum likelihood estimator of 2? 
+(b) 
+Is 2X  an unbiased estimator of 2? 
+ 
+Prove your claim in each case. 
+ 
+ 
+2. [Hypothesis Testing]  Let 
+1
+2
+3
+,
+,
+U U U  be independent draws from a population having uniform 
+distribution on [0, ],
+
+ for an unknown .  For testing 
+0 :
+10
+H
+
+ vs. 
+1 :
+10,
+H
+
+ consider tests 
+that reject 
+0
+H  if  
+ 
+1
+2
+3
+max(
+,
+,
+)
+U U U
+a constant. 
+If type 1 error probability is held fixed at 25% level, what will be type 2 error probability when 
+the true 
+11.
+
+ 
+ 
+3. a) In a class of 30 students, 7 of the students are statistics majors, and the other 23 are not. Five 
+students are picked at random from the class. Let A be the event that at least one of the five 
+picked students is a statistics major.  Let B be the event that at least two of the five picked 
+students are statistics majors.  Find P(B | A) ______ 
+ 
+      b) Let  X  be a continuous random variable with probability density function 
+          f(x) =  0.4  X  +  0.1,   for  0  x     2 
+ 
+ Let Y = 2X + 3.    Find the probability density function of Y. 
+ 
+ 
+4.    a) A manufacturing process turns out items of which 0.30 are defective. If items are sampled at 
+random, one at a time from the process,   What is the probability that it takes exactly 15 items to be 
+sampled till the 4th  defective item is found___________ 
+ 
+b) Let X and Y be  continuous random variables with joint probability density function 
+ 
+                f(x,y) = 21 x2y3   for   0 < x < y < 1 
+                          =  0          otherwise 
+ 
+           Find the marginal density of Y. 
+  

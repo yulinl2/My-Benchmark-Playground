@@ -1,0 +1,123 @@
+
+----- page 1 -----
+ 
+ 
+MASTER’S COMPREHENSIVE EXAMINATION 
+ 
+Part I Theory (90 minutes) April 6th, 2013 
+Instructions: Attempt any three out of the following four questions on both pages. 
+Mention which three you would like to have graded. Open book and open notes. 
+ 
+ 
+1.  Let 
+1
+2
+,
+X
+X be a random sample of size 2 from a gamma distribution with parameters 
+3 and ,
+α
+θ
+=
+ 
+that is 
+ 
+ 
+/  
+2
+3
+( ; )
+0.
+(3) 
+x
+X
+e
+X
+f
+x
+x
+θ
+θ
+θ
+−
+=
+>
+Γ
+ 
+ 
+  
+a)  Find a sufficient statistic. 
+ 
+b)  Is log e 
+1
+2
+( ,
+)
+x x
+sufficient? 
+ 
+c)  Find the MLE of 
+.
+e θ  
+ 
+ 
+ 
+2.  Let X be a random sample of size 1 having an exponential density with parameter .
+θ  That is 
+ 
+/
+1
+( ; )
+,
+0,
+0.
+x
+Xf
+x
+e
+x
+θ
+θ
+θ
+θ
+−
+=
+>
+>
+ 
+ 
+Find the most powerful test of size 
+1
+e−for 
+1
+:
+1 vs 
+:
+3.
+o
+H
+H
+θ
+θ
+=
+=
+ 
+ 
+ 
+3.    Consider a random permutation of 1,2,…,2n (each permutation is equally likely). What is the 
+probability of existing exactly k numbers i such that 2i – 1 immediately precedes 2i when 
+?
+n →∞ 
+ 
+ 
+4.   Let X and Y be independent random variables, each with distribution U(0,1).  
+ 
+a)  What is the probability that at least one of the two is larger than 0.8? 
+b)  What is the probability that the sum x+y is smaller than 1? 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

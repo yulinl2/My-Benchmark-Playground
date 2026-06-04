@@ -1,0 +1,491 @@
+
+----- page 1 -----
+STATISTICS MASTER’S COMPREHENSIVE EXAMINATION
+23 March 2024
+Instructions: Attempt any five out of the following six questions. Specify
+which five you would like to have graded. Students are allowed calculators,
+laptops, books and notes. Internet use and cell phones are prohibited. Stu-
+dents are allowed to use laptops for viewing electronic copies of textbooks,
+but for nothing else.
+Problem 1. Scientists at Rutgers have discovered a new one-dimensional
+world where density of an observation X is centered at a point a and declines
+symmetrically as the distance from a increases in either direction according
+to this
+f(X) = (λ/2)e−λ|X−a|
+where λ > 0 and |X −a| is the absolute value of the difference between X
+and a.
+The following independent observations from this distribution have been
+observed:
+-7 -5 -3 1 2 6 10
+(1) FIRST ANSWER THIS: For a given fixed value of λ what is the
+MLE for a?
+Answer:
+L(λ, a) = QN
+i=1(λ/2)e−λ|Xi−a| so ℓ(λ, a) = PN
+i=1 log(λ) −log(2) −
+λ/2|Xi −a|.
+Taking the derivative with respect to a:
+∂ℓ
+∂a = −λ
+N
+X
+i=1
+[I(a ≥xi) −I(a < xi)].
+Setting the derivative to zero:
+N
+X
+i=1
+I(a < xi) =
+N
+X
+i=1
+I(a > xi).
+The a that satisfies the above equation is the sample median. So the
+MLE of a is the 1.
+(2) SECOND ANSWER THIS Find the MLE for λ at the value of a
+you derived above. If you are not able to derive a value for a then
+let a = 0 to answer this question.
+Answer:
+Take the derivative of the log-likelihood with respect to λ:
+∂ℓ(λ, 1)
+∂λ
+= n
+λ −
+n
+X
+i=1
+|xi −1|.
+1
+
+----- page 2 -----
+2
+Setting to zero and solving for λ:
+bλ =
+n
+Pn
+i=1 |xi −1|.
+We have:
+bλ =
+7
+| −7 −1| + | −5 −1| + | −3 −1| + |1 −1| + |2 −1| + |6 −1| + |10 −1| = 7
+33
+(3) A new one-dimensional world has been discovered where the density
+of X again is f(X) = (λ/2)e−λ|X−a| but the values of λ and a are
+different than for the previous problem. Furthermore, this time it is
+known that a = 2. Scientists were able to measure 20 independent
+observations, but this time they could only determine if X was ≤15;
+5 of the 20 observations were > 15 and 15 were ≤15. What is the
+MLE for λ?
+Answer:
+We have
+P(X > 15) =
+Z ∞
+15
+λ
+2 e−λ|x−2| dx
+=
+Z ∞
+13
+λ
+2 e−λz dz
+where z = x−2 (this is always greater than zero so no absolute value
+sign is needed).
+P(X > 15) =
+
+−1
+2e−λz
+ 
+∞
+13
+= 1
+2e−13λ
+Then, the probability of 5 of 20 observations being greater than
+15, and 15 observations being less than 15, is:
+L(λ) =
+20
+5
+ 1
+2e−13λ
+5 
+1 −1
+2e−13λ
+15
+The log-likelihood is then:
+ℓ(λ) = log
+20
+5
+
++ 5 [log(0.5) −13λ] + 15 log
+
+1 −1
+2e−13λ
+
+.
+Taking the derivative:
+∂ℓ
+∂λ = −5 × 13 + (15 × 13 × 0.5)e−13λ
+1 −1/2e−13λ
+.
+Setting the derivative to zero:
+(13 × 5)
+
+−1 + (3 × 0.5)e−13λ
+1 −1/2e−13λ
+
+= 0
+
+----- page 3 -----
+3
+3
+2e−13λ = 1 −1
+2e−13λ
+2e−13λ = 1
+λ = −1
+13 log(0.5).
+So λ ≈0.0533.
+Problem 2. An experiment was conducted to determine the effectiveness
+of a new drug in lowering cholesterol. Ten patients were included in the
+study. Prior to treatment, cholesterol was measured for each patient. The
+patient was administered the new drug for a six-month period. Cholesterol
+on each patient was measured again. The data from this study are given
+below:
+Patient
+Baseline Cholesterol
+Final Cholesterol
+1
+210
+190
+2
+230
+210
+3
+200
+210
+4
+200
+180
+5
+220
+220
+6
+230
+200
+7
+250
+230
+8
+190
+210
+9
+240
+200
+10
+230
+210
+(1) Determine if the drug has resulted in a reduction from baseline in
+cholesterol. In selecting a statistical method you may assume the
+data are normally distributed. Be sure to show the null and alter-
+native hypotheses.
+Answer: H0: Mean reduction in cholesterol is 0.
+Ha: One-sided Per the question. Mean reduction is > 0 which
+means Mean Final -Baseline will be < 0.
+Paired t-test
+Patient
+Baseline
+Final
+Change
+Patient
+Cholesterol
+Cholesterol
+1
+210
+190
+-20
+2
+230
+210
+-20
+3
+200
+210
++10
+4
+200
+180
+-20
+5
+220
+220
+0
+6
+230
+200
+-30
+7
+250
+230
+-20
+8
+190
+210
++20
+9
+240
+200
+-40
+10
+230
+210
+-20
+
+----- page 4 -----
+4
+The mean change is
+−20 −20 + 10 −20 + 0 −30 −20 + 20 −40 −20
+10
+= −14.
+The sample variance is:
+
+(−20 −−14)2 + (−20 −−14)2 + (+10 −−14)2 + (−20 −−14)2 + (+0 −−14)2
++(−30 −−14)2 + (−20 −−14)2 + (+20 −−14)2 + (−40 −−14)2 + (−20 −−14)2)
+
+/9
+= 36 + 36 + 576 + 36 + 196 + 256 + 36 + 1156 + 676 + 36
+9
+= 337.7778.
+The standard deviation is
+√
+337.7778 = 18.37873.
+The standard deviation of mean is is 18.37873/
+√
+10 = 5.811865,
+and the test statistic is T = −14/5.811865 = −2.4 < 1.833 which is
+the fifth percentile of t distribution with 9 df.
+Therefore we reject H0.
+(2) It is now discovered that an 11th patient randomly recruited from
+the same population under the same selection criteria as the other
+10 patients and was given the same drug for 6 months. Give a 95%
+confidence interval for that patient’s final cholesterol.
+Answer: The mean is the sum of the column marked “Final Choles-
+terol” above, divided by 10, or 206.
+The variance is the sum of the final values minus 206, squared,
+and divided by 10 −1, or 204.4444.
+The standard deviation is
+√
+204.4444 = 14.29841. The 95% CI is
+¯x ± t0.975,9dfS
+p
+1 + 1/n
+or 206 ± 2.262 × 14.29841
+p
+1 + 1/10, which is (172.0784, 239.9216)
+(3) This study was designed to determine whether the drug causes a
+decrease in choesterol. When designing this study the experimenter
+made one important mistake. Indicate what change you feel is nec-
+essary to make this study acceptable to careful review.
+Answer: Needed an untreated control group for comparison to sepa-
+rate specific effects due to drug from other effects due to time.
+Problem 3. We want to generate the single continuous random variable
+X by using either density function f(x) = 2x, 0 < x < 1 or the density
+function g(x) = 3x2, 0 < x < 1. To decide which density to use we generate
+a Bernoulli random variable Y such that
+P(Y = 1) = 1
+2 = 1 −P(Y = 0).
+If Y = 1 we use density f(x). If Y = 0 we use density g(x).
+(1) Find the cumulative distribution function for X.
+
+----- page 5 -----
+5
+Answer: The cdf for f(x) is F(x) = x2 for 0 < x < 1. The cdf
+for g(x) is G(x) = x3 for 0 < x < 1. Thus the overall cdf for X is
+(x2 + x3)/2 for 0 < x < 1.
+(2) Find P(Y = 1|X ≤1/2).
+Answer: P(Y = 1|X ≤1/2) = P(X ≤1/2|Y = 1)P(Y = 1)/P(X ≤
+1/2). From (a) this equals (1/2)2(1/2)/([(1/2)2+(1/2)3]/2) = (1/4)(1/2)(16/3) =
+2/3.
+(3) Find Cov(X, Y ).
+Answer:
+E[X|Y = 1] =
+Z 1
+0
+xf(x) dx = 2/3
+E[X|Y = 0] =
+Z 1
+0
+xg(x) dx = 3/4
+Thus E[X] = (1/2)(2/3) + (1/2)(3/4) = 17/24 and E[Y ] = 1/2.
+Also
+E[XY ] = E[E[XY |Y ]]
+= E[Y E[X|Y ]]
+= P(Y = 1)E[X|Y = 1]
+= 1/3
+Finally,
+Cov(X, Y ) = E[XY ] −E[X]E[Y ]
+= 1/3 −17/24 × 1/2
+= 1/48.
+Problem 4. We have ONE continuous random variable X with density
+function f(x|θ) =
+(
+2x/θ2
+if 0 < x < θ
+0
+otherwise.
+.
+(1) Find EθX and V arθX.
+Answer: EθX = 2θ/3, EθX2 = θ2/2. Thus V arθ(X) = θ2/18.
+(2) Based on X we wish to estimate θ when the loss function is L(θ, a) =
+(a −θ)2. Consider estimators of the form δc(x) = cx. Find the best
+(smallest Mean Squared Error) estimator of this form. That is, find
+the optimal choice for c.
+Answer: MSE= Eθ(cX–θ)2 = c2EθX2–2cθEθX + θ2 . Taking the
+derivative wrt c and setting = 0 gives c = θEθX/EθX2 = 4/3. Thus
+the best estimator of this type is 4X/3.
+(3) Is the estimator you found in part (a) an unbiased estimator of θ ?
+Answer: Eθ[4X/3] = 4(2θ/3)/3 = 8θ/9. Not unbiased.
+(4) Find an unbiased estimator of θ(1–θ).
+Answer: From (a): Eθ[(3/2)X–2X2] = θ(1–θ).
+
+----- page 6 -----
+6
+Problem 5. In an experiment testing the effect of a toxic substance, 1500
+experimental insects were divided at random into six groups of 250 each. The
+insects in each group were exposed to a fixed dose of the toxic substance. A
+day later, each insect was observed. Death from exposure was recorded 1,
+and survival was recorded 0. The results are shown below where Xj denotes
+the dose level (on a logarithmic scale) administered to the insects in group
+j and Yj denotes the number of insects that died out of the 250 in the group
+(nj=250).
+j
+1
+2
+3
+4
+5
+6
+Xj
+1
+2
+3
+4
+5
+6
+nj
+250
+250
+250
+250
+250
+250
+Yj
+28
+53
+93
+126
+172
+194
+The logistic regression model is assumed to be appropriate, i.e., the esti-
+mated proportions pj = Yj
+nj against Xj.
+(1) Assume that the maximum likelihood estimates of β0 and β1, the
+intercept and slope, in the logistic regression model is ˆβ = −2.64,
+ˆβ1 = 0.67. State the fitted response function.
+Answer: π = P(Yi = 1) =
+exp(−2.64+0.67xi)
+1+exp(−2.64+0.67xi) =
+1
+1+exp(2.64−0.67xi).
+(2) What is the estimated probability that an insect dies when the dose
+level is at X = 3.5?
+Answer: π =
+1
+1+exp(2.64−0.67×3.5) = 0.4268.
+(3) What is the estimated median lethal dose – that is, the dose for
+which 50 percent of the experimental insects are expected to die?
+Answer: π =
+1
+1+exp(2.64−0.67×x1) = 0.5, so xi = 3.922.
+Problem 6. The kid iq data has been analyzed, where the kid’s IQ test
+score kid score is treated as the output (Y ), and the mom’s IQ test score
+mom iq (X1) and the mom’s age mom age (X2) at the birth of the child are
+predictors. Answer the questions based on the R output given below.
+> m1=lm(kid_score~mom_iq+mom_age,data=kidiq)
+> summary(m1)
+Coefficients:
+Estimate Std. Error t value Pr(>|t|)
+(Intercept) 17.59625
+9.08397
+1.937
+0.0534 .
+mom_iq
+0.60357
+0.05874
+???
+___
+mom_age
+0.38813
+0.32620
+???
+___
+---
+Residual standard error: 18.26 on 431 degrees of freedom
+Multiple R-squared:
+0.2036,
+Adjusted R-squared:
+___
+F-statistic:
+??? on 2 and 431 DF,
+p-value: < 2.2e-16
+
+----- page 7 -----
+7
+> m2=lm(kid_score~mom_iq,data=kidiq)
+> anova(m2,m1)
+Analysis of Variance Table
+Model 1: kid_score ~ mom_iq
+Model 2: kid_score ~ mom_iq + mom_age
+Res.Df
+RSS Df Sum of Sq
+F Pr(>F)
+1
+432 144137
+2
+431 143665
+A
+B
+??? 0.2348
+(1) What is the sample size of this data?
+Answer: 432= n- number of parameters in model 1. So 432 = n −2
+and n = 434.
+(2) Report the fitted model m1.
+Answer: kidscore=17.596+0.604momiq+0.388momage
+(3) For model m1, what is the least square estimate of β1 (the coefficient
+of X1)? Give an interpretation of this coefficient.
+Answer: ˆβ1 = 0.6036.
+(4) For model m1, test whether the coefficient of X1 is significantly dif-
+ferent from zero, using level 5%.
+Answer: H0 : ˆβ1 = 0 v.s. H1 : ˆβ1 ̸= 0.
+T = |0.6036−0
+0.0587 | = 10.28 > 1.965 which is t431 with 5% level. Thus,
+we reject H0.
+(5) Calculate the F statistic for testing the whole regression model, for
+m1.
+Answer: F=(TSS−RSS)/p
+RSS/n−p−1 .
+Now RSS = 143665, p = 2, n −p −
+1 = 431, and R2 = 1 −RSS
+TSS = 0.2036, we have TSS = 180393.
+F = 55.092.
+(6) What is the t statistic for testing whether β2 is zero, under m1?
+Answer: H0 : ˆβ2 = 0 H1 : ˆβ2 ̸= 0.
+t-statistic: 0.38813/0.32620 = 1.189853.
+(7) State H0 and H1 of the ANOVA test, comparing m1 and m2.
+Answer: H0 : ˆβ2 = 0 v.s. H1 : ˆβ2 ̸= 0.
+(8) In the ANOVA table, what are the values for “A” and “B”? What is
+the F-value of the ANOVA test? What are the degrees of freedom
+of the corresponding F distribution? What is the p-value? What is
+your conclusion, with level 5%?
+Answer: A = 432 −431 = 1 and B = 144137 −143665.
+F =
+B/A
+143665/431 ∼F1,431. The p value is 0.2348, so we do not reject
+H0.

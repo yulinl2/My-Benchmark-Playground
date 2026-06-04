@@ -1,0 +1,102 @@
+
+----- page 1 -----
+ 
+MASTER’S COMPREHENSIVE EXAMINATION 
+Part I: Theory (90 minutes) April 2, 2011 
+Instructions:  Attempt any three out of the following four questions.  Mention which three 
+you would like to have graded.  Open book and open notes. 
+ 
+1.  
+1
+2
+3
+,
+,
+X
+X
+X are Bernoulli variables with parameter p. 
+a)  Test 
+0 :
+1/ 4 vs 
+1/ 2
+H
+p
+p
+=
+=
+at level .0156.  That is, determine explicitly the 
+rejection region of the most powerful test. 
+b)  Find the power of the test in a). 
+ 
+2.  Let 
+1
+2
+3
+,
+,
+X
+X
+X be three independent normal random variable with means 
+1
+2
+3
+(
+,
+,
+)
+µ µ
+µ
+respectively and variances 
+2
+2
+2
+1
+2
+3
+(
+,
+,
+)
+σ
+σ
+σ
+, respectively. 
+ 
+a)  What is
+1
+2
+3
+{
+4}.
+P X
+X
+X
++
++
+>
+ 
+ 
+b)  What is the variance of 
+1
+2.
+Y
+X X
+=
+ 
+ 
+3.  A box contains  4 red balls and 6 black balls.  Three balls are picked at random (without 
+replacement) from the box, and X, the “number of red balls” is observed.  If X = k, then k six 
+sided fair dice are rolled, and Y, the “combined total number of spots on the dice is 
+recorded.   (If X = 0, then Y = 0). 
+a) Find  the expectation of {Y}_____________ 
+b) Find Prob{Y=3)____________ 
+ 
+4.  Let  the joint probability density function of the continuous random variables X and Y be 
+   f(x,y) =   C   exp{2x + 3y}     for  0 < x < y,  0 < y < 1 
+             =   0                               elsewhere 
+a) Find C ___________ 
+b) Find P(Y  < 0.3) _________ 
+  
+
+----- page 2 -----
+ 

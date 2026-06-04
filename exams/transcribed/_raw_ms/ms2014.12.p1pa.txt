@@ -1,0 +1,125 @@
+
+----- page 1 -----
+ 
+MASTER’S COMPREHENSIVE EXAMINATION 
+ 
+Part I Theory (90 minutes) December 6th, 2014 
+Instructions: Attempt any three out of the following four questions on both pages. 
+Mention which three you would like to have graded. Open book and open notes. 
+ 
+ 
+ 
+ 
+ 
+ 
+1. 
+a) 
+A barrel at the flea market has 10 sweatshirts.  7 say Meebox and 3 say Sike.  If I 
+choose two sweatshirts at random from the barrel, what is the probability that I get one of 
+each? 
+ 
+b) If 4 Ladidas sweatshirts are added to the barrel, and if I choose two, what is the 
+probability that I choose at least one Ladidas? 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+2.  
+ Let X be a random variable whose density is 
+   
+               
+2
+2
+( )
+(1
+)    if 0
+1
+              
+0    otherwise
+Xf
+x
+cx
+x
+x
+
+
+
+
+
+ 
+ 
+(a) Find c. 
+(b) Find 
+1
+3
+4
+4
+{
+}.
+P
+X
+
+
+ 
+(c) Find the cdf 
+( ) of .
+X
+F
+x
+X  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+----- page 2 -----
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+3.  Let X1,  X2, . . ., Xn be n independent observations from a normal random variable with mean 
+−σ2/2 and variance σ2.  
+ 
+Derive the maximum likelihood estimator for σ2. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+4.  It is known that if X1 and X2 are iid standard normal random variables then Y = X1
+2 + X2
+2  has 
+a chi-square distribution with 2 degrees of freedom. Show that X1 and X2 can be written as 
+follows: 
+         𝑋1  = √−2 ln 𝑈 cos (2𝜋𝑉)  and   𝑋2  = √−2 ln 𝑈sin(2𝜋𝑉), 
+where U and V are two iid Uniform(0,1) random variables. 
+ 
+ 
+ 
+ 

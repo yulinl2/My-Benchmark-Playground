@@ -1,0 +1,91 @@
+
+----- page 1 -----
+MASTER’S COMPREHENSIVE EXAMINATION 
+ 
+Part II Applied (90 minutes) December 7th, 2013 
+Instructions: Attempt any three out of the following four questions on both pages. 
+Mention which three you would like to have graded. Open book and open notes. 
+ 
+1. Assume that birthdays are iid distributed across 365 days of the year (exclude Feb 29th on leap 
+year).  We have two groups of people 
+ 
+G1 – Has 10 Persons 
+G2 – Has 10 different persons 
+ 
+A. What is the probability that no two persons in G1 were born on the same day of the year?  
+ 
+B. Assume that no two persons in G1 have the same birthdate, then what is the probability that 
+none of the persons in G2 were born on the same day as a person in G1? 
+ 
+C. Assume again that no two persons in G1 have the same birthdate, what is the probability that 
+none of the 20 persons in G1 and G2 combined have the same birthdate? 
+ 
+ 
+ 
+2. A linear regression model of Y = EGFR Kidney Function is fit with X = BUN (blood Urine 
+Nitrogen) as the predictor to n = 200 persons and produces the following results 
+                                    Point Estimate     Std-Dev 
+          Intercept                  ˆa =  116           1.15                Cov (
+ˆ
+ˆ,a b ) =  -0.05    
+          BUN                        ˆb = -2.00         0.10                (
+[ ])
+3
+Var Y
+E y
+−
+=
+  
+Assume normality with Y = a + b X + ε  where ε ~ N(0,σ2) and all observations are iid 
+ 
+ 
+A.  What is a 95%  confidence interval  for the Expected Value of  EGFR if BUN = 13 
+ 
+ 
+B. If George has BUN = 16 and Sam has BUN = 13  what is a 95% confidence interval for 
+[George’s EGFR – Sam’s EFGR]  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+----- page 2 -----
+ 
+3.  A nationwide dental chain is studying the variability in the time it takes a dental hygienist to clean a 
+patient’s teeth.  They draw a random sample of 6 hygienists.  For each hygienist they pick a random 
+sample of 4 patients, and record the time to clean each patient’s teeth.  (The study involves a total of  
+24 patients.)  The following table summarizes the mean and standard deviation of cleaning times for 
+the patients for each hygienist 
+ 
+                                              Patient time in minutes 
+               Hygienist           Mean      standard deviation           number of patients 
+                1                     48                       5                                 4                   
+                2                     52                       4                                 4 
+                3                     43                       4                                 4 
+                4                     44                       6                                 4 
+                5                     56                       5                                 4 
+ 
+         6                     57                       6                                 4 
+ 
+For the 24 patients the mean time is 50 minutes, and the standard deviation is 7.14447 minutes. 
+Write out ANOVA table showing source of variability, degrees of freedom, Sums of Squares, MS, and 
+EMS.   Estimate the components of variance 
+ 
+ 
+4.    Soybean yields in a particular region are known to average 43 bushels per acre, with a standard 
+deviation of 4 bushels.   A researcher has developed a new variety of soybeans to be used in the 
+region, that the researcher claims will increase yields to an average of 46 bushels per acre, with 
+the same standard deviation of 4 bushels. 
+      The researcher wants to take a random sample of n acres in the region, plant the new variety on 
+each acre.  The researcher’s claim will be supported (at the one sided 0.05 level of significance) if 
+the sample mean yield is large enough.  The researcher wants the test to have a 90% chance of 
+proving her claim (given that it is true). 
+      How big should n be?  Given that value of n, how big does the sample mean yield have to be to 
+prove her claim. 
+ 
