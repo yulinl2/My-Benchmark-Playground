@@ -72,10 +72,25 @@ been extracted to `exams/transcribed/_raw_ms/`. The archive splits as:
   the 1972–2009 exams plus a few solution scans. These require **OCR** (e.g. a
   visual PDF pass) before they can be transcribed.
 
-**Status: not yet transcribed into the bank.** Recommended plan:
-1. De-duplicate the readable set to ~45 distinct theory/applied MS exams and
-   transcribe those (they are short — 1–3 pages, a few problems each).
-2. OCR the 50 scanned exams as a separate pass.
+**Status: recent Q&A exams transcribed (33 questions, with worked solutions).**
+The six most recent comprehensive exams that ship with answer keys are in the
+bank, tagged `exam.level: "ms"`:
+
+| Exam | Source PDF | Status |
+| ---- | ---------- | ------ |
+| Fall 2019   | `Comprehensive Exam Fall 2019 Solutions.pdf` | ✅ 3 problems (1/2/4 are images — skipped) |
+| Dec 2022    | `ms22Dec Q & A.pdf` | ✅ 6 problems + solutions |
+| March 2023  | `ms23Mar Q & A.pdf` | ✅ 6 problems + solutions |
+| Dec 2023    | `ms23Dec Q & A.pdf` | ✅ 6 problems + solutions |
+| March 2024  | `ms24Mar Q & A.pdf` | ✅ 6 problems + solutions |
+| Fall 2024   | `ms 24 Dec Q & A.pdf` | ✅ 6 problems + solutions |
+| Spring 2025 | `MS Exam Spring 25 Q & A.pdf` | ⬜ scanned (no text layer) |
+| March 2020  | `March 2020 MS Exam.pdf` | ⬜ no answer key; Q1–2 missing from scan |
+
+Remaining MS backlog (not yet transcribed):
+1. The older readable theory/applied papers (2008–2017, `ms<year>.<mm>.pXpa`
+   and the `T_*`/`A-*` duplicates) — de-duplicate to ~40 distinct exams.
+2. OCR the 50 fully-scanned exams (1972–2009 + a few solution scans).
 
 The MS exams use a different format (separate Theory and Applied papers, often
 with solutions). When transcribed they should set `part` to `math-stat` (theory)

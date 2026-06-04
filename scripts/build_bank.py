@@ -162,12 +162,14 @@ def main() -> int:
 
     # Coverage summary (curated questions only).
     if bank:
+        by_level = Counter(q["exam"].get("level", "phd") for q in bank)
         by_part = Counter(q["exam"]["part"] for q in bank)
         by_year = Counter(q["exam"]["year"] for q in bank)
         topics = Counter(t for q in bank for t in q["topics"])
         verified = sum(1 for q in bank if q.get("verified"))
         print("\nCoverage")
         print("--------")
+        print("  by level: " + ", ".join(f"{k}={v}" for k, v in sorted(by_level.items())))
         print("  by part:  " + ", ".join(f"{k}={v}" for k, v in sorted(by_part.items())))
         print("  by year:  " + ", ".join(f"{k}={v}" for k, v in sorted(by_year.items())))
         print(f"  verified: {verified}/{len(bank)}")

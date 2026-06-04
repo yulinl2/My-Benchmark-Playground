@@ -18,6 +18,11 @@
       "properties": {
         "year": { "type": "integer", "minimum": 1990, "maximum": 2100 },
         "term": { "type": "string", "enum": ["spring", "summer", "fall", "winter", "unknown"] },
+        "level": {
+          "type": "string",
+          "description": "Which qualifying exam this came from: the first-year PhD qual or the MS comprehensive exam.",
+          "enum": ["phd", "ms"]
+        },
         "part": {
           "type": "string",
           "description": "Which part of the qual this came from.",

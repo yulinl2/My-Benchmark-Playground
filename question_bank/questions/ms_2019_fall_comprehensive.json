@@ -1,0 +1,78 @@
+[
+  {
+    "id": "2019-fall-applied-q3",
+    "exam": {
+      "year": 2019,
+      "term": "fall",
+      "level": "ms",
+      "part": "applied"
+    },
+    "number": 3,
+    "topics": [
+      "one-way ANOVA",
+      "boxplot",
+      "spread-vs-level",
+      "power transformation",
+      "skewness"
+    ],
+    "difficulty": "medium",
+    "prompt": "Salaries (in $1000) 10 years after graduation for 5 alumni each from RU, PS, UC. (1) Draw boxplots (median, quartiles, extremes); the ANOVA F-test p-value is 0.06 — interpret it via the boxplot. Are the samples skewed? Do they meet the F-test assumptions? (2) Use median and quartiles for a spread-vs-level plot; find the optimal power transformation. (3) Redo the ANOVA F-test after transformation.",
+    "solution": "(1) The data are right-skewed and non-normal with unequal variances, so the ANOVA F-test assumptions fail; the boxplot shows a large difference favoring RU that the F-test (p = 0.06) cannot detect. (2) The spread-vs-level plot (log IQR vs log median) has slope between 1 and 1.5, suggesting a power transformation with power $1 - b$, i.e. between 0 (log) and $-0.5$. (3) After transformation the ANOVA F-test is significant (p $\\approx 0.04$): the three schools' salaries differ.",
+    "source": {
+      "pdf": "Downloads/past-ms-exams-solution/Comprehensive Exam Fall 2019 Solutions.pdf",
+      "page": 3
+    },
+    "verified": false,
+    "notes": "MS comprehensive. Problems 1, 2, 4 of this exam are images with no extractable text. Transcribed with solution from answer key."
+  },
+  {
+    "id": "2019-fall-applied-q5",
+    "exam": {
+      "year": 2019,
+      "term": "fall",
+      "level": "ms",
+      "part": "applied"
+    },
+    "number": 5,
+    "topics": [
+      "paired t-test",
+      "point estimation",
+      "prediction interval",
+      "confidence interval"
+    ],
+    "difficulty": "medium",
+    "prompt": "July temperatures (°F) in New Brunswick and Piscataway on the same randomly chosen date in each of 7 years; measures in different years independent, but the two cities on the same day are not. (A) Give point estimates of each city's mean July temperature and the standard errors. (B) Give a 95% prediction interval for next year's New Brunswick temperature. (C) Test whether the two cities' mean July temperatures are equal at level 0.05.",
+    "solution": "(A) New Brunswick: mean 84, sd 4.08, SE $= 4.08/\\sqrt7 = 1.54$. Piscataway: mean 82.71, sd 4.31, SE $= 1.63$. (B) $84 \\pm t_{6,.975}\\,s\\sqrt{1+1/7} = 84 \\pm 2.45(4.46) \\approx (73.3, 94.7)$. (C) Because same-day measurements are paired/dependent, use a paired test on the 7 differences: mean difference 1.29, sd 1.11, SE $= 0.42$, $t = 1.29/0.42 = 3.07 > t_{6,.975} = 2.45$ — reject $H_0$; the city means differ.",
+    "source": {
+      "pdf": "Downloads/past-ms-exams-solution/Comprehensive Exam Fall 2019 Solutions.pdf",
+      "page": 5
+    },
+    "verified": false,
+    "notes": "MS comprehensive. Transcribed with solution from answer key."
+  },
+  {
+    "id": "2019-fall-probability-q6",
+    "exam": {
+      "year": 2019,
+      "term": "fall",
+      "level": "ms",
+      "part": "probability"
+    },
+    "number": 6,
+    "topics": [
+      "binomial",
+      "normal approximation",
+      "law of total variance",
+      "mixture"
+    ],
+    "difficulty": "medium",
+    "prompt": "150 captured 'dahuts'; each independently male with probability 0.52. (A) Large-sample estimate of the probability that between 40% and 60% of the 150 are male. (B) Yearly upkeep costs 10 Euros (sd 3) for a male and 8 Euros (sd 3) for a female; find (i) the expected cost and (ii) the standard deviation of the cost for a randomly chosen dahut.",
+    "solution": "(A) $\\hat p$ has mean 0.52 and SE $\\sqrt{0.52\\cdot0.48/150} = 0.0408$; $P(0.4 < \\hat p < 0.6) \\approx \\Phi(\\frac{0.6-0.52}{0.0408}) - \\Phi(\\frac{0.4-0.52}{0.0408}) = \\Phi(1.96) - \\Phi(-2.94) \\approx 0.975 - 0.002 = 0.973$. (B)(i) $\\mathbb{E}[\\text{cost}] = 0.52(10) + 0.48(8) = 9.04$. (ii) By the law of total variance, $\\mathbb{E}[\\text{cost}^2] = 0.52(10^2+3^2) + 0.48(8^2+3^2) = 91.72$, so $\\operatorname{Var} = 91.72 - 9.04^2 = 10$ and sd $= \\sqrt{10} \\approx 3.16$.",
+    "source": {
+      "pdf": "Downloads/past-ms-exams-solution/Comprehensive Exam Fall 2019 Solutions.pdf",
+      "page": 8
+    },
+    "verified": false,
+    "notes": "MS comprehensive. Transcribed with solution from answer key."
+  }
+]
