@@ -1,0 +1,67 @@
+[
+  {
+    "id": "2018-summer-math-stat-q1",
+    "exam": {
+      "year": 2018,
+      "term": "summer",
+      "part": "math-stat"
+    },
+    "number": 1,
+    "topics": [
+      "monotone likelihood ratio",
+      "UMP test",
+      "Bayes test",
+      "complete sufficient statistic",
+      "UMVUE",
+      "hypothesis testing"
+    ],
+    "difficulty": "medium",
+    "prompt": "We observe a single discrete random variable $X$ with pmf $f_\\theta(x) = P_\\theta(X = x)$ given by $f_\\theta(0) = \\theta/6$, $f_\\theta(1) = \\theta/2$, $f_\\theta(2) = 1 - \\theta$, $f_\\theta(3) = \\theta/3$, with parameter space $\\Theta = \\{\\theta : 0 \\le \\theta \\le 1\\}$.",
+    "parts": [
+      "(a) Does this family have the monotone likelihood ratio property in $x$? Prove or disprove.",
+      "(b) Test $H_0 : \\theta \\le 1/4$ vs $H_1 : \\theta > 1/4$. (i) Does a UMP level-$\\alpha$ test exist? Prove or disprove; if so find it and establish it is UMP level $\\alpha$. (ii) Using Uniform$[0,1]$ as a prior for $\\theta$, what is the size of the Bayes test procedure?",
+      "(c) Does a complete sufficient statistic exist? If so, find it and prove completeness and sufficiency.",
+      "(d) Does a UMVUE of $\\theta$ exist? Prove or disprove; if so obtain it and establish it is a UMVUE."
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/Inference_exam_2018.pdf",
+      "page": 2
+    },
+    "verified": false,
+    "notes": "Transcribed from extracted text."
+  },
+  {
+    "id": "2018-summer-math-stat-q2",
+    "exam": {
+      "year": 2018,
+      "term": "summer",
+      "part": "math-stat"
+    },
+    "number": 2,
+    "topics": [
+      "logistic regression",
+      "maximum likelihood",
+      "estimating equations",
+      "M-estimation",
+      "consistency",
+      "asymptotic normality",
+      "efficiency"
+    ],
+    "difficulty": "hard",
+    "prompt": "Let $\\{(X_i, Y_i) : i = 1, \\dots, n\\}$ be an i.i.d. sample with $Y_i \\in \\{0, 1\\}$ binary and $X_i$ a $p \\times 1$ covariate vector. Consider the logistic model $P(Y_i = 1 \\mid X_i) = \\pi(X_i; \\beta) = e^{X_i^T \\beta}/(1 + e^{X_i^T \\beta})$, correctly specified with true coefficient $\\beta^*$. Let $\\hat\\beta$ be the MLE; you may use that $\\sqrt{n}(\\hat\\beta - \\beta^*) \\xrightarrow{d} N(0, U_{\\beta^*})$ for fixed $p$.",
+    "parts": [
+      "(i) Let $\\tilde\\beta$ solve $\\frac1n \\sum_{i=1}^n \\frac{Y_i - \\pi(X_i; \\beta)}{\\sqrt{\\pi(X_i;\\beta)(1-\\pi(X_i;\\beta))}} X_i = 0$. Show there exists a loss function $\\kappa(\\beta)$ with $\\tilde\\beta = \\arg\\min_\\beta \\kappa(\\beta)$, and express $\\kappa(\\beta)$ as simply as possible.",
+      "(ii) For fixed $p$, show $\\tilde\\beta$ is consistent for $\\beta^*$ (impose technical conditions as needed; weaker preferred).",
+      "(iii) For fixed $p$, show $\\sqrt{n}(\\tilde\\beta - \\beta^*) \\xrightarrow{d} N(0, V_{\\beta^*})$.",
+      "(iv) Determine $V_{\\beta^*}$ as simply as possible and show $V_{\\beta^*} \\ge U_{\\beta^*}$ (difference non-negative definite). Is this result intuitive? Explain briefly."
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/Inference_exam_2018.pdf",
+      "page": 3
+    },
+    "verified": false,
+    "notes": "Transcribed from extracted text."
+  }
+]

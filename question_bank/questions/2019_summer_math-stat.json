@@ -1,0 +1,72 @@
+[
+  {
+    "id": "2019-summer-math-stat-q1",
+    "exam": {
+      "year": 2019,
+      "term": "summer",
+      "part": "math-stat"
+    },
+    "number": 1,
+    "topics": [
+      "contiguity",
+      "local asymptotic normality",
+      "MLE asymptotics",
+      "Le Cam's third lemma",
+      "local asymptotic minimax",
+      "convolution theorem",
+      "Kullback-Leibler divergence"
+    ],
+    "difficulty": "hard",
+    "prompt": "Instructions: provide partial details if you cannot complete a claim; final score $= \\min\\{100, \\text{raw}\\}$. The problem develops the asymptotics of the MLE under uniform local asymptotic normality (LAN) and a local asymptotic minimax lower bound.",
+    "parts": [
+      "**Part I (30 pts).** (1) For sequences of probability measures $\\{P_n\\}, \\{Q_n\\}$ on $(\\Omega_n, \\mathcal{A}_n)$, state the definition for $\\{Q_n\\}$ to be contiguous to $\\{P_n\\}$. (2) State the definition for an experiment $(P_\\theta : \\theta \\in \\Theta)$ to be locally asymptotically normal (LAN) at $\\theta$, and to be uniformly LAN.",
+      "**Part II (50 pts).** Suppose $(P_\\theta : \\theta \\in \\Theta \\subset \\mathbb{R}^k)$ is dominated by $\\sigma$-finite $\\mu$ with densities $p_\\theta$, uniformly LAN at $\\theta$ with invertible Fisher information $I_\\theta$, and $H_n = \\sqrt{n}(\\Theta - \\theta) \\to H$ (closed convex). Let $\\hat\\theta_n$ be the $\\sqrt{n}$-consistent MLE. Show that for any $h \\in \\mathbb{R}^k$ with $\\theta + h/\\sqrt{n} \\in \\Theta$ for large $n$, $\\sqrt{n}(\\hat\\theta_n - \\theta) \\rightsquigarrow_{P^n_{\\theta + h/\\sqrt{n}}} I_\\theta^{-1/2}\\Pi_{I_\\theta^{1/2} H}(I_\\theta^{1/2} Y_h)$, where $Y_h \\sim N(h, I_\\theta^{-1})$ and $\\Pi_K$ is Euclidean projection onto $K$. Steps: (a) show for fixed closed $F$, for large $n$, $P^n_{\\theta+h/\\sqrt{n}}(\\hat h_n \\in F) \\le P^n_{\\theta+h/\\sqrt{n}}(\\|I_\\theta^{-1/2} \\mathbb{G}_n \\dot\\ell_\\theta - I_\\theta^{1/2}(F \\cap H_n)\\| \\le \\|I_\\theta^{-1/2}\\mathbb{G}_n\\dot\\ell_\\theta - I_\\theta^{1/2} H_n\\| + o_p(1))$ (use the LAN hint); (b) find the limit distribution of $\\mathbb{G}_n \\dot\\ell_\\theta$ under $P^n_{\\theta+h/\\sqrt{n}}$ via Le Cam's third lemma; (c) conclude via the Portmanteau theorem.",
+      "**Part III (50 pts).** Under uniform LAN with invertible $I_\\theta$, let $\\psi : \\Theta \\to \\mathbb{R}$ be differentiable with derivative $\\dot\\psi_\\theta$. Prove there is a universal constant $L > 0$ with $\\sup_{\\tau > 0}\\liminf_n \\inf_{T_n}\\sup_{\\|\\vartheta - \\theta\\|^2 \\le \\tau/n} \\mathbb{E}_\\vartheta[\\sqrt{n}(\\psi(T_n) - \\psi(\\vartheta))]^2 \\ge L^{-1}\\dot\\psi_\\theta^T I_\\theta^{-1}\\dot\\psi_\\theta$. Steps: reduce to a two-point testing bound, lower bound $\\inf_\\varphi \\max_{j} P_{\\theta_j}(\\varphi \\ne j) \\ge \\frac14 \\exp(-D(P_{\\theta_0}\\|P_{\\theta_1}))$ via the affinity inequality, then choose $\\theta_0, \\theta_1$ and compute $\\gamma_n$ and $D(P_{\\theta_0}\\|P_{\\theta_1})$. (This shows the convolution-theorem variance bound is unimprovable up to an absolute constant, in a local asymptotic minimax sense.)"
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/inference_exam_2019.pdf",
+      "page": 2
+    },
+    "verified": false,
+    "notes": "Highly technical LAN / local asymptotic minimax problem. Some operator notation reconstructed from extraction; verify against PDF."
+  },
+  {
+    "id": "2019-summer-math-stat-q2",
+    "exam": {
+      "year": 2019,
+      "term": "summer",
+      "part": "math-stat"
+    },
+    "number": 2,
+    "topics": [
+      "high-dimensional regression",
+      "Lasso",
+      "debiased Lasso",
+      "confidence intervals",
+      "support recovery",
+      "nonparametric regression",
+      "smoothing splines",
+      "sparse additive models"
+    ],
+    "difficulty": "hard",
+    "prompt": "Two largely independent parts (linked only in 2c). **Part 1:** high-dimensional sparse linear regression $y_i = X_{i\\cdot}^T \\beta + \\varepsilon_i$, $1 \\le i \\le n$, with $X_{i\\cdot} \\in \\mathbb{R}^p$ mean zero, covariance $\\Sigma = \\mathbb{E}(X_{i\\cdot}X_{i\\cdot}^T)$, $\\beta \\in \\mathbb{R}^p$, $p \\ge n$, $\\|\\beta\\|_0 \\le k$, and $\\varepsilon_i \\stackrel{iid}{\\sim} N(0, \\sigma^2)$ independent of $X_{i\\cdot}$.",
+    "parts": [
+      "Part 1a. (5 pts) Write the Lasso optimization and the choice of tuning parameter, and write (without deriving) the rates of convergence of $\\frac1n\\|X(\\hat\\beta - \\beta)\\|_2^2$ and $\\|\\hat\\beta - \\beta\\|_1$.",
+      "Part 1b. (10 pts) Propose an estimator $\\hat\\sigma^2$ of $\\sigma^2$ based on the Lasso $\\hat\\beta$ and establish the rate of convergence of $|\\hat\\sigma^2 - \\sigma^2|$.",
+      "Part 1c. (15 pts) Propose a debiased estimator of $\\beta_1$ and write down the algorithm to derive it.",
+      "Part 1d. (20 pts) Establish the asymptotic normality of the debiased estimator and use it to construct confidence intervals for $\\beta_1$ (you may assume the stated high-probability events on $\\|\\hat\\beta - \\beta\\|_1$ and the sample covariance).",
+      "Part 1e. (15 pts) Propose an estimator $\\hat S$ of the support $S = \\{j : \\beta_j \\ne 0\\}$ and justify $S_{\\text{strong}} \\subseteq \\hat S \\subseteq S$, where $S_{\\text{strong}} = \\{j : |\\beta_j| \\ge C\\sqrt{\\log p / n}\\}$; be specific about the thresholding level.",
+      "Part 2a. (15 pts) For $y_i = f(t_i) + \\varepsilon_i$ with $t_i$ random and $\\varepsilon_i$ mean-zero independent of $t_i$, write the smoothing-spline estimator of $f$ and the local-linear estimators of $f(x_0)$ and $f'(x_0)$.",
+      "Part 2b. (10 pts) Derive the closed form of the smoothing-spline estimator via the basis approach (assume a basis exists).",
+      "Part 2c. (10 pts) For the high-dimensional sparse additive model $y_i = \\sum_{j=1}^p f_j(X_{ij}) + \\varepsilon_i$ with $S = \\{j : f_j \\ne 0\\}$ small and each $f_j$ smooth, propose an estimator $\\{\\hat f_j\\}$ accounting for both sparsity and smoothness."
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/inference_exam_2019.pdf",
+      "page": 5
+    },
+    "verified": false,
+    "notes": "Transcribed from extracted text."
+  }
+]

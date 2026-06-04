@@ -1,0 +1,72 @@
+[
+  {
+    "id": "2022-summer-math-stat-q1",
+    "exam": {
+      "year": 2022,
+      "term": "summer",
+      "part": "math-stat"
+    },
+    "number": 1,
+    "topics": [
+      "bivariate normal",
+      "complete sufficient statistic",
+      "maximum likelihood",
+      "likelihood ratio test",
+      "Fisher information",
+      "Newton-Raphson",
+      "Fisher scoring",
+      "asymptotic normality",
+      "confidence intervals"
+    ],
+    "difficulty": "hard",
+    "prompt": "Let $(X_1, Y_1), \\dots, (X_n, Y_n)$ be i.i.d. from a bivariate normal $N(0, 0, \\sigma_1^2, \\sigma_2^2, \\rho)$ (zero means, variances $\\sigma_1^2, \\sigma_2^2$, correlation $\\rho$). Let $\\theta = (\\sigma_1^2, \\sigma_2^2, \\rho)$. The joint density of each $(X_j, Y_j)$ is $\\frac{1}{2\\pi\\sigma_1\\sigma_2\\sqrt{1-\\rho^2}}\\exp\\!\\big(-\\frac{1}{2(1-\\rho^2)}(\\frac{X_j^2}{\\sigma_1^2} + \\frac{Y_j^2}{\\sigma_2^2} - \\frac{2\\rho X_j Y_j}{\\sigma_1\\sigma_2})\\big)$.",
+    "parts": [
+      "**Part I.** (1) Find a complete sufficient statistic for $\\theta$. (2) Show the MLE is $\\hat\\theta = (\\hat\\sigma_1^2, \\hat\\sigma_2^2, \\hat\\rho) = (\\frac1n\\sum_j X_j^2,\\ \\frac1n\\sum_j Y_j^2,\\ \\frac{\\sum_j X_j Y_j}{\\sqrt{\\sum_j X_j^2 \\sum_j Y_j^2}})$. (3) Show $\\hat\\sigma_1^2, \\hat\\sigma_2^2, \\hat\\rho$ are mutually independent if $\\rho = 0$. (4) Show the LRT for $H_0 : \\rho = 0$ vs $H_1 : \\rho \\ne 0$ amounts to 'reject $H_0$ when $\\hat\\rho^2$ is large'.",
+      "**Part II** (now $\\sigma_1^2 = \\sigma_2^2 = 1$, only $\\rho$ unknown). (5) Find the score function $S(\\rho, X, Y)$ for a single pair. (6) Find the expected Fisher information $I_1(\\rho)$ for a single pair.",
+      "(7) Show the MLE of $\\rho$ solves a cubic equation $h(\\hat\\rho_{MLE}) = 0$. (8) Write the Newton-Raphson iteration for the ML equation. (9) Write the Fisher scoring iteration.",
+      "(10) Obtain the asymptotic distribution of the MLE and use it (plug-in) for a large-sample CI for $\\rho$ with coefficient $1 - \\alpha$.",
+      "(11) Consider $\\hat\\rho_2 = \\frac1n\\sum_{i=1}^n X_i Y_i$ (substituting $1$ for the sample variances in $\\hat\\rho$). Does it have a desirable property $\\hat\\rho_{MLE}$ lacks? Derive its asymptotic distribution and state whether you'd prefer it over $\\hat\\rho_{MLE}$ for large samples. (Recall $\\mathbb{E}(X^4) = 3$ for $X \\sim N(0,1)$.)"
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/inference_exam_2022_final.pdf",
+      "page": 2
+    },
+    "verified": false,
+    "notes": "Based on Stat 593 and Stat 594. Transcribed from extracted text."
+  },
+  {
+    "id": "2022-summer-math-stat-q2",
+    "exam": {
+      "year": 2022,
+      "term": "summer",
+      "part": "math-stat"
+    },
+    "number": 2,
+    "topics": [
+      "Lasso",
+      "out-of-sample prediction error",
+      "sub-Gaussian",
+      "restricted eigenvalue",
+      "high-dimensional regression",
+      "oracle inequality",
+      "concentration"
+    ],
+    "difficulty": "hard",
+    "prompt": "Training data $(x_i, y_i)$, $1 \\le i \\le n$, are i.i.d. as $(x, y)$ with $y = x^T \\beta^* + \\varepsilon$, $x \\in \\mathbb{R}^p$, $\\varepsilon$ independent of $x$, under (A1) $\\varepsilon$ sub-Gaussian with parameter $\\sigma$: $P(|\\varepsilon| \\ge t) \\le 2e^{-t^2/(2\\sigma^2)}$; (A2) $|x| \\le B_0$ a.s. Let $\\hat\\beta = \\arg\\min_\\beta \\{\\ell_n(\\beta) + \\lambda\\|\\beta\\|_1\\}$ with $\\ell_n(\\beta) = \\frac{1}{2n}\\sum_i (y_i - x_i^T\\beta)^2$. Let $(x_0, y_0)$ be an independent test point; study the out-of-sample error $\\mathbb{E}_{out}\\{(y_0 - x_0^T\\hat\\beta)^2\\}$ (conditional on training data). Set $\\lambda_0 = \\sqrt{\\log(p/\\delta)/n}$. You may use results from preceding questions regardless of whether you answered them.",
+    "parts": [
+      "(i) Show $\\mathbb{E}_{out}\\{(y_0 - x_0^T\\hat\\beta)^2\\} = \\mathbb{E}_{out}\\{(y_0 - x_0^T\\beta^*)^2\\} + \\mathbb{E}_{out}\\{(x_0^T(\\hat\\beta - \\beta^*))^2\\}$.",
+      "(ii) With $\\Sigma = \\mathbb{E}(x x^T)$ and $\\tilde\\Sigma = n^{-1}\\sum_i x_i x_i^T$: for sufficiently small $\\delta > 0$, show with probability $1 - k_1\\delta$ that $\\|\\tilde\\Sigma - \\Sigma\\|_{\\max} \\le B_1\\lambda_0$ (constant $B_1$ depending on $B_0$). Call this event $\\Omega_1$.",
+      "(iii) Under (A3) $b^T\\Sigma b \\ge (\\nu_0^*)^2 \\sum_j b_j^2$ and (A4) $|S_{\\beta^*}|\\lambda_0 \\le \\eta_0$: show that on $\\Omega_1$, $\\nu_0^2(\\sum_{j \\in S_{\\beta^*}}|b_j|)^2 \\le |S_{\\beta^*}|(b^T\\tilde\\Sigma b)$ for any $b$ with $\\sum_{j \\notin S_{\\beta^*}}|b_j| \\le \\xi_0 \\sum_{j \\in S_{\\beta^*}}|b_j|$ (a restricted-eigenvalue / compatibility condition on $\\tilde\\Sigma$).",
+      "(iv) Under (A1)-(A4), formulate an event $\\Omega_2$ with $P(\\Omega_2) \\ge 1 - k_2\\delta$ such that on $\\Omega_1 \\cap \\Omega_2$, for a suitable $\\lambda$: $\\frac1n\\sum_i (x_i^T(\\hat\\beta - \\beta^*))^2 \\le M_0 |S_{\\beta^*}|\\lambda_0^2$ and $\\|\\hat\\beta - \\beta^*\\|_1 \\le M_0 |S_{\\beta^*}|\\lambda_0$. Prove $P(\\Omega_2) \\ge 1 - k_2\\delta$ for your $\\Omega_2$ (you need not prove the two displayed bounds).",
+      "(v) For that $\\lambda$, show on $\\Omega_1 \\cap \\Omega_2$ that $\\mathbb{E}_{out}\\{(y_0 - x_0^T\\hat\\beta)^2\\} \\le \\mathbb{E}_{out}\\{(y_0 - x_0^T\\beta^*)^2\\} + M_1 |S_{\\beta^*}|\\lambda_0^2$."
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/inference_exam_2022_final.pdf",
+      "page": 4
+    },
+    "verified": false,
+    "notes": "Transcribed from extracted text."
+  }
+]
