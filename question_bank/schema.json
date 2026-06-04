@@ -55,6 +55,11 @@
       "type": ["string", "null"],
       "description": "Optional worked solution (Markdown + LaTeX). null/omit if not transcribed."
     },
+    "data": {
+      "type": "array",
+      "description": "Optional dataset files the problem depends on (applied/take-home exams). Repo-relative paths when the file is committed, or a bare filename + note when the dataset was not distributed with the PDF.",
+      "items": { "type": "string" }
+    },
     "source": {
       "type": "object",
       "required": ["pdf"],

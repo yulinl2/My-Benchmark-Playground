@@ -1,0 +1,107 @@
+[
+  {
+    "id": "2021-summer-applied-q1",
+    "exam": {
+      "year": 2021,
+      "term": "summer",
+      "part": "applied"
+    },
+    "number": 1,
+    "topics": [
+      "semi-supervised learning",
+      "logistic regression",
+      "model misspecification",
+      "Newton-Raphson",
+      "estimating equations",
+      "classification"
+    ],
+    "difficulty": "hard",
+    "prompt": "Problem 1 (Semi-supervised logistic regression). $(X_i, Y_i)$ i.i.d. with $Y \\sim \\mathrm{Bern}(\\tfrac12)$; $X \\mid Y=0 \\sim N((-6,-6), \\mathrm{diag}(5^2, 15^2))$ and $X \\mid Y=1 \\sim N((6,6), \\mathrm{diag}(5^2, 10^2))$. Observe labeled $S_\\ell = \\{(X_i, Y_i)\\}_{i\\le n_1}$ and unlabeled $S_u = \\{X_i\\}_{i>n_1}$. Fit logistic model $P(Y=1\\mid x) = \\frac{e^{\\beta_0 + \\beta^T x}}{1 + e^{\\beta_0+\\beta^T x}}$; $(\\hat\\beta_0, \\hat\\beta)$ is the MLE on labeled data, and $(\\tilde\\beta_0, \\tilde\\beta)$ solves $0 = \\frac{1}{n_1}\\sum_{i\\le n_1} Y_i(1, X_i^T)^T - \\frac1n\\sum_{i\\le n}\\pi(X_i;\\beta_0,\\beta)(1, X_i^T)^T$ (using unlabeled data). Use the given R data-generation code (set.seed(1)).",
+    "parts": [
+      "1) Explain why the logistic model is misspecified in this setting.",
+      "2) Report $(\\hat\\beta_0, \\hat\\beta)$ on training data and the average test log-likelihood and classification accuracy.",
+      "3) Find a loss $L(\\beta_0, \\beta)$ such that $(\\tilde\\beta_0, \\tilde\\beta)$ minimizes it.",
+      "4) Write an R function computing $(\\tilde\\beta_0, \\tilde\\beta)$ via Newton-Raphson.",
+      "5) Report $(\\tilde\\beta_0, \\tilde\\beta)$ and its average test log-likelihood and classification accuracy.",
+      "6) Plot the training data (labeled + unlabeled) with the three classification lines (from $\\hat\\beta$, $\\tilde\\beta$, and the MLE using all $xs, ys$)."
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/APPLIED_EXAM_2021.pdf",
+      "page": 2
+    },
+    "verified": false,
+    "notes": "Prof. Zhiqiang Tan. Exam requires Problem 1 AND one of Problems 2-3. Self-contained simulation. Transcribed from extracted text."
+  },
+  {
+    "id": "2021-summer-applied-q2",
+    "exam": {
+      "year": 2021,
+      "term": "summer",
+      "part": "applied"
+    },
+    "number": 2,
+    "topics": [
+      "linear discriminant analysis",
+      "Fisher LDA",
+      "PCA",
+      "covariance decomposition",
+      "dimension reduction",
+      "simulation"
+    ],
+    "difficulty": "medium",
+    "prompt": "Problem 2 (Fisher LDA vs PCA). $N$ observations from $K$ classes in $p$ dimensions; $x_i$ the $i$-th input row, $Y_i \\in \\{1,\\dots,K\\}$.",
+    "parts": [
+      "(1) Show the total covariance decomposes as $(N-1)\\Sigma_t = \\sum_i (x_i - \\hat\\mu)(x_i-\\hat\\mu)^T = (N-K)\\Sigma_w + (N-1)\\Sigma_b$, with within-class $\\Sigma_w$ and between-class $\\Sigma_b$ as defined.",
+      "(2) Show Fisher's reduced-rank LDA, $\\max_v \\frac{v^T\\Sigma_b v}{v^T\\Sigma_w v}$, is equivalent to the eigenproblem $\\Sigma_w^{-1}\\Sigma_b v = \\lambda v$.",
+      "(3) Generate 100 observations from each of three given Gaussian classes in $\\mathbb{R}^{128}$ (means $\\theta_1, \\theta_2, \\theta_3$, common diagonal covariance).",
+      "(4) Write your own code for Fisher's reduced-rank LDA; visualize the data projected onto the first two directions, colored by class.",
+      "(5) Perform PCA; visualize the projection onto the first two principal directions, colored by class. Compare with (4) and explain the difference."
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/APPLIED_EXAM_2021.pdf",
+      "page": 5
+    },
+    "verified": false,
+    "notes": "Prof. Ying Hung. Self-contained simulation. Transcribed from extracted text."
+  },
+  {
+    "id": "2021-summer-applied-q3",
+    "exam": {
+      "year": 2021,
+      "term": "summer",
+      "part": "applied"
+    },
+    "number": 3,
+    "topics": [
+      "Gaussian process",
+      "computer experiments",
+      "BLUP",
+      "cross-validation",
+      "optimization",
+      "design of experiments"
+    ],
+    "difficulty": "hard",
+    "prompt": "Problem 3 (Engine block/head joint GP experiment). A 27-run experiment on eight factors $x_1, \\dots, x_8$ (gasket thickness, contour zones, transition, bead profile, coining depth, deck flatness, load/deflection variation, head-bolt force variation), response gap lift $y$. (Do NOT use existing GP packages.)",
+    "parts": [
+      "(1) For the GP model $Y(x) = \\mu + Z(x)$ with correlation $\\phi(h;\\theta) = \\exp(-\\sum_{i=1}^8 \\theta_i h_i^2)$, write the MLE expressions for $\\mu, \\theta, \\sigma^2$ and report the estimates from the data.",
+      "(2) Write the BLUP and the (plug-in) predictive distribution.",
+      "(3) Report the leave-one-out cross-validation prediction error using the BLUP.",
+      "(4) Change to $Y(x) = \\beta_0 + x_1\\beta_1 + x_6\\beta_2 + Z(x)$ and repeat (2)-(3).",
+      "(5) Suggest a final model comparing (1) and (4) via suitable performance measures.",
+      "(6) For the final model, plot the BLUP as a function of $x_1$ with 95% predictive bands.",
+      "(7) Find the optimal settings of the eight factors minimizing gap lift, explaining the algorithm."
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/APPLIED_EXAM_2021.pdf",
+      "page": 5
+    },
+    "verified": false,
+    "notes": "Prof. Ying Hung. Dataset not in repo. Transcribed from extracted text.",
+    "data": [
+      "engine_experiment_data.txt — not distributed with the SharePoint PDF download"
+    ]
+  }
+]

@@ -38,20 +38,20 @@ exams (`probability` / `math-stat`); **applied** is the take-home exam.
 
 | Year | Source PDF | Status |
 | ---- | ---------- | ------ |
-| 2018 | `Applied_exam_2018.pdf` | ⬜ raw text only |
-| 2019 | `Applied Exam 2019 packet/APPLIED_EXAM_2019_Jul25.pdf` (+ data) | ⬜ raw text only |
-| 2020 | `Applied Exam 2020 packet/APPLIED_EXAM_2020.pdf` (+ data) | ⬜ raw text only |
-| 2021 | `APPLIED_EXAM_2021.pdf` | ⬜ raw text only |
-| 2022 | `APPLIED_EXAM_2022_final.pdf` | ⬜ raw text only |
-| 2023 | `APPLIED_EXAM_2023_v2.pdf` | ⬜ raw text only |
-| 2024 | `APPLIED_EXAM_2024_v2.pdf` | ⬜ raw text only |
+| 2018 | `Applied_exam_2018.pdf` | ✅ transcribed (2 problems) |
+| 2019 | `Applied Exam 2019 packet/...Jul25.pdf` (+ data ✓) | ✅ transcribed (2 problems) |
+| 2020 | `Applied Exam 2020 packet/...2020.pdf` (+ data ✓) | ✅ transcribed (2 problems) |
+| 2021 | `APPLIED_EXAM_2021.pdf` | ✅ transcribed (3 problems) |
+| 2022 | `APPLIED_EXAM_2022_final.pdf` | ✅ transcribed (3 problems) |
+| 2023 | `APPLIED_EXAM_2023_v2.pdf` | ✅ transcribed (2 problems) |
+| 2024 | `APPLIED_EXAM_2024_v2.pdf` | ✅ transcribed (2 problems) |
 
 ### 2025 unified qualifying exam
 
 | Component | Source PDF | Status |
 | --------- | ---------- | ------ |
 | Theory | `qe_2025_theory.pdf` | ✅ transcribed (6 problems, 4 parts) |
-| Applied | `qe_2025_applied.pdf` | ⬜ raw text only |
+| Applied | `qe_2025_applied.pdf` | ✅ transcribed (3 problems) |
 
 > Note: the applied exams are packet-style (data-analysis prompts shipped with
 > `.csv`/`.xlsx`/`.txt` datasets). They transcribe differently from the

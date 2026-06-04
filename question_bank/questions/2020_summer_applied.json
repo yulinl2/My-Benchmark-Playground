@@ -1,0 +1,75 @@
+[
+  {
+    "id": "2020-summer-applied-q1",
+    "exam": {
+      "year": 2020,
+      "term": "summer",
+      "part": "applied"
+    },
+    "number": 1,
+    "topics": [
+      "longitudinal data",
+      "ordinal regression",
+      "biomarkers",
+      "missing data",
+      "model selection"
+    ],
+    "difficulty": "hard",
+    "prompt": "Problem 1 (Alzheimer's disease CSF biomarkers). Using a longitudinal community cohort (~1500 late-middle-aged adults, CSF on ~500) with biomarkers ab_1_42, total tau, phospho-tau (and ratios) and ordinal cognitive-status diagnoses across visits:",
+    "parts": [
+      "1. Do CSF biomarkers predict progression from cognitively normal at baseline to impaired at most recent visit? Do individual biomarkers or combinations/ratios predict better?",
+      "2. Characterize the course of cognitive status over time (how many worsen/improve/stay the same); do biomarker values predict the course?",
+      "3. Does the biomarker–cognitive-status relationship vary with age, sex, APOE status, parental AD history, or education?",
+      "4. Does deleting patients with outcome 4 (impaired-not-MCI) pose scientific risks to your answers?",
+      "5. Write a one-page summary of the key questions, approach, and conclusions."
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/Applied Exam 2020 packet/APPLIED_EXAM_2020.pdf",
+      "page": 2
+    },
+    "verified": false,
+    "notes": "Prof. Sijian Wang. Dataset committed in repo. Transcribed from extracted text.",
+    "data": [
+      "Downloads/past-PhD exams/Applied Exam 2020 packet/AD_dataset_applied2020.csv"
+    ]
+  },
+  {
+    "id": "2020-summer-applied-q2",
+    "exam": {
+      "year": 2020,
+      "term": "summer",
+      "part": "applied"
+    },
+    "number": 2,
+    "topics": [
+      "Gibbs sampling",
+      "Metropolis-Hastings",
+      "smoothing splines",
+      "bootstrap",
+      "Gaussian process",
+      "BLUP"
+    ],
+    "difficulty": "hard",
+    "prompt": "Problem 2. Two parts. **2.1** MCMC theory. **2.2** Piston-slap engine-noise prediction from six inputs $x_1, \\dots, x_6$, with separate training and test datasets.",
+    "parts": [
+      "2.1(a) For a 3-D random vector $(X, Y, Z)$ with known density $f(x,y,z)$, describe the Gibbs sampling algorithm to generate realizations.",
+      "2.1(b) Show that Gibbs sampling is a special case of the Metropolis-Hastings algorithm.",
+      "2.2(1) Fit a smoothing spline for piston-slap noise as a function of $x_6$ with smoothing parameter chosen by cross-validation; report it and plot the fit.",
+      "2.2(2) Use a bootstrap method to construct a confidence band for the smoothing spline in (1).",
+      "2.2(3) For the GP model $Y(x) = x^T\\beta + Z(x)$ with $\\phi(h;\\theta) = \\exp(-\\sum_{i=1}^6 \\theta_i h_i^2)$, write the explicit MLEs of $\\beta, \\theta, \\sigma^2$ and compute them in your own R code (no GP packages).",
+      "2.2(4) Construct the BLUP from (3), predict piston-slap noise for each test point, and summarize prediction performance."
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/Applied Exam 2020 packet/APPLIED_EXAM_2020.pdf",
+      "page": 6
+    },
+    "verified": false,
+    "notes": "Prof. Ying Hung. Piston-slap datasets committed in repo. Transcribed from extracted text.",
+    "data": [
+      "Downloads/past-PhD exams/Applied Exam 2020 packet/piston slap noise training data.txt",
+      "Downloads/past-PhD exams/Applied Exam 2020 packet/piston slap noise test data.txt"
+    ]
+  }
+]

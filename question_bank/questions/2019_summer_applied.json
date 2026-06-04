@@ -1,0 +1,72 @@
+[
+  {
+    "id": "2019-summer-applied-q1",
+    "exam": {
+      "year": 2019,
+      "term": "summer",
+      "part": "applied"
+    },
+    "number": 1,
+    "topics": [
+      "remote sensing",
+      "dimension reduction",
+      "predictive modeling",
+      "compositional data",
+      "variable importance"
+    ],
+    "difficulty": "hard",
+    "prompt": "Problem 1 (Urban forest tree-species mapping). Predict the relative basal area (RBA) of tree species from remote-sensing data (AVIRIS hyperspectral reflectance — ~182 bands and derived canopy chemistry/indices — and lidar-derived structure metrics) measured on field plots. Predicted RBAs across species must sum to ≤ 1.",
+    "parts": [
+      "A. Conduct EDA assessing the relation between RBA and lidar/hyperspectral data, using a specific dimension-reduction method and visualizations.",
+      "B. Using hyperspectral data, build predictive models for the proportion of (1) white oak, (2) white pine, (3) ash, with statistical evaluation of prediction performance and variable importance; ensure the three predicted RBAs sum to ≤ 1 on any future data.",
+      "C. Repeat B using the lidar data.",
+      "D. Explore combining both remote-sensing data types for each of the three species, and argue for or against combining them.",
+      "E. Recommend the essential next steps for mapping tree-species composition from remote sensing, with reasoning."
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/Applied Exam 2019 packet/APPLIED_EXAM_2019_Jul25.pdf",
+      "page": 2
+    },
+    "verified": false,
+    "notes": "Prof. Sijian Wang. Dataset committed in repo (Applied Exam 2019 packet). Transcribed from extracted text.",
+    "data": [
+      "Downloads/past-PhD exams/Applied Exam 2019 packet/Tree Species Data and Descriptions.xlsx"
+    ]
+  },
+  {
+    "id": "2019-summer-applied-q2",
+    "exam": {
+      "year": 2019,
+      "term": "summer",
+      "part": "applied"
+    },
+    "number": 2,
+    "topics": [
+      "Gaussian process",
+      "kriging",
+      "BLUP",
+      "maximum likelihood",
+      "interpolation",
+      "splines"
+    ],
+    "difficulty": "hard",
+    "prompt": "Problem 2 (Gaussian-process regression). Generate 7 equally spaced points $x_1, \\dots, x_7$ on $[0,1]$ and responses $Y(x) = e^{-1.4x}\\cos(\\frac{7\\pi x}{2})$.",
+    "parts": [
+      "(1) For the GP model $Y(x) = \\mu + Z(x)$ with $\\operatorname{cov}[Z(x+h), Z(x)] = \\sigma^2\\phi(h;\\theta)$, $\\phi(h;\\theta) = \\exp(-\\theta h^2)$, write the MLE expressions for $\\mu, \\theta, \\sigma^2$ and compute them from the 7 observations.",
+      "(2) Write the BLUP of $Y(x_0)$ and its (plug-in) predictive distribution.",
+      "(3) Generate 1000 equally spaced points $x_j^*$ on $(0,1)$ and the corresponding true responses.",
+      "(4) Compare MLE-EBLUP predictions at the $x_j^*$ with the true values via a plot.",
+      "(5) Add 95% predictive confidence bands to the plot from (4).",
+      "(6) Prove the BLUP is an interpolator and demonstrate it using (4)-(5).",
+      "(7) Fit a spline-based interpolating model on the same 7 points; compare GP vs spline prediction performance on the test data and comment on any non-performance advantages/disadvantages."
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/Applied Exam 2019 packet/APPLIED_EXAM_2019_Jul25.pdf",
+      "page": 5
+    },
+    "verified": false,
+    "notes": "Prof. Ying Hung. Self-contained simulation. Transcribed from extracted text."
+  }
+]

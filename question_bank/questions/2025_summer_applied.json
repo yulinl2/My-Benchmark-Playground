@@ -1,0 +1,108 @@
+[
+  {
+    "id": "2025-summer-applied-q1",
+    "exam": {
+      "year": 2025,
+      "term": "summer",
+      "part": "applied"
+    },
+    "number": 1,
+    "topics": [
+      "reproducing kernel Hilbert space",
+      "representer theorem",
+      "linear smoother",
+      "smoothing",
+      "degrees of freedom",
+      "kernel regression"
+    ],
+    "difficulty": "hard",
+    "prompt": "Problem 1 (RKHS partial smoothing). For $(X_i, Y_i)$, fixed $\\sigma, \\lambda > 0$, $\\hat f = \\arg\\min_{b_0,b_1\\in\\mathbb{R}, f\\in\\mathcal{H}_\\sigma}\\{\\frac1n\\sum_i (Y_i - b_0 - b_1 X_i - f(X_i))^2 + \\lambda\\|f\\|^2\\}$, where $\\mathcal{H}_\\sigma$ is the RKHS of the Gaussian kernel $K_\\sigma(x,z) = \\exp(-\\frac{(x-z)^2}{2\\sigma^2})$.",
+    "parts": [
+      "1) Show a solution can be written $\\hat f(x) = b_0 + b_1 x + \\sum_{i=1}^n c_i K_\\sigma(X_i, x)$ for constants independent of $x$.",
+      "2) With $b = (b_0,b_1)^T$, $c = (c_1,\\dots,c_n)^T$, derive the penalty $\\mathrm{pen}(c)$ and a closed-form for $(\\hat b, \\hat c)$.",
+      "3) Show $\\hat f$ is a linear smoother: $\\hat{\\mathbf f} = SY$ for an $n\\times n$ matrix $S$ independent of $Y$; give $S$ explicitly.",
+      "4) Write R code implementing $\\hat f$ with $(\\sigma, \\lambda)$ as tuning parameters, outputting the degrees of freedom $\\mathrm{df} = \\operatorname{tr}(S)$.",
+      "5) Apply to the ozone data (LAozone.data) with covariate dpg, response ozone, $\\sigma = 10$, choosing $\\lambda$ to hit df $= 4, 6, 8, 12$; plot the four fits over dpg $\\in (-80, 120)$ with the data; for df $=8$ report $\\hat f$ at the 5 smallest and 5 largest dpg.",
+      "6) Repeat (5) with $\\sigma = 40$."
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/qe_2025_applied.pdf",
+      "page": 2
+    },
+    "verified": false,
+    "notes": "2025 unified applied exam, Problem 1. Prof. Zhiqiang Tan. Transcribed from extracted text.",
+    "data": [
+      "LAozone.data — not distributed with the SharePoint PDF download (Stat 596 ozone dataset)"
+    ]
+  },
+  {
+    "id": "2025-summer-applied-q2",
+    "exam": {
+      "year": 2025,
+      "term": "summer",
+      "part": "applied"
+    },
+    "number": 2,
+    "topics": [
+      "k-means clustering",
+      "sparse clustering",
+      "regularization",
+      "EM algorithm",
+      "Gaussian mixture model",
+      "model selection"
+    ],
+    "difficulty": "hard",
+    "prompt": "Problem 2 (Sparse k-means / mixture clustering). $K$-means minimizes $\\min_{A_k, C_k}\\sum_{k=1}^K \\sum_{x_i\\in A_k}\\|X_i - C_k\\|^2$ over groups $A_k$ with centers $C_k$.",
+    "parts": [
+      "(1) Design a simulation with three true groups ($K=3$) and $p=10$ to demonstrate $k$-means performance for different choices of $K$.",
+      "(2) For the penalized objective $\\frac1n\\sum_k\\sum_{x_i\\in A_k}\\|X_i - C_k\\|^2 + \\sum_{j=1}^p \\lambda\\|C^{(j)}\\|$ (with $C^{(j)} = (C_{1j},\\dots,C_{Kj})^T$), prove the stated identity $\\sum_k\\sum_{x_i\\in A_k}\\|X_i-C_k\\|^2 + \\sum_j\\lambda\\|C^{(j)}\\| = \\sum_j(\\frac1n(X^{(j)} - LC^{(j)})^T(X^{(j)} - LC^{(j)}) + \\lambda\\|C^{(j)}\\|)$, with cluster-assignment matrix $L$ ($L_{ik} = \\mathbb{1}(X_i\\in A_k)$).",
+      "(3) From (2), give pseudocode and analyze the simulated data from (1) (pre-specify $\\lambda$).",
+      "(4) For the mixture model $f(x) = \\sum_k \\pi_k f_k(x;\\theta_k)$ ($f_k$ multivariate normal), with the penalized log-likelihood $\\sum_i \\log(\\sum_k \\pi_k f_k(X_i,\\theta_k)) - n\\lambda\\sum_j \\frac{|C^{(j)}|}{|\\tilde C^{(j)}|}$ (treating assignments $L_{ik}$ as latent), develop an EM algorithm with detailed E- and M-steps; analyze the data from (1).",
+      "(5) Compare the three methods and comment."
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/qe_2025_applied.pdf",
+      "page": 3
+    },
+    "verified": false,
+    "notes": "2025 unified applied exam, Problem 2. Prof. Ying Hung. Self-contained simulation. Transcribed from extracted text."
+  },
+  {
+    "id": "2025-summer-applied-q3",
+    "exam": {
+      "year": 2025,
+      "term": "summer",
+      "part": "applied"
+    },
+    "number": 3,
+    "topics": [
+      "Gaussian process",
+      "computer experiments",
+      "variable importance",
+      "prediction intervals",
+      "optimization",
+      "diamond cutting"
+    ],
+    "difficulty": "hard",
+    "prompt": "Problem 3 (Diamond-cutting force GP modeling). The DIAMOND dataset has cutting tool type (chamfer/hone; chamfer adds angle & length), plus edge radius, rake angle, nose radius, cutting speed, feed, depth of cut, and the response cutting force.",
+    "parts": [
+      "(1) Ignoring 'angle' and 'length', fit a Gaussian process model on the remaining seven variables; describe assumptions, the fitted model, and estimated parameters; compute the mean squared prediction error.",
+      "(2) Which of the seven variables has the greatest effect on cutting force? Give detailed reasoning.",
+      "(3) Plot the predicted cutting force with pointwise 95% prediction intervals as a function of the variable identified in (2).",
+      "(4) Using the model in (1), find the optimal setting minimizing cutting force; report the predicted force and its uncertainty.",
+      "(5) To incorporate both 'angle' and 'length' (nine variables total), propose a reasonable model and state its assumptions (need not be a GP; no analysis required)."
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/qe_2025_applied.pdf",
+      "page": 4
+    },
+    "verified": false,
+    "notes": "2025 unified applied exam, Problem 3. Prof. Ying Hung. Transcribed from extracted text.",
+    "data": [
+      "DIAMOND dataset — not distributed with the SharePoint PDF download"
+    ]
+  }
+]
