@@ -20,7 +20,7 @@ Two tracks are recorded:
 | Snapshot | oracle | claude-skills | claude-noskills |
 |---|---|---|---|
 | **PR #570** `taxonomy-tree-merge` | **1.0000** | **1.0000** | **0.0000** † |
-| **PR #372** `trend-anomaly-causal-inference` | **1.0000** | **0.9500** | _running (unbounded timeout)_ |
+| **PR #372** `trend-anomaly-causal-inference` | **1.0000** | **0.9500** | **1.0000** ‡ |
 
 † taxonomy without-skills ran under the task's default 500s agent budget and timed out
 mid-clustering (see note below). No-skills runs are being re-run with an effectively
@@ -29,6 +29,10 @@ mid-solve; results will be updated.
 
 The trend **with-skills** agent (claude-opus-4-8) scored **0.9500** in ~12 min / 37 steps
 running the full clean → Prophet → feature-engineering → DiD pipeline.
+
+‡ trend without-skills scored **1.0000** (30 steps, ~11 min) under the unbounded budget —
+4.8 wrote the whole pipeline itself and passed all 19 checks, edging out its own with-skills
+run. Strong evidence the model can do this task from scratch when not time-limited.
 
 Harbor: `harbor run -p tasks/<task> -a claude-code -m claude-opus-4-8` (docker sandbox).
 `claude-skills` deploys the fork's skills via `--skills`; `claude-noskills` uses a
