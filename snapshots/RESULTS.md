@@ -19,8 +19,15 @@ Two tracks are recorded:
 
 | Snapshot | oracle | claude-skills | claude-noskills |
 |---|---|---|---|
-| **PR #570** `taxonomy-tree-merge` | _pending_ | _pending_ | _pending_ |
+| **PR #570** `taxonomy-tree-merge` | **1.0000** | **1.0000** | _running_ |
 | **PR #372** `trend-anomaly-causal-inference` | _pending_ | _pending_ | _pending_ |
+
+Harbor: `harbor run -p tasks/<task> -a claude-code -m claude-opus-4-8` (docker sandbox).
+`claude-skills` deploys the fork's skills via `--skills`; `claude-noskills` uses a
+skills-stripped image variant. Host-fit note: taxonomy `task.toml` was capped from
+8 CPU / 16 GB to 4 CPU / 12 GB to match this 4-CPU / 15 GB host (no logic/test change).
+The egress proxy's MITM CA was baked into a local `python:3.11-slim` base so in-container
+pip/npm/HTTPS work; this is an environment fix, not a task change.
 
 ## Track A — direct runs (cross-check)
 
