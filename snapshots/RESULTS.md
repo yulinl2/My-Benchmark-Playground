@@ -39,6 +39,46 @@ running the full clean → Prophet → feature-engineering → DiD pipeline.
 4.8 wrote the whole pipeline itself and passed all 19 checks, edging out its own with-skills
 run. Strong evidence the model can do this task from scratch when not time-limited.
 
+### Per-cell run metadata (Track B, claude-opus-4-8)
+
+| Cell | reward | wall time | steps | tools (Bash/Read/Write+Edit) | out tok | cost | key libs |
+|---|---|---|---|---|---|---|---|
+| trend with-skills | 0.9500 | 11m49s | 37 | 22 / 8 / 5 | 30.8k | $2.49 | prophet, sklearn, statsmodels (used the skill) |
+| trend without-skills | 1.0000 | 11m15s | 30 | 19 / 0 / 5 | 40.4k | $2.11 | statsmodels DiD (own pipeline, no prophet) |
+| taxonomy without-skills | 0.7846 | 39m34s | 89 | 56 / 7 / 24 | 87.1k | $6.59 | sentence-transformers, KMeans, sklearn, networkx |
+
+(Cost is mostly cached input — e.g. taxonomy read 7.22M cached of 7.35M prompt tokens. Oracle
+and the two with-skills/with-skills cells that ran before a mid-task sandbox reset are recorded
+at reward only; the three cells above were re-run after the reset and carry full `job_result.json`.)
+
+### Failure analysis (the non-1.0 cells)
+
+**trend with-skills = 0.9500** — 18/19 tests pass; the *only* miss is `test_cross_file_consistency`
+(a **P2**, the lowest-weight bucket: 3 P2 tests, losing one = 0.15→0.10 → 0.95). The skill's
+Prophet pipeline emitted a cleaned *extensive* purchase file missing **228 respondent IDs** that
+exist in the cleaned survey file (`Missing: 228, Extra: 0`). The from-scratch run kept the two
+files ID-consistent, so without-skills actually scored **1.0** here — the bundled skill is not
+strictly better on every check.
+
+**taxonomy without-skills = 0.7846** — 17/22 pass; the 5 failures are **3 P0 + 2 P1**
+(`(10/13)·0.5 + (5/7)·0.35 + (2/2)·0.15 = 0.7846`). They are all *output-contract* details, not
+clustering quality:
+- `test_prefix_removal` — kept full ancestor-prefixed leaf names (27,875 violations); spec wants the
+  parent prefix stripped at each level.
+- `test_hierarchy_coverage` — the 15 invented `unified_level_1` labels (`Apparel | Accessories`, …)
+  have 0% path coverage because they don't prefix their child paths.
+- `test_depth_filtering` — some branches exceed the max depth of 5.
+- `test_full_mapping_format`, `test_path_representativeness` — related format/representativeness.
+The clustering, naming constraints, lemmatization, dedup, sibling-distinctiveness, balance and
+no-empty-cluster checks all pass — i.e. 4.8 builds a sound taxonomy from scratch but diverges on the
+precise path-encoding convention that the **skill** spells out (with-skills = 1.0).
+
+### Reference / harness notes
+The repo ships no custom agent — harbor's built-in `claude-code` adapter drives the model from each
+task's `instruction.md`. The **oracle** cell runs the task's `solution/solve.sh` (a deterministic
+reference pipeline) → 1.0. `claude-skills` mounts `environment/skills`; `claude-noskills` uses a
+skills-stripped image. All taken verbatim from the contributor PR branches.
+
 Harbor: `harbor run -p tasks/<task> -a claude-code -m claude-opus-4-8` (docker sandbox).
 `claude-skills` deploys the fork's skills via `--skills`; `claude-noskills` uses a
 skills-stripped image variant. Host-fit note: taxonomy `task.toml` was capped from
