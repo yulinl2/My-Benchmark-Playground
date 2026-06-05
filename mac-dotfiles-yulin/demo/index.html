@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>mac-dotfiles-yulin ✨ interactive demo</title>
+<style>
+  /* ----- Theme palettes (pulled from the real lsd/terminal configs) ----- */
+  :root,
+  [data-theme="tokyonight"] {
+    --bg:        #1a1b26;
+    --bg-soft:   #16161e;
+    --panel:     #1f2335;
+    --fg:        #c0caf5;
+    --comment:   #565f89;
+    --subtle:    #414868;
+    --blue:      #7aa2f7;
+    --cyan:      #7dcfff;
+    --purple:    #bb9af7;
+    --pink:      #f7768e;
+    --green:     #9ece6a;
+    --yellow:    #e0af68;
+    --orange:    #ff9e64;
+    --name: "Tokyo Night";
+  }
+  [data-theme="catppuccin"] {
+    --bg:        #1e1e2e;
+    --bg-soft:   #181825;
+    --panel:     #313244;
+    --fg:        #cdd6f4;
+    --comment:   #6c7086;
+    --subtle:    #45475a;
+    --blue:      #89b4fa;
+    --cyan:      #94e2d5;
+    --purple:    #cba6f7;
+    --pink:      #f38ba8;
+    --green:     #a6e3a1;
+    --yellow:    #f9e2af;
+    --orange:    #fab387;
+    --name: "Catppuccin Mocha";
+  }
+
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    background:
+      radial-gradient(1200px 600px at 80% -10%, color-mix(in srgb, var(--purple) 14%, transparent), transparent),
+      radial-gradient(900px 500px at -10% 110%, color-mix(in srgb, var(--blue) 14%, transparent), transparent),
+      var(--bg);
+    color: var(--fg);
+    font-family: "SFMono-Regular", "JetBrains Mono", "Fira Code", Menlo, Consolas, monospace;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100%;
+    padding: 28px 16px 48px;
+    transition: background .4s ease, color .4s ease;
+  }
+
+  header { text-align: center; margin-bottom: 18px; }
+  h1 {
+    margin: 0;
+    font-size: clamp(20px, 4vw, 30px);
+    letter-spacing: .5px;
+  }
+  h1 .wave { display: inline-block; animation: wave 2.4s ease-in-out infinite; transform-origin: 70% 70%; }
+  @keyframes wave { 0%,60%,100%{transform:rotate(0)} 10%{transform:rotate(16deg)} 20%{transform:rotate(-8deg)} 30%{transform:rotate(16deg)} 40%{transform:rotate(-4deg)} }
+  .sub { color: var(--comment); font-size: 13px; margin-top: 6px; }
+  .sub b { color: var(--purple); }
+
+  /* ----- Theme switch ----- */
+  .themebar { display:flex; gap:10px; align-items:center; margin: 14px 0 22px; flex-wrap: wrap; justify-content:center; }
+  .chip {
+    border: 1px solid var(--subtle);
+    background: var(--panel);
+    color: var(--fg);
+    border-radius: 999px;
+    padding: 7px 14px;
+    font: inherit; font-size: 12.5px;
+    cursor: pointer;
+    transition: transform .12s ease, border-color .2s ease, background .2s ease;
+  }
+  .chip:hover { transform: translateY(-2px); }
+  .chip.active { border-color: var(--purple); background: color-mix(in srgb, var(--purple) 22%, var(--panel)); color: #fff; }
+  .chip .dot { display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:7px; vertical-align: middle; }
+
+  /* ----- Terminal window ----- */
+  .term {
+    width: min(820px, 100%);
+    background: var(--bg-soft);
+    border: 1px solid var(--subtle);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0,0,0,.45);
+    transition: background .4s ease, border-color .4s ease;
+  }
+  .titlebar {
+    display:flex; align-items:center; gap:8px;
+    padding: 10px 14px;
+    background: var(--panel);
+    border-bottom: 1px solid var(--subtle);
+  }
+  .traffic { width:12px; height:12px; border-radius:50%; }
+  .t-red{background:#ff5f57} .t-yellow{background:#febc2e} .t-green{background:#28c840}
+  .titlebar .who { margin-left: 8px; color: var(--comment); font-size: 12px; }
+  .titlebar .badge { margin-left:auto; color: var(--comment); font-size: 11px; }
+
+  .screen {
+    padding: 16px 16px 14px;
+    height: 420px;
+    overflow-y: auto;
+    font-size: 13.5px;
+    line-height: 1.55;
+  }
+  .screen::-webkit-scrollbar { width: 10px; }
+  .screen::-webkit-scrollbar-thumb { background: var(--subtle); border-radius: 10px; }
+
+  .line { white-space: pre-wrap; word-break: break-word; }
+  .muted { color: var(--comment); }
+  .blue{color:var(--blue)} .cyan{color:var(--cyan)} .purple{color:var(--purple)}
+  .pink{color:var(--pink)} .green{color:var(--green)} .yellow{color:var(--yellow)} .orange{color:var(--orange)}
+  .bold{font-weight:700}
+
+  /* p10k-ish prompt */
+  .prompt-row { display:flex; flex-wrap: wrap; align-items:center; gap:0; margin-top: 6px; }
+  .seg { padding: 0 9px; height: 20px; display:inline-flex; align-items:center; font-size:12px; color:#1a1b26; font-weight:600; }
+  .seg.os { background: var(--fg); }
+  .seg.dir { background: var(--blue); }
+  .seg.git { background: var(--green); }
+  .arrow { width:0; height:0; }
+  .prompt2 { color: var(--green); margin-right: 8px; }
+
+  .inputrow { display:flex; align-items:center; gap:8px; margin-top: 2px; }
+  .inputrow .p2 { color: var(--green); font-weight: 700; }
+  #cmd {
+    flex:1; background: transparent; border: none; outline: none;
+    color: var(--fg); font: inherit; font-size: 13.5px; caret-color: var(--purple);
+  }
+
+  .hint { margin-top: 14px; color: var(--comment); font-size: 12px; text-align:center; max-width: 820px; }
+  .hint code { color: var(--cyan); background: color-mix(in srgb, var(--cyan) 12%, transparent); padding: 1px 6px; border-radius: 5px; cursor: pointer; }
+  .hint code:hover { background: color-mix(in srgb, var(--cyan) 24%, transparent); }
+
+  footer { margin-top: 26px; color: var(--comment); font-size: 11.5px; text-align:center; }
+  footer b { color: var(--pink); }
+  .heart { color: var(--pink); animation: beat 1.3s ease-in-out infinite; display:inline-block; }
+  @keyframes beat { 0%,100%{transform:scale(1)} 15%{transform:scale(1.25)} 30%{transform:scale(1)} }
+</style>
+</head>
+<body data-theme="tokyonight">
+  <header>
+    <h1><span class="wave">👋</span> mac-dotfiles-yulin</h1>
+    <div class="sub">a tiny playground for the <b>zsh + p10k + lsd</b> rice your friend dropped you</div>
+  </header>
+
+  <div class="themebar">
+    <span class="muted" style="font-size:12px;">theme:</span>
+    <button class="chip active" data-set="tokyonight"><span class="dot" style="background:#7aa2f7"></span>Tokyo Night</button>
+    <button class="chip" data-set="catppuccin"><span class="dot" style="background:#cba6f7"></span>Catppuccin Mocha</button>
+  </div>
+
+  <div class="term">
+    <div class="titlebar">
+      <span class="traffic t-red"></span>
+      <span class="traffic t-yellow"></span>
+      <span class="traffic t-green"></span>
+      <span class="who">yulin@macbook — -zsh</span>
+      <span class="badge" id="themeBadge">Tokyo Night</span>
+    </div>
+    <div class="screen" id="screen"></div>
+  </div>
+
+  <div class="hint">
+    try typing — or click one:
+    <code>help</code> <code>ls</code> <code>lt</code> <code>weather</code> <code>genpw</code> <code>battery</code> <code>..</code> <code>update</code> <code>theme</code> <code>clear</code>
+  </div>
+
+  <footer>
+    built with <span class="heart">♥</span> as an interactive tour of <b>.zshrc · .aliases · theme-lsd · theme-terminal</b>
+  </footer>
+
+<script>
+// ---------- helpers ----------
+const screen = document.getElementById('screen');
+const body = document.body;
+const themeBadge = document.getElementById('themeBadge');
+const THEME_NAMES = { tokyonight: "Tokyo Night", catppuccin: "Catppuccin Mocha" };
+
+function el(html) { const d = document.createElement('div'); d.className='line'; d.innerHTML = html; return d; }
+function print(html='') { screen.appendChild(el(html)); screen.scrollTop = screen.scrollHeight; }
+function esc(s){ return s.replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
+
+// p10k-style two-line prompt, then an editable input on the 2nd line
+function newPrompt() {
+  const row = document.createElement('div');
+  row.className = 'line prompt-row';
+  row.innerHTML = `
+    <span class="seg os"> ⌥ </span>
+    <span class="seg dir"> ~/Developer/mac-dotfiles </span>
+    <span class="seg git">  main </span>`;
+  screen.appendChild(row);
+
+  const irow = document.createElement('div');
+  irow.className = 'line inputrow';
+  irow.innerHTML = `<span class="p2">❯</span>`;
+  const input = document.createElement('input');
+  input.id = 'cmd';
+  input.autocomplete = 'off';
+  input.spellcheck = false;
+  irow.appendChild(input);
+  screen.appendChild(irow);
+  input.focus();
+  screen.scrollTop = screen.scrollHeight;
+
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      const val = input.value;
+      input.removeAttribute('id');
+      input.disabled = true;
+      input.style.color = 'var(--fg)';
+      run(val.trim());
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      if (history.length) { histIdx = Math.max(0, histIdx-1); input.value = history[histIdx] || ''; }
+    } else if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      if (history.length) { histIdx = Math.min(history.length, histIdx+1); input.value = history[histIdx] || ''; }
+    }
+  });
+}
+
+let history = [], histIdx = 0;
+
+// ---------- fake filesystem for ls / lt ----------
+const FILES = [
+  { n:'.zshrc',        t:'file', i:'', c:'green',  s:'1.4K' },
+  { n:'.p10k.zsh',     t:'file', i:'', c:'green',  s:' 88K' },
+  { n:'.aliases',      t:'file', i:'', c:'green',  s:'2.1K' },
+  { n:'antigen.zsh',   t:'file', i:'', c:'yellow', s:' 60K' },
+  { n:'theme-lsd',     t:'dir',  i:'', c:'blue',   s:'   -' },
+  { n:'theme-terminal',t:'dir',  i:'', c:'blue',   s:'   -' },
+  { n:'demo',          t:'dir',  i:'', c:'blue',   s:'   -' },
+];
+
+function lsLong() {
+  print(`<span class="muted">drwxr-xr-x  yulin  staff</span>`);
+  // dirs first (matches config.yaml: dir-grouping: first)
+  const ordered = [...FILES].sort((a,b)=> (a.t===b.t?0:a.t==='dir'?-1:1));
+  for (const f of ordered) {
+    const perm = f.t==='dir' ? 'drwxr-xr-x' : '.rw-r--r--';
+    print(
+      `<span class="muted">${perm}</span>  ` +
+      `<span class="blue">yulin</span> <span class="cyan">staff</span>  ` +
+      `<span class="muted">${f.s}</span>  ` +
+      `<span class="${f.c}">${f.i} ${esc(f.n)}</span>`
+    );
+  }
+}
+function lsTree() {
+  print(`<span class="blue"> .</span>`);
+  const ordered = [...FILES].sort((a,b)=> (a.t===b.t?0:a.t==='dir'?-1:1));
+  ordered.forEach((f,idx) => {
+    const last = idx === ordered.length-1;
+    print(`<span class="muted">${last?'└──':'├──'}</span> <span class="${f.c}">${f.i} ${esc(f.n)}</span>`);
+  });
+}
+
+// ---------- commands (mirroring the real .aliases) ----------
+const ASCII_WEATHER =
+`   \\  /       <span class="yellow">Partly cloudy</span>
+ _ /\"\".-.     <span class="fg">+18°C</span>, Boston ☕
+   \\_(   ).   ↗ 11 km/h
+   /(___(__)  <span class="muted">wttr.in</span>`;
+
+function genpw(){
+  const chars='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
+  let s=''; const a=new Uint8Array(32); crypto.getRandomValues(a);
+  for(const x of a) s+=chars[x%chars.length];
+  return s.slice(0,32)+'=';
+}
+
+const COMMANDS = {
+  help(){
+    print(`<span class="purple bold">aliases on tour</span> <span class="muted">(from .aliases — try them!)</span>`);
+    const rows = [
+      ['ls / l / la','lsd listing with icons + colors'],
+      ['lt','tree view (lsd --tree)'],
+      ['.. / ... / ....','hop up 1 / 2 / 3 directories'],
+      ['weather','curl wttr.in forecast ☀️'],
+      ['genpw','openssl secure random password'],
+      ['battery','current battery %'],
+      ['update','brew update && upgrade && cleanup'],
+      ['path','print $PATH one per line'],
+      ['reload','exec a fresh login shell'],
+      ['theme','toggle Tokyo Night ⇄ Catppuccin'],
+      ['neofetch','show the setup at a glance'],
+      ['clear','wipe the screen'],
+    ];
+    for(const [a,d] of rows) print(`  <span class="cyan">${a.padEnd(16)}</span> <span class="muted">${d}</span>`);
+  },
+  ls: lsLong, l: lsLong, la: lsLong, lsd: lsLong,
+  lt: lsTree,
+  weather(){ ASCII_WEATHER.split('\n').forEach(l=>print(l)); },
+  genpw(){ print(`<span class="green">${genpw()}</span>`); },
+  battery(){ const p=84+Math.floor(Math.random()*12); print(`<span class="green">${p}%</span> <span class="muted">(discharging) -3:1${Math.floor(Math.random()*9)} remaining</span>`); },
+  update(){
+    print(`<span class="muted">==></span> <span class="blue">Updating Homebrew...</span>`);
+    print(`<span class="muted">==></span> <span class="blue">Upgrading 3 outdated packages...</span>`);
+    print(`     <span class="cyan">lsd 1.1.2 → 1.1.5</span>`);
+    print(`     <span class="cyan">fzf 0.55 → 0.56</span>`);
+    print(`     <span class="cyan">powerlevel10k 1.20 → 1.21</span>`);
+    print(`<span class="muted">==></span> <span class="green">Cleaning up... ✨ all fresh</span>`);
+  },
+  path(){ ['/opt/homebrew/bin','/usr/local/bin','/usr/bin','/bin','~/.cargo/bin'].forEach(p=>print(`<span class="fg">${p}</span>`)); },
+  reload(){ print(`<span class="muted">↻ exec zsh -l — reloading dotfiles...</span>`); },
+  neofetch(){
+    const t = THEME_NAMES[body.dataset.theme];
+    const art = [
+      `<span class="purple">       .--.     </span> <span class="bold">yulin</span>@<span class="bold">macbook</span>`,
+      `<span class="purple">      |o_o |    </span> <span class="muted">─────────────</span>`,
+      `<span class="purple">      |:_/ |    </span> <span class="cyan">OS</span>     macOS 15 (Sonoma)`,
+      `<span class="purple">     //   \\ \\   </span> <span class="cyan">Shell</span>  zsh + antigen`,
+      `<span class="purple">    (|     | )  </span> <span class="cyan">Prompt</span> powerlevel10k`,
+      `<span class="purple">   /'\\_   _/\`\\  </span> <span class="cyan">ls</span>     lsd (fancy icons)`,
+      `<span class="purple">   \\___)=(___/  </span> <span class="cyan">Theme</span>  ${t}`,
+    ];
+    art.forEach(l=>print(l));
+  },
+  theme(){
+    const next = body.dataset.theme === 'tokyonight' ? 'catppuccin' : 'tokyonight';
+    setTheme(next);
+    print(`<span class="muted">theme ⇒</span> <span class="purple">${THEME_NAMES[next]}</span>`);
+  },
+  clear(){ screen.innerHTML=''; },
+};
+// navigation aliases
+['..','...','....','.....'].forEach((a,i)=>{
+  COMMANDS[a] = () => print(`<span class="muted">cd ${'../'.repeat(i+1)} → moved up ${i+1} ${i? 'levels':'level'}</span>`);
+});
+
+function run(raw) {
+  if (raw === '') { newPrompt(); return; }
+  history.push(raw); histIdx = history.length;
+  const cmd = raw.split(/\s+/)[0];
+  if (COMMANDS[cmd]) {
+    try { COMMANDS[cmd](); } catch(e){ print(`<span class="pink">error: ${esc(String(e))}</span>`); }
+  } else {
+    print(`<span class="pink">zsh: command not found: ${esc(cmd)}</span> <span class="muted">— type</span> <span class="cyan">help</span>`);
+  }
+  newPrompt();
+}
+
+// ---------- theme switching ----------
+function setTheme(name) {
+  body.dataset.theme = name;
+  themeBadge.textContent = THEME_NAMES[name];
+  document.querySelectorAll('.chip').forEach(c => c.classList.toggle('active', c.dataset.set === name));
+}
+document.querySelectorAll('.chip').forEach(c =>
+  c.addEventListener('click', () => setTheme(c.dataset.set))
+);
+
+// clickable hint chips
+document.querySelectorAll('.hint code').forEach(code =>
+  code.addEventListener('click', () => {
+    const inp = document.getElementById('cmd');
+    if (!inp) return;
+    inp.value = code.textContent;
+    inp.focus();
+  })
+);
+
+// keep focus in the terminal
+screen.addEventListener('click', () => { const i=document.getElementById('cmd'); if(i) i.focus(); });
+
+// ---------- boot ----------
+print(`<span class="muted"># Last login: just now on ttys001</span>`);
+print(`<span class="purple bold">welcome to the mac-dotfiles-yulin demo</span> ✨`);
+print(`<span class="muted">type</span> <span class="cyan">help</span> <span class="muted">to see what the aliases do, or click a chip below.</span>`);
+print('');
+newPrompt();
+</script>
+</body>
+</html>
