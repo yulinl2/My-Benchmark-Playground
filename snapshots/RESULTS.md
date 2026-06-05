@@ -7,9 +7,9 @@ the 4.8 column. Task definitions, data, skills, and verifiers are taken verbatim
 
 Two tracks are recorded:
 
-- **Track B — official `bench` harness** (`uv run bench eval create`, docker sandbox,
-  `claude-agent-acp -m claude-opus-4-8`): the model drives the task autonomously end-to-end,
-  exactly as SkillsBench evaluates. This is the authoritative number.
+- **Track B — official `harbor` harness** (`harbor run -a claude-code -m claude-opus-4-8`,
+  docker sandbox): the model drives the task autonomously end-to-end, exactly as SkillsBench
+  evaluates. This is the authoritative number.
 - **Track A — direct runs on this machine** (kept as a cross-check): with-skills = the
   contributors' own bundled pipeline driven in place; without-skills = Opus 4.8 Max's own
   from-scratch solution (`solve_noskills_opus48.py`). Graded by each task's own
@@ -19,13 +19,18 @@ Two tracks are recorded:
 
 | Snapshot | oracle | claude-skills | claude-noskills |
 |---|---|---|---|
-| **PR #570** `taxonomy-tree-merge` | **1.0000** | **1.0000** | **0.0000** † |
+| **PR #570** `taxonomy-tree-merge` | **1.0000** | **1.0000** | **0.7846** † (17/22) |
 | **PR #372** `trend-anomaly-causal-inference` | **1.0000** | **0.9500** | **1.0000** ‡ |
 
-† taxonomy without-skills ran under the task's default 500s agent budget and timed out
-mid-clustering (see note below). No-skills runs are being re-run with an effectively
+All agent cells use `claude-code -m claude-opus-4-8`. No-skills cells use an effectively
 unbounded agent timeout (`--agent-timeout-multiplier 500`) so the model isn't killed
-mid-solve; results will be updated.
+mid-solve.
+
+† taxonomy without-skills: under the task's **default 500s** budget the agent was still
+building embeddings + clustering 10,939 paths when it was killed → never wrote the CSVs →
+**0.0**. With the **unbounded** budget it finished (89 steps) and scored **0.7846 (17/22)** —
+it gets the structure/format right but misses some of the harder clustering-quality
+constraints. (Contributor-reported without-skills for this task on older models: 62%.)
 
 The trend **with-skills** agent (claude-opus-4-8) scored **0.9500** in ~12 min / 37 steps
 running the full clean → Prophet → feature-engineering → DiD pipeline.
@@ -67,5 +72,4 @@ Reward = `P0_frac*0.50 + P1_frac*0.35 + P2_frac*0.15` (each task's own formula).
   - `output_with_skills/`, `output_without_skills/` — graded deliverables (large CSVs gitignored)
 - `grade_taxonomy.py`, `grade_trend.py` — invoke each task's own verifier + weighting
 - Large/re-creatable artifacts (raw 76MB data, 70MB filtered CSVs, venvs) are gitignored.
-
-† **taxonomy claude-noskills = 0.0**: the agent (no skills) chose to build the embedding+clustering pipeline itself; it was still mid-clustering 10,939 paths when the 500s agent budget expired, so it never wrote the output CSVs (all verifier tests fail → 0). A clear demonstration of skill value under the task's time budget — with skills it reused the pipeline and scored 1.0. Trajectory saved in `harbor_without_skills/`.
+- `harbor_oracle/`, `harbor_with_skills/`, `harbor_without_skills/` — Track B reward + trajectory per cell.
