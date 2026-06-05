@@ -1,0 +1,61 @@
+# Tokyo Night theme for lsd
+# Palette ref: https://github.com/folke/tokyonight.nvim
+#   bg:        #1a1b26   (terminal background)
+#   fg:        #c0caf5   (terminal text)
+#   comment:   #565f89   (muted)
+#   subtle:    #414868
+#   blue:      #7aa2f7
+#   cyan:      #7dcfff
+#   purple:    #bb9af7
+#   pink:      #f7768e
+#   green:     #9ece6a
+#   yellow:    #e0af68
+#   orange:    #ff9e64
+
+when: auto
+
+user: "#7aa2f7"      # blue
+group: "#7dcfff"     # cyan
+
+permission:
+  read: "#9ece6a"          # green
+  write: "#e0af68"         # yellow
+  exec: "#f7768e"          # pink
+  exec-sticky: "#ff9e64"   # orange
+  no-access: "#565f89"     # comment
+  octal: "#bb9af7"         # purple
+  acl: "#7dcfff"           # cyan
+  context: "#7dcfff"       # cyan
+
+date:
+  hour-old: "#7dcfff"      # cyan — freshest
+  day-old: "#7aa2f7"       # blue
+  older: "#565f89"         # comment
+
+size:
+  none: "#565f89"          # comment
+  small: "#9ece6a"         # green
+  medium: "#e0af68"        # yellow
+  large: "#f7768e"         # pink
+
+inode:
+  valid: "#bb9af7"         # purple
+  invalid: "#565f89"       # comment
+
+links:
+  valid: "#9ece6a"         # green
+  invalid: "#f7768e"       # pink
+
+tree-edge: "#414868"       # subtle
+
+git-status:
+  default: "#565f89"       # comment
+  unmodified: "#565f89"    # comment
+  ignored: "#414868"       # subtle
+  new-in-index: "#9ece6a"  # green
+  new-in-workdir: "#7dcfff" # cyan
+  typechange: "#e0af68"    # yellow
+  deleted: "#f7768e"       # pink
+  renamed: "#7aa2f7"       # blue
+  modified: "#e0af68"      # yellow
+  conflicted: "#f7768e"    # pink

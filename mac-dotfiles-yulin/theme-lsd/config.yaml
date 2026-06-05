@@ -1,0 +1,45 @@
+# lsd main config — layout & behaviour
+# Full schema: https://github.com/lsd-rs/lsd#config-file
+
+# Show colors / icons only on TTYs (clean output when piped to less, awk, etc.)
+classic: false
+color:
+  when: auto
+  theme: custom            # use ~/.config/lsd/colors.yaml
+
+# Icons require a Nerd Font in your terminal (you already use MesloLGS NF via p10k ✓)
+icons:
+  when: auto
+  theme: fancy             # fancy (more icons) vs unicode (basic)
+  separator: " "
+
+# Layout
+layout: grid               # grid / tree / oneline
+sorting:
+  column: name
+  reverse: false
+  dir-grouping: first      # show directories before files
+
+# Display preferences
+date: date                 # date / relative / "+%Y-%m-%d %H:%M"
+size: default              # default (short: 1.2K) / short / bytes
+permission: rwx            # rwx / octal / disable
+blocks:
+  - permission
+  - user
+  - group
+  - size
+  - date
+  - name
+
+# Misc
+ignore-globs:
+  - .DS_Store
+  - .git
+indicators: false
+recursion:
+  enabled: false
+  depth: 3
+symlink-arrow: "⇒"
+total-size: false
+hyperlink: never
