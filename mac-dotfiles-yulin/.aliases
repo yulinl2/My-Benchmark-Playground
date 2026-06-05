@@ -1,0 +1,68 @@
+#!/usr/bin/env bash
+
+#========================================
+#                 Shell
+#========================================
+
+alias sudo='sudo '                                            # trailing space → aliased through sudo
+alias reload="exec ${SHELL} -l"
+alias del="rm -rf -r"
+alias path='echo -e ${PATH//:/\\n}'
+
+#========================================
+#               Navigation
+#========================================
+
+alias o='open .'                                              # open current working folder in Finder
+# -----------------------------
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ~="cd ~"
+alias -- -="cd -"                                             # `-` alone → previous dir (toggles between two recent dirs); `--` escapes `-` from option-parsing
+# -----------------------------
+alias ic='cd "$HOME/Library/Mobile Documents/com~apple~CloudDocs"'
+alias dl="cd ~/Downloads"
+alias dt="cd ~/Desktop"
+alias dv="cd ~/Developer"
+alias dfls="cd ~/Developer/mac-dotfiles/"
+# -----------------------------
+alias aliastime='subl ~/Developer/mac-dotfiles/aliases'   # opens the aliases/ dir in Sublime (pick general/git/media/gmail)
+
+#========================================
+#                Listing
+#========================================
+
+alias ls='lsd'                                                # lsd is now your default ls
+alias l='lsd -l'                                              # long format
+alias la='lsd -lA'                                            # long + hidden
+alias lt='lsd --tree'                                         # tree (compose with --depth N)
+# -----------------------------
+alias sizes='find . -maxdepth 1 -mindepth 1 -type d -exec du -sh {} + 2>/dev/null | sort -hr'   # folder sizes (incl. hidden, largest first)
+alias lsizes='du -sh -- * 2>/dev/null | sort -rh'             # all top-level entries by size (files+dirs; non-hidden)
+
+#========================================
+#              Maintenance
+#========================================
+
+alias update='brew update && brew upgrade && brew cleanup'    # brew refresh+upgrade+cleanup
+
+#========================================
+#                 Tools
+#========================================
+
+alias mergepdf='gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=_merged.pdf'   # merge PDFs (preserves links)
+# -------- Gimmicks --------
+alias battery='pmset -g batt | grep -Eo "\d+%.*" | head -1'   # battery %
+alias weather='curl -s wttr.in'                               # weather forecast
+alias genpw='openssl rand -base64 24'                         # quick secure random password
+
+#========================================
+#                 Search
+#========================================
+
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias map="xargs -n1"                                         # apply cmd per line: find ... | map dirname
