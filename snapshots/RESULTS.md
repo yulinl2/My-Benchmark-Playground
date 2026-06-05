@@ -19,7 +19,7 @@ Two tracks are recorded:
 
 | Snapshot | oracle | claude-skills | claude-noskills |
 |---|---|---|---|
-| **PR #570** `taxonomy-tree-merge` | **1.0000** | **1.0000** | _running_ |
+| **PR #570** `taxonomy-tree-merge` | **1.0000** | **1.0000** | **0.0000** † |
 | **PR #372** `trend-anomaly-causal-inference` | _pending_ | _pending_ | _pending_ |
 
 Harbor: `harbor run -p tasks/<task> -a claude-code -m claude-opus-4-8` (docker sandbox).
@@ -55,3 +55,5 @@ Reward = `P0_frac*0.50 + P1_frac*0.35 + P2_frac*0.15` (each task's own formula).
   - `output_with_skills/`, `output_without_skills/` — graded deliverables (large CSVs gitignored)
 - `grade_taxonomy.py`, `grade_trend.py` — invoke each task's own verifier + weighting
 - Large/re-creatable artifacts (raw 76MB data, 70MB filtered CSVs, venvs) are gitignored.
+
+† **taxonomy claude-noskills = 0.0**: the agent (no skills) chose to build the embedding+clustering pipeline itself; it was still mid-clustering 10,939 paths when the 500s agent budget expired, so it never wrote the output CSVs (all verifier tests fail → 0). A clear demonstration of skill value under the task's time budget — with skills it reused the pipeline and scored 1.0. Trajectory saved in `harbor_without_skills/`.
