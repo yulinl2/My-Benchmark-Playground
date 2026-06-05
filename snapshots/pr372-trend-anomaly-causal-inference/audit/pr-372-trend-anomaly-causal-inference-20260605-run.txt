@@ -1,0 +1,124 @@
+================================================================================
+     PR #372 BENCHMARK REPORT: trend-anomaly-causal-inference
+================================================================================
+Date:    2026-06-05
+PR:      #372 — Add trend-anomaly-causal-inference task
+Branch:  refs/pull/372/head
+Author:  (contributor PR #372)
+
+Harness note: scores produced via harbor `claude-code -m claude-opus-4-8` (docker sandbox),
+not the canonical `bench eval create -a claude-agent-acp`. Codex configs NOT run (Claude-only).
+This is a Step-5 trajectory audit (audit-general C0/C1 + SkillsBench layer) over those runs.
+
+================================================================================
+                       TASK DESCRIPTION
+================================================================================
+Task:        trend-anomaly-causal-inference
+Category:    data-science
+Difficulty:  hard
+Tags:        data-cleaning, time-series, anomaly-detection, causal-inference, feature-engineering, pandas
+
+Description:
+Given dirty e-commerce transaction + demographic survey data, clean both sources, detect category-level temporal anomalies, engineer features, and run a difference-in-differences causal analysis producing surge/slump categories and a structured report.
+
+Skills Provided:
+- data_cleaning: clean/normalize the dirty purchase + survey CSVs
+- time_series_anomaly_detection: Prophet-based per-category anomaly detection
+- feature_engineering: derive user/category/period aggregate features
+- did_causal_analysis: difference-in-differences causal estimation
+
+Key Requirements:
+- Cleaned purchase + survey files (schema + value correctness)
+- Anomaly detection outputs
+- Feature-engineering aggregates
+- Causal report: metadata, surge/slump categories, DiD summary
+- Cross-file consistency between cleaned outputs
+
+================================================================================
+                       ORACLE RESULTS
+================================================================================
+Status:  PASSED
+Reward:  1.0000  (solution/solve.sh)
+Tests:   all passed
+
+================================================================================
+                       BENCHMARK RESULTS TABLE
+================================================================================
++--------------------+-----------------+--------+----------+-----------+
+| Agent              | Model           | Skills | Accuracy | Verdict   |
++--------------------+-----------------+--------+----------+-----------+
+| oracle             | -               | n/a    | 100.00%  | -         |
+| harbor:claude-code | claude-opus-4-8 | Yes    |    95.0% | CLEAN     |
+| harbor:claude-code | claude-opus-4-8 | No     |   100.0% | CLEAN     |
+| codex-acp          | (not run)       | Yes/No | --       | N/A       |
++--------------------+-----------------+--------+----------+-----------+
+
+================================================================================
+                       SKILLS IMPACT ANALYSIS
+================================================================================
+claude (harbor:claude-code):  with=95.0%  without=100.0%  Δ=-5.0pp  → NO-OP
+Trial count: 1 (single-trial; |Δ|<30pp likely within noise)
+
+SB-1 skill invocation (with-skills): VERIFIED via Read SKILL.md
+  skills_read: ['/app/skills/data_cleaning/SKILL.md', '/app/skills/did_causal_analysis/SKILL.md', '/app/skills/feature_engineering/SKILL.md', '/app/skills/time_series_anomaly_detection/SKILL.md']
+  sub_files_read (references/*.md): none
+  SB-3 top_level_only=True partial_follow_through=False
+
+Token diagnostic (in/out/cost):
+- claude with-skills: in=2373668, out=30826, cost=$2.49
+- claude without-skills: in=1306179, out=40398, cost=$2.11
+- codex with/without: (not run)
+
+================================================================================
+                       FAILURE ANALYSIS
+================================================================================
+
+[claude-skills] reward=0.95  bucket=hard  format_vs_reasoning=reasoning_loss
+  failed_tests: ['test_cross_file_consistency (P2)']
+  root cause: Only miss (18/19). Skill's Prophet pipeline wrote cleaned extensive-purchase file missing 228 respondent IDs present in cleaned survey file (assert extensive_ids==clean_ids, Missing:228 Extra:0). A cross-file data-completeness loss, not a format loss. P2 bucket -> 0.95.
+  verbatim_final: "All headers match the specification exactly. The full pipeline is complete. Here's a summary of what was delivered.\n\n## Pipeline complete — all 7 artifacts in `/app/output/`\n\nI ran the analysis end-to"
+
+================================================================================
+                       TRAJECTORY AUDIT (per job)
+================================================================================
+
+[claude-skills] verdict=CLEAN
+  anti_cheat_read=PASS  anti_cheat_write=PASS
+  agentic_floor=35 (above)
+  tool_breakdown: total=35 by_kind={'execute': 22, 'read': 8, 'edit': 5} by_title={'Bash': 22, 'Read': 8, 'Write': 5}
+  struggle=struggle (retries=0 rewrites=0 reversals=0 exploration_loop=8)
+  memorization=PASS  filesystem_pollution=PASS  self_doubt=none
+
+[claude-noskills] verdict=CLEAN
+  anti_cheat_read=PASS  anti_cheat_write=PASS
+  agentic_floor=37 (above)
+  tool_breakdown: total=37 by_kind={'execute': 19, 'other': 13, 'edit': 5} by_title={'Bash': 19, 'ToolSearch': 1, 'TaskCreate': 4, 'TaskUpdate': 8, 'Write': 4, 'Edit': 1}
+  struggle=struggle (retries=4 rewrites=0 reversals=0 exploration_loop=0)
+  memorization=PASS  filesystem_pollution=PASS  self_doubt=none
+
+================================================================================
+                       CRITICAL FINDINGS
+================================================================================
+1. Skills are effectively a NO-OP here for opus-4.8 (Δ=-5pp): the model solves from scratch
+   at 1.0, while the bundled skill pipeline drops 228 IDs and loses one P2 (0.95).
+2. SB-1 VERIFIED — all 4 SKILL.md manifests read; pipeline mirrors the prescribed steps.
+3. The single failure is a cross-file data-completeness loss, not format and not cheating.
+
+================================================================================
+                       RECOMMENDATION
+================================================================================
+Verdict: APPROVE
+
+(Audit-only re-alignment to task-review Step 5; this is a model-column fill on opus-4.8, not a
+ gate on the PR. Required changes: none from this audit. Suggested: run the canonical
+ claude-agent-acp + codex-acp configs for a like-for-like maintainer number; re-run multi-trial
+ since single-trial |Δ| is within the noise floor.)
+
+================================================================================
+                       ARTIFACTS
+================================================================================
+audit/summary.json, audit/audit-claude-skills.json, audit/audit-claude-noskills.json
+harbor_*/trajectory.json, harbor_*/verifier_report.json, harbor_*/job_result.json
+================================================================================
+                       END OF REPORT
+================================================================================

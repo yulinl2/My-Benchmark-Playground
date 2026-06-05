@@ -1,0 +1,76 @@
+{
+  "_source_adapter": "harbor/claude-code trajectory.json (kind/title derived from function_name)",
+  "config": "claude-noskills",
+  "model": "claude-opus-4-8",
+  "reward": 1.0,
+  "anti_cheat_read": {
+    "status": "PASS",
+    "evidence": "0 hits of /solution|/tests|expected*|ground_truth|answer_key across full trajectory"
+  },
+  "anti_cheat_write": {
+    "status": "PASS",
+    "evidence": "writes only to agent scratch: ['/app/src/step1_clean.py', '/app/src/step2_anomaly.py', '/app/src/step3_features.py', '/app/src/step4_causal.py']"
+  },
+  "tool_breakdown": {
+    "total": 37,
+    "by_kind": {
+      "execute": 19,
+      "other": 13,
+      "edit": 5
+    },
+    "by_title": {
+      "Bash": 19,
+      "ToolSearch": 1,
+      "TaskCreate": 4,
+      "TaskUpdate": 8,
+      "Write": 4,
+      "Edit": 1
+    }
+  },
+  "agentic_floor": {
+    "n_tool_calls": 37,
+    "verdict": "above",
+    "evidence": "37 tool calls; input/data reads present=True"
+  },
+  "struggle": {
+    "retries": 4,
+    "rewrites": 0,
+    "reversals": 0,
+    "exploration_loop": 0,
+    "verdict": "struggle"
+  },
+  "verbatim_final": "All steps complete. Here's a summary of the analysis.\n\n## Pipeline Summary\n\nA 4-step pipeline (`/app/src/step1_clean.py` \u2026 `step4_causal.py`) produced all 7 required artifacts under `/app/output/`.\n\n### Step 1 \u2014 Cleaning\n- **Survey** (5,027 respondents): normalized corrupted `Q-amazon-use-hh-size` (raw integers 31\u201360) back onto the `{1, 2, 3, 4+}` scale; mode-imputed missing `howmany` (50) and `marijuana` (150); stripped whitespace; deduped on respondent ID.\n- **Purchases**: dropped 3,909 exact duplicates, coerced date/price/quantity types (all valid, positive), removed 43,411 rows with no `Category` (unusable for category analysis), added `Total_Spend`. \u2192 **438,050 clean rows, 243 categories**.\n\n### Step 2 \u2014 Anomaly detection\nPer category, a seasonal OLS counterfactual (trend + day-of-week + month-of-year) trained on **all history before March 2020** forecasts March daily sales. The standardized actual-vs-forecast gap maps via `100\u00b7tanh(z/4)` to a bounded **deviation index [\u2212100, 100]**. Results are textbook COVID:\n- **Top surges**: PROTECTIVE_GLOVE (100), SKIN_CLEANING_WIPE, CRACKER, HERB, TOILET_PAPER, PAPER_TOWEL, DOWNLOADABLE_VIDEO_GAME, CHAIR, PUZZLES (PPE / pantry / lockdown).\n- **Top slumps**: SHOES (\u221293), APPAREL, SCREEN_PROTECTOR, phone/wireless accessories, COSMETIC_CASE.\n\n### Step 3 \u2014 Feature engineering\n**56 binary `ENG_*` indicators** from demographics: one-hot (reference-dropped) for age/income/gender/education/region/substance use/etc., independent multi-selec",
+  "memorization_signal": {
+    "status": "PASS",
+    "evidence": "agent sampled input data before writing solver"
+  },
+  "filesystem_pollution": {
+    "status": "PASS",
+    "evidence": "writes confined to /app|/root|/tmp; no root-level pip outside venv"
+  },
+  "self_doubt": {
+    "status": "none",
+    "evidence": "decisive final message"
+  },
+  "skill_invocation": {
+    "status": "N/A",
+    "skills_read": [],
+    "sub_files_read": [],
+    "discovery_method": "none",
+    "evidence": "skills_read=0 sub_files=0"
+  },
+  "skill_misuse": {
+    "partial_follow_through": false,
+    "top_level_only": false,
+    "evidence": "n/a"
+  },
+  "failure_bucket": "passed",
+  "format_vs_reasoning": "n/a",
+  "verdict": "CLEAN",
+  "tokens": {
+    "in": 1306179,
+    "out": 40398,
+    "cached": 1228136,
+    "cost_usd": 2.1093017500000006
+  }
+}

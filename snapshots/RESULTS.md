@@ -80,6 +80,38 @@ reference pipeline) → 1.0. `claude-skills` mounts `environment/skills`; `claud
 skills-stripped image. All taken verbatim from the contributor PR branches.
 
 Harbor: `harbor run -p tasks/<task> -a claude-code -m claude-opus-4-8` (docker sandbox).
+
+## Trajectory audit (SkillsBench `task-review` Step 5)
+
+Applied the repo's own maintainer review rubric (`.agents/skills/task-review/`,
+`references/audit-general.md` C0/C1 + `audit-skillsbench.md`) to the four agent trajectories.
+Artifacts per task under `audit/`: `audit-claude-skills.json`, `audit-claude-noskills.json`,
+`summary.json`, and a `pr-N-…-run.txt` report in their template format.
+
+| Task | config | reward | verdict | anti-cheat R/W | agentic floor | SB-1 invocation | struggle |
+|---|---|---|---|---|---|---|---|
+| #570 taxonomy | claude-skills | 1.00 | CLEAN | PASS/PASS | 19 (above) | **VERIFIED** (Skill tool) | confident solve |
+| #570 taxonomy | claude-noskills | 0.78 | CLEAN | PASS/PASS | 87 (above) | N/A | struggle (1 repeat, 1 reversal) |
+| #372 trend | claude-skills | 0.95 | CLEAN | PASS/PASS | 35 (above) | **VERIFIED** (4 SKILL.md) | expl-loop 8 |
+| #372 trend | claude-noskills | 1.00 | CLEAN | PASS/PASS | 37 (above) | N/A | 4 repeat cmds |
+
+- **Skill-impact delta (SB-2):** taxonomy **+21.5pp (HELPED)**; trend **−5pp (NO-OP)** — for opus-4.8 the
+  trend skill is redundant (model solves from scratch at 1.0). Single-trial; `|Δ|<30pp` is within the
+  noise floor, so multi-trial would be needed to call trend's sign.
+- **No cheating / no leaks:** anti-cheat read+write PASS on all four; writes confined to `/app|/root`
+  scratch; no `pip install` actually executed (the "pip install" strings are only inside the SKILL.md
+  docs the agent read). PR-level verdict per their aggregation: **APPROVE** for both.
+- **Caveat — SB-3 `top_level_only`:** flagged True on the taxonomy skills run only because claude-code's
+  `Skill` tool loads a skill wholesale (it doesn't separately `Read` each `references/*.md`), so the
+  sub-file signal is absent by construction; reward 1.0 confirms full uptake, not shallow.
+
+### How this audit diverges from the canonical `task-review` pipeline
+Honest gaps (the audit is faithful to the *rubric*, not to their full *harness*):
+1. **Adapter:** numbers come from harbor `claude-code`, not `bench eval create -a claude-agent-acp`.
+2. **Codex columns not run:** their benchmark is 5-config (`oracle + claude×{s,n} + codex×{s,n}`);
+   this is Claude-only. (`OPENAI_API_KEY` + `codex-acp` are available here if we want them.)
+3. **Model:** opus-4-8 (newer than their `claude-opus-4-7` default) — consistent with their "always SOTA".
+4. Single trial; C2 perturbation/LLM-judge tiers not run (verifiers are deterministic Python → P13 N/A).
 `claude-skills` deploys the fork's skills via `--skills`; `claude-noskills` uses a
 skills-stripped image variant. Host-fit note: taxonomy `task.toml` was capped from
 8 CPU / 16 GB to 4 CPU / 12 GB to match this 4-CPU / 15 GB host (no logic/test change).

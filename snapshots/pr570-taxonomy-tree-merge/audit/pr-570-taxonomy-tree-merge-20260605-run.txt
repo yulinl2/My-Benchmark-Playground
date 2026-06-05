@@ -1,0 +1,122 @@
+================================================================================
+     PR #570 BENCHMARK REPORT: taxonomy-tree-merge
+================================================================================
+Date:    2026-06-05
+PR:      #570 — Add taxonomy-tree-merge task
+Branch:  refs/pull/570/head
+Author:  (contributor PR #570)
+
+Harness note: scores produced via harbor `claude-code -m claude-opus-4-8` (docker sandbox),
+not the canonical `bench eval create -a claude-agent-acp`. Codex configs NOT run (Claude-only).
+This is a Step-5 trajectory audit (audit-general C0/C1 + SkillsBench layer) over those runs.
+
+================================================================================
+                       TASK DESCRIPTION
+================================================================================
+Task:        taxonomy-tree-merge
+Category:    ML/NLP
+Difficulty:  hard
+Tags:        taxonomy-alignment, hierarchical-clustering, embeddings, nlp, ecommerce, ontology-merging
+
+Description:
+Unify product-category taxonomies from Amazon, Facebook and Google Shopping (10,939 paths) into one merged hierarchy via embedding + hierarchical clustering, with a deduped cross-source mapping and a depth/format/coverage-constrained unified tree.
+
+Skills Provided:
+- hierarchical-taxonomy-clustering: embedding + agglomerative clustering workflow to merge multi-source category trees with prefix/depth/coverage rules
+
+Key Requirements:
+- Output files exist, correct schema
+- Hierarchy format + depth (1..5) constraints
+- Prefix removal per level
+- unified_level_1 path coverage >=70%
+- Cross-source dedup, balance, no empty clusters
+- Lemmatization + special-char removal
+
+================================================================================
+                       ORACLE RESULTS
+================================================================================
+Status:  PASSED
+Reward:  1.0000  (solution/solve.sh)
+Tests:   all passed
+
+================================================================================
+                       BENCHMARK RESULTS TABLE
+================================================================================
++--------------------+-----------------+--------+----------+-----------+
+| Agent              | Model           | Skills | Accuracy | Verdict   |
++--------------------+-----------------+--------+----------+-----------+
+| oracle             | -               | n/a    | 100.00%  | -         |
+| harbor:claude-code | claude-opus-4-8 | Yes    |   100.0% | CLEAN     |
+| harbor:claude-code | claude-opus-4-8 | No     |   78.46% | CLEAN     |
+| codex-acp          | (not run)       | Yes/No | --       | N/A       |
++--------------------+-----------------+--------+----------+-----------+
+
+================================================================================
+                       SKILLS IMPACT ANALYSIS
+================================================================================
+claude (harbor:claude-code):  with=100.0%  without=78.46%  Δ=+21.5pp  → HELPED
+Trial count: 1 (single-trial; |Δ|<30pp likely within noise)
+
+SB-1 skill invocation (with-skills): VERIFIED via Skill tool
+  skills_read: ['hierarchical-taxonomy-clustering']
+  sub_files_read (references/*.md): none
+  SB-3 top_level_only=True partial_follow_through=False
+
+Token diagnostic (in/out/cost):
+- claude with-skills: in=472047, out=6622, cost=n/a (pre-reset run)
+- claude without-skills: in=7352815, out=87134, cost=$6.59
+- codex with/without: (not run)
+
+================================================================================
+                       FAILURE ANALYSIS
+================================================================================
+
+[claude-noskills] reward=0.7846  bucket=hard  format_vs_reasoning=format_loss
+  failed_tests: ['test_full_mapping_format (P1)', 'test_path_representativeness (P1)', 'test_depth_filtering (P0)', 'test_prefix_removal (P0)', 'test_hierarchy_coverage (P0)']
+  root cause: 17/22 (3 P0 + 2 P1). Clustering/naming/lemmatization/dedup/balance all PASS; misses are output-contract encoding: kept full ancestor-prefixed leaf names (27,875 prefix violations), 15 unified_level_1 labels at 0% path coverage, some branches depth>5. Sound taxonomy, wrong path-encoding convention that the skill spells out (with-skills=1.0).
+  verbatim_final: "Done. I've unified the three platform taxonomies into a single 5-level catalog.\n\n## What was delivered\n\n`/root/output/`:\n- **`unified_taxonomy_full.csv`** — 11,085 rows (one per source path): `source,"
+
+================================================================================
+                       TRAJECTORY AUDIT (per job)
+================================================================================
+
+[claude-skills] verdict=CLEAN
+  anti_cheat_read=PASS  anti_cheat_write=PASS
+  agentic_floor=19 (above)
+  tool_breakdown: total=19 by_kind={'other': 1, 'execute': 14, 'read': 4} by_title={'Skill': 1, 'Bash': 14, 'Read': 4}
+  struggle=wrong_answer_or_confident_solve (retries=0 rewrites=0 reversals=0 exploration_loop=4)
+  memorization=PASS  filesystem_pollution=PASS  self_doubt=none
+
+[claude-noskills] verdict=CLEAN
+  anti_cheat_read=PASS  anti_cheat_write=PASS
+  agentic_floor=87 (above)
+  tool_breakdown: total=87 by_kind={'execute': 56, 'read': 7, 'edit': 24} by_title={'Bash': 56, 'Read': 7, 'Write': 5, 'Edit': 19}
+  struggle=struggle (retries=1 rewrites=0 reversals=1 exploration_loop=1)
+  memorization=PASS  filesystem_pollution=PASS  self_doubt=none
+
+================================================================================
+                       CRITICAL FINDINGS
+================================================================================
+1. Skills HELP on this task (Δ=+21.5pp): with-skills nails the path-encoding contract (1.0);
+   from-scratch builds a sound taxonomy but misses 3 P0 + 2 P1 output-contract tests (0.78).
+2. SB-1 VERIFIED — agent invoked hierarchical-taxonomy-clustering via the Skill tool.
+3. No-skills run shows struggle signals (1 repeat, 1 reversal) over 87 tool calls / 24 edits.
+
+================================================================================
+                       RECOMMENDATION
+================================================================================
+Verdict: APPROVE
+
+(Audit-only re-alignment to task-review Step 5; this is a model-column fill on opus-4.8, not a
+ gate on the PR. Required changes: none from this audit. Suggested: run the canonical
+ claude-agent-acp + codex-acp configs for a like-for-like maintainer number; re-run multi-trial
+ since single-trial |Δ| is within the noise floor.)
+
+================================================================================
+                       ARTIFACTS
+================================================================================
+audit/summary.json, audit/audit-claude-skills.json, audit/audit-claude-noskills.json
+harbor_*/trajectory.json, harbor_*/verifier_report.json, harbor_*/job_result.json
+================================================================================
+                       END OF REPORT
+================================================================================

@@ -1,0 +1,75 @@
+{
+  "_source_adapter": "harbor/claude-code trajectory.json (kind/title derived from function_name)",
+  "config": "claude-skills",
+  "model": "claude-opus-4-8",
+  "reward": 1.0,
+  "anti_cheat_read": {
+    "status": "PASS",
+    "evidence": "0 hits of /solution|/tests|expected*|ground_truth|answer_key across full trajectory"
+  },
+  "anti_cheat_write": {
+    "status": "PASS",
+    "evidence": "writes only to agent scratch: []"
+  },
+  "tool_breakdown": {
+    "total": 19,
+    "by_kind": {
+      "other": 1,
+      "execute": 14,
+      "read": 4
+    },
+    "by_title": {
+      "Skill": 1,
+      "Bash": 14,
+      "Read": 4
+    }
+  },
+  "agentic_floor": {
+    "n_tool_calls": 19,
+    "verdict": "above",
+    "evidence": "19 tool calls; input/data reads present=True"
+  },
+  "struggle": {
+    "retries": 0,
+    "rewrites": 0,
+    "reversals": 0,
+    "exploration_loop": 4,
+    "verdict": "wrong_answer_or_confident_solve"
+  },
+  "verbatim_final": "The outputs are generated with the correct schema. Let me run a validation against the user's specific rules (cluster sizes, sibling distinctness, parent/child overlap, source balance) to confirm quality.",
+  "memorization_signal": {
+    "status": "PASS",
+    "evidence": "agent sampled input data before writing solver"
+  },
+  "filesystem_pollution": {
+    "status": "PASS",
+    "evidence": "writes confined to /app|/root|/tmp; no root-level pip outside venv"
+  },
+  "self_doubt": {
+    "status": "none",
+    "evidence": "decisive final message"
+  },
+  "skill_invocation": {
+    "status": "VERIFIED",
+    "skills_read": [
+      "hierarchical-taxonomy-clustering"
+    ],
+    "sub_files_read": [],
+    "discovery_method": "Skill tool",
+    "evidence": "skills_read=1 sub_files=0"
+  },
+  "skill_misuse": {
+    "partial_follow_through": false,
+    "top_level_only": true,
+    "evidence": "read SKILL.md but no references/*.md"
+  },
+  "failure_bucket": "passed",
+  "format_vs_reasoning": "n/a",
+  "verdict": "CLEAN",
+  "tokens": {
+    "in": 472047,
+    "out": 6622,
+    "cached": 447992,
+    "cost_usd": null
+  }
+}

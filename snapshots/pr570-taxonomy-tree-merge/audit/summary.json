@@ -1,0 +1,24 @@
+{
+  "task": "taxonomy-tree-merge",
+  "pr": 570,
+  "model": "claude-opus-4-8",
+  "rewards": {
+    "claude-skills": 1.0,
+    "claude-noskills": 0.7846
+  },
+  "verdicts": {
+    "claude-skills": "CLEAN",
+    "claude-noskills": "CLEAN"
+  },
+  "skill_impact": {
+    "claude-agent-acp(harbor:claude-code)": {
+      "with_skills_reward": 1.0,
+      "no_skills_reward": 0.7846,
+      "delta_pp": 21.5,
+      "outcome": "helped",
+      "trial_count": 1,
+      "noise_caveat": "single-trial; |\u0394|<30pp likely within noise"
+    }
+  },
+  "pr_verdict": "APPROVE"
+}
