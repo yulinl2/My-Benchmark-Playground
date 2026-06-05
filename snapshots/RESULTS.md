@@ -20,7 +20,15 @@ Two tracks are recorded:
 | Snapshot | oracle | claude-skills | claude-noskills |
 |---|---|---|---|
 | **PR #570** `taxonomy-tree-merge` | **1.0000** | **1.0000** | **0.0000** † |
-| **PR #372** `trend-anomaly-causal-inference` | _pending_ | _pending_ | _pending_ |
+| **PR #372** `trend-anomaly-causal-inference` | **1.0000** | ⚠️ blocked | ⚠️ blocked |
+
+⚠️ **Trend agent cells blocked by API quota.** The env `ANTHROPIC_API_KEY` hit its usage
+limit partway through the trend **with-skills** run (`API Error: 400 ... regain access on
+2026-07-01`), so the agent was cut off mid-pipeline — the 0-reward there is a quota cutoff,
+**not** a task failure (trajectory in `harbor_with_skills_INCOMPLETE/`). The trend
+without-skills cell wasn't attempted for the same reason. The trend **oracle** completed
+before the limit (1.0000). For the trend agent numbers on 4.8, see Track A below, or re-run
+Track B with a key that has remaining quota.
 
 Harbor: `harbor run -p tasks/<task> -a claude-code -m claude-opus-4-8` (docker sandbox).
 `claude-skills` deploys the fork's skills via `--skills`; `claude-noskills` uses a
