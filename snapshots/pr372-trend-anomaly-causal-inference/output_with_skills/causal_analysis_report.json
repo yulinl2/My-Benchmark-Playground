@@ -1,0 +1,1045 @@
+{
+  "metadata": {
+    "baseline_start": "01-01-2020",
+    "baseline_end": "02-29-2020",
+    "treatment_start": "03-01-2020",
+    "treatment_end": "03-31-2020",
+    "total_features_analyzed": 64
+  },
+  "surge_categories": [
+    {
+      "category": "PROTECTIVE_GLOVE",
+      "anomaly_index": 55.646333976723724,
+      "baseline_avg_spend": 14.432727272727272,
+      "treatment_avg_spend": 22.51287356321839,
+      "n_purchasers_baseline": 44,
+      "n_purchasers_treatment": 87,
+      "baseline_purchase_rate": 0.0087527352297593,
+      "treatment_purchase_rate": 0.01730654465884225,
+      "n_at_risk": 5027,
+      "intensive_margin": [
+        {
+          "feature": "Q-demos-age_45 - 54 years",
+          "did_estimate": 11.919669467787113,
+          "method": "Univariate DiD",
+          "p_value": 0.3407297702063321
+        },
+        {
+          "feature": "Q-personal-diabetes_Yes",
+          "did_estimate": 9.822100877192991,
+          "method": "Univariate DiD",
+          "p_value": 0.49534835111914816
+        },
+        {
+          "feature": "Q-demos-state_Texas",
+          "did_estimate": 7.978627267041903,
+          "method": "Univariate DiD",
+          "p_value": 0.6766323488874059
+        }
+      ],
+      "extensive_margin": [
+        {
+          "feature": "Q-demos-state_Washington",
+          "did_estimate": 0.032901629995092614,
+          "method": "Univariate DiD",
+          "p_value": 0.024526623733026113
+        },
+        {
+          "feature": "Q-amazon-use-howmany_3",
+          "did_estimate": 0.030084544504607246,
+          "method": "Univariate DiD",
+          "p_value": 0.0043773760610519175
+        },
+        {
+          "feature": "Q-demos-state_Louisiana",
+          "did_estimate": 0.027466448257033788,
+          "method": "Univariate DiD",
+          "p_value": 0.20225272079011677
+        }
+      ]
+    },
+    {
+      "category": "FLAVORED_DRINK_CONCENTRATE",
+      "anomaly_index": 35.73156728231175,
+      "baseline_avg_spend": 14.953783783783786,
+      "treatment_avg_spend": 14.8825,
+      "n_purchasers_baseline": 37,
+      "n_purchasers_treatment": 48,
+      "baseline_purchase_rate": 0.007360254625024865,
+      "treatment_purchase_rate": 0.00954843843246469,
+      "n_at_risk": 5027,
+      "intensive_margin": [
+        {
+          "feature": "Q-demos-age_65 and older",
+          "did_estimate": 21.14937747035574,
+          "method": "Univariate DiD",
+          "p_value": 0.052096390843776284
+        },
+        {
+          "feature": "Q-demos-state_Texas",
+          "did_estimate": 16.505521739130476,
+          "method": "Univariate DiD",
+          "p_value": 0.1920856891191157
+        },
+        {
+          "feature": "Q-demos-state_New York",
+          "did_estimate": 16.41030158730158,
+          "method": "Univariate DiD",
+          "p_value": 0.15988750018771675
+        }
+      ],
+      "extensive_margin": [
+        {
+          "feature": "Q-demos-state_Georgia",
+          "did_estimate": 0.02340616727042517,
+          "method": "Univariate DiD",
+          "p_value": 0.02402944044491191
+        },
+        {
+          "feature": "Q-amazon-use-howmany_3",
+          "did_estimate": 0.015066020708653973,
+          "method": "Univariate DiD",
+          "p_value": 0.07741048485023416
+        },
+        {
+          "feature": "Q-demos-race_White or Caucasian,Black or African American",
+          "did_estimate": 0.014653378967854529,
+          "method": "Univariate DiD",
+          "p_value": 0.3836243695258865
+        }
+      ]
+    },
+    {
+      "category": "TOILET_PAPER",
+      "anomaly_index": 35.00694406529029,
+      "baseline_avg_spend": 25.999558823529412,
+      "treatment_avg_spend": 27.193719008264466,
+      "n_purchasers_baseline": 136,
+      "n_purchasers_treatment": 121,
+      "baseline_purchase_rate": 0.02705390889198329,
+      "treatment_purchase_rate": 0.024070021881838075,
+      "n_at_risk": 5027,
+      "intensive_margin": [
+        {
+          "feature": "Q-demos-state_Ohio",
+          "did_estimate": 18.09813154960986,
+          "method": "Univariate DiD",
+          "p_value": 0.06475280423073149
+        },
+        {
+          "feature": "Q-demos-state_Michigan",
+          "did_estimate": 16.807111989459802,
+          "method": "Univariate DiD",
+          "p_value": 0.12362077690984993
+        },
+        {
+          "feature": "Q-demos-age_65 and older",
+          "did_estimate": 14.972575862733814,
+          "method": "Univariate DiD",
+          "p_value": 0.11383204493799673
+        }
+      ],
+      "extensive_margin": [
+        {
+          "feature": "Q-demos-race_White or Caucasian,Asian",
+          "did_estimate": 0.06982906164623823,
+          "method": "Univariate DiD",
+          "p_value": 0.006787501419471202
+        },
+        {
+          "feature": "Q-demos-state_Arizona",
+          "did_estimate": 0.05668672898791957,
+          "method": "Univariate DiD",
+          "p_value": 0.01420666488560927
+        },
+        {
+          "feature": "Q-demos-state_Minnesota",
+          "did_estimate": 0.02406683256309988,
+          "method": "Univariate DiD",
+          "p_value": 0.29301384755104193
+        }
+      ]
+    },
+    {
+      "category": "SKIN_CLEANING_AGENT",
+      "anomaly_index": 34.86967860243176,
+      "baseline_avg_spend": 15.347642585551332,
+      "treatment_avg_spend": 14.682829268292682,
+      "n_purchasers_baseline": 263,
+      "n_purchasers_treatment": 205,
+      "baseline_purchase_rate": 0.05231748557787945,
+      "treatment_purchase_rate": 0.04077978913865128,
+      "n_at_risk": 5027,
+      "intensive_margin": [
+        {
+          "feature": "Q-demos-state_South Carolina",
+          "did_estimate": 26.64898024445251,
+          "method": "Univariate DiD",
+          "p_value": 0.019333450983563157
+        },
+        {
+          "feature": "Q-demos-race_White or Caucasian,American Indian/Native American or Alaska Native",
+          "did_estimate": 17.926520690530623,
+          "method": "Univariate DiD",
+          "p_value": 0.11619936306620682
+        },
+        {
+          "feature": "Q-demos-age_65 and older",
+          "did_estimate": 11.185786456463884,
+          "method": "Univariate DiD",
+          "p_value": 0.15313595904571065
+        }
+      ],
+      "extensive_margin": [
+        {
+          "feature": "Q-demos-race_White or Caucasian,Black or African American",
+          "did_estimate": 0.07914905039930215,
+          "method": "Univariate DiD",
+          "p_value": 0.04075535484121235
+        },
+        {
+          "feature": "Q-demos-state_Oklahoma",
+          "did_estimate": 0.062281054962754295,
+          "method": "Univariate DiD",
+          "p_value": 0.1074175416528669
+        },
+        {
+          "feature": "Q-demos-state_Minnesota",
+          "did_estimate": 0.04330106020367573,
+          "method": "Univariate DiD",
+          "p_value": 0.15620181257023502
+        }
+      ]
+    },
+    {
+      "category": "DISHWASHER_DETERGENT",
+      "anomaly_index": 32.86637869329089,
+      "baseline_avg_spend": 14.48159090909091,
+      "treatment_avg_spend": 16.70551020408163,
+      "n_purchasers_baseline": 44,
+      "n_purchasers_treatment": 49,
+      "baseline_purchase_rate": 0.0087527352297593,
+      "treatment_purchase_rate": 0.00974736423314104,
+      "n_at_risk": 5027,
+      "intensive_margin": [
+        {
+          "feature": "Q-demos-state_Michigan",
+          "did_estimate": 8.13275582573458,
+          "method": "Univariate DiD",
+          "p_value": 0.2934552577643064
+        },
+        {
+          "feature": "Q-demos-income_$150,000 or more",
+          "did_estimate": 7.051015684173582,
+          "method": "Univariate DiD",
+          "p_value": 0.07142908327997256
+        },
+        {
+          "feature": "Q-demos-education_Graduate or professional degree (MA, MS, MBA, PhD, JD, MD, DDS, etc)",
+          "did_estimate": 6.554876893939402,
+          "method": "Univariate DiD",
+          "p_value": 0.051336965254309606
+        }
+      ],
+      "extensive_margin": [
+        {
+          "feature": "Q-demos-age_65 and older",
+          "did_estimate": 0.03891493193495428,
+          "method": "Univariate DiD",
+          "p_value": 0.00042513439716147344
+        },
+        {
+          "feature": "Q-demos-income_Prefer not to say",
+          "did_estimate": 0.025709851279380042,
+          "method": "Univariate DiD",
+          "p_value": 0.10043372846417858
+        },
+        {
+          "feature": "Q-personal-wheelchair_Yes",
+          "did_estimate": 0.019799520538586766,
+          "method": "Univariate DiD",
+          "p_value": 0.15170045248393146
+        }
+      ]
+    },
+    {
+      "category": "HERB",
+      "anomaly_index": 31.997302122855448,
+      "baseline_avg_spend": 9.70377049180328,
+      "treatment_avg_spend": 11.587352941176471,
+      "n_purchasers_baseline": 61,
+      "n_purchasers_treatment": 68,
+      "baseline_purchase_rate": 0.012134473841257211,
+      "treatment_purchase_rate": 0.013526954445991645,
+      "n_at_risk": 5027,
+      "intensive_margin": [
+        {
+          "feature": "Q-demos-state_Massachusetts",
+          "did_estimate": 37.193168187744526,
+          "method": "Univariate DiD",
+          "p_value": 0.00016055320274221908
+        },
+        {
+          "feature": "Q-amazon-use-howmany_3",
+          "did_estimate": 17.185333333333325,
+          "method": "Univariate DiD",
+          "p_value": 0.008070345160265446
+        },
+        {
+          "feature": "Q-demos-state_Washington",
+          "did_estimate": 16.354480186480185,
+          "method": "Univariate DiD",
+          "p_value": 0.04665854895708517
+        }
+      ],
+      "extensive_margin": [
+        {
+          "feature": "Q-sexual-orientation_prefer not to say",
+          "did_estimate": 0.050919146987182126,
+          "method": "Univariate DiD",
+          "p_value": 0.0153826364715103
+        },
+        {
+          "feature": "Q-demos-state_Nevada",
+          "did_estimate": 0.017312003336535833,
+          "method": "Univariate DiD",
+          "p_value": 0.4267030152875847
+        },
+        {
+          "feature": "Q-demos-state_Oklahoma",
+          "did_estimate": 0.01545869404737935,
+          "method": "Univariate DiD",
+          "p_value": 0.4546148885480315
+        }
+      ]
+    },
+    {
+      "category": "PET_FOOD",
+      "anomaly_index": 29.339449311686607,
+      "baseline_avg_spend": 49.08862068965518,
+      "treatment_avg_spend": 38.77410994764398,
+      "n_purchasers_baseline": 435,
+      "n_purchasers_treatment": 382,
+      "baseline_purchase_rate": 0.08653272329421126,
+      "treatment_purchase_rate": 0.07598965585836483,
+      "n_at_risk": 5027,
+      "intensive_margin": [
+        {
+          "feature": "Q-demos-income_Prefer not to say",
+          "did_estimate": 48.1449328742534,
+          "method": "Multivariate Heterogeneous DiD",
+          "p_value": 0.13272065533519622
+        },
+        {
+          "feature": "Q-sexual-orientation_prefer not to say",
+          "did_estimate": 24.58296058114254,
+          "method": "Multivariate Heterogeneous DiD",
+          "p_value": 0.46219125597049804
+        },
+        {
+          "feature": "Q-demos-state_Nevada",
+          "did_estimate": 21.9764694507778,
+          "method": "Multivariate Heterogeneous DiD",
+          "p_value": 0.5637883082108144
+        }
+      ],
+      "extensive_margin": [
+        {
+          "feature": "Q-demos-state_Tennessee",
+          "did_estimate": 0.049675896364234556,
+          "method": "Univariate DiD",
+          "p_value": 0.19233984330961287
+        },
+        {
+          "feature": "Q-demos-race_White or Caucasian,Black or African American",
+          "did_estimate": 0.027538420240252638,
+          "method": "Univariate DiD",
+          "p_value": 0.5832044366679517
+        },
+        {
+          "feature": "Q-demos-state_Missouri",
+          "did_estimate": 0.025812469908521915,
+          "method": "Univariate DiD",
+          "p_value": 0.5870475505623145
+        }
+      ]
+    },
+    {
+      "category": "VITAMIN",
+      "anomaly_index": 27.47810803241209,
+      "baseline_avg_spend": 21.877609561752987,
+      "treatment_avg_spend": 23.997513513513514,
+      "n_purchasers_baseline": 251,
+      "n_purchasers_treatment": 185,
+      "baseline_purchase_rate": 0.049930375969763276,
+      "treatment_purchase_rate": 0.03680127312512433,
+      "n_at_risk": 5027,
+      "intensive_margin": [
+        {
+          "feature": "Q-demos-hispanic",
+          "did_estimate": 15.375014402499575,
+          "method": "Univariate DiD",
+          "p_value": 0.15332357900617913
+        },
+        {
+          "feature": "Q-demos-state_Arizona",
+          "did_estimate": 13.508053672316406,
+          "method": "Univariate DiD",
+          "p_value": 0.3469962777864545
+        },
+        {
+          "feature": "Q-sexual-orientation_prefer not to say",
+          "did_estimate": 10.406173195084499,
+          "method": "Univariate DiD",
+          "p_value": 0.6110093928310573
+        }
+      ],
+      "extensive_margin": [
+        {
+          "feature": "Q-demos-state_Kentucky",
+          "did_estimate": 0.04694596327497427,
+          "method": "Univariate DiD",
+          "p_value": 0.12322037998626487
+        },
+        {
+          "feature": "Q-demos-state_Arizona",
+          "did_estimate": 0.045569215008323054,
+          "method": "Univariate DiD",
+          "p_value": 0.1264929680597813
+        },
+        {
+          "feature": "Q-amazon-use-howmany_4+",
+          "did_estimate": 0.04351200871732921,
+          "method": "Univariate DiD",
+          "p_value": 0.08105011475452367
+        }
+      ]
+    },
+    {
+      "category": "COFFEE",
+      "anomaly_index": 25.381051276654286,
+      "baseline_avg_spend": 32.22666666666667,
+      "treatment_avg_spend": 27.0808125,
+      "n_purchasers_baseline": 168,
+      "n_purchasers_treatment": 160,
+      "baseline_purchase_rate": 0.03341953451362642,
+      "treatment_purchase_rate": 0.031828128108215635,
+      "n_at_risk": 5027,
+      "intensive_margin": [
+        {
+          "feature": "Q-demos-state_Tennessee",
+          "did_estimate": 31.399937490046188,
+          "method": "Univariate DiD",
+          "p_value": 0.03737657454587495
+        },
+        {
+          "feature": "Q-demos-state_Washington",
+          "did_estimate": 19.686428571428586,
+          "method": "Univariate DiD",
+          "p_value": 0.14340062904712794
+        },
+        {
+          "feature": "Q-demos-state_Ohio",
+          "did_estimate": 17.579660256410257,
+          "method": "Univariate DiD",
+          "p_value": 0.23365909400259033
+        }
+      ],
+      "extensive_margin": [
+        {
+          "feature": "Q-demos-race_White or Caucasian,American Indian/Native American or Alaska Native",
+          "did_estimate": 0.03772595338678644,
+          "method": "Univariate DiD",
+          "p_value": 0.26389568295672255
+        },
+        {
+          "feature": "Q-amazon-use-howmany_4+",
+          "did_estimate": 0.03165106802203253,
+          "method": "Univariate DiD",
+          "p_value": 0.14589236925424645
+        },
+        {
+          "feature": "Q-demos-state_Massachusetts",
+          "did_estimate": 0.027881351506606138,
+          "method": "Univariate DiD",
+          "p_value": 0.23556649849997643
+        }
+      ]
+    },
+    {
+      "category": "SAUCE",
+      "anomaly_index": 24.6007221710278,
+      "baseline_avg_spend": 10.769200000000001,
+      "treatment_avg_spend": 13.19902777777778,
+      "n_purchasers_baseline": 100,
+      "n_purchasers_treatment": 72,
+      "baseline_purchase_rate": 0.019892580067634773,
+      "treatment_purchase_rate": 0.014322657648697036,
+      "n_at_risk": 5027,
+      "intensive_margin": [
+        {
+          "feature": "Q-demos-state_Michigan",
+          "did_estimate": 25.86328571428568,
+          "method": "Univariate DiD",
+          "p_value": 0.021348869612789978
+        },
+        {
+          "feature": "Q-demos-income_$150,000 or more",
+          "did_estimate": 13.810590579710155,
+          "method": "Univariate DiD",
+          "p_value": 0.00909041336886313
+        },
+        {
+          "feature": "Q-demos-state_New Jersey",
+          "did_estimate": 11.708962862318836,
+          "method": "Univariate DiD",
+          "p_value": 0.17794420047137766
+        }
+      ],
+      "extensive_margin": [
+        {
+          "feature": "Q-amazon-use-how-oft_More than 10 times per month",
+          "did_estimate": 0.028745976275135116,
+          "method": "Univariate DiD",
+          "p_value": 0.003213255274514097
+        },
+        {
+          "feature": "Q-demos-state_Georgia",
+          "did_estimate": 0.025004276089892516,
+          "method": "Univariate DiD",
+          "p_value": 0.08869663496662127
+        },
+        {
+          "feature": "Q-demos-state_Minnesota",
+          "did_estimate": 0.01619163129169157,
+          "method": "Univariate DiD",
+          "p_value": 0.38909949730185045
+        }
+      ]
+    }
+  ],
+  "slump_categories": [
+    {
+      "category": "SHOES",
+      "anomaly_index": -21.341567216213175,
+      "baseline_avg_spend": 69.38447876447877,
+      "treatment_avg_spend": 54.494554455445524,
+      "n_purchasers_baseline": 259,
+      "n_purchasers_treatment": 101,
+      "baseline_purchase_rate": 0.05152178237517406,
+      "treatment_purchase_rate": 0.02009150586831112,
+      "n_at_risk": 5027,
+      "intensive_margin": [
+        {
+          "feature": "Q-demos-income_$150,000 or more",
+          "did_estimate": -57.03587753004433,
+          "method": "Univariate DiD",
+          "p_value": 0.006983563834586386
+        },
+        {
+          "feature": "Q-demos-state_California",
+          "did_estimate": -38.588456320287975,
+          "method": "Univariate DiD",
+          "p_value": 0.2030008152083318
+        },
+        {
+          "feature": "Q-demos-state_Washington",
+          "did_estimate": -30.204331276889388,
+          "method": "Univariate DiD",
+          "p_value": 0.4932966416192126
+        }
+      ],
+      "extensive_margin": [
+        {
+          "feature": "Q-demos-state_Louisiana",
+          "did_estimate": -0.09462381814524082,
+          "method": "Univariate DiD",
+          "p_value": 0.007143566906918323
+        },
+        {
+          "feature": "Q-amazon-use-howmany_3",
+          "did_estimate": -0.06248693834900777,
+          "method": "Univariate DiD",
+          "p_value": 0.00028630737182931795
+        },
+        {
+          "feature": "Q-demos-state_Wisconsin",
+          "did_estimate": -0.059758473716255686,
+          "method": "Univariate DiD",
+          "p_value": 0.02376402984767067
+        }
+      ]
+    },
+    {
+      "category": "SUGAR_CANDY",
+      "anomaly_index": -17.8362712429566,
+      "baseline_avg_spend": 17.414190476190477,
+      "treatment_avg_spend": 13.599152542372881,
+      "n_purchasers_baseline": 105,
+      "n_purchasers_treatment": 59,
+      "baseline_purchase_rate": 0.020887209071016512,
+      "treatment_purchase_rate": 0.011736622239904515,
+      "n_at_risk": 5027,
+      "intensive_margin": [
+        {
+          "feature": "Q-demos-state_Tennessee",
+          "did_estimate": -15.33686602870816,
+          "method": "Univariate DiD",
+          "p_value": 0.12512833469201526
+        },
+        {
+          "feature": "Q-demos-education_Graduate or professional degree (MA, MS, MBA, PhD, JD, MD, DDS, etc)",
+          "did_estimate": -10.792859432234446,
+          "method": "Univariate DiD",
+          "p_value": 0.03477367823757312
+        },
+        {
+          "feature": "Q-demos-state_Michigan",
+          "did_estimate": -9.926676986584095,
+          "method": "Univariate DiD",
+          "p_value": 0.37351403306855735
+        }
+      ],
+      "extensive_margin": [
+        {
+          "feature": "Q-sexual-orientation_prefer not to say",
+          "did_estimate": -0.07795573937724276,
+          "method": "Univariate DiD",
+          "p_value": 0.0009734285181092243
+        },
+        {
+          "feature": "Q-substance-use-marijuana_Prefer not to say",
+          "did_estimate": -0.04414844422710981,
+          "method": "Univariate DiD",
+          "p_value": 0.032891124326989804
+        },
+        {
+          "feature": "Q-demos-state_Tennessee",
+          "did_estimate": -0.02956212147597769,
+          "method": "Univariate DiD",
+          "p_value": 0.09401795991067126
+        }
+      ]
+    },
+    {
+      "category": "DISHWARE_PLATE",
+      "anomaly_index": -16.787943232026716,
+      "baseline_avg_spend": 19.302,
+      "treatment_avg_spend": 26.7764705882353,
+      "n_purchasers_baseline": 40,
+      "n_purchasers_treatment": 17,
+      "baseline_purchase_rate": 0.007957032027053909,
+      "treatment_purchase_rate": 0.0033817386114979114,
+      "n_at_risk": 5027,
+      "intensive_margin": [
+        {
+          "feature": "Q-demos-state_California",
+          "did_estimate": -62.451477477477454,
+          "method": "Univariate DiD",
+          "p_value": 0.01534991299524485
+        },
+        {
+          "feature": "Q-amazon-use-howmany_3",
+          "did_estimate": -59.30155555555551,
+          "method": "Univariate DiD",
+          "p_value": 0.01514742307222842
+        },
+        {
+          "feature": "Q-demos-age_25 - 34 years",
+          "did_estimate": -22.628078431372543,
+          "method": "Univariate DiD",
+          "p_value": 0.23437030184350569
+        }
+      ],
+      "extensive_margin": [
+        {
+          "feature": "Q-demos-state_Washington",
+          "did_estimate": -0.020311940476664278,
+          "method": "Univariate DiD",
+          "p_value": 0.036048711324034415
+        },
+        {
+          "feature": "Q-demos-state_Kentucky",
+          "did_estimate": -0.017723564927778834,
+          "method": "Univariate DiD",
+          "p_value": 0.1144812999200322
+        },
+        {
+          "feature": "Q-demos-state_Arizona",
+          "did_estimate": -0.016794724036368395,
+          "method": "Univariate DiD",
+          "p_value": 0.12662855224901745
+        }
+      ]
+    },
+    {
+      "category": "SHIRT",
+      "anomaly_index": -16.315640004598176,
+      "baseline_avg_spend": 32.62012121212121,
+      "treatment_avg_spend": 30.256234567901235,
+      "n_purchasers_baseline": 330,
+      "n_purchasers_treatment": 162,
+      "baseline_purchase_rate": 0.06564551422319474,
+      "treatment_purchase_rate": 0.03222597970956833,
+      "n_at_risk": 5027,
+      "intensive_margin": [
+        {
+          "feature": "Q-demos-race_White or Caucasian,Black or African American",
+          "did_estimate": -37.46598842592591,
+          "method": "Univariate DiD",
+          "p_value": 0.16937226687374368
+        },
+        {
+          "feature": "Q-demos-state_Washington",
+          "did_estimate": -23.81627230673937,
+          "method": "Univariate DiD",
+          "p_value": 0.3509737148944556
+        },
+        {
+          "feature": "Q-demos-state_Kentucky",
+          "did_estimate": -23.733173611111138,
+          "method": "Univariate DiD",
+          "p_value": 0.38244657622511063
+        }
+      ],
+      "extensive_margin": [
+        {
+          "feature": "Q-amazon-use-how-oft_More than 10 times per month",
+          "did_estimate": -0.07459638466414284,
+          "method": "Univariate DiD",
+          "p_value": 3.6814263131543896e-06
+        },
+        {
+          "feature": "Q-amazon-use-howmany_3",
+          "did_estimate": -0.07342072765270333,
+          "method": "Univariate DiD",
+          "p_value": 0.00023938771193654474
+        },
+        {
+          "feature": "Q-demos-state_Missouri",
+          "did_estimate": -0.041763962445835766,
+          "method": "Univariate DiD",
+          "p_value": 0.26428917378213596
+        }
+      ]
+    },
+    {
+      "category": "PLANTER",
+      "anomaly_index": -16.196601996126187,
+      "baseline_avg_spend": 47.8515,
+      "treatment_avg_spend": 28.773703703703703,
+      "n_purchasers_baseline": 40,
+      "n_purchasers_treatment": 27,
+      "baseline_purchase_rate": 0.007957032027053909,
+      "treatment_purchase_rate": 0.0053709966182613885,
+      "n_at_risk": 5027,
+      "intensive_margin": [
+        {
+          "feature": "Q-substance-use-cigarettes_Yes",
+          "did_estimate": -329.48962200956925,
+          "method": "Univariate DiD",
+          "p_value": 4.4764039818729166e-06
+        },
+        {
+          "feature": "Q-personal-diabetes_Yes",
+          "did_estimate": -160.47863095238083,
+          "method": "Univariate DiD",
+          "p_value": 0.01587801010481518
+        },
+        {
+          "feature": "Q-demos-income_$50,000 - $74,999",
+          "did_estimate": -96.78387165775399,
+          "method": "Univariate DiD",
+          "p_value": 0.04734214778127976
+        }
+      ],
+      "extensive_margin": [
+        {
+          "feature": "Q-demos-state_Arizona",
+          "did_estimate": -0.01882229905664414,
+          "method": "Univariate DiD",
+          "p_value": 0.1142756852141879
+        },
+        {
+          "feature": "Q-demos-state_Wisconsin",
+          "did_estimate": -0.017767404099857796,
+          "method": "Univariate DiD",
+          "p_value": 0.12634074702613438
+        },
+        {
+          "feature": "Q-demos-state_Nevada",
+          "did_estimate": -0.01610548815455312,
+          "method": "Univariate DiD",
+          "p_value": 0.30631873053470315
+        }
+      ]
+    },
+    {
+      "category": "ELECTRONIC_CABLE",
+      "anomaly_index": -15.781969037367388,
+      "baseline_avg_spend": 15.337043269230769,
+      "treatment_avg_spend": 15.456862745098038,
+      "n_purchasers_baseline": 416,
+      "n_purchasers_treatment": 204,
+      "baseline_purchase_rate": 0.08275313308136065,
+      "treatment_purchase_rate": 0.040580863337974935,
+      "n_at_risk": 5027,
+      "intensive_margin": [
+        {
+          "feature": "Q-demos-state_Louisiana",
+          "did_estimate": -27.66735340767093,
+          "method": "Univariate DiD",
+          "p_value": 0.02984991793553583
+        },
+        {
+          "feature": "Q-demos-state_Wisconsin",
+          "did_estimate": -16.306390121464723,
+          "method": "Univariate DiD",
+          "p_value": 0.10160722738826486
+        },
+        {
+          "feature": "Q-demos-state_Maryland",
+          "did_estimate": -15.194640754257957,
+          "method": "Univariate DiD",
+          "p_value": 0.12991509447517174
+        }
+      ],
+      "extensive_margin": [
+        {
+          "feature": "Q-personal-wheelchair_Yes",
+          "did_estimate": -0.09227976035210149,
+          "method": "Univariate DiD",
+          "p_value": 0.007590452596265021
+        },
+        {
+          "feature": "Q-amazon-use-howmany_4+",
+          "did_estimate": -0.08421029062737656,
+          "method": "Univariate DiD",
+          "p_value": 0.004091289693576729
+        },
+        {
+          "feature": "Q-demos-state_Oklahoma",
+          "did_estimate": -0.07539426884101763,
+          "method": "Univariate DiD",
+          "p_value": 0.08668472854059568
+        }
+      ]
+    },
+    {
+      "category": "SCREEN_PROTECTOR",
+      "anomaly_index": -15.158085166235582,
+      "baseline_avg_spend": 10.989489361702127,
+      "treatment_avg_spend": 9.797454545454546,
+      "n_purchasers_baseline": 235,
+      "n_purchasers_treatment": 110,
+      "baseline_purchase_rate": 0.04674756315894171,
+      "treatment_purchase_rate": 0.02188183807439825,
+      "n_at_risk": 5027,
+      "intensive_margin": [
+        {
+          "feature": "Q-demos-state_Missouri",
+          "did_estimate": -6.345615561913848,
+          "method": "Univariate DiD",
+          "p_value": 0.3807463610823025
+        },
+        {
+          "feature": "Q-demos-state_Tennessee",
+          "did_estimate": -4.7910201149425315,
+          "method": "Univariate DiD",
+          "p_value": 0.4697086245751823
+        },
+        {
+          "feature": "Q-amazon-use-howmany_3",
+          "did_estimate": -4.500140052055942,
+          "method": "Univariate DiD",
+          "p_value": 0.10684342564146108
+        }
+      ],
+      "extensive_margin": [
+        {
+          "feature": "Q-demos-race_White or Caucasian,American Indian/Native American or Alaska Native",
+          "did_estimate": -0.029029082966922456,
+          "method": "Univariate DiD",
+          "p_value": 0.4003958920627843
+        },
+        {
+          "feature": "Q-amazon-use-how-oft_More than 10 times per month",
+          "did_estimate": -0.027053441393437613,
+          "method": "Univariate DiD",
+          "p_value": 0.04771996425557302
+        },
+        {
+          "feature": "Q-demos-state_California",
+          "did_estimate": -0.025189502585818053,
+          "method": "Univariate DiD",
+          "p_value": 0.036608067877101476
+        }
+      ]
+    },
+    {
+      "category": "ADHESIVE_TAPES",
+      "anomaly_index": -14.98809992746695,
+      "baseline_avg_spend": 14.23669724770642,
+      "treatment_avg_spend": 13.0622,
+      "n_purchasers_baseline": 109,
+      "n_purchasers_treatment": 50,
+      "baseline_purchase_rate": 0.0216829122737219,
+      "treatment_purchase_rate": 0.009946290033817386,
+      "n_at_risk": 5027,
+      "intensive_margin": [
+        {
+          "feature": "Q-demos-race_Asian",
+          "did_estimate": -15.388932225063938,
+          "method": "Univariate DiD",
+          "p_value": 0.05060534219373392
+        },
+        {
+          "feature": "Q-demos-age_55 - 64 years",
+          "did_estimate": -10.772460188620903,
+          "method": "Univariate DiD",
+          "p_value": 0.26043306886308165
+        },
+        {
+          "feature": "Q-demos-state_California",
+          "did_estimate": -10.089320383125266,
+          "method": "Univariate DiD",
+          "p_value": 0.18801956157055877
+        }
+      ],
+      "extensive_margin": [
+        {
+          "feature": "Q-amazon-use-howmany_4+",
+          "did_estimate": -0.06297225083217642,
+          "method": "Univariate DiD",
+          "p_value": 3.671039314901262e-05
+        },
+        {
+          "feature": "Q-demos-state_South Carolina",
+          "did_estimate": -0.032183383903048514,
+          "method": "Univariate DiD",
+          "p_value": 0.13201142923413203
+        },
+        {
+          "feature": "Q-demos-state_Ohio",
+          "did_estimate": -0.0259223592338495,
+          "method": "Univariate DiD",
+          "p_value": 0.03326062007043488
+        }
+      ]
+    },
+    {
+      "category": "CELLULAR_PHONE_CASE",
+      "anomaly_index": -14.365490624216054,
+      "baseline_avg_spend": 17.73490797546012,
+      "treatment_avg_spend": 17.675944055944054,
+      "n_purchasers_baseline": 326,
+      "n_purchasers_treatment": 143,
+      "baseline_purchase_rate": 0.06484981102048935,
+      "treatment_purchase_rate": 0.028446389496717725,
+      "n_at_risk": 5027,
+      "intensive_margin": [
+        {
+          "feature": "Q-demos-state_Tennessee",
+          "did_estimate": -8.866650815217442,
+          "method": "Univariate DiD",
+          "p_value": 0.22824764671429318
+        },
+        {
+          "feature": "Q-demos-state_Ohio",
+          "did_estimate": -8.053750417803904,
+          "method": "Univariate DiD",
+          "p_value": 0.23137431855556165
+        },
+        {
+          "feature": "Q-demos-state_Oregon",
+          "did_estimate": -6.858334128720109,
+          "method": "Univariate DiD",
+          "p_value": 0.4981260552149992
+        }
+      ],
+      "extensive_margin": [
+        {
+          "feature": "Q-personal-wheelchair_Yes",
+          "did_estimate": -0.05653545654415004,
+          "method": "Univariate DiD",
+          "p_value": 0.062184805134009556
+        },
+        {
+          "feature": "Q-amazon-use-howmany_4+",
+          "did_estimate": -0.05262191572253687,
+          "method": "Univariate DiD",
+          "p_value": 0.04077703092624279
+        },
+        {
+          "feature": "Q-amazon-use-how-oft_More than 10 times per month",
+          "did_estimate": -0.04580860345534776,
+          "method": "Univariate DiD",
+          "p_value": 0.0037240370883348424
+        }
+      ]
+    },
+    {
+      "category": "FRUIT",
+      "anomaly_index": -13.186997550698628,
+      "baseline_avg_spend": 19.273235294117647,
+      "treatment_avg_spend": 14.394918032786883,
+      "n_purchasers_baseline": 68,
+      "n_purchasers_treatment": 61,
+      "baseline_purchase_rate": 0.013526954445991645,
+      "treatment_purchase_rate": 0.012134473841257211,
+      "n_at_risk": 5027,
+      "intensive_margin": [
+        {
+          "feature": "Q-demos-state_Massachusetts",
+          "did_estimate": -38.18836781609205,
+          "method": "Univariate DiD",
+          "p_value": 0.0706363690406917
+        },
+        {
+          "feature": "Q-demos-state_Maryland",
+          "did_estimate": -37.57371255060752,
+          "method": "Univariate DiD",
+          "p_value": 0.0659717011772763
+        },
+        {
+          "feature": "Q-amazon-use-howmany_3",
+          "did_estimate": -32.22284303160917,
+          "method": "Univariate DiD",
+          "p_value": 0.10427634351532888
+        }
+      ],
+      "extensive_margin": [
+        {
+          "feature": "Q-demos-race_White or Caucasian,American Indian/Native American or Alaska Native",
+          "did_estimate": -0.034708451878035264,
+          "method": "Univariate DiD",
+          "p_value": 0.10468020323126077
+        },
+        {
+          "feature": "Q-demos-state_Virginia",
+          "did_estimate": -0.019450430139095937,
+          "method": "Univariate DiD",
+          "p_value": 0.14307259807057549
+        },
+        {
+          "feature": "Q-demos-state_Nevada",
+          "did_estimate": -0.0173120033365358,
+          "method": "Univariate DiD",
+          "p_value": 0.4267030152875857
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "surge": {
+      "total_categories": 10,
+      "total_intensive_drivers": 30,
+      "total_extensive_drivers": 30
+    },
+    "slump": {
+      "total_categories": 10,
+      "total_intensive_drivers": 30,
+      "total_extensive_drivers": 30
+    }
+  }
+}
