@@ -2,8 +2,12 @@
 
 Scope: PR #570 `taxonomy-tree-merge` and PR #372 `trend-anomaly-causal-inference`
 (both authored by Jianheng Hou; #372 co-authored by Yulin Li). The contributors
-benchmarked on **opus-4.5 + Codex**; this repo fills the **opus-4.8** column. The
-gap between those two model generations is the actual scientific signal.
+benchmarked on a **Claude 4.5-class model + Codex** (the PR pages label #570 as
+"opus-4.5" and #372 as "sonnet-4-5"/Codex "gpt-5.2" — exact IDs are WebFetch-unreliable);
+this repo fills the **opus-4.8** column. The capability gap between those generations
+(a tier **and** a generation jump) is the actual scientific signal — see
+`ENV_AND_SOURCES.md` for the full env/timeout comparison, sourced eval records, and the
+two confounds (CPU cap, unbounded no-skills budget).
 
 ---
 
@@ -38,7 +42,9 @@ Token tell: with-skills read **4,243,203** input tokens vs **1,313,020** without
 
 ## 2. The opus-4.8 column (this repo) vs the opus-4.5 column
 
-| Task | config | opus-4.5 (contributor) | opus-4.8 (here, harbor) |
+(Contributor column = the 4.5-class model per the PR pages; see model-ID caveat above.)
+
+| Task | config | 4.5-class (contributor) | opus-4.8 (here, harbor) |
 |---|---|---|---|
 | **trend** | oracle | 100% (15/15 fn) | 100% |
 | | with skills | **100%** | **95%** (18/19 cases; P2 `test_cross_file_consistency`) |
