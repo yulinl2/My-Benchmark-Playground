@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Question Bank — Audit</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+<style>
+  :root { --ok:#1a7f37; --fix:#cf222e; --pend:#9a6700; --bd:#d0d7de; --bg:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { margin:0; font:14px/1.5 -apple-system,Segoe UI,Roboto,sans-serif; color:#1f2328; }
+  header { position:sticky; top:0; background:#fff; border-bottom:1px solid var(--bd);
+           padding:8px 12px; display:flex; gap:10px; align-items:center; flex-wrap:wrap; z-index:5; }
+  header h1 { font-size:15px; margin:0 8px 0 0; }
+  header select, header input { padding:3px 6px; border:1px solid var(--bd); border-radius:6px; }
+  #prog { font-variant-numeric:tabular-nums; }
+  .bar { height:6px; background:var(--bg); border-radius:4px; width:160px; overflow:hidden; }
+  .bar > i { display:block; height:100%; background:var(--ok); }
+  button { padding:4px 10px; border:1px solid var(--bd); border-radius:6px; background:#fff; cursor:pointer; }
+  button.primary { background:#0969da; color:#fff; border-color:#0969da; }
+  main { display:grid; grid-template-columns:300px 1fr; height:calc(100vh - 49px); }
+  #list { overflow:auto; border-right:1px solid var(--bd); }
+  .row { padding:6px 10px; border-bottom:1px solid var(--bg); cursor:pointer; display:flex; gap:6px; align-items:center; }
+  .row:hover { background:var(--bg); }
+  .row.sel { background:#ddf4ff; }
+  .row .id { font-family:ui-monospace,monospace; font-size:12px; flex:1; }
+  .dot { width:9px; height:9px; border-radius:50%; background:var(--bd); flex:none; }
+  .dot.verified { background:var(--ok); } .dot.fix { background:var(--fix); } .dot.pend { background:var(--pend); }
+  #pane { overflow:auto; padding:16px 22px; }
+  .meta { color:#57606a; font-size:12.5px; margin-bottom:4px; }
+  .tags span { display:inline-block; background:var(--bg); border:1px solid var(--bd); border-radius:10px;
+               padding:0 8px; margin:2px 4px 2px 0; font-size:12px; }
+  .block { border:1px solid var(--bd); border-radius:8px; padding:12px 14px; margin:12px 0; }
+  .block h3 { margin:0 0 8px; font-size:12px; text-transform:uppercase; letter-spacing:.04em; color:#57606a; }
+  .part { margin:6px 0; }
+  .controls { position:sticky; bottom:0; background:#fff; border-top:1px solid var(--bd);
+              padding:10px 0; margin-top:14px; display:flex; gap:14px; align-items:flex-start; flex-wrap:wrap; }
+  .controls label { font-size:12px; color:#57606a; display:block; }
+  textarea { width:100%; min-height:54px; border:1px solid var(--bd); border-radius:6px; padding:6px; font:inherit; }
+  .seg button.on { background:#1f2328; color:#fff; border-color:#1f2328; }
+  a.pdf { color:#0969da; }
+  kbd { background:var(--bg); border:1px solid var(--bd); border-radius:4px; padding:0 5px; font-size:11px; }
+  .empty { color:#57606a; padding:40px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Question Bank — Audit</h1>
+  <span id="prog">0/0</span><div class="bar"><i id="progfill" style="width:0"></i></div>
+  <select id="fStatus"><option value="">all status</option><option value="pend">unreviewed</option>
+    <option value="verified">verified</option><option value="fix">needs-fix</option></select>
+  <select id="fLevel"><option value="">all levels</option><option>phd</option><option>ms</option></select>
+  <select id="fPart"><option value="">all parts</option><option>probability</option>
+    <option>math-stat</option><option>applied</option></select>
+  <input id="search" placeholder="filter by id…" size="22" />
+  <span style="flex:1"></span>
+  <button id="export" class="primary">Export decisions</button>
+  <span class="meta">keys: <kbd>j</kbd>/<kbd>k</kbd> next/prev · <kbd>v</kbd> verify · <kbd>x</kbd> needs-fix</span>
+</header>
+<main>
+  <div id="list"></div>
+  <div id="pane"><div class="empty">Loading…</div></div>
+</main>
+<script>
+const KEY = "qbank-audit-v1";
+const store = JSON.parse(localStorage.getItem(KEY) || "{}");
+let QS = [], view = [], cur = null;
+
+function save(){ localStorage.setItem(KEY, JSON.stringify(store)); }
+function dec(id){ return store[id] || (store[id] = {status:"pend", grading_type:"", notes:""}); }
+
+function renderMath(el){
+  if (window.renderMathInElement) renderMathInElement(el, {
+    delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false},
+                {left:"\\[",right:"\\]",display:true},{left:"\\(",right:"\\)",display:false}],
+    throwOnError:false });
+}
+function esc(s){ return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+function progress(){
+  const v = QS.filter(q=>dec(q.id).status==="verified").length;
+  document.getElementById("prog").textContent = `${v}/${QS.length} verified`;
+  document.getElementById("progfill").style.width = QS.length? (100*v/QS.length)+"%" : "0";
+}
+function applyFilters(){
+  const st=fStatus.value, lv=fLevel.value, pt=fPart.value, q=search.value.trim().toLowerCase();
+  view = QS.filter(x=>{
+    if(st && dec(x.id).status!==st) return false;
+    if(lv && (x.exam.level||"phd")!==lv) return false;
+    if(pt && x.exam.part!==pt) return false;
+    if(q && !x.id.toLowerCase().includes(q)) return false;
+    return true;
+  });
+  drawList();
+}
+function drawList(){
+  list.innerHTML = view.map(q=>{
+    const d=dec(q.id); const cls=d.status==="verified"?"verified":d.status==="fix"?"fix":(store[q.id]?"pend":"");
+    return `<div class="row ${q===cur?'sel':''}" data-id="${q.id}">
+      <span class="dot ${cls}"></span><span class="id">${q.id}</span></div>`;
+  }).join("") || `<div class="empty">no matches</div>`;
+}
+function select(q){
+  cur=q; drawList();
+  const d=dec(q.id), ex=q.exam;
+  const parts=(q.parts||[]).map(p=>`<div class="part">${esc(p)}</div>`).join("");
+  pane.innerHTML = `
+    <div class="meta">${q.id} · ${ex.year} ${ex.term} · <b>${ex.level||"phd"}</b> · ${ex.part} · problem ${q.number} · difficulty: ${q.difficulty||"—"}</div>
+    <div class="tags">${(q.topics||[]).map(t=>`<span>${esc(t)}</span>`).join("")}</div>
+    <div class="block"><h3>Prompt</h3><div>${esc(q.prompt)}</div>${parts?`<h3 style="margin-top:10px">Parts</h3>${parts}`:""}</div>
+    ${q.solution?`<div class="block"><h3>Solution (official)</h3><div>${esc(q.solution)}</div></div>`:`<div class="meta">No official solution (PhD quals ship none).</div>`}
+    <div class="block"><h3>Source</h3>
+      ${q.pdf_href?`<a class="pdf" href="${q.pdf_href}" target="_blank">${esc(q.source.pdf)}</a> · page ${q.source.page??"—"}`:"—"}
+      ${(q.data&&q.data.length)?`<div class="meta">data: ${q.data.map(esc).join("; ")}</div>`:""}
+    </div>
+    <div class="controls">
+      <div><label>status</label><div class="seg" id="seg">
+        <button data-s="verified">✓ verified</button>
+        <button data-s="fix">✗ needs-fix</button>
+        <button data-s="pend">· unreviewed</button></div></div>
+      <div><label>grading type</label>
+        <select id="gt">
+          <option value="">— set —</option>
+          <option value="exact-match">exact-match (auto)</option>
+          <option value="numeric">numeric (auto)</option>
+          <option value="proof-rubric">proof-rubric (judge)</option>
+          <option value="data-analysis">data-analysis (judge)</option>
+          <option value="other">other</option></select></div>
+      <div style="flex:1;min-width:260px"><label>notes / corrections</label>
+        <textarea id="notes" placeholder="discrepancies vs the PDF, fixes needed, etc.">${esc(d.notes)}</textarea></div>
+    </div>`;
+  renderMath(pane);
+  document.getElementById("gt").value = d.grading_type||"";
+  document.querySelectorAll("#seg button").forEach(b=>{
+    if(b.dataset.s===d.status) b.classList.add("on");
+    b.onclick=()=>{ d.status=b.dataset.s; save(); progress(); select(q); };
+  });
+  document.getElementById("gt").onchange=e=>{ d.grading_type=e.target.value; save(); };
+  document.getElementById("notes").oninput=e=>{ d.notes=e.target.value; save(); };
+}
+function move(delta){
+  if(!view.length) return;
+  let i = view.indexOf(cur); i = (i<0?0:i+delta);
+  if(i<0) i=0; if(i>=view.length) i=view.length-1;
+  select(view[i]); document.querySelector(".row.sel")?.scrollIntoView({block:"nearest"});
+}
+
+window.addEventListener("DOMContentLoaded", ()=>{
+  QS = (window.BANK?.questions)||[];
+  ["fStatus","fLevel","fPart"].forEach(id=>document.getElementById(id).onchange=applyFilters);
+  search.oninput=applyFilters;
+  list.onclick=e=>{ const r=e.target.closest(".row"); if(r){ const q=QS.find(x=>x.id===r.dataset.id); if(q) select(q);} };
+  document.getElementById("export").onclick=()=>{
+    const out={ exported:new Date().toISOString(), decisions:store };
+    const a=document.createElement("a");
+    a.href=URL.createObjectURL(new Blob([JSON.stringify(out,null,2)],{type:"application/json"}));
+    a.download="audit-decisions.json"; a.click();
+  };
+  document.addEventListener("keydown", e=>{
+    if(e.target.tagName==="TEXTAREA"||e.target.tagName==="INPUT") return;
+    if(e.key==="j") move(1); else if(e.key==="k") move(-1);
+    else if(e.key==="v"&&cur){ dec(cur.id).status="verified"; save(); progress(); select(cur); }
+    else if(e.key==="x"&&cur){ dec(cur.id).status="fix"; save(); progress(); select(cur); }
+  });
+  applyFilters(); progress();
+  if(view.length) select(view[0]); else pane.innerHTML=`<div class="empty">No data — run <code>python audit/build_audit.py</code>.</div>`;
+});
+</script>
+</body>
+</html>

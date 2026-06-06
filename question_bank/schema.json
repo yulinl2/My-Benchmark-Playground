@@ -46,6 +46,11 @@
       "enum": ["easy", "medium", "hard", null],
       "description": "Optional subjective difficulty."
     },
+    "grading_type": {
+      "type": ["string", "null"],
+      "enum": ["exact-match", "numeric", "proof-rubric", "data-analysis", "other", null],
+      "description": "How the problem should be graded (set during human audit). 'exact-match'/'numeric' are auto-gradable; 'proof-rubric'/'data-analysis' need a judge/rubric."
+    },
     "prompt": {
       "type": "string",
       "description": "The full problem statement, Markdown + LaTeX (use $...$ / $$...$$).",
