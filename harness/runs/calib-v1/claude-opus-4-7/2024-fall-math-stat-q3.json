@@ -1,0 +1,59 @@
+{
+  "question_id": "2024-fall-math-stat-q3",
+  "model": "claude-opus-4-7",
+  "provider": "anthropic",
+  "exam": {
+    "year": 2024,
+    "term": "fall",
+    "level": "ms",
+    "part": "math-stat"
+  },
+  "request": {
+    "system": "You are sitting a PhD-level qualifying examination in statistics. Solve the problem rigorously and completely. Show your work and reasoning, justify each step, and clearly state your final answer(s). If the problem has multiple parts, answer every part, labeled. If you invoke a known theorem, name it.",
+    "user": "[2024 fall ms math-stat — problem 3]\n\n$Y_1, Y_2$ have joint density $f(y_1,y_2\\mid\\theta) = \\frac{8}{\\theta^4}y_1 y_2$ for $0 \\le y_2 \\le y_1 \\le \\theta$. (1) Is $Y_2$ a sufficient statistic for $\\theta$? (prove). (2) Find the MLE of $\\theta$. (3) Is the MLE unbiased?",
+    "max_tokens": 20000,
+    "mode": {
+      "effort": "high"
+    }
+  },
+  "response": {
+    "id": "msg_01GppWVuN4RQXnjzpMMbvdTt",
+    "model": "claude-opus-4-7",
+    "stop_reason": "end_turn",
+    "usage": {
+      "input_tokens": 268,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation": {
+        "ephemeral_5m_input_tokens": 0,
+        "ephemeral_1h_input_tokens": 0
+      },
+      "output_tokens": 1824,
+      "output_tokens_details": {
+        "thinking_tokens": 667
+      },
+      "service_tier": "standard",
+      "inference_geo": "global"
+    },
+    "thinking": "",
+    "text": "# Problem 3 Solution\n\n**Setup:** $f(y_1,y_2\\mid\\theta) = \\dfrac{8}{\\theta^4}y_1 y_2 \\cdot \\mathbf{1}\\{0\\le y_2\\le y_1\\le \\theta\\}$.\n\n---\n\n## (1) Is $Y_2$ sufficient for $\\theta$?\n\n**Claim: No.** I use the **Fisher–Neyman factorization theorem**.\n\nThe marginal of $Y_2$ is, for $0\\le y_2\\le \\theta$,\n$$f_{Y_2}(y_2\\mid\\theta) = \\int_{y_2}^{\\theta} \\frac{8}{\\theta^4}y_1 y_2\\,dy_1 = \\frac{4y_2(\\theta^2-y_2^2)}{\\theta^4}.$$\n\nThe conditional density of $Y_1$ given $Y_2=y_2$ is\n$$f(y_1\\mid y_2,\\theta) = \\frac{(8/\\theta^4)y_1 y_2}{4y_2(\\theta^2-y_2^2)/\\theta^4} = \\frac{2y_1}{\\theta^2-y_2^2},\\qquad y_2\\le y_1\\le\\theta.$$\n\nSince this conditional distribution **still depends on $\\theta$** (both through the normalizing constant and through the support $y_1\\le\\theta$), $Y_2$ is **not** sufficient.\n\nEquivalently, in the factorization $f = (8y_1y_2)\\cdot \\theta^{-4}\\mathbf{1}\\{y_1\\le\\theta\\}\\cdot\\mathbf{1}\\{y_2\\le y_1\\}$, the term $\\mathbf{1}\\{y_1\\le\\theta\\}$ involves both $y_1$ and $\\theta$ but cannot be absorbed into a function of $(y_2,\\theta)$ alone.\n\n---\n\n## (2) MLE of $\\theta$\n\nThe likelihood is\n$$L(\\theta) = \\frac{8 y_1 y_2}{\\theta^4}\\,\\mathbf{1}\\{\\theta \\ge y_1\\}.$$\n\nFor $\\theta\\ge y_1$, $L(\\theta)$ is strictly decreasing in $\\theta$; for $\\theta<y_1$, $L(\\theta)=0$. Hence $L$ is maximized at the smallest admissible value:\n$$\\boxed{\\hat\\theta_{\\text{MLE}} = Y_1}.$$\n\n---\n\n## (3) Unbiasedness of the MLE\n\nThe marginal density of $Y_1$ is, for $0\\le y_1\\le\\theta$,\n$$f_{Y_1}(y_1\\mid\\theta) = \\int_0^{y_1}\\frac{8}{\\theta^4}y_1 y_2\\,dy_2 = \\frac{4 y_1^3}{\\theta^4}.$$\n\nTherefore\n$$E[Y_1] = \\int_0^\\theta y_1\\cdot\\frac{4y_1^3}{\\theta^4}\\,dy_1 = \\frac{4}{\\theta^4}\\cdot\\frac{\\theta^5}{5} = \\frac{4\\theta}{5}.$$\n\nSince $E[\\hat\\theta_{\\text{MLE}}] = \\tfrac{4\\theta}{5}\\ne\\theta$, the MLE is **biased**, with bias $-\\theta/5$.\n\n(An unbiased version is $\\tfrac{5}{4}Y_1$.)",
+    "raw_output": [
+      {
+        "type": "thinking",
+        "thinking": "",
+        "signature": "Eo0JCmMIDhgCKkDdFsLAUibAeYnsjPY3E1CS+JUPyVKNIAkzYXxdbtoc61jDN7m33Eo6uXMvzzGvvSgwvjplFzGvBd6AAPO8XQZ4Mg9jbGF1ZGUtb3B1cy00LTc4AEIIdGhpbmtpbmcSDMNn5y0Ygw2oFM7V7hoMWNA15XR68vX9arpyIjD3+hY5TtoiB8Cal4+PWa6+EWmY4EAdNpNZYXQBvwmxbewhDCy5iRDOArLno8MCUnwq1wcewVo7wiqMkqlaUqor3LHt+3b0oEsK++xLp8ioSTgtRcsPJhWWZfWHWp9CXStaLHJGwCGgQutytz5Y2tHbvoRQT0MjKn/3bWjSXufsuIcch87JbosOoxJACKIu4sJYfHUGe7a6nyduJPJX7yuyirB29JS8g5IpcherHzH10P82mL/wXLlRhUEPXJnDqyKidkEiCIYE7G32wRHxonSkxyL+BMD9sWOp+jWOwqJDtrWqBc+XuaaUTTfcLLQm14TS8jkQWx0GEa/6PDgukMJ0/7MWWQnuzSvO2H1Fy7cxMJEfER+yWpw8QfF9KsbBUHdz7OKdRngFRNkjdRIMILKugarYr+qZiBzDrwIwlBWwh1qlcOe1bXt/20eBxByFm2AGwNuVh6NrI0mRGss5MbdFFdlENr7UrVllQF3EAmsiR6mpp83uOf+qVP/r9Ov7lUYJAfcqaZmVGmbBJ4QSheCu8mn79IHH+8H9cFUrGUrwJGQ9i0r+K2yynxG9dBPd7UNiYHZlxpNPCk8F+e8O7t0XIsTu5smc2hwJYrXEMjIuNTaQ/iSOcTPcGTYnFa6278TsDkGYoXT4TMo51zjM2SOAIUsuDvO6qOMIVi7Lv6YH/GKKry9DHU3JbJYwq68z/hG0IK0MeDu1YbyxSocTepkj28fhAtJuATu3ajLHnILG85dhUiwxAkvuhDhpPYbxmFlk3cnbad842lGKF+3ayJ8EK7Jtq2T4R0hNksS2iUUWyx4m5YgBhiFL/PmMdy96gvXs6yv/dvIJo6Oqq9v21vs3ItilwTqJRqWf9Ar3t2kKyrQxEM0qlARPRLSBISGYTRzSHTTvaTDOsx2pMmcyO/m0HyFfbWtlKNclIV7uA5uezlenzyNMBs7mTCVE96YZ8op3ZFtHWY76kwAT2gTVQVaXNudSBoRPgnzfEdnpgWMV0ANKu17o6wyPgCYwC7XY8+dtOUSKfiCV8tSTAbsK2TBJO6r462Odp6JyG15ggvtRN9BLeODe/iENTn9A7bi54TjsSCwVB4ATen6D2YcKyfokHjGnuLHRThM8YwGe15rNOMzZ3ALolFKvxK7/YIedugYLkNMW/htZtlCtKWJqHiNQyhB2ArJvxpwLHI6+anecNvlfGV5bFVsqHXU8SRRtbrUN3g0ESO2gtcZ/T/DhaSG4BVBa//DlB3IF258q70ysO6vB/LjAQ/2BHrAGuL2Z+xEhYyU7KITSTre+J5t71OPcQl8jTkwOdv/AP7wZhFEFaZTxRbJiQ/oNiD5nl2NCJURmm1f6lRCQ4SF+N4+5Cf9ymBqnkMZY2ie+VhgB"
+      },
+      {
+        "type": "text",
+        "text": "# Problem 3 Solution\n\n**Setup:** $f(y_1,y_2\\mid\\theta) = \\dfrac{8}{\\theta^4}y_1 y_2 \\cdot \\mathbf{1}\\{0\\le y_2\\le y_1\\le \\theta\\}$.\n\n---\n\n## (1) Is $Y_2$ sufficient for $\\theta$?\n\n**Claim: No.** I use the **Fisher–Neyman factorization theorem**.\n\nThe marginal of $Y_2$ is, for $0\\le y_2\\le \\theta$,\n$$f_{Y_2}(y_2\\mid\\theta) = \\int_{y_2}^{\\theta} \\frac{8}{\\theta^4}y_1 y_2\\,dy_1 = \\frac{4y_2(\\theta^2-y_2^2)}{\\theta^4}.$$\n\nThe conditional density of $Y_1$ given $Y_2=y_2$ is\n$$f(y_1\\mid y_2,\\theta) = \\frac{(8/\\theta^4)y_1 y_2}{4y_2(\\theta^2-y_2^2)/\\theta^4} = \\frac{2y_1}{\\theta^2-y_2^2},\\qquad y_2\\le y_1\\le\\theta.$$\n\nSince this conditional distribution **still depends on $\\theta$** (both through the normalizing constant and through the support $y_1\\le\\theta$), $Y_2$ is **not** sufficient.\n\nEquivalently, in the factorization $f = (8y_1y_2)\\cdot \\theta^{-4}\\mathbf{1}\\{y_1\\le\\theta\\}\\cdot\\mathbf{1}\\{y_2\\le y_1\\}$, the term $\\mathbf{1}\\{y_1\\le\\theta\\}$ involves both $y_1$ and $\\theta$ but cannot be absorbed into a function of $(y_2,\\theta)$ alone.\n\n---\n\n## (2) MLE of $\\theta$\n\nThe likelihood is\n$$L(\\theta) = \\frac{8 y_1 y_2}{\\theta^4}\\,\\mathbf{1}\\{\\theta \\ge y_1\\}.$$\n\nFor $\\theta\\ge y_1$, $L(\\theta)$ is strictly decreasing in $\\theta$; for $\\theta<y_1$, $L(\\theta)=0$. Hence $L$ is maximized at the smallest admissible value:\n$$\\boxed{\\hat\\theta_{\\text{MLE}} = Y_1}.$$\n\n---\n\n## (3) Unbiasedness of the MLE\n\nThe marginal density of $Y_1$ is, for $0\\le y_1\\le\\theta$,\n$$f_{Y_1}(y_1\\mid\\theta) = \\int_0^{y_1}\\frac{8}{\\theta^4}y_1 y_2\\,dy_2 = \\frac{4 y_1^3}{\\theta^4}.$$\n\nTherefore\n$$E[Y_1] = \\int_0^\\theta y_1\\cdot\\frac{4y_1^3}{\\theta^4}\\,dy_1 = \\frac{4}{\\theta^4}\\cdot\\frac{\\theta^5}{5} = \\frac{4\\theta}{5}.$$\n\nSince $E[\\hat\\theta_{\\text{MLE}}] = \\tfrac{4\\theta}{5}\\ne\\theta$, the MLE is **biased**, with bias $-\\theta/5$.\n\n(An unbiased version is $\\tfrac{5}{4}Y_1$.)"
+      }
+    ]
+  },
+  "cost_usd": 0.14082,
+  "timing": {
+    "started": "2026-06-06T23:26:19.498443+00:00",
+    "ended": "2026-06-06T23:26:38.802427+00:00",
+    "seconds": 19.3
+  },
+  "error": null
+}

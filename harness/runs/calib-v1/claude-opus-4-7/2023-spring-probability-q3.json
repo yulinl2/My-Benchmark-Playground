@@ -1,0 +1,59 @@
+{
+  "question_id": "2023-spring-probability-q3",
+  "model": "claude-opus-4-7",
+  "provider": "anthropic",
+  "exam": {
+    "year": 2023,
+    "term": "spring",
+    "level": "ms",
+    "part": "probability"
+  },
+  "request": {
+    "system": "You are sitting a PhD-level qualifying examination in statistics. Solve the problem rigorously and completely. Show your work and reasoning, justify each step, and clearly state your final answer(s). If the problem has multiple parts, answer every part, labeled. If you invoke a known theorem, name it.",
+    "user": "[2023 spring ms probability — problem 3]\n\nA box has 3 yellow and 2 red balls. Flip a fair coin: heads $\\Rightarrow$ sample 2 balls with replacement, tails $\\Rightarrow$ without replacement. Let $Y$ = number of red balls obtained. (1) Distribution of $Y$. (2) $\\mathbb{E} Y$. (3) $P(\\text{first ball red} \\mid \\text{second ball red})$. (4) $P(\\text{sampled with replacement} \\mid Y = 2)$.",
+    "max_tokens": 20000,
+    "mode": {
+      "effort": "high"
+    }
+  },
+  "response": {
+    "id": "msg_01N8dvPhoR2rLXQsQbfWwrwB",
+    "model": "claude-opus-4-7",
+    "stop_reason": "end_turn",
+    "usage": {
+      "input_tokens": 294,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation": {
+        "ephemeral_5m_input_tokens": 0,
+        "ephemeral_1h_input_tokens": 0
+      },
+      "output_tokens": 1906,
+      "output_tokens_details": {
+        "thinking_tokens": 610
+      },
+      "service_tier": "standard",
+      "inference_geo": "global"
+    },
+    "thinking": "",
+    "text": "# Solution\n\n**Setup.** Let $W$ = \"with replacement\" (heads), $W^c$ = \"without replacement\" (tails), each with probability $1/2$.\n\nConditional distributions of $Y$:\n- Given $W$: $Y \\sim \\text{Bin}(2, 2/5)$, so $P(Y=0,1,2\\mid W) = \\frac{9}{25},\\frac{12}{25},\\frac{4}{25}$.\n- Given $W^c$: $Y \\sim \\text{Hypergeometric}$, so $P(Y=0,1,2\\mid W^c) = \\frac{\\binom{3}{2}}{\\binom{5}{2}},\\frac{\\binom{3}{1}\\binom{2}{1}}{\\binom{5}{2}},\\frac{\\binom{2}{2}}{\\binom{5}{2}} = \\frac{3}{10},\\frac{6}{10},\\frac{1}{10}$.\n\n## (1) Distribution of $Y$\n\nBy the law of total probability:\n$$P(Y=k) = \\tfrac{1}{2}P(Y=k\\mid W) + \\tfrac{1}{2}P(Y=k\\mid W^c).$$\n\n$$P(Y=0) = \\tfrac{1}{2}\\cdot\\tfrac{9}{25} + \\tfrac{1}{2}\\cdot\\tfrac{3}{10} = \\tfrac{33}{100}$$\n$$P(Y=1) = \\tfrac{1}{2}\\cdot\\tfrac{12}{25} + \\tfrac{1}{2}\\cdot\\tfrac{6}{10} = \\tfrac{54}{100}$$\n$$P(Y=2) = \\tfrac{1}{2}\\cdot\\tfrac{4}{25} + \\tfrac{1}{2}\\cdot\\tfrac{1}{10} = \\tfrac{13}{100}$$\n\n## (2) Expected value\n\n$$\\mathbb{E}[Y] = 0\\cdot\\tfrac{33}{100} + 1\\cdot\\tfrac{54}{100} + 2\\cdot\\tfrac{13}{100} = \\tfrac{80}{100} = \\boxed{\\tfrac{4}{5}}.$$\n\n(Consistent with $\\mathbb{E}[Y\\mid W] = 2\\cdot\\frac{2}{5} = \\frac{4}{5}$ and $\\mathbb{E}[Y\\mid W^c] = 2\\cdot\\frac{2}{5} = \\frac{4}{5}$.)\n\n## (3) $P(\\text{1st red}\\mid \\text{2nd red})$\n\nBy definition,\n$$P(\\text{1st red}\\mid \\text{2nd red}) = \\frac{P(\\text{both red})}{P(\\text{2nd red})} = \\frac{P(Y=2)}{P(\\text{2nd red})}.$$\n\nBy symmetry (in both sampling schemes), each marginal draw is red with probability $2/5$:\n$$P(\\text{2nd red}) = \\tfrac{1}{2}\\cdot\\tfrac{2}{5} + \\tfrac{1}{2}\\cdot\\tfrac{2}{5} = \\tfrac{2}{5} = \\tfrac{40}{100}.$$\n\nTherefore\n$$P(\\text{1st red}\\mid\\text{2nd red}) = \\frac{13/100}{40/100} = \\boxed{\\tfrac{13}{40}}.$$\n\n## (4) $P(W \\mid Y=2)$\n\nBy Bayes' theorem:\n$$P(W\\mid Y=2) = \\frac{P(Y=2\\mid W)\\,P(W)}{P(Y=2)} = \\frac{\\frac{4}{25}\\cdot\\frac{1}{2}}{\\frac{13}{100}} = \\frac{2/25}{13/100} = \\boxed{\\tfrac{8}{13}}.$$",
+    "raw_output": [
+      {
+        "type": "thinking",
+        "thinking": "",
+        "signature": "EuQICmMIDhgCKkDqh+2BosXg8ny5pa90ltzMMTNH5Mo3/X2WndOOf+rnOqoVOQcRoFHX21Gr7mNNus1gTXc6LffMVExi+g2zbKR0Mg9jbGF1ZGUtb3B1cy00LTc4AEIIdGhpbmtpbmcSDIQibHai3DceIPgI3RoMc+9XXEVJ0wmSneVHIjDG/YA43JzHSd0ogE/ETgjztva4YMMWfIHySKA9XxGPOkfAzX9drQ2qpFCMHURN8YIqrgdoLAoUAJPYTN/HGrpo13AAhXJrAD6kX8dqxYWGeyRnSH6kAbtJKKCO9iNXj+xtCt1CjoLE5rufMbLXabislvo7yDseV6saUR/if854eGkVuWuYbSBJktJPh3acHxYdeFhDmSR4+eTexsRTk63zYuXonawRrj11SgrmfvD58BGoelysjckA077KHtEqCG9Kz3BYmi6eAhg74WcauljWQYWhpCpmWRrCN1piOqo58u4SwRPzu/5QAYeIiGFA8prJLfWfObWJExsQe9YSk3XlwNmxMTjrpjCk+WmRk38tZvDLZZGsNwOFyTZhSfC11lKYjVtLz0hltEhkkgh8t/VNgOXK0Scac3NcpZOi+sNR2vnnMM5UmvIV4mz7cmM57t9LcA4Ve657U8ZmI9FX7SKD0/uwJQFnOtlxYT4wH/2x6amziLKkzLOhhQ0wHNzKjPqE6GS9K3rfgJscBerAzkWrnaoz+2CIUn/Cm5P5M94f1tnw/lowU7CLdmRycDZ+eIt2FiBlp0AAdEsldfKOBJG6WYZgnbmRkCmVoaA2ULASpPZo9QR9zDSeb1I463oRBK8pQBvRq1WkXOMpa0PjDqOlMRgr7SAVZ6K1GFUJ+DmIERgGkPcWYx37UfKz4kEhitWZnhaN0vhm1f01tU9JFMge9T/D/Ix+kZVMkavZa/RvA81RbUc72Tcvdw6WhZkVZ812CrNmsB+fUJYo1AHRUtOE0c/Gk9pPyLIJRqU3+ZySkYMbiEW024V9Biawq3T/V08W0QrZAVsftT/6DsWdIieUqFrcvMx++S6O13uilbOLGCxsbpAQo5WYKYdUhgAzSdN6GTRUTdKxn9bDAN10L273taP+fZdrcfwYb75qrngx6+i/IPR3rrs3WWtplQQSHcycsXTeLEmfQjLXQNFeOLgMhtoAp331bqsH5A2LQkR1wotizx6ur84S4RY3f7qW9b2Rcg1ae9rxKna/O9PJAJp5RP/fwoAwapLsZ/+YmKVeqsLQKEMPFrvsQbJ5N56x9HBtERibDJRpZaUNueiVLYakfbf7kNKei5ORiHvvz25DDtjRPGG6dIVQTxyQ4Wc4zLHTjtqs1bQzPwLVNuzNryMqLU918lcBhXGy3CzmDpU3PAnk9HJuT4Ws5sjUMmIjw5cacmz0Xms+upMFKjumLx9y2UZYISPlw1Cfmf1LXatVnnMPX7lVfSwgi6wuT4c8sd7X326BUkrm7hQQPIIsrSBf/LjGx3N3Rwn2wJXpM1IMjZUYAQ=="
+      },
+      {
+        "type": "text",
+        "text": "# Solution\n\n**Setup.** Let $W$ = \"with replacement\" (heads), $W^c$ = \"without replacement\" (tails), each with probability $1/2$.\n\nConditional distributions of $Y$:\n- Given $W$: $Y \\sim \\text{Bin}(2, 2/5)$, so $P(Y=0,1,2\\mid W) = \\frac{9}{25},\\frac{12}{25},\\frac{4}{25}$.\n- Given $W^c$: $Y \\sim \\text{Hypergeometric}$, so $P(Y=0,1,2\\mid W^c) = \\frac{\\binom{3}{2}}{\\binom{5}{2}},\\frac{\\binom{3}{1}\\binom{2}{1}}{\\binom{5}{2}},\\frac{\\binom{2}{2}}{\\binom{5}{2}} = \\frac{3}{10},\\frac{6}{10},\\frac{1}{10}$.\n\n## (1) Distribution of $Y$\n\nBy the law of total probability:\n$$P(Y=k) = \\tfrac{1}{2}P(Y=k\\mid W) + \\tfrac{1}{2}P(Y=k\\mid W^c).$$\n\n$$P(Y=0) = \\tfrac{1}{2}\\cdot\\tfrac{9}{25} + \\tfrac{1}{2}\\cdot\\tfrac{3}{10} = \\tfrac{33}{100}$$\n$$P(Y=1) = \\tfrac{1}{2}\\cdot\\tfrac{12}{25} + \\tfrac{1}{2}\\cdot\\tfrac{6}{10} = \\tfrac{54}{100}$$\n$$P(Y=2) = \\tfrac{1}{2}\\cdot\\tfrac{4}{25} + \\tfrac{1}{2}\\cdot\\tfrac{1}{10} = \\tfrac{13}{100}$$\n\n## (2) Expected value\n\n$$\\mathbb{E}[Y] = 0\\cdot\\tfrac{33}{100} + 1\\cdot\\tfrac{54}{100} + 2\\cdot\\tfrac{13}{100} = \\tfrac{80}{100} = \\boxed{\\tfrac{4}{5}}.$$\n\n(Consistent with $\\mathbb{E}[Y\\mid W] = 2\\cdot\\frac{2}{5} = \\frac{4}{5}$ and $\\mathbb{E}[Y\\mid W^c] = 2\\cdot\\frac{2}{5} = \\frac{4}{5}$.)\n\n## (3) $P(\\text{1st red}\\mid \\text{2nd red})$\n\nBy definition,\n$$P(\\text{1st red}\\mid \\text{2nd red}) = \\frac{P(\\text{both red})}{P(\\text{2nd red})} = \\frac{P(Y=2)}{P(\\text{2nd red})}.$$\n\nBy symmetry (in both sampling schemes), each marginal draw is red with probability $2/5$:\n$$P(\\text{2nd red}) = \\tfrac{1}{2}\\cdot\\tfrac{2}{5} + \\tfrac{1}{2}\\cdot\\tfrac{2}{5} = \\tfrac{2}{5} = \\tfrac{40}{100}.$$\n\nTherefore\n$$P(\\text{1st red}\\mid\\text{2nd red}) = \\frac{13/100}{40/100} = \\boxed{\\tfrac{13}{40}}.$$\n\n## (4) $P(W \\mid Y=2)$\n\nBy Bayes' theorem:\n$$P(W\\mid Y=2) = \\frac{P(Y=2\\mid W)\\,P(W)}{P(Y=2)} = \\frac{\\frac{4}{25}\\cdot\\frac{1}{2}}{\\frac{13}{100}} = \\frac{2/25}{13/100} = \\boxed{\\tfrac{8}{13}}.$$"
+      }
+    ]
+  },
+  "cost_usd": 0.14736,
+  "timing": {
+    "started": "2026-06-06T23:26:17.073792+00:00",
+    "ended": "2026-06-06T23:26:35.357154+00:00",
+    "seconds": 18.28
+  },
+  "error": null
+}

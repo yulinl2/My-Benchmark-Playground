@@ -1,0 +1,72 @@
+{
+  "question_id": "2024-fall-math-stat-q3",
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "exam": {
+    "year": 2024,
+    "term": "fall",
+    "level": "ms",
+    "part": "math-stat"
+  },
+  "request": {
+    "system": "You are sitting a PhD-level qualifying examination in statistics. Solve the problem rigorously and completely. Show your work and reasoning, justify each step, and clearly state your final answer(s). If the problem has multiple parts, answer every part, labeled. If you invoke a known theorem, name it.",
+    "user": "[2024 fall ms math-stat — problem 3]\n\n$Y_1, Y_2$ have joint density $f(y_1,y_2\\mid\\theta) = \\frac{8}{\\theta^4}y_1 y_2$ for $0 \\le y_2 \\le y_1 \\le \\theta$. (1) Is $Y_2$ a sufficient statistic for $\\theta$? (prove). (2) Find the MLE of $\\theta$. (3) Is the MLE unbiased?",
+    "max_tokens": 20000,
+    "mode": {
+      "reasoning_effort": "high"
+    }
+  },
+  "response": {
+    "id": "resp_0607e81ad897dac4006a24aa3685b8819492577fb64b3a3601",
+    "model": "gpt-5.5-2026-04-23",
+    "stop_reason": "completed",
+    "usage": {
+      "input_tokens": 184,
+      "output_tokens": 3626,
+      "output_tokens_details": {
+        "reasoning_tokens": 2588
+      }
+    },
+    "thinking": "**Evaluating factorization theorem**\n\nI'm considering the factorization theorem with fixed sample space and a condition. I wonder if we can factor `T=Y2`. The expression I have includes an indicator for certain conditions, but it looks like there's no residual θ in `y1`. This leads me to determine that it's not enough. I'm examining the definitions around sufficiency and exploring how the conditional distribution relates to θ. I think I'll need to compare probabilities to see how they differ based on the values chosen.\n**Evaluating MLE and Bias**\n\nIf T is sufficient, I think the ratio is θ-free for all pairs where T is the same. I'm assuming the denominator is positive, which leads me to believe that the support pattern must also be θ-free. We can also bring in conditional factors. I realize that while Y2 might seem sufficient despite support conditions, it doesn’t depend on θ. I'm exploring if the MLE is unbiased using joint density integration, but it appears to be biased. I'll conclude by noting that the MLE can be max(Y1,Y2).",
+    "text": "Let the parameter space be \\(\\theta>0\\). The joint density is\n\n\\[\nf(y_1,y_2\\mid \\theta)=\\frac{8}{\\theta^4}y_1y_2\\mathbf 1\\{0\\le y_2\\le y_1\\le \\theta\\}.\n\\]\n\n## (1) Is \\(Y_2\\) sufficient for \\(\\theta\\)?\n\nNo.\n\nOne way to prove this is to examine the conditional distribution of \\(Y_1\\) given \\(Y_2\\). First find the marginal density of \\(Y_2\\):\n\n\\[\nf_{Y_2}(y_2\\mid \\theta)\n=\n\\int_{y_2}^{\\theta} \\frac{8}{\\theta^4}y_1y_2\\,dy_1\n=\n\\frac{8y_2}{\\theta^4}\\cdot \\frac{\\theta^2-y_2^2}{2}\n=\n\\frac{4y_2(\\theta^2-y_2^2)}{\\theta^4},\n\\]\n\nfor \\(0\\le y_2\\le \\theta\\). Therefore, for \\(0<y_2<\\theta\\),\n\n\\[\nf_{Y_1\\mid Y_2}(y_1\\mid y_2,\\theta)\n=\n\\frac{f(y_1,y_2\\mid \\theta)}{f_{Y_2}(y_2\\mid \\theta)}\n=\n\\frac{\\frac{8}{\\theta^4}y_1y_2}{\\frac{4y_2(\\theta^2-y_2^2)}{\\theta^4}}\n=\n\\frac{2y_1}{\\theta^2-y_2^2},\n\\]\n\nwith support\n\n\\[\ny_2\\le y_1\\le \\theta.\n\\]\n\nThis conditional density depends on \\(\\theta\\), both through the denominator and through the support. Hence the conditional distribution of the full data given \\(Y_2\\) is not free of \\(\\theta\\). Therefore, by the conditional characterization of sufficiency, \\(Y_2\\) is not sufficient for \\(\\theta\\).\n\n\\[\n\\boxed{Y_2 \\text{ is not sufficient for } \\theta.}\n\\]\n\n---\n\n## (2) Find the MLE of \\(\\theta\\)\n\nFor observed data \\((y_1,y_2)\\), the likelihood is\n\n\\[\nL(\\theta;y_1,y_2)\n=\n\\frac{8}{\\theta^4}y_1y_2\\mathbf 1\\{\\theta\\ge y_1\\}.\n\\]\n\nAs a function of \\(\\theta\\), for \\(\\theta\\ge y_1\\),\n\n\\[\nL(\\theta;y_1,y_2)=\\frac{8y_1y_2}{\\theta^4},\n\\]\n\nwhich is strictly decreasing in \\(\\theta\\). Therefore the likelihood is maximized at the smallest allowable value of \\(\\theta\\), namely \\(\\theta=y_1\\). Thus\n\n\\[\n\\boxed{\\widehat\\theta_{\\text{MLE}}=Y_1.}\n\\]\n\n---\n\n## (3) Is the MLE unbiased?\n\nWe need compute \\(E_\\theta[Y_1]\\). The marginal density of \\(Y_1\\) is\n\n\\[\nf_{Y_1}(y_1\\mid \\theta)\n=\n\\int_0^{y_1}\\frac{8}{\\theta^4}y_1y_2\\,dy_2\n=\n\\frac{8y_1}{\\theta^4}\\cdot \\frac{y_1^2}{2}\n=\n\\frac{4y_1^3}{\\theta^4},\n\\]\n\nfor \\(0\\le y_1\\le \\theta\\). Hence\n\n\\[\nE_\\theta[Y_1]\n=\n\\int_0^\\theta y_1\\frac{4y_1^3}{\\theta^4}\\,dy_1\n=\n\\frac{4}{\\theta^4}\\int_0^\\theta y_1^4\\,dy_1\n=\n\\frac{4}{\\theta^4}\\cdot \\frac{\\theta^5}{5}\n=\n\\frac{4}{5}\\theta.\n\\]\n\nTherefore\n\n\\[\nE_\\theta[\\widehat\\theta_{\\text{MLE}}]\n=\nE_\\theta[Y_1]\n=\n\\frac45\\theta\\neq \\theta.\n\\]\n\nSo the MLE is biased downward, with bias\n\n\\[\n\\operatorname{Bias}_\\theta(\\widehat\\theta_{\\text{MLE}})\n=\n\\frac45\\theta-\\theta\n=\n-\\frac15\\theta.\n\\]\n\n\\[\n\\boxed{\\widehat\\theta_{\\text{MLE}}=Y_1 \\text{ is not unbiased.}}\n\\]",
+    "raw_output": [
+      {
+        "id": "rs_0607e81ad897dac4006a24aa36fb8c81948c196ce0fabf2302",
+        "type": "reasoning",
+        "content": [],
+        "summary": [
+          {
+            "type": "summary_text",
+            "text": "**Evaluating factorization theorem**\n\nI'm considering the factorization theorem with fixed sample space and a condition. I wonder if we can factor `T=Y2`. The expression I have includes an indicator for certain conditions, but it looks like there's no residual θ in `y1`. This leads me to determine that it's not enough. I'm examining the definitions around sufficiency and exploring how the conditional distribution relates to θ. I think I'll need to compare probabilities to see how they differ based on the values chosen."
+          },
+          {
+            "type": "summary_text",
+            "text": "**Evaluating MLE and Bias**\n\nIf T is sufficient, I think the ratio is θ-free for all pairs where T is the same. I'm assuming the denominator is positive, which leads me to believe that the support pattern must also be θ-free. We can also bring in conditional factors. I realize that while Y2 might seem sufficient despite support conditions, it doesn’t depend on θ. I'm exploring if the MLE is unbiased using joint density integration, but it appears to be biased. I'll conclude by noting that the MLE can be max(Y1,Y2)."
+          }
+        ]
+      },
+      {
+        "id": "msg_0607e81ad897dac4006a24aa6acbb88194862a332c89f5860d",
+        "type": "message",
+        "status": "completed",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "Let the parameter space be \\(\\theta>0\\). The joint density is\n\n\\[\nf(y_1,y_2\\mid \\theta)=\\frac{8}{\\theta^4}y_1y_2\\mathbf 1\\{0\\le y_2\\le y_1\\le \\theta\\}.\n\\]\n\n## (1) Is \\(Y_2\\) sufficient for \\(\\theta\\)?\n\nNo.\n\nOne way to prove this is to examine the conditional distribution of \\(Y_1\\) given \\(Y_2\\). First find the marginal density of \\(Y_2\\):\n\n\\[\nf_{Y_2}(y_2\\mid \\theta)\n=\n\\int_{y_2}^{\\theta} \\frac{8}{\\theta^4}y_1y_2\\,dy_1\n=\n\\frac{8y_2}{\\theta^4}\\cdot \\frac{\\theta^2-y_2^2}{2}\n=\n\\frac{4y_2(\\theta^2-y_2^2)}{\\theta^4},\n\\]\n\nfor \\(0\\le y_2\\le \\theta\\). Therefore, for \\(0<y_2<\\theta\\),\n\n\\[\nf_{Y_1\\mid Y_2}(y_1\\mid y_2,\\theta)\n=\n\\frac{f(y_1,y_2\\mid \\theta)}{f_{Y_2}(y_2\\mid \\theta)}\n=\n\\frac{\\frac{8}{\\theta^4}y_1y_2}{\\frac{4y_2(\\theta^2-y_2^2)}{\\theta^4}}\n=\n\\frac{2y_1}{\\theta^2-y_2^2},\n\\]\n\nwith support\n\n\\[\ny_2\\le y_1\\le \\theta.\n\\]\n\nThis conditional density depends on \\(\\theta\\), both through the denominator and through the support. Hence the conditional distribution of the full data given \\(Y_2\\) is not free of \\(\\theta\\). Therefore, by the conditional characterization of sufficiency, \\(Y_2\\) is not sufficient for \\(\\theta\\).\n\n\\[\n\\boxed{Y_2 \\text{ is not sufficient for } \\theta.}\n\\]\n\n---\n\n## (2) Find the MLE of \\(\\theta\\)\n\nFor observed data \\((y_1,y_2)\\), the likelihood is\n\n\\[\nL(\\theta;y_1,y_2)\n=\n\\frac{8}{\\theta^4}y_1y_2\\mathbf 1\\{\\theta\\ge y_1\\}.\n\\]\n\nAs a function of \\(\\theta\\), for \\(\\theta\\ge y_1\\),\n\n\\[\nL(\\theta;y_1,y_2)=\\frac{8y_1y_2}{\\theta^4},\n\\]\n\nwhich is strictly decreasing in \\(\\theta\\). Therefore the likelihood is maximized at the smallest allowable value of \\(\\theta\\), namely \\(\\theta=y_1\\). Thus\n\n\\[\n\\boxed{\\widehat\\theta_{\\text{MLE}}=Y_1.}\n\\]\n\n---\n\n## (3) Is the MLE unbiased?\n\nWe need compute \\(E_\\theta[Y_1]\\). The marginal density of \\(Y_1\\) is\n\n\\[\nf_{Y_1}(y_1\\mid \\theta)\n=\n\\int_0^{y_1}\\frac{8}{\\theta^4}y_1y_2\\,dy_2\n=\n\\frac{8y_1}{\\theta^4}\\cdot \\frac{y_1^2}{2}\n=\n\\frac{4y_1^3}{\\theta^4},\n\\]\n\nfor \\(0\\le y_1\\le \\theta\\). Hence\n\n\\[\nE_\\theta[Y_1]\n=\n\\int_0^\\theta y_1\\frac{4y_1^3}{\\theta^4}\\,dy_1\n=\n\\frac{4}{\\theta^4}\\int_0^\\theta y_1^4\\,dy_1\n=\n\\frac{4}{\\theta^4}\\cdot \\frac{\\theta^5}{5}\n=\n\\frac{4}{5}\\theta.\n\\]\n\nTherefore\n\n\\[\nE_\\theta[\\widehat\\theta_{\\text{MLE}}]\n=\nE_\\theta[Y_1]\n=\n\\frac45\\theta\\neq \\theta.\n\\]\n\nSo the MLE is biased downward, with bias\n\n\\[\n\\operatorname{Bias}_\\theta(\\widehat\\theta_{\\text{MLE}})\n=\n\\frac45\\theta-\\theta\n=\n-\\frac15\\theta.\n\\]\n\n\\[\n\\boxed{\\widehat\\theta_{\\text{MLE}}=Y_1 \\text{ is not unbiased.}}\n\\]"
+          }
+        ],
+        "phase": "final_answer",
+        "role": "assistant"
+      }
+    ]
+  },
+  "cost_usd": 0.05531,
+  "timing": {
+    "started": "2026-06-06T23:16:06.380496+00:00",
+    "ended": "2026-06-06T23:17:07.527670+00:00",
+    "seconds": 61.15
+  },
+  "error": null
+}

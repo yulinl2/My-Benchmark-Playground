@@ -162,16 +162,18 @@ def call_openai(model, system, user, max_tokens, effort, timeout) -> dict:
             "raw_output": resp.get("output", [])}
 
 
-def run_one(q, model, args, out_dir, lock) -> dict:
+def run_one(q, model, rep, args, out_dir, lock) -> dict:
     qid = q["id"]
     prov = provider_of(model)
-    dest = out_dir / model.replace("/", "_") / f"{qid}.json"
+    suffix = f"__r{rep}" if args.k > 1 else ""
+    dest = out_dir / model.replace("/", "_") / f"{qid}{suffix}.json"
     if dest.exists() and not args.overwrite:
         return {"qid": qid, "model": model, "status": "skipped"}
 
     user = build_user_prompt(q)
     mode = {"effort": args.effort}
-    record = {"question_id": qid, "model": model, "provider": prov, "exam": q.get("exam"),
+    record = {"question_id": qid, "model": model, "provider": prov, "rep": rep,
+              "exam": q.get("exam"),
               "request": {"system": SYSTEM_PROMPT, "user": user,
                           "max_tokens": args.max_tokens, "mode": mode},
               "response": None, "cost_usd": None,
@@ -248,6 +250,7 @@ def main() -> int:
     ap.add_argument("--out", type=Path, default=DEFAULT_OUT)
     ap.add_argument("--run-id", default=None)
     ap.add_argument("--concurrency", type=int, default=4)
+    ap.add_argument("--k", type=int, default=1, help="repetitions per (model,question) for pass@k / 0-of-k")
     ap.add_argument("--max-tokens", type=int, default=16000)
     ap.add_argument("--effort", choices=["minimal", "low", "medium", "high"], default="high",
                     help="unified reasoning effort across providers (GPT reasoning.effort; "
@@ -271,15 +274,15 @@ def main() -> int:
     out_dir.mkdir(parents=True, exist_ok=True)
     (out_dir / "manifest.json").write_text(json.dumps({
         "run_id": run_id, "created": iso_now(), "models": models, "n_questions": len(rows),
-        "max_tokens": args.max_tokens, "effort": args.effort, "dry_run": args.dry_run,
+        "max_tokens": args.max_tokens, "effort": args.effort, "k": args.k, "dry_run": args.dry_run,
         "question_ids": [r["id"] for r in rows]}, indent=2) + "\n")
 
-    tasks = [(q, m) for m in models for q in rows]
-    print(f"run {run_id}: {len(rows)} q x {len(models)} model(s) = {len(tasks)} call(s) -> {out_dir}", flush=True)
+    tasks = [(q, m, rep) for m in models for q in rows for rep in range(args.k)]
+    print(f"run {run_id}: {len(rows)} q x {len(models)} model(s) x k={args.k} = {len(tasks)} call(s) -> {out_dir}", flush=True)
     lock = threading.Lock()
     counts, total_cost = {"ok": 0, "error": 0, "skipped": 0, "dry-run": 0}, 0.0
     with ThreadPoolExecutor(max_workers=args.concurrency) as ex:
-        for fut in as_completed([ex.submit(run_one, q, m, args, out_dir, lock) for q, m in tasks]):
+        for fut in as_completed([ex.submit(run_one, q, m, rep, args, out_dir, lock) for q, m, rep in tasks]):
             r = fut.result()
             counts[r["status"]] = counts.get(r["status"], 0) + 1
             if r.get("cost"): total_cost += r["cost"]
