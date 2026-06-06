@@ -1,27 +1,22 @@
 #!/usr/bin/env python3
 """Collection harness: run models over the question bank and save full
-responses + reasoning trajectories.
+responses + reasoning trajectories, with per-call cost.
 
-This harness ONLY collects model outputs. It does not grade them — grading and
-the eval are deliberately separate (see harness/README.md). For each
-(model, question) it captures the final answer text, the extended-thinking
-trajectory, token usage, stop reason, and timing.
+Collection only — no grading (that's a separate concern; see harness/README.md).
+Supports both providers:
+  - Anthropic (claude-*): extended thinking via `thinking.budget_tokens`.
+  - OpenAI   (gpt-*):      reasoning via the Responses API `reasoning.effort`.
 
-Pure standard library (urllib). Respects ANTHROPIC_API_KEY and ANTHROPIC_BASE_URL.
+Pure standard library (urllib). Reads ANTHROPIC_API_KEY / ANTHROPIC_BASE_URL and
+OPENAI_API_KEY / OPENAI_BASE_URL.
 
 Examples
 --------
-    # Smoke test: one cheap model, 1 question, see it work
-    python harness/run_models.py --models claude-haiku-4-5-20251001 --limit 1
-
-    # Full background collection for one model (resumable)
-    python harness/run_models.py --models claude-sonnet-4-6
-
-    # Multiple models, only the probability questions
-    python harness/run_models.py --models claude-sonnet-4-6,claude-opus-4-8 --filter-part probability
-
-    # Build prompts without calling the API (no key needed)
     python harness/run_models.py --dry-run --limit 3
+    python harness/run_models.py --models claude-haiku-4-5-20251001
+    python harness/run_models.py --models gpt-5.5 --reasoning-effort high
+    python harness/run_models.py --models claude-opus-4-7,gpt-5.5 \
+        --ids 2019-summer-probability-q1 --thinking-budget 12000 --max-tokens 20000
 """
 from __future__ import annotations
 
@@ -40,7 +35,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_BANK = ROOT / "question_bank" / "bank.jsonl"
 DEFAULT_OUT = ROOT / "harness" / "runs"
-API_VERSION = "2023-06-01"
+ANTHROPIC_VERSION = "2023-06-01"
 
 SYSTEM_PROMPT = (
     "You are sitting a PhD-level qualifying examination in statistics. "
@@ -49,136 +44,152 @@ SYSTEM_PROMPT = (
     "multiple parts, answer every part, labeled. If you invoke a known theorem, name it."
 )
 
+# (input $/M, output $/M). Output covers reasoning/thinking tokens (billed as output).
+# GPT-5.5 is a placeholder price per the reference; verify before trusting costs.
+PRICES = {
+    "claude-opus-4-8": (15, 75), "claude-opus-4-7": (15, 75), "claude-opus-4-6": (15, 75),
+    "claude-sonnet-4-6": (3, 15),
+    "claude-haiku-4-5": (1, 5), "claude-haiku-4-5-20251001": (1, 5),
+    "gpt-5.5": (5, 15),
+}
+
 
 def iso_now() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
+def provider_of(model: str) -> str:
+    return "openai" if model.startswith(("gpt", "o1", "o3", "o4")) else "anthropic"
+
+
+def price_cost(model: str, usage: dict):
+    p = PRICES.get(model)
+    if not p or p[0] is None:
+        return None
+    it = usage.get("input_tokens", 0) or 0
+    ot = usage.get("output_tokens", 0) or 0
+    return round(it / 1e6 * p[0] + ot / 1e6 * p[1], 5)
+
+
 def build_user_prompt(q: dict) -> str:
-    """Render a bank question into a single self-contained prompt string."""
     lines: list[str] = []
     ex = q.get("exam", {})
     tag = f"{ex.get('year','?')} {ex.get('term','')} {ex.get('level','phd')} {ex.get('part','')}".strip()
     lines.append(f"[{tag} — problem {q.get('number','?')}]")
     lines.append("")
     lines.append(q["prompt"].strip())
-    parts = q.get("parts") or []
-    if parts:
-        lines.append("")
-        for p in parts:
-            lines.append(str(p).strip())
+    for p in (q.get("parts") or []):
+        lines.append(str(p).strip())
     data = q.get("data") or []
     if data:
         lines.append("")
-        lines.append(
-            "Note: this problem references dataset file(s) that are NOT provided to you: "
-            + "; ".join(data)
-            + ". Describe the analysis you would perform and the expected form of the results."
-        )
+        lines.append("Note: this problem references dataset file(s) NOT provided: "
+                     + "; ".join(data) + ". Describe the analysis you would perform.")
     return "\n".join(lines)
 
 
-def call_anthropic(model: str, system: str, user: str, max_tokens: int,
-                   thinking_budget: int, timeout: int) -> dict:
-    """One non-streaming Messages API call. Returns the parsed JSON response."""
+# --------------------------------------------------------------- providers ----
+def call_anthropic(model, system, user, max_tokens, thinking_budget, timeout) -> dict:
     base = os.environ.get("ANTHROPIC_BASE_URL", "https://api.anthropic.com").rstrip("/")
-    key = os.environ.get("ANTHROPIC_API_KEY")
-    if not key:
-        raise RuntimeError("ANTHROPIC_API_KEY is not set.")
-    body: dict = {
-        "model": model,
-        "max_tokens": max_tokens,
-        "system": system,
-        "messages": [{"role": "user", "content": user}],
-    }
+    key = os.environ["ANTHROPIC_API_KEY"]
+    body = {"model": model, "max_tokens": max_tokens, "system": system,
+            "messages": [{"role": "user", "content": user}]}
     if thinking_budget and thinking_budget > 0:
         body["thinking"] = {"type": "enabled", "budget_tokens": thinking_budget}
-        # extended thinking requires the default temperature; do not set one.
     req = urllib.request.Request(
-        f"{base}/v1/messages",
-        data=json.dumps(body).encode("utf-8"),
-        headers={
-            "content-type": "application/json",
-            "x-api-key": key,
-            "anthropic-version": API_VERSION,
-        },
-        method="POST",
-    )
-    with urllib.request.urlopen(req, timeout=timeout) as resp:
-        return json.loads(resp.read().decode("utf-8"))
+        f"{base}/v1/messages", data=json.dumps(body).encode(),
+        headers={"content-type": "application/json", "x-api-key": key,
+                 "anthropic-version": ANTHROPIC_VERSION}, method="POST")
+    with urllib.request.urlopen(req, timeout=timeout) as r:
+        resp = json.loads(r.read().decode())
+    thinking, text = [], []
+    for b in resp.get("content", []):
+        if b.get("type") == "thinking":
+            thinking.append(b.get("thinking", ""))
+        elif b.get("type") == "redacted_thinking":
+            thinking.append("[redacted_thinking]")
+        elif b.get("type") == "text":
+            text.append(b.get("text", ""))
+    return {"id": resp.get("id"), "model": resp.get("model"),
+            "stop_reason": resp.get("stop_reason"), "usage": resp.get("usage", {}),
+            "thinking": "\n".join(thinking), "text": "\n".join(text),
+            "raw_output": resp.get("content", [])}
 
 
-def split_content(resp: dict) -> tuple[str, str, list]:
-    """Pull (thinking trajectory, answer text, raw blocks) out of a response."""
-    thinking_parts, text_parts = [], []
-    blocks = resp.get("content", []) or []
-    for b in blocks:
-        t = b.get("type")
-        if t == "thinking":
-            thinking_parts.append(b.get("thinking", ""))
-        elif t == "redacted_thinking":
-            thinking_parts.append("[redacted_thinking]")
-        elif t == "text":
-            text_parts.append(b.get("text", ""))
-    return "\n".join(thinking_parts), "\n".join(text_parts), blocks
+def call_openai(model, system, user, max_tokens, effort, timeout) -> dict:
+    base = os.environ.get("OPENAI_BASE_URL", "https://api.openai.com/v1").rstrip("/")
+    key = os.environ["OPENAI_API_KEY"]
+    body = {"model": model, "instructions": system, "input": user,
+            "max_output_tokens": max_tokens}
+    if effort:
+        body["reasoning"] = {"effort": effort, "summary": "auto"}
+    req = urllib.request.Request(
+        f"{base}/responses", data=json.dumps(body).encode(),
+        headers={"content-type": "application/json",
+                 "authorization": f"Bearer {key}"}, method="POST")
+    with urllib.request.urlopen(req, timeout=timeout) as r:
+        resp = json.loads(r.read().decode())
+    thinking, text = [], []
+    for item in resp.get("output", []):
+        if item.get("type") == "reasoning":
+            for s in item.get("summary", []) or []:
+                thinking.append(s.get("text", ""))
+        elif item.get("type") == "message":
+            for c in item.get("content", []) or []:
+                if c.get("type") == "output_text":
+                    text.append(c.get("text", ""))
+    u = resp.get("usage", {}) or {}
+    usage = {"input_tokens": u.get("input_tokens"), "output_tokens": u.get("output_tokens"),
+             "output_tokens_details": u.get("output_tokens_details")}
+    return {"id": resp.get("id"), "model": resp.get("model"),
+            "stop_reason": resp.get("status"), "usage": usage,
+            "thinking": "\n".join(thinking), "text": "\n".join(text),
+            "raw_output": resp.get("output", [])}
 
 
-def run_one(q: dict, model: str, args, out_dir: Path, lock: threading.Lock) -> dict:
+def run_one(q, model, args, out_dir, lock) -> dict:
     qid = q["id"]
+    prov = provider_of(model)
     dest = out_dir / model.replace("/", "_") / f"{qid}.json"
     if dest.exists() and not args.overwrite:
         return {"qid": qid, "model": model, "status": "skipped"}
 
     user = build_user_prompt(q)
-    record = {
-        "question_id": qid,
-        "model": model,
-        "exam": q.get("exam"),
-        "request": {
-            "system": SYSTEM_PROMPT,
-            "user": user,
-            "max_tokens": args.max_tokens,
-            "thinking_budget": args.thinking_budget,
-        },
-        "response": None,
-        "timing": {"started": iso_now()},
-        "error": None,
-    }
+    mode = ({"thinking_budget": args.thinking_budget} if prov == "anthropic"
+            else {"reasoning_effort": args.reasoning_effort})
+    record = {"question_id": qid, "model": model, "provider": prov, "exam": q.get("exam"),
+              "request": {"system": SYSTEM_PROMPT, "user": user,
+                          "max_tokens": args.max_tokens, "mode": mode},
+              "response": None, "cost_usd": None,
+              "timing": {"started": iso_now()}, "error": None}
+
     if args.dry_run:
-        record["response"] = {"note": "dry-run; no API call made"}
+        record["response"] = {"note": "dry-run"}
         record["timing"]["ended"] = iso_now()
         _write(dest, record, out_dir, lock)
         return {"qid": qid, "model": model, "status": "dry-run"}
 
-    t0 = time.time()
-    last_err = None
+    t0, last_err = time.time(), None
     for attempt in range(args.retries + 1):
         try:
-            resp = call_anthropic(model, SYSTEM_PROMPT, user, args.max_tokens,
-                                  args.thinking_budget, args.timeout)
-            thinking, text, blocks = split_content(resp)
-            record["response"] = {
-                "id": resp.get("id"),
-                "model": resp.get("model"),
-                "stop_reason": resp.get("stop_reason"),
-                "usage": resp.get("usage"),
-                "thinking": thinking,   # the trajectory
-                "text": text,           # the final answer
-                "content_blocks": blocks,
-            }
+            if prov == "anthropic":
+                out = call_anthropic(model, SYSTEM_PROMPT, user, args.max_tokens,
+                                     args.thinking_budget, args.timeout)
+            else:
+                out = call_openai(model, SYSTEM_PROMPT, user, args.max_tokens,
+                                  args.reasoning_effort, args.timeout)
+            record["response"] = out
+            record["cost_usd"] = price_cost(model, out.get("usage", {}))
             break
         except urllib.error.HTTPError as e:
-            detail = e.read().decode("utf-8", "replace")[:500]
-            last_err = f"HTTP {e.code}: {detail}"
-            if e.code in (429, 500, 503, 529) and attempt < args.retries:
-                time.sleep(2 ** attempt)
-                continue
+            last_err = f"HTTP {e.code}: {e.read().decode('utf-8','replace')[:400]}"
+            if e.code in (429, 500, 502, 503, 529) and attempt < args.retries:
+                time.sleep(2 ** attempt); continue
             break
-        except Exception as e:  # noqa: BLE001 - record any failure, keep going
+        except Exception as e:  # noqa: BLE001
             last_err = f"{type(e).__name__}: {e}"
             if attempt < args.retries:
-                time.sleep(2 ** attempt)
-                continue
+                time.sleep(2 ** attempt); continue
             break
 
     record["timing"]["ended"] = iso_now()
@@ -186,12 +197,13 @@ def run_one(q: dict, model: str, args, out_dir: Path, lock: threading.Lock) -> d
     if record["response"] is None:
         record["error"] = last_err
     _write(dest, record, out_dir, lock)
-    status = "ok" if record["error"] is None else "error"
-    return {"qid": qid, "model": model, "status": status, "error": record["error"],
-            "seconds": record["timing"].get("seconds")}
+    return {"qid": qid, "model": model,
+            "status": "ok" if record["error"] is None else "error",
+            "error": record["error"], "seconds": record["timing"].get("seconds"),
+            "cost": record["cost_usd"]}
 
 
-def _write(dest: Path, record: dict, out_dir: Path, lock: threading.Lock) -> None:
+def _write(dest, record, out_dir, lock):
     dest.parent.mkdir(parents=True, exist_ok=True)
     dest.write_text(json.dumps(record, ensure_ascii=False, indent=2) + "\n")
     with lock:
@@ -199,53 +211,42 @@ def _write(dest: Path, record: dict, out_dir: Path, lock: threading.Lock) -> Non
             fh.write(json.dumps(record, ensure_ascii=False) + "\n")
 
 
-def load_bank(path: Path) -> list[dict]:
-    return [json.loads(l) for l in path.read_text().splitlines() if l.strip()]
+def load_bank(path): return [json.loads(l) for l in path.read_text().splitlines() if l.strip()]
 
 
-def filter_bank(rows: list[dict], args) -> list[dict]:
-    out = []
-    ids = set(args.ids.split(",")) if args.ids else None
+def filter_bank(rows, args):
+    out, ids = [], (set(args.ids.split(",")) if args.ids else None)
     for r in rows:
         ex = r.get("exam", {})
-        if ids and r["id"] not in ids:
-            continue
-        if args.filter_level and ex.get("level", "phd") != args.filter_level:
-            continue
-        if args.filter_part and ex.get("part") != args.filter_part:
-            continue
-        if args.filter_year and str(ex.get("year")) != str(args.filter_year):
-            continue
+        if ids and r["id"] not in ids: continue
+        if args.filter_level and ex.get("level", "phd") != args.filter_level: continue
+        if args.filter_part and ex.get("part") != args.filter_part: continue
+        if args.filter_year and str(ex.get("year")) != str(args.filter_year): continue
+        if args.skip_data and r.get("data"): continue
         out.append(r)
-    if args.limit:
-        out = out[: args.limit]
-    return out
+    return out[: args.limit] if args.limit else out
 
 
 def main() -> int:
-    ap = argparse.ArgumentParser(description=__doc__,
-                                 formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--models", default="claude-sonnet-4-6",
-                    help="comma-separated model ids")
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--models", default="claude-sonnet-4-6")
     ap.add_argument("--bank", type=Path, default=DEFAULT_BANK)
     ap.add_argument("--out", type=Path, default=DEFAULT_OUT)
-    ap.add_argument("--run-id", default=None,
-                    help="subdir under --out (default: timestamp)")
+    ap.add_argument("--run-id", default=None)
     ap.add_argument("--concurrency", type=int, default=4)
     ap.add_argument("--max-tokens", type=int, default=16000)
-    ap.add_argument("--thinking-budget", type=int, default=8000,
-                    help="extended-thinking budget; 0 disables thinking")
-    ap.add_argument("--timeout", type=int, default=600)
+    ap.add_argument("--thinking-budget", type=int, default=8000, help="Claude extended-thinking budget; 0 disables")
+    ap.add_argument("--reasoning-effort", choices=["minimal", "low", "medium", "high"], default="high", help="GPT reasoning effort")
+    ap.add_argument("--timeout", type=int, default=900)
     ap.add_argument("--retries", type=int, default=3)
     ap.add_argument("--filter-level", choices=["phd", "ms"])
     ap.add_argument("--filter-part")
     ap.add_argument("--filter-year")
-    ap.add_argument("--ids", help="comma-separated question ids")
+    ap.add_argument("--ids")
+    ap.add_argument("--skip-data", action="store_true", help="exclude dataset-dependent problems")
     ap.add_argument("--limit", type=int)
-    ap.add_argument("--overwrite", action="store_true",
-                    help="re-run even if an output file exists")
-    ap.add_argument("--dry-run", action="store_true",
-                    help="build prompts and write stubs; no API calls")
+    ap.add_argument("--overwrite", action="store_true")
+    ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
 
     rows = filter_bank(load_bank(args.bank), args)
@@ -253,33 +254,27 @@ def main() -> int:
     run_id = args.run_id or datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     out_dir = args.out / run_id
     out_dir.mkdir(parents=True, exist_ok=True)
-
-    manifest = {
-        "run_id": run_id, "created": iso_now(), "models": models,
-        "n_questions": len(rows), "bank": str(args.bank),
+    (out_dir / "manifest.json").write_text(json.dumps({
+        "run_id": run_id, "created": iso_now(), "models": models, "n_questions": len(rows),
         "max_tokens": args.max_tokens, "thinking_budget": args.thinking_budget,
-        "dry_run": args.dry_run,
-        "question_ids": [r["id"] for r in rows],
-    }
-    (out_dir / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
+        "reasoning_effort": args.reasoning_effort, "dry_run": args.dry_run,
+        "question_ids": [r["id"] for r in rows]}, indent=2) + "\n")
 
     tasks = [(q, m) for m in models for q in rows]
-    print(f"run {run_id}: {len(rows)} question(s) x {len(models)} model(s) = "
-          f"{len(tasks)} call(s) -> {out_dir}", flush=True)
-
+    print(f"run {run_id}: {len(rows)} q x {len(models)} model(s) = {len(tasks)} call(s) -> {out_dir}", flush=True)
     lock = threading.Lock()
-    counts = {"ok": 0, "error": 0, "skipped": 0, "dry-run": 0}
+    counts, total_cost = {"ok": 0, "error": 0, "skipped": 0, "dry-run": 0}, 0.0
     with ThreadPoolExecutor(max_workers=args.concurrency) as ex:
-        futs = [ex.submit(run_one, q, m, args, out_dir, lock) for q, m in tasks]
-        for fut in as_completed(futs):
+        for fut in as_completed([ex.submit(run_one, q, m, args, out_dir, lock) for q, m in tasks]):
             r = fut.result()
             counts[r["status"]] = counts.get(r["status"], 0) + 1
+            if r.get("cost"): total_cost += r["cost"]
             done = sum(counts.values())
-            extra = f" ({r['error']})" if r.get("error") else ""
+            extra = f" ${r['cost']:.3f}" if r.get("cost") else ""
+            extra += f" ({r['error']})" if r.get("error") else ""
             print(f"[{done}/{len(tasks)}] {r['status']:7} {r['model']} {r['qid']}"
-                  f"{(' %.0fs' % r['seconds']) if r.get('seconds') else ''}{extra}",
-                  flush=True)
-
+                  f"{(' %.0fs' % r['seconds']) if r.get('seconds') else ''}{extra}", flush=True)
+    counts["total_cost_usd"] = round(total_cost, 4)
     print(f"done: {counts}", flush=True)
     (out_dir / "summary.json").write_text(json.dumps(counts, indent=2) + "\n")
     return 1 if counts.get("error") else 0
