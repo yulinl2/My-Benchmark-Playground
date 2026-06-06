@@ -53,6 +53,16 @@ PRICES = {
     "gpt-5.5": (5, 15),
 }
 
+# One --effort knob drives all three thinking APIs:
+#   GPT-5.x        -> reasoning.effort
+#   Opus/Sonnet    -> thinking.type=adaptive + output_config.effort
+#   Haiku (no adaptive support) -> thinking.type=enabled + budget_tokens (mapped)
+EFFORT_BUDGET = {"minimal": 0, "low": 4000, "medium": 8000, "high": 12000}
+
+
+def claude_supports_adaptive(model: str) -> bool:
+    return ("opus" in model) or ("sonnet" in model)
+
 
 def iso_now() -> str:
     return datetime.now(timezone.utc).isoformat()
@@ -89,13 +99,18 @@ def build_user_prompt(q: dict) -> str:
 
 
 # --------------------------------------------------------------- providers ----
-def call_anthropic(model, system, user, max_tokens, thinking_budget, timeout) -> dict:
+def call_anthropic(model, system, user, max_tokens, effort, timeout) -> dict:
     base = os.environ.get("ANTHROPIC_BASE_URL", "https://api.anthropic.com").rstrip("/")
     key = os.environ["ANTHROPIC_API_KEY"]
     body = {"model": model, "max_tokens": max_tokens, "system": system,
             "messages": [{"role": "user", "content": user}]}
-    if thinking_budget and thinking_budget > 0:
-        body["thinking"] = {"type": "enabled", "budget_tokens": thinking_budget}
+    if claude_supports_adaptive(model):
+        body["thinking"] = {"type": "adaptive"}
+        body["output_config"] = {"effort": effort}
+    else:  # haiku etc.: legacy budgeted thinking
+        budget = EFFORT_BUDGET.get(effort, 8000)
+        if budget > 0:
+            body["thinking"] = {"type": "enabled", "budget_tokens": budget}
     req = urllib.request.Request(
         f"{base}/v1/messages", data=json.dumps(body).encode(),
         headers={"content-type": "application/json", "x-api-key": key,
@@ -155,8 +170,7 @@ def run_one(q, model, args, out_dir, lock) -> dict:
         return {"qid": qid, "model": model, "status": "skipped"}
 
     user = build_user_prompt(q)
-    mode = ({"thinking_budget": args.thinking_budget} if prov == "anthropic"
-            else {"reasoning_effort": args.reasoning_effort})
+    mode = {"effort": args.effort}
     record = {"question_id": qid, "model": model, "provider": prov, "exam": q.get("exam"),
               "request": {"system": SYSTEM_PROMPT, "user": user,
                           "max_tokens": args.max_tokens, "mode": mode},
@@ -174,10 +188,10 @@ def run_one(q, model, args, out_dir, lock) -> dict:
         try:
             if prov == "anthropic":
                 out = call_anthropic(model, SYSTEM_PROMPT, user, args.max_tokens,
-                                     args.thinking_budget, args.timeout)
+                                     args.effort, args.timeout)
             else:
                 out = call_openai(model, SYSTEM_PROMPT, user, args.max_tokens,
-                                  args.reasoning_effort, args.timeout)
+                                  args.effort, args.timeout)
             record["response"] = out
             record["cost_usd"] = price_cost(model, out.get("usage", {}))
             break
@@ -235,8 +249,9 @@ def main() -> int:
     ap.add_argument("--run-id", default=None)
     ap.add_argument("--concurrency", type=int, default=4)
     ap.add_argument("--max-tokens", type=int, default=16000)
-    ap.add_argument("--thinking-budget", type=int, default=8000, help="Claude extended-thinking budget; 0 disables")
-    ap.add_argument("--reasoning-effort", choices=["minimal", "low", "medium", "high"], default="high", help="GPT reasoning effort")
+    ap.add_argument("--effort", choices=["minimal", "low", "medium", "high"], default="high",
+                    help="unified reasoning effort across providers (GPT reasoning.effort; "
+                         "Opus/Sonnet adaptive output_config.effort; Haiku mapped to a thinking budget)")
     ap.add_argument("--timeout", type=int, default=900)
     ap.add_argument("--retries", type=int, default=3)
     ap.add_argument("--filter-level", choices=["phd", "ms"])
@@ -256,8 +271,7 @@ def main() -> int:
     out_dir.mkdir(parents=True, exist_ok=True)
     (out_dir / "manifest.json").write_text(json.dumps({
         "run_id": run_id, "created": iso_now(), "models": models, "n_questions": len(rows),
-        "max_tokens": args.max_tokens, "thinking_budget": args.thinking_budget,
-        "reasoning_effort": args.reasoning_effort, "dry_run": args.dry_run,
+        "max_tokens": args.max_tokens, "effort": args.effort, "dry_run": args.dry_run,
         "question_ids": [r["id"] for r in rows]}, indent=2) + "\n")
 
     tasks = [(q, m) for m in models for q in rows]
