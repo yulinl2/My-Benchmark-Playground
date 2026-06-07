@@ -1,0 +1,69 @@
+{
+  "question_id": "2024-spring-math-stat-q4",
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "rep": 1,
+  "exam": {
+    "year": 2024,
+    "term": "spring",
+    "level": "ms",
+    "part": "math-stat"
+  },
+  "request": {
+    "system": "You are sitting a PhD-level qualifying examination in statistics. Solve the problem rigorously and completely. Show your work and reasoning, justify each step, and clearly state your final answer(s). If the problem has multiple parts, answer every part, labeled. If you invoke a known theorem, name it.",
+    "user": "[2024 spring ms math-stat — problem 4]\n\n$X$ has density $f(x\\mid\\theta) = 2x/\\theta^2$, $0 < x < \\theta$. (1) Find $\\mathbb{E}_\\theta X$ and $\\operatorname{Var}_\\theta X$. (2) Under squared-error loss, among estimators $\\delta_c(x) = cx$, find the $c$ minimizing MSE. (3) Is that estimator unbiased for $\\theta$? (4) Find an unbiased estimator of $\\theta(1-\\theta)$.",
+    "max_tokens": 24000,
+    "mode": {
+      "effort": "high"
+    }
+  },
+  "response": {
+    "id": "resp_0884a754a7092244006a24bac08bb081938369ee4a28da00d4",
+    "model": "gpt-5.5-2026-04-23",
+    "stop_reason": "completed",
+    "usage": {
+      "input_tokens": 194,
+      "output_tokens": 2062,
+      "output_tokens_details": {
+        "reasoning_tokens": 1034
+      }
+    },
+    "thinking": "**Analyzing unbiased estimator**\n\nI'm looking at the density function where θ > 0. I've realized that if θ > 1, it could lead to negative behavior, which isn't good. I want an unbiased estimator function g(X) so that Eθ g(X) = θ - θ^2, holding true across the parameter space, possibly (0,1).\n\nTo make progress, I need to examine the distribution's support, which relies on θ. I should work through that integral equation to solve for Eθ δ(X). Let's see what that yields!",
+    "text": "**(1) Mean and variance.**\n\nFor any \\(k>-2\\),\n\n\\[\n\\mathbb E_\\theta[X^k]\n=\\int_0^\\theta x^k \\frac{2x}{\\theta^2}\\,dx\n=\\frac{2}{\\theta^2}\\frac{\\theta^{k+2}}{k+2}\n=\\frac{2\\theta^k}{k+2}.\n\\]\n\nThus\n\n\\[\n\\mathbb E_\\theta X=\\frac{2\\theta}{3},\n\\]\n\nand\n\n\\[\n\\mathbb E_\\theta X^2=\\frac{\\theta^2}{2}.\n\\]\n\nTherefore\n\n\\[\n\\operatorname{Var}_\\theta(X)\n=\\mathbb E_\\theta X^2-(\\mathbb E_\\theta X)^2\n=\\frac{\\theta^2}{2}-\\frac{4\\theta^2}{9}\n=\\frac{\\theta^2}{18}.\n\\]\n\nSo\n\n\\[\n\\boxed{\\mathbb E_\\theta X=\\frac{2\\theta}{3}}, \\qquad\n\\boxed{\\operatorname{Var}_\\theta(X)=\\frac{\\theta^2}{18}}.\n\\]\n\n---\n\n**(2) Minimize MSE among estimators \\(\\delta_c(X)=cX\\).**\n\nUnder squared-error loss for estimating \\(\\theta\\),\n\n\\[\n\\operatorname{MSE}_\\theta(cX)\n=\\mathbb E_\\theta[(cX-\\theta)^2].\n\\]\n\nExpanding,\n\n\\[\n\\operatorname{MSE}_\\theta(cX)\n=c^2\\mathbb E_\\theta X^2-2c\\theta \\mathbb E_\\theta X+\\theta^2.\n\\]\n\nUsing the moments from part (1),\n\n\\[\n\\operatorname{MSE}_\\theta(cX)\n=c^2\\frac{\\theta^2}{2}\n-2c\\theta\\frac{2\\theta}{3}\n+\\theta^2.\n\\]\n\nHence\n\n\\[\n\\operatorname{MSE}_\\theta(cX)\n=\\theta^2\\left(\\frac{c^2}{2}-\\frac{4c}{3}+1\\right).\n\\]\n\nSince \\(\\theta^2>0\\), minimize\n\n\\[\n\\frac{c^2}{2}-\\frac{4c}{3}+1.\n\\]\n\nDifferentiate with respect to \\(c\\):\n\n\\[\nc-\\frac{4}{3}=0,\n\\]\n\nso\n\n\\[\nc=\\frac{4}{3}.\n\\]\n\nThe second derivative is \\(1>0\\), so this is the unique minimizer. Therefore the MSE-minimizing estimator in the class \\(\\delta_c(X)=cX\\) is\n\n\\[\n\\boxed{\\delta(X)=\\frac{4}{3}X}.\n\\]\n\nIts minimum MSE is\n\n\\[\n\\theta^2\\left(\\frac{1}{9}\\right)=\\frac{\\theta^2}{9}.\n\\]\n\n---\n\n**(3) Is \\(\\frac{4}{3}X\\) unbiased for \\(\\theta\\)?**\n\nCompute its expectation:\n\n\\[\n\\mathbb E_\\theta\\left[\\frac{4}{3}X\\right]\n=\\frac{4}{3}\\mathbb E_\\theta X\n=\\frac{4}{3}\\cdot \\frac{2\\theta}{3}\n=\\frac{8\\theta}{9}.\n\\]\n\nThis is not equal to \\(\\theta\\). Therefore\n\n\\[\n\\boxed{\\frac{4}{3}X \\text{ is biased for } \\theta.}\n\\]\n\nIts bias is\n\n\\[\n\\frac{8\\theta}{9}-\\theta=-\\frac{\\theta}{9}.\n\\]\n\n---\n\n**(4) Find an unbiased estimator of \\(\\theta(1-\\theta)\\).**\n\nWe want an estimator \\(\\delta(X)\\) such that\n\n\\[\n\\mathbb E_\\theta[\\delta(X)]=\\theta(1-\\theta)=\\theta-\\theta^2.\n\\]\n\nFrom part (1),\n\n\\[\n\\mathbb E_\\theta X=\\frac{2\\theta}{3},\n\\]\n\nso\n\n\\[\n\\mathbb E_\\theta\\left[\\frac{3}{2}X\\right]=\\theta.\n\\]\n\nAlso,\n\n\\[\n\\mathbb E_\\theta X^2=\\frac{\\theta^2}{2},\n\\]\n\nso\n\n\\[\n\\mathbb E_\\theta[2X^2]=\\theta^2.\n\\]\n\nTherefore\n\n\\[\n\\mathbb E_\\theta\\left[\\frac{3}{2}X-2X^2\\right]\n=\\theta-\\theta^2\n=\\theta(1-\\theta).\n\\]\n\nThus an unbiased estimator is\n\n\\[\n\\boxed{\\delta(X)=\\frac{3}{2}X-2X^2}.\n\\]",
+    "raw_output": [
+      {
+        "id": "rs_0884a754a7092244006a24bac20f78819385e214c6b6fe32ee",
+        "type": "reasoning",
+        "content": [],
+        "summary": [
+          {
+            "type": "summary_text",
+            "text": "**Analyzing unbiased estimator**\n\nI'm looking at the density function where θ > 0. I've realized that if θ > 1, it could lead to negative behavior, which isn't good. I want an unbiased estimator function g(X) so that Eθ g(X) = θ - θ^2, holding true across the parameter space, possibly (0,1).\n\nTo make progress, I need to examine the distribution's support, which relies on θ. I should work through that integral equation to solve for Eθ δ(X). Let's see what that yields!"
+          }
+        ]
+      },
+      {
+        "id": "msg_0884a754a7092244006a24bad63a448193bf04906556a4e51c",
+        "type": "message",
+        "status": "completed",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "**(1) Mean and variance.**\n\nFor any \\(k>-2\\),\n\n\\[\n\\mathbb E_\\theta[X^k]\n=\\int_0^\\theta x^k \\frac{2x}{\\theta^2}\\,dx\n=\\frac{2}{\\theta^2}\\frac{\\theta^{k+2}}{k+2}\n=\\frac{2\\theta^k}{k+2}.\n\\]\n\nThus\n\n\\[\n\\mathbb E_\\theta X=\\frac{2\\theta}{3},\n\\]\n\nand\n\n\\[\n\\mathbb E_\\theta X^2=\\frac{\\theta^2}{2}.\n\\]\n\nTherefore\n\n\\[\n\\operatorname{Var}_\\theta(X)\n=\\mathbb E_\\theta X^2-(\\mathbb E_\\theta X)^2\n=\\frac{\\theta^2}{2}-\\frac{4\\theta^2}{9}\n=\\frac{\\theta^2}{18}.\n\\]\n\nSo\n\n\\[\n\\boxed{\\mathbb E_\\theta X=\\frac{2\\theta}{3}}, \\qquad\n\\boxed{\\operatorname{Var}_\\theta(X)=\\frac{\\theta^2}{18}}.\n\\]\n\n---\n\n**(2) Minimize MSE among estimators \\(\\delta_c(X)=cX\\).**\n\nUnder squared-error loss for estimating \\(\\theta\\),\n\n\\[\n\\operatorname{MSE}_\\theta(cX)\n=\\mathbb E_\\theta[(cX-\\theta)^2].\n\\]\n\nExpanding,\n\n\\[\n\\operatorname{MSE}_\\theta(cX)\n=c^2\\mathbb E_\\theta X^2-2c\\theta \\mathbb E_\\theta X+\\theta^2.\n\\]\n\nUsing the moments from part (1),\n\n\\[\n\\operatorname{MSE}_\\theta(cX)\n=c^2\\frac{\\theta^2}{2}\n-2c\\theta\\frac{2\\theta}{3}\n+\\theta^2.\n\\]\n\nHence\n\n\\[\n\\operatorname{MSE}_\\theta(cX)\n=\\theta^2\\left(\\frac{c^2}{2}-\\frac{4c}{3}+1\\right).\n\\]\n\nSince \\(\\theta^2>0\\), minimize\n\n\\[\n\\frac{c^2}{2}-\\frac{4c}{3}+1.\n\\]\n\nDifferentiate with respect to \\(c\\):\n\n\\[\nc-\\frac{4}{3}=0,\n\\]\n\nso\n\n\\[\nc=\\frac{4}{3}.\n\\]\n\nThe second derivative is \\(1>0\\), so this is the unique minimizer. Therefore the MSE-minimizing estimator in the class \\(\\delta_c(X)=cX\\) is\n\n\\[\n\\boxed{\\delta(X)=\\frac{4}{3}X}.\n\\]\n\nIts minimum MSE is\n\n\\[\n\\theta^2\\left(\\frac{1}{9}\\right)=\\frac{\\theta^2}{9}.\n\\]\n\n---\n\n**(3) Is \\(\\frac{4}{3}X\\) unbiased for \\(\\theta\\)?**\n\nCompute its expectation:\n\n\\[\n\\mathbb E_\\theta\\left[\\frac{4}{3}X\\right]\n=\\frac{4}{3}\\mathbb E_\\theta X\n=\\frac{4}{3}\\cdot \\frac{2\\theta}{3}\n=\\frac{8\\theta}{9}.\n\\]\n\nThis is not equal to \\(\\theta\\). Therefore\n\n\\[\n\\boxed{\\frac{4}{3}X \\text{ is biased for } \\theta.}\n\\]\n\nIts bias is\n\n\\[\n\\frac{8\\theta}{9}-\\theta=-\\frac{\\theta}{9}.\n\\]\n\n---\n\n**(4) Find an unbiased estimator of \\(\\theta(1-\\theta)\\).**\n\nWe want an estimator \\(\\delta(X)\\) such that\n\n\\[\n\\mathbb E_\\theta[\\delta(X)]=\\theta(1-\\theta)=\\theta-\\theta^2.\n\\]\n\nFrom part (1),\n\n\\[\n\\mathbb E_\\theta X=\\frac{2\\theta}{3},\n\\]\n\nso\n\n\\[\n\\mathbb E_\\theta\\left[\\frac{3}{2}X\\right]=\\theta.\n\\]\n\nAlso,\n\n\\[\n\\mathbb E_\\theta X^2=\\frac{\\theta^2}{2},\n\\]\n\nso\n\n\\[\n\\mathbb E_\\theta[2X^2]=\\theta^2.\n\\]\n\nTherefore\n\n\\[\n\\mathbb E_\\theta\\left[\\frac{3}{2}X-2X^2\\right]\n=\\theta-\\theta^2\n=\\theta(1-\\theta).\n\\]\n\nThus an unbiased estimator is\n\n\\[\n\\boxed{\\delta(X)=\\frac{3}{2}X-2X^2}.\n\\]"
+          }
+        ],
+        "phase": "final_answer",
+        "role": "assistant"
+      }
+    ]
+  },
+  "cost_usd": 0.0319,
+  "timing": {
+    "started": "2026-06-07T00:26:40.376371+00:00",
+    "ended": "2026-06-07T00:27:11.557931+00:00",
+    "seconds": 31.18
+  },
+  "error": null
+}

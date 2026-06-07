@@ -1,0 +1,76 @@
+{
+  "question_id": "2025-summer-probability-q2",
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "rep": 0,
+  "exam": {
+    "year": 2025,
+    "term": "summer",
+    "part": "probability"
+  },
+  "request": {
+    "system": "You are sitting a PhD-level qualifying examination in statistics. Solve the problem rigorously and completely. Show your work and reasoning, justify each step, and clearly state your final answer(s). If the problem has multiple parts, answer every part, labeled. If you invoke a known theorem, name it.",
+    "user": "[2025 summer phd probability — problem 2]\n\nPart II. Let $S_n = \\sum_{i=1}^n \\xi_i$ be an asymmetric simple random walk from $0$ with $1/2 < p < 1$, and $T_1 = \\inf\\{n : S_n = 1\\}$. Let $\\phi(\\theta) = \\mathbb{E} e^{\\theta\\xi_1} = pe^\\theta + qe^{-\\theta}$.\n(i) Construct an appropriate martingale to show $e^\\theta \\mathbb{E}\\,\\phi(\\theta)^{-T_1} = 1$ for all $\\theta \\ge 0$.\n(ii) Use (i) to compute $\\mathbb{E}\\, s^{T_1}$ for $s \\in (0, 1)$.",
+    "max_tokens": 24000,
+    "mode": {
+      "effort": "high"
+    }
+  },
+  "response": {
+    "id": "resp_0e1ccb0933a81076006a24be31a35c8196ae4f7f800edcc652",
+    "model": "gpt-5.5-2026-04-23",
+    "stop_reason": "completed",
+    "usage": {
+      "input_tokens": 253,
+      "output_tokens": 4474,
+      "output_tokens_details": {
+        "reasoning_tokens": 3106
+      }
+    },
+    "thinking": "**Analyzing roots for θ**\n\nI need to determine which root to use for θ when it’s greater than or equal to zero. For s=1, the roots are given by the formula involving p and q, yielding results of 1 and q/p. It looks like I have to use the plus root, especially if p exceeds q, leading to a value of 1. If s is less than 1, I wonder if the plus root is still greater than 1. Ultimately, it seems I should choose the plus root for my calculations.\n**Evaluating formula clarity**\n\nI'm looking at the formula: E[s^{T1}] = e^{-θ(s)} and trying to simplify it. It involves p, q, and s. I need to verify if the denominator is positive and if the square root is valid. The discriminant gives me the condition for two positive roots which is Δ=1-4pq s². For values of s between 0 and 1, I think I need to consider robustness in the selection at the positive roots when s is less than 1.\n**Testing correct formulas**\n\nI’m trying to determine which formula is correct by testing p=0.6, q=0.4, and s=0.5. This leads me to calculate D as the square root of (1-0.24), which gives me around 0.8718. Then I check the rationalization and see that even with small s around 0.3, p contributes additional value. I wonder if there might be a subtle issue related to the identity for θ≥0, considering the complexities around mapping and roots. Overall, it feels like I'm on the right track!",
+    "text": "Let \\(q=1-p\\), so \\(\\mathbb P(\\xi_i=1)=p\\), \\(\\mathbb P(\\xi_i=-1)=q\\), with \\(p>q\\).\n\n## (i) Martingale and optional stopping\n\nLet \\(\\mathcal F_n=\\sigma(\\xi_1,\\dots,\\xi_n)\\). For fixed \\(\\theta\\ge 0\\), define\n\n\\[\nM_n(\\theta):=\\frac{e^{\\theta S_n}}{\\phi(\\theta)^n},\n\\qquad \n\\phi(\\theta)=\\mathbb E e^{\\theta \\xi_1}=pe^\\theta+qe^{-\\theta}.\n\\]\n\nThen \\((M_n(\\theta))_{n\\ge 0}\\) is a martingale because\n\n\\[\n\\mathbb E[M_{n+1}(\\theta)\\mid \\mathcal F_n]\n=\n\\frac{e^{\\theta S_n}}{\\phi(\\theta)^{n+1}}\n\\mathbb E e^{\\theta \\xi_{n+1}}\n=\n\\frac{e^{\\theta S_n}}{\\phi(\\theta)^n}\n=\nM_n(\\theta).\n\\]\n\nAlso \\(M_0(\\theta)=1\\).\n\nFirst note that \\(T_1<\\infty\\) a.s. Since \\(\\mathbb E \\xi_1=p-q>0\\), the strong law of large numbers gives\n\n\\[\n\\frac{S_n}{n}\\to p-q>0 \\qquad \\text{a.s.}\n\\]\n\nThus \\(S_n\\to+\\infty\\) a.s., and because the walk moves by nearest-neighbor steps, it must eventually hit \\(1\\). Hence \\(T_1<\\infty\\) a.s.\n\nFor \\(n\\ge 1\\), set \\(\\tau_n=T_1\\wedge n\\). By the optional stopping theorem for bounded stopping times,\n\n\\[\n1=\\mathbb E M_{\\tau_n}(\\theta).\n\\]\n\nOn \\(\\{T_1\\le n\\}\\), we have \\(S_{T_1}=1\\), so\n\n\\[\nM_{\\tau_n}(\\theta)\n=\n\\frac{e^\\theta}{\\phi(\\theta)^{T_1}}.\n\\]\n\nOn \\(\\{T_1>n\\}\\), the walk has not hit \\(1\\) by time \\(n\\), so necessarily \\(S_n\\le 0\\). Hence for \\(\\theta\\ge 0\\),\n\n\\[\ne^{\\theta S_n}\\le 1.\n\\]\n\nTherefore\n\n\\[\n1\n=\ne^\\theta \\mathbb E\\left[\\phi(\\theta)^{-T_1};\\,T_1\\le n\\right]\n+\n\\mathbb E\\left[\\frac{e^{\\theta S_n}}{\\phi(\\theta)^n};\\,T_1>n\\right].\n\\]\n\nFor \\(\\theta>0\\), since\n\n\\[\n\\phi'(\\theta)=pe^\\theta-qe^{-\\theta}>0,\n\\]\n\nand \\(\\phi(0)=1\\), we have \\(\\phi(\\theta)>1\\). Thus\n\n\\[\n0\\le \n\\mathbb E\\left[\\frac{e^{\\theta S_n}}{\\phi(\\theta)^n};\\,T_1>n\\right]\n\\le \\phi(\\theta)^{-n}\\to 0.\n\\]\n\nLetting \\(n\\to\\infty\\) and using monotone convergence,\n\n\\[\n1=e^\\theta \\mathbb E\\left[\\phi(\\theta)^{-T_1}\\right].\n\\]\n\nFor \\(\\theta=0\\), the identity is simply \\(1=\\mathbb E 1\\), since \\(T_1<\\infty\\) a.s. Therefore, for every \\(\\theta\\ge 0\\),\n\n\\[\n\\boxed{\ne^\\theta \\mathbb E\\left[\\phi(\\theta)^{-T_1}\\right]=1.\n}\n\\]\n\nEquivalently,\n\n\\[\n\\boxed{\n\\mathbb E\\left[\\phi(\\theta)^{-T_1}\\right]=e^{-\\theta}.\n}\n\\]\n\n---\n\n## (ii) Computation of \\(\\mathbb E s^{T_1}\\) for \\(s\\in(0,1)\\)\n\nFrom part (i), if \\(s=\\phi(\\theta)^{-1}\\), then\n\n\\[\n\\mathbb E s^{T_1}=e^{-\\theta}.\n\\]\n\nFor \\(\\theta\\ge 0\\), \\(\\phi(\\theta)\\) is continuous and strictly increasing from \\(1\\) to \\(+\\infty\\), so \\(\\phi(\\theta)^{-1}\\) decreases continuously from \\(1\\) to \\(0\\). Hence for every \\(s\\in(0,1)\\), there is a unique \\(\\theta>0\\) such that\n\n\\[\ns=\\frac1{\\phi(\\theta)}.\n\\]\n\nLet \\(x=e^\\theta\\ge 1\\). Then\n\n\\[\n\\phi(\\theta)=px+\\frac qx=\\frac1s.\n\\]\n\nMultiplying by \\(x\\),\n\n\\[\npx^2-\\frac{x}{s}+q=0,\n\\]\n\nor equivalently,\n\n\\[\npsx^2-x+qs=0.\n\\]\n\nSolving this quadratic gives\n\n\\[\nx\n=\n\\frac{1\\pm \\sqrt{1-4pq s^2}}{2ps}.\n\\]\n\nSince \\(x=e^\\theta\\ge 1\\), the correct root is\n\n\\[\nx\n=\n\\frac{1+\\sqrt{1-4pq s^2}}{2ps}.\n\\]\n\nTherefore\n\n\\[\n\\mathbb E s^{T_1}\n=\ne^{-\\theta}\n=\n\\frac1x\n=\n\\frac{2ps}{1+\\sqrt{1-4pq s^2}}.\n\\]\n\nEquivalently, rationalizing the denominator,\n\n\\[\n\\mathbb E s^{T_1}\n=\n\\frac{1-\\sqrt{1-4pq s^2}}{2qs}.\n\\]\n\nThus\n\n\\[\n\\boxed{\n\\mathbb E s^{T_1}\n=\n\\frac{2ps}{1+\\sqrt{1-4pq s^2}}\n=\n\\frac{1-\\sqrt{1-4pq s^2}}{2qs},\n\\qquad 0<s<1.\n}\n\\]",
+    "raw_output": [
+      {
+        "id": "rs_0e1ccb0933a81076006a24be3252948196abc742d0caadf9b8",
+        "type": "reasoning",
+        "content": [],
+        "summary": [
+          {
+            "type": "summary_text",
+            "text": "**Analyzing roots for θ**\n\nI need to determine which root to use for θ when it’s greater than or equal to zero. For s=1, the roots are given by the formula involving p and q, yielding results of 1 and q/p. It looks like I have to use the plus root, especially if p exceeds q, leading to a value of 1. If s is less than 1, I wonder if the plus root is still greater than 1. Ultimately, it seems I should choose the plus root for my calculations."
+          },
+          {
+            "type": "summary_text",
+            "text": "**Evaluating formula clarity**\n\nI'm looking at the formula: E[s^{T1}] = e^{-θ(s)} and trying to simplify it. It involves p, q, and s. I need to verify if the denominator is positive and if the square root is valid. The discriminant gives me the condition for two positive roots which is Δ=1-4pq s². For values of s between 0 and 1, I think I need to consider robustness in the selection at the positive roots when s is less than 1."
+          },
+          {
+            "type": "summary_text",
+            "text": "**Testing correct formulas**\n\nI’m trying to determine which formula is correct by testing p=0.6, q=0.4, and s=0.5. This leads me to calculate D as the square root of (1-0.24), which gives me around 0.8718. Then I check the rationalization and see that even with small s around 0.3, p contributes additional value. I wonder if there might be a subtle issue related to the identity for θ≥0, considering the complexities around mapping and roots. Overall, it feels like I'm on the right track!"
+          }
+        ]
+      },
+      {
+        "id": "msg_0e1ccb0933a81076006a24be804ef88196972963fa69a8c89a",
+        "type": "message",
+        "status": "completed",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "Let \\(q=1-p\\), so \\(\\mathbb P(\\xi_i=1)=p\\), \\(\\mathbb P(\\xi_i=-1)=q\\), with \\(p>q\\).\n\n## (i) Martingale and optional stopping\n\nLet \\(\\mathcal F_n=\\sigma(\\xi_1,\\dots,\\xi_n)\\). For fixed \\(\\theta\\ge 0\\), define\n\n\\[\nM_n(\\theta):=\\frac{e^{\\theta S_n}}{\\phi(\\theta)^n},\n\\qquad \n\\phi(\\theta)=\\mathbb E e^{\\theta \\xi_1}=pe^\\theta+qe^{-\\theta}.\n\\]\n\nThen \\((M_n(\\theta))_{n\\ge 0}\\) is a martingale because\n\n\\[\n\\mathbb E[M_{n+1}(\\theta)\\mid \\mathcal F_n]\n=\n\\frac{e^{\\theta S_n}}{\\phi(\\theta)^{n+1}}\n\\mathbb E e^{\\theta \\xi_{n+1}}\n=\n\\frac{e^{\\theta S_n}}{\\phi(\\theta)^n}\n=\nM_n(\\theta).\n\\]\n\nAlso \\(M_0(\\theta)=1\\).\n\nFirst note that \\(T_1<\\infty\\) a.s. Since \\(\\mathbb E \\xi_1=p-q>0\\), the strong law of large numbers gives\n\n\\[\n\\frac{S_n}{n}\\to p-q>0 \\qquad \\text{a.s.}\n\\]\n\nThus \\(S_n\\to+\\infty\\) a.s., and because the walk moves by nearest-neighbor steps, it must eventually hit \\(1\\). Hence \\(T_1<\\infty\\) a.s.\n\nFor \\(n\\ge 1\\), set \\(\\tau_n=T_1\\wedge n\\). By the optional stopping theorem for bounded stopping times,\n\n\\[\n1=\\mathbb E M_{\\tau_n}(\\theta).\n\\]\n\nOn \\(\\{T_1\\le n\\}\\), we have \\(S_{T_1}=1\\), so\n\n\\[\nM_{\\tau_n}(\\theta)\n=\n\\frac{e^\\theta}{\\phi(\\theta)^{T_1}}.\n\\]\n\nOn \\(\\{T_1>n\\}\\), the walk has not hit \\(1\\) by time \\(n\\), so necessarily \\(S_n\\le 0\\). Hence for \\(\\theta\\ge 0\\),\n\n\\[\ne^{\\theta S_n}\\le 1.\n\\]\n\nTherefore\n\n\\[\n1\n=\ne^\\theta \\mathbb E\\left[\\phi(\\theta)^{-T_1};\\,T_1\\le n\\right]\n+\n\\mathbb E\\left[\\frac{e^{\\theta S_n}}{\\phi(\\theta)^n};\\,T_1>n\\right].\n\\]\n\nFor \\(\\theta>0\\), since\n\n\\[\n\\phi'(\\theta)=pe^\\theta-qe^{-\\theta}>0,\n\\]\n\nand \\(\\phi(0)=1\\), we have \\(\\phi(\\theta)>1\\). Thus\n\n\\[\n0\\le \n\\mathbb E\\left[\\frac{e^{\\theta S_n}}{\\phi(\\theta)^n};\\,T_1>n\\right]\n\\le \\phi(\\theta)^{-n}\\to 0.\n\\]\n\nLetting \\(n\\to\\infty\\) and using monotone convergence,\n\n\\[\n1=e^\\theta \\mathbb E\\left[\\phi(\\theta)^{-T_1}\\right].\n\\]\n\nFor \\(\\theta=0\\), the identity is simply \\(1=\\mathbb E 1\\), since \\(T_1<\\infty\\) a.s. Therefore, for every \\(\\theta\\ge 0\\),\n\n\\[\n\\boxed{\ne^\\theta \\mathbb E\\left[\\phi(\\theta)^{-T_1}\\right]=1.\n}\n\\]\n\nEquivalently,\n\n\\[\n\\boxed{\n\\mathbb E\\left[\\phi(\\theta)^{-T_1}\\right]=e^{-\\theta}.\n}\n\\]\n\n---\n\n## (ii) Computation of \\(\\mathbb E s^{T_1}\\) for \\(s\\in(0,1)\\)\n\nFrom part (i), if \\(s=\\phi(\\theta)^{-1}\\), then\n\n\\[\n\\mathbb E s^{T_1}=e^{-\\theta}.\n\\]\n\nFor \\(\\theta\\ge 0\\), \\(\\phi(\\theta)\\) is continuous and strictly increasing from \\(1\\) to \\(+\\infty\\), so \\(\\phi(\\theta)^{-1}\\) decreases continuously from \\(1\\) to \\(0\\). Hence for every \\(s\\in(0,1)\\), there is a unique \\(\\theta>0\\) such that\n\n\\[\ns=\\frac1{\\phi(\\theta)}.\n\\]\n\nLet \\(x=e^\\theta\\ge 1\\). Then\n\n\\[\n\\phi(\\theta)=px+\\frac qx=\\frac1s.\n\\]\n\nMultiplying by \\(x\\),\n\n\\[\npx^2-\\frac{x}{s}+q=0,\n\\]\n\nor equivalently,\n\n\\[\npsx^2-x+qs=0.\n\\]\n\nSolving this quadratic gives\n\n\\[\nx\n=\n\\frac{1\\pm \\sqrt{1-4pq s^2}}{2ps}.\n\\]\n\nSince \\(x=e^\\theta\\ge 1\\), the correct root is\n\n\\[\nx\n=\n\\frac{1+\\sqrt{1-4pq s^2}}{2ps}.\n\\]\n\nTherefore\n\n\\[\n\\mathbb E s^{T_1}\n=\ne^{-\\theta}\n=\n\\frac1x\n=\n\\frac{2ps}{1+\\sqrt{1-4pq s^2}}.\n\\]\n\nEquivalently, rationalizing the denominator,\n\n\\[\n\\mathbb E s^{T_1}\n=\n\\frac{1-\\sqrt{1-4pq s^2}}{2qs}.\n\\]\n\nThus\n\n\\[\n\\boxed{\n\\mathbb E s^{T_1}\n=\n\\frac{2ps}{1+\\sqrt{1-4pq s^2}}\n=\n\\frac{1-\\sqrt{1-4pq s^2}}{2qs},\n\\qquad 0<s<1.\n}\n\\]"
+          }
+        ],
+        "phase": "final_answer",
+        "role": "assistant"
+      }
+    ]
+  },
+  "cost_usd": 0.06837,
+  "timing": {
+    "started": "2026-06-07T00:41:21.484689+00:00",
+    "ended": "2026-06-07T00:42:57.373561+00:00",
+    "seconds": 95.89
+  },
+  "error": null
+}

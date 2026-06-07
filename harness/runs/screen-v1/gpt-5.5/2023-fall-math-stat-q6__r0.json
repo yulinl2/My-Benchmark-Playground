@@ -1,0 +1,73 @@
+{
+  "question_id": "2023-fall-math-stat-q6",
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "rep": 0,
+  "exam": {
+    "year": 2023,
+    "term": "fall",
+    "level": "ms",
+    "part": "math-stat"
+  },
+  "request": {
+    "system": "You are sitting a PhD-level qualifying examination in statistics. Solve the problem rigorously and completely. Show your work and reasoning, justify each step, and clearly state your final answer(s). If the problem has multiple parts, answer every part, labeled. If you invoke a known theorem, name it.",
+    "user": "[2023 fall ms math-stat — problem 6]\n\n$X$ has density $f(x\\mid\\theta) = 2x/\\theta^2$ for $0 < x \\le \\theta$ (0 otherwise), with $\\theta \\in (0,1)$. (1) Find $\\mathbb{E}_\\theta\\{X\\}$ and $\\operatorname{Var}_\\theta\\{X\\}$. (2) Find the MLE of $\\theta$. (3) Find an unbiased estimator of $\\theta(1-\\theta)$.",
+    "max_tokens": 24000,
+    "mode": {
+      "effort": "high"
+    }
+  },
+  "response": {
+    "id": "resp_0f70e60ccb12a34f006a24b82f0ab081968f2b13f93eac2acd",
+    "model": "gpt-5.5-2026-04-23",
+    "stop_reason": "completed",
+    "usage": {
+      "input_tokens": 189,
+      "output_tokens": 1907,
+      "output_tokens_details": {
+        "reasoning_tokens": 1034
+      }
+    },
+    "thinking": "**Considering statistical estimators**\n\nI’m calculating moments and exploring the estimator \\(E[X^2]\\), which involves working through the integrals and sample considerations. It's interesting that the estimator can be negative for values of \\(X\\) greater than \\(3/4\\), but that might not be problematic. I'm pondering whether the original question intended for \\(X\\) to represent a random sample since the user referenced it in singular form—could it be an oversight? I should ensure to approach this rigorously.\n**Considering MLE estimation**\n\nI need to think about whether we're dealing with a sample. If we have an independent, identically distributed (iid) sample, then our estimator based on X1 can be unbiased. But if there’s no sample, that presents challenges, especially since the maximum likelihood estimator (MLE) typically involves observations of X. I also need to evaluate potential tricky points as θ varies within (0,1). If MLE is θ = X, that seems valid since support depends on θ.",
+    "text": "### (1) Mean and variance\n\nFor \\(0<x\\le \\theta\\),\n\n\\[\nf(x\\mid \\theta)=\\frac{2x}{\\theta^2}.\n\\]\n\nCompute the first two moments:\n\n\\[\n\\mathbb E_\\theta[X]\n=\\int_0^\\theta x \\frac{2x}{\\theta^2}\\,dx\n=\\frac{2}{\\theta^2}\\int_0^\\theta x^2\\,dx\n=\\frac{2}{\\theta^2}\\cdot \\frac{\\theta^3}{3}\n=\\frac{2\\theta}{3}.\n\\]\n\nAlso,\n\n\\[\n\\mathbb E_\\theta[X^2]\n=\\int_0^\\theta x^2 \\frac{2x}{\\theta^2}\\,dx\n=\\frac{2}{\\theta^2}\\int_0^\\theta x^3\\,dx\n=\\frac{2}{\\theta^2}\\cdot \\frac{\\theta^4}{4}\n=\\frac{\\theta^2}{2}.\n\\]\n\nTherefore,\n\n\\[\n\\operatorname{Var}_\\theta(X)\n=\\mathbb E_\\theta[X^2]-\\{\\mathbb E_\\theta[X]\\}^2\n=\\frac{\\theta^2}{2}-\\left(\\frac{2\\theta}{3}\\right)^2\n=\\frac{\\theta^2}{2}-\\frac{4\\theta^2}{9}\n=\\frac{\\theta^2}{18}.\n\\]\n\nThus,\n\n\\[\n\\boxed{\\mathbb E_\\theta[X]=\\frac{2\\theta}{3}}, \\qquad\n\\boxed{\\operatorname{Var}_\\theta(X)=\\frac{\\theta^2}{18}}.\n\\]\n\n---\n\n### (2) MLE of \\(\\theta\\)\n\nFor an observed value \\(x\\), the likelihood is\n\n\\[\nL(\\theta\\mid x)\n=\\frac{2x}{\\theta^2}\\mathbf 1_{\\{x\\le \\theta<1\\}}.\n\\]\n\nFor fixed \\(x\\), on the allowable set \\(\\theta\\in[x,1)\\), the likelihood is proportional to \\(\\theta^{-2}\\), which is strictly decreasing in \\(\\theta\\). Hence it is maximized at the smallest allowable value, namely \\(\\theta=x\\).\n\nTherefore the maximum likelihood estimator is\n\n\\[\n\\boxed{\\widehat\\theta_{\\mathrm{MLE}}=X}.\n\\]\n\n---\n\n### (3) An unbiased estimator of \\(\\theta(1-\\theta)\\)\n\nWe want a statistic \\(g(X)\\) such that\n\n\\[\n\\mathbb E_\\theta[g(X)]=\\theta(1-\\theta)=\\theta-\\theta^2.\n\\]\n\nUsing the moments from part (1),\n\n\\[\n\\mathbb E_\\theta[X]=\\frac{2\\theta}{3},\n\\qquad\n\\mathbb E_\\theta[X^2]=\\frac{\\theta^2}{2}.\n\\]\n\nChoose constants \\(a,b\\) such that\n\n\\[\n\\mathbb E_\\theta[aX+bX^2]=\\theta-\\theta^2.\n\\]\n\nThen\n\n\\[\na\\frac{2\\theta}{3}+b\\frac{\\theta^2}{2}=\\theta-\\theta^2.\n\\]\n\nMatching coefficients gives\n\n\\[\n\\frac{2a}{3}=1,\n\\qquad\n\\frac{b}{2}=-1.\n\\]\n\nThus\n\n\\[\na=\\frac32,\n\\qquad\nb=-2.\n\\]\n\nTherefore,\n\n\\[\n\\delta(X)=\\frac32 X-2X^2\n\\]\n\nsatisfies\n\n\\[\n\\mathbb E_\\theta[\\delta(X)]\n=\\frac32 \\mathbb E_\\theta[X]-2\\mathbb E_\\theta[X^2]\n=\\frac32\\cdot \\frac{2\\theta}{3}-2\\cdot \\frac{\\theta^2}{2}\n=\\theta-\\theta^2\n=\\theta(1-\\theta).\n\\]\n\nHence an unbiased estimator is\n\n\\[\n\\boxed{\\delta(X)=\\frac32 X-2X^2}.\n\\]",
+    "raw_output": [
+      {
+        "id": "rs_0f70e60ccb12a34f006a24b82faf388196afc7fbb5effa9c7a",
+        "type": "reasoning",
+        "content": [],
+        "summary": [
+          {
+            "type": "summary_text",
+            "text": "**Considering statistical estimators**\n\nI’m calculating moments and exploring the estimator \\(E[X^2]\\), which involves working through the integrals and sample considerations. It's interesting that the estimator can be negative for values of \\(X\\) greater than \\(3/4\\), but that might not be problematic. I'm pondering whether the original question intended for \\(X\\) to represent a random sample since the user referenced it in singular form—could it be an oversight? I should ensure to approach this rigorously."
+          },
+          {
+            "type": "summary_text",
+            "text": "**Considering MLE estimation**\n\nI need to think about whether we're dealing with a sample. If we have an independent, identically distributed (iid) sample, then our estimator based on X1 can be unbiased. But if there’s no sample, that presents challenges, especially since the maximum likelihood estimator (MLE) typically involves observations of X. I also need to evaluate potential tricky points as θ varies within (0,1). If MLE is θ = X, that seems valid since support depends on θ."
+          }
+        ]
+      },
+      {
+        "id": "msg_0f70e60ccb12a34f006a24b8469a0c8196840f131a937df339",
+        "type": "message",
+        "status": "completed",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "### (1) Mean and variance\n\nFor \\(0<x\\le \\theta\\),\n\n\\[\nf(x\\mid \\theta)=\\frac{2x}{\\theta^2}.\n\\]\n\nCompute the first two moments:\n\n\\[\n\\mathbb E_\\theta[X]\n=\\int_0^\\theta x \\frac{2x}{\\theta^2}\\,dx\n=\\frac{2}{\\theta^2}\\int_0^\\theta x^2\\,dx\n=\\frac{2}{\\theta^2}\\cdot \\frac{\\theta^3}{3}\n=\\frac{2\\theta}{3}.\n\\]\n\nAlso,\n\n\\[\n\\mathbb E_\\theta[X^2]\n=\\int_0^\\theta x^2 \\frac{2x}{\\theta^2}\\,dx\n=\\frac{2}{\\theta^2}\\int_0^\\theta x^3\\,dx\n=\\frac{2}{\\theta^2}\\cdot \\frac{\\theta^4}{4}\n=\\frac{\\theta^2}{2}.\n\\]\n\nTherefore,\n\n\\[\n\\operatorname{Var}_\\theta(X)\n=\\mathbb E_\\theta[X^2]-\\{\\mathbb E_\\theta[X]\\}^2\n=\\frac{\\theta^2}{2}-\\left(\\frac{2\\theta}{3}\\right)^2\n=\\frac{\\theta^2}{2}-\\frac{4\\theta^2}{9}\n=\\frac{\\theta^2}{18}.\n\\]\n\nThus,\n\n\\[\n\\boxed{\\mathbb E_\\theta[X]=\\frac{2\\theta}{3}}, \\qquad\n\\boxed{\\operatorname{Var}_\\theta(X)=\\frac{\\theta^2}{18}}.\n\\]\n\n---\n\n### (2) MLE of \\(\\theta\\)\n\nFor an observed value \\(x\\), the likelihood is\n\n\\[\nL(\\theta\\mid x)\n=\\frac{2x}{\\theta^2}\\mathbf 1_{\\{x\\le \\theta<1\\}}.\n\\]\n\nFor fixed \\(x\\), on the allowable set \\(\\theta\\in[x,1)\\), the likelihood is proportional to \\(\\theta^{-2}\\), which is strictly decreasing in \\(\\theta\\). Hence it is maximized at the smallest allowable value, namely \\(\\theta=x\\).\n\nTherefore the maximum likelihood estimator is\n\n\\[\n\\boxed{\\widehat\\theta_{\\mathrm{MLE}}=X}.\n\\]\n\n---\n\n### (3) An unbiased estimator of \\(\\theta(1-\\theta)\\)\n\nWe want a statistic \\(g(X)\\) such that\n\n\\[\n\\mathbb E_\\theta[g(X)]=\\theta(1-\\theta)=\\theta-\\theta^2.\n\\]\n\nUsing the moments from part (1),\n\n\\[\n\\mathbb E_\\theta[X]=\\frac{2\\theta}{3},\n\\qquad\n\\mathbb E_\\theta[X^2]=\\frac{\\theta^2}{2}.\n\\]\n\nChoose constants \\(a,b\\) such that\n\n\\[\n\\mathbb E_\\theta[aX+bX^2]=\\theta-\\theta^2.\n\\]\n\nThen\n\n\\[\na\\frac{2\\theta}{3}+b\\frac{\\theta^2}{2}=\\theta-\\theta^2.\n\\]\n\nMatching coefficients gives\n\n\\[\n\\frac{2a}{3}=1,\n\\qquad\n\\frac{b}{2}=-1.\n\\]\n\nThus\n\n\\[\na=\\frac32,\n\\qquad\nb=-2.\n\\]\n\nTherefore,\n\n\\[\n\\delta(X)=\\frac32 X-2X^2\n\\]\n\nsatisfies\n\n\\[\n\\mathbb E_\\theta[\\delta(X)]\n=\\frac32 \\mathbb E_\\theta[X]-2\\mathbb E_\\theta[X^2]\n=\\frac32\\cdot \\frac{2\\theta}{3}-2\\cdot \\frac{\\theta^2}{2}\n=\\theta-\\theta^2\n=\\theta(1-\\theta).\n\\]\n\nHence an unbiased estimator is\n\n\\[\n\\boxed{\\delta(X)=\\frac32 X-2X^2}.\n\\]"
+          }
+        ],
+        "phase": "final_answer",
+        "role": "assistant"
+      }
+    ]
+  },
+  "cost_usd": 0.02955,
+  "timing": {
+    "started": "2026-06-07T00:15:42.921683+00:00",
+    "ended": "2026-06-07T00:16:15.615541+00:00",
+    "seconds": 32.69
+  },
+  "error": null
+}

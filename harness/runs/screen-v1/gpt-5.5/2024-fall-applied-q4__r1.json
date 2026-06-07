@@ -1,0 +1,81 @@
+{
+  "question_id": "2024-fall-applied-q4",
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "rep": 1,
+  "exam": {
+    "year": 2024,
+    "term": "fall",
+    "level": "ms",
+    "part": "applied"
+  },
+  "request": {
+    "system": "You are sitting a PhD-level qualifying examination in statistics. Solve the problem rigorously and completely. Show your work and reasoning, justify each step, and clearly state your final answer(s). If the problem has multiple parts, answer every part, labeled. If you invoke a known theorem, name it.",
+    "user": "[2024 fall ms applied — problem 4]\n\nMultiple regression of $Y$ on $X_1, X_2, X_3$, $n = 25$, SS(Total) $= 248.0$; table of SSReg for all predictor subsets (SSReg($X_1,X_2,X_3) = 181.8$, SSReg($X_1,X_2) = 145.2$, etc.), $\\alpha = 0.05$. (1) Global F-test of $H_0: \\beta_1=\\beta_2=\\beta_3=0$. (2) Compute the extra SSReg$(X_3\\mid X_1,X_2)$. (3) Test whether $X_3$ can be dropped. (4) Write the first row of the reduced-model $X$-matrix testing $H_0: \\beta_2 = \\beta_3 = 0$ (first obs: $Y=10, X_1=1985, X_2=59.7, X_3=2205$).",
+    "max_tokens": 24000,
+    "mode": {
+      "effort": "high"
+    }
+  },
+  "response": {
+    "id": "resp_0094c708771d1963006a24b9f0db84819594e714576ff99f57",
+    "model": "gpt-5.5-2026-04-23",
+    "stop_reason": "completed",
+    "usage": {
+      "input_tokens": 304,
+      "output_tokens": 3599,
+      "output_tokens_details": {
+        "reasoning_tokens": 2588
+      }
+    },
+    "thinking": "**Discussing global tests**\n\nI need to consider the global test where the null hypothesis (H0) states that all slopes are zero. In the framework of the normal linear model, I can express the F-statistic as F = [SSR_full/p] / [SSE_full/(n-p-1)], which follows an F-distribution under the null hypothesis. It's a bit technical, but I want to ensure I understand how these components relate to hypothesis testing effectively.\n**Reviewing regression analysis**\n\nI'm working through the details of a reduced model that only includes an intercept and X1, leading to the first row as (1,1985). There's no Y or X2/X3 in the initial row. If I fit this into the full parameter order, it becomes (1,1985,0,0). The design matrix often has fewer columns, which might be helpful. I need to state total degrees of freedom and SSE while preparing the final output with labels. There's potential confusion around SSReg for subsets, and I want to clarify how these relate to the overall model.\n**Calculating probability with beta function**\n\nI’m estimating p with the incomplete beta function. I'm using survival function F with d1=3, d2=21, and x=19.2236. The formula I’m using is p=I_{d2/(d2+d1x)}(d2/2,d1/2), so I calculate y=21/(21+57.6708), which gives me about 0.26694. Then, I set a=10.5 and b=1.5. Since y isn't very small, the density of beta(a=10.5, b=1.5) is peaked near 0.875, so the left tail at 0.267 is very small.\n**Calculating Beta with Gamma Functions**\n\nI'm working on an integral from 0 to y involving a Beta function. I approximate it with some constants like B(10.5, 1.5). Then I calculate Gamma functions to find values for B—looks like I need about 0.025. I check my calculations using relationships between Gamma functions. After refining my results, I find a p-value of approximately 0.0027. Lastly, I consider whether normality affects the results and keep in mind that it might impact the robustness of my answer.",
+    "text": "Assume the usual multiple linear regression model with an intercept:\n\n\\[\nY_i=\\beta_0+\\beta_1X_{i1}+\\beta_2X_{i2}+\\beta_3X_{i3}+\\varepsilon_i,\n\\qquad \\varepsilon_i\\stackrel{iid}{\\sim}N(0,\\sigma^2).\n\\]\n\nGiven:\n\n\\[\nn=25,\\qquad SS_T=248.0,\n\\]\n\\[\nSSReg(X_1,X_2,X_3)=181.8,\\qquad SSReg(X_1,X_2)=145.2.\n\\]\n\nThus for the full model,\n\n\\[\nSSE_{\\text{full}}=SS_T-SSReg(X_1,X_2,X_3)\n=248.0-181.8=66.2.\n\\]\n\nThe full model has 3 predictors plus an intercept, so\n\n\\[\ndf_E=n-4=21.\n\\]\n\nHence\n\n\\[\nMSE_{\\text{full}}=\\frac{66.2}{21}=3.1524.\n\\]\n\n---\n\n## (1) Global F-test of \\(H_0:\\beta_1=\\beta_2=\\beta_3=0\\)\n\nThe global F statistic is\n\n\\[\nF=\\frac{MSReg}{MSE}\n=\\frac{SSReg/3}{SSE/(n-4)}.\n\\]\n\nSo\n\n\\[\nF=\\frac{181.8/3}{66.2/21}\n=\\frac{60.6}{3.1524}\n=19.22.\n\\]\n\nUnder \\(H_0\\),\n\n\\[\nF\\sim F_{3,21}.\n\\]\n\nAt \\(\\alpha=0.05\\),\n\n\\[\nF_{0.95;3,21}\\approx 3.07.\n\\]\n\nSince\n\n\\[\n19.22>3.07,\n\\]\n\nwe reject \\(H_0\\). There is significant evidence that at least one of \\(X_1,X_2,X_3\\) is linearly related to \\(Y\\).\n\n---\n\n## (2) Extra \\(SSReg(X_3\\mid X_1,X_2)\\)\n\nBy definition,\n\n\\[\nSSReg(X_3\\mid X_1,X_2)\n=\nSSReg(X_1,X_2,X_3)-SSReg(X_1,X_2).\n\\]\n\nThus\n\n\\[\nSSReg(X_3\\mid X_1,X_2)\n=181.8-145.2\n=36.6.\n\\]\n\nSo\n\n\\[\n\\boxed{SSReg(X_3\\mid X_1,X_2)=36.6.}\n\\]\n\n---\n\n## (3) Test whether \\(X_3\\) can be dropped\n\nWe test\n\n\\[\nH_0:\\beta_3=0\n\\]\n\ngiven that \\(X_1\\) and \\(X_2\\) remain in the model.\n\nThe partial F statistic is\n\n\\[\nF=\\frac{SSReg(X_3\\mid X_1,X_2)/1}{MSE_{\\text{full}}}.\n\\]\n\nUsing the value from part (2),\n\n\\[\nF=\\frac{36.6/1}{66.2/21}\n=\\frac{36.6}{3.1524}\n=11.61.\n\\]\n\nUnder \\(H_0\\),\n\n\\[\nF\\sim F_{1,21}.\n\\]\n\nAt \\(\\alpha=0.05\\),\n\n\\[\nF_{0.95;1,21}\\approx 4.32.\n\\]\n\nSince\n\n\\[\n11.61>4.32,\n\\]\n\nwe reject \\(H_0\\). Therefore \\(X_3\\) should not be dropped from the model after adjusting for \\(X_1\\) and \\(X_2\\).\n\n---\n\n## (4) First row of the reduced-model \\(X\\)-matrix for testing \\(H_0:\\beta_2=\\beta_3=0\\)\n\nThe full model is\n\n\\[\nY=\\beta_0+\\beta_1X_1+\\beta_2X_2+\\beta_3X_3+\\varepsilon.\n\\]\n\nTesting\n\n\\[\nH_0:\\beta_2=\\beta_3=0\n\\]\n\nmeans the reduced model is\n\n\\[\nY=\\beta_0+\\beta_1X_1+\\varepsilon.\n\\]\n\nTherefore the reduced-model design matrix contains only an intercept column and the \\(X_1\\) column.\n\nFor the first observation,\n\n\\[\nX_1=1985.\n\\]\n\nThus the first row of the reduced-model \\(X\\)-matrix is\n\n\\[\n\\boxed{(1,\\;1985)}.\n\\]\n\nThe response value \\(Y=10\\) is not included in the design matrix.",
+    "raw_output": [
+      {
+        "id": "rs_0094c708771d1963006a24b9f1558c819595612a01807d9469",
+        "type": "reasoning",
+        "content": [],
+        "summary": [
+          {
+            "type": "summary_text",
+            "text": "**Discussing global tests**\n\nI need to consider the global test where the null hypothesis (H0) states that all slopes are zero. In the framework of the normal linear model, I can express the F-statistic as F = [SSR_full/p] / [SSE_full/(n-p-1)], which follows an F-distribution under the null hypothesis. It's a bit technical, but I want to ensure I understand how these components relate to hypothesis testing effectively."
+          },
+          {
+            "type": "summary_text",
+            "text": "**Reviewing regression analysis**\n\nI'm working through the details of a reduced model that only includes an intercept and X1, leading to the first row as (1,1985). There's no Y or X2/X3 in the initial row. If I fit this into the full parameter order, it becomes (1,1985,0,0). The design matrix often has fewer columns, which might be helpful. I need to state total degrees of freedom and SSE while preparing the final output with labels. There's potential confusion around SSReg for subsets, and I want to clarify how these relate to the overall model."
+          },
+          {
+            "type": "summary_text",
+            "text": "**Calculating probability with beta function**\n\nI’m estimating p with the incomplete beta function. I'm using survival function F with d1=3, d2=21, and x=19.2236. The formula I’m using is p=I_{d2/(d2+d1x)}(d2/2,d1/2), so I calculate y=21/(21+57.6708), which gives me about 0.26694. Then, I set a=10.5 and b=1.5. Since y isn't very small, the density of beta(a=10.5, b=1.5) is peaked near 0.875, so the left tail at 0.267 is very small."
+          },
+          {
+            "type": "summary_text",
+            "text": "**Calculating Beta with Gamma Functions**\n\nI'm working on an integral from 0 to y involving a Beta function. I approximate it with some constants like B(10.5, 1.5). Then I calculate Gamma functions to find values for B—looks like I need about 0.025. I check my calculations using relationships between Gamma functions. After refining my results, I find a p-value of approximately 0.0027. Lastly, I consider whether normality affects the results and keep in mind that it might impact the robustness of my answer."
+          }
+        ]
+      },
+      {
+        "id": "msg_0094c708771d1963006a24ba24700c81959399c9a27bc721c7",
+        "type": "message",
+        "status": "completed",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "Assume the usual multiple linear regression model with an intercept:\n\n\\[\nY_i=\\beta_0+\\beta_1X_{i1}+\\beta_2X_{i2}+\\beta_3X_{i3}+\\varepsilon_i,\n\\qquad \\varepsilon_i\\stackrel{iid}{\\sim}N(0,\\sigma^2).\n\\]\n\nGiven:\n\n\\[\nn=25,\\qquad SS_T=248.0,\n\\]\n\\[\nSSReg(X_1,X_2,X_3)=181.8,\\qquad SSReg(X_1,X_2)=145.2.\n\\]\n\nThus for the full model,\n\n\\[\nSSE_{\\text{full}}=SS_T-SSReg(X_1,X_2,X_3)\n=248.0-181.8=66.2.\n\\]\n\nThe full model has 3 predictors plus an intercept, so\n\n\\[\ndf_E=n-4=21.\n\\]\n\nHence\n\n\\[\nMSE_{\\text{full}}=\\frac{66.2}{21}=3.1524.\n\\]\n\n---\n\n## (1) Global F-test of \\(H_0:\\beta_1=\\beta_2=\\beta_3=0\\)\n\nThe global F statistic is\n\n\\[\nF=\\frac{MSReg}{MSE}\n=\\frac{SSReg/3}{SSE/(n-4)}.\n\\]\n\nSo\n\n\\[\nF=\\frac{181.8/3}{66.2/21}\n=\\frac{60.6}{3.1524}\n=19.22.\n\\]\n\nUnder \\(H_0\\),\n\n\\[\nF\\sim F_{3,21}.\n\\]\n\nAt \\(\\alpha=0.05\\),\n\n\\[\nF_{0.95;3,21}\\approx 3.07.\n\\]\n\nSince\n\n\\[\n19.22>3.07,\n\\]\n\nwe reject \\(H_0\\). There is significant evidence that at least one of \\(X_1,X_2,X_3\\) is linearly related to \\(Y\\).\n\n---\n\n## (2) Extra \\(SSReg(X_3\\mid X_1,X_2)\\)\n\nBy definition,\n\n\\[\nSSReg(X_3\\mid X_1,X_2)\n=\nSSReg(X_1,X_2,X_3)-SSReg(X_1,X_2).\n\\]\n\nThus\n\n\\[\nSSReg(X_3\\mid X_1,X_2)\n=181.8-145.2\n=36.6.\n\\]\n\nSo\n\n\\[\n\\boxed{SSReg(X_3\\mid X_1,X_2)=36.6.}\n\\]\n\n---\n\n## (3) Test whether \\(X_3\\) can be dropped\n\nWe test\n\n\\[\nH_0:\\beta_3=0\n\\]\n\ngiven that \\(X_1\\) and \\(X_2\\) remain in the model.\n\nThe partial F statistic is\n\n\\[\nF=\\frac{SSReg(X_3\\mid X_1,X_2)/1}{MSE_{\\text{full}}}.\n\\]\n\nUsing the value from part (2),\n\n\\[\nF=\\frac{36.6/1}{66.2/21}\n=\\frac{36.6}{3.1524}\n=11.61.\n\\]\n\nUnder \\(H_0\\),\n\n\\[\nF\\sim F_{1,21}.\n\\]\n\nAt \\(\\alpha=0.05\\),\n\n\\[\nF_{0.95;1,21}\\approx 4.32.\n\\]\n\nSince\n\n\\[\n11.61>4.32,\n\\]\n\nwe reject \\(H_0\\). Therefore \\(X_3\\) should not be dropped from the model after adjusting for \\(X_1\\) and \\(X_2\\).\n\n---\n\n## (4) First row of the reduced-model \\(X\\)-matrix for testing \\(H_0:\\beta_2=\\beta_3=0\\)\n\nThe full model is\n\n\\[\nY=\\beta_0+\\beta_1X_1+\\beta_2X_2+\\beta_3X_3+\\varepsilon.\n\\]\n\nTesting\n\n\\[\nH_0:\\beta_2=\\beta_3=0\n\\]\n\nmeans the reduced model is\n\n\\[\nY=\\beta_0+\\beta_1X_1+\\varepsilon.\n\\]\n\nTherefore the reduced-model design matrix contains only an intercept column and the \\(X_1\\) column.\n\nFor the first observation,\n\n\\[\nX_1=1985.\n\\]\n\nThus the first row of the reduced-model \\(X\\)-matrix is\n\n\\[\n\\boxed{(1,\\;1985)}.\n\\]\n\nThe response value \\(Y=10\\) is not included in the design matrix."
+          }
+        ],
+        "phase": "final_answer",
+        "role": "assistant"
+      }
+    ]
+  },
+  "cost_usd": 0.05551,
+  "timing": {
+    "started": "2026-06-07T00:23:12.740411+00:00",
+    "ended": "2026-06-07T00:24:14.267008+00:00",
+    "seconds": 61.53
+  },
+  "error": null
+}

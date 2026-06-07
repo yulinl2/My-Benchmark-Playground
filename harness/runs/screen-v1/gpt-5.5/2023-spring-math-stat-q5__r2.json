@@ -1,0 +1,73 @@
+{
+  "question_id": "2023-spring-math-stat-q5",
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "rep": 2,
+  "exam": {
+    "year": 2023,
+    "term": "spring",
+    "level": "ms",
+    "part": "math-stat"
+  },
+  "request": {
+    "system": "You are sitting a PhD-level qualifying examination in statistics. Solve the problem rigorously and completely. Show your work and reasoning, justify each step, and clearly state your final answer(s). If the problem has multiple parts, answer every part, labeled. If you invoke a known theorem, name it.",
+    "user": "[2023 spring ms math-stat — problem 5]\n\n$Y_i = \\beta x_i + \\varepsilon_i$, $i = 1,\\dots,n$, with fixed $x_i$ and $\\varepsilon_i \\sim N(0,\\sigma^2)$ iid, $\\sigma^2$ unknown. (1) Find a two-dimensional sufficient statistic for $(\\beta, \\sigma^2)$. (2) Find the MLE of $\\beta$ and show it is unbiased. (3) Find the distribution of the MLE of $\\beta$.",
+    "max_tokens": 24000,
+    "mode": {
+      "effort": "high"
+    }
+  },
+  "response": {
+    "id": "resp_0eb84c95373d8963006a24b8bb49748193a4f5ad0cc3da0ab8",
+    "model": "gpt-5.5-2026-04-23",
+    "stop_reason": "completed",
+    "usage": {
+      "input_tokens": 187,
+      "output_tokens": 1882,
+      "output_tokens_details": {
+        "reasoning_tokens": 516
+      }
+    },
+    "thinking": "**Solving for MLE in Regression**\n\nI need to solve this problem rigorously, focusing on a model with no intercept and fixed \\(x_i\\). I want to derive a two-dimensional sufficient statistic for unknown parameters \\(\\beta\\) and \\(\\sigma^2\\). It’s crucial to ensure that not all \\(x_i\\) are zero. I'll explore the likelihood and calculate the maximum likelihood estimators (MLE). I should summarize results, including the distributions and conditions, particularly when handling \\(\\sigma^2\\) and variance.\n**Deriving Distribution for MLE**\n\nI'm considering whether I can derive the t-distribution using the estimated \\(\\sigma\\) if it's unknown, though that isn't requested here. I need to clarify that the distribution of the MLE of \\(\\beta\\) isn't the standardized estimator, but it's still normal. I should show this using a sufficient statistic and note if the \\(x\\) vector is nonzero with fixed \\(x_i\\). I aim for a rigorous PhD-level explanation, applying the Fisher-Neyman factorization theorem to define the joint density.",
+    "text": "Assume throughout that the design is nondegenerate:\n\n\\[\nS_{xx}:=\\sum_{i=1}^n x_i^2>0.\n\\]\n\nOtherwise \\(\\beta\\) is not identifiable.\n\n---\n\n## (1) A two-dimensional sufficient statistic for \\((\\beta,\\sigma^2)\\)\n\nThe joint density of \\(Y=(Y_1,\\dots,Y_n)\\) is\n\n\\[\nf(y;\\beta,\\sigma^2)\n=(2\\pi\\sigma^2)^{-n/2}\n\\exp\\left\\{-\\frac{1}{2\\sigma^2}\\sum_{i=1}^n (y_i-\\beta x_i)^2\\right\\}.\n\\]\n\nExpand the quadratic term:\n\n\\[\n\\sum_{i=1}^n (y_i-\\beta x_i)^2\n=\n\\sum_{i=1}^n y_i^2\n-2\\beta \\sum_{i=1}^n x_i y_i\n+\\beta^2 \\sum_{i=1}^n x_i^2.\n\\]\n\nSince the \\(x_i\\)'s are fixed, \\(S_{xx}=\\sum x_i^2\\) is known. Thus\n\n\\[\nf(y;\\beta,\\sigma^2)\n=\n(2\\pi\\sigma^2)^{-n/2}\n\\exp\\left\\{\n-\\frac{1}{2\\sigma^2}\n\\left[\n\\sum_{i=1}^n y_i^2\n-2\\beta \\sum_{i=1}^n x_i y_i\n+\\beta^2 S_{xx}\n\\right]\n\\right\\}.\n\\]\n\nThe likelihood depends on the sample \\(y\\) only through\n\n\\[\nT_1(Y)=\\sum_{i=1}^n x_iY_i,\n\\qquad\nT_2(Y)=\\sum_{i=1}^n Y_i^2.\n\\]\n\nTherefore, by the Fisher-Neyman factorization theorem,\n\n\\[\n\\boxed{\nT(Y)=\\left(\\sum_{i=1}^n x_iY_i,\\ \\sum_{i=1}^n Y_i^2\\right)\n}\n\\]\n\nis a two-dimensional sufficient statistic for \\((\\beta,\\sigma^2)\\).\n\n---\n\n## (2) MLE of \\(\\beta\\) and unbiasedness\n\nThe log-likelihood, up to constants independent of \\((\\beta,\\sigma^2)\\), is\n\n\\[\n\\ell(\\beta,\\sigma^2)\n=\n-\\frac n2 \\log \\sigma^2\n-\\frac{1}{2\\sigma^2}\\sum_{i=1}^n (Y_i-\\beta x_i)^2.\n\\]\n\nFor fixed \\(\\sigma^2\\), maximizing \\(\\ell\\) with respect to \\(\\beta\\) is equivalent to minimizing\n\n\\[\nQ(\\beta)=\\sum_{i=1}^n (Y_i-\\beta x_i)^2.\n\\]\n\nDifferentiate:\n\n\\[\n\\frac{dQ}{d\\beta}\n=\n-2\\sum_{i=1}^n x_i(Y_i-\\beta x_i).\n\\]\n\nSet this equal to zero:\n\n\\[\n\\sum_{i=1}^n x_iY_i-\\beta \\sum_{i=1}^n x_i^2=0.\n\\]\n\nThus\n\n\\[\n\\widehat \\beta_{\\text{MLE}}\n=\n\\frac{\\sum_{i=1}^n x_iY_i}{\\sum_{i=1}^n x_i^2}.\n\\]\n\nSo\n\n\\[\n\\boxed{\n\\widehat\\beta\n=\n\\frac{\\sum_{i=1}^n x_iY_i}{S_{xx}}\n}\n\\]\n\nis the MLE of \\(\\beta\\).\n\nTo show unbiasedness, note that\n\n\\[\nY_i=\\beta x_i+\\varepsilon_i,\n\\qquad\nE[\\varepsilon_i]=0.\n\\]\n\nTherefore\n\n\\[\nE[Y_i]=\\beta x_i.\n\\]\n\nHence\n\n\\[\nE[\\widehat\\beta]\n=\nE\\left[\\frac{\\sum_{i=1}^n x_iY_i}{S_{xx}}\\right]\n=\n\\frac{\\sum_{i=1}^n x_iE[Y_i]}{S_{xx}}\n=\n\\frac{\\sum_{i=1}^n x_i(\\beta x_i)}{S_{xx}}\n=\n\\frac{\\beta S_{xx}}{S_{xx}}\n=\n\\beta.\n\\]\n\nThus\n\n\\[\n\\boxed{E[\\widehat\\beta]=\\beta,}\n\\]\n\nso the MLE of \\(\\beta\\) is unbiased.\n\n---\n\n## (3) Distribution of the MLE of \\(\\beta\\)\n\nWe have\n\n\\[\n\\widehat\\beta\n=\n\\frac{\\sum_{i=1}^n x_iY_i}{S_{xx}}\n=\n\\frac{\\sum_{i=1}^n x_i(\\beta x_i+\\varepsilon_i)}{S_{xx}}.\n\\]\n\nTherefore\n\n\\[\n\\widehat\\beta\n=\n\\beta\n+\n\\frac{\\sum_{i=1}^n x_i\\varepsilon_i}{S_{xx}}.\n\\]\n\nBecause the \\(\\varepsilon_i\\)'s are independent normal random variables with\n\n\\[\n\\varepsilon_i\\sim N(0,\\sigma^2),\n\\]\n\nthe linear combination \\(\\sum x_i\\varepsilon_i\\) is normal with mean \\(0\\) and variance\n\n\\[\n\\operatorname{Var}\\left(\\sum_{i=1}^n x_i\\varepsilon_i\\right)\n=\n\\sum_{i=1}^n x_i^2\\sigma^2\n=\n\\sigma^2 S_{xx}.\n\\]\n\nThus\n\n\\[\n\\frac{\\sum_{i=1}^n x_i\\varepsilon_i}{S_{xx}}\n\\sim\nN\\left(0,\\frac{\\sigma^2}{S_{xx}}\\right).\n\\]\n\nHence\n\n\\[\n\\boxed{\n\\widehat\\beta \\sim N\\left(\\beta,\\frac{\\sigma^2}{\\sum_{i=1}^n x_i^2}\\right).\n}\n\\]\n\nEquivalently,\n\n\\[\n\\boxed{\n\\frac{\\widehat\\beta-\\beta}{\\sigma/\\sqrt{S_{xx}}}\\sim N(0,1).\n}\n\\]",
+    "raw_output": [
+      {
+        "id": "rs_0eb84c95373d8963006a24b8bbe4ec819390d167b6d5301e5f",
+        "type": "reasoning",
+        "content": [],
+        "summary": [
+          {
+            "type": "summary_text",
+            "text": "**Solving for MLE in Regression**\n\nI need to solve this problem rigorously, focusing on a model with no intercept and fixed \\(x_i\\). I want to derive a two-dimensional sufficient statistic for unknown parameters \\(\\beta\\) and \\(\\sigma^2\\). It’s crucial to ensure that not all \\(x_i\\) are zero. I'll explore the likelihood and calculate the maximum likelihood estimators (MLE). I should summarize results, including the distributions and conditions, particularly when handling \\(\\sigma^2\\) and variance."
+          },
+          {
+            "type": "summary_text",
+            "text": "**Deriving Distribution for MLE**\n\nI'm considering whether I can derive the t-distribution using the estimated \\(\\sigma\\) if it's unknown, though that isn't requested here. I need to clarify that the distribution of the MLE of \\(\\beta\\) isn't the standardized estimator, but it's still normal. I should show this using a sufficient statistic and note if the \\(x\\) vector is nonzero with fixed \\(x_i\\). I aim for a rigorous PhD-level explanation, applying the Fisher-Neyman factorization theorem to define the joint density."
+          }
+        ]
+      },
+      {
+        "id": "msg_0eb84c95373d8963006a24b8c97c888193a12fa78e7dc1afd9",
+        "type": "message",
+        "status": "completed",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "Assume throughout that the design is nondegenerate:\n\n\\[\nS_{xx}:=\\sum_{i=1}^n x_i^2>0.\n\\]\n\nOtherwise \\(\\beta\\) is not identifiable.\n\n---\n\n## (1) A two-dimensional sufficient statistic for \\((\\beta,\\sigma^2)\\)\n\nThe joint density of \\(Y=(Y_1,\\dots,Y_n)\\) is\n\n\\[\nf(y;\\beta,\\sigma^2)\n=(2\\pi\\sigma^2)^{-n/2}\n\\exp\\left\\{-\\frac{1}{2\\sigma^2}\\sum_{i=1}^n (y_i-\\beta x_i)^2\\right\\}.\n\\]\n\nExpand the quadratic term:\n\n\\[\n\\sum_{i=1}^n (y_i-\\beta x_i)^2\n=\n\\sum_{i=1}^n y_i^2\n-2\\beta \\sum_{i=1}^n x_i y_i\n+\\beta^2 \\sum_{i=1}^n x_i^2.\n\\]\n\nSince the \\(x_i\\)'s are fixed, \\(S_{xx}=\\sum x_i^2\\) is known. Thus\n\n\\[\nf(y;\\beta,\\sigma^2)\n=\n(2\\pi\\sigma^2)^{-n/2}\n\\exp\\left\\{\n-\\frac{1}{2\\sigma^2}\n\\left[\n\\sum_{i=1}^n y_i^2\n-2\\beta \\sum_{i=1}^n x_i y_i\n+\\beta^2 S_{xx}\n\\right]\n\\right\\}.\n\\]\n\nThe likelihood depends on the sample \\(y\\) only through\n\n\\[\nT_1(Y)=\\sum_{i=1}^n x_iY_i,\n\\qquad\nT_2(Y)=\\sum_{i=1}^n Y_i^2.\n\\]\n\nTherefore, by the Fisher-Neyman factorization theorem,\n\n\\[\n\\boxed{\nT(Y)=\\left(\\sum_{i=1}^n x_iY_i,\\ \\sum_{i=1}^n Y_i^2\\right)\n}\n\\]\n\nis a two-dimensional sufficient statistic for \\((\\beta,\\sigma^2)\\).\n\n---\n\n## (2) MLE of \\(\\beta\\) and unbiasedness\n\nThe log-likelihood, up to constants independent of \\((\\beta,\\sigma^2)\\), is\n\n\\[\n\\ell(\\beta,\\sigma^2)\n=\n-\\frac n2 \\log \\sigma^2\n-\\frac{1}{2\\sigma^2}\\sum_{i=1}^n (Y_i-\\beta x_i)^2.\n\\]\n\nFor fixed \\(\\sigma^2\\), maximizing \\(\\ell\\) with respect to \\(\\beta\\) is equivalent to minimizing\n\n\\[\nQ(\\beta)=\\sum_{i=1}^n (Y_i-\\beta x_i)^2.\n\\]\n\nDifferentiate:\n\n\\[\n\\frac{dQ}{d\\beta}\n=\n-2\\sum_{i=1}^n x_i(Y_i-\\beta x_i).\n\\]\n\nSet this equal to zero:\n\n\\[\n\\sum_{i=1}^n x_iY_i-\\beta \\sum_{i=1}^n x_i^2=0.\n\\]\n\nThus\n\n\\[\n\\widehat \\beta_{\\text{MLE}}\n=\n\\frac{\\sum_{i=1}^n x_iY_i}{\\sum_{i=1}^n x_i^2}.\n\\]\n\nSo\n\n\\[\n\\boxed{\n\\widehat\\beta\n=\n\\frac{\\sum_{i=1}^n x_iY_i}{S_{xx}}\n}\n\\]\n\nis the MLE of \\(\\beta\\).\n\nTo show unbiasedness, note that\n\n\\[\nY_i=\\beta x_i+\\varepsilon_i,\n\\qquad\nE[\\varepsilon_i]=0.\n\\]\n\nTherefore\n\n\\[\nE[Y_i]=\\beta x_i.\n\\]\n\nHence\n\n\\[\nE[\\widehat\\beta]\n=\nE\\left[\\frac{\\sum_{i=1}^n x_iY_i}{S_{xx}}\\right]\n=\n\\frac{\\sum_{i=1}^n x_iE[Y_i]}{S_{xx}}\n=\n\\frac{\\sum_{i=1}^n x_i(\\beta x_i)}{S_{xx}}\n=\n\\frac{\\beta S_{xx}}{S_{xx}}\n=\n\\beta.\n\\]\n\nThus\n\n\\[\n\\boxed{E[\\widehat\\beta]=\\beta,}\n\\]\n\nso the MLE of \\(\\beta\\) is unbiased.\n\n---\n\n## (3) Distribution of the MLE of \\(\\beta\\)\n\nWe have\n\n\\[\n\\widehat\\beta\n=\n\\frac{\\sum_{i=1}^n x_iY_i}{S_{xx}}\n=\n\\frac{\\sum_{i=1}^n x_i(\\beta x_i+\\varepsilon_i)}{S_{xx}}.\n\\]\n\nTherefore\n\n\\[\n\\widehat\\beta\n=\n\\beta\n+\n\\frac{\\sum_{i=1}^n x_i\\varepsilon_i}{S_{xx}}.\n\\]\n\nBecause the \\(\\varepsilon_i\\)'s are independent normal random variables with\n\n\\[\n\\varepsilon_i\\sim N(0,\\sigma^2),\n\\]\n\nthe linear combination \\(\\sum x_i\\varepsilon_i\\) is normal with mean \\(0\\) and variance\n\n\\[\n\\operatorname{Var}\\left(\\sum_{i=1}^n x_i\\varepsilon_i\\right)\n=\n\\sum_{i=1}^n x_i^2\\sigma^2\n=\n\\sigma^2 S_{xx}.\n\\]\n\nThus\n\n\\[\n\\frac{\\sum_{i=1}^n x_i\\varepsilon_i}{S_{xx}}\n\\sim\nN\\left(0,\\frac{\\sigma^2}{S_{xx}}\\right).\n\\]\n\nHence\n\n\\[\n\\boxed{\n\\widehat\\beta \\sim N\\left(\\beta,\\frac{\\sigma^2}{\\sum_{i=1}^n x_i^2}\\right).\n}\n\\]\n\nEquivalently,\n\n\\[\n\\boxed{\n\\frac{\\widehat\\beta-\\beta}{\\sigma/\\sqrt{S_{xx}}}\\sim N(0,1).\n}\n\\]"
+          }
+        ],
+        "phase": "final_answer",
+        "role": "assistant"
+      }
+    ]
+  },
+  "cost_usd": 0.02916,
+  "timing": {
+    "started": "2026-06-07T00:18:03.141658+00:00",
+    "ended": "2026-06-07T00:18:30.822573+00:00",
+    "seconds": 27.68
+  },
+  "error": null
+}

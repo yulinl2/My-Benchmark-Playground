@@ -1,0 +1,69 @@
+{
+  "question_id": "2023-fall-math-stat-q6",
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "rep": 2,
+  "exam": {
+    "year": 2023,
+    "term": "fall",
+    "level": "ms",
+    "part": "math-stat"
+  },
+  "request": {
+    "system": "You are sitting a PhD-level qualifying examination in statistics. Solve the problem rigorously and completely. Show your work and reasoning, justify each step, and clearly state your final answer(s). If the problem has multiple parts, answer every part, labeled. If you invoke a known theorem, name it.",
+    "user": "[2023 fall ms math-stat — problem 6]\n\n$X$ has density $f(x\\mid\\theta) = 2x/\\theta^2$ for $0 < x \\le \\theta$ (0 otherwise), with $\\theta \\in (0,1)$. (1) Find $\\mathbb{E}_\\theta\\{X\\}$ and $\\operatorname{Var}_\\theta\\{X\\}$. (2) Find the MLE of $\\theta$. (3) Find an unbiased estimator of $\\theta(1-\\theta)$.",
+    "max_tokens": 24000,
+    "mode": {
+      "effort": "high"
+    }
+  },
+  "response": {
+    "id": "resp_00d68d88f3654ffc006a24b8324b4881959bfd5e89acb9ddca",
+    "model": "gpt-5.5-2026-04-23",
+    "stop_reason": "completed",
+    "usage": {
+      "input_tokens": 189,
+      "output_tokens": 1441,
+      "output_tokens_details": {
+        "reasoning_tokens": 516
+      }
+    },
+    "thinking": "**Differentiating and checking estimators**\n\nI need to differentiate the equation \\(2\\theta g(\\theta) = 3\\theta^2 - 4\\theta^3\\) with respect to \\(\\theta\\) for \\(\\theta\\) in (0,1). So, I find \\(g(\\theta) = \\frac{3\\theta - 4\\theta^2}{2}\\), which rearranges to \\(g(\\theta) = \\frac{3X}{2} - 2X^2\\). Checking the expectation, I see \\(E[X] = \\frac{2\\theta}{3}\\) and \\(E[X^2] = \\frac{\\theta^2}{2}\\), leading to the estimator \\(\\delta(X) = \\frac{3X}{2} - 2X^2\\).",
+    "text": "**(1)** For \\(0<x\\le \\theta\\),\n\n\\[\nf(x\\mid \\theta)=\\frac{2x}{\\theta^2}, \\qquad 0<\\theta<1.\n\\]\n\nCompute the first moment:\n\n\\[\n\\mathbb E_\\theta[X]\n=\\int_0^\\theta x\\frac{2x}{\\theta^2}\\,dx\n=\\frac{2}{\\theta^2}\\int_0^\\theta x^2\\,dx\n=\\frac{2}{\\theta^2}\\cdot \\frac{\\theta^3}{3}\n=\\frac{2\\theta}{3}.\n\\]\n\nCompute the second moment:\n\n\\[\n\\mathbb E_\\theta[X^2]\n=\\int_0^\\theta x^2\\frac{2x}{\\theta^2}\\,dx\n=\\frac{2}{\\theta^2}\\int_0^\\theta x^3\\,dx\n=\\frac{2}{\\theta^2}\\cdot \\frac{\\theta^4}{4}\n=\\frac{\\theta^2}{2}.\n\\]\n\nThus\n\n\\[\n\\operatorname{Var}_\\theta(X)\n=\\mathbb E_\\theta[X^2]-\\{\\mathbb E_\\theta[X]\\}^2\n=\\frac{\\theta^2}{2}-\\left(\\frac{2\\theta}{3}\\right)^2\n=\\frac{\\theta^2}{2}-\\frac{4\\theta^2}{9}\n=\\frac{\\theta^2}{18}.\n\\]\n\nSo\n\n\\[\n\\boxed{\\mathbb E_\\theta[X]=\\frac{2\\theta}{3}}, \n\\qquad \n\\boxed{\\operatorname{Var}_\\theta(X)=\\frac{\\theta^2}{18}}.\n\\]\n\n---\n\n**(2)** The likelihood based on one observation \\(X=x\\) is\n\n\\[\nL(\\theta\\mid x)=\\frac{2x}{\\theta^2}\\mathbf 1\\{0<x\\le \\theta<1\\}.\n\\]\n\nFor fixed \\(x\\in(0,1)\\), the likelihood is positive only when \\(\\theta\\ge x\\), and on that interval\n\n\\[\nL(\\theta\\mid x)=\\frac{2x}{\\theta^2},\n\\]\n\nwhich is strictly decreasing in \\(\\theta\\). Therefore the likelihood is maximized at the smallest allowable value of \\(\\theta\\), namely \\(\\theta=x\\).\n\nHence the MLE is\n\n\\[\n\\boxed{\\widehat\\theta_{\\mathrm{MLE}}=X}.\n\\]\n\n---\n\n**(3)** We want an estimator \\(g(X)\\) such that\n\n\\[\n\\mathbb E_\\theta[g(X)] = \\theta(1-\\theta)\n\\]\n\nfor all \\(0<\\theta<1\\). Since\n\n\\[\n\\mathbb E_\\theta[g(X)]\n=\\int_0^\\theta g(x)\\frac{2x}{\\theta^2}\\,dx,\n\\]\n\nwe need\n\n\\[\n\\int_0^\\theta g(x)\\frac{2x}{\\theta^2}\\,dx\n=\\theta-\\theta^2.\n\\]\n\nMultiplying both sides by \\(\\theta^2\\),\n\n\\[\n\\int_0^\\theta 2xg(x)\\,dx\n=\\theta^3-\\theta^4.\n\\]\n\nDifferentiate both sides with respect to \\(\\theta\\):\n\n\\[\n2\\theta g(\\theta)=3\\theta^2-4\\theta^3.\n\\]\n\nThus\n\n\\[\ng(\\theta)=\\frac{3\\theta-4\\theta^2}{2}.\n\\]\n\nTherefore an unbiased estimator is\n\n\\[\ng(X)=\\frac{3X}{2}-2X^2.\n\\]\n\nCheck:\n\n\\[\n\\mathbb E_\\theta\\left[\\frac{3X}{2}-2X^2\\right]\n=\n\\frac{3}{2}\\mathbb E_\\theta[X]-2\\mathbb E_\\theta[X^2]\n=\n\\frac{3}{2}\\cdot \\frac{2\\theta}{3}\n-2\\cdot \\frac{\\theta^2}{2}\n=\n\\theta-\\theta^2.\n\\]\n\nTherefore\n\n\\[\n\\boxed{\\frac{3X}{2}-2X^2}\n\\]\n\nis an unbiased estimator of \\(\\theta(1-\\theta)\\).",
+    "raw_output": [
+      {
+        "id": "rs_00d68d88f3654ffc006a24b832f1a8819583893ad7fc837728",
+        "type": "reasoning",
+        "content": [],
+        "summary": [
+          {
+            "type": "summary_text",
+            "text": "**Differentiating and checking estimators**\n\nI need to differentiate the equation \\(2\\theta g(\\theta) = 3\\theta^2 - 4\\theta^3\\) with respect to \\(\\theta\\) for \\(\\theta\\) in (0,1). So, I find \\(g(\\theta) = \\frac{3\\theta - 4\\theta^2}{2}\\), which rearranges to \\(g(\\theta) = \\frac{3X}{2} - 2X^2\\). Checking the expectation, I see \\(E[X] = \\frac{2\\theta}{3}\\) and \\(E[X^2] = \\frac{\\theta^2}{2}\\), leading to the estimator \\(\\delta(X) = \\frac{3X}{2} - 2X^2\\)."
+          }
+        ]
+      },
+      {
+        "id": "msg_00d68d88f3654ffc006a24b83f5bd081959433bc00e88b839e",
+        "type": "message",
+        "status": "completed",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "**(1)** For \\(0<x\\le \\theta\\),\n\n\\[\nf(x\\mid \\theta)=\\frac{2x}{\\theta^2}, \\qquad 0<\\theta<1.\n\\]\n\nCompute the first moment:\n\n\\[\n\\mathbb E_\\theta[X]\n=\\int_0^\\theta x\\frac{2x}{\\theta^2}\\,dx\n=\\frac{2}{\\theta^2}\\int_0^\\theta x^2\\,dx\n=\\frac{2}{\\theta^2}\\cdot \\frac{\\theta^3}{3}\n=\\frac{2\\theta}{3}.\n\\]\n\nCompute the second moment:\n\n\\[\n\\mathbb E_\\theta[X^2]\n=\\int_0^\\theta x^2\\frac{2x}{\\theta^2}\\,dx\n=\\frac{2}{\\theta^2}\\int_0^\\theta x^3\\,dx\n=\\frac{2}{\\theta^2}\\cdot \\frac{\\theta^4}{4}\n=\\frac{\\theta^2}{2}.\n\\]\n\nThus\n\n\\[\n\\operatorname{Var}_\\theta(X)\n=\\mathbb E_\\theta[X^2]-\\{\\mathbb E_\\theta[X]\\}^2\n=\\frac{\\theta^2}{2}-\\left(\\frac{2\\theta}{3}\\right)^2\n=\\frac{\\theta^2}{2}-\\frac{4\\theta^2}{9}\n=\\frac{\\theta^2}{18}.\n\\]\n\nSo\n\n\\[\n\\boxed{\\mathbb E_\\theta[X]=\\frac{2\\theta}{3}}, \n\\qquad \n\\boxed{\\operatorname{Var}_\\theta(X)=\\frac{\\theta^2}{18}}.\n\\]\n\n---\n\n**(2)** The likelihood based on one observation \\(X=x\\) is\n\n\\[\nL(\\theta\\mid x)=\\frac{2x}{\\theta^2}\\mathbf 1\\{0<x\\le \\theta<1\\}.\n\\]\n\nFor fixed \\(x\\in(0,1)\\), the likelihood is positive only when \\(\\theta\\ge x\\), and on that interval\n\n\\[\nL(\\theta\\mid x)=\\frac{2x}{\\theta^2},\n\\]\n\nwhich is strictly decreasing in \\(\\theta\\). Therefore the likelihood is maximized at the smallest allowable value of \\(\\theta\\), namely \\(\\theta=x\\).\n\nHence the MLE is\n\n\\[\n\\boxed{\\widehat\\theta_{\\mathrm{MLE}}=X}.\n\\]\n\n---\n\n**(3)** We want an estimator \\(g(X)\\) such that\n\n\\[\n\\mathbb E_\\theta[g(X)] = \\theta(1-\\theta)\n\\]\n\nfor all \\(0<\\theta<1\\). Since\n\n\\[\n\\mathbb E_\\theta[g(X)]\n=\\int_0^\\theta g(x)\\frac{2x}{\\theta^2}\\,dx,\n\\]\n\nwe need\n\n\\[\n\\int_0^\\theta g(x)\\frac{2x}{\\theta^2}\\,dx\n=\\theta-\\theta^2.\n\\]\n\nMultiplying both sides by \\(\\theta^2\\),\n\n\\[\n\\int_0^\\theta 2xg(x)\\,dx\n=\\theta^3-\\theta^4.\n\\]\n\nDifferentiate both sides with respect to \\(\\theta\\):\n\n\\[\n2\\theta g(\\theta)=3\\theta^2-4\\theta^3.\n\\]\n\nThus\n\n\\[\ng(\\theta)=\\frac{3\\theta-4\\theta^2}{2}.\n\\]\n\nTherefore an unbiased estimator is\n\n\\[\ng(X)=\\frac{3X}{2}-2X^2.\n\\]\n\nCheck:\n\n\\[\n\\mathbb E_\\theta\\left[\\frac{3X}{2}-2X^2\\right]\n=\n\\frac{3}{2}\\mathbb E_\\theta[X]-2\\mathbb E_\\theta[X^2]\n=\n\\frac{3}{2}\\cdot \\frac{2\\theta}{3}\n-2\\cdot \\frac{\\theta^2}{2}\n=\n\\theta-\\theta^2.\n\\]\n\nTherefore\n\n\\[\n\\boxed{\\frac{3X}{2}-2X^2}\n\\]\n\nis an unbiased estimator of \\(\\theta(1-\\theta)\\)."
+          }
+        ],
+        "phase": "final_answer",
+        "role": "assistant"
+      }
+    ]
+  },
+  "cost_usd": 0.02256,
+  "timing": {
+    "started": "2026-06-07T00:15:46.172218+00:00",
+    "ended": "2026-06-07T00:16:07.773681+00:00",
+    "seconds": 21.6
+  },
+  "error": null
+}

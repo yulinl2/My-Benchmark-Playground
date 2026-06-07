@@ -1,0 +1,64 @@
+{
+  "question_id": "2022-fall-math-stat-q1",
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "rep": 0,
+  "exam": {
+    "year": 2022,
+    "term": "fall",
+    "level": "ms",
+    "part": "math-stat"
+  },
+  "request": {
+    "system": "You are sitting a PhD-level qualifying examination in statistics. Solve the problem rigorously and completely. Show your work and reasoning, justify each step, and clearly state your final answer(s). If the problem has multiple parts, answer every part, labeled. If you invoke a known theorem, name it.",
+    "user": "[2022 fall ms math-stat — problem 1]\n\nLet $(X_1, Y_1), \\dots, (X_n, Y_n)$ be i.i.d. with $X_i \\sim N(0,1)$ and $Y_i \\mid X_i = x \\sim N(x^2\\theta, 1)$. (1) Find the MLE $\\hat\\theta_n$ of $\\theta$. (2) Find the limiting distribution of $\\sqrt{n}(\\hat\\theta_n - \\theta)$.",
+    "max_tokens": 24000,
+    "mode": {
+      "effort": "high"
+    }
+  },
+  "response": {
+    "id": "resp_0ece98f1c464e90c006a24b519dc38819791ce8cf72f18ff1e",
+    "model": "gpt-5.5-2026-04-23",
+    "stop_reason": "completed",
+    "usage": {
+      "input_tokens": 183,
+      "output_tokens": 1890,
+      "output_tokens_details": {
+        "reasoning_tokens": 932
+      }
+    },
+    "thinking": "",
+    "text": "Assume the parameter space is \\(\\Theta=\\mathbb R\\).\n\n## (1) MLE of \\(\\theta\\)\n\nThe joint density of one observation is\n\n\\[\nf_\\theta(x,y)\n= \\frac{1}{\\sqrt{2\\pi}}e^{-x^2/2}\n\\cdot \\frac{1}{\\sqrt{2\\pi}}e^{-(y-\\theta x^2)^2/2}.\n\\]\n\nThus the log-likelihood based on \\((X_i,Y_i)_{i=1}^n\\), up to constants not depending on \\(\\theta\\), is\n\n\\[\n\\ell_n(\\theta)\n= -\\frac12 \\sum_{i=1}^n (Y_i-\\theta X_i^2)^2.\n\\]\n\nDifferentiate:\n\n\\[\n\\ell_n'(\\theta)\n= \\sum_{i=1}^n X_i^2(Y_i-\\theta X_i^2),\n\\]\n\nand\n\n\\[\n\\ell_n''(\\theta)\n= -\\sum_{i=1}^n X_i^4.\n\\]\n\nSince \\(\\sum_{i=1}^n X_i^4>0\\) almost surely, the log-likelihood is strictly concave in \\(\\theta\\), so the critical point is the unique global maximizer. Setting \\(\\ell_n'(\\theta)=0\\),\n\n\\[\n\\sum_{i=1}^n X_i^2Y_i\n-\n\\theta \\sum_{i=1}^n X_i^4\n=0.\n\\]\n\nTherefore\n\n\\[\n\\boxed{\n\\hat\\theta_n\n=\n\\frac{\\sum_{i=1}^n X_i^2Y_i}{\\sum_{i=1}^n X_i^4}\n}\n\\]\n\nalmost surely.\n\n---\n\n## (2) Limiting distribution of \\(\\sqrt n(\\hat\\theta_n-\\theta)\\)\n\nWrite\n\n\\[\nY_i=\\theta X_i^2+\\varepsilon_i,\n\\]\n\nwhere \\(\\varepsilon_i\\mid X_i\\sim N(0,1)\\). In fact, from the joint density, \\(\\varepsilon_i\\) is independent of \\(X_i\\), and \\(\\varepsilon_i\\sim N(0,1)\\).\n\nThen\n\n\\[\n\\hat\\theta_n\n=\n\\frac{\\sum_{i=1}^n X_i^2(\\theta X_i^2+\\varepsilon_i)}\n{\\sum_{i=1}^n X_i^4}\n=\n\\theta\n+\n\\frac{\\sum_{i=1}^n X_i^2\\varepsilon_i}{\\sum_{i=1}^n X_i^4}.\n\\]\n\nHence\n\n\\[\n\\sqrt n(\\hat\\theta_n-\\theta)\n=\n\\frac{n^{-1/2}\\sum_{i=1}^n X_i^2\\varepsilon_i}\n{n^{-1}\\sum_{i=1}^n X_i^4}.\n\\]\n\nNow \\(X_i\\sim N(0,1)\\), so\n\n\\[\n\\mathbb E[X_i^4]=3.\n\\]\n\nBy the law of large numbers,\n\n\\[\n\\frac1n\\sum_{i=1}^n X_i^4 \\xrightarrow{p} 3.\n\\]\n\nAlso, the variables \\(X_i^2\\varepsilon_i\\) are i.i.d. with mean\n\n\\[\n\\mathbb E[X_i^2\\varepsilon_i]\n=\n\\mathbb E[X_i^2]\\mathbb E[\\varepsilon_i]\n=0,\n\\]\n\nand variance\n\n\\[\n\\operatorname{Var}(X_i^2\\varepsilon_i)\n=\n\\mathbb E[X_i^4]\\mathbb E[\\varepsilon_i^2]\n=\n3\\cdot 1\n=\n3.\n\\]\n\nTherefore, by the central limit theorem,\n\n\\[\n\\frac1{\\sqrt n}\\sum_{i=1}^n X_i^2\\varepsilon_i\n\\xrightarrow{d}\nN(0,3).\n\\]\n\nBy Slutsky’s theorem,\n\n\\[\n\\sqrt n(\\hat\\theta_n-\\theta)\n\\xrightarrow{d}\n\\frac{N(0,3)}{3}\n=\nN\\left(0,\\frac13\\right).\n\\]\n\nThus\n\n\\[\n\\boxed{\n\\sqrt n(\\hat\\theta_n-\\theta)\n\\xrightarrow{d}\nN\\left(0,\\frac13\\right)\n}.\n\\]",
+    "raw_output": [
+      {
+        "id": "rs_0ece98f1c464e90c006a24b51abb608197902ec64f418c6442",
+        "type": "reasoning",
+        "content": [],
+        "summary": []
+      },
+      {
+        "id": "msg_0ece98f1c464e90c006a24b53201c08197a3929619625e8388",
+        "type": "message",
+        "status": "completed",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "Assume the parameter space is \\(\\Theta=\\mathbb R\\).\n\n## (1) MLE of \\(\\theta\\)\n\nThe joint density of one observation is\n\n\\[\nf_\\theta(x,y)\n= \\frac{1}{\\sqrt{2\\pi}}e^{-x^2/2}\n\\cdot \\frac{1}{\\sqrt{2\\pi}}e^{-(y-\\theta x^2)^2/2}.\n\\]\n\nThus the log-likelihood based on \\((X_i,Y_i)_{i=1}^n\\), up to constants not depending on \\(\\theta\\), is\n\n\\[\n\\ell_n(\\theta)\n= -\\frac12 \\sum_{i=1}^n (Y_i-\\theta X_i^2)^2.\n\\]\n\nDifferentiate:\n\n\\[\n\\ell_n'(\\theta)\n= \\sum_{i=1}^n X_i^2(Y_i-\\theta X_i^2),\n\\]\n\nand\n\n\\[\n\\ell_n''(\\theta)\n= -\\sum_{i=1}^n X_i^4.\n\\]\n\nSince \\(\\sum_{i=1}^n X_i^4>0\\) almost surely, the log-likelihood is strictly concave in \\(\\theta\\), so the critical point is the unique global maximizer. Setting \\(\\ell_n'(\\theta)=0\\),\n\n\\[\n\\sum_{i=1}^n X_i^2Y_i\n-\n\\theta \\sum_{i=1}^n X_i^4\n=0.\n\\]\n\nTherefore\n\n\\[\n\\boxed{\n\\hat\\theta_n\n=\n\\frac{\\sum_{i=1}^n X_i^2Y_i}{\\sum_{i=1}^n X_i^4}\n}\n\\]\n\nalmost surely.\n\n---\n\n## (2) Limiting distribution of \\(\\sqrt n(\\hat\\theta_n-\\theta)\\)\n\nWrite\n\n\\[\nY_i=\\theta X_i^2+\\varepsilon_i,\n\\]\n\nwhere \\(\\varepsilon_i\\mid X_i\\sim N(0,1)\\). In fact, from the joint density, \\(\\varepsilon_i\\) is independent of \\(X_i\\), and \\(\\varepsilon_i\\sim N(0,1)\\).\n\nThen\n\n\\[\n\\hat\\theta_n\n=\n\\frac{\\sum_{i=1}^n X_i^2(\\theta X_i^2+\\varepsilon_i)}\n{\\sum_{i=1}^n X_i^4}\n=\n\\theta\n+\n\\frac{\\sum_{i=1}^n X_i^2\\varepsilon_i}{\\sum_{i=1}^n X_i^4}.\n\\]\n\nHence\n\n\\[\n\\sqrt n(\\hat\\theta_n-\\theta)\n=\n\\frac{n^{-1/2}\\sum_{i=1}^n X_i^2\\varepsilon_i}\n{n^{-1}\\sum_{i=1}^n X_i^4}.\n\\]\n\nNow \\(X_i\\sim N(0,1)\\), so\n\n\\[\n\\mathbb E[X_i^4]=3.\n\\]\n\nBy the law of large numbers,\n\n\\[\n\\frac1n\\sum_{i=1}^n X_i^4 \\xrightarrow{p} 3.\n\\]\n\nAlso, the variables \\(X_i^2\\varepsilon_i\\) are i.i.d. with mean\n\n\\[\n\\mathbb E[X_i^2\\varepsilon_i]\n=\n\\mathbb E[X_i^2]\\mathbb E[\\varepsilon_i]\n=0,\n\\]\n\nand variance\n\n\\[\n\\operatorname{Var}(X_i^2\\varepsilon_i)\n=\n\\mathbb E[X_i^4]\\mathbb E[\\varepsilon_i^2]\n=\n3\\cdot 1\n=\n3.\n\\]\n\nTherefore, by the central limit theorem,\n\n\\[\n\\frac1{\\sqrt n}\\sum_{i=1}^n X_i^2\\varepsilon_i\n\\xrightarrow{d}\nN(0,3).\n\\]\n\nBy Slutsky’s theorem,\n\n\\[\n\\sqrt n(\\hat\\theta_n-\\theta)\n\\xrightarrow{d}\n\\frac{N(0,3)}{3}\n=\nN\\left(0,\\frac13\\right).\n\\]\n\nThus\n\n\\[\n\\boxed{\n\\sqrt n(\\hat\\theta_n-\\theta)\n\\xrightarrow{d}\nN\\left(0,\\frac13\\right)\n}.\n\\]"
+          }
+        ],
+        "phase": "final_answer",
+        "role": "assistant"
+      }
+    ]
+  },
+  "cost_usd": 0.02926,
+  "timing": {
+    "started": "2026-06-07T00:02:33.711042+00:00",
+    "ended": "2026-06-07T00:03:09.021736+00:00",
+    "seconds": 35.31
+  },
+  "error": null
+}

@@ -1,0 +1,80 @@
+{
+  "question_id": "2018-summer-probability-q1",
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "rep": 2,
+  "exam": {
+    "year": 2018,
+    "term": "summer",
+    "part": "probability"
+  },
+  "request": {
+    "system": "You are sitting a PhD-level qualifying examination in statistics. Solve the problem rigorously and completely. Show your work and reasoning, justify each step, and clearly state your final answer(s). If the problem has multiple parts, answer every part, labeled. If you invoke a known theorem, name it.",
+    "user": "[2018 summer phd probability — problem 1]\n\nLet $X_1, X_2$ be i.i.d. random variables with a Uniform distribution on $[0,1]$. Further let $T = \\max\\{X_1, \\bar X\\}$, where $\\bar X$ is the sample mean of $X_1$ and $X_2$.\n(a) Find the cumulative distribution function of $T$.\n(b) Find $\\mathbb{E}[T]$.\n(c) Find $\\mathbb{E}[X_1 \\mid T = t]$ for $0 \\le t \\le 1$.\n(d) Find $\\operatorname{Var}[X_1 \\mid T = t]$ for $0 \\le t \\le 1$.",
+    "max_tokens": 24000,
+    "mode": {
+      "effort": "high"
+    }
+  },
+  "response": {
+    "id": "resp_02056771c7a2567f006a24aee78704819584d96708033bd90e",
+    "model": "gpt-5.5-2026-04-23",
+    "stop_reason": "completed",
+    "usage": {
+      "input_tokens": 238,
+      "output_tokens": 9672,
+      "output_tokens_details": {
+        "reasoning_tokens": 7768
+      }
+    },
+    "thinking": "**Computing probabilistic areas**\n\nI’m working on a density function that's piecewise defined over an interval, especially for the case where \\(x_2 \\leq 1\\). I need to compute the cumulative distribution function (CDF) related to a unit square condition. I have to set up an integration for values based on \\(t\\) within that range, considering different scenarios where \\(t\\) might be less or greater than \\(1/2\\) and calculating areas accordingly. It’s a bit intricate, but I’ll break it down as I go.\n**Solving for probability values**\n\nI'm trying to simplify the expression \\(2t - 1/2 - t^2/2\\). When I set \\(t = 1/2\\), I calculate it as \\(1 - 0.5 - 0.125 = 0.375\\) or \\(3/8\\). Then, at \\(t = 1\\), I have \\(2 - 0.5 - 0.5 = 1\\), which confirms it stays within the range of 0 to 1. It looks like I’m on the right track with the calculations, ensuring my results are consistent!\n**Evaluating expressions**\n\nI need to make sure to have a rigorous and clear approach. Maybe I should derive a nice rational expression. I'll start by computing based on the given value, letting a be equal to 2t minus 1. This gives me a solid foundation to work from. I wonder how the expression will evolve as I progress! It seems like there’s a lot to consider, but I'm ready to tackle it step by step.\n**Verifying variance formula**\n\nI'm looking to verify the variance formula through mixtures. I want to derive the variance using the law of mixtures and see the final piecewise formulation. For \\( t \\leq \\frac{1}{2} \\), the variance is \\( \\frac{t^2}{9} \\), and for \\( t \\geq \\frac{1}{2} \\), it is \\( \\frac{(1-t)^3(1+t)}{3(2-t)^2} \\). I should test this with \\( t = 0.75 \\) and check the conditions regarding the parameters.",
+    "text": "Let \\(X=X_1\\) and \\(Y=X_2\\). Then \\((X,Y)\\) is uniform on the unit square, and\n\n\\[\nT=\\max\\left\\{X,\\frac{X+Y}{2}\\right\\}.\n\\]\n\nNotice that\n\n\\[\nX\\ge \\frac{X+Y}{2}\\iff X\\ge Y.\n\\]\n\nHence, up to a null set,\n\n\\[\nT=\n\\begin{cases}\nX, & Y\\le X,\\\\[4pt]\n\\dfrac{X+Y}{2}, & Y>X.\n\\end{cases}\n\\]\n\n---\n\n## (a) CDF of \\(T\\)\n\nFor \\(0\\le t\\le 1\\),\n\n\\[\n\\{T\\le t\\}\n=\n\\left\\{X\\le t,\\ \\frac{X+Y}{2}\\le t\\right\\}\n=\n\\{X\\le t,\\ X+Y\\le 2t\\}.\n\\]\n\nThus\n\n\\[\nF_T(t)=\\int_0^t \\min\\{1,2t-x\\}\\,dx.\n\\]\n\nIf \\(0\\le t\\le 1/2\\), then \\(2t-x\\le 1\\), so\n\n\\[\nF_T(t)=\\int_0^t (2t-x)\\,dx\n=2t^2-\\frac{t^2}{2}\n=\\frac32 t^2.\n\\]\n\nIf \\(1/2\\le t\\le 1\\), then \\(2t-x\\ge 1\\) for \\(0\\le x\\le 2t-1\\). Therefore\n\n\\[\nF_T(t)=\\int_0^{2t-1}1\\,dx+\\int_{2t-1}^t(2t-x)\\,dx.\n\\]\n\nThe second integral is\n\n\\[\n\\int_{2t-1}^t(2t-x)\\,dx\n=\\frac{1-t^2}{2}.\n\\]\n\nHence\n\n\\[\nF_T(t)=2t-1+\\frac{1-t^2}{2}\n=2t-\\frac12-\\frac{t^2}{2}.\n\\]\n\nTherefore\n\n\\[\n\\boxed{\nF_T(t)=\n\\begin{cases}\n0, & t<0,\\\\[4pt]\n\\dfrac32 t^2, & 0\\le t\\le \\dfrac12,\\\\[8pt]\n2t-\\dfrac12-\\dfrac{t^2}{2}, & \\dfrac12\\le t\\le 1,\\\\[8pt]\n1, & t\\ge 1.\n\\end{cases}}\n\\]\n\nThe density is therefore\n\n\\[\nf_T(t)=\n\\begin{cases}\n3t, & 0<t<1/2,\\\\[4pt]\n2-t, & 1/2<t<1.\n\\end{cases}\n\\]\n\n---\n\n## (b) \\(\\mathbb E[T]\\)\n\nUsing \\(\\mathbb E[T]=\\int_0^1 \\mathbb P(T>t)\\,dt\\),\n\n\\[\n\\mathbb E[T]\n=\n\\int_0^{1/2}\\left(1-\\frac32 t^2\\right)\\,dt\n+\n\\int_{1/2}^1\\left(1-2t+\\frac12+\\frac{t^2}{2}\\right)\\,dt.\n\\]\n\nThe first integral is\n\n\\[\n\\int_0^{1/2}\\left(1-\\frac32 t^2\\right)\\,dt\n=\n\\left[t-\\frac12 t^3\\right]_0^{1/2}\n=\n\\frac12-\\frac1{16}\n=\n\\frac7{16}.\n\\]\n\nThe second integral is\n\n\\[\n\\int_{1/2}^1\\left(\\frac32-2t+\\frac{t^2}{2}\\right)\\,dt\n=\n\\left[\\frac32 t-t^2+\\frac{t^3}{6}\\right]_{1/2}^1\n=\n\\frac7{48}.\n\\]\n\nThus\n\n\\[\n\\boxed{\\mathbb E[T]=\\frac7{16}+\\frac7{48}=\\frac7{12}.}\n\\]\n\n---\n\n## (c) \\(\\mathbb E[X_1\\mid T=t]\\)\n\nWe derive the conditional law of \\(X=X_1\\) given \\(T=t\\).\n\nFor Borel sets \\(B,C\\subseteq [0,1]\\),\n\n\\[\n\\mathbb P(X\\in B,T\\in C)\n=\n\\int_B \\left[x\\mathbf 1_C(x)+2\\int_x^{(x+1)/2}\\mathbf 1_C(t)\\,dt\\right]dx.\n\\]\n\nSwitching the order of integration, let\n\n\\[\na(t)=\\max\\{0,2t-1\\}.\n\\]\n\nThen\n\n\\[\n\\mathbb P(X\\in B,T\\in C)\n=\n\\int_C \\left[t\\mathbf 1_B(t)+2\\int_{a(t)}^t \\mathbf 1_B(x)\\,dx\\right]dt.\n\\]\n\nThus a regular conditional distribution of \\(X_1\\) given \\(T=t\\) is\n\n\\[\n\\mathbb P(X_1\\in dx\\mid T=t)\n=\n\\frac{t\\,\\delta_t(dx)+2\\mathbf 1_{[a(t),t]}(x)\\,dx}{t+2(t-a(t))}.\n\\]\n\nTherefore, for bounded measurable \\(g\\),\n\n\\[\n\\mathbb E[g(X_1)\\mid T=t]\n=\n\\frac{t g(t)+2\\int_{a(t)}^t g(x)\\,dx}{t+2(t-a(t))}.\n\\]\n\nTaking \\(g(x)=x\\),\n\n\\[\n\\mathbb E[X_1\\mid T=t]\n=\n\\frac{t^2+2\\int_{a(t)}^t x\\,dx}{t+2(t-a(t))}\n=\n\\frac{2t^2-a(t)^2}{3t-2a(t)}.\n\\]\n\nHence\n\n\\[\n\\boxed{\n\\mathbb E[X_1\\mid T=t]\n=\n\\begin{cases}\n\\dfrac{2t}{3}, & 0\\le t\\le \\dfrac12,\\\\[10pt]\n\\dfrac{-2t^2+4t-1}{2-t}, & \\dfrac12\\le t\\le 1.\n\\end{cases}}\n\\]\n\nAt \\(t=1/2\\), both formulas give \\(1/3\\).\n\n---\n\n## (d) \\(\\operatorname{Var}(X_1\\mid T=t)\\)\n\nUsing the same conditional distribution,\n\n\\[\n\\mathbb E[X_1^2\\mid T=t]\n=\n\\frac{t^3+2\\int_{a(t)}^t x^2\\,dx}{t+2(t-a(t))}\n=\n\\frac{t^3+\\frac23(t^3-a(t)^3)}{3t-2a(t)}.\n\\]\n\nThus\n\n\\[\n\\mathbb E[X_1^2\\mid T=t]\n=\n\\frac{\\frac53 t^3-\\frac23 a(t)^3}{3t-2a(t)}.\n\\]\n\n### Case 1: \\(0\\le t\\le 1/2\\)\n\nThen \\(a(t)=0\\), so\n\n\\[\n\\mathbb E[X_1^2\\mid T=t]\n=\n\\frac{\\frac53 t^3}{3t}\n=\n\\frac59 t^2.\n\\]\n\nSince\n\n\\[\n\\mathbb E[X_1\\mid T=t]=\\frac{2t}{3},\n\\]\n\nwe get\n\n\\[\n\\operatorname{Var}(X_1\\mid T=t)\n=\n\\frac59 t^2-\\frac49 t^2\n=\n\\frac19 t^2.\n\\]\n\n### Case 2: \\(1/2\\le t\\le 1\\)\n\nThen \\(a(t)=2t-1\\). After simplification,\n\n\\[\n\\operatorname{Var}(X_1\\mid T=t)\n=\n\\frac{(1-t)^3(1+t)}{3(2-t)^2}.\n\\]\n\nTherefore\n\n\\[\n\\boxed{\n\\operatorname{Var}(X_1\\mid T=t)\n=\n\\begin{cases}\n\\dfrac{t^2}{9}, & 0\\le t\\le \\dfrac12,\\\\[10pt]\n\\dfrac{(1-t)^3(1+t)}{3(2-t)^2}, & \\dfrac12\\le t\\le 1.\n\\end{cases}}\n\\]\n\nAt \\(t=1/2\\), both formulas give \\(1/36\\), and at \\(t=1\\) the conditional variance is \\(0\\).",
+    "raw_output": [
+      {
+        "id": "rs_02056771c7a2567f006a24aee823a0819599de087607786391",
+        "type": "reasoning",
+        "content": [],
+        "summary": [
+          {
+            "type": "summary_text",
+            "text": "**Computing probabilistic areas**\n\nI’m working on a density function that's piecewise defined over an interval, especially for the case where \\(x_2 \\leq 1\\). I need to compute the cumulative distribution function (CDF) related to a unit square condition. I have to set up an integration for values based on \\(t\\) within that range, considering different scenarios where \\(t\\) might be less or greater than \\(1/2\\) and calculating areas accordingly. It’s a bit intricate, but I’ll break it down as I go."
+          },
+          {
+            "type": "summary_text",
+            "text": "**Solving for probability values**\n\nI'm trying to simplify the expression \\(2t - 1/2 - t^2/2\\). When I set \\(t = 1/2\\), I calculate it as \\(1 - 0.5 - 0.125 = 0.375\\) or \\(3/8\\). Then, at \\(t = 1\\), I have \\(2 - 0.5 - 0.5 = 1\\), which confirms it stays within the range of 0 to 1. It looks like I’m on the right track with the calculations, ensuring my results are consistent!"
+          },
+          {
+            "type": "summary_text",
+            "text": "**Evaluating expressions**\n\nI need to make sure to have a rigorous and clear approach. Maybe I should derive a nice rational expression. I'll start by computing based on the given value, letting a be equal to 2t minus 1. This gives me a solid foundation to work from. I wonder how the expression will evolve as I progress! It seems like there’s a lot to consider, but I'm ready to tackle it step by step."
+          },
+          {
+            "type": "summary_text",
+            "text": "**Verifying variance formula**\n\nI'm looking to verify the variance formula through mixtures. I want to derive the variance using the law of mixtures and see the final piecewise formulation. For \\( t \\leq \\frac{1}{2} \\), the variance is \\( \\frac{t^2}{9} \\), and for \\( t \\geq \\frac{1}{2} \\), it is \\( \\frac{(1-t)^3(1+t)}{3(2-t)^2} \\). I should test this with \\( t = 0.75 \\) and check the conditions regarding the parameters."
+          }
+        ]
+      },
+      {
+        "id": "msg_02056771c7a2567f006a24af82465c8195abcead674ecc8011",
+        "type": "message",
+        "status": "completed",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "Let \\(X=X_1\\) and \\(Y=X_2\\). Then \\((X,Y)\\) is uniform on the unit square, and\n\n\\[\nT=\\max\\left\\{X,\\frac{X+Y}{2}\\right\\}.\n\\]\n\nNotice that\n\n\\[\nX\\ge \\frac{X+Y}{2}\\iff X\\ge Y.\n\\]\n\nHence, up to a null set,\n\n\\[\nT=\n\\begin{cases}\nX, & Y\\le X,\\\\[4pt]\n\\dfrac{X+Y}{2}, & Y>X.\n\\end{cases}\n\\]\n\n---\n\n## (a) CDF of \\(T\\)\n\nFor \\(0\\le t\\le 1\\),\n\n\\[\n\\{T\\le t\\}\n=\n\\left\\{X\\le t,\\ \\frac{X+Y}{2}\\le t\\right\\}\n=\n\\{X\\le t,\\ X+Y\\le 2t\\}.\n\\]\n\nThus\n\n\\[\nF_T(t)=\\int_0^t \\min\\{1,2t-x\\}\\,dx.\n\\]\n\nIf \\(0\\le t\\le 1/2\\), then \\(2t-x\\le 1\\), so\n\n\\[\nF_T(t)=\\int_0^t (2t-x)\\,dx\n=2t^2-\\frac{t^2}{2}\n=\\frac32 t^2.\n\\]\n\nIf \\(1/2\\le t\\le 1\\), then \\(2t-x\\ge 1\\) for \\(0\\le x\\le 2t-1\\). Therefore\n\n\\[\nF_T(t)=\\int_0^{2t-1}1\\,dx+\\int_{2t-1}^t(2t-x)\\,dx.\n\\]\n\nThe second integral is\n\n\\[\n\\int_{2t-1}^t(2t-x)\\,dx\n=\\frac{1-t^2}{2}.\n\\]\n\nHence\n\n\\[\nF_T(t)=2t-1+\\frac{1-t^2}{2}\n=2t-\\frac12-\\frac{t^2}{2}.\n\\]\n\nTherefore\n\n\\[\n\\boxed{\nF_T(t)=\n\\begin{cases}\n0, & t<0,\\\\[4pt]\n\\dfrac32 t^2, & 0\\le t\\le \\dfrac12,\\\\[8pt]\n2t-\\dfrac12-\\dfrac{t^2}{2}, & \\dfrac12\\le t\\le 1,\\\\[8pt]\n1, & t\\ge 1.\n\\end{cases}}\n\\]\n\nThe density is therefore\n\n\\[\nf_T(t)=\n\\begin{cases}\n3t, & 0<t<1/2,\\\\[4pt]\n2-t, & 1/2<t<1.\n\\end{cases}\n\\]\n\n---\n\n## (b) \\(\\mathbb E[T]\\)\n\nUsing \\(\\mathbb E[T]=\\int_0^1 \\mathbb P(T>t)\\,dt\\),\n\n\\[\n\\mathbb E[T]\n=\n\\int_0^{1/2}\\left(1-\\frac32 t^2\\right)\\,dt\n+\n\\int_{1/2}^1\\left(1-2t+\\frac12+\\frac{t^2}{2}\\right)\\,dt.\n\\]\n\nThe first integral is\n\n\\[\n\\int_0^{1/2}\\left(1-\\frac32 t^2\\right)\\,dt\n=\n\\left[t-\\frac12 t^3\\right]_0^{1/2}\n=\n\\frac12-\\frac1{16}\n=\n\\frac7{16}.\n\\]\n\nThe second integral is\n\n\\[\n\\int_{1/2}^1\\left(\\frac32-2t+\\frac{t^2}{2}\\right)\\,dt\n=\n\\left[\\frac32 t-t^2+\\frac{t^3}{6}\\right]_{1/2}^1\n=\n\\frac7{48}.\n\\]\n\nThus\n\n\\[\n\\boxed{\\mathbb E[T]=\\frac7{16}+\\frac7{48}=\\frac7{12}.}\n\\]\n\n---\n\n## (c) \\(\\mathbb E[X_1\\mid T=t]\\)\n\nWe derive the conditional law of \\(X=X_1\\) given \\(T=t\\).\n\nFor Borel sets \\(B,C\\subseteq [0,1]\\),\n\n\\[\n\\mathbb P(X\\in B,T\\in C)\n=\n\\int_B \\left[x\\mathbf 1_C(x)+2\\int_x^{(x+1)/2}\\mathbf 1_C(t)\\,dt\\right]dx.\n\\]\n\nSwitching the order of integration, let\n\n\\[\na(t)=\\max\\{0,2t-1\\}.\n\\]\n\nThen\n\n\\[\n\\mathbb P(X\\in B,T\\in C)\n=\n\\int_C \\left[t\\mathbf 1_B(t)+2\\int_{a(t)}^t \\mathbf 1_B(x)\\,dx\\right]dt.\n\\]\n\nThus a regular conditional distribution of \\(X_1\\) given \\(T=t\\) is\n\n\\[\n\\mathbb P(X_1\\in dx\\mid T=t)\n=\n\\frac{t\\,\\delta_t(dx)+2\\mathbf 1_{[a(t),t]}(x)\\,dx}{t+2(t-a(t))}.\n\\]\n\nTherefore, for bounded measurable \\(g\\),\n\n\\[\n\\mathbb E[g(X_1)\\mid T=t]\n=\n\\frac{t g(t)+2\\int_{a(t)}^t g(x)\\,dx}{t+2(t-a(t))}.\n\\]\n\nTaking \\(g(x)=x\\),\n\n\\[\n\\mathbb E[X_1\\mid T=t]\n=\n\\frac{t^2+2\\int_{a(t)}^t x\\,dx}{t+2(t-a(t))}\n=\n\\frac{2t^2-a(t)^2}{3t-2a(t)}.\n\\]\n\nHence\n\n\\[\n\\boxed{\n\\mathbb E[X_1\\mid T=t]\n=\n\\begin{cases}\n\\dfrac{2t}{3}, & 0\\le t\\le \\dfrac12,\\\\[10pt]\n\\dfrac{-2t^2+4t-1}{2-t}, & \\dfrac12\\le t\\le 1.\n\\end{cases}}\n\\]\n\nAt \\(t=1/2\\), both formulas give \\(1/3\\).\n\n---\n\n## (d) \\(\\operatorname{Var}(X_1\\mid T=t)\\)\n\nUsing the same conditional distribution,\n\n\\[\n\\mathbb E[X_1^2\\mid T=t]\n=\n\\frac{t^3+2\\int_{a(t)}^t x^2\\,dx}{t+2(t-a(t))}\n=\n\\frac{t^3+\\frac23(t^3-a(t)^3)}{3t-2a(t)}.\n\\]\n\nThus\n\n\\[\n\\mathbb E[X_1^2\\mid T=t]\n=\n\\frac{\\frac53 t^3-\\frac23 a(t)^3}{3t-2a(t)}.\n\\]\n\n### Case 1: \\(0\\le t\\le 1/2\\)\n\nThen \\(a(t)=0\\), so\n\n\\[\n\\mathbb E[X_1^2\\mid T=t]\n=\n\\frac{\\frac53 t^3}{3t}\n=\n\\frac59 t^2.\n\\]\n\nSince\n\n\\[\n\\mathbb E[X_1\\mid T=t]=\\frac{2t}{3},\n\\]\n\nwe get\n\n\\[\n\\operatorname{Var}(X_1\\mid T=t)\n=\n\\frac59 t^2-\\frac49 t^2\n=\n\\frac19 t^2.\n\\]\n\n### Case 2: \\(1/2\\le t\\le 1\\)\n\nThen \\(a(t)=2t-1\\). After simplification,\n\n\\[\n\\operatorname{Var}(X_1\\mid T=t)\n=\n\\frac{(1-t)^3(1+t)}{3(2-t)^2}.\n\\]\n\nTherefore\n\n\\[\n\\boxed{\n\\operatorname{Var}(X_1\\mid T=t)\n=\n\\begin{cases}\n\\dfrac{t^2}{9}, & 0\\le t\\le \\dfrac12,\\\\[10pt]\n\\dfrac{(1-t)^3(1+t)}{3(2-t)^2}, & \\dfrac12\\le t\\le 1.\n\\end{cases}}\n\\]\n\nAt \\(t=1/2\\), both formulas give \\(1/36\\), and at \\(t=1\\) the conditional variance is \\(0\\)."
+          }
+        ],
+        "phase": "final_answer",
+        "role": "assistant"
+      }
+    ]
+  },
+  "cost_usd": 0.14627,
+  "timing": {
+    "started": "2026-06-06T23:36:07.411383+00:00",
+    "ended": "2026-06-06T23:39:01.184205+00:00",
+    "seconds": 173.77
+  },
+  "error": null
+}

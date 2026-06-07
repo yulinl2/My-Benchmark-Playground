@@ -1,0 +1,64 @@
+{
+  "question_id": "2024-spring-math-stat-q4",
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "rep": 2,
+  "exam": {
+    "year": 2024,
+    "term": "spring",
+    "level": "ms",
+    "part": "math-stat"
+  },
+  "request": {
+    "system": "You are sitting a PhD-level qualifying examination in statistics. Solve the problem rigorously and completely. Show your work and reasoning, justify each step, and clearly state your final answer(s). If the problem has multiple parts, answer every part, labeled. If you invoke a known theorem, name it.",
+    "user": "[2024 spring ms math-stat — problem 4]\n\n$X$ has density $f(x\\mid\\theta) = 2x/\\theta^2$, $0 < x < \\theta$. (1) Find $\\mathbb{E}_\\theta X$ and $\\operatorname{Var}_\\theta X$. (2) Under squared-error loss, among estimators $\\delta_c(x) = cx$, find the $c$ minimizing MSE. (3) Is that estimator unbiased for $\\theta$? (4) Find an unbiased estimator of $\\theta(1-\\theta)$.",
+    "max_tokens": 24000,
+    "mode": {
+      "effort": "high"
+    }
+  },
+  "response": {
+    "id": "resp_08de5d8b27f6b443006a24bac3dd1881948d231663715af195",
+    "model": "gpt-5.5-2026-04-23",
+    "stop_reason": "completed",
+    "usage": {
+      "input_tokens": 194,
+      "output_tokens": 1874,
+      "output_tokens_details": {
+        "reasoning_tokens": 516
+      }
+    },
+    "thinking": "",
+    "text": "**(1) Mean and variance**\n\nFor \\(0<x<\\theta\\),\n\n\\[\nf(x\\mid \\theta)=\\frac{2x}{\\theta^2}.\n\\]\n\nCompute moments:\n\n\\[\n\\mathbb E_\\theta[X]\n=\\int_0^\\theta x\\frac{2x}{\\theta^2}\\,dx\n=\\frac{2}{\\theta^2}\\int_0^\\theta x^2\\,dx\n=\\frac{2}{\\theta^2}\\cdot \\frac{\\theta^3}{3}\n=\\frac{2\\theta}{3}.\n\\]\n\nAlso,\n\n\\[\n\\mathbb E_\\theta[X^2]\n=\\int_0^\\theta x^2\\frac{2x}{\\theta^2}\\,dx\n=\\frac{2}{\\theta^2}\\int_0^\\theta x^3\\,dx\n=\\frac{2}{\\theta^2}\\cdot \\frac{\\theta^4}{4}\n=\\frac{\\theta^2}{2}.\n\\]\n\nThus\n\n\\[\n\\operatorname{Var}_\\theta(X)\n=\\mathbb E_\\theta[X^2]-\\{\\mathbb E_\\theta[X]\\}^2\n=\\frac{\\theta^2}{2}-\\left(\\frac{2\\theta}{3}\\right)^2\n=\\frac{\\theta^2}{2}-\\frac{4\\theta^2}{9}\n=\\frac{\\theta^2}{18}.\n\\]\n\nSo\n\n\\[\n\\boxed{\\mathbb E_\\theta[X]=\\frac{2\\theta}{3}}, \n\\qquad \n\\boxed{\\operatorname{Var}_\\theta(X)=\\frac{\\theta^2}{18}}.\n\\]\n\n---\n\n**(2) Minimize MSE among estimators \\(\\delta_c(X)=cX\\)**\n\nWe are estimating \\(\\theta\\) under squared-error loss, so the risk is\n\n\\[\nR(\\theta,\\delta_c)=\\mathbb E_\\theta[(cX-\\theta)^2].\n\\]\n\nCompute:\n\n\\[\n\\mathbb E_\\theta[(cX-\\theta)^2]\n=c^2\\mathbb E_\\theta[X^2]-2c\\theta \\mathbb E_\\theta[X]+\\theta^2.\n\\]\n\nUsing the moments from part (1),\n\n\\[\nR(\\theta,\\delta_c)\n=c^2\\frac{\\theta^2}{2}\n-2c\\theta\\frac{2\\theta}{3}\n+\\theta^2.\n\\]\n\nThus\n\n\\[\nR(\\theta,\\delta_c)\n=\\theta^2\\left(\\frac{c^2}{2}-\\frac{4c}{3}+1\\right).\n\\]\n\nSince \\(\\theta^2>0\\), minimize\n\n\\[\n\\frac{c^2}{2}-\\frac{4c}{3}+1.\n\\]\n\nDifferentiate with respect to \\(c\\):\n\n\\[\n\\frac{d}{dc}\\left(\\frac{c^2}{2}-\\frac{4c}{3}+1\\right)\n=c-\\frac{4}{3}.\n\\]\n\nSetting this equal to zero gives\n\n\\[\nc=\\frac{4}{3}.\n\\]\n\nThe second derivative is \\(1>0\\), so this is the minimizer. Therefore,\n\n\\[\n\\boxed{c^*=\\frac{4}{3}},\n\\qquad \n\\boxed{\\delta_{c^*}(X)=\\frac{4}{3}X}.\n\\]\n\n---\n\n**(3) Is \\(\\delta_{c^*}(X)=\\frac{4}{3}X\\) unbiased for \\(\\theta\\)?**\n\nCompute its expectation:\n\n\\[\n\\mathbb E_\\theta\\left[\\frac{4}{3}X\\right]\n=\\frac{4}{3}\\mathbb E_\\theta[X]\n=\\frac{4}{3}\\cdot \\frac{2\\theta}{3}\n=\\frac{8\\theta}{9}.\n\\]\n\nSince\n\n\\[\n\\frac{8\\theta}{9}\\neq \\theta\n\\]\n\nfor \\(\\theta\\neq 0\\), the estimator is not unbiased for \\(\\theta\\). Therefore,\n\n\\[\n\\boxed{\\frac{4}{3}X \\text{ is biased for } \\theta.}\n\\]\n\nIts bias is\n\n\\[\n\\operatorname{Bias}_\\theta\\left(\\frac{4}{3}X\\right)\n=\\frac{8\\theta}{9}-\\theta\n=-\\frac{\\theta}{9}.\n\\]\n\n---\n\n**(4) Find an unbiased estimator of \\(\\theta(1-\\theta)\\)**\n\nWe want a function \\(g(X)\\) such that\n\n\\[\n\\mathbb E_\\theta[g(X)]=\\theta(1-\\theta)=\\theta-\\theta^2.\n\\]\n\nUsing the moment formulas,\n\n\\[\n\\mathbb E_\\theta[X]=\\frac{2\\theta}{3},\n\\qquad\n\\mathbb E_\\theta[X^2]=\\frac{\\theta^2}{2}.\n\\]\n\nLook for an estimator of the form\n\n\\[\ng(X)=aX+bX^2.\n\\]\n\nThen\n\n\\[\n\\mathbb E_\\theta[g(X)]\n=a\\mathbb E_\\theta[X]+b\\mathbb E_\\theta[X^2]\n=a\\frac{2\\theta}{3}+b\\frac{\\theta^2}{2}.\n\\]\n\nWe want this to equal\n\n\\[\n\\theta-\\theta^2.\n\\]\n\nMatching coefficients of \\(\\theta\\) and \\(\\theta^2\\),\n\n\\[\n\\frac{2a}{3}=1\n\\quad\\Rightarrow\\quad\na=\\frac{3}{2},\n\\]\n\nand\n\n\\[\n\\frac{b}{2}=-1\n\\quad\\Rightarrow\\quad\nb=-2.\n\\]\n\nTherefore,\n\n\\[\ng(X)=\\frac{3}{2}X-2X^2.\n\\]\n\nCheck:\n\n\\[\n\\mathbb E_\\theta\\left[\\frac{3}{2}X-2X^2\\right]\n=\\frac{3}{2}\\cdot \\frac{2\\theta}{3}\n-2\\cdot \\frac{\\theta^2}{2}\n=\\theta-\\theta^2.\n\\]\n\nHence an unbiased estimator of \\(\\theta(1-\\theta)\\) is\n\n\\[\n\\boxed{\\frac{3}{2}X-2X^2}.\n\\]",
+    "raw_output": [
+      {
+        "id": "rs_08de5d8b27f6b443006a24bac4604c819480488694d612bbbf",
+        "type": "reasoning",
+        "content": [],
+        "summary": []
+      },
+      {
+        "id": "msg_08de5d8b27f6b443006a24bacd145c8194a41c7a8a795352c7",
+        "type": "message",
+        "status": "completed",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "**(1) Mean and variance**\n\nFor \\(0<x<\\theta\\),\n\n\\[\nf(x\\mid \\theta)=\\frac{2x}{\\theta^2}.\n\\]\n\nCompute moments:\n\n\\[\n\\mathbb E_\\theta[X]\n=\\int_0^\\theta x\\frac{2x}{\\theta^2}\\,dx\n=\\frac{2}{\\theta^2}\\int_0^\\theta x^2\\,dx\n=\\frac{2}{\\theta^2}\\cdot \\frac{\\theta^3}{3}\n=\\frac{2\\theta}{3}.\n\\]\n\nAlso,\n\n\\[\n\\mathbb E_\\theta[X^2]\n=\\int_0^\\theta x^2\\frac{2x}{\\theta^2}\\,dx\n=\\frac{2}{\\theta^2}\\int_0^\\theta x^3\\,dx\n=\\frac{2}{\\theta^2}\\cdot \\frac{\\theta^4}{4}\n=\\frac{\\theta^2}{2}.\n\\]\n\nThus\n\n\\[\n\\operatorname{Var}_\\theta(X)\n=\\mathbb E_\\theta[X^2]-\\{\\mathbb E_\\theta[X]\\}^2\n=\\frac{\\theta^2}{2}-\\left(\\frac{2\\theta}{3}\\right)^2\n=\\frac{\\theta^2}{2}-\\frac{4\\theta^2}{9}\n=\\frac{\\theta^2}{18}.\n\\]\n\nSo\n\n\\[\n\\boxed{\\mathbb E_\\theta[X]=\\frac{2\\theta}{3}}, \n\\qquad \n\\boxed{\\operatorname{Var}_\\theta(X)=\\frac{\\theta^2}{18}}.\n\\]\n\n---\n\n**(2) Minimize MSE among estimators \\(\\delta_c(X)=cX\\)**\n\nWe are estimating \\(\\theta\\) under squared-error loss, so the risk is\n\n\\[\nR(\\theta,\\delta_c)=\\mathbb E_\\theta[(cX-\\theta)^2].\n\\]\n\nCompute:\n\n\\[\n\\mathbb E_\\theta[(cX-\\theta)^2]\n=c^2\\mathbb E_\\theta[X^2]-2c\\theta \\mathbb E_\\theta[X]+\\theta^2.\n\\]\n\nUsing the moments from part (1),\n\n\\[\nR(\\theta,\\delta_c)\n=c^2\\frac{\\theta^2}{2}\n-2c\\theta\\frac{2\\theta}{3}\n+\\theta^2.\n\\]\n\nThus\n\n\\[\nR(\\theta,\\delta_c)\n=\\theta^2\\left(\\frac{c^2}{2}-\\frac{4c}{3}+1\\right).\n\\]\n\nSince \\(\\theta^2>0\\), minimize\n\n\\[\n\\frac{c^2}{2}-\\frac{4c}{3}+1.\n\\]\n\nDifferentiate with respect to \\(c\\):\n\n\\[\n\\frac{d}{dc}\\left(\\frac{c^2}{2}-\\frac{4c}{3}+1\\right)\n=c-\\frac{4}{3}.\n\\]\n\nSetting this equal to zero gives\n\n\\[\nc=\\frac{4}{3}.\n\\]\n\nThe second derivative is \\(1>0\\), so this is the minimizer. Therefore,\n\n\\[\n\\boxed{c^*=\\frac{4}{3}},\n\\qquad \n\\boxed{\\delta_{c^*}(X)=\\frac{4}{3}X}.\n\\]\n\n---\n\n**(3) Is \\(\\delta_{c^*}(X)=\\frac{4}{3}X\\) unbiased for \\(\\theta\\)?**\n\nCompute its expectation:\n\n\\[\n\\mathbb E_\\theta\\left[\\frac{4}{3}X\\right]\n=\\frac{4}{3}\\mathbb E_\\theta[X]\n=\\frac{4}{3}\\cdot \\frac{2\\theta}{3}\n=\\frac{8\\theta}{9}.\n\\]\n\nSince\n\n\\[\n\\frac{8\\theta}{9}\\neq \\theta\n\\]\n\nfor \\(\\theta\\neq 0\\), the estimator is not unbiased for \\(\\theta\\). Therefore,\n\n\\[\n\\boxed{\\frac{4}{3}X \\text{ is biased for } \\theta.}\n\\]\n\nIts bias is\n\n\\[\n\\operatorname{Bias}_\\theta\\left(\\frac{4}{3}X\\right)\n=\\frac{8\\theta}{9}-\\theta\n=-\\frac{\\theta}{9}.\n\\]\n\n---\n\n**(4) Find an unbiased estimator of \\(\\theta(1-\\theta)\\)**\n\nWe want a function \\(g(X)\\) such that\n\n\\[\n\\mathbb E_\\theta[g(X)]=\\theta(1-\\theta)=\\theta-\\theta^2.\n\\]\n\nUsing the moment formulas,\n\n\\[\n\\mathbb E_\\theta[X]=\\frac{2\\theta}{3},\n\\qquad\n\\mathbb E_\\theta[X^2]=\\frac{\\theta^2}{2}.\n\\]\n\nLook for an estimator of the form\n\n\\[\ng(X)=aX+bX^2.\n\\]\n\nThen\n\n\\[\n\\mathbb E_\\theta[g(X)]\n=a\\mathbb E_\\theta[X]+b\\mathbb E_\\theta[X^2]\n=a\\frac{2\\theta}{3}+b\\frac{\\theta^2}{2}.\n\\]\n\nWe want this to equal\n\n\\[\n\\theta-\\theta^2.\n\\]\n\nMatching coefficients of \\(\\theta\\) and \\(\\theta^2\\),\n\n\\[\n\\frac{2a}{3}=1\n\\quad\\Rightarrow\\quad\na=\\frac{3}{2},\n\\]\n\nand\n\n\\[\n\\frac{b}{2}=-1\n\\quad\\Rightarrow\\quad\nb=-2.\n\\]\n\nTherefore,\n\n\\[\ng(X)=\\frac{3}{2}X-2X^2.\n\\]\n\nCheck:\n\n\\[\n\\mathbb E_\\theta\\left[\\frac{3}{2}X-2X^2\\right]\n=\\frac{3}{2}\\cdot \\frac{2\\theta}{3}\n-2\\cdot \\frac{\\theta^2}{2}\n=\\theta-\\theta^2.\n\\]\n\nHence an unbiased estimator of \\(\\theta(1-\\theta)\\) is\n\n\\[\n\\boxed{\\frac{3}{2}X-2X^2}.\n\\]"
+          }
+        ],
+        "phase": "final_answer",
+        "role": "assistant"
+      }
+    ]
+  },
+  "cost_usd": 0.02908,
+  "timing": {
+    "started": "2026-06-07T00:26:43.715949+00:00",
+    "ended": "2026-06-07T00:27:07.088818+00:00",
+    "seconds": 23.37
+  },
+  "error": null
+}

@@ -1,0 +1,68 @@
+{
+  "question_id": "2025-summer-math-stat-q3",
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "rep": 2,
+  "exam": {
+    "year": 2025,
+    "term": "summer",
+    "part": "math-stat"
+  },
+  "request": {
+    "system": "You are sitting a PhD-level qualifying examination in statistics. Solve the problem rigorously and completely. Show your work and reasoning, justify each step, and clearly state your final answer(s). If the problem has multiple parts, answer every part, labeled. If you invoke a known theorem, name it.",
+    "user": "[2025 summer phd math-stat — problem 3]\n\nPart III, Problem 3 (25 pts). Let $\\{(X_i, Y_i, R_i)\\}_{i=1}^n$ be i.i.d. with covariates $X_i \\in \\mathbb{R}^d$, response $Y_i$, and missingness indicator $R_i \\in \\{0, 1\\}$ ($R_i = 1$ if $Y_i$ observed). Assume (a) $Y_i \\mid X_i, R_i = 1 \\stackrel{d}{=} Y_i \\mid X_i, R_i = 0$, and (b) $X_i \\mid R_i = 1 \\sim P_X$, $X_i \\mid R_i = 0 \\sim Q_X$ (possibly different). Target: $\\beta^* = \\arg\\min_\\beta \\mathbb{E}[(Y_i - X_i^\\top\\beta)^2 \\mid R_i = 0]$.\n(i) Show $\\mathbb{E}[(Y_i - X_i^\\top\\beta)^2 \\mid R_i = 0] = \\mathbb{E}[(Y_i - X_i^\\top\\beta)^2 \\frac{f_{X|R=0}(X_i)}{f_{X|R=1}(X_i)} \\mid R_i = 1]$.\n(ii) Prove $\\frac{f_{X|R=0}(x)}{f_{X|R=1}(x)} = \\frac{P(R=0\\mid x)}{P(R=1\\mid x)}\\cdot\\frac{P(R=1)}{P(R=0)}$.\n(iii) Apply (i) and (ii) to construct an estimator of $\\beta^*$.",
+    "max_tokens": 24000,
+    "mode": {
+      "effort": "high"
+    }
+  },
+  "response": {
+    "id": "resp_0f3108f8d056f249006a24bdc5b1948197bba3bc57d75047a5",
+    "model": "gpt-5.5-2026-04-23",
+    "stop_reason": "completed",
+    "usage": {
+      "input_tokens": 462,
+      "output_tokens": 5647,
+      "output_tokens_details": {
+        "reasoning_tokens": 4142
+      }
+    },
+    "thinking": "**Checking equation accuracy**\n\nI want to ensure there are no mistakes in my equations. In part (i), if I use the notation \\(X_i\\) on both sides, the conditional expectation on the right-hand side over \\(R_i=1\\) looks fine. I need to make sure to include the answer format properly. \n\nI need to mention \"positivity\" if \\(P(R=0|x)>0\\), as this impacts the weight. For an estimator, \\(π\\) needs to be bounded away from zero as needed. I'll clarify that my response aligns with this.",
+    "text": "Let\n\n\\[\nf_r(x):=f_{X\\mid R=r}(x),\\qquad p_r:=P(R=r),\\qquad \\pi(x):=P(R=1\\mid X=x).\n\\]\n\nAssume the usual overlap/positivity condition\n\n\\[\nf_0(x)>0 \\implies f_1(x)>0,\n\\]\n\nso that \\(f_0/f_1\\) is well-defined on the target support, and assume the relevant second moments exist.\n\n---\n\n## (i) Change-of-measure identity\n\nFor fixed \\(\\beta\\), define\n\n\\[\nm_\\beta(x):=\\mathbb E\\left[(Y-x^\\top\\beta)^2\\mid X=x,R=1\\right].\n\\]\n\nBy assumption (a),\n\n\\[\nY\\mid X=x,R=1 \\stackrel d= Y\\mid X=x,R=0,\n\\]\n\nso\n\n\\[\nm_\\beta(x)\n=\n\\mathbb E\\left[(Y-x^\\top\\beta)^2\\mid X=x,R=0\\right].\n\\]\n\nTherefore, using iterated expectation,\n\n\\[\n\\begin{aligned}\n\\mathbb E\\left[(Y-X^\\top\\beta)^2\\mid R=0\\right]\n&=\n\\int \\mathbb E\\left[(Y-x^\\top\\beta)^2\\mid X=x,R=0\\right] f_0(x)\\,dx \\\\\n&=\n\\int m_\\beta(x) f_0(x)\\,dx \\\\\n&=\n\\int m_\\beta(x)\\frac{f_0(x)}{f_1(x)} f_1(x)\\,dx \\\\\n&=\n\\mathbb E\\left[(Y-X^\\top\\beta)^2\\frac{f_0(X)}{f_1(X)}\\mid R=1\\right].\n\\end{aligned}\n\\]\n\nThus\n\n\\[\n\\boxed{\n\\mathbb E\\left[(Y-X^\\top\\beta)^2\\mid R=0\\right]\n=\n\\mathbb E\\left[(Y-X^\\top\\beta)^2\n\\frac{f_{X\\mid R=0}(X)}{f_{X\\mid R=1}(X)}\n\\mid R=1\\right].\n}\n\\]\n\nThis is simply a change of measure from the covariate distribution among the missing cases to the covariate distribution among the observed cases.\n\n---\n\n## (ii) Density ratio in terms of missingness probabilities\n\nBy Bayes’ rule,\n\n\\[\nf_{X\\mid R=1}(x)\n=\n\\frac{P(R=1\\mid X=x)f_X(x)}{P(R=1)}\n=\n\\frac{\\pi(x)f_X(x)}{p_1},\n\\]\n\nand similarly\n\n\\[\nf_{X\\mid R=0}(x)\n=\n\\frac{P(R=0\\mid X=x)f_X(x)}{P(R=0)}\n=\n\\frac{(1-\\pi(x))f_X(x)}{p_0}.\n\\]\n\nTherefore, for \\(x\\) such that \\(f_X(x)>0\\) and \\(0<\\pi(x)<1\\),\n\n\\[\n\\begin{aligned}\n\\frac{f_{X\\mid R=0}(x)}{f_{X\\mid R=1}(x)}\n&=\n\\frac{\\frac{P(R=0\\mid X=x)f_X(x)}{P(R=0)}}\n{\\frac{P(R=1\\mid X=x)f_X(x)}{P(R=1)}} \\\\\n&=\n\\frac{P(R=0\\mid X=x)}{P(R=1\\mid X=x)}\n\\cdot\n\\frac{P(R=1)}{P(R=0)}.\n\\end{aligned}\n\\]\n\nHence\n\n\\[\n\\boxed{\n\\frac{f_{X\\mid R=0}(x)}{f_{X\\mid R=1}(x)}\n=\n\\frac{P(R=0\\mid X=x)}{P(R=1\\mid X=x)}\n\\cdot\n\\frac{P(R=1)}{P(R=0)}.\n}\n\\]\n\nEquivalently,\n\n\\[\n\\frac{f_{X\\mid R=0}(x)}{f_{X\\mid R=1}(x)}\n=\n\\frac{1-\\pi(x)}{\\pi(x)}\n\\cdot\n\\frac{p_1}{p_0}.\n\\]\n\n---\n\n## (iii) Estimator of \\(\\beta^*\\)\n\nFrom part (i),\n\n\\[\n\\beta^*\n=\n\\arg\\min_\\beta\n\\mathbb E\\left[\n(Y-X^\\top\\beta)^2 w(X)\n\\mid R=1\n\\right],\n\\]\n\nwhere\n\n\\[\nw(x)\n:=\n\\frac{f_{X\\mid R=0}(x)}{f_{X\\mid R=1}(x)}\n=\n\\frac{1-\\pi(x)}{\\pi(x)}\n\\cdot\n\\frac{p_1}{p_0}.\n\\]\n\nThus \\(\\beta^*\\) can be estimated using only the complete cases \\(R_i=1\\), but with inverse-odds weights correcting the covariate shift between \\(R=1\\) and \\(R=0\\).\n\nLet\n\n\\[\nn_1=\\sum_{i=1}^n R_i,\\qquad n_0=n-n_1.\n\\]\n\nEstimate \\(\\pi(x)=P(R=1\\mid X=x)\\) using the observed pairs \\((X_i,R_i)\\), for example by logistic regression or another classifier. Denote the fitted propensity by \\(\\widehat \\pi(x)\\). Then define\n\n\\[\n\\widehat w_i\n=\n\\frac{1-\\widehat\\pi(X_i)}{\\widehat\\pi(X_i)}\n\\cdot\n\\frac{n_1}{n_0}.\n\\]\n\nThe weighted least squares estimator is\n\n\\[\n\\boxed{\n\\widehat\\beta\n=\n\\arg\\min_{\\beta}\n\\sum_{i=1}^n\nR_i\\widehat w_i\n\\left(Y_i-X_i^\\top\\beta\\right)^2.\n}\n\\]\n\nEquivalently, when the weighted Gram matrix is invertible,\n\n\\[\n\\boxed{\n\\widehat\\beta\n=\n\\left(\n\\sum_{i=1}^n R_i\\widehat w_i X_iX_i^\\top\n\\right)^{-1}\n\\left(\n\\sum_{i=1}^n R_i\\widehat w_i X_iY_i\n\\right).\n}\n\\]\n\nSince \\(n_1/n_0\\) is constant in \\(i\\), it does not affect the minimizer; it may be included for estimating the target risk itself, but it can be omitted for estimating \\(\\beta^*\\).\n\nUnder standard regularity conditions—positivity, finite second moments, consistency of \\(\\widehat\\pi\\), and nonsingularity of the limiting weighted Gram matrix—this weighted complete-case estimator is consistent for \\(\\beta^*\\).",
+    "raw_output": [
+      {
+        "id": "rs_0f3108f8d056f249006a24bdc66700819792eb1221b0d1d43e",
+        "type": "reasoning",
+        "content": [],
+        "summary": [
+          {
+            "type": "summary_text",
+            "text": "**Checking equation accuracy**\n\nI want to ensure there are no mistakes in my equations. In part (i), if I use the notation \\(X_i\\) on both sides, the conditional expectation on the right-hand side over \\(R_i=1\\) looks fine. I need to make sure to include the answer format properly. \n\nI need to mention \"positivity\" if \\(P(R=0|x)>0\\), as this impacts the weight. For an estimator, \\(π\\) needs to be bounded away from zero as needed. I'll clarify that my response aligns with this."
+          }
+        ]
+      },
+      {
+        "id": "msg_0f3108f8d056f249006a24be24a91c8197947bc4236805fe8e",
+        "type": "message",
+        "status": "completed",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "Let\n\n\\[\nf_r(x):=f_{X\\mid R=r}(x),\\qquad p_r:=P(R=r),\\qquad \\pi(x):=P(R=1\\mid X=x).\n\\]\n\nAssume the usual overlap/positivity condition\n\n\\[\nf_0(x)>0 \\implies f_1(x)>0,\n\\]\n\nso that \\(f_0/f_1\\) is well-defined on the target support, and assume the relevant second moments exist.\n\n---\n\n## (i) Change-of-measure identity\n\nFor fixed \\(\\beta\\), define\n\n\\[\nm_\\beta(x):=\\mathbb E\\left[(Y-x^\\top\\beta)^2\\mid X=x,R=1\\right].\n\\]\n\nBy assumption (a),\n\n\\[\nY\\mid X=x,R=1 \\stackrel d= Y\\mid X=x,R=0,\n\\]\n\nso\n\n\\[\nm_\\beta(x)\n=\n\\mathbb E\\left[(Y-x^\\top\\beta)^2\\mid X=x,R=0\\right].\n\\]\n\nTherefore, using iterated expectation,\n\n\\[\n\\begin{aligned}\n\\mathbb E\\left[(Y-X^\\top\\beta)^2\\mid R=0\\right]\n&=\n\\int \\mathbb E\\left[(Y-x^\\top\\beta)^2\\mid X=x,R=0\\right] f_0(x)\\,dx \\\\\n&=\n\\int m_\\beta(x) f_0(x)\\,dx \\\\\n&=\n\\int m_\\beta(x)\\frac{f_0(x)}{f_1(x)} f_1(x)\\,dx \\\\\n&=\n\\mathbb E\\left[(Y-X^\\top\\beta)^2\\frac{f_0(X)}{f_1(X)}\\mid R=1\\right].\n\\end{aligned}\n\\]\n\nThus\n\n\\[\n\\boxed{\n\\mathbb E\\left[(Y-X^\\top\\beta)^2\\mid R=0\\right]\n=\n\\mathbb E\\left[(Y-X^\\top\\beta)^2\n\\frac{f_{X\\mid R=0}(X)}{f_{X\\mid R=1}(X)}\n\\mid R=1\\right].\n}\n\\]\n\nThis is simply a change of measure from the covariate distribution among the missing cases to the covariate distribution among the observed cases.\n\n---\n\n## (ii) Density ratio in terms of missingness probabilities\n\nBy Bayes’ rule,\n\n\\[\nf_{X\\mid R=1}(x)\n=\n\\frac{P(R=1\\mid X=x)f_X(x)}{P(R=1)}\n=\n\\frac{\\pi(x)f_X(x)}{p_1},\n\\]\n\nand similarly\n\n\\[\nf_{X\\mid R=0}(x)\n=\n\\frac{P(R=0\\mid X=x)f_X(x)}{P(R=0)}\n=\n\\frac{(1-\\pi(x))f_X(x)}{p_0}.\n\\]\n\nTherefore, for \\(x\\) such that \\(f_X(x)>0\\) and \\(0<\\pi(x)<1\\),\n\n\\[\n\\begin{aligned}\n\\frac{f_{X\\mid R=0}(x)}{f_{X\\mid R=1}(x)}\n&=\n\\frac{\\frac{P(R=0\\mid X=x)f_X(x)}{P(R=0)}}\n{\\frac{P(R=1\\mid X=x)f_X(x)}{P(R=1)}} \\\\\n&=\n\\frac{P(R=0\\mid X=x)}{P(R=1\\mid X=x)}\n\\cdot\n\\frac{P(R=1)}{P(R=0)}.\n\\end{aligned}\n\\]\n\nHence\n\n\\[\n\\boxed{\n\\frac{f_{X\\mid R=0}(x)}{f_{X\\mid R=1}(x)}\n=\n\\frac{P(R=0\\mid X=x)}{P(R=1\\mid X=x)}\n\\cdot\n\\frac{P(R=1)}{P(R=0)}.\n}\n\\]\n\nEquivalently,\n\n\\[\n\\frac{f_{X\\mid R=0}(x)}{f_{X\\mid R=1}(x)}\n=\n\\frac{1-\\pi(x)}{\\pi(x)}\n\\cdot\n\\frac{p_1}{p_0}.\n\\]\n\n---\n\n## (iii) Estimator of \\(\\beta^*\\)\n\nFrom part (i),\n\n\\[\n\\beta^*\n=\n\\arg\\min_\\beta\n\\mathbb E\\left[\n(Y-X^\\top\\beta)^2 w(X)\n\\mid R=1\n\\right],\n\\]\n\nwhere\n\n\\[\nw(x)\n:=\n\\frac{f_{X\\mid R=0}(x)}{f_{X\\mid R=1}(x)}\n=\n\\frac{1-\\pi(x)}{\\pi(x)}\n\\cdot\n\\frac{p_1}{p_0}.\n\\]\n\nThus \\(\\beta^*\\) can be estimated using only the complete cases \\(R_i=1\\), but with inverse-odds weights correcting the covariate shift between \\(R=1\\) and \\(R=0\\).\n\nLet\n\n\\[\nn_1=\\sum_{i=1}^n R_i,\\qquad n_0=n-n_1.\n\\]\n\nEstimate \\(\\pi(x)=P(R=1\\mid X=x)\\) using the observed pairs \\((X_i,R_i)\\), for example by logistic regression or another classifier. Denote the fitted propensity by \\(\\widehat \\pi(x)\\). Then define\n\n\\[\n\\widehat w_i\n=\n\\frac{1-\\widehat\\pi(X_i)}{\\widehat\\pi(X_i)}\n\\cdot\n\\frac{n_1}{n_0}.\n\\]\n\nThe weighted least squares estimator is\n\n\\[\n\\boxed{\n\\widehat\\beta\n=\n\\arg\\min_{\\beta}\n\\sum_{i=1}^n\nR_i\\widehat w_i\n\\left(Y_i-X_i^\\top\\beta\\right)^2.\n}\n\\]\n\nEquivalently, when the weighted Gram matrix is invertible,\n\n\\[\n\\boxed{\n\\widehat\\beta\n=\n\\left(\n\\sum_{i=1}^n R_i\\widehat w_i X_iX_i^\\top\n\\right)^{-1}\n\\left(\n\\sum_{i=1}^n R_i\\widehat w_i X_iY_i\n\\right).\n}\n\\]\n\nSince \\(n_1/n_0\\) is constant in \\(i\\), it does not affect the minimizer; it may be included for estimating the target risk itself, but it can be omitted for estimating \\(\\beta^*\\).\n\nUnder standard regularity conditions—positivity, finite second moments, consistency of \\(\\widehat\\pi\\), and nonsingularity of the limiting weighted Gram matrix—this weighted complete-case estimator is consistent for \\(\\beta^*\\)."
+          }
+        ],
+        "phase": "final_answer",
+        "role": "assistant"
+      }
+    ]
+  },
+  "cost_usd": 0.08702,
+  "timing": {
+    "started": "2026-06-07T00:39:33.586961+00:00",
+    "ended": "2026-06-07T00:41:26.526807+00:00",
+    "seconds": 112.94
+  },
+  "error": null
+}

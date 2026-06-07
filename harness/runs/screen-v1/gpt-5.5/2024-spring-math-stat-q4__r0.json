@@ -1,0 +1,73 @@
+{
+  "question_id": "2024-spring-math-stat-q4",
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "rep": 0,
+  "exam": {
+    "year": 2024,
+    "term": "spring",
+    "level": "ms",
+    "part": "math-stat"
+  },
+  "request": {
+    "system": "You are sitting a PhD-level qualifying examination in statistics. Solve the problem rigorously and completely. Show your work and reasoning, justify each step, and clearly state your final answer(s). If the problem has multiple parts, answer every part, labeled. If you invoke a known theorem, name it.",
+    "user": "[2024 spring ms math-stat — problem 4]\n\n$X$ has density $f(x\\mid\\theta) = 2x/\\theta^2$, $0 < x < \\theta$. (1) Find $\\mathbb{E}_\\theta X$ and $\\operatorname{Var}_\\theta X$. (2) Under squared-error loss, among estimators $\\delta_c(x) = cx$, find the $c$ minimizing MSE. (3) Is that estimator unbiased for $\\theta$? (4) Find an unbiased estimator of $\\theta(1-\\theta)$.",
+    "max_tokens": 24000,
+    "mode": {
+      "effort": "high"
+    }
+  },
+  "response": {
+    "id": "resp_01334fd3a42e81c4006a24bab9708081948ec9602747211cc1",
+    "model": "gpt-5.5-2026-04-23",
+    "stop_reason": "completed",
+    "usage": {
+      "input_tokens": 194,
+      "output_tokens": 2348,
+      "output_tokens_details": {
+        "reasoning_tokens": 1034
+      }
+    },
+    "thinking": "**Analyzing statistical estimators**\n\nI'm working through the estimator equation: E = 3/2 E[X] - 2 E[X²], and I have to consider the parameter θ. If I set θ > 0, then I need to explore the target θ(1−θ) and its implications. It's crucial to note that the density support must lie between 0 and θ. If the parameter space is constrained to θ in (0,1), the uniqueness of estimators might be influenced by integration and the condition outside the observed range. I’ll need to ensure I'm thorough!\n**Calculating estimators and MSE**\n\nI'm considering the general moments formula, focusing on the estimator δ_c(x) = cx under squared error loss to estimate θ. The mean squared error (MSE) must be minimized for all θ, recognizing that the coefficient c is independent of θ. As I analyze part 4, the unbiased estimator requires that the expectation equals θ(1−θ) across the parameter space. By solving the equation using E[X] and E[X²], I've derived δ(X) = 3X/2−2X². I also need to clarify if θ is dimensionless. Looking to finalize this!",
+    "text": "Let \\(\\theta>0\\). The density is\n\n\\[\nf(x\\mid \\theta)=\\frac{2x}{\\theta^2},\\qquad 0<x<\\theta.\n\\]\n\nFor \\(k>-2\\),\n\n\\[\n\\mathbb E_\\theta[X^k]\n=\\int_0^\\theta x^k \\frac{2x}{\\theta^2}\\,dx\n=\\frac{2}{\\theta^2}\\frac{\\theta^{k+2}}{k+2}\n=\\frac{2\\theta^k}{k+2}.\n\\]\n\n## (1) \\(\\mathbb E_\\theta X\\) and \\(\\operatorname{Var}_\\theta X\\)\n\nUsing the moment formula,\n\n\\[\n\\mathbb E_\\theta X=\\frac{2\\theta}{3}.\n\\]\n\nAlso,\n\n\\[\n\\mathbb E_\\theta X^2=\\frac{2\\theta^2}{4}=\\frac{\\theta^2}{2}.\n\\]\n\nTherefore,\n\n\\[\n\\operatorname{Var}_\\theta(X)\n=\\mathbb E_\\theta X^2-(\\mathbb E_\\theta X)^2\n=\\frac{\\theta^2}{2}-\\left(\\frac{2\\theta}{3}\\right)^2\n=\\frac{\\theta^2}{2}-\\frac{4\\theta^2}{9}\n=\\frac{\\theta^2}{18}.\n\\]\n\nSo\n\n\\[\n\\boxed{\\mathbb E_\\theta X=\\frac{2\\theta}{3}},\\qquad\n\\boxed{\\operatorname{Var}_\\theta(X)=\\frac{\\theta^2}{18}}.\n\\]\n\n---\n\n## (2) Minimize MSE among estimators \\(\\delta_c(X)=cX\\)\n\nWe estimate \\(\\theta\\) under squared-error loss. The risk/MSE is\n\n\\[\nR(\\theta,\\delta_c)\n=\\mathbb E_\\theta[(cX-\\theta)^2].\n\\]\n\nCompute:\n\n\\[\n\\mathbb E_\\theta[(cX-\\theta)^2]\n=c^2\\mathbb E_\\theta X^2-2c\\theta \\mathbb E_\\theta X+\\theta^2.\n\\]\n\nUsing the moments above,\n\n\\[\nR(\\theta,\\delta_c)\n=c^2\\frac{\\theta^2}{2}\n-2c\\theta\\frac{2\\theta}{3}\n+\\theta^2.\n\\]\n\nThus\n\n\\[\nR(\\theta,\\delta_c)\n=\\theta^2\\left(\\frac{c^2}{2}-\\frac{4c}{3}+1\\right).\n\\]\n\nSince \\(\\theta^2>0\\), minimize\n\n\\[\n\\frac{c^2}{2}-\\frac{4c}{3}+1.\n\\]\n\nDifferentiate with respect to \\(c\\):\n\n\\[\n\\frac{d}{dc}\\left(\\frac{c^2}{2}-\\frac{4c}{3}+1\\right)\n=c-\\frac{4}{3}.\n\\]\n\nSetting equal to zero gives\n\n\\[\nc=\\frac{4}{3}.\n\\]\n\nThe second derivative is \\(1>0\\), so this is the minimizer. Therefore the best estimator in this class is\n\n\\[\n\\boxed{\\delta_{4/3}(X)=\\frac{4}{3}X}.\n\\]\n\nIts minimum MSE is\n\n\\[\nR(\\theta,\\delta_{4/3})\n=\\theta^2\\left(\\frac{1}{9}\\right)\n=\\frac{\\theta^2}{9}.\n\\]\n\n---\n\n## (3) Is \\(\\delta_{4/3}(X)=\\frac43X\\) unbiased for \\(\\theta\\)?\n\nWe compute\n\n\\[\n\\mathbb E_\\theta\\left[\\frac43 X\\right]\n=\\frac43 \\mathbb E_\\theta X\n=\\frac43\\cdot \\frac{2\\theta}{3}\n=\\frac{8\\theta}{9}.\n\\]\n\nSince\n\n\\[\n\\frac{8\\theta}{9}\\neq \\theta\n\\]\n\nfor \\(\\theta\\neq 0\\), the estimator is not unbiased for \\(\\theta\\).\n\nThus\n\n\\[\n\\boxed{\\frac43X \\text{ is biased for } \\theta.}\n\\]\n\nIts bias is\n\n\\[\n\\operatorname{Bias}_\\theta\\left(\\frac43X\\right)\n=\\frac{8\\theta}{9}-\\theta\n=-\\frac{\\theta}{9}.\n\\]\n\n---\n\n## (4) Find an unbiased estimator of \\(\\theta(1-\\theta)\\)\n\nWe want a function \\(g(X)\\) such that\n\n\\[\n\\mathbb E_\\theta[g(X)]=\\theta(1-\\theta)=\\theta-\\theta^2.\n\\]\n\nUsing the moments from part (1), try an estimator of the form\n\n\\[\ng(X)=aX+bX^2.\n\\]\n\nThen\n\n\\[\n\\mathbb E_\\theta[g(X)]\n=a\\mathbb E_\\theta X+b\\mathbb E_\\theta X^2\n=a\\frac{2\\theta}{3}+b\\frac{\\theta^2}{2}.\n\\]\n\nWe need\n\n\\[\na\\frac{2\\theta}{3}+b\\frac{\\theta^2}{2}\n=\\theta-\\theta^2.\n\\]\n\nMatching coefficients of \\(\\theta\\) and \\(\\theta^2\\),\n\n\\[\n\\frac{2a}{3}=1,\n\\qquad\n\\frac{b}{2}=-1.\n\\]\n\nHence\n\n\\[\na=\\frac32,\n\\qquad\nb=-2.\n\\]\n\nTherefore an unbiased estimator is\n\n\\[\n\\boxed{g(X)=\\frac32 X-2X^2}.\n\\]\n\nIndeed,\n\n\\[\n\\mathbb E_\\theta\\left[\\frac32 X-2X^2\\right]\n=\\frac32\\cdot \\frac{2\\theta}{3}\n-2\\cdot \\frac{\\theta^2}{2}\n=\\theta-\\theta^2\n=\\theta(1-\\theta).\n\\]\n\nSo\n\n\\[\n\\boxed{\\frac32X-2X^2 \\text{ is unbiased for } \\theta(1-\\theta).}\n\\]",
+    "raw_output": [
+      {
+        "id": "rs_01334fd3a42e81c4006a24baba071c8194afbc54934edaa486",
+        "type": "reasoning",
+        "content": [],
+        "summary": [
+          {
+            "type": "summary_text",
+            "text": "**Analyzing statistical estimators**\n\nI'm working through the estimator equation: E = 3/2 E[X] - 2 E[X²], and I have to consider the parameter θ. If I set θ > 0, then I need to explore the target θ(1−θ) and its implications. It's crucial to note that the density support must lie between 0 and θ. If the parameter space is constrained to θ in (0,1), the uniqueness of estimators might be influenced by integration and the condition outside the observed range. I’ll need to ensure I'm thorough!"
+          },
+          {
+            "type": "summary_text",
+            "text": "**Calculating estimators and MSE**\n\nI'm considering the general moments formula, focusing on the estimator δ_c(x) = cx under squared error loss to estimate θ. The mean squared error (MSE) must be minimized for all θ, recognizing that the coefficient c is independent of θ. As I analyze part 4, the unbiased estimator requires that the expectation equals θ(1−θ) across the parameter space. By solving the equation using E[X] and E[X²], I've derived δ(X) = 3X/2−2X². I also need to clarify if θ is dimensionless. Looking to finalize this!"
+          }
+        ]
+      },
+      {
+        "id": "msg_01334fd3a42e81c4006a24bace89c48194bc61bd55723c5e79",
+        "type": "message",
+        "status": "completed",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "Let \\(\\theta>0\\). The density is\n\n\\[\nf(x\\mid \\theta)=\\frac{2x}{\\theta^2},\\qquad 0<x<\\theta.\n\\]\n\nFor \\(k>-2\\),\n\n\\[\n\\mathbb E_\\theta[X^k]\n=\\int_0^\\theta x^k \\frac{2x}{\\theta^2}\\,dx\n=\\frac{2}{\\theta^2}\\frac{\\theta^{k+2}}{k+2}\n=\\frac{2\\theta^k}{k+2}.\n\\]\n\n## (1) \\(\\mathbb E_\\theta X\\) and \\(\\operatorname{Var}_\\theta X\\)\n\nUsing the moment formula,\n\n\\[\n\\mathbb E_\\theta X=\\frac{2\\theta}{3}.\n\\]\n\nAlso,\n\n\\[\n\\mathbb E_\\theta X^2=\\frac{2\\theta^2}{4}=\\frac{\\theta^2}{2}.\n\\]\n\nTherefore,\n\n\\[\n\\operatorname{Var}_\\theta(X)\n=\\mathbb E_\\theta X^2-(\\mathbb E_\\theta X)^2\n=\\frac{\\theta^2}{2}-\\left(\\frac{2\\theta}{3}\\right)^2\n=\\frac{\\theta^2}{2}-\\frac{4\\theta^2}{9}\n=\\frac{\\theta^2}{18}.\n\\]\n\nSo\n\n\\[\n\\boxed{\\mathbb E_\\theta X=\\frac{2\\theta}{3}},\\qquad\n\\boxed{\\operatorname{Var}_\\theta(X)=\\frac{\\theta^2}{18}}.\n\\]\n\n---\n\n## (2) Minimize MSE among estimators \\(\\delta_c(X)=cX\\)\n\nWe estimate \\(\\theta\\) under squared-error loss. The risk/MSE is\n\n\\[\nR(\\theta,\\delta_c)\n=\\mathbb E_\\theta[(cX-\\theta)^2].\n\\]\n\nCompute:\n\n\\[\n\\mathbb E_\\theta[(cX-\\theta)^2]\n=c^2\\mathbb E_\\theta X^2-2c\\theta \\mathbb E_\\theta X+\\theta^2.\n\\]\n\nUsing the moments above,\n\n\\[\nR(\\theta,\\delta_c)\n=c^2\\frac{\\theta^2}{2}\n-2c\\theta\\frac{2\\theta}{3}\n+\\theta^2.\n\\]\n\nThus\n\n\\[\nR(\\theta,\\delta_c)\n=\\theta^2\\left(\\frac{c^2}{2}-\\frac{4c}{3}+1\\right).\n\\]\n\nSince \\(\\theta^2>0\\), minimize\n\n\\[\n\\frac{c^2}{2}-\\frac{4c}{3}+1.\n\\]\n\nDifferentiate with respect to \\(c\\):\n\n\\[\n\\frac{d}{dc}\\left(\\frac{c^2}{2}-\\frac{4c}{3}+1\\right)\n=c-\\frac{4}{3}.\n\\]\n\nSetting equal to zero gives\n\n\\[\nc=\\frac{4}{3}.\n\\]\n\nThe second derivative is \\(1>0\\), so this is the minimizer. Therefore the best estimator in this class is\n\n\\[\n\\boxed{\\delta_{4/3}(X)=\\frac{4}{3}X}.\n\\]\n\nIts minimum MSE is\n\n\\[\nR(\\theta,\\delta_{4/3})\n=\\theta^2\\left(\\frac{1}{9}\\right)\n=\\frac{\\theta^2}{9}.\n\\]\n\n---\n\n## (3) Is \\(\\delta_{4/3}(X)=\\frac43X\\) unbiased for \\(\\theta\\)?\n\nWe compute\n\n\\[\n\\mathbb E_\\theta\\left[\\frac43 X\\right]\n=\\frac43 \\mathbb E_\\theta X\n=\\frac43\\cdot \\frac{2\\theta}{3}\n=\\frac{8\\theta}{9}.\n\\]\n\nSince\n\n\\[\n\\frac{8\\theta}{9}\\neq \\theta\n\\]\n\nfor \\(\\theta\\neq 0\\), the estimator is not unbiased for \\(\\theta\\).\n\nThus\n\n\\[\n\\boxed{\\frac43X \\text{ is biased for } \\theta.}\n\\]\n\nIts bias is\n\n\\[\n\\operatorname{Bias}_\\theta\\left(\\frac43X\\right)\n=\\frac{8\\theta}{9}-\\theta\n=-\\frac{\\theta}{9}.\n\\]\n\n---\n\n## (4) Find an unbiased estimator of \\(\\theta(1-\\theta)\\)\n\nWe want a function \\(g(X)\\) such that\n\n\\[\n\\mathbb E_\\theta[g(X)]=\\theta(1-\\theta)=\\theta-\\theta^2.\n\\]\n\nUsing the moments from part (1), try an estimator of the form\n\n\\[\ng(X)=aX+bX^2.\n\\]\n\nThen\n\n\\[\n\\mathbb E_\\theta[g(X)]\n=a\\mathbb E_\\theta X+b\\mathbb E_\\theta X^2\n=a\\frac{2\\theta}{3}+b\\frac{\\theta^2}{2}.\n\\]\n\nWe need\n\n\\[\na\\frac{2\\theta}{3}+b\\frac{\\theta^2}{2}\n=\\theta-\\theta^2.\n\\]\n\nMatching coefficients of \\(\\theta\\) and \\(\\theta^2\\),\n\n\\[\n\\frac{2a}{3}=1,\n\\qquad\n\\frac{b}{2}=-1.\n\\]\n\nHence\n\n\\[\na=\\frac32,\n\\qquad\nb=-2.\n\\]\n\nTherefore an unbiased estimator is\n\n\\[\n\\boxed{g(X)=\\frac32 X-2X^2}.\n\\]\n\nIndeed,\n\n\\[\n\\mathbb E_\\theta\\left[\\frac32 X-2X^2\\right]\n=\\frac32\\cdot \\frac{2\\theta}{3}\n-2\\cdot \\frac{\\theta^2}{2}\n=\\theta-\\theta^2\n=\\theta(1-\\theta).\n\\]\n\nSo\n\n\\[\n\\boxed{\\frac32X-2X^2 \\text{ is unbiased for } \\theta(1-\\theta).}\n\\]"
+          }
+        ],
+        "phase": "final_answer",
+        "role": "assistant"
+      }
+    ]
+  },
+  "cost_usd": 0.03619,
+  "timing": {
+    "started": "2026-06-07T00:26:33.313637+00:00",
+    "ended": "2026-06-07T00:27:06.837180+00:00",
+    "seconds": 33.52
+  },
+  "error": null
+}

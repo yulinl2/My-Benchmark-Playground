@@ -1,0 +1,72 @@
+{
+  "question_id": "2023-summer-probability-q5",
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "rep": 2,
+  "exam": {
+    "year": 2023,
+    "term": "summer",
+    "part": "probability"
+  },
+  "request": {
+    "system": "You are sitting a PhD-level qualifying examination in statistics. Solve the problem rigorously and completely. Show your work and reasoning, justify each step, and clearly state your final answer(s). If the problem has multiple parts, answer every part, labeled. If you invoke a known theorem, name it.",
+    "user": "[2023 summer phd probability — problem 5]\n\nPart II, Exercise. Let $U$ be valued on $\\{1, 2, 3\\}$ with pmf $P(U=1) = \\tfrac12$, $P(U=2) = \\tfrac13$, $P(U=3) = \\tfrac16$.\n(a) Construct a coupling $(X, Y)$ — give its pmf as a $3 \\times 3$ table — such that $X \\stackrel{d}{=} U$; $Y$ has $P(Y=1) = 0$ and $P(Y=k) = P(U=k \\mid U \\ge 2)$ for $k = 2, 3$; $P(X \\le Y) = 1$ and $P(Y \\le X + 1) = 1$.\n(b) Prove or disprove that this coupling is optimal (i.e. the TV distance between the marginals equals $P(X \\ne Y)$).",
+    "max_tokens": 24000,
+    "mode": {
+      "effort": "high"
+    }
+  },
+  "response": {
+    "id": "resp_0714a46cb58e0ab2006a24b9c7642081978b0fb525f75a47b7",
+    "model": "gpt-5.5-2026-04-23",
+    "stop_reason": "completed",
+    "usage": {
+      "input_tokens": 287,
+      "output_tokens": 1987,
+      "output_tokens_details": {
+        "reasoning_tokens": 1034
+      }
+    },
+    "thinking": "**Evaluating optimality of coupling**\n\nI'm analyzing a problem where mass distribution for certain cells doesn't meet the optimal coupling criteria. I need to determine if the coupling constructed is unique under the stated constraints and prove there's a mismatch in the expected values. The question revolves around whether this coupling is optimal, which it seems it's not, based on my calculations. I'll explore the existence of an optimal coupling and possibly provide a table to illustrate my findings.\n**Exploring coupling optimality**\n\nI'm considering how to exhibit a coupling with a mismatch of 1/2, which could be useful in my analysis. The task involves proving or disproving if this specific coupling is optimal, meaning the total variation distance equals the probability that X does not equal Y. I need to calculate these values and establish that the coupling is unique under given constraints. Also, I'll set up a matrix with the appropriate row and column sums while ensuring all entries sum to 1. Let's see how this develops!",
+    "text": "### (a) Construction of the coupling\n\nLet the rows correspond to values of \\(X\\) and the columns to values of \\(Y\\). We need\n\n\\[\nP(X=1)=\\frac12,\\qquad P(X=2)=\\frac13,\\qquad P(X=3)=\\frac16.\n\\]\n\nAlso,\n\n\\[\nP(Y=1)=0,\n\\]\n\nand for \\(k=2,3\\),\n\n\\[\nP(Y=k)=P(U=k\\mid U\\ge 2).\n\\]\n\nSince\n\n\\[\nP(U\\ge 2)=\\frac13+\\frac16=\\frac12,\n\\]\n\nwe get\n\n\\[\nP(Y=2)=\\frac{P(U=2)}{P(U\\ge 2)}\n=\\frac{1/3}{1/2}\n=\\frac23,\n\\]\n\nand\n\n\\[\nP(Y=3)=\\frac{P(U=3)}{P(U\\ge 2)}\n=\\frac{1/6}{1/2}\n=\\frac13.\n\\]\n\nThe constraints\n\n\\[\nP(X\\le Y)=1,\\qquad P(Y\\le X+1)=1\n\\]\n\nforce the support of the coupling to lie only on pairs \\((x,y)\\) such that\n\n\\[\nx\\le y\\le x+1.\n\\]\n\nSince \\(Y\\neq 1\\) almost surely, the possible nonzero entries are\n\n\\[\n(1,2),\\ (2,2),\\ (2,3),\\ (3,3).\n\\]\n\nThus the coupling is forced to be\n\n\\[\n\\begin{array}{c|ccc}\n & Y=1 & Y=2 & Y=3 \\\\ \\hline\nX=1 & 0 & \\frac12 & 0 \\\\[4pt]\nX=2 & 0 & \\frac16 & \\frac16 \\\\[4pt]\nX=3 & 0 & 0 & \\frac16\n\\end{array}\n\\]\n\nCheck the marginals:\n\n- Row sums:\n\n\\[\n\\frac12,\\qquad \\frac16+\\frac16=\\frac13,\\qquad \\frac16.\n\\]\n\nSo \\(X\\stackrel d=U\\).\n\n- Column sums:\n\n\\[\n0,\\qquad \\frac12+\\frac16=\\frac23,\\qquad \\frac16+\\frac16=\\frac13.\n\\]\n\nSo \\(Y\\) has the required distribution.\n\nAlso, every nonzero entry satisfies \\(X\\le Y\\le X+1\\). Therefore\n\n\\[\nP(X\\le Y)=1,\\qquad P(Y\\le X+1)=1.\n\\]\n\n---\n\n### (b) Is this coupling optimal?\n\nThe total variation distance between the marginals of \\(X\\) and \\(Y\\) is\n\n\\[\nd_{\\mathrm{TV}}(\\mathcal L(X),\\mathcal L(Y))\n=\n\\frac12\\sum_{k=1}^3 \\left|P(X=k)-P(Y=k)\\right|.\n\\]\n\nHere\n\n\\[\n\\mathcal L(X)=\\left(\\frac12,\\frac13,\\frac16\\right),\n\\qquad\n\\mathcal L(Y)=\\left(0,\\frac23,\\frac13\\right).\n\\]\n\nTherefore\n\n\\[\n\\begin{aligned}\nd_{\\mathrm{TV}}(\\mathcal L(X),\\mathcal L(Y))\n&=\n\\frac12\\left(\n\\left|\\frac12-0\\right|\n+\n\\left|\\frac13-\\frac23\\right|\n+\n\\left|\\frac16-\\frac13\\right|\n\\right) \\\\\n&=\n\\frac12\\left(\n\\frac12+\\frac13+\\frac16\n\\right) \\\\\n&=\n\\frac12.\n\\end{aligned}\n\\]\n\nNow compute \\(P(X\\neq Y)\\) under the coupling from part (a). The diagonal entries are\n\n\\[\nP(X=Y)=P(X=2,Y=2)+P(X=3,Y=3)\n=\\frac16+\\frac16\n=\\frac13.\n\\]\n\nHence\n\n\\[\nP(X\\neq Y)=1-P(X=Y)=1-\\frac13=\\frac23.\n\\]\n\nSince\n\n\\[\nP(X\\neq Y)=\\frac23\n\\neq\n\\frac12\n=\nd_{\\mathrm{TV}}(\\mathcal L(X),\\mathcal L(Y)),\n\\]\n\nthis coupling is **not optimal**.\n\n\\[\n\\boxed{\\text{The coupling in part (a) is not optimal.}}\n\\]",
+    "raw_output": [
+      {
+        "id": "rs_0714a46cb58e0ab2006a24b9c7ef748197a7effa0deb531ac1",
+        "type": "reasoning",
+        "content": [],
+        "summary": [
+          {
+            "type": "summary_text",
+            "text": "**Evaluating optimality of coupling**\n\nI'm analyzing a problem where mass distribution for certain cells doesn't meet the optimal coupling criteria. I need to determine if the coupling constructed is unique under the stated constraints and prove there's a mismatch in the expected values. The question revolves around whether this coupling is optimal, which it seems it's not, based on my calculations. I'll explore the existence of an optimal coupling and possibly provide a table to illustrate my findings."
+          },
+          {
+            "type": "summary_text",
+            "text": "**Exploring coupling optimality**\n\nI'm considering how to exhibit a coupling with a mismatch of 1/2, which could be useful in my analysis. The task involves proving or disproving if this specific coupling is optimal, meaning the total variation distance equals the probability that X does not equal Y. I need to calculate these values and establish that the coupling is unique under given constraints. Also, I'll set up a matrix with the appropriate row and column sums while ensuring all entries sum to 1. Let's see how this develops!"
+          }
+        ]
+      },
+      {
+        "id": "msg_0714a46cb58e0ab2006a24b9da4c28819799a40b7fd5d44295",
+        "type": "message",
+        "status": "completed",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "### (a) Construction of the coupling\n\nLet the rows correspond to values of \\(X\\) and the columns to values of \\(Y\\). We need\n\n\\[\nP(X=1)=\\frac12,\\qquad P(X=2)=\\frac13,\\qquad P(X=3)=\\frac16.\n\\]\n\nAlso,\n\n\\[\nP(Y=1)=0,\n\\]\n\nand for \\(k=2,3\\),\n\n\\[\nP(Y=k)=P(U=k\\mid U\\ge 2).\n\\]\n\nSince\n\n\\[\nP(U\\ge 2)=\\frac13+\\frac16=\\frac12,\n\\]\n\nwe get\n\n\\[\nP(Y=2)=\\frac{P(U=2)}{P(U\\ge 2)}\n=\\frac{1/3}{1/2}\n=\\frac23,\n\\]\n\nand\n\n\\[\nP(Y=3)=\\frac{P(U=3)}{P(U\\ge 2)}\n=\\frac{1/6}{1/2}\n=\\frac13.\n\\]\n\nThe constraints\n\n\\[\nP(X\\le Y)=1,\\qquad P(Y\\le X+1)=1\n\\]\n\nforce the support of the coupling to lie only on pairs \\((x,y)\\) such that\n\n\\[\nx\\le y\\le x+1.\n\\]\n\nSince \\(Y\\neq 1\\) almost surely, the possible nonzero entries are\n\n\\[\n(1,2),\\ (2,2),\\ (2,3),\\ (3,3).\n\\]\n\nThus the coupling is forced to be\n\n\\[\n\\begin{array}{c|ccc}\n & Y=1 & Y=2 & Y=3 \\\\ \\hline\nX=1 & 0 & \\frac12 & 0 \\\\[4pt]\nX=2 & 0 & \\frac16 & \\frac16 \\\\[4pt]\nX=3 & 0 & 0 & \\frac16\n\\end{array}\n\\]\n\nCheck the marginals:\n\n- Row sums:\n\n\\[\n\\frac12,\\qquad \\frac16+\\frac16=\\frac13,\\qquad \\frac16.\n\\]\n\nSo \\(X\\stackrel d=U\\).\n\n- Column sums:\n\n\\[\n0,\\qquad \\frac12+\\frac16=\\frac23,\\qquad \\frac16+\\frac16=\\frac13.\n\\]\n\nSo \\(Y\\) has the required distribution.\n\nAlso, every nonzero entry satisfies \\(X\\le Y\\le X+1\\). Therefore\n\n\\[\nP(X\\le Y)=1,\\qquad P(Y\\le X+1)=1.\n\\]\n\n---\n\n### (b) Is this coupling optimal?\n\nThe total variation distance between the marginals of \\(X\\) and \\(Y\\) is\n\n\\[\nd_{\\mathrm{TV}}(\\mathcal L(X),\\mathcal L(Y))\n=\n\\frac12\\sum_{k=1}^3 \\left|P(X=k)-P(Y=k)\\right|.\n\\]\n\nHere\n\n\\[\n\\mathcal L(X)=\\left(\\frac12,\\frac13,\\frac16\\right),\n\\qquad\n\\mathcal L(Y)=\\left(0,\\frac23,\\frac13\\right).\n\\]\n\nTherefore\n\n\\[\n\\begin{aligned}\nd_{\\mathrm{TV}}(\\mathcal L(X),\\mathcal L(Y))\n&=\n\\frac12\\left(\n\\left|\\frac12-0\\right|\n+\n\\left|\\frac13-\\frac23\\right|\n+\n\\left|\\frac16-\\frac13\\right|\n\\right) \\\\\n&=\n\\frac12\\left(\n\\frac12+\\frac13+\\frac16\n\\right) \\\\\n&=\n\\frac12.\n\\end{aligned}\n\\]\n\nNow compute \\(P(X\\neq Y)\\) under the coupling from part (a). The diagonal entries are\n\n\\[\nP(X=Y)=P(X=2,Y=2)+P(X=3,Y=3)\n=\\frac16+\\frac16\n=\\frac13.\n\\]\n\nHence\n\n\\[\nP(X\\neq Y)=1-P(X=Y)=1-\\frac13=\\frac23.\n\\]\n\nSince\n\n\\[\nP(X\\neq Y)=\\frac23\n\\neq\n\\frac12\n=\nd_{\\mathrm{TV}}(\\mathcal L(X),\\mathcal L(Y)),\n\\]\n\nthis coupling is **not optimal**.\n\n\\[\n\\boxed{\\text{The coupling in part (a) is not optimal.}}\n\\]"
+          }
+        ],
+        "phase": "final_answer",
+        "role": "assistant"
+      }
+    ]
+  },
+  "cost_usd": 0.03124,
+  "timing": {
+    "started": "2026-06-07T00:22:31.280120+00:00",
+    "ended": "2026-06-07T00:22:58.593584+00:00",
+    "seconds": 27.31
+  },
+  "error": null
+}

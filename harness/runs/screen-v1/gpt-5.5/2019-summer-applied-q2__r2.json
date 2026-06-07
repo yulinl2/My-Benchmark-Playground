@@ -1,0 +1,112 @@
+{
+  "question_id": "2019-summer-applied-q2",
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "rep": 2,
+  "exam": {
+    "year": 2019,
+    "term": "summer",
+    "part": "applied"
+  },
+  "request": {
+    "system": "You are sitting a PhD-level qualifying examination in statistics. Solve the problem rigorously and completely. Show your work and reasoning, justify each step, and clearly state your final answer(s). If the problem has multiple parts, answer every part, labeled. If you invoke a known theorem, name it.",
+    "user": "[2019 summer phd applied — problem 2]\n\nProblem 2 (Gaussian-process regression). Generate 7 equally spaced points $x_1, \\dots, x_7$ on $[0,1]$ and responses $Y(x) = e^{-1.4x}\\cos(\\frac{7\\pi x}{2})$.\n(1) For the GP model $Y(x) = \\mu + Z(x)$ with $\\operatorname{cov}[Z(x+h), Z(x)] = \\sigma^2\\phi(h;\\theta)$, $\\phi(h;\\theta) = \\exp(-\\theta h^2)$, write the MLE expressions for $\\mu, \\theta, \\sigma^2$ and compute them from the 7 observations.\n(2) Write the BLUP of $Y(x_0)$ and its (plug-in) predictive distribution.\n(3) Generate 1000 equally spaced points $x_j^*$ on $(0,1)$ and the corresponding true responses.\n(4) Compare MLE-EBLUP predictions at the $x_j^*$ with the true values via a plot.\n(5) Add 95% predictive confidence bands to the plot from (4).\n(6) Prove the BLUP is an interpolator and demonstrate it using (4)-(5).\n(7) Fit a spline-based interpolating model on the same 7 points; compare GP vs spline prediction performance on the test data and comment on any non-performance advantages/disadvantages.",
+    "max_tokens": 24000,
+    "mode": {
+      "effort": "high"
+    }
+  },
+  "response": {
+    "id": "resp_07f700880d9a44aa006a24afc3b2f48194b438fa49b8252ede",
+    "model": "gpt-5.5-2026-04-23",
+    "stop_reason": "incomplete",
+    "usage": {
+      "input_tokens": 381,
+      "output_tokens": 24000,
+      "output_tokens_details": {
+        "reasoning_tokens": 23826
+      }
+    },
+    "thinking": "**Calculating values**\n\nI’m trying to compute e raised to the power of -0.233333333, which might be around 0.7918895663. I'm also considering the value for y2, which seems to be -0.204946? I want to confirm the accuracy of these computations to ensure I'm on the right track. It’s important to get these numbers right. Let’s see if I can double-check everything properly!\n**Evaluating spectral approximations**\n\nI'm figuring out how to solve for various θ. It seems like spectral approximations might be the way to go, and I want to make sure my approach is accurate. I’m considering using R or Python for this, though I’m not actually writing any code just yet. I also need to ensure that the numbers I get are credible, and the function's oscillatory behavior is crucial to my estimates. The MLE θ might be large, especially since the data alternates.\n**Calculating MLE for finite models**\n\nI’m considering maximum likelihood estimation (MLE) with a focus on θ values between 10 and 20. I'm thinking an alternative model might involve squared exponential functions, and I wonder if I can transform it using eigenvalues or eigenvectors of a Toeplitz matrix since n equals 7. While manual computation is tough, maybe using the Durbin-Levinson algorithm could yield a log determinant. I'd need to be precise and correct in my implementation, especially regarding MLE outputs and approximations.\n**Evaluating interpolating functions**\n\nI'm considering whether UP is a continuous interpolating function in the limit. At training points, it seems okay. In part 6, there's a need to prove the Best Linear Unbiased Predictor (BLUP) and show it with equations (4)-(5). If θhat is infinite and the test grid doesn't include training points, the plot won’t show crossings. I wonder if I shouldn't conclude with infinite if a finite computation is expected in the R package. I should explore the MLE expression for θ and possibly present different estimate scenarios.\n**Exploring numerical optimization**\n\nI'm thinking that the problem might ask to compute from 7 observations without a defined θ range, which we need to clarify. If I claim θ approaches infinity globally, I have to be rigorous, maybe even prove it. Manually proving for all θ seems difficult, but I could show a numerical 1D profile max at the boundary. For an exam context, numerical optimization could work, but I’ll need to report on monotone increasing profiled log likelihood for θ beyond certain values and do a global grid search. I’m considering performance metrics for a cubic spline versus GP MLE with an upper bound, and I’ll want to generate plots and RMSE estimates through reproducible code.\n**Calculating RMSE and code output**\n\nI'm considering that if the final solution includes R code for computation, I can run it to get exact numeric outputs. I should calculate and respond with values like μ = 0.0713, σ² = 0.222, and θ approaching infinity. For part 7, if the Gaussian process has a constant μ on the test, I can compute the RMSE against the true function. I think I can approximate the exact RMSE for a constant mean over [0,1], but I'll also need to compute the spline RMSE, maybe manually.\n**Evaluating function values and data spacing**\n\nI'm checking the function values, possibly looking at if y7 is not zero. I know that cos(7π/2) equals zero, so that's clear. The sample might have some alternations, and I'm wondering about generating seven equally spaced points in [0,1] — sometimes software uses seq(0,1,length=7), but I’m not sure about random or distinct spacing. If I consider the endpoints, that changes the dynamics. Plus, if we include small values for theta in MLE, maybe there’s some insight on correlations too.\n**Calculating RMSE and MAE**\n\nI need to compute the RMSE and MAE, maybe even assess coverage. I could provide code for calculating these metrics, perhaps including approximate expected RMSE for GP constant and spline. It’s also possible to calculate natural cubic interpolation error manually. For the GP constant prediction, I’ll start with μ=0.071278 and integrate MSE over (0, 1). I’ll work on finding the exact integral for the function involving e^{-1.4x} and cos(a x).\n**Computing RMSE for cubic interpolation**\n\nI’m considering whether I can skip numeric examples. The problem seems to require comparing performance, so I might need to show some numbers. To compute the approximate natural cubic interpolation RMSE manually, I’ll derive piecewise coefficients based on equally spaced points and compare them to the true values at 1000. I’m thinking of using numerical methods, like Simpson's rule, to integrate the squared error. I also have my data points ready to go. Let’s dig in!\n**Calculating statistics for code**\n\nI'm working on computing μ and q for my code, especially since I have an R that’s nearly tridiagonal with a small 'c.' It seems I need the sample mean to be accurate at θ approaching infinity. I should also consider calculating σ² for better precision. I’ll focus on getting y computed accurately enough to inform my final results. It’s all about making sure the details are just right!\n**Considering upper bounds in code**\n\nI think I should mention that when setting an upper bound in my code, like 100 for finite plotting, it’s important to use that. I notice that as the upper bound increases, the curve tends to approach a horizontal line, except at specific design points. It's interesting to see how the curve behaves under these conditions. This seems like a key point to emphasize when discussing the plotting results!\n**Evaluating mathematical concepts**\n\nI'm considering a mathematical scenario where at θ approaching 0, R goes to 11', and the likelihood might trend towards negative infinity. However, I’m wondering if I can state that at θ being infinity, the covariance φ(h;∞) equals 0 for h not equal to 0, and 1 for h equal to 0. This seems to outline a pure white-noise process alongside the mean, though it’s not mean-square continuous.",
+    "text": "## Data\n\nTake the 7 equally spaced design points on \\([0,1]\\) to be\n\n\\[\nx_i=\\frac{i-1}{6},\\qquad i=1,\\dots,7.\n\\]\n\nThe responses are\n\n\\[\ny_i=Y(x_i)=e^{-1.4x_i}\\cos\\!\\left(\\frac{7\\pi x_i}{2}\\right).\n\\]\n\nNumerically,\n\n\\[\n\\begin{array}{c|c|c}\ni & x_i & y_i\\\\ \\hline\n1 & 0 & 1.000000\\\\\n2 & 1/6 & -0.204956\\\\\n3 & 1/3 & -0.543075\\\\\n4 & 1/2 & 0.351140\\\\\n",
+    "raw_output": [
+      {
+        "id": "rs_07f700880d9a44aa006a24afc4466c8194997ea99f83b6407f",
+        "type": "reasoning",
+        "content": [],
+        "summary": [
+          {
+            "type": "summary_text",
+            "text": "**Calculating values**\n\nI’m trying to compute e raised to the power of -0.233333333, which might be around 0.7918895663. I'm also considering the value for y2, which seems to be -0.204946? I want to confirm the accuracy of these computations to ensure I'm on the right track. It’s important to get these numbers right. Let’s see if I can double-check everything properly!"
+          },
+          {
+            "type": "summary_text",
+            "text": "**Evaluating spectral approximations**\n\nI'm figuring out how to solve for various θ. It seems like spectral approximations might be the way to go, and I want to make sure my approach is accurate. I’m considering using R or Python for this, though I’m not actually writing any code just yet. I also need to ensure that the numbers I get are credible, and the function's oscillatory behavior is crucial to my estimates. The MLE θ might be large, especially since the data alternates."
+          },
+          {
+            "type": "summary_text",
+            "text": "**Calculating MLE for finite models**\n\nI’m considering maximum likelihood estimation (MLE) with a focus on θ values between 10 and 20. I'm thinking an alternative model might involve squared exponential functions, and I wonder if I can transform it using eigenvalues or eigenvectors of a Toeplitz matrix since n equals 7. While manual computation is tough, maybe using the Durbin-Levinson algorithm could yield a log determinant. I'd need to be precise and correct in my implementation, especially regarding MLE outputs and approximations."
+          },
+          {
+            "type": "summary_text",
+            "text": "**Evaluating interpolating functions**\n\nI'm considering whether UP is a continuous interpolating function in the limit. At training points, it seems okay. In part 6, there's a need to prove the Best Linear Unbiased Predictor (BLUP) and show it with equations (4)-(5). If θhat is infinite and the test grid doesn't include training points, the plot won’t show crossings. I wonder if I shouldn't conclude with infinite if a finite computation is expected in the R package. I should explore the MLE expression for θ and possibly present different estimate scenarios."
+          },
+          {
+            "type": "summary_text",
+            "text": "**Exploring numerical optimization**\n\nI'm thinking that the problem might ask to compute from 7 observations without a defined θ range, which we need to clarify. If I claim θ approaches infinity globally, I have to be rigorous, maybe even prove it. Manually proving for all θ seems difficult, but I could show a numerical 1D profile max at the boundary. For an exam context, numerical optimization could work, but I’ll need to report on monotone increasing profiled log likelihood for θ beyond certain values and do a global grid search. I’m considering performance metrics for a cubic spline versus GP MLE with an upper bound, and I’ll want to generate plots and RMSE estimates through reproducible code."
+          },
+          {
+            "type": "summary_text",
+            "text": "**Calculating RMSE and code output**\n\nI'm considering that if the final solution includes R code for computation, I can run it to get exact numeric outputs. I should calculate and respond with values like μ = 0.0713, σ² = 0.222, and θ approaching infinity. For part 7, if the Gaussian process has a constant μ on the test, I can compute the RMSE against the true function. I think I can approximate the exact RMSE for a constant mean over [0,1], but I'll also need to compute the spline RMSE, maybe manually."
+          },
+          {
+            "type": "summary_text",
+            "text": "**Evaluating function values and data spacing**\n\nI'm checking the function values, possibly looking at if y7 is not zero. I know that cos(7π/2) equals zero, so that's clear. The sample might have some alternations, and I'm wondering about generating seven equally spaced points in [0,1] — sometimes software uses seq(0,1,length=7), but I’m not sure about random or distinct spacing. If I consider the endpoints, that changes the dynamics. Plus, if we include small values for theta in MLE, maybe there’s some insight on correlations too."
+          },
+          {
+            "type": "summary_text",
+            "text": "**Calculating RMSE and MAE**\n\nI need to compute the RMSE and MAE, maybe even assess coverage. I could provide code for calculating these metrics, perhaps including approximate expected RMSE for GP constant and spline. It’s also possible to calculate natural cubic interpolation error manually. For the GP constant prediction, I’ll start with μ=0.071278 and integrate MSE over (0, 1). I’ll work on finding the exact integral for the function involving e^{-1.4x} and cos(a x)."
+          },
+          {
+            "type": "summary_text",
+            "text": "**Computing RMSE for cubic interpolation**\n\nI’m considering whether I can skip numeric examples. The problem seems to require comparing performance, so I might need to show some numbers. To compute the approximate natural cubic interpolation RMSE manually, I’ll derive piecewise coefficients based on equally spaced points and compare them to the true values at 1000. I’m thinking of using numerical methods, like Simpson's rule, to integrate the squared error. I also have my data points ready to go. Let’s dig in!"
+          },
+          {
+            "type": "summary_text",
+            "text": "**Calculating statistics for code**\n\nI'm working on computing μ and q for my code, especially since I have an R that’s nearly tridiagonal with a small 'c.' It seems I need the sample mean to be accurate at θ approaching infinity. I should also consider calculating σ² for better precision. I’ll focus on getting y computed accurately enough to inform my final results. It’s all about making sure the details are just right!"
+          },
+          {
+            "type": "summary_text",
+            "text": "**Considering upper bounds in code**\n\nI think I should mention that when setting an upper bound in my code, like 100 for finite plotting, it’s important to use that. I notice that as the upper bound increases, the curve tends to approach a horizontal line, except at specific design points. It's interesting to see how the curve behaves under these conditions. This seems like a key point to emphasize when discussing the plotting results!"
+          },
+          {
+            "type": "summary_text",
+            "text": "**Evaluating mathematical concepts**\n\nI'm considering a mathematical scenario where at θ approaching 0, R goes to 11', and the likelihood might trend towards negative infinity. However, I’m wondering if I can state that at θ being infinity, the covariance φ(h;∞) equals 0 for h not equal to 0, and 1 for h equal to 0. This seems to outline a pure white-noise process alongside the mean, though it’s not mean-square continuous."
+          }
+        ]
+      },
+      {
+        "id": "msg_07f700880d9a44aa006a24b1852dac8194bf69bfcfc4fd714b",
+        "type": "message",
+        "status": "incomplete",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "## Data\n\nTake the 7 equally spaced design points on \\([0,1]\\) to be\n\n\\[\nx_i=\\frac{i-1}{6},\\qquad i=1,\\dots,7.\n\\]\n\nThe responses are\n\n\\[\ny_i=Y(x_i)=e^{-1.4x_i}\\cos\\!\\left(\\frac{7\\pi x_i}{2}\\right).\n\\]\n\nNumerically,\n\n\\[\n\\begin{array}{c|c|c}\ni & x_i & y_i\\\\ \\hline\n1 & 0 & 1.000000\\\\\n2 & 1/6 & -0.204956\\\\\n3 & 1/3 & -0.543075\\\\\n4 & 1/2 & 0.351140\\\\\n"
+          }
+        ],
+        "phase": "final_answer",
+        "role": "assistant"
+      }
+    ]
+  },
+  "cost_usd": 0.3619,
+  "timing": {
+    "started": "2026-06-06T23:39:47.570761+00:00",
+    "ended": "2026-06-06T23:47:18.630404+00:00",
+    "seconds": 451.06
+  },
+  "error": null
+}

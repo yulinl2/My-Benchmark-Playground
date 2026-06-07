@@ -1,0 +1,76 @@
+{
+  "question_id": "2024-summer-math-stat-q4",
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "rep": 0,
+  "exam": {
+    "year": 2024,
+    "term": "summer",
+    "part": "math-stat"
+  },
+  "request": {
+    "system": "You are sitting a PhD-level qualifying examination in statistics. Solve the problem rigorously and completely. Show your work and reasoning, justify each step, and clearly state your final answer(s). If the problem has multiple parts, answer every part, labeled. If you invoke a known theorem, name it.",
+    "user": "[2024 summer phd math-stat — problem 4]\n\nPart I, Problem 4 (Regression with hidden confounders). Consider the structural equation model $Y_i \\leftarrow D_i\\beta + H_i\\psi + e_i$, where $Y_i$ is the outcome, $D_i$ the treatment, $H_i$ a hidden variable, and $e_i$ independent error; assume $D_i, H_i, e_i$ are centered.\n1. Explain when the OLS estimator is a consistent estimator of $\\beta$.\n2. Define the instrumental variable and propose a consistent estimator of $\\beta$ using an instrumental variable.",
+    "max_tokens": 24000,
+    "mode": {
+      "effort": "high"
+    }
+  },
+  "response": {
+    "id": "resp_075c453c3f32089a006a24bbc2a608819595ece80bb3876ac3",
+    "model": "gpt-5.5-2026-04-23",
+    "stop_reason": "completed",
+    "usage": {
+      "input_tokens": 204,
+      "output_tokens": 4035,
+      "output_tokens_details": {
+        "reasoning_tokens": 2588
+      }
+    },
+    "thinking": "**Evaluating PhD qualifications**\n\nI need to provide a rigorous answer for a PhD qualification regarding a structural equation: Y_i <- D_i beta + H_i psi + e_i, where D is the treatment, H is hidden, and e is the error. First, I'll determine when OLS is consistent for beta and define an instrumental variable to propose a consistent estimator. I’ll discuss whether to treat this as scalar or vector notation while considering OLS regression. Establishing the independence of e from D and H is also crucial for consistency.\n**Exploring OLS consistency and instrumental variables**\n\nFor OLS to be consistent, Cov(D,H) psi must equal 0, assuming Var(D) is greater than 0. If psi = 0, or if D is uncorrelated with the omitted variable H psi, there's no omitted variable bias. Also, if OLS includes H, that's tricky since H is hidden. I'll need to define an instrumental variable (Z_i), ensuring relevance with Cov(Z,D) not equal to 0 and exogeneity condition as Cov(Z, H psi + e) is 0. This keeps the instrument independent from hidden confounders.\n**Defining IV Carefully**\n\nI need to define IV more carefully. The variable Z_i isn't in the structural equation except via D_i. It's associated but not a hidden confounder. D_i need not be completely independent, but it should be uncorrelated enough. In causal terms, I'm considering relevance, exclusion restrictions, and independence. I should discuss hidden confounders impacting D and Y. If H is observed, OLS controlling for it works, but if H is hidden, OLS may be inconsistent unless certain conditions are met. I need to be rigorous with my assumptions.",
+    "text": "Assume \\((Y_i,D_i,H_i,e_i)\\), \\(i=1,\\dots,n\\), are i.i.d. with finite second moments and mean zero. Write the structural model as\n\n\\[\nY_i = D_i\\beta + H_i\\psi + e_i,\n\\]\n\nwhere \\(H_i\\) is unobserved. For simplicity I first treat \\(D_i,H_i\\) as scalar; the vector generalization is stated below.\n\n---\n\n## 1. When is OLS consistent for \\(\\beta\\)?\n\nIf we regress \\(Y_i\\) on \\(D_i\\) alone, the OLS estimator is\n\n\\[\n\\widehat\\beta_{\\text{OLS}}\n=\n\\frac{\\sum_{i=1}^n D_iY_i}{\\sum_{i=1}^n D_i^2}.\n\\]\n\nUsing the structural equation,\n\n\\[\n\\widehat\\beta_{\\text{OLS}}\n=\n\\frac{\\sum_i D_i(D_i\\beta + H_i\\psi + e_i)}{\\sum_i D_i^2}\n=\n\\beta\n+\n\\psi \\frac{\\sum_i D_iH_i}{\\sum_i D_i^2}\n+\n\\frac{\\sum_i D_ie_i}{\\sum_i D_i^2}.\n\\]\n\nBy the law of large numbers,\n\n\\[\n\\widehat\\beta_{\\text{OLS}}\n\\overset{p}{\\longrightarrow}\n\\beta\n+\n\\psi \\frac{\\mathbb E[D_iH_i]}{\\mathbb E[D_i^2]}\n+\n\\frac{\\mathbb E[D_ie_i]}{\\mathbb E[D_i^2]}.\n\\]\n\nAssuming \\(e_i\\) is independent of \\(D_i\\) and centered, \\(\\mathbb E[D_ie_i]=0\\). Hence\n\n\\[\n\\operatorname{plim}\\widehat\\beta_{\\text{OLS}}\n=\n\\beta\n+\n\\psi \\frac{\\operatorname{Cov}(D_i,H_i)}{\\operatorname{Var}(D_i)}.\n\\]\n\nTherefore OLS is consistent for \\(\\beta\\) iff\n\n\\[\n\\psi\\,\\mathbb E[D_iH_i]=0.\n\\]\n\nEquivalently, the composite error term\n\n\\[\nu_i := H_i\\psi + e_i\n\\]\n\nmust be uncorrelated with \\(D_i\\):\n\n\\[\n\\mathbb E[D_i u_i]=0.\n\\]\n\nThus OLS is consistent if there is no omitted-variable bias, for example if\n\n\\[\n\\operatorname{Cov}(D_i,H_i)=0,\n\\]\n\nor if \\(\\psi=0\\), meaning the hidden variable does not affect \\(Y_i\\). If \\(H_i\\) affects \\(Y_i\\) and is correlated with \\(D_i\\), then OLS is generally inconsistent.\n\nFor vector-valued \\(D_i\\) and \\(H_i\\), with\n\n\\[\nY_i = D_i^\\top \\beta + H_i^\\top \\psi + e_i,\n\\]\n\nOLS satisfies\n\n\\[\n\\operatorname{plim}\\widehat\\beta_{\\text{OLS}}\n=\n\\beta\n+\n\\left(\\mathbb E[D_iD_i^\\top]\\right)^{-1}\n\\mathbb E[D_iH_i^\\top]\\psi,\n\\]\n\nassuming \\(\\mathbb E[D_iD_i^\\top]\\) is nonsingular. Hence OLS is consistent iff\n\n\\[\n\\mathbb E[D_iH_i^\\top]\\psi=0.\n\\]\n\n---\n\n## 2. Instrumental variable and consistent IV estimator\n\nAn instrumental variable is a variable \\(Z_i\\) satisfying two main conditions.\n\n### Relevance\n\nThe instrument must be correlated with the treatment:\n\n\\[\n\\mathbb E[Z_iD_i]\\neq 0.\n\\]\n\nFor vector-valued regressors, the rank condition is\n\n\\[\n\\operatorname{rank}\\left(\\mathbb E[Z_iD_i^\\top]\\right)=\\dim(D_i).\n\\]\n\n### Exogeneity / exclusion\n\nThe instrument must be uncorrelated with the structural error term in the outcome equation. Here the structural error from the regression of \\(Y_i\\) on \\(D_i\\) alone is\n\n\\[\nu_i = H_i\\psi + e_i.\n\\]\n\nSo we require\n\n\\[\n\\mathbb E[Z_i u_i]=0.\n\\]\n\nA sufficient condition is\n\n\\[\n\\mathbb E[Z_iH_i]=0\n\\qquad\\text{and}\\qquad\n\\mathbb E[Z_ie_i]=0.\n\\]\n\nCausally, \\(Z_i\\) must affect \\(Y_i\\) only through its effect on \\(D_i\\), and it must not be associated with the hidden confounder \\(H_i\\).\n\nUsing the moment condition\n\n\\[\n\\mathbb E\\left[Z_i(Y_i-D_i\\beta)\\right]=0,\n\\]\n\nwe get\n\n\\[\n\\mathbb E[Z_iY_i]\n=\n\\mathbb E[Z_iD_i]\\beta.\n\\]\n\nThus, in the scalar case, the IV estimator is\n\n\\[\n\\widehat\\beta_{\\text{IV}}\n=\n\\frac{\\sum_{i=1}^n Z_iY_i}{\\sum_{i=1}^n Z_iD_i}.\n\\]\n\nIndeed,\n\n\\[\n\\frac1n\\sum_i Z_iY_i\n\\overset{p}{\\longrightarrow}\n\\mathbb E[Z_iY_i],\n\\]\n\nand\n\n\\[\n\\frac1n\\sum_i Z_iD_i\n\\overset{p}{\\longrightarrow}\n\\mathbb E[Z_iD_i]\\neq 0.\n\\]\n\nTherefore, by Slutsky’s theorem,\n\n\\[\n\\widehat\\beta_{\\text{IV}}\n\\overset{p}{\\longrightarrow}\n\\frac{\\mathbb E[Z_iY_i]}{\\mathbb E[Z_iD_i]}\n=\n\\frac{\\mathbb E[Z_i(D_i\\beta + H_i\\psi + e_i)]}{\\mathbb E[Z_iD_i]}\n=\n\\frac{\\beta \\mathbb E[Z_iD_i]}{\\mathbb E[Z_iD_i]}\n=\n\\beta.\n\\]\n\nSo \\(\\widehat\\beta_{\\text{IV}}\\) is consistent.\n\nWith multiple instruments collected in a matrix \\(Z\\), the usual two-stage least squares estimator is\n\n\\[\n\\widehat\\beta_{\\text{2SLS}}\n=\n(D^\\top P_ZD)^{-1}D^\\top P_ZY,\n\\]\n\nwhere\n\n\\[\nP_Z = Z(Z^\\top Z)^{-1}Z^\\top.\n\\]\n\nUnder instrument relevance and exogeneity, \\(\\widehat\\beta_{\\text{2SLS}}\\) is consistent for \\(\\beta\\).",
+    "raw_output": [
+      {
+        "id": "rs_075c453c3f32089a006a24bbc3456c8195b90bb3463f731f2b",
+        "type": "reasoning",
+        "content": [],
+        "summary": [
+          {
+            "type": "summary_text",
+            "text": "**Evaluating PhD qualifications**\n\nI need to provide a rigorous answer for a PhD qualification regarding a structural equation: Y_i <- D_i beta + H_i psi + e_i, where D is the treatment, H is hidden, and e is the error. First, I'll determine when OLS is consistent for beta and define an instrumental variable to propose a consistent estimator. I’ll discuss whether to treat this as scalar or vector notation while considering OLS regression. Establishing the independence of e from D and H is also crucial for consistency."
+          },
+          {
+            "type": "summary_text",
+            "text": "**Exploring OLS consistency and instrumental variables**\n\nFor OLS to be consistent, Cov(D,H) psi must equal 0, assuming Var(D) is greater than 0. If psi = 0, or if D is uncorrelated with the omitted variable H psi, there's no omitted variable bias. Also, if OLS includes H, that's tricky since H is hidden. I'll need to define an instrumental variable (Z_i), ensuring relevance with Cov(Z,D) not equal to 0 and exogeneity condition as Cov(Z, H psi + e) is 0. This keeps the instrument independent from hidden confounders."
+          },
+          {
+            "type": "summary_text",
+            "text": "**Defining IV Carefully**\n\nI need to define IV more carefully. The variable Z_i isn't in the structural equation except via D_i. It's associated but not a hidden confounder. D_i need not be completely independent, but it should be uncorrelated enough. In causal terms, I'm considering relevance, exclusion restrictions, and independence. I should discuss hidden confounders impacting D and Y. If H is observed, OLS controlling for it works, but if H is hidden, OLS may be inconsistent unless certain conditions are met. I need to be rigorous with my assumptions."
+          }
+        ]
+      },
+      {
+        "id": "msg_075c453c3f32089a006a24bbfcea70819594df34c7f79d9f0f",
+        "type": "message",
+        "status": "completed",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "Assume \\((Y_i,D_i,H_i,e_i)\\), \\(i=1,\\dots,n\\), are i.i.d. with finite second moments and mean zero. Write the structural model as\n\n\\[\nY_i = D_i\\beta + H_i\\psi + e_i,\n\\]\n\nwhere \\(H_i\\) is unobserved. For simplicity I first treat \\(D_i,H_i\\) as scalar; the vector generalization is stated below.\n\n---\n\n## 1. When is OLS consistent for \\(\\beta\\)?\n\nIf we regress \\(Y_i\\) on \\(D_i\\) alone, the OLS estimator is\n\n\\[\n\\widehat\\beta_{\\text{OLS}}\n=\n\\frac{\\sum_{i=1}^n D_iY_i}{\\sum_{i=1}^n D_i^2}.\n\\]\n\nUsing the structural equation,\n\n\\[\n\\widehat\\beta_{\\text{OLS}}\n=\n\\frac{\\sum_i D_i(D_i\\beta + H_i\\psi + e_i)}{\\sum_i D_i^2}\n=\n\\beta\n+\n\\psi \\frac{\\sum_i D_iH_i}{\\sum_i D_i^2}\n+\n\\frac{\\sum_i D_ie_i}{\\sum_i D_i^2}.\n\\]\n\nBy the law of large numbers,\n\n\\[\n\\widehat\\beta_{\\text{OLS}}\n\\overset{p}{\\longrightarrow}\n\\beta\n+\n\\psi \\frac{\\mathbb E[D_iH_i]}{\\mathbb E[D_i^2]}\n+\n\\frac{\\mathbb E[D_ie_i]}{\\mathbb E[D_i^2]}.\n\\]\n\nAssuming \\(e_i\\) is independent of \\(D_i\\) and centered, \\(\\mathbb E[D_ie_i]=0\\). Hence\n\n\\[\n\\operatorname{plim}\\widehat\\beta_{\\text{OLS}}\n=\n\\beta\n+\n\\psi \\frac{\\operatorname{Cov}(D_i,H_i)}{\\operatorname{Var}(D_i)}.\n\\]\n\nTherefore OLS is consistent for \\(\\beta\\) iff\n\n\\[\n\\psi\\,\\mathbb E[D_iH_i]=0.\n\\]\n\nEquivalently, the composite error term\n\n\\[\nu_i := H_i\\psi + e_i\n\\]\n\nmust be uncorrelated with \\(D_i\\):\n\n\\[\n\\mathbb E[D_i u_i]=0.\n\\]\n\nThus OLS is consistent if there is no omitted-variable bias, for example if\n\n\\[\n\\operatorname{Cov}(D_i,H_i)=0,\n\\]\n\nor if \\(\\psi=0\\), meaning the hidden variable does not affect \\(Y_i\\). If \\(H_i\\) affects \\(Y_i\\) and is correlated with \\(D_i\\), then OLS is generally inconsistent.\n\nFor vector-valued \\(D_i\\) and \\(H_i\\), with\n\n\\[\nY_i = D_i^\\top \\beta + H_i^\\top \\psi + e_i,\n\\]\n\nOLS satisfies\n\n\\[\n\\operatorname{plim}\\widehat\\beta_{\\text{OLS}}\n=\n\\beta\n+\n\\left(\\mathbb E[D_iD_i^\\top]\\right)^{-1}\n\\mathbb E[D_iH_i^\\top]\\psi,\n\\]\n\nassuming \\(\\mathbb E[D_iD_i^\\top]\\) is nonsingular. Hence OLS is consistent iff\n\n\\[\n\\mathbb E[D_iH_i^\\top]\\psi=0.\n\\]\n\n---\n\n## 2. Instrumental variable and consistent IV estimator\n\nAn instrumental variable is a variable \\(Z_i\\) satisfying two main conditions.\n\n### Relevance\n\nThe instrument must be correlated with the treatment:\n\n\\[\n\\mathbb E[Z_iD_i]\\neq 0.\n\\]\n\nFor vector-valued regressors, the rank condition is\n\n\\[\n\\operatorname{rank}\\left(\\mathbb E[Z_iD_i^\\top]\\right)=\\dim(D_i).\n\\]\n\n### Exogeneity / exclusion\n\nThe instrument must be uncorrelated with the structural error term in the outcome equation. Here the structural error from the regression of \\(Y_i\\) on \\(D_i\\) alone is\n\n\\[\nu_i = H_i\\psi + e_i.\n\\]\n\nSo we require\n\n\\[\n\\mathbb E[Z_i u_i]=0.\n\\]\n\nA sufficient condition is\n\n\\[\n\\mathbb E[Z_iH_i]=0\n\\qquad\\text{and}\\qquad\n\\mathbb E[Z_ie_i]=0.\n\\]\n\nCausally, \\(Z_i\\) must affect \\(Y_i\\) only through its effect on \\(D_i\\), and it must not be associated with the hidden confounder \\(H_i\\).\n\nUsing the moment condition\n\n\\[\n\\mathbb E\\left[Z_i(Y_i-D_i\\beta)\\right]=0,\n\\]\n\nwe get\n\n\\[\n\\mathbb E[Z_iY_i]\n=\n\\mathbb E[Z_iD_i]\\beta.\n\\]\n\nThus, in the scalar case, the IV estimator is\n\n\\[\n\\widehat\\beta_{\\text{IV}}\n=\n\\frac{\\sum_{i=1}^n Z_iY_i}{\\sum_{i=1}^n Z_iD_i}.\n\\]\n\nIndeed,\n\n\\[\n\\frac1n\\sum_i Z_iY_i\n\\overset{p}{\\longrightarrow}\n\\mathbb E[Z_iY_i],\n\\]\n\nand\n\n\\[\n\\frac1n\\sum_i Z_iD_i\n\\overset{p}{\\longrightarrow}\n\\mathbb E[Z_iD_i]\\neq 0.\n\\]\n\nTherefore, by Slutsky’s theorem,\n\n\\[\n\\widehat\\beta_{\\text{IV}}\n\\overset{p}{\\longrightarrow}\n\\frac{\\mathbb E[Z_iY_i]}{\\mathbb E[Z_iD_i]}\n=\n\\frac{\\mathbb E[Z_i(D_i\\beta + H_i\\psi + e_i)]}{\\mathbb E[Z_iD_i]}\n=\n\\frac{\\beta \\mathbb E[Z_iD_i]}{\\mathbb E[Z_iD_i]}\n=\n\\beta.\n\\]\n\nSo \\(\\widehat\\beta_{\\text{IV}}\\) is consistent.\n\nWith multiple instruments collected in a matrix \\(Z\\), the usual two-stage least squares estimator is\n\n\\[\n\\widehat\\beta_{\\text{2SLS}}\n=\n(D^\\top P_ZD)^{-1}D^\\top P_ZY,\n\\]\n\nwhere\n\n\\[\nP_Z = Z(Z^\\top Z)^{-1}Z^\\top.\n\\]\n\nUnder instrument relevance and exogeneity, \\(\\widehat\\beta_{\\text{2SLS}}\\) is consistent for \\(\\beta\\)."
+          }
+        ],
+        "phase": "final_answer",
+        "role": "assistant"
+      }
+    ]
+  },
+  "cost_usd": 0.06155,
+  "timing": {
+    "started": "2026-06-07T00:30:58.530783+00:00",
+    "ended": "2026-06-07T00:32:15.768628+00:00",
+    "seconds": 77.24
+  },
+  "error": null
+}

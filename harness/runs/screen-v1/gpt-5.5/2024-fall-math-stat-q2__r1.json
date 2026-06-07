@@ -1,0 +1,64 @@
+{
+  "question_id": "2024-fall-math-stat-q2",
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "rep": 1,
+  "exam": {
+    "year": 2024,
+    "term": "fall",
+    "level": "ms",
+    "part": "math-stat"
+  },
+  "request": {
+    "system": "You are sitting a PhD-level qualifying examination in statistics. Solve the problem rigorously and completely. Show your work and reasoning, justify each step, and clearly state your final answer(s). If the problem has multiple parts, answer every part, labeled. If you invoke a known theorem, name it.",
+    "user": "[2024 fall ms math-stat — problem 2]\n\nSingle observation $Y$ with density $f(y\\mid\\theta) = (\\theta+1)y^\\theta$, $0<y<1$. Test $H_0: \\theta = 0$ vs $H_a: \\theta > 0$ at level $\\alpha$. (1) Show a UMP test exists, find it, and give its exact form in terms of $\\alpha$. (2) Give its power function in terms of $\\alpha$.",
+    "max_tokens": 24000,
+    "mode": {
+      "effort": "high"
+    }
+  },
+  "response": {
+    "id": "resp_046d126bdaa8b712006a24ba50138c8196acfb49eff91cc09d",
+    "model": "gpt-5.5-2026-04-23",
+    "stop_reason": "completed",
+    "usage": {
+      "input_tokens": 179,
+      "output_tokens": 1333,
+      "output_tokens_details": {
+        "reasoning_tokens": 516
+      }
+    },
+    "thinking": "",
+    "text": "Let \\(Y\\) have density\n\n\\[\nf(y\\mid \\theta)=(\\theta+1)y^\\theta,\\qquad 0<y<1,\n\\]\n\nwhere \\(\\theta>-1\\). We test\n\n\\[\nH_0:\\theta=0 \\qquad \\text{vs.}\\qquad H_a:\\theta>0\n\\]\n\nat level \\(\\alpha\\).\n\n---\n\n## (1) Existence and form of the UMP level \\(\\alpha\\) test\n\nUnder \\(H_0\\), \\(\\theta=0\\), so\n\n\\[\nf(y\\mid 0)=1,\\qquad 0<y<1,\n\\]\n\nand hence\n\n\\[\nY\\mid \\theta=0 \\sim \\operatorname{Unif}(0,1).\n\\]\n\nFor any fixed \\(\\theta>0\\), the likelihood ratio of \\(f(y\\mid \\theta)\\) against \\(f(y\\mid 0)\\) is\n\n\\[\n\\frac{f(y\\mid \\theta)}{f(y\\mid 0)}\n= (\\theta+1)y^\\theta.\n\\]\n\nSince \\(\\theta>0\\), this likelihood ratio is strictly increasing in \\(y\\). Therefore, by the Neyman–Pearson lemma, the most powerful level \\(\\alpha\\) test of\n\n\\[\nH_0:\\theta=0\n\\]\n\nagainst the simple alternative\n\n\\[\nH_1:\\theta=\\theta_1>0\n\\]\n\nrejects \\(H_0\\) for large values of \\(Y\\). The critical value is chosen so that the size is \\(\\alpha\\).\n\nBecause under \\(H_0\\), \\(Y\\sim \\operatorname{Unif}(0,1)\\),\n\n\\[\nP_0(Y>c)=1-c.\n\\]\n\nWe require\n\n\\[\n1-c=\\alpha,\n\\]\n\nso\n\n\\[\nc=1-\\alpha.\n\\]\n\nThus the test is\n\n\\[\n\\phi(Y)=\n\\begin{cases}\n1, & Y>1-\\alpha,\\\\\n0, & Y\\le 1-\\alpha.\n\\end{cases}\n\\]\n\nEquivalently, since the distribution is continuous, one may use \\(Y\\ge 1-\\alpha\\) without changing the size.\n\nThis same rejection region is most powerful for every fixed \\(\\theta>0\\), because for every \\(\\theta>0\\) the likelihood ratio is increasing in \\(Y\\). Hence the test is uniformly most powerful for \\(H_0:\\theta=0\\) versus \\(H_a:\\theta>0\\).\n\nTherefore the UMP level \\(\\alpha\\) test is\n\n\\[\n\\boxed{\\text{Reject } H_0 \\text{ if } Y>1-\\alpha.}\n\\]\n\nIts size is exactly\n\n\\[\nP_0(Y>1-\\alpha)=\\alpha.\n\\]\n\n---\n\n## (2) Power function\n\nFor general \\(\\theta>-1\\), the CDF of \\(Y\\) is\n\n\\[\nF_\\theta(y)=P_\\theta(Y\\le y)\n=\\int_0^y (\\theta+1)t^\\theta\\,dt\n= y^{\\theta+1},\\qquad 0<y<1.\n\\]\n\nTherefore the power function of the UMP test is\n\n\\[\n\\pi(\\theta)\n= P_\\theta(Y>1-\\alpha).\n\\]\n\nUsing the CDF,\n\n\\[\n\\pi(\\theta)\n=1-F_\\theta(1-\\alpha)\n=1-(1-\\alpha)^{\\theta+1}.\n\\]\n\nThus\n\n\\[\n\\boxed{\\pi(\\theta)=1-(1-\\alpha)^{\\theta+1}.}\n\\]\n\nIn particular, at the null value,\n\n\\[\n\\pi(0)=1-(1-\\alpha)=\\alpha,\n\\]\n\nso the test has exact level \\(\\alpha\\).",
+    "raw_output": [
+      {
+        "id": "rs_046d126bdaa8b712006a24ba50a73c8196bc02446aaa31137b",
+        "type": "reasoning",
+        "content": [],
+        "summary": []
+      },
+      {
+        "id": "msg_046d126bdaa8b712006a24ba5cc2748196adf65d8de5439508",
+        "type": "message",
+        "status": "completed",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "Let \\(Y\\) have density\n\n\\[\nf(y\\mid \\theta)=(\\theta+1)y^\\theta,\\qquad 0<y<1,\n\\]\n\nwhere \\(\\theta>-1\\). We test\n\n\\[\nH_0:\\theta=0 \\qquad \\text{vs.}\\qquad H_a:\\theta>0\n\\]\n\nat level \\(\\alpha\\).\n\n---\n\n## (1) Existence and form of the UMP level \\(\\alpha\\) test\n\nUnder \\(H_0\\), \\(\\theta=0\\), so\n\n\\[\nf(y\\mid 0)=1,\\qquad 0<y<1,\n\\]\n\nand hence\n\n\\[\nY\\mid \\theta=0 \\sim \\operatorname{Unif}(0,1).\n\\]\n\nFor any fixed \\(\\theta>0\\), the likelihood ratio of \\(f(y\\mid \\theta)\\) against \\(f(y\\mid 0)\\) is\n\n\\[\n\\frac{f(y\\mid \\theta)}{f(y\\mid 0)}\n= (\\theta+1)y^\\theta.\n\\]\n\nSince \\(\\theta>0\\), this likelihood ratio is strictly increasing in \\(y\\). Therefore, by the Neyman–Pearson lemma, the most powerful level \\(\\alpha\\) test of\n\n\\[\nH_0:\\theta=0\n\\]\n\nagainst the simple alternative\n\n\\[\nH_1:\\theta=\\theta_1>0\n\\]\n\nrejects \\(H_0\\) for large values of \\(Y\\). The critical value is chosen so that the size is \\(\\alpha\\).\n\nBecause under \\(H_0\\), \\(Y\\sim \\operatorname{Unif}(0,1)\\),\n\n\\[\nP_0(Y>c)=1-c.\n\\]\n\nWe require\n\n\\[\n1-c=\\alpha,\n\\]\n\nso\n\n\\[\nc=1-\\alpha.\n\\]\n\nThus the test is\n\n\\[\n\\phi(Y)=\n\\begin{cases}\n1, & Y>1-\\alpha,\\\\\n0, & Y\\le 1-\\alpha.\n\\end{cases}\n\\]\n\nEquivalently, since the distribution is continuous, one may use \\(Y\\ge 1-\\alpha\\) without changing the size.\n\nThis same rejection region is most powerful for every fixed \\(\\theta>0\\), because for every \\(\\theta>0\\) the likelihood ratio is increasing in \\(Y\\). Hence the test is uniformly most powerful for \\(H_0:\\theta=0\\) versus \\(H_a:\\theta>0\\).\n\nTherefore the UMP level \\(\\alpha\\) test is\n\n\\[\n\\boxed{\\text{Reject } H_0 \\text{ if } Y>1-\\alpha.}\n\\]\n\nIts size is exactly\n\n\\[\nP_0(Y>1-\\alpha)=\\alpha.\n\\]\n\n---\n\n## (2) Power function\n\nFor general \\(\\theta>-1\\), the CDF of \\(Y\\) is\n\n\\[\nF_\\theta(y)=P_\\theta(Y\\le y)\n=\\int_0^y (\\theta+1)t^\\theta\\,dt\n= y^{\\theta+1},\\qquad 0<y<1.\n\\]\n\nTherefore the power function of the UMP test is\n\n\\[\n\\pi(\\theta)\n= P_\\theta(Y>1-\\alpha).\n\\]\n\nUsing the CDF,\n\n\\[\n\\pi(\\theta)\n=1-F_\\theta(1-\\alpha)\n=1-(1-\\alpha)^{\\theta+1}.\n\\]\n\nThus\n\n\\[\n\\boxed{\\pi(\\theta)=1-(1-\\alpha)^{\\theta+1}.}\n\\]\n\nIn particular, at the null value,\n\n\\[\n\\pi(0)=1-(1-\\alpha)=\\alpha,\n\\]\n\nso the test has exact level \\(\\alpha\\)."
+          }
+        ],
+        "phase": "final_answer",
+        "role": "assistant"
+      }
+    ]
+  },
+  "cost_usd": 0.02089,
+  "timing": {
+    "started": "2026-06-07T00:24:47.935135+00:00",
+    "ended": "2026-06-07T00:25:12.174227+00:00",
+    "seconds": 24.24
+  },
+  "error": null
+}

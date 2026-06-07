@@ -1,0 +1,64 @@
+{
+  "question_id": "2024-spring-probability-q3",
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "rep": 2,
+  "exam": {
+    "year": 2024,
+    "term": "spring",
+    "level": "ms",
+    "part": "probability"
+  },
+  "request": {
+    "system": "You are sitting a PhD-level qualifying examination in statistics. Solve the problem rigorously and completely. Show your work and reasoning, justify each step, and clearly state your final answer(s). If the problem has multiple parts, answer every part, labeled. If you invoke a known theorem, name it.",
+    "user": "[2024 spring ms probability — problem 3]\n\nGenerate $X$ from $f(x) = 2x$ ($0<x<1$) if $Y=1$, or $g(x) = 3x^2$ if $Y=0$, where $P(Y=1) = 1/2$. (1) Find the cdf of $X$. (2) Find $P(Y=1 \\mid X \\le 1/2)$. (3) Find $\\operatorname{Cov}(X, Y)$.",
+    "max_tokens": 24000,
+    "mode": {
+      "effort": "high"
+    }
+  },
+  "response": {
+    "id": "resp_02069fe45c01bdf1006a24badaa3e08193ae4f50d53076be4f",
+    "model": "gpt-5.5-2026-04-23",
+    "stop_reason": "completed",
+    "usage": {
+      "input_tokens": 186,
+      "output_tokens": 1581,
+      "output_tokens_details": {
+        "reasoning_tokens": 516
+      }
+    },
+    "thinking": "",
+    "text": "Let \\(Y\\sim \\mathrm{Bernoulli}(1/2)\\), with conditional densities\n\n\\[\nX\\mid (Y=1)\\sim f(x)=2x,\\quad 0<x<1,\n\\]\n\\[\nX\\mid (Y=0)\\sim g(x)=3x^2,\\quad 0<x<1.\n\\]\n\nThus \\(X\\mid Y=1\\sim \\mathrm{Beta}(2,1)\\) and \\(X\\mid Y=0\\sim \\mathrm{Beta}(3,1)\\).\n\n---\n\n## (1) CDF of \\(X\\)\n\nBy the law of total probability,\n\n\\[\nF_X(x)=P(X\\le x)\n= P(X\\le x\\mid Y=1)P(Y=1)+P(X\\le x\\mid Y=0)P(Y=0).\n\\]\n\nFor \\(0<x<1\\),\n\n\\[\nP(X\\le x\\mid Y=1)=\\int_0^x 2t\\,dt=x^2,\n\\]\n\nand\n\n\\[\nP(X\\le x\\mid Y=0)=\\int_0^x 3t^2\\,dt=x^3.\n\\]\n\nSince \\(P(Y=1)=P(Y=0)=1/2\\),\n\n\\[\nF_X(x)=\\frac12 x^2+\\frac12 x^3,\\qquad 0<x<1.\n\\]\n\nTherefore,\n\n\\[\n\\boxed{\nF_X(x)=\n\\begin{cases}\n0, & x\\le 0,\\\\[4pt]\n\\dfrac12 x^2+\\dfrac12 x^3, & 0<x<1,\\\\[6pt]\n1, & x\\ge 1.\n\\end{cases}\n}\n\\]\n\n---\n\n## (2) \\(P(Y=1\\mid X\\le 1/2)\\)\n\nUsing Bayes’ rule,\n\n\\[\nP(Y=1\\mid X\\le 1/2)\n=\n\\frac{P(X\\le 1/2\\mid Y=1)P(Y=1)}\n{P(X\\le 1/2)}.\n\\]\n\nNow,\n\n\\[\nP(X\\le 1/2\\mid Y=1)=\\left(\\frac12\\right)^2=\\frac14,\n\\]\n\nand from part (1),\n\n\\[\nP(X\\le 1/2)\n=\n\\frac12\\left(\\frac12\\right)^2+\\frac12\\left(\\frac12\\right)^3\n=\n\\frac18+\\frac1{16}\n=\n\\frac3{16}.\n\\]\n\nThus,\n\n\\[\nP(Y=1\\mid X\\le 1/2)\n=\n\\frac{(1/4)(1/2)}{3/16}\n=\n\\frac{1/8}{3/16}\n=\n\\frac23.\n\\]\n\nSo\n\n\\[\n\\boxed{P(Y=1\\mid X\\le 1/2)=\\frac23.}\n\\]\n\n---\n\n## (3) \\(\\operatorname{Cov}(X,Y)\\)\n\nWe use\n\n\\[\n\\operatorname{Cov}(X,Y)=E[XY]-E[X]E[Y].\n\\]\n\nSince \\(Y\\in\\{0,1\\}\\),\n\n\\[\nE[Y]=\\frac12.\n\\]\n\nAlso,\n\n\\[\nE[X\\mid Y=1]=\\int_0^1 x(2x)\\,dx\n=2\\int_0^1 x^2\\,dx\n=\\frac23,\n\\]\n\nand\n\n\\[\nE[X\\mid Y=0]=\\int_0^1 x(3x^2)\\,dx\n=3\\int_0^1 x^3\\,dx\n=\\frac34.\n\\]\n\nTherefore,\n\n\\[\nE[X]\n=\nE[X\\mid Y=1]P(Y=1)+E[X\\mid Y=0]P(Y=0)\n=\n\\frac12\\cdot \\frac23+\\frac12\\cdot \\frac34.\n\\]\n\nThus,\n\n\\[\nE[X]=\\frac13+\\frac38=\\frac{17}{24}.\n\\]\n\nNext,\n\n\\[\nE[XY]\n=\nE[XY\\mid Y=1]P(Y=1)+E[XY\\mid Y=0]P(Y=0).\n\\]\n\nWhen \\(Y=1\\), \\(XY=X\\), and when \\(Y=0\\), \\(XY=0\\). Hence\n\n\\[\nE[XY]=E[X\\mid Y=1]P(Y=1)=\\frac23\\cdot \\frac12=\\frac13.\n\\]\n\nTherefore,\n\n\\[\n\\operatorname{Cov}(X,Y)\n=\n\\frac13-\\frac{17}{24}\\cdot \\frac12\n=\n\\frac13-\\frac{17}{48}\n=\n\\frac{16}{48}-\\frac{17}{48}\n=\n-\\frac1{48}.\n\\]\n\nSo\n\n\\[\n\\boxed{\\operatorname{Cov}(X,Y)=-\\frac1{48}.}\n\\]",
+    "raw_output": [
+      {
+        "id": "rs_02069fe45c01bdf1006a24badb51648193bedba67a6b89b6e1",
+        "type": "reasoning",
+        "content": [],
+        "summary": []
+      },
+      {
+        "id": "msg_02069fe45c01bdf1006a24bae38de88193b1a5b14b0b500ecc",
+        "type": "message",
+        "status": "completed",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "Let \\(Y\\sim \\mathrm{Bernoulli}(1/2)\\), with conditional densities\n\n\\[\nX\\mid (Y=1)\\sim f(x)=2x,\\quad 0<x<1,\n\\]\n\\[\nX\\mid (Y=0)\\sim g(x)=3x^2,\\quad 0<x<1.\n\\]\n\nThus \\(X\\mid Y=1\\sim \\mathrm{Beta}(2,1)\\) and \\(X\\mid Y=0\\sim \\mathrm{Beta}(3,1)\\).\n\n---\n\n## (1) CDF of \\(X\\)\n\nBy the law of total probability,\n\n\\[\nF_X(x)=P(X\\le x)\n= P(X\\le x\\mid Y=1)P(Y=1)+P(X\\le x\\mid Y=0)P(Y=0).\n\\]\n\nFor \\(0<x<1\\),\n\n\\[\nP(X\\le x\\mid Y=1)=\\int_0^x 2t\\,dt=x^2,\n\\]\n\nand\n\n\\[\nP(X\\le x\\mid Y=0)=\\int_0^x 3t^2\\,dt=x^3.\n\\]\n\nSince \\(P(Y=1)=P(Y=0)=1/2\\),\n\n\\[\nF_X(x)=\\frac12 x^2+\\frac12 x^3,\\qquad 0<x<1.\n\\]\n\nTherefore,\n\n\\[\n\\boxed{\nF_X(x)=\n\\begin{cases}\n0, & x\\le 0,\\\\[4pt]\n\\dfrac12 x^2+\\dfrac12 x^3, & 0<x<1,\\\\[6pt]\n1, & x\\ge 1.\n\\end{cases}\n}\n\\]\n\n---\n\n## (2) \\(P(Y=1\\mid X\\le 1/2)\\)\n\nUsing Bayes’ rule,\n\n\\[\nP(Y=1\\mid X\\le 1/2)\n=\n\\frac{P(X\\le 1/2\\mid Y=1)P(Y=1)}\n{P(X\\le 1/2)}.\n\\]\n\nNow,\n\n\\[\nP(X\\le 1/2\\mid Y=1)=\\left(\\frac12\\right)^2=\\frac14,\n\\]\n\nand from part (1),\n\n\\[\nP(X\\le 1/2)\n=\n\\frac12\\left(\\frac12\\right)^2+\\frac12\\left(\\frac12\\right)^3\n=\n\\frac18+\\frac1{16}\n=\n\\frac3{16}.\n\\]\n\nThus,\n\n\\[\nP(Y=1\\mid X\\le 1/2)\n=\n\\frac{(1/4)(1/2)}{3/16}\n=\n\\frac{1/8}{3/16}\n=\n\\frac23.\n\\]\n\nSo\n\n\\[\n\\boxed{P(Y=1\\mid X\\le 1/2)=\\frac23.}\n\\]\n\n---\n\n## (3) \\(\\operatorname{Cov}(X,Y)\\)\n\nWe use\n\n\\[\n\\operatorname{Cov}(X,Y)=E[XY]-E[X]E[Y].\n\\]\n\nSince \\(Y\\in\\{0,1\\}\\),\n\n\\[\nE[Y]=\\frac12.\n\\]\n\nAlso,\n\n\\[\nE[X\\mid Y=1]=\\int_0^1 x(2x)\\,dx\n=2\\int_0^1 x^2\\,dx\n=\\frac23,\n\\]\n\nand\n\n\\[\nE[X\\mid Y=0]=\\int_0^1 x(3x^2)\\,dx\n=3\\int_0^1 x^3\\,dx\n=\\frac34.\n\\]\n\nTherefore,\n\n\\[\nE[X]\n=\nE[X\\mid Y=1]P(Y=1)+E[X\\mid Y=0]P(Y=0)\n=\n\\frac12\\cdot \\frac23+\\frac12\\cdot \\frac34.\n\\]\n\nThus,\n\n\\[\nE[X]=\\frac13+\\frac38=\\frac{17}{24}.\n\\]\n\nNext,\n\n\\[\nE[XY]\n=\nE[XY\\mid Y=1]P(Y=1)+E[XY\\mid Y=0]P(Y=0).\n\\]\n\nWhen \\(Y=1\\), \\(XY=X\\), and when \\(Y=0\\), \\(XY=0\\). Hence\n\n\\[\nE[XY]=E[X\\mid Y=1]P(Y=1)=\\frac23\\cdot \\frac12=\\frac13.\n\\]\n\nTherefore,\n\n\\[\n\\operatorname{Cov}(X,Y)\n=\n\\frac13-\\frac{17}{24}\\cdot \\frac12\n=\n\\frac13-\\frac{17}{48}\n=\n\\frac{16}{48}-\\frac{17}{48}\n=\n-\\frac1{48}.\n\\]\n\nSo\n\n\\[\n\\boxed{\\operatorname{Cov}(X,Y)=-\\frac1{48}.}\n\\]"
+          }
+        ],
+        "phase": "final_answer",
+        "role": "assistant"
+      }
+    ]
+  },
+  "cost_usd": 0.02465,
+  "timing": {
+    "started": "2026-06-07T00:27:06.524994+00:00",
+    "ended": "2026-06-07T00:27:26.751617+00:00",
+    "seconds": 20.23
+  },
+  "error": null
+}

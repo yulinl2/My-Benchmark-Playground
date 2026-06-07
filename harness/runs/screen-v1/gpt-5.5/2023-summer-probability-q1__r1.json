@@ -1,0 +1,72 @@
+{
+  "question_id": "2023-summer-probability-q1",
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "rep": 1,
+  "exam": {
+    "year": 2023,
+    "term": "summer",
+    "part": "probability"
+  },
+  "request": {
+    "system": "You are sitting a PhD-level qualifying examination in statistics. Solve the problem rigorously and completely. Show your work and reasoning, justify each step, and clearly state your final answer(s). If the problem has multiple parts, answer every part, labeled. If you invoke a known theorem, name it.",
+    "user": "[2023 summer phd probability — problem 1]\n\nPart I, Exercise 1. Let $(X_n)_{n\\ge1}$ be a sequence of random variables.\nProve the equivalence: $X_n \\xrightarrow{P} 0 \\iff \\mathbb{E}[\\min(1, |X_n|)] \\to 0$.",
+    "max_tokens": 24000,
+    "mode": {
+      "effort": "high"
+    }
+  },
+  "response": {
+    "id": "resp_07e3f1b6c1d95a02006a24b92e0b608190b5ef12a021f740f5",
+    "model": "gpt-5.5-2026-04-23",
+    "stop_reason": "completed",
+    "usage": {
+      "input_tokens": 147,
+      "output_tokens": 1327,
+      "output_tokens_details": {
+        "reasoning_tokens": 516
+      }
+    },
+    "thinking": "**Analyzing convergence in probability**\n\nI need to approach this problem rigorously to show equivalence with convergence in probability to zero, specifically when the expectation of a bounded function min(1, |X_n|) approaches zero. I’m thinking of using Markov's inequality to prove this. \n\nLet’s define Y_n as min(1, |X_n|). If the expected value of Y_n goes to zero, then as I break it down by ε, I'll consider how to handle cases when ε is less than or greater than one. I need to be careful to analyze convergence properly!\n**Crafting the rigorous proof**\n\nI need to establish that for any δ in (0,1), the expectation of Y_n can be split into two parts: E[Y_n 1_{Y_n≤δ}] and E[Y_n 1_{Y_n>δ}]. This gives us an upper bound with δ and the probability P(Y_n>δ), which involves the random variable X_n. As I let δ approach zero, I need to ensure I use appropriate techniques like dominated convergence to show E approaches zero.\n\nI must label this proof correctly and include definitions, ensuring my approach remains rigorous throughout. I should also clarify assumptions around the random variables involved.",
+    "text": "Let  \n\\[\nY_n:=\\min(1,|X_n|).\n\\]\nThen \\(0\\le Y_n\\le 1\\) for all \\(n\\).\n\nWe prove both directions.\n\n---\n\n## \\((\\Rightarrow)\\) Suppose \\(X_n\\xrightarrow{P}0\\)\n\nWe want to show\n\\[\n\\mathbb E[\\min(1,|X_n|)] = \\mathbb E[Y_n]\\to 0.\n\\]\n\nFix \\(\\delta\\in(0,1)\\). Since \\(0\\le Y_n\\le 1\\),\n\n\\[\n\\mathbb E[Y_n]\n= \\mathbb E[Y_n\\mathbf 1_{\\{Y_n\\le \\delta\\}}]\n+ \\mathbb E[Y_n\\mathbf 1_{\\{Y_n>\\delta\\}}].\n\\]\n\nOn \\(\\{Y_n\\le \\delta\\}\\), we have \\(Y_n\\le \\delta\\). On \\(\\{Y_n>\\delta\\}\\), we have \\(Y_n\\le 1\\). Hence\n\n\\[\n\\mathbb E[Y_n]\n\\le \\delta + \\mathbb P(Y_n>\\delta).\n\\]\n\nSince \\(\\delta<1\\),\n\n\\[\n\\{Y_n>\\delta\\}=\\{\\min(1,|X_n|)>\\delta\\}=\\{|X_n|>\\delta\\}.\n\\]\n\nTherefore\n\n\\[\n\\mathbb E[Y_n]\\le \\delta+\\mathbb P(|X_n|>\\delta).\n\\]\n\nBecause \\(X_n\\xrightarrow{P}0\\),\n\n\\[\n\\mathbb P(|X_n|>\\delta)\\to 0.\n\\]\n\nThus\n\n\\[\n\\limsup_{n\\to\\infty}\\mathbb E[Y_n]\\le \\delta.\n\\]\n\nSince \\(\\delta\\in(0,1)\\) was arbitrary, letting \\(\\delta\\downarrow 0\\) gives\n\n\\[\n\\lim_{n\\to\\infty}\\mathbb E[Y_n]=0.\n\\]\n\nTherefore\n\n\\[\n\\mathbb E[\\min(1,|X_n|)]\\to 0.\n\\]\n\n---\n\n## \\((\\Leftarrow)\\) Suppose \\(\\mathbb E[\\min(1,|X_n|)]\\to 0\\)\n\nWe want to show \\(X_n\\xrightarrow{P}0\\). Let \\(\\varepsilon>0\\). It suffices to prove\n\n\\[\n\\mathbb P(|X_n|>\\varepsilon)\\to 0.\n\\]\n\nFirst suppose \\(0<\\varepsilon<1\\). Then\n\n\\[\n\\{|X_n|>\\varepsilon\\}=\\{Y_n>\\varepsilon\\}.\n\\]\n\nBy Markov’s inequality,\n\n\\[\n\\mathbb P(Y_n>\\varepsilon)\n\\le \\frac{\\mathbb E[Y_n]}{\\varepsilon}.\n\\]\n\nSince \\(\\mathbb E[Y_n]\\to 0\\), it follows that\n\n\\[\n\\mathbb P(|X_n|>\\varepsilon)\\to 0.\n\\]\n\nIf \\(\\varepsilon\\ge 1\\), then\n\n\\[\n\\mathbb P(|X_n|>\\varepsilon)\n\\le \\mathbb P(|X_n|>1/2),\n\\]\n\nand the right-hand side tends to \\(0\\) by the previous argument applied with \\(\\varepsilon=1/2\\).\n\nHence for every \\(\\varepsilon>0\\),\n\n\\[\n\\mathbb P(|X_n|>\\varepsilon)\\to 0.\n\\]\n\nTherefore\n\n\\[\nX_n\\xrightarrow{P}0.\n\\]\n\n---\n\nThus,\n\n\\[\n\\boxed{\nX_n \\xrightarrow{P}0\n\\iff\n\\mathbb E[\\min(1,|X_n|)]\\to 0.\n}\n\\]",
+    "raw_output": [
+      {
+        "id": "rs_07e3f1b6c1d95a02006a24b92e9d5081909348037f66e8fafe",
+        "type": "reasoning",
+        "content": [],
+        "summary": [
+          {
+            "type": "summary_text",
+            "text": "**Analyzing convergence in probability**\n\nI need to approach this problem rigorously to show equivalence with convergence in probability to zero, specifically when the expectation of a bounded function min(1, |X_n|) approaches zero. I’m thinking of using Markov's inequality to prove this. \n\nLet’s define Y_n as min(1, |X_n|). If the expected value of Y_n goes to zero, then as I break it down by ε, I'll consider how to handle cases when ε is less than or greater than one. I need to be careful to analyze convergence properly!"
+          },
+          {
+            "type": "summary_text",
+            "text": "**Crafting the rigorous proof**\n\nI need to establish that for any δ in (0,1), the expectation of Y_n can be split into two parts: E[Y_n 1_{Y_n≤δ}] and E[Y_n 1_{Y_n>δ}]. This gives us an upper bound with δ and the probability P(Y_n>δ), which involves the random variable X_n. As I let δ approach zero, I need to ensure I use appropriate techniques like dominated convergence to show E approaches zero.\n\nI must label this proof correctly and include definitions, ensuring my approach remains rigorous throughout. I should also clarify assumptions around the random variables involved."
+          }
+        ]
+      },
+      {
+        "id": "msg_07e3f1b6c1d95a02006a24b93b0a088190a400c329f7623bf8",
+        "type": "message",
+        "status": "completed",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "Let  \n\\[\nY_n:=\\min(1,|X_n|).\n\\]\nThen \\(0\\le Y_n\\le 1\\) for all \\(n\\).\n\nWe prove both directions.\n\n---\n\n## \\((\\Rightarrow)\\) Suppose \\(X_n\\xrightarrow{P}0\\)\n\nWe want to show\n\\[\n\\mathbb E[\\min(1,|X_n|)] = \\mathbb E[Y_n]\\to 0.\n\\]\n\nFix \\(\\delta\\in(0,1)\\). Since \\(0\\le Y_n\\le 1\\),\n\n\\[\n\\mathbb E[Y_n]\n= \\mathbb E[Y_n\\mathbf 1_{\\{Y_n\\le \\delta\\}}]\n+ \\mathbb E[Y_n\\mathbf 1_{\\{Y_n>\\delta\\}}].\n\\]\n\nOn \\(\\{Y_n\\le \\delta\\}\\), we have \\(Y_n\\le \\delta\\). On \\(\\{Y_n>\\delta\\}\\), we have \\(Y_n\\le 1\\). Hence\n\n\\[\n\\mathbb E[Y_n]\n\\le \\delta + \\mathbb P(Y_n>\\delta).\n\\]\n\nSince \\(\\delta<1\\),\n\n\\[\n\\{Y_n>\\delta\\}=\\{\\min(1,|X_n|)>\\delta\\}=\\{|X_n|>\\delta\\}.\n\\]\n\nTherefore\n\n\\[\n\\mathbb E[Y_n]\\le \\delta+\\mathbb P(|X_n|>\\delta).\n\\]\n\nBecause \\(X_n\\xrightarrow{P}0\\),\n\n\\[\n\\mathbb P(|X_n|>\\delta)\\to 0.\n\\]\n\nThus\n\n\\[\n\\limsup_{n\\to\\infty}\\mathbb E[Y_n]\\le \\delta.\n\\]\n\nSince \\(\\delta\\in(0,1)\\) was arbitrary, letting \\(\\delta\\downarrow 0\\) gives\n\n\\[\n\\lim_{n\\to\\infty}\\mathbb E[Y_n]=0.\n\\]\n\nTherefore\n\n\\[\n\\mathbb E[\\min(1,|X_n|)]\\to 0.\n\\]\n\n---\n\n## \\((\\Leftarrow)\\) Suppose \\(\\mathbb E[\\min(1,|X_n|)]\\to 0\\)\n\nWe want to show \\(X_n\\xrightarrow{P}0\\). Let \\(\\varepsilon>0\\). It suffices to prove\n\n\\[\n\\mathbb P(|X_n|>\\varepsilon)\\to 0.\n\\]\n\nFirst suppose \\(0<\\varepsilon<1\\). Then\n\n\\[\n\\{|X_n|>\\varepsilon\\}=\\{Y_n>\\varepsilon\\}.\n\\]\n\nBy Markov’s inequality,\n\n\\[\n\\mathbb P(Y_n>\\varepsilon)\n\\le \\frac{\\mathbb E[Y_n]}{\\varepsilon}.\n\\]\n\nSince \\(\\mathbb E[Y_n]\\to 0\\), it follows that\n\n\\[\n\\mathbb P(|X_n|>\\varepsilon)\\to 0.\n\\]\n\nIf \\(\\varepsilon\\ge 1\\), then\n\n\\[\n\\mathbb P(|X_n|>\\varepsilon)\n\\le \\mathbb P(|X_n|>1/2),\n\\]\n\nand the right-hand side tends to \\(0\\) by the previous argument applied with \\(\\varepsilon=1/2\\).\n\nHence for every \\(\\varepsilon>0\\),\n\n\\[\n\\mathbb P(|X_n|>\\varepsilon)\\to 0.\n\\]\n\nTherefore\n\n\\[\nX_n\\xrightarrow{P}0.\n\\]\n\n---\n\nThus,\n\n\\[\n\\boxed{\nX_n \\xrightarrow{P}0\n\\iff\n\\mathbb E[\\min(1,|X_n|)]\\to 0.\n}\n\\]"
+          }
+        ],
+        "phase": "final_answer",
+        "role": "assistant"
+      }
+    ]
+  },
+  "cost_usd": 0.02064,
+  "timing": {
+    "started": "2026-06-07T00:19:57.936376+00:00",
+    "ended": "2026-06-07T00:20:18.513891+00:00",
+    "seconds": 20.58
+  },
+  "error": null
+}

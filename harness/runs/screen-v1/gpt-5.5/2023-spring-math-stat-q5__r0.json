@@ -1,0 +1,69 @@
+{
+  "question_id": "2023-spring-math-stat-q5",
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "rep": 0,
+  "exam": {
+    "year": 2023,
+    "term": "spring",
+    "level": "ms",
+    "part": "math-stat"
+  },
+  "request": {
+    "system": "You are sitting a PhD-level qualifying examination in statistics. Solve the problem rigorously and completely. Show your work and reasoning, justify each step, and clearly state your final answer(s). If the problem has multiple parts, answer every part, labeled. If you invoke a known theorem, name it.",
+    "user": "[2023 spring ms math-stat — problem 5]\n\n$Y_i = \\beta x_i + \\varepsilon_i$, $i = 1,\\dots,n$, with fixed $x_i$ and $\\varepsilon_i \\sim N(0,\\sigma^2)$ iid, $\\sigma^2$ unknown. (1) Find a two-dimensional sufficient statistic for $(\\beta, \\sigma^2)$. (2) Find the MLE of $\\beta$ and show it is unbiased. (3) Find the distribution of the MLE of $\\beta$.",
+    "max_tokens": 24000,
+    "mode": {
+      "effort": "high"
+    }
+  },
+  "response": {
+    "id": "resp_0e142a9b74d66f5e006a24b8af74a08193bd3c74ef0edba4ae",
+    "model": "gpt-5.5-2026-04-23",
+    "stop_reason": "completed",
+    "usage": {
+      "input_tokens": 187,
+      "output_tokens": 4992,
+      "output_tokens_details": {
+        "reasoning_tokens": 3624
+      }
+    },
+    "thinking": "**Evaluating MLE conditions**\n\nI'm looking at the conditions for the maximum likelihood estimation (MLE) of variance. I assume that Sxx, which is the sum of squares (Σx_i²), is greater than zero, and that the sample size (n) must be at least 2. These are necessary for the existence of the MLE for variance. Then there's the beta MLE formula that I might need to consider, but I want to focus on the variance aspect right now.",
+    "text": "Let  \n\\[\nS_{xx}=\\sum_{i=1}^n x_i^2,\\qquad S_{xy}=\\sum_{i=1}^n x_iY_i,\\qquad S_{yy}=\\sum_{i=1}^n Y_i^2.\n\\]\nAssume \\(S_{xx}>0\\); otherwise \\(\\beta\\) is not identifiable.\n\n## (1) A two-dimensional sufficient statistic\n\nThe joint density is\n\\[\nf(y_1,\\dots,y_n;\\beta,\\sigma^2)\n=(2\\pi\\sigma^2)^{-n/2}\n\\exp\\left\\{-\\frac{1}{2\\sigma^2}\\sum_{i=1}^n (y_i-\\beta x_i)^2\\right\\}.\n\\]\nNow\n\\[\n\\sum_{i=1}^n (y_i-\\beta x_i)^2\n=\n\\sum_{i=1}^n y_i^2-2\\beta\\sum_{i=1}^n x_i y_i+\\beta^2\\sum_{i=1}^n x_i^2\n=\nS_{yy}-2\\beta S_{xy}+\\beta^2 S_{xx}.\n\\]\nSince \\(S_{xx}\\) is fixed and known, the likelihood depends on the data only through\n\\[\nT(Y)=\\left(S_{xy},S_{yy}\\right)\n=\n\\left(\\sum_{i=1}^n x_iY_i,\\ \\sum_{i=1}^n Y_i^2\\right).\n\\]\nTherefore, by the Fisher–Neyman factorization theorem,\n\\[\n\\boxed{T(Y)=\\left(\\sum_{i=1}^n x_iY_i,\\ \\sum_{i=1}^n Y_i^2\\right)}\n\\]\nis a two-dimensional sufficient statistic for \\((\\beta,\\sigma^2)\\).\n\nEquivalently, one may use the one-to-one transformation\n\\[\n\\left(\\widehat\\beta,\\operatorname{RSS}\\right)\n=\n\\left(\n\\frac{S_{xy}}{S_{xx}},\n\\ S_{yy}-\\frac{S_{xy}^2}{S_{xx}}\n\\right).\n\\]\n\n## (2) MLE of \\(\\beta\\) and unbiasedness\n\nThe log-likelihood, ignoring constants, is\n\\[\n\\ell(\\beta,\\sigma^2)\n=\n-\\frac n2\\log\\sigma^2\n-\\frac{1}{2\\sigma^2}\\sum_{i=1}^n (Y_i-\\beta x_i)^2.\n\\]\nFor fixed \\(\\sigma^2\\), maximizing with respect to \\(\\beta\\) is equivalent to minimizing\n\\[\nQ(\\beta)=\\sum_{i=1}^n (Y_i-\\beta x_i)^2\n=S_{yy}-2\\beta S_{xy}+\\beta^2S_{xx}.\n\\]\nDifferentiate:\n\\[\n\\frac{dQ}{d\\beta}=-2S_{xy}+2\\beta S_{xx}.\n\\]\nSetting this equal to \\(0\\) gives\n\\[\n\\widehat\\beta=\\frac{S_{xy}}{S_{xx}}\n=\n\\frac{\\sum_{i=1}^n x_iY_i}{\\sum_{i=1}^n x_i^2}.\n\\]\nSince \\(S_{xx}>0\\), this is the unique minimizer of \\(Q(\\beta)\\), hence the MLE of \\(\\beta\\).\n\nThus\n\\[\n\\boxed{\\widehat\\beta_{\\text{MLE}}\n=\n\\frac{\\sum_{i=1}^n x_iY_i}{\\sum_{i=1}^n x_i^2}.}\n\\]\n\nTo show unbiasedness, write\n\\[\nY_i=\\beta x_i+\\varepsilon_i.\n\\]\nThen\n\\[\n\\widehat\\beta\n=\n\\frac{\\sum_{i=1}^n x_i(\\beta x_i+\\varepsilon_i)}{S_{xx}}\n=\n\\beta+\\frac{\\sum_{i=1}^n x_i\\varepsilon_i}{S_{xx}}.\n\\]\nBecause \\(E[\\varepsilon_i]=0\\),\n\\[\nE[\\widehat\\beta]\n=\n\\beta+\\frac{1}{S_{xx}}\\sum_{i=1}^n x_iE[\\varepsilon_i]\n=\n\\beta.\n\\]\nHence\n\\[\n\\boxed{E[\\widehat\\beta]=\\beta,}\n\\]\nso the MLE of \\(\\beta\\) is unbiased.\n\n## (3) Distribution of \\(\\widehat\\beta\\)\n\nFrom the same representation,\n\\[\n\\widehat\\beta-\\beta\n=\n\\frac{\\sum_{i=1}^n x_i\\varepsilon_i}{S_{xx}}.\n\\]\nSince the \\(\\varepsilon_i\\) are independent \\(N(0,\\sigma^2)\\), the linear combination \\(\\sum x_i\\varepsilon_i\\) is normal with mean \\(0\\) and variance\n\\[\n\\operatorname{Var}\\left(\\sum_{i=1}^n x_i\\varepsilon_i\\right)\n=\n\\sum_{i=1}^n x_i^2\\sigma^2\n=\n\\sigma^2 S_{xx}.\n\\]\nTherefore\n\\[\n\\operatorname{Var}(\\widehat\\beta)\n=\n\\frac{\\sigma^2S_{xx}}{S_{xx}^2}\n=\n\\frac{\\sigma^2}{S_{xx}}.\n\\]\nThus\n\\[\n\\boxed{\n\\widehat\\beta \\sim N\\left(\\beta,\\frac{\\sigma^2}{\\sum_{i=1}^n x_i^2}\\right).\n}\n\\]\n\nEquivalently,\n\\[\n\\boxed{\n\\frac{\\widehat\\beta-\\beta}{\\sigma/\\sqrt{S_{xx}}}\\sim N(0,1).\n}\n\\]\n\nIf \\(\\sigma^2\\) is estimated using the unbiased estimator\n\\[\ns^2=\\frac{1}{n-1}\\sum_{i=1}^n (Y_i-\\widehat\\beta x_i)^2,\n\\]\nthen by Cochran’s theorem,\n\\[\n\\boxed{\n\\frac{\\widehat\\beta-\\beta}{s/\\sqrt{S_{xx}}}\\sim t_{n-1}.\n}\n\\]",
+    "raw_output": [
+      {
+        "id": "rs_0e142a9b74d66f5e006a24b8b00cbc8193b886b64ce8a5295b",
+        "type": "reasoning",
+        "content": [],
+        "summary": [
+          {
+            "type": "summary_text",
+            "text": "**Evaluating MLE conditions**\n\nI'm looking at the conditions for the maximum likelihood estimation (MLE) of variance. I assume that Sxx, which is the sum of squares (Σx_i²), is greater than zero, and that the sample size (n) must be at least 2. These are necessary for the existence of the MLE for variance. Then there's the beta MLE formula that I might need to consider, but I want to focus on the variance aspect right now."
+          }
+        ]
+      },
+      {
+        "id": "msg_0e142a9b74d66f5e006a24b8fc02488193acad2bc1e176dc45",
+        "type": "message",
+        "status": "completed",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "Let  \n\\[\nS_{xx}=\\sum_{i=1}^n x_i^2,\\qquad S_{xy}=\\sum_{i=1}^n x_iY_i,\\qquad S_{yy}=\\sum_{i=1}^n Y_i^2.\n\\]\nAssume \\(S_{xx}>0\\); otherwise \\(\\beta\\) is not identifiable.\n\n## (1) A two-dimensional sufficient statistic\n\nThe joint density is\n\\[\nf(y_1,\\dots,y_n;\\beta,\\sigma^2)\n=(2\\pi\\sigma^2)^{-n/2}\n\\exp\\left\\{-\\frac{1}{2\\sigma^2}\\sum_{i=1}^n (y_i-\\beta x_i)^2\\right\\}.\n\\]\nNow\n\\[\n\\sum_{i=1}^n (y_i-\\beta x_i)^2\n=\n\\sum_{i=1}^n y_i^2-2\\beta\\sum_{i=1}^n x_i y_i+\\beta^2\\sum_{i=1}^n x_i^2\n=\nS_{yy}-2\\beta S_{xy}+\\beta^2 S_{xx}.\n\\]\nSince \\(S_{xx}\\) is fixed and known, the likelihood depends on the data only through\n\\[\nT(Y)=\\left(S_{xy},S_{yy}\\right)\n=\n\\left(\\sum_{i=1}^n x_iY_i,\\ \\sum_{i=1}^n Y_i^2\\right).\n\\]\nTherefore, by the Fisher–Neyman factorization theorem,\n\\[\n\\boxed{T(Y)=\\left(\\sum_{i=1}^n x_iY_i,\\ \\sum_{i=1}^n Y_i^2\\right)}\n\\]\nis a two-dimensional sufficient statistic for \\((\\beta,\\sigma^2)\\).\n\nEquivalently, one may use the one-to-one transformation\n\\[\n\\left(\\widehat\\beta,\\operatorname{RSS}\\right)\n=\n\\left(\n\\frac{S_{xy}}{S_{xx}},\n\\ S_{yy}-\\frac{S_{xy}^2}{S_{xx}}\n\\right).\n\\]\n\n## (2) MLE of \\(\\beta\\) and unbiasedness\n\nThe log-likelihood, ignoring constants, is\n\\[\n\\ell(\\beta,\\sigma^2)\n=\n-\\frac n2\\log\\sigma^2\n-\\frac{1}{2\\sigma^2}\\sum_{i=1}^n (Y_i-\\beta x_i)^2.\n\\]\nFor fixed \\(\\sigma^2\\), maximizing with respect to \\(\\beta\\) is equivalent to minimizing\n\\[\nQ(\\beta)=\\sum_{i=1}^n (Y_i-\\beta x_i)^2\n=S_{yy}-2\\beta S_{xy}+\\beta^2S_{xx}.\n\\]\nDifferentiate:\n\\[\n\\frac{dQ}{d\\beta}=-2S_{xy}+2\\beta S_{xx}.\n\\]\nSetting this equal to \\(0\\) gives\n\\[\n\\widehat\\beta=\\frac{S_{xy}}{S_{xx}}\n=\n\\frac{\\sum_{i=1}^n x_iY_i}{\\sum_{i=1}^n x_i^2}.\n\\]\nSince \\(S_{xx}>0\\), this is the unique minimizer of \\(Q(\\beta)\\), hence the MLE of \\(\\beta\\).\n\nThus\n\\[\n\\boxed{\\widehat\\beta_{\\text{MLE}}\n=\n\\frac{\\sum_{i=1}^n x_iY_i}{\\sum_{i=1}^n x_i^2}.}\n\\]\n\nTo show unbiasedness, write\n\\[\nY_i=\\beta x_i+\\varepsilon_i.\n\\]\nThen\n\\[\n\\widehat\\beta\n=\n\\frac{\\sum_{i=1}^n x_i(\\beta x_i+\\varepsilon_i)}{S_{xx}}\n=\n\\beta+\\frac{\\sum_{i=1}^n x_i\\varepsilon_i}{S_{xx}}.\n\\]\nBecause \\(E[\\varepsilon_i]=0\\),\n\\[\nE[\\widehat\\beta]\n=\n\\beta+\\frac{1}{S_{xx}}\\sum_{i=1}^n x_iE[\\varepsilon_i]\n=\n\\beta.\n\\]\nHence\n\\[\n\\boxed{E[\\widehat\\beta]=\\beta,}\n\\]\nso the MLE of \\(\\beta\\) is unbiased.\n\n## (3) Distribution of \\(\\widehat\\beta\\)\n\nFrom the same representation,\n\\[\n\\widehat\\beta-\\beta\n=\n\\frac{\\sum_{i=1}^n x_i\\varepsilon_i}{S_{xx}}.\n\\]\nSince the \\(\\varepsilon_i\\) are independent \\(N(0,\\sigma^2)\\), the linear combination \\(\\sum x_i\\varepsilon_i\\) is normal with mean \\(0\\) and variance\n\\[\n\\operatorname{Var}\\left(\\sum_{i=1}^n x_i\\varepsilon_i\\right)\n=\n\\sum_{i=1}^n x_i^2\\sigma^2\n=\n\\sigma^2 S_{xx}.\n\\]\nTherefore\n\\[\n\\operatorname{Var}(\\widehat\\beta)\n=\n\\frac{\\sigma^2S_{xx}}{S_{xx}^2}\n=\n\\frac{\\sigma^2}{S_{xx}}.\n\\]\nThus\n\\[\n\\boxed{\n\\widehat\\beta \\sim N\\left(\\beta,\\frac{\\sigma^2}{\\sum_{i=1}^n x_i^2}\\right).\n}\n\\]\n\nEquivalently,\n\\[\n\\boxed{\n\\frac{\\widehat\\beta-\\beta}{\\sigma/\\sqrt{S_{xx}}}\\sim N(0,1).\n}\n\\]\n\nIf \\(\\sigma^2\\) is estimated using the unbiased estimator\n\\[\ns^2=\\frac{1}{n-1}\\sum_{i=1}^n (Y_i-\\widehat\\beta x_i)^2,\n\\]\nthen by Cochran’s theorem,\n\\[\n\\boxed{\n\\frac{\\widehat\\beta-\\beta}{s/\\sqrt{S_{xx}}}\\sim t_{n-1}.\n}\n\\]"
+          }
+        ],
+        "phase": "final_answer",
+        "role": "assistant"
+      }
+    ]
+  },
+  "cost_usd": 0.07582,
+  "timing": {
+    "started": "2026-06-07T00:17:51.339477+00:00",
+    "ended": "2026-06-07T00:19:22.871151+00:00",
+    "seconds": 91.53
+  },
+  "error": null
+}

@@ -1,0 +1,63 @@
+{
+  "question_id": "2024-summer-math-stat-q4",
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "rep": 1,
+  "exam": {
+    "year": 2024,
+    "term": "summer",
+    "part": "math-stat"
+  },
+  "request": {
+    "system": "You are sitting a PhD-level qualifying examination in statistics. Solve the problem rigorously and completely. Show your work and reasoning, justify each step, and clearly state your final answer(s). If the problem has multiple parts, answer every part, labeled. If you invoke a known theorem, name it.",
+    "user": "[2024 summer phd math-stat — problem 4]\n\nPart I, Problem 4 (Regression with hidden confounders). Consider the structural equation model $Y_i \\leftarrow D_i\\beta + H_i\\psi + e_i$, where $Y_i$ is the outcome, $D_i$ the treatment, $H_i$ a hidden variable, and $e_i$ independent error; assume $D_i, H_i, e_i$ are centered.\n1. Explain when the OLS estimator is a consistent estimator of $\\beta$.\n2. Define the instrumental variable and propose a consistent estimator of $\\beta$ using an instrumental variable.",
+    "max_tokens": 24000,
+    "mode": {
+      "effort": "high"
+    }
+  },
+  "response": {
+    "id": "resp_0559c0be6b16d16d006a24bbcbb5788195ac992441ca667577",
+    "model": "gpt-5.5-2026-04-23",
+    "stop_reason": "completed",
+    "usage": {
+      "input_tokens": 204,
+      "output_tokens": 3183,
+      "output_tokens_details": {
+        "reasoning_tokens": 1552
+      }
+    },
+    "thinking": "",
+    "text": "## 1. Consistency of OLS for \\(\\beta\\)\n\nLet the structural equation be\n\n\\[\nY_i = D_i\\beta + H_i\\psi + e_i,\n\\]\n\nwhere \\(D_i,H_i,e_i\\) are centered. Suppose for simplicity first that \\(D_i\\) is scalar and that observations are i.i.d. with finite second moments and \\(E[D_i^2]>0\\).\n\nIf we regress \\(Y_i\\) on \\(D_i\\) only, the OLS estimator is\n\n\\[\n\\widehat\\beta_{\\mathrm{OLS}}\n=\n\\frac{\\sum_{i=1}^n D_iY_i}{\\sum_{i=1}^n D_i^2}.\n\\]\n\nSubstituting the structural equation,\n\n\\[\n\\widehat\\beta_{\\mathrm{OLS}}\n=\n\\frac{\\sum_i D_i(D_i\\beta + H_i\\psi + e_i)}{\\sum_i D_i^2}\n=\n\\beta\n+\n\\psi\\frac{\\sum_i D_iH_i}{\\sum_i D_i^2}\n+\n\\frac{\\sum_i D_ie_i}{\\sum_i D_i^2}.\n\\]\n\nBy the law of large numbers,\n\n\\[\n\\widehat\\beta_{\\mathrm{OLS}}\n\\overset{p}{\\longrightarrow}\n\\beta\n+\n\\psi\\frac{E[D_iH_i]}{E[D_i^2]}\n+\n\\frac{E[D_ie_i]}{E[D_i^2]}.\n\\]\n\nIf \\(e_i\\) is independent of \\(D_i\\) and centered, then \\(E[D_ie_i]=0\\). Therefore,\n\n\\[\n\\plim \\widehat\\beta_{\\mathrm{OLS}}\n=\n\\beta\n+\n\\psi\\frac{E[D_iH_i]}{E[D_i^2]}.\n\\]\n\nHence OLS is consistent for \\(\\beta\\) if and only if\n\n\\[\n\\psi E[D_iH_i]=0.\n\\]\n\nIn particular, OLS is consistent if any of the following hold:\n\n1. \\(H_i\\) has no direct effect on \\(Y_i\\), i.e. \\(\\psi=0\\);\n2. \\(D_i\\) is uncorrelated with the hidden confounder \\(H_i\\), i.e.\n\n   \\[\n   E[D_iH_i]=\\operatorname{Cov}(D_i,H_i)=0;\n   \\]\n\n3. more generally, the omitted-variable term is mean-orthogonal to \\(D_i\\):\n\n   \\[\n   E[D_i(H_i\\psi+e_i)] = 0.\n   \\]\n\nIf \\(D_i\\) is correlated with \\(H_i\\) and \\(\\psi\\neq 0\\), then the OLS estimator suffers from omitted-variable bias:\n\n\\[\n\\operatorname{Bias}_{\\infty}(\\widehat\\beta_{\\mathrm{OLS}})\n=\n\\psi\\frac{E[D_iH_i]}{E[D_i^2]}.\n\\]\n\nFor vector-valued \\(D_i\\), the corresponding condition is\n\n\\[\nE[D_i(H_i\\psi+e_i)] = 0,\n\\]\n\nand under \\(E[e_i\\mid D_i]=0\\), this reduces to\n\n\\[\nE[D_iH_i]\\psi = 0.\n\\]\n\n---\n\n## 2. Instrumental variables and a consistent estimator\n\nAn instrumental variable is an observed variable \\(Z_i\\) satisfying two key conditions.\n\n### Instrument validity conditions\n\nLet\n\n\\[\nu_i = H_i\\psi + e_i\n\\]\n\ndenote the composite structural error when \\(H_i\\) is omitted. A valid instrument \\(Z_i\\) for \\(D_i\\) satisfies:\n\n### Relevance\n\n\\[\nE[Z_iD_i]\\neq 0\n\\]\n\nin the scalar case. More generally, if \\(D_i\\) is \\(p\\)-dimensional and \\(Z_i\\) is \\(q\\)-dimensional with \\(q\\ge p\\), we need the rank condition\n\n\\[\n\\operatorname{rank}\\left(E[Z_iD_i']\\right)=p.\n\\]\n\nThis means \\(Z_i\\) must be correlated with the treatment.\n\n### Exogeneity / exclusion\n\n\\[\nE[Z_iu_i]=0.\n\\]\n\nEquivalently,\n\n\\[\nE[Z_i(H_i\\psi+e_i)] = 0.\n\\]\n\nA sufficient condition is that \\(Z_i\\) is uncorrelated with both the hidden confounder and the structural error:\n\n\\[\nE[Z_iH_i]=0,\n\\qquad\nE[Z_ie_i]=0.\n\\]\n\nSubstantively, \\(Z_i\\) affects \\(Y_i\\) only through its effect on \\(D_i\\), and it is not associated with the hidden confounder \\(H_i\\).\n\n---\n\n### Scalar IV estimator\n\nIf both \\(D_i\\) and \\(Z_i\\) are scalar and centered, define\n\n\\[\n\\widehat\\beta_{\\mathrm{IV}}\n=\n\\frac{\\sum_{i=1}^n Z_iY_i}{\\sum_{i=1}^n Z_iD_i}.\n\\]\n\nSubstitute \\(Y_i=D_i\\beta+u_i\\):\n\n\\[\n\\widehat\\beta_{\\mathrm{IV}}\n=\n\\frac{\\sum_i Z_i(D_i\\beta+u_i)}{\\sum_i Z_iD_i}\n=\n\\beta\n+\n\\frac{\\sum_i Z_iu_i}{\\sum_i Z_iD_i}.\n\\]\n\nBy the law of large numbers,\n\n\\[\n\\widehat\\beta_{\\mathrm{IV}}\n\\overset{p}{\\longrightarrow}\n\\beta\n+\n\\frac{E[Z_iu_i]}{E[Z_iD_i]}.\n\\]\n\nUnder instrument exogeneity, \\(E[Z_iu_i]=0\\), and under relevance, \\(E[Z_iD_i]\\neq 0\\). Therefore,\n\n\\[\n\\widehat\\beta_{\\mathrm{IV}}\n\\overset{p}{\\longrightarrow}\n\\beta.\n\\]\n\nThus \\(\\widehat\\beta_{\\mathrm{IV}}\\) is consistent for \\(\\beta\\).\n\n---\n\n### Multiple instruments: 2SLS estimator\n\nIf \\(Z_i\\) is a vector of instruments, the standard estimator is two-stage least squares. Let \\(D\\) be the \\(n\\times p\\) treatment matrix, \\(Y\\) the \\(n\\times 1\\) outcome vector, and \\(Z\\) the \\(n\\times q\\) instrument matrix. Define\n\n\\[\nP_Z = Z(Z'Z)^{-1}Z'.\n\\]\n\nThe 2SLS estimator is\n\n\\[\n\\widehat\\beta_{\\mathrm{2SLS}}\n=\n(D'P_ZD)^{-1}D'P_ZY.\n\\]\n\nEquivalently, one may view it as:\n\n1. First stage: regress \\(D\\) on \\(Z\\) and compute fitted values \\(\\widehat D=P_ZD\\).\n2. Second stage: regress \\(Y\\) on \\(\\widehat D\\).\n\nUnder the relevance rank condition and the moment condition\n\n\\[\nE[Z_i(Y_i-D_i'\\beta)] = E[Z_iu_i]=0,\n\\]\n\nthe 2SLS estimator is consistent:\n\n\\[\n\\widehat\\beta_{\\mathrm{2SLS}}\\overset{p}{\\longrightarrow}\\beta.\n\\]\n\nSo a valid IV removes the bias caused by the hidden confounder \\(H_i\\) by using only variation in \\(D_i\\) that is induced by \\(Z_i\\), which is assumed unrelated to \\(H_i\\) and \\(e_i\\).",
+    "raw_output": [
+      {
+        "id": "rs_0559c0be6b16d16d006a24bbccccfc8195a38af0027004655e",
+        "type": "reasoning",
+        "content": [],
+        "summary": []
+      },
+      {
+        "id": "msg_0559c0be6b16d16d006a24bbf0681081958da09ceb6acbfac4",
+        "type": "message",
+        "status": "completed",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "## 1. Consistency of OLS for \\(\\beta\\)\n\nLet the structural equation be\n\n\\[\nY_i = D_i\\beta + H_i\\psi + e_i,\n\\]\n\nwhere \\(D_i,H_i,e_i\\) are centered. Suppose for simplicity first that \\(D_i\\) is scalar and that observations are i.i.d. with finite second moments and \\(E[D_i^2]>0\\).\n\nIf we regress \\(Y_i\\) on \\(D_i\\) only, the OLS estimator is\n\n\\[\n\\widehat\\beta_{\\mathrm{OLS}}\n=\n\\frac{\\sum_{i=1}^n D_iY_i}{\\sum_{i=1}^n D_i^2}.\n\\]\n\nSubstituting the structural equation,\n\n\\[\n\\widehat\\beta_{\\mathrm{OLS}}\n=\n\\frac{\\sum_i D_i(D_i\\beta + H_i\\psi + e_i)}{\\sum_i D_i^2}\n=\n\\beta\n+\n\\psi\\frac{\\sum_i D_iH_i}{\\sum_i D_i^2}\n+\n\\frac{\\sum_i D_ie_i}{\\sum_i D_i^2}.\n\\]\n\nBy the law of large numbers,\n\n\\[\n\\widehat\\beta_{\\mathrm{OLS}}\n\\overset{p}{\\longrightarrow}\n\\beta\n+\n\\psi\\frac{E[D_iH_i]}{E[D_i^2]}\n+\n\\frac{E[D_ie_i]}{E[D_i^2]}.\n\\]\n\nIf \\(e_i\\) is independent of \\(D_i\\) and centered, then \\(E[D_ie_i]=0\\). Therefore,\n\n\\[\n\\plim \\widehat\\beta_{\\mathrm{OLS}}\n=\n\\beta\n+\n\\psi\\frac{E[D_iH_i]}{E[D_i^2]}.\n\\]\n\nHence OLS is consistent for \\(\\beta\\) if and only if\n\n\\[\n\\psi E[D_iH_i]=0.\n\\]\n\nIn particular, OLS is consistent if any of the following hold:\n\n1. \\(H_i\\) has no direct effect on \\(Y_i\\), i.e. \\(\\psi=0\\);\n2. \\(D_i\\) is uncorrelated with the hidden confounder \\(H_i\\), i.e.\n\n   \\[\n   E[D_iH_i]=\\operatorname{Cov}(D_i,H_i)=0;\n   \\]\n\n3. more generally, the omitted-variable term is mean-orthogonal to \\(D_i\\):\n\n   \\[\n   E[D_i(H_i\\psi+e_i)] = 0.\n   \\]\n\nIf \\(D_i\\) is correlated with \\(H_i\\) and \\(\\psi\\neq 0\\), then the OLS estimator suffers from omitted-variable bias:\n\n\\[\n\\operatorname{Bias}_{\\infty}(\\widehat\\beta_{\\mathrm{OLS}})\n=\n\\psi\\frac{E[D_iH_i]}{E[D_i^2]}.\n\\]\n\nFor vector-valued \\(D_i\\), the corresponding condition is\n\n\\[\nE[D_i(H_i\\psi+e_i)] = 0,\n\\]\n\nand under \\(E[e_i\\mid D_i]=0\\), this reduces to\n\n\\[\nE[D_iH_i]\\psi = 0.\n\\]\n\n---\n\n## 2. Instrumental variables and a consistent estimator\n\nAn instrumental variable is an observed variable \\(Z_i\\) satisfying two key conditions.\n\n### Instrument validity conditions\n\nLet\n\n\\[\nu_i = H_i\\psi + e_i\n\\]\n\ndenote the composite structural error when \\(H_i\\) is omitted. A valid instrument \\(Z_i\\) for \\(D_i\\) satisfies:\n\n### Relevance\n\n\\[\nE[Z_iD_i]\\neq 0\n\\]\n\nin the scalar case. More generally, if \\(D_i\\) is \\(p\\)-dimensional and \\(Z_i\\) is \\(q\\)-dimensional with \\(q\\ge p\\), we need the rank condition\n\n\\[\n\\operatorname{rank}\\left(E[Z_iD_i']\\right)=p.\n\\]\n\nThis means \\(Z_i\\) must be correlated with the treatment.\n\n### Exogeneity / exclusion\n\n\\[\nE[Z_iu_i]=0.\n\\]\n\nEquivalently,\n\n\\[\nE[Z_i(H_i\\psi+e_i)] = 0.\n\\]\n\nA sufficient condition is that \\(Z_i\\) is uncorrelated with both the hidden confounder and the structural error:\n\n\\[\nE[Z_iH_i]=0,\n\\qquad\nE[Z_ie_i]=0.\n\\]\n\nSubstantively, \\(Z_i\\) affects \\(Y_i\\) only through its effect on \\(D_i\\), and it is not associated with the hidden confounder \\(H_i\\).\n\n---\n\n### Scalar IV estimator\n\nIf both \\(D_i\\) and \\(Z_i\\) are scalar and centered, define\n\n\\[\n\\widehat\\beta_{\\mathrm{IV}}\n=\n\\frac{\\sum_{i=1}^n Z_iY_i}{\\sum_{i=1}^n Z_iD_i}.\n\\]\n\nSubstitute \\(Y_i=D_i\\beta+u_i\\):\n\n\\[\n\\widehat\\beta_{\\mathrm{IV}}\n=\n\\frac{\\sum_i Z_i(D_i\\beta+u_i)}{\\sum_i Z_iD_i}\n=\n\\beta\n+\n\\frac{\\sum_i Z_iu_i}{\\sum_i Z_iD_i}.\n\\]\n\nBy the law of large numbers,\n\n\\[\n\\widehat\\beta_{\\mathrm{IV}}\n\\overset{p}{\\longrightarrow}\n\\beta\n+\n\\frac{E[Z_iu_i]}{E[Z_iD_i]}.\n\\]\n\nUnder instrument exogeneity, \\(E[Z_iu_i]=0\\), and under relevance, \\(E[Z_iD_i]\\neq 0\\). Therefore,\n\n\\[\n\\widehat\\beta_{\\mathrm{IV}}\n\\overset{p}{\\longrightarrow}\n\\beta.\n\\]\n\nThus \\(\\widehat\\beta_{\\mathrm{IV}}\\) is consistent for \\(\\beta\\).\n\n---\n\n### Multiple instruments: 2SLS estimator\n\nIf \\(Z_i\\) is a vector of instruments, the standard estimator is two-stage least squares. Let \\(D\\) be the \\(n\\times p\\) treatment matrix, \\(Y\\) the \\(n\\times 1\\) outcome vector, and \\(Z\\) the \\(n\\times q\\) instrument matrix. Define\n\n\\[\nP_Z = Z(Z'Z)^{-1}Z'.\n\\]\n\nThe 2SLS estimator is\n\n\\[\n\\widehat\\beta_{\\mathrm{2SLS}}\n=\n(D'P_ZD)^{-1}D'P_ZY.\n\\]\n\nEquivalently, one may view it as:\n\n1. First stage: regress \\(D\\) on \\(Z\\) and compute fitted values \\(\\widehat D=P_ZD\\).\n2. Second stage: regress \\(Y\\) on \\(\\widehat D\\).\n\nUnder the relevance rank condition and the moment condition\n\n\\[\nE[Z_i(Y_i-D_i'\\beta)] = E[Z_iu_i]=0,\n\\]\n\nthe 2SLS estimator is consistent:\n\n\\[\n\\widehat\\beta_{\\mathrm{2SLS}}\\overset{p}{\\longrightarrow}\\beta.\n\\]\n\nSo a valid IV removes the bias caused by the hidden confounder \\(H_i\\) by using only variation in \\(D_i\\) that is induced by \\(Z_i\\), which is assumed unrelated to \\(H_i\\) and \\(e_i\\)."
+          }
+        ],
+        "phase": "final_answer",
+        "role": "assistant"
+      }
+    ]
+  },
+  "cost_usd": 0.04877,
+  "timing": {
+    "started": "2026-06-07T00:31:07.490629+00:00",
+    "ended": "2026-06-07T00:32:06.705600+00:00",
+    "seconds": 59.21
+  },
+  "error": null
+}

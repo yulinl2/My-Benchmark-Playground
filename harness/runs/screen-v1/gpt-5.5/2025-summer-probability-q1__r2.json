@@ -1,0 +1,63 @@
+{
+  "question_id": "2025-summer-probability-q1",
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "rep": 2,
+  "exam": {
+    "year": 2025,
+    "term": "summer",
+    "part": "probability"
+  },
+  "request": {
+    "system": "You are sitting a PhD-level qualifying examination in statistics. Solve the problem rigorously and completely. Show your work and reasoning, justify each step, and clearly state your final answer(s). If the problem has multiple parts, answer every part, labeled. If you invoke a known theorem, name it.",
+    "user": "[2025 summer phd probability — problem 1]\n\nPart I. Let $X_1, X_2, \\dots$ be independent and $S_n = \\sum_{m=1}^n X_m$.\n(i) Use the Lindeberg-Feller CLT to show that if $\\sup_m |X_m| < \\infty$ a.s. and $\\sum_m \\operatorname{Var}(X_m) = \\infty$, then $(S_n - \\mathbb{E} S_n)/\\sqrt{\\operatorname{Var}(S_n)} \\xrightarrow{d} N(0, 1)$.\n(ii) Construct an explicit example where $(S_n - \\mathbb{E} S_n)/\\sqrt{n} \\xrightarrow{d} N(0,1)$ holds but $\\operatorname{Var}(S_n)/n$ does not converge to $1$.",
+    "max_tokens": 24000,
+    "mode": {
+      "effort": "high"
+    }
+  },
+  "response": {
+    "id": "resp_0f129db80104620f006a24be138f708196991438bf91baea43",
+    "model": "gpt-5.5-2026-04-23",
+    "stop_reason": "completed",
+    "usage": {
+      "input_tokens": 262,
+      "output_tokens": 8041,
+      "output_tokens_details": {
+        "reasoning_tokens": 6213
+      }
+    },
+    "thinking": "",
+    "text": "## Part I(i)\n\nThere is a subtle but important issue with the hypothesis as written.\n\nIf \\(\\sup_m |X_m|<\\infty\\) is meant literally as a random a.s. finite bound, then the statement is **false**. A deterministic uniform bound is needed for the usual Lindeberg argument.\n\n### Counterexample to the literal statement\n\nLet \\(X_m\\) be independent with\n\n\\[\n\\mathbb P(X_m=m)=\\mathbb P(X_m=-m)=\\frac{1}{2m^2},\\qquad \n\\mathbb P(X_m=0)=1-\\frac1{m^2}.\n\\]\n\nThen \\(\\mathbb E X_m=0\\), and\n\n\\[\n\\operatorname{Var}(X_m)=\\mathbb E X_m^2\n=m^2\\cdot \\frac1{m^2}=1.\n\\]\n\nHence\n\n\\[\n\\sum_{m=1}^\\infty \\operatorname{Var}(X_m)=\\infty,\n\\qquad \n\\operatorname{Var}(S_n)=n.\n\\]\n\nAlso,\n\n\\[\n\\sum_{m=1}^\\infty \\mathbb P(X_m\\neq 0)\n=\n\\sum_{m=1}^\\infty \\frac1{m^2}<\\infty.\n\\]\n\nBy the Borel-Cantelli lemma, \\(X_m\\neq 0\\) occurs only finitely often a.s. Therefore\n\n\\[\n\\sup_m |X_m|<\\infty \\quad \\text{a.s.}\n\\]\n\nBut \\(S_n\\) stabilizes a.s. to a finite random variable, so\n\n\\[\n\\frac{S_n-\\mathbb E S_n}{\\sqrt{\\operatorname{Var}(S_n)}}\n=\n\\frac{S_n}{\\sqrt n}\n\\to 0\n\\quad \\text{a.s.}\n\\]\n\nThus the normalized sums converge in distribution to \\(\\delta_0\\), not \\(N(0,1)\\). So the statement is not true under the literal interpretation.\n\n---\n\n### What is true under the usual intended deterministic boundedness assumption\n\nSuppose instead that there exists a deterministic constant \\(M<\\infty\\) such that\n\n\\[\n|X_m|\\le M \\quad \\text{a.s. for all } m.\n\\]\n\nLet\n\n\\[\n\\sigma_m^2=\\operatorname{Var}(X_m),\n\\qquad \ns_n^2=\\operatorname{Var}(S_n)=\\sum_{m=1}^n \\sigma_m^2.\n\\]\n\nBy assumption,\n\n\\[\ns_n^2\\to\\infty.\n\\]\n\nSet\n\n\\[\nY_m=X_m-\\mathbb E X_m.\n\\]\n\nThen \\(\\mathbb E Y_m=0\\), \\(\\operatorname{Var}(Y_m)=\\sigma_m^2\\), and because \\(|X_m|\\le M\\),\n\n\\[\n|\\mathbb E X_m|\\le M,\n\\]\n\nso\n\n\\[\n|Y_m|\n=\n|X_m-\\mathbb E X_m|\n\\le |X_m|+|\\mathbb E X_m|\n\\le 2M\n\\quad \\text{a.s.}\n\\]\n\nWe apply the Lindeberg-Feller CLT to the triangular array\n\n\\[\n\\xi_{n,m}=\\frac{Y_m}{s_n},\n\\qquad 1\\le m\\le n.\n\\]\n\nThe variables in each row are independent, centered, and\n\n\\[\n\\sum_{m=1}^n \\operatorname{Var}(\\xi_{n,m})\n=\n\\frac1{s_n^2}\\sum_{m=1}^n \\sigma_m^2\n=1.\n\\]\n\nIt remains to verify the Lindeberg condition. For every \\(\\varepsilon>0\\),\n\n\\[\n\\frac1{s_n^2}\\sum_{m=1}^n \n\\mathbb E\\left[\nY_m^2 \\mathbf 1_{\\{|Y_m|>\\varepsilon s_n\\}}\n\\right].\n\\]\n\nSince \\(s_n\\to\\infty\\), for all sufficiently large \\(n\\),\n\n\\[\n\\varepsilon s_n>2M.\n\\]\n\nBut \\(|Y_m|\\le 2M\\) a.s., so for such \\(n\\),\n\n\\[\n\\mathbf 1_{\\{|Y_m|>\\varepsilon s_n\\}}=0\n\\quad \\text{a.s.}\n\\]\n\nTherefore the Lindeberg quantity is eventually zero, hence tends to zero. By the Lindeberg-Feller central limit theorem,\n\n\\[\n\\sum_{m=1}^n \\frac{Y_m}{s_n}\n=\n\\frac{S_n-\\mathbb E S_n}{\\sqrt{\\operatorname{Var}(S_n)}}\n\\xrightarrow{d} N(0,1).\n\\]\n\nSo the desired conclusion holds under the deterministic uniform boundedness condition.\n\n---\n\n## Part I(ii)\n\nWe construct independent \\(X_m\\) such that\n\n\\[\n\\frac{S_n-\\mathbb E S_n}{\\sqrt n}\\xrightarrow{d}N(0,1),\n\\]\n\nbut\n\n\\[\n\\frac{\\operatorname{Var}(S_n)}{n}\\not\\to 1.\n\\]\n\nLet \\(Z_1,Z_2,\\dots\\) be i.i.d. \\(N(0,1)\\). Independently, let \\(Y_m\\) satisfy\n\n\\[\n\\mathbb P(Y_m=m)=\\mathbb P(Y_m=-m)=\\frac1{2m^2},\n\\qquad \n\\mathbb P(Y_m=0)=1-\\frac1{m^2}.\n\\]\n\nDefine\n\n\\[\nX_m=Z_m+Y_m.\n\\]\n\nThen the \\(X_m\\)'s are independent. Also,\n\n\\[\n\\mathbb E Z_m=0,\\qquad \\mathbb E Y_m=0,\n\\]\n\nso\n\n\\[\n\\mathbb E X_m=0.\n\\]\n\nMoreover,\n\n\\[\n\\operatorname{Var}(Z_m)=1,\n\\]\n\nand\n\n\\[\n\\operatorname{Var}(Y_m)=\\mathbb E Y_m^2\n=m^2\\cdot \\frac1{m^2}=1.\n\\]\n\nSince \\(Z_m\\) and \\(Y_m\\) are independent,\n\n\\[\n\\operatorname{Var}(X_m)=\\operatorname{Var}(Z_m)+\\operatorname{Var}(Y_m)=2.\n\\]\n\nThus\n\n\\[\n\\operatorname{Var}(S_n)\n=\n\\sum_{m=1}^n \\operatorname{Var}(X_m)\n=\n2n,\n\\]\n\nand therefore\n\n\\[\n\\frac{\\operatorname{Var}(S_n)}{n}=2,\n\\]\n\nwhich certainly does not converge to \\(1\\).\n\nNow write\n\n\\[\nS_n=\\sum_{m=1}^n Z_m+\\sum_{m=1}^n Y_m.\n\\]\n\nFor the Gaussian part,\n\n\\[\n\\frac1{\\sqrt n}\\sum_{m=1}^n Z_m\\sim N(0,1)\n\\]\n\nfor every \\(n\\).\n\nFor the \\(Y_m\\)-part, note that\n\n\\[\n\\sum_{m=1}^\\infty \\mathbb P(Y_m\\neq 0)\n=\n\\sum_{m=1}^\\infty \\frac1{m^2}\n<\\infty.\n\\]\n\nBy Borel-Cantelli, \\(Y_m\\neq 0\\) only finitely often a.s. Hence\n\n\\[\n\\sum_{m=1}^n Y_m\n\\]\n\neventually stabilizes a.s. to a finite random variable. Therefore\n\n\\[\n\\frac1{\\sqrt n}\\sum_{m=1}^n Y_m\\to 0\n\\quad \\text{a.s.}\n\\]\n\nBy Slutsky's theorem,\n\n\\[\n\\frac{S_n-\\mathbb E S_n}{\\sqrt n}\n=\n\\frac1{\\sqrt n}\\sum_{m=1}^n Z_m\n+\n\\frac1{\\sqrt n}\\sum_{m=1}^n Y_m\n\\xrightarrow{d} N(0,1).\n\\]\n\nThus this example has\n\n\\[\n\\frac{S_n-\\mathbb E S_n}{\\sqrt n}\\xrightarrow{d}N(0,1),\n\\]\n\nwhile\n\n\\[\n\\frac{\\operatorname{Var}(S_n)}{n}=2\\not\\to 1.\n\\]\n\n",
+    "raw_output": [
+      {
+        "id": "rs_0f129db80104620f006a24be1426d481968db0942f12c958a1",
+        "type": "reasoning",
+        "content": [],
+        "summary": []
+      },
+      {
+        "id": "msg_0f129db80104620f006a24bea0e7008196bd6db70d10d913ad",
+        "type": "message",
+        "status": "completed",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "## Part I(i)\n\nThere is a subtle but important issue with the hypothesis as written.\n\nIf \\(\\sup_m |X_m|<\\infty\\) is meant literally as a random a.s. finite bound, then the statement is **false**. A deterministic uniform bound is needed for the usual Lindeberg argument.\n\n### Counterexample to the literal statement\n\nLet \\(X_m\\) be independent with\n\n\\[\n\\mathbb P(X_m=m)=\\mathbb P(X_m=-m)=\\frac{1}{2m^2},\\qquad \n\\mathbb P(X_m=0)=1-\\frac1{m^2}.\n\\]\n\nThen \\(\\mathbb E X_m=0\\), and\n\n\\[\n\\operatorname{Var}(X_m)=\\mathbb E X_m^2\n=m^2\\cdot \\frac1{m^2}=1.\n\\]\n\nHence\n\n\\[\n\\sum_{m=1}^\\infty \\operatorname{Var}(X_m)=\\infty,\n\\qquad \n\\operatorname{Var}(S_n)=n.\n\\]\n\nAlso,\n\n\\[\n\\sum_{m=1}^\\infty \\mathbb P(X_m\\neq 0)\n=\n\\sum_{m=1}^\\infty \\frac1{m^2}<\\infty.\n\\]\n\nBy the Borel-Cantelli lemma, \\(X_m\\neq 0\\) occurs only finitely often a.s. Therefore\n\n\\[\n\\sup_m |X_m|<\\infty \\quad \\text{a.s.}\n\\]\n\nBut \\(S_n\\) stabilizes a.s. to a finite random variable, so\n\n\\[\n\\frac{S_n-\\mathbb E S_n}{\\sqrt{\\operatorname{Var}(S_n)}}\n=\n\\frac{S_n}{\\sqrt n}\n\\to 0\n\\quad \\text{a.s.}\n\\]\n\nThus the normalized sums converge in distribution to \\(\\delta_0\\), not \\(N(0,1)\\). So the statement is not true under the literal interpretation.\n\n---\n\n### What is true under the usual intended deterministic boundedness assumption\n\nSuppose instead that there exists a deterministic constant \\(M<\\infty\\) such that\n\n\\[\n|X_m|\\le M \\quad \\text{a.s. for all } m.\n\\]\n\nLet\n\n\\[\n\\sigma_m^2=\\operatorname{Var}(X_m),\n\\qquad \ns_n^2=\\operatorname{Var}(S_n)=\\sum_{m=1}^n \\sigma_m^2.\n\\]\n\nBy assumption,\n\n\\[\ns_n^2\\to\\infty.\n\\]\n\nSet\n\n\\[\nY_m=X_m-\\mathbb E X_m.\n\\]\n\nThen \\(\\mathbb E Y_m=0\\), \\(\\operatorname{Var}(Y_m)=\\sigma_m^2\\), and because \\(|X_m|\\le M\\),\n\n\\[\n|\\mathbb E X_m|\\le M,\n\\]\n\nso\n\n\\[\n|Y_m|\n=\n|X_m-\\mathbb E X_m|\n\\le |X_m|+|\\mathbb E X_m|\n\\le 2M\n\\quad \\text{a.s.}\n\\]\n\nWe apply the Lindeberg-Feller CLT to the triangular array\n\n\\[\n\\xi_{n,m}=\\frac{Y_m}{s_n},\n\\qquad 1\\le m\\le n.\n\\]\n\nThe variables in each row are independent, centered, and\n\n\\[\n\\sum_{m=1}^n \\operatorname{Var}(\\xi_{n,m})\n=\n\\frac1{s_n^2}\\sum_{m=1}^n \\sigma_m^2\n=1.\n\\]\n\nIt remains to verify the Lindeberg condition. For every \\(\\varepsilon>0\\),\n\n\\[\n\\frac1{s_n^2}\\sum_{m=1}^n \n\\mathbb E\\left[\nY_m^2 \\mathbf 1_{\\{|Y_m|>\\varepsilon s_n\\}}\n\\right].\n\\]\n\nSince \\(s_n\\to\\infty\\), for all sufficiently large \\(n\\),\n\n\\[\n\\varepsilon s_n>2M.\n\\]\n\nBut \\(|Y_m|\\le 2M\\) a.s., so for such \\(n\\),\n\n\\[\n\\mathbf 1_{\\{|Y_m|>\\varepsilon s_n\\}}=0\n\\quad \\text{a.s.}\n\\]\n\nTherefore the Lindeberg quantity is eventually zero, hence tends to zero. By the Lindeberg-Feller central limit theorem,\n\n\\[\n\\sum_{m=1}^n \\frac{Y_m}{s_n}\n=\n\\frac{S_n-\\mathbb E S_n}{\\sqrt{\\operatorname{Var}(S_n)}}\n\\xrightarrow{d} N(0,1).\n\\]\n\nSo the desired conclusion holds under the deterministic uniform boundedness condition.\n\n---\n\n## Part I(ii)\n\nWe construct independent \\(X_m\\) such that\n\n\\[\n\\frac{S_n-\\mathbb E S_n}{\\sqrt n}\\xrightarrow{d}N(0,1),\n\\]\n\nbut\n\n\\[\n\\frac{\\operatorname{Var}(S_n)}{n}\\not\\to 1.\n\\]\n\nLet \\(Z_1,Z_2,\\dots\\) be i.i.d. \\(N(0,1)\\). Independently, let \\(Y_m\\) satisfy\n\n\\[\n\\mathbb P(Y_m=m)=\\mathbb P(Y_m=-m)=\\frac1{2m^2},\n\\qquad \n\\mathbb P(Y_m=0)=1-\\frac1{m^2}.\n\\]\n\nDefine\n\n\\[\nX_m=Z_m+Y_m.\n\\]\n\nThen the \\(X_m\\)'s are independent. Also,\n\n\\[\n\\mathbb E Z_m=0,\\qquad \\mathbb E Y_m=0,\n\\]\n\nso\n\n\\[\n\\mathbb E X_m=0.\n\\]\n\nMoreover,\n\n\\[\n\\operatorname{Var}(Z_m)=1,\n\\]\n\nand\n\n\\[\n\\operatorname{Var}(Y_m)=\\mathbb E Y_m^2\n=m^2\\cdot \\frac1{m^2}=1.\n\\]\n\nSince \\(Z_m\\) and \\(Y_m\\) are independent,\n\n\\[\n\\operatorname{Var}(X_m)=\\operatorname{Var}(Z_m)+\\operatorname{Var}(Y_m)=2.\n\\]\n\nThus\n\n\\[\n\\operatorname{Var}(S_n)\n=\n\\sum_{m=1}^n \\operatorname{Var}(X_m)\n=\n2n,\n\\]\n\nand therefore\n\n\\[\n\\frac{\\operatorname{Var}(S_n)}{n}=2,\n\\]\n\nwhich certainly does not converge to \\(1\\).\n\nNow write\n\n\\[\nS_n=\\sum_{m=1}^n Z_m+\\sum_{m=1}^n Y_m.\n\\]\n\nFor the Gaussian part,\n\n\\[\n\\frac1{\\sqrt n}\\sum_{m=1}^n Z_m\\sim N(0,1)\n\\]\n\nfor every \\(n\\).\n\nFor the \\(Y_m\\)-part, note that\n\n\\[\n\\sum_{m=1}^\\infty \\mathbb P(Y_m\\neq 0)\n=\n\\sum_{m=1}^\\infty \\frac1{m^2}\n<\\infty.\n\\]\n\nBy Borel-Cantelli, \\(Y_m\\neq 0\\) only finitely often a.s. Hence\n\n\\[\n\\sum_{m=1}^n Y_m\n\\]\n\neventually stabilizes a.s. to a finite random variable. Therefore\n\n\\[\n\\frac1{\\sqrt n}\\sum_{m=1}^n Y_m\\to 0\n\\quad \\text{a.s.}\n\\]\n\nBy Slutsky's theorem,\n\n\\[\n\\frac{S_n-\\mathbb E S_n}{\\sqrt n}\n=\n\\frac1{\\sqrt n}\\sum_{m=1}^n Z_m\n+\n\\frac1{\\sqrt n}\\sum_{m=1}^n Y_m\n\\xrightarrow{d} N(0,1).\n\\]\n\nThus this example has\n\n\\[\n\\frac{S_n-\\mathbb E S_n}{\\sqrt n}\\xrightarrow{d}N(0,1),\n\\]\n\nwhile\n\n\\[\n\\frac{\\operatorname{Var}(S_n)}{n}=2\\not\\to 1.\n\\]\n\n"
+          }
+        ],
+        "phase": "final_answer",
+        "role": "assistant"
+      }
+    ]
+  },
+  "cost_usd": 0.12193,
+  "timing": {
+    "started": "2026-06-07T00:40:51.411134+00:00",
+    "ended": "2026-06-07T00:43:34.791692+00:00",
+    "seconds": 163.38
+  },
+  "error": null
+}

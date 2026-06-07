@@ -1,0 +1,64 @@
+{
+  "question_id": "2022-fall-applied-q6",
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "rep": 0,
+  "exam": {
+    "year": 2022,
+    "term": "fall",
+    "level": "ms",
+    "part": "applied"
+  },
+  "request": {
+    "system": "You are sitting a PhD-level qualifying examination in statistics. Solve the problem rigorously and completely. Show your work and reasoning, justify each step, and clearly state your final answer(s). If the problem has multiple parts, answer every part, labeled. If you invoke a known theorem, name it.",
+    "user": "[2022 fall ms applied — problem 6]\n\nTwo substances (Noops, Poons) each have 5 observations of crystallization rate $Y$ vs degrees Celsius $X \\in \\{-2,-1,0,1,2\\}$; fit $Y = a + bX + e$, $e \\sim N(0,\\sigma^2)$ iid. (1) Compute the LS slope estimates $\\hat b_1$ (Noops) and $\\hat b_2$ (Poons). (2) Find $\\hat a_1, \\hat a_2$. (3) Estimate $\\hat\\sigma$ for Noops. (4) Estimated variance of $\\hat b_1$ for Noops.",
+    "max_tokens": 24000,
+    "mode": {
+      "effort": "high"
+    }
+  },
+  "response": {
+    "id": "resp_07c73bbd0ffa27ea006a24b4b89b8481979bbec68a3ea63e8b",
+    "model": "gpt-5.5-2026-04-23",
+    "stop_reason": "completed",
+    "usage": {
+      "input_tokens": 223,
+      "output_tokens": 1494,
+      "output_tokens_details": {
+        "reasoning_tokens": 516
+      }
+    },
+    "thinking": "",
+    "text": "The numerical answers cannot be computed unless the five observed \\(Y\\)-values for Noops and Poons are provided. However, since the \\(X\\)-values are fixed at\n\n\\[\nX=-2,-1,0,1,2,\n\\]\n\nwe can write the least-squares estimates explicitly in terms of the observed \\(Y\\)'s.\n\nLet the Noops observations be\n\n\\[\ny_{1,-2},y_{1,-1},y_{1,0},y_{1,1},y_{1,2},\n\\]\n\nand the Poons observations be\n\n\\[\ny_{2,-2},y_{2,-1},y_{2,0},y_{2,1},y_{2,2}.\n\\]\n\nBecause\n\n\\[\n\\bar X=\\frac{-2-1+0+1+2}{5}=0,\n\\]\n\nand\n\n\\[\nS_{XX}=\\sum (X_i-\\bar X)^2=\\sum X_i^2=4+1+0+1+4=10,\n\\]\n\nthe formulas simplify.\n\n---\n\n### (1) Least-squares slope estimates\n\nFor Noops,\n\n\\[\n\\hat b_1\n=\n\\frac{\\sum X_iY_i}{\\sum X_i^2}\n=\n\\frac{-2y_{1,-2}-y_{1,-1}+y_{1,1}+2y_{1,2}}{10}.\n\\]\n\nFor Poons,\n\n\\[\n\\hat b_2\n=\n\\frac{\\sum X_iY_i}{\\sum X_i^2}\n=\n\\frac{-2y_{2,-2}-y_{2,-1}+y_{2,1}+2y_{2,2}}{10}.\n\\]\n\n---\n\n### (2) Least-squares intercept estimates\n\nSince \\(\\bar X=0\\),\n\n\\[\n\\hat a_j=\\bar Y_j-\\hat b_j\\bar X=\\bar Y_j.\n\\]\n\nThus for Noops,\n\n\\[\n\\hat a_1\n=\n\\bar y_1\n=\n\\frac{y_{1,-2}+y_{1,-1}+y_{1,0}+y_{1,1}+y_{1,2}}{5}.\n\\]\n\nFor Poons,\n\n\\[\n\\hat a_2\n=\n\\bar y_2\n=\n\\frac{y_{2,-2}+y_{2,-1}+y_{2,0}+y_{2,1}+y_{2,2}}{5}.\n\\]\n\n---\n\n### (3) Estimate of \\(\\sigma\\) for Noops\n\nThe residual sum of squares for Noops is\n\n\\[\nSSE_1\n=\n\\sum_{x=-2}^{2}\\left(y_{1,x}-\\hat a_1-\\hat b_1x\\right)^2.\n\\]\n\nSince two parameters, \\(a\\) and \\(b\\), are estimated, the unbiased estimator of \\(\\sigma^2\\) is\n\n\\[\n\\hat\\sigma_1^2=\\frac{SSE_1}{5-2}=\\frac{SSE_1}{3}.\n\\]\n\nTherefore,\n\n\\[\n\\boxed{\n\\hat\\sigma_1=\\sqrt{\\frac{SSE_1}{3}}\n}\n\\]\n\nwhere\n\n\\[\nSSE_1\n=\n\\sum_{x=-2}^{2}y_{1,x}^2\n-\n\\frac{\\left(\\sum_{x=-2}^{2}y_{1,x}\\right)^2}{5}\n-\n\\frac{\\left(\\sum_{x=-2}^{2}xy_{1,x}\\right)^2}{10}.\n\\]\n\n---\n\n### (4) Estimated variance of \\(\\hat b_1\\) for Noops\n\nIn simple linear regression,\n\n\\[\n\\operatorname{Var}(\\hat b_1)=\\frac{\\sigma^2}{S_{XX}}.\n\\]\n\nUsing \\(S_{XX}=10\\) and replacing \\(\\sigma^2\\) by \\(\\hat\\sigma_1^2\\),\n\n\\[\n\\widehat{\\operatorname{Var}}(\\hat b_1)\n=\n\\frac{\\hat\\sigma_1^2}{10}.\n\\]\n\nEquivalently,\n\n\\[\n\\boxed{\n\\widehat{\\operatorname{Var}}(\\hat b_1)\n=\n\\frac{SSE_1}{30}\n}\n\\]\n\nand the estimated standard error is\n\n\\[\n\\widehat{\\operatorname{SE}}(\\hat b_1)\n=\n\\sqrt{\\frac{\\hat\\sigma_1^2}{10}}.\n\\]\n\nNumerical values require the actual observed crystallization rates \\(Y\\).",
+    "raw_output": [
+      {
+        "id": "rs_07c73bbd0ffa27ea006a24b4b932148197a7ddbad08a47fcab",
+        "type": "reasoning",
+        "content": [],
+        "summary": []
+      },
+      {
+        "id": "msg_07c73bbd0ffa27ea006a24b4c4644481979af79e96f9b30ce2",
+        "type": "message",
+        "status": "completed",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "The numerical answers cannot be computed unless the five observed \\(Y\\)-values for Noops and Poons are provided. However, since the \\(X\\)-values are fixed at\n\n\\[\nX=-2,-1,0,1,2,\n\\]\n\nwe can write the least-squares estimates explicitly in terms of the observed \\(Y\\)'s.\n\nLet the Noops observations be\n\n\\[\ny_{1,-2},y_{1,-1},y_{1,0},y_{1,1},y_{1,2},\n\\]\n\nand the Poons observations be\n\n\\[\ny_{2,-2},y_{2,-1},y_{2,0},y_{2,1},y_{2,2}.\n\\]\n\nBecause\n\n\\[\n\\bar X=\\frac{-2-1+0+1+2}{5}=0,\n\\]\n\nand\n\n\\[\nS_{XX}=\\sum (X_i-\\bar X)^2=\\sum X_i^2=4+1+0+1+4=10,\n\\]\n\nthe formulas simplify.\n\n---\n\n### (1) Least-squares slope estimates\n\nFor Noops,\n\n\\[\n\\hat b_1\n=\n\\frac{\\sum X_iY_i}{\\sum X_i^2}\n=\n\\frac{-2y_{1,-2}-y_{1,-1}+y_{1,1}+2y_{1,2}}{10}.\n\\]\n\nFor Poons,\n\n\\[\n\\hat b_2\n=\n\\frac{\\sum X_iY_i}{\\sum X_i^2}\n=\n\\frac{-2y_{2,-2}-y_{2,-1}+y_{2,1}+2y_{2,2}}{10}.\n\\]\n\n---\n\n### (2) Least-squares intercept estimates\n\nSince \\(\\bar X=0\\),\n\n\\[\n\\hat a_j=\\bar Y_j-\\hat b_j\\bar X=\\bar Y_j.\n\\]\n\nThus for Noops,\n\n\\[\n\\hat a_1\n=\n\\bar y_1\n=\n\\frac{y_{1,-2}+y_{1,-1}+y_{1,0}+y_{1,1}+y_{1,2}}{5}.\n\\]\n\nFor Poons,\n\n\\[\n\\hat a_2\n=\n\\bar y_2\n=\n\\frac{y_{2,-2}+y_{2,-1}+y_{2,0}+y_{2,1}+y_{2,2}}{5}.\n\\]\n\n---\n\n### (3) Estimate of \\(\\sigma\\) for Noops\n\nThe residual sum of squares for Noops is\n\n\\[\nSSE_1\n=\n\\sum_{x=-2}^{2}\\left(y_{1,x}-\\hat a_1-\\hat b_1x\\right)^2.\n\\]\n\nSince two parameters, \\(a\\) and \\(b\\), are estimated, the unbiased estimator of \\(\\sigma^2\\) is\n\n\\[\n\\hat\\sigma_1^2=\\frac{SSE_1}{5-2}=\\frac{SSE_1}{3}.\n\\]\n\nTherefore,\n\n\\[\n\\boxed{\n\\hat\\sigma_1=\\sqrt{\\frac{SSE_1}{3}}\n}\n\\]\n\nwhere\n\n\\[\nSSE_1\n=\n\\sum_{x=-2}^{2}y_{1,x}^2\n-\n\\frac{\\left(\\sum_{x=-2}^{2}y_{1,x}\\right)^2}{5}\n-\n\\frac{\\left(\\sum_{x=-2}^{2}xy_{1,x}\\right)^2}{10}.\n\\]\n\n---\n\n### (4) Estimated variance of \\(\\hat b_1\\) for Noops\n\nIn simple linear regression,\n\n\\[\n\\operatorname{Var}(\\hat b_1)=\\frac{\\sigma^2}{S_{XX}}.\n\\]\n\nUsing \\(S_{XX}=10\\) and replacing \\(\\sigma^2\\) by \\(\\hat\\sigma_1^2\\),\n\n\\[\n\\widehat{\\operatorname{Var}}(\\hat b_1)\n=\n\\frac{\\hat\\sigma_1^2}{10}.\n\\]\n\nEquivalently,\n\n\\[\n\\boxed{\n\\widehat{\\operatorname{Var}}(\\hat b_1)\n=\n\\frac{SSE_1}{30}\n}\n\\]\n\nand the estimated standard error is\n\n\\[\n\\widehat{\\operatorname{SE}}(\\hat b_1)\n=\n\\sqrt{\\frac{\\hat\\sigma_1^2}{10}}.\n\\]\n\nNumerical values require the actual observed crystallization rates \\(Y\\)."
+          }
+        ],
+        "phase": "final_answer",
+        "role": "assistant"
+      }
+    ]
+  },
+  "cost_usd": 0.02353,
+  "timing": {
+    "started": "2026-06-07T00:00:56.473470+00:00",
+    "ended": "2026-06-07T00:01:19.586708+00:00",
+    "seconds": 23.11
+  },
+  "error": null
+}

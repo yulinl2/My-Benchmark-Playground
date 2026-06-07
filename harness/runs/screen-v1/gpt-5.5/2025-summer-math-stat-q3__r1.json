@@ -1,0 +1,68 @@
+{
+  "question_id": "2025-summer-math-stat-q3",
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "rep": 1,
+  "exam": {
+    "year": 2025,
+    "term": "summer",
+    "part": "math-stat"
+  },
+  "request": {
+    "system": "You are sitting a PhD-level qualifying examination in statistics. Solve the problem rigorously and completely. Show your work and reasoning, justify each step, and clearly state your final answer(s). If the problem has multiple parts, answer every part, labeled. If you invoke a known theorem, name it.",
+    "user": "[2025 summer phd math-stat — problem 3]\n\nPart III, Problem 3 (25 pts). Let $\\{(X_i, Y_i, R_i)\\}_{i=1}^n$ be i.i.d. with covariates $X_i \\in \\mathbb{R}^d$, response $Y_i$, and missingness indicator $R_i \\in \\{0, 1\\}$ ($R_i = 1$ if $Y_i$ observed). Assume (a) $Y_i \\mid X_i, R_i = 1 \\stackrel{d}{=} Y_i \\mid X_i, R_i = 0$, and (b) $X_i \\mid R_i = 1 \\sim P_X$, $X_i \\mid R_i = 0 \\sim Q_X$ (possibly different). Target: $\\beta^* = \\arg\\min_\\beta \\mathbb{E}[(Y_i - X_i^\\top\\beta)^2 \\mid R_i = 0]$.\n(i) Show $\\mathbb{E}[(Y_i - X_i^\\top\\beta)^2 \\mid R_i = 0] = \\mathbb{E}[(Y_i - X_i^\\top\\beta)^2 \\frac{f_{X|R=0}(X_i)}{f_{X|R=1}(X_i)} \\mid R_i = 1]$.\n(ii) Prove $\\frac{f_{X|R=0}(x)}{f_{X|R=1}(x)} = \\frac{P(R=0\\mid x)}{P(R=1\\mid x)}\\cdot\\frac{P(R=1)}{P(R=0)}$.\n(iii) Apply (i) and (ii) to construct an estimator of $\\beta^*$.",
+    "max_tokens": 24000,
+    "mode": {
+      "effort": "high"
+    }
+  },
+  "response": {
+    "id": "resp_06fe2da147fd2ecf006a24bdb1cc488193a3ef0837c2f6443e",
+    "model": "gpt-5.5-2026-04-23",
+    "stop_reason": "completed",
+    "usage": {
+      "input_tokens": 462,
+      "output_tokens": 7078,
+      "output_tokens_details": {
+        "reasoning_tokens": 5696
+      }
+    },
+    "thinking": "**Clarifying estimation justification**\n\nThe developer is emphasizing a rigorous approach. I need to add a paragraph explaining the estimator targets β*: if the propensities are known, the sample objective converges uniformly on compacts to a constant multiple of the target risk due to the Law of Large Numbers (LLN), which leads to the argmin theorem. I can plug in consistent estimates \\hat e. Still, it seems the problem doesn't explicitly ask for a proof, but I can still present the statement.",
+    "text": "Let  \n\\[\np_r(x)=f_{X\\mid R=r}(x),\\qquad \\pi_r=P(R=r),\\qquad e(x)=P(R=1\\mid X=x).\n\\]\nAssume \\(\\pi_0,\\pi_1>0\\), finite second moments, and the usual positivity/overlap condition\n\\[\np_0(x)>0 \\implies p_1(x)>0,\n\\]\nso that \\(p_0/p_1\\) is well-defined \\(Q_X\\)-a.s.\n\n---\n\n## (i)\n\nLet\n\\[\n\\ell_\\beta(x,y)=(y-x^\\top\\beta)^2.\n\\]\nBy the law of iterated expectation,\n\\[\n\\mathbb E[\\ell_\\beta(X,Y)\\mid R=0]\n=\n\\int \\mathbb E[\\ell_\\beta(x,Y)\\mid X=x,R=0]\\,p_0(x)\\,dx.\n\\]\nAssumption (a) says that conditional on \\(X=x\\), the distribution of \\(Y\\) is the same for respondents and nonrespondents, so\n\\[\n\\mathbb E[\\ell_\\beta(x,Y)\\mid X=x,R=0]\n=\n\\mathbb E[\\ell_\\beta(x,Y)\\mid X=x,R=1].\n\\]\nTherefore\n\\[\n\\begin{aligned}\n\\mathbb E[\\ell_\\beta(X,Y)\\mid R=0]\n&=\n\\int \\mathbb E[\\ell_\\beta(x,Y)\\mid X=x,R=1]\\,p_0(x)\\,dx\\\\\n&=\n\\int \\mathbb E[\\ell_\\beta(x,Y)\\mid X=x,R=1]\\,\n\\frac{p_0(x)}{p_1(x)}\\,p_1(x)\\,dx\\\\\n&=\n\\mathbb E\\left[\n\\ell_\\beta(X,Y)\\frac{p_0(X)}{p_1(X)}\n\\mid R=1\n\\right].\n\\end{aligned}\n\\]\nThus\n\\[\n\\boxed{\n\\mathbb E[(Y-X^\\top\\beta)^2\\mid R=0]\n=\n\\mathbb E\\left[\n(Y-X^\\top\\beta)^2\n\\frac{f_{X\\mid R=0}(X)}{f_{X\\mid R=1}(X)}\n\\mid R=1\n\\right].\n}\n\\]\n\n---\n\n## (ii)\n\nBy Bayes’ theorem,\n\\[\nP(R=r\\mid X=x)\n=\n\\frac{f_{X\\mid R=r}(x)P(R=r)}{f_X(x)},\n\\qquad r\\in\\{0,1\\}.\n\\]\nHence\n\\[\n\\frac{P(R=0\\mid X=x)}{P(R=1\\mid X=x)}\n=\n\\frac{f_{X\\mid R=0}(x)P(R=0)}\n{f_{X\\mid R=1}(x)P(R=1)}.\n\\]\nRearranging gives\n\\[\n\\boxed{\n\\frac{f_{X\\mid R=0}(x)}{f_{X\\mid R=1}(x)}\n=\n\\frac{P(R=0\\mid X=x)}{P(R=1\\mid X=x)}\n\\cdot\n\\frac{P(R=1)}{P(R=0)}.\n}\n\\]\nEquivalently, writing \\(e(x)=P(R=1\\mid X=x)\\),\n\\[\n\\frac{f_{X\\mid R=0}(x)}{f_{X\\mid R=1}(x)}\n=\n\\frac{1-e(x)}{e(x)}\\cdot \\frac{\\pi_1}{\\pi_0}.\n\\]\n\n---\n\n## (iii)\n\nFrom parts (i) and (ii),\n\\[\n\\beta^*\n=\n\\arg\\min_\\beta\n\\mathbb E\\left[\n(Y-X^\\top\\beta)^2 w(X)\n\\mid R=1\n\\right],\n\\]\nwhere\n\\[\nw(x)\n=\n\\frac{f_{X\\mid R=0}(x)}{f_{X\\mid R=1}(x)}\n=\n\\frac{1-e(x)}{e(x)}\\cdot \\frac{\\pi_1}{\\pi_0}.\n\\]\n\nSince the factor \\(\\pi_1/\\pi_0\\) is constant in \\(x\\), it does not affect the minimizer. Thus one may equivalently use weights proportional to\n\\[\n\\omega(x)=\\frac{1-e(x)}{e(x)}.\n\\]\n\nEstimate \\(e(x)=P(R=1\\mid X=x)\\) from the observed pairs \\((X_i,R_i)\\), for example by logistic regression or another classification method. Let \\(\\widehat e(x)\\) be the fitted propensity score. Define\n\\[\n\\widehat \\omega_i\n=\n\\frac{1-\\widehat e(X_i)}{\\widehat e(X_i)}.\n\\]\n\nThen an inverse-odds weighted least squares estimator is\n\\[\n\\boxed{\n\\widehat\\beta\n=\n\\arg\\min_{\\beta\\in\\mathbb R^d}\n\\sum_{i=1}^n\nR_i \\widehat\\omega_i\n\\left(Y_i-X_i^\\top\\beta\\right)^2.\n}\n\\]\nOnly observations with \\(R_i=1\\) contribute, which is necessary because \\(Y_i\\) is observed only for those units.\n\nIf the weighted design matrix is nonsingular, the estimator has the closed form\n\\[\n\\boxed{\n\\widehat\\beta\n=\n\\left(\n\\sum_{i=1}^n R_i\\widehat\\omega_i X_iX_i^\\top\n\\right)^{-1}\n\\left(\n\\sum_{i=1}^n R_i\\widehat\\omega_i X_iY_i\n\\right).\n}\n\\]\n\nEquivalently, using the normalized density-ratio weights,\n\\[\n\\widehat w_i\n=\n\\frac{1-\\widehat e(X_i)}{\\widehat e(X_i)}\n\\cdot\n\\frac{\\widehat\\pi_1}{\\widehat\\pi_0},\n\\qquad\n\\widehat\\pi_r=\\frac1n\\sum_{i=1}^n \\mathbf 1\\{R_i=r\\},\n\\]\ngives the same minimizer because \\(\\widehat\\pi_1/\\widehat\\pi_0\\) is a common positive multiplicative constant.",
+    "raw_output": [
+      {
+        "id": "rs_06fe2da147fd2ecf006a24bdb2a9708193852f8dd188b4d267",
+        "type": "reasoning",
+        "content": [],
+        "summary": [
+          {
+            "type": "summary_text",
+            "text": "**Clarifying estimation justification**\n\nThe developer is emphasizing a rigorous approach. I need to add a paragraph explaining the estimator targets β*: if the propensities are known, the sample objective converges uniformly on compacts to a constant multiple of the target risk due to the Law of Large Numbers (LLN), which leads to the argmin theorem. I can plug in consistent estimates \\hat e. Still, it seems the problem doesn't explicitly ask for a proof, but I can still present the statement."
+          }
+        ]
+      },
+      {
+        "id": "msg_06fe2da147fd2ecf006a24be239a108193a71377e4aa113545",
+        "type": "message",
+        "status": "completed",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "Let  \n\\[\np_r(x)=f_{X\\mid R=r}(x),\\qquad \\pi_r=P(R=r),\\qquad e(x)=P(R=1\\mid X=x).\n\\]\nAssume \\(\\pi_0,\\pi_1>0\\), finite second moments, and the usual positivity/overlap condition\n\\[\np_0(x)>0 \\implies p_1(x)>0,\n\\]\nso that \\(p_0/p_1\\) is well-defined \\(Q_X\\)-a.s.\n\n---\n\n## (i)\n\nLet\n\\[\n\\ell_\\beta(x,y)=(y-x^\\top\\beta)^2.\n\\]\nBy the law of iterated expectation,\n\\[\n\\mathbb E[\\ell_\\beta(X,Y)\\mid R=0]\n=\n\\int \\mathbb E[\\ell_\\beta(x,Y)\\mid X=x,R=0]\\,p_0(x)\\,dx.\n\\]\nAssumption (a) says that conditional on \\(X=x\\), the distribution of \\(Y\\) is the same for respondents and nonrespondents, so\n\\[\n\\mathbb E[\\ell_\\beta(x,Y)\\mid X=x,R=0]\n=\n\\mathbb E[\\ell_\\beta(x,Y)\\mid X=x,R=1].\n\\]\nTherefore\n\\[\n\\begin{aligned}\n\\mathbb E[\\ell_\\beta(X,Y)\\mid R=0]\n&=\n\\int \\mathbb E[\\ell_\\beta(x,Y)\\mid X=x,R=1]\\,p_0(x)\\,dx\\\\\n&=\n\\int \\mathbb E[\\ell_\\beta(x,Y)\\mid X=x,R=1]\\,\n\\frac{p_0(x)}{p_1(x)}\\,p_1(x)\\,dx\\\\\n&=\n\\mathbb E\\left[\n\\ell_\\beta(X,Y)\\frac{p_0(X)}{p_1(X)}\n\\mid R=1\n\\right].\n\\end{aligned}\n\\]\nThus\n\\[\n\\boxed{\n\\mathbb E[(Y-X^\\top\\beta)^2\\mid R=0]\n=\n\\mathbb E\\left[\n(Y-X^\\top\\beta)^2\n\\frac{f_{X\\mid R=0}(X)}{f_{X\\mid R=1}(X)}\n\\mid R=1\n\\right].\n}\n\\]\n\n---\n\n## (ii)\n\nBy Bayes’ theorem,\n\\[\nP(R=r\\mid X=x)\n=\n\\frac{f_{X\\mid R=r}(x)P(R=r)}{f_X(x)},\n\\qquad r\\in\\{0,1\\}.\n\\]\nHence\n\\[\n\\frac{P(R=0\\mid X=x)}{P(R=1\\mid X=x)}\n=\n\\frac{f_{X\\mid R=0}(x)P(R=0)}\n{f_{X\\mid R=1}(x)P(R=1)}.\n\\]\nRearranging gives\n\\[\n\\boxed{\n\\frac{f_{X\\mid R=0}(x)}{f_{X\\mid R=1}(x)}\n=\n\\frac{P(R=0\\mid X=x)}{P(R=1\\mid X=x)}\n\\cdot\n\\frac{P(R=1)}{P(R=0)}.\n}\n\\]\nEquivalently, writing \\(e(x)=P(R=1\\mid X=x)\\),\n\\[\n\\frac{f_{X\\mid R=0}(x)}{f_{X\\mid R=1}(x)}\n=\n\\frac{1-e(x)}{e(x)}\\cdot \\frac{\\pi_1}{\\pi_0}.\n\\]\n\n---\n\n## (iii)\n\nFrom parts (i) and (ii),\n\\[\n\\beta^*\n=\n\\arg\\min_\\beta\n\\mathbb E\\left[\n(Y-X^\\top\\beta)^2 w(X)\n\\mid R=1\n\\right],\n\\]\nwhere\n\\[\nw(x)\n=\n\\frac{f_{X\\mid R=0}(x)}{f_{X\\mid R=1}(x)}\n=\n\\frac{1-e(x)}{e(x)}\\cdot \\frac{\\pi_1}{\\pi_0}.\n\\]\n\nSince the factor \\(\\pi_1/\\pi_0\\) is constant in \\(x\\), it does not affect the minimizer. Thus one may equivalently use weights proportional to\n\\[\n\\omega(x)=\\frac{1-e(x)}{e(x)}.\n\\]\n\nEstimate \\(e(x)=P(R=1\\mid X=x)\\) from the observed pairs \\((X_i,R_i)\\), for example by logistic regression or another classification method. Let \\(\\widehat e(x)\\) be the fitted propensity score. Define\n\\[\n\\widehat \\omega_i\n=\n\\frac{1-\\widehat e(X_i)}{\\widehat e(X_i)}.\n\\]\n\nThen an inverse-odds weighted least squares estimator is\n\\[\n\\boxed{\n\\widehat\\beta\n=\n\\arg\\min_{\\beta\\in\\mathbb R^d}\n\\sum_{i=1}^n\nR_i \\widehat\\omega_i\n\\left(Y_i-X_i^\\top\\beta\\right)^2.\n}\n\\]\nOnly observations with \\(R_i=1\\) contribute, which is necessary because \\(Y_i\\) is observed only for those units.\n\nIf the weighted design matrix is nonsingular, the estimator has the closed form\n\\[\n\\boxed{\n\\widehat\\beta\n=\n\\left(\n\\sum_{i=1}^n R_i\\widehat\\omega_i X_iX_i^\\top\n\\right)^{-1}\n\\left(\n\\sum_{i=1}^n R_i\\widehat\\omega_i X_iY_i\n\\right).\n}\n\\]\n\nEquivalently, using the normalized density-ratio weights,\n\\[\n\\widehat w_i\n=\n\\frac{1-\\widehat e(X_i)}{\\widehat e(X_i)}\n\\cdot\n\\frac{\\widehat\\pi_1}{\\widehat\\pi_0},\n\\qquad\n\\widehat\\pi_r=\\frac1n\\sum_{i=1}^n \\mathbf 1\\{R_i=r\\},\n\\]\ngives the same minimizer because \\(\\widehat\\pi_1/\\widehat\\pi_0\\) is a common positive multiplicative constant."
+          }
+        ],
+        "phase": "final_answer",
+        "role": "assistant"
+      }
+    ]
+  },
+  "cost_usd": 0.10848,
+  "timing": {
+    "started": "2026-06-07T00:39:13.676202+00:00",
+    "ended": "2026-06-07T00:41:24.286566+00:00",
+    "seconds": 130.61
+  },
+  "error": null
+}

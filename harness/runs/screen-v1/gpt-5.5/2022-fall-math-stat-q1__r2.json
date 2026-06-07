@@ -1,0 +1,73 @@
+{
+  "question_id": "2022-fall-math-stat-q1",
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "rep": 2,
+  "exam": {
+    "year": 2022,
+    "term": "fall",
+    "level": "ms",
+    "part": "math-stat"
+  },
+  "request": {
+    "system": "You are sitting a PhD-level qualifying examination in statistics. Solve the problem rigorously and completely. Show your work and reasoning, justify each step, and clearly state your final answer(s). If the problem has multiple parts, answer every part, labeled. If you invoke a known theorem, name it.",
+    "user": "[2022 fall ms math-stat — problem 1]\n\nLet $(X_1, Y_1), \\dots, (X_n, Y_n)$ be i.i.d. with $X_i \\sim N(0,1)$ and $Y_i \\mid X_i = x \\sim N(x^2\\theta, 1)$. (1) Find the MLE $\\hat\\theta_n$ of $\\theta$. (2) Find the limiting distribution of $\\sqrt{n}(\\hat\\theta_n - \\theta)$.",
+    "max_tokens": 24000,
+    "mode": {
+      "effort": "high"
+    }
+  },
+  "response": {
+    "id": "resp_0110f5b3896fa594006a24b52a393081978da4a4081838540b",
+    "model": "gpt-5.5-2026-04-23",
+    "stop_reason": "completed",
+    "usage": {
+      "input_tokens": 183,
+      "output_tokens": 2010,
+      "output_tokens_details": {
+        "reasoning_tokens": 1034
+      }
+    },
+    "thinking": "**Examining MLE calculations**\n\nI'm working through maximum likelihood estimation under the assumption that theta is in R. If I consider a constrained subset, I need to demonstrate the full likelihood product, involving various components. Actually, I'm thinking about the joint density for each pair and how the log form translates. It looks like I need to maximize negative sums and analyze derivatives. However, there are cases, like when all x_i = 0, that can lead to identification issues. I need to consider the limit distribution as well.\n**Clarifying MLE notation**\n\nI need to be careful with notation, like distinguishing between \\(X_i^2\\) and \\(X^4\\) when calculating the Maximum Likelihood Estimator (MLE). Specifically, it’s \\(\\hat{\\theta} = \\frac{\\sum X_i^2 Y_i}{\\sum X_i^4}\\), not \\(\\frac{\\sum X_i Y_i}{\\sum X_i^?}\\). I’m also considering the distribution of \\(X_i\\) in relation to \\(\\theta\\) and how the parameter space impacts the MLE. I want to ensure my final response maintains rigor without unnecessary details. Let's finalize this!",
+    "text": "Assume the parameter space is \\(\\Theta=\\mathbb R\\). The joint density of \\((X_i,Y_i)\\) is\n\n\\[\nf_\\theta(x,y)=\\frac{1}{\\sqrt{2\\pi}}e^{-x^2/2}\n\\frac{1}{\\sqrt{2\\pi}}\\exp\\left\\{-\\frac12(y-\\theta x^2)^2\\right\\}.\n\\]\n\nThus the log-likelihood, up to constants not depending on \\(\\theta\\), is\n\n\\[\n\\ell_n(\\theta)\n=\n-\\frac12\\sum_{i=1}^n (Y_i-\\theta X_i^2)^2.\n\\]\n\n## (1) MLE of \\(\\theta\\)\n\nDifferentiate:\n\n\\[\n\\frac{\\partial \\ell_n(\\theta)}{\\partial \\theta}\n=\n\\sum_{i=1}^n X_i^2(Y_i-\\theta X_i^2).\n\\]\n\nSetting this equal to \\(0\\),\n\n\\[\n\\sum_{i=1}^n X_i^2Y_i-\\theta \\sum_{i=1}^n X_i^4=0.\n\\]\n\nTherefore, provided \\(\\sum_{i=1}^n X_i^4>0\\),\n\n\\[\n\\boxed{\n\\hat\\theta_n\n=\n\\frac{\\sum_{i=1}^n X_i^2Y_i}{\\sum_{i=1}^n X_i^4}\n}.\n\\]\n\nSince \\(X_i\\sim N(0,1)\\), we have \\(\\mathbb P(\\sum_i X_i^4>0)=1\\), so the MLE is unique almost surely.\n\nAlso,\n\n\\[\n\\frac{\\partial^2 \\ell_n(\\theta)}{\\partial \\theta^2}\n=\n-\\sum_{i=1}^n X_i^4<0\n\\]\n\nalmost surely, so this critical point is indeed the global maximizer.\n\n---\n\n## (2) Limiting distribution of \\(\\sqrt n(\\hat\\theta_n-\\theta)\\)\n\nWrite\n\n\\[\nY_i=\\theta X_i^2+\\varepsilon_i,\n\\]\n\nwhere \\(\\varepsilon_i\\mid X_i\\sim N(0,1)\\). In fact, from the joint density, \\(\\varepsilon_i=Y_i-\\theta X_i^2\\) is independent of \\(X_i\\) and \\(\\varepsilon_i\\sim N(0,1)\\).\n\nThen\n\n\\[\n\\hat\\theta_n\n=\n\\frac{\\sum_{i=1}^n X_i^2(\\theta X_i^2+\\varepsilon_i)}\n{\\sum_{i=1}^n X_i^4}\n=\n\\theta+\n\\frac{\\sum_{i=1}^n X_i^2\\varepsilon_i}\n{\\sum_{i=1}^n X_i^4}.\n\\]\n\nHence\n\n\\[\n\\sqrt n(\\hat\\theta_n-\\theta)\n=\n\\frac{\\frac1{\\sqrt n}\\sum_{i=1}^n X_i^2\\varepsilon_i}\n{\\frac1n\\sum_{i=1}^n X_i^4}.\n\\]\n\nNow\n\n\\[\n\\mathbb E[X_i^2\\varepsilon_i]=0,\n\\]\n\nand since \\(X_i\\) and \\(\\varepsilon_i\\) are independent,\n\n\\[\n\\operatorname{Var}(X_i^2\\varepsilon_i)\n=\n\\mathbb E[X_i^4]\\mathbb E[\\varepsilon_i^2]\n=\n3\\cdot 1\n=\n3.\n\\]\n\nTherefore, by the central limit theorem,\n\n\\[\n\\frac1{\\sqrt n}\\sum_{i=1}^n X_i^2\\varepsilon_i\n\\overset{d}{\\longrightarrow}\nN(0,3).\n\\]\n\nAlso, by the law of large numbers,\n\n\\[\n\\frac1n\\sum_{i=1}^n X_i^4\n\\overset{p}{\\longrightarrow}\n\\mathbb E[X_i^4]=3.\n\\]\n\nThus, by Slutsky’s theorem,\n\n\\[\n\\sqrt n(\\hat\\theta_n-\\theta)\n\\overset{d}{\\longrightarrow}\n\\frac{N(0,3)}{3}\n=\nN\\left(0,\\frac13\\right).\n\\]\n\nSo the limiting distribution is\n\n\\[\n\\boxed{\n\\sqrt n(\\hat\\theta_n-\\theta)\n\\overset{d}{\\longrightarrow}\nN\\left(0,\\frac13\\right)\n}.\n\\]",
+    "raw_output": [
+      {
+        "id": "rs_0110f5b3896fa594006a24b52aed60819788da4a224b85d091",
+        "type": "reasoning",
+        "content": [],
+        "summary": [
+          {
+            "type": "summary_text",
+            "text": "**Examining MLE calculations**\n\nI'm working through maximum likelihood estimation under the assumption that theta is in R. If I consider a constrained subset, I need to demonstrate the full likelihood product, involving various components. Actually, I'm thinking about the joint density for each pair and how the log form translates. It looks like I need to maximize negative sums and analyze derivatives. However, there are cases, like when all x_i = 0, that can lead to identification issues. I need to consider the limit distribution as well."
+          },
+          {
+            "type": "summary_text",
+            "text": "**Clarifying MLE notation**\n\nI need to be careful with notation, like distinguishing between \\(X_i^2\\) and \\(X^4\\) when calculating the Maximum Likelihood Estimator (MLE). Specifically, it’s \\(\\hat{\\theta} = \\frac{\\sum X_i^2 Y_i}{\\sum X_i^4}\\), not \\(\\frac{\\sum X_i Y_i}{\\sum X_i^?}\\). I’m also considering the distribution of \\(X_i\\) in relation to \\(\\theta\\) and how the parameter space impacts the MLE. I want to ensure my final response maintains rigor without unnecessary details. Let's finalize this!"
+          }
+        ]
+      },
+      {
+        "id": "msg_0110f5b3896fa594006a24b5455dec8197a5b14e4f9b603fd9",
+        "type": "message",
+        "status": "completed",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "Assume the parameter space is \\(\\Theta=\\mathbb R\\). The joint density of \\((X_i,Y_i)\\) is\n\n\\[\nf_\\theta(x,y)=\\frac{1}{\\sqrt{2\\pi}}e^{-x^2/2}\n\\frac{1}{\\sqrt{2\\pi}}\\exp\\left\\{-\\frac12(y-\\theta x^2)^2\\right\\}.\n\\]\n\nThus the log-likelihood, up to constants not depending on \\(\\theta\\), is\n\n\\[\n\\ell_n(\\theta)\n=\n-\\frac12\\sum_{i=1}^n (Y_i-\\theta X_i^2)^2.\n\\]\n\n## (1) MLE of \\(\\theta\\)\n\nDifferentiate:\n\n\\[\n\\frac{\\partial \\ell_n(\\theta)}{\\partial \\theta}\n=\n\\sum_{i=1}^n X_i^2(Y_i-\\theta X_i^2).\n\\]\n\nSetting this equal to \\(0\\),\n\n\\[\n\\sum_{i=1}^n X_i^2Y_i-\\theta \\sum_{i=1}^n X_i^4=0.\n\\]\n\nTherefore, provided \\(\\sum_{i=1}^n X_i^4>0\\),\n\n\\[\n\\boxed{\n\\hat\\theta_n\n=\n\\frac{\\sum_{i=1}^n X_i^2Y_i}{\\sum_{i=1}^n X_i^4}\n}.\n\\]\n\nSince \\(X_i\\sim N(0,1)\\), we have \\(\\mathbb P(\\sum_i X_i^4>0)=1\\), so the MLE is unique almost surely.\n\nAlso,\n\n\\[\n\\frac{\\partial^2 \\ell_n(\\theta)}{\\partial \\theta^2}\n=\n-\\sum_{i=1}^n X_i^4<0\n\\]\n\nalmost surely, so this critical point is indeed the global maximizer.\n\n---\n\n## (2) Limiting distribution of \\(\\sqrt n(\\hat\\theta_n-\\theta)\\)\n\nWrite\n\n\\[\nY_i=\\theta X_i^2+\\varepsilon_i,\n\\]\n\nwhere \\(\\varepsilon_i\\mid X_i\\sim N(0,1)\\). In fact, from the joint density, \\(\\varepsilon_i=Y_i-\\theta X_i^2\\) is independent of \\(X_i\\) and \\(\\varepsilon_i\\sim N(0,1)\\).\n\nThen\n\n\\[\n\\hat\\theta_n\n=\n\\frac{\\sum_{i=1}^n X_i^2(\\theta X_i^2+\\varepsilon_i)}\n{\\sum_{i=1}^n X_i^4}\n=\n\\theta+\n\\frac{\\sum_{i=1}^n X_i^2\\varepsilon_i}\n{\\sum_{i=1}^n X_i^4}.\n\\]\n\nHence\n\n\\[\n\\sqrt n(\\hat\\theta_n-\\theta)\n=\n\\frac{\\frac1{\\sqrt n}\\sum_{i=1}^n X_i^2\\varepsilon_i}\n{\\frac1n\\sum_{i=1}^n X_i^4}.\n\\]\n\nNow\n\n\\[\n\\mathbb E[X_i^2\\varepsilon_i]=0,\n\\]\n\nand since \\(X_i\\) and \\(\\varepsilon_i\\) are independent,\n\n\\[\n\\operatorname{Var}(X_i^2\\varepsilon_i)\n=\n\\mathbb E[X_i^4]\\mathbb E[\\varepsilon_i^2]\n=\n3\\cdot 1\n=\n3.\n\\]\n\nTherefore, by the central limit theorem,\n\n\\[\n\\frac1{\\sqrt n}\\sum_{i=1}^n X_i^2\\varepsilon_i\n\\overset{d}{\\longrightarrow}\nN(0,3).\n\\]\n\nAlso, by the law of large numbers,\n\n\\[\n\\frac1n\\sum_{i=1}^n X_i^4\n\\overset{p}{\\longrightarrow}\n\\mathbb E[X_i^4]=3.\n\\]\n\nThus, by Slutsky’s theorem,\n\n\\[\n\\sqrt n(\\hat\\theta_n-\\theta)\n\\overset{d}{\\longrightarrow}\n\\frac{N(0,3)}{3}\n=\nN\\left(0,\\frac13\\right).\n\\]\n\nSo the limiting distribution is\n\n\\[\n\\boxed{\n\\sqrt n(\\hat\\theta_n-\\theta)\n\\overset{d}{\\longrightarrow}\nN\\left(0,\\frac13\\right)\n}.\n\\]"
+          }
+        ],
+        "phase": "final_answer",
+        "role": "assistant"
+      }
+    ]
+  },
+  "cost_usd": 0.03106,
+  "timing": {
+    "started": "2026-06-07T00:02:50.075935+00:00",
+    "ended": "2026-06-07T00:03:27.507224+00:00",
+    "seconds": 37.43
+  },
+  "error": null
+}

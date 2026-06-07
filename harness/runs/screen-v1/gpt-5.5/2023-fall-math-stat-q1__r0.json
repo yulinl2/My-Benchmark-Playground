@@ -1,0 +1,64 @@
+{
+  "question_id": "2023-fall-math-stat-q1",
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "rep": 0,
+  "exam": {
+    "year": 2023,
+    "term": "fall",
+    "level": "ms",
+    "part": "math-stat"
+  },
+  "request": {
+    "system": "You are sitting a PhD-level qualifying examination in statistics. Solve the problem rigorously and completely. Show your work and reasoning, justify each step, and clearly state your final answer(s). If the problem has multiple parts, answer every part, labeled. If you invoke a known theorem, name it.",
+    "user": "[2023 fall ms math-stat — problem 1]\n\n$Y_1, \\dots, Y_n$ i.i.d. with density $f_\\theta(y) = \\frac1\\theta r y^{r-1} e^{-y^r/\\theta}$, $y>0$, where $r>0$ is known. (1) Find the MLE of $\\theta$. (2) Find its limiting distribution as $n \\to \\infty$.",
+    "max_tokens": 24000,
+    "mode": {
+      "effort": "high"
+    }
+  },
+  "response": {
+    "id": "resp_04f618bda7c18756006a24b80664d88193934d43e873be780d",
+    "model": "gpt-5.5-2026-04-23",
+    "stop_reason": "completed",
+    "usage": {
+      "input_tokens": 169,
+      "output_tokens": 1232,
+      "output_tokens_details": {
+        "reasoning_tokens": 516
+      }
+    },
+    "thinking": "",
+    "text": "Let\n\n\\[\nS=\\sum_{i=1}^n Y_i^r.\n\\]\n\nSince \\(r>0\\) is known, the likelihood as a function of \\(\\theta>0\\) is\n\n\\[\nL(\\theta)\n=\\prod_{i=1}^n \\frac1\\theta rY_i^{r-1}e^{-Y_i^r/\\theta}\n= r^n\\prod_{i=1}^n Y_i^{r-1}\\theta^{-n}\\exp\\left(-\\frac{S}{\\theta}\\right).\n\\]\n\nThus the log-likelihood is\n\n\\[\n\\ell(\\theta)\n= C - n\\log\\theta-\\frac{S}{\\theta},\n\\]\n\nwhere \\(C\\) does not depend on \\(\\theta\\).\n\nDifferentiate:\n\n\\[\n\\ell'(\\theta)\n= -\\frac{n}{\\theta}+\\frac{S}{\\theta^2}.\n\\]\n\nSetting \\(\\ell'(\\theta)=0\\) gives\n\n\\[\n-\\frac{n}{\\theta}+\\frac{S}{\\theta^2}=0\n\\quad\\Longrightarrow\\quad\n\\widehat\\theta=\\frac{S}{n}\n=\\frac1n\\sum_{i=1}^n Y_i^r.\n\\]\n\nAlso,\n\n\\[\n\\ell''(\\theta)\n=\\frac{n}{\\theta^2}-\\frac{2S}{\\theta^3},\n\\]\n\nand at \\(\\widehat\\theta=S/n\\),\n\n\\[\n\\ell''(\\widehat\\theta)\n= -\\frac{n^3}{S^2}<0.\n\\]\n\nMoreover, \\(\\ell(\\theta)\\to-\\infty\\) as \\(\\theta\\downarrow 0\\) and as \\(\\theta\\to\\infty\\), so this critical point is the global maximum.\n\nTherefore,\n\n\\[\n\\boxed{\\widehat\\theta_{\\text{MLE}}=\\frac1n\\sum_{i=1}^n Y_i^r.}\n\\]\n\nFor the limiting distribution, define\n\n\\[\nX_i=Y_i^r.\n\\]\n\nThen for \\(x>0\\),\n\n\\[\n\\mathbb P(X_i\\le x)\n=\\mathbb P(Y_i\\le x^{1/r})\n=1-e^{-x/\\theta},\n\\]\n\nso\n\n\\[\nX_i\\sim \\operatorname{Exp}\\left(\\text{mean } \\theta\\right).\n\\]\n\nHence\n\n\\[\n\\mathbb E[X_i]=\\theta,\\qquad \\operatorname{Var}(X_i)=\\theta^2.\n\\]\n\nSince\n\n\\[\n\\widehat\\theta=\\frac1n\\sum_{i=1}^n X_i,\n\\]\n\nthe central limit theorem gives\n\n\\[\n\\sqrt n(\\widehat\\theta-\\theta)\n\\overset{d}{\\longrightarrow}\nN(0,\\theta^2).\n\\]\n\nEquivalently,\n\n\\[\n\\boxed{\\frac{\\sqrt n}{\\theta}(\\widehat\\theta-\\theta)\n\\overset{d}{\\longrightarrow}N(0,1).}\n\\]\n\nThus the MLE is asymptotically normal:\n\n\\[\n\\boxed{\\widehat\\theta \\approx N\\left(\\theta,\\frac{\\theta^2}{n}\\right)}\n\\]\n\nfor large \\(n\\).",
+    "raw_output": [
+      {
+        "id": "rs_04f618bda7c18756006a24b80711588193a9e366013a56cf28",
+        "type": "reasoning",
+        "content": [],
+        "summary": []
+      },
+      {
+        "id": "msg_04f618bda7c18756006a24b8113cd88193864c15347c9bf0e0",
+        "type": "message",
+        "status": "completed",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "Let\n\n\\[\nS=\\sum_{i=1}^n Y_i^r.\n\\]\n\nSince \\(r>0\\) is known, the likelihood as a function of \\(\\theta>0\\) is\n\n\\[\nL(\\theta)\n=\\prod_{i=1}^n \\frac1\\theta rY_i^{r-1}e^{-Y_i^r/\\theta}\n= r^n\\prod_{i=1}^n Y_i^{r-1}\\theta^{-n}\\exp\\left(-\\frac{S}{\\theta}\\right).\n\\]\n\nThus the log-likelihood is\n\n\\[\n\\ell(\\theta)\n= C - n\\log\\theta-\\frac{S}{\\theta},\n\\]\n\nwhere \\(C\\) does not depend on \\(\\theta\\).\n\nDifferentiate:\n\n\\[\n\\ell'(\\theta)\n= -\\frac{n}{\\theta}+\\frac{S}{\\theta^2}.\n\\]\n\nSetting \\(\\ell'(\\theta)=0\\) gives\n\n\\[\n-\\frac{n}{\\theta}+\\frac{S}{\\theta^2}=0\n\\quad\\Longrightarrow\\quad\n\\widehat\\theta=\\frac{S}{n}\n=\\frac1n\\sum_{i=1}^n Y_i^r.\n\\]\n\nAlso,\n\n\\[\n\\ell''(\\theta)\n=\\frac{n}{\\theta^2}-\\frac{2S}{\\theta^3},\n\\]\n\nand at \\(\\widehat\\theta=S/n\\),\n\n\\[\n\\ell''(\\widehat\\theta)\n= -\\frac{n^3}{S^2}<0.\n\\]\n\nMoreover, \\(\\ell(\\theta)\\to-\\infty\\) as \\(\\theta\\downarrow 0\\) and as \\(\\theta\\to\\infty\\), so this critical point is the global maximum.\n\nTherefore,\n\n\\[\n\\boxed{\\widehat\\theta_{\\text{MLE}}=\\frac1n\\sum_{i=1}^n Y_i^r.}\n\\]\n\nFor the limiting distribution, define\n\n\\[\nX_i=Y_i^r.\n\\]\n\nThen for \\(x>0\\),\n\n\\[\n\\mathbb P(X_i\\le x)\n=\\mathbb P(Y_i\\le x^{1/r})\n=1-e^{-x/\\theta},\n\\]\n\nso\n\n\\[\nX_i\\sim \\operatorname{Exp}\\left(\\text{mean } \\theta\\right).\n\\]\n\nHence\n\n\\[\n\\mathbb E[X_i]=\\theta,\\qquad \\operatorname{Var}(X_i)=\\theta^2.\n\\]\n\nSince\n\n\\[\n\\widehat\\theta=\\frac1n\\sum_{i=1}^n X_i,\n\\]\n\nthe central limit theorem gives\n\n\\[\n\\sqrt n(\\widehat\\theta-\\theta)\n\\overset{d}{\\longrightarrow}\nN(0,\\theta^2).\n\\]\n\nEquivalently,\n\n\\[\n\\boxed{\\frac{\\sqrt n}{\\theta}(\\widehat\\theta-\\theta)\n\\overset{d}{\\longrightarrow}N(0,1).}\n\\]\n\nThus the MLE is asymptotically normal:\n\n\\[\n\\boxed{\\widehat\\theta \\approx N\\left(\\theta,\\frac{\\theta^2}{n}\\right)}\n\\]\n\nfor large \\(n\\)."
+          }
+        ],
+        "phase": "final_answer",
+        "role": "assistant"
+      }
+    ]
+  },
+  "cost_usd": 0.01932,
+  "timing": {
+    "started": "2026-06-07T00:15:02.275978+00:00",
+    "ended": "2026-06-07T00:15:22.840547+00:00",
+    "seconds": 20.56
+  },
+  "error": null
+}

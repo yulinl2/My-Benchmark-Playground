@@ -1,0 +1,72 @@
+{
+  "question_id": "2023-summer-probability-q4",
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "rep": 0,
+  "exam": {
+    "year": 2023,
+    "term": "summer",
+    "part": "probability"
+  },
+  "request": {
+    "system": "You are sitting a PhD-level qualifying examination in statistics. Solve the problem rigorously and completely. Show your work and reasoning, justify each step, and clearly state your final answer(s). If the problem has multiple parts, answer every part, labeled. If you invoke a known theorem, name it.",
+    "user": "[2023 summer phd probability — problem 4]\n\nPart I, Problem. Let $(X_i)_{i\\ge1}$ be i.i.d. with $P(X_i > 0) = 1$, $\\mathbb{E}[\\sqrt{X_i}] < \\infty$ but $\\mathbb{E}[X_i] = +\\infty$; write $\\mu = \\mathbb{E}[\\sqrt{X_i}]$. You may use that $\\int_1^{+\\infty} u^{-\\alpha}\\,du < \\infty$ for $\\alpha > 1$ and $\\lim_n (1 - c/n)^n = e^{-c}$.\n(1) Applying the LLN to $\\frac1n\\sum_{i=1}^n \\sqrt{X_i}$, prove $P(\\sum_{i=1}^n X_i \\le (\\mu + \\varepsilon)^2 n^2) \\to 1$ for any constant $\\varepsilon > 0$.\n(2) For fixed $s \\in (\\tfrac12, 1]$ and i.i.d. $(X_i)$ with $P(X_i > u) = u^{-s}$ for $u \\ge 1$, find the range and density of $X_i$. (Use this density for parts 3-5.)\n(3) Prove $\\mathbb{E}[\\sqrt{X_i}] < \\infty$.\n(4) For real $y > 1$, express $P(\\max_{i\\le n} X_i > y)$ as a function of $P(X_1 > y)$ and $n$ only.\n(5) Find $\\lim_{n\\to\\infty} P(\\max_{i\\le n} X_i > n^{1/s})$.\n(6) Is it possible, for any i.i.d. $(X_i)$ with $\\mathbb{E}[\\sqrt{X_i}] < \\infty$, that $\\lim_n P(\\sum_{i=1}^n X_i \\le C n^{1.99}) = 1$ for a constant $C > 0$?",
+    "max_tokens": 24000,
+    "mode": {
+      "effort": "high"
+    }
+  },
+  "response": {
+    "id": "resp_09480a3cff013f1a006a24b9984adc8190a67d8cb567003139",
+    "model": "gpt-5.5-2026-04-23",
+    "stop_reason": "completed",
+    "usage": {
+      "input_tokens": 532,
+      "output_tokens": 5313,
+      "output_tokens_details": {
+        "reasoning_tokens": 3613
+      }
+    },
+    "thinking": "**Calculating expected values**\n\nI'm analyzing the density function f(x) = s x^(-s-1) for x > 1, and considering its range, possibly from (1, ∞). I need to note whether this supports [1, ∞); values greater than 1 almost surely mean the density lies on (1, ∞). Now, for the expected value of E√X, I can compute the integral using this density. It converges if s > 1/2, and the resulting value is s/(s-1/2). If s falls in the range (1/2, 1], I can mention that E[X] is infinite for s ≤ 1, though it's not directly asked.\n**Clarifying limits in calculations**\n\nI need to make sure there are no issues with the limit being set incorrectly, specifically that it can't be 1. I see that the upper bound for limsup is less than or equal to e^-1. There's a potential nuance regarding the result in part five, where P(max>n^1/s) approaches 1 - e^-1. If I use the complement, it leads to {max≤} approaching e^-1. I'm trying to stay precise here!",
+    "text": "Let  \n\\[\nS_n=\\sum_{i=1}^n X_i,\\qquad M_n=\\max_{1\\le i\\le n}X_i.\n\\]\n\n## (1)\n\nSet \\(Y_i=\\sqrt{X_i}\\). Since \\(\\mathbb E[\\sqrt{X_i}]<\\infty\\), the \\(Y_i\\) are integrable i.i.d. random variables with mean \\(\\mu\\). By the Strong Law of Large Numbers,\n\n\\[\n\\frac1n\\sum_{i=1}^n \\sqrt{X_i}\\to \\mu \\qquad \\text{a.s.}\n\\]\n\nIn particular,\n\n\\[\nP\\left(\\frac1n\\sum_{i=1}^n \\sqrt{X_i}\\le \\mu+\\varepsilon\\right)\\to 1.\n\\]\n\nNow, since \\(X_i>0\\),\n\n\\[\n\\sum_{i=1}^n X_i=\\sum_{i=1}^n (\\sqrt{X_i})^2\n\\le \\left(\\sum_{i=1}^n \\sqrt{X_i}\\right)^2,\n\\]\n\nbecause the square on the right contains additional nonnegative cross terms. Therefore, on the event\n\n\\[\n\\frac1n\\sum_{i=1}^n \\sqrt{X_i}\\le \\mu+\\varepsilon,\n\\]\n\nwe have\n\n\\[\n\\sum_{i=1}^n X_i\n\\le \\left(n(\\mu+\\varepsilon)\\right)^2\n=(\\mu+\\varepsilon)^2n^2.\n\\]\n\nThus\n\n\\[\nP\\left(S_n\\le (\\mu+\\varepsilon)^2n^2\\right)\n\\ge \nP\\left(\\frac1n\\sum_{i=1}^n \\sqrt{X_i}\\le \\mu+\\varepsilon\\right)\\to 1.\n\\]\n\nHence\n\n\\[\n\\boxed{\nP\\left(\\sum_{i=1}^n X_i\\le (\\mu+\\varepsilon)^2n^2\\right)\\to 1.\n}\n\\]\n\n---\n\n## (2)\n\nWe are given, for \\(u\\ge 1\\),\n\n\\[\nP(X_i>u)=u^{-s},\\qquad s\\in \\left(\\frac12,1\\right].\n\\]\n\nAt \\(u=1\\),\n\n\\[\nP(X_i>1)=1,\n\\]\n\nso \\(X_i>1\\) almost surely. Therefore the range is \\((1,\\infty)\\) almost surely.\n\nFor \\(x>1\\), the CDF is\n\n\\[\nF(x)=P(X_i\\le x)=1-P(X_i>x)=1-x^{-s}.\n\\]\n\nFor \\(x\\le 1\\),\n\n\\[\nF(x)=0.\n\\]\n\nThus\n\n\\[\nF(x)=\n\\begin{cases}\n0, & x\\le 1,\\\\\n1-x^{-s}, & x>1.\n\\end{cases}\n\\]\n\nDifferentiating for \\(x>1\\), the density is\n\n\\[\nf(x)=s x^{-s-1},\\qquad x>1.\n\\]\n\nSo\n\n\\[\n\\boxed{\nf(x)=s x^{-s-1}\\mathbf 1_{\\{x>1\\}}.\n}\n\\]\n\n---\n\n## (3)\n\nUsing the density from part (2),\n\n\\[\n\\mathbb E[\\sqrt{X_i}]\n=\n\\int_1^\\infty \\sqrt{x}\\,s x^{-s-1}\\,dx.\n\\]\n\nThus\n\n\\[\n\\mathbb E[\\sqrt{X_i}]\n=\ns\\int_1^\\infty x^{1/2}x^{-s-1}\\,dx\n=\ns\\int_1^\\infty x^{-s-1/2}\\,dx.\n\\]\n\nThe integral converges exactly when\n\n\\[\ns+\\frac12>1,\n\\]\n\ni.e.\n\n\\[\ns>\\frac12.\n\\]\n\nSince \\(s\\in(1/2,1]\\), the expectation is finite. In fact,\n\n\\[\n\\mathbb E[\\sqrt{X_i}]\n=\ns\\int_1^\\infty x^{-s-1/2}\\,dx\n=\n\\frac{s}{s-\\frac12}<\\infty.\n\\]\n\nTherefore\n\n\\[\n\\boxed{\\mathbb E[\\sqrt{X_i}]<\\infty.}\n\\]\n\n---\n\n## (4)\n\nLet \\(y>1\\). By independence,\n\n\\[\nP(M_n\\le y)\n=\nP(X_1\\le y,\\dots,X_n\\le y)\n=\nP(X_1\\le y)^n.\n\\]\n\nTherefore\n\n\\[\nP(M_n>y)\n=\n1-P(M_n\\le y)\n=\n1-P(X_1\\le y)^n.\n\\]\n\nSince\n\n\\[\nP(X_1\\le y)=1-P(X_1>y),\n\\]\n\nwe get\n\n\\[\n\\boxed{\nP(M_n>y)=1-\\left(1-P(X_1>y)\\right)^n.\n}\n\\]\n\nFor this particular distribution, \\(P(X_1>y)=y^{-s}\\), so\n\n\\[\n\\boxed{\nP(M_n>y)=1-(1-y^{-s})^n.\n}\n\\]\n\n---\n\n## (5)\n\nTake \\(y=n^{1/s}\\). Then\n\n\\[\nP(X_1>n^{1/s})\n=\n(n^{1/s})^{-s}\n=\nn^{-1}.\n\\]\n\nUsing part (4),\n\n\\[\nP(M_n>n^{1/s})\n=\n1-\\left(1-\\frac1n\\right)^n.\n\\]\n\nBy the given limit,\n\n\\[\n\\left(1-\\frac1n\\right)^n\\to e^{-1}.\n\\]\n\nTherefore\n\n\\[\n\\boxed{\n\\lim_{n\\to\\infty}P(M_n>n^{1/s})=1-e^{-1}.\n}\n\\]\n\n---\n\n## (6)\n\nNo. In general, one cannot replace the exponent \\(2\\) in part (1) by \\(1.99\\).\n\nChoose\n\n\\[\ns\\in\\left(\\frac12,\\frac{1}{1.99}\\right).\n\\]\n\nThis is possible because\n\n\\[\n\\frac{1}{1.99}=\\frac{100}{199}> \\frac12.\n\\]\n\nLet \\(X_i\\) have tail\n\n\\[\nP(X_i>u)=u^{-s},\\qquad u\\ge 1.\n\\]\n\nBy part (3),\n\n\\[\n\\mathbb E[\\sqrt{X_i}]<\\infty.\n\\]\n\nBut now\n\n\\[\n\\frac1s>1.99.\n\\]\n\nFix any constant \\(C>0\\). Since\n\n\\[\n\\frac{n^{1/s}}{C n^{1.99}}\n=\n\\frac{1}{C}n^{1/s-1.99}\\to \\infty,\n\\]\n\nwe have, for all sufficiently large \\(n\\),\n\n\\[\nn^{1/s}>C n^{1.99}.\n\\]\n\nTherefore, for large \\(n\\),\n\n\\[\n\\{M_n>n^{1/s}\\}\\subseteq \\{S_n>Cn^{1.99}\\}.\n\\]\n\nHence\n\n\\[\nP(S_n\\le Cn^{1.99})\n\\le\nP(M_n\\le n^{1/s}).\n\\]\n\nBy part (5),\n\n\\[\nP(M_n>n^{1/s})\\to 1-e^{-1},\n\\]\n\nso\n\n\\[\nP(M_n\\le n^{1/s})\\to e^{-1}.\n\\]\n\nThus\n\n\\[\n\\limsup_{n\\to\\infty}P(S_n\\le Cn^{1.99})\n\\le e^{-1}<1.\n\\]\n\nTherefore the probability cannot converge to \\(1\\). Hence\n\n\\[\n\\boxed{\n\\text{No, such a bound with exponent }1.99\\text{ does not hold in general.}\n}\n\\]",
+    "raw_output": [
+      {
+        "id": "rs_09480a3cff013f1a006a24b998fd908190a5bb783df0398bd2",
+        "type": "reasoning",
+        "content": [],
+        "summary": [
+          {
+            "type": "summary_text",
+            "text": "**Calculating expected values**\n\nI'm analyzing the density function f(x) = s x^(-s-1) for x > 1, and considering its range, possibly from (1, ∞). I need to note whether this supports [1, ∞); values greater than 1 almost surely mean the density lies on (1, ∞). Now, for the expected value of E√X, I can compute the integral using this density. It converges if s > 1/2, and the resulting value is s/(s-1/2). If s falls in the range (1/2, 1], I can mention that E[X] is infinite for s ≤ 1, though it's not directly asked."
+          },
+          {
+            "type": "summary_text",
+            "text": "**Clarifying limits in calculations**\n\nI need to make sure there are no issues with the limit being set incorrectly, specifically that it can't be 1. I see that the upper bound for limsup is less than or equal to e^-1. There's a potential nuance regarding the result in part five, where P(max>n^1/s) approaches 1 - e^-1. If I use the complement, it leads to {max≤} approaching e^-1. I'm trying to stay precise here!"
+          }
+        ]
+      },
+      {
+        "id": "msg_09480a3cff013f1a006a24b9dff5f88190a36664966d1e6142",
+        "type": "message",
+        "status": "completed",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "Let  \n\\[\nS_n=\\sum_{i=1}^n X_i,\\qquad M_n=\\max_{1\\le i\\le n}X_i.\n\\]\n\n## (1)\n\nSet \\(Y_i=\\sqrt{X_i}\\). Since \\(\\mathbb E[\\sqrt{X_i}]<\\infty\\), the \\(Y_i\\) are integrable i.i.d. random variables with mean \\(\\mu\\). By the Strong Law of Large Numbers,\n\n\\[\n\\frac1n\\sum_{i=1}^n \\sqrt{X_i}\\to \\mu \\qquad \\text{a.s.}\n\\]\n\nIn particular,\n\n\\[\nP\\left(\\frac1n\\sum_{i=1}^n \\sqrt{X_i}\\le \\mu+\\varepsilon\\right)\\to 1.\n\\]\n\nNow, since \\(X_i>0\\),\n\n\\[\n\\sum_{i=1}^n X_i=\\sum_{i=1}^n (\\sqrt{X_i})^2\n\\le \\left(\\sum_{i=1}^n \\sqrt{X_i}\\right)^2,\n\\]\n\nbecause the square on the right contains additional nonnegative cross terms. Therefore, on the event\n\n\\[\n\\frac1n\\sum_{i=1}^n \\sqrt{X_i}\\le \\mu+\\varepsilon,\n\\]\n\nwe have\n\n\\[\n\\sum_{i=1}^n X_i\n\\le \\left(n(\\mu+\\varepsilon)\\right)^2\n=(\\mu+\\varepsilon)^2n^2.\n\\]\n\nThus\n\n\\[\nP\\left(S_n\\le (\\mu+\\varepsilon)^2n^2\\right)\n\\ge \nP\\left(\\frac1n\\sum_{i=1}^n \\sqrt{X_i}\\le \\mu+\\varepsilon\\right)\\to 1.\n\\]\n\nHence\n\n\\[\n\\boxed{\nP\\left(\\sum_{i=1}^n X_i\\le (\\mu+\\varepsilon)^2n^2\\right)\\to 1.\n}\n\\]\n\n---\n\n## (2)\n\nWe are given, for \\(u\\ge 1\\),\n\n\\[\nP(X_i>u)=u^{-s},\\qquad s\\in \\left(\\frac12,1\\right].\n\\]\n\nAt \\(u=1\\),\n\n\\[\nP(X_i>1)=1,\n\\]\n\nso \\(X_i>1\\) almost surely. Therefore the range is \\((1,\\infty)\\) almost surely.\n\nFor \\(x>1\\), the CDF is\n\n\\[\nF(x)=P(X_i\\le x)=1-P(X_i>x)=1-x^{-s}.\n\\]\n\nFor \\(x\\le 1\\),\n\n\\[\nF(x)=0.\n\\]\n\nThus\n\n\\[\nF(x)=\n\\begin{cases}\n0, & x\\le 1,\\\\\n1-x^{-s}, & x>1.\n\\end{cases}\n\\]\n\nDifferentiating for \\(x>1\\), the density is\n\n\\[\nf(x)=s x^{-s-1},\\qquad x>1.\n\\]\n\nSo\n\n\\[\n\\boxed{\nf(x)=s x^{-s-1}\\mathbf 1_{\\{x>1\\}}.\n}\n\\]\n\n---\n\n## (3)\n\nUsing the density from part (2),\n\n\\[\n\\mathbb E[\\sqrt{X_i}]\n=\n\\int_1^\\infty \\sqrt{x}\\,s x^{-s-1}\\,dx.\n\\]\n\nThus\n\n\\[\n\\mathbb E[\\sqrt{X_i}]\n=\ns\\int_1^\\infty x^{1/2}x^{-s-1}\\,dx\n=\ns\\int_1^\\infty x^{-s-1/2}\\,dx.\n\\]\n\nThe integral converges exactly when\n\n\\[\ns+\\frac12>1,\n\\]\n\ni.e.\n\n\\[\ns>\\frac12.\n\\]\n\nSince \\(s\\in(1/2,1]\\), the expectation is finite. In fact,\n\n\\[\n\\mathbb E[\\sqrt{X_i}]\n=\ns\\int_1^\\infty x^{-s-1/2}\\,dx\n=\n\\frac{s}{s-\\frac12}<\\infty.\n\\]\n\nTherefore\n\n\\[\n\\boxed{\\mathbb E[\\sqrt{X_i}]<\\infty.}\n\\]\n\n---\n\n## (4)\n\nLet \\(y>1\\). By independence,\n\n\\[\nP(M_n\\le y)\n=\nP(X_1\\le y,\\dots,X_n\\le y)\n=\nP(X_1\\le y)^n.\n\\]\n\nTherefore\n\n\\[\nP(M_n>y)\n=\n1-P(M_n\\le y)\n=\n1-P(X_1\\le y)^n.\n\\]\n\nSince\n\n\\[\nP(X_1\\le y)=1-P(X_1>y),\n\\]\n\nwe get\n\n\\[\n\\boxed{\nP(M_n>y)=1-\\left(1-P(X_1>y)\\right)^n.\n}\n\\]\n\nFor this particular distribution, \\(P(X_1>y)=y^{-s}\\), so\n\n\\[\n\\boxed{\nP(M_n>y)=1-(1-y^{-s})^n.\n}\n\\]\n\n---\n\n## (5)\n\nTake \\(y=n^{1/s}\\). Then\n\n\\[\nP(X_1>n^{1/s})\n=\n(n^{1/s})^{-s}\n=\nn^{-1}.\n\\]\n\nUsing part (4),\n\n\\[\nP(M_n>n^{1/s})\n=\n1-\\left(1-\\frac1n\\right)^n.\n\\]\n\nBy the given limit,\n\n\\[\n\\left(1-\\frac1n\\right)^n\\to e^{-1}.\n\\]\n\nTherefore\n\n\\[\n\\boxed{\n\\lim_{n\\to\\infty}P(M_n>n^{1/s})=1-e^{-1}.\n}\n\\]\n\n---\n\n## (6)\n\nNo. In general, one cannot replace the exponent \\(2\\) in part (1) by \\(1.99\\).\n\nChoose\n\n\\[\ns\\in\\left(\\frac12,\\frac{1}{1.99}\\right).\n\\]\n\nThis is possible because\n\n\\[\n\\frac{1}{1.99}=\\frac{100}{199}> \\frac12.\n\\]\n\nLet \\(X_i\\) have tail\n\n\\[\nP(X_i>u)=u^{-s},\\qquad u\\ge 1.\n\\]\n\nBy part (3),\n\n\\[\n\\mathbb E[\\sqrt{X_i}]<\\infty.\n\\]\n\nBut now\n\n\\[\n\\frac1s>1.99.\n\\]\n\nFix any constant \\(C>0\\). Since\n\n\\[\n\\frac{n^{1/s}}{C n^{1.99}}\n=\n\\frac{1}{C}n^{1/s-1.99}\\to \\infty,\n\\]\n\nwe have, for all sufficiently large \\(n\\),\n\n\\[\nn^{1/s}>C n^{1.99}.\n\\]\n\nTherefore, for large \\(n\\),\n\n\\[\n\\{M_n>n^{1/s}\\}\\subseteq \\{S_n>Cn^{1.99}\\}.\n\\]\n\nHence\n\n\\[\nP(S_n\\le Cn^{1.99})\n\\le\nP(M_n\\le n^{1/s}).\n\\]\n\nBy part (5),\n\n\\[\nP(M_n>n^{1/s})\\to 1-e^{-1},\n\\]\n\nso\n\n\\[\nP(M_n\\le n^{1/s})\\to e^{-1}.\n\\]\n\nThus\n\n\\[\n\\limsup_{n\\to\\infty}P(S_n\\le Cn^{1.99})\n\\le e^{-1}<1.\n\\]\n\nTherefore the probability cannot converge to \\(1\\). Hence\n\n\\[\n\\boxed{\n\\text{No, such a bound with exponent }1.99\\text{ does not hold in general.}\n}\n\\]"
+          }
+        ],
+        "phase": "final_answer",
+        "role": "assistant"
+      }
+    ]
+  },
+  "cost_usd": 0.08235,
+  "timing": {
+    "started": "2026-06-07T00:21:44.179934+00:00",
+    "ended": "2026-06-07T00:23:12.739501+00:00",
+    "seconds": 88.56
+  },
+  "error": null
+}

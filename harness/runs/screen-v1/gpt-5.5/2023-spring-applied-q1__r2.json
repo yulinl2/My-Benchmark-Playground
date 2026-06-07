@@ -1,0 +1,117 @@
+{
+  "question_id": "2023-spring-applied-q1",
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "rep": 2,
+  "exam": {
+    "year": 2023,
+    "term": "spring",
+    "level": "ms",
+    "part": "applied"
+  },
+  "request": {
+    "system": "You are sitting a PhD-level qualifying examination in statistics. Solve the problem rigorously and completely. Show your work and reasoning, justify each step, and clearly state your final answer(s). If the problem has multiple parts, answer every part, labeled. If you invoke a known theorem, name it.",
+    "user": "[2023 spring ms applied — problem 1]\n\nA lottery gadget picks a 6-subset of $\\{1,\\dots,49\\}$; $X$ = number of the six balls landing on the 25 outer-perimeter numbers. Under uniformity $X \\sim$ Hypergeometric. 100 trials give empirical frequencies vs the hypergeometric probabilities (table). (1) Carry out Pearson's chi-squared test; report the statistic and p-value. (2) Using $\\bar X$ as a statistic with null $\\mathbb{E}(\\bar X) = 3.06$, $\\mathrm{SD}(\\bar X) = 0.116$, compute the observed $\\bar X$ and z-value. (3) Does the gadget produce uniform results?",
+    "max_tokens": 24000,
+    "mode": {
+      "effort": "high"
+    }
+  },
+  "response": {
+    "id": "resp_07092398cd1745d8006a24b8602e1881959c2ea146d1043a1b",
+    "model": "gpt-5.5-2026-04-23",
+    "stop_reason": "completed",
+    "usage": {
+      "input_tokens": 232,
+      "output_tokens": 6977,
+      "output_tokens_details": {
+        "reasoning_tokens": 6214
+      }
+    },
+    "thinking": "**Analyzing Lotto results**\n\nI’m looking at the distribution of winning numbers from 100 Lotto 6/49 draws and calculating their expected hypergeometric probabilities. I need to compare observed frequencies with these probabilities. I’ll compute various statistics, including expected values, variances, and standard deviations to better understand the results. The problem asks whether the gadget used produces uniform results, so I’ll check if the empirical frequencies, derived from a table, deviate significantly from the hypergeometric probabilities.\n**Interpreting the gadget's design**\n\nI’m considering what the outer-perimeter numbers might mean. It seems like they could relate to the physical arrangement of numbers in a matrix, perhaps within a \"uniselect\" configuration. This could be important for analyzing the way the lottery gadget operates and impacts the results. I want to clarify if this arrangement plays a role in the uniformity of the drawn numbers — it's interesting to think about how design influences outcomes!\n**Rethinking perimeter numbers**\n\nI'm running through some numbers here. So, if 49 can be expressed as 7x7, I see that the outer perimeter has 24. But then, why is there a mention of 25? Maybe it's related to counting \"1, 2, ... 25\" as lower numbers? Oh! Perhaps \"outer perimeter\" refers to a lottery number playslip? That would make sense, but I want to make sure my assumptions are on track before going further!\n**Examining lottery arrangements**\n\nI’m working on understanding a 7x7 grid with 49 items, where the perimeter should include 25 numbers, not 24. It seems there’s physical context related to a lottery machine that places 49 ping-pong balls in a certain arrangement. There’s mention of lottery data from Arizona in 1980, focusing on observed counts from draws. I’ll check for related statistical examples and previous lottery incidents for insights, such as the Ontario and Pennsylvania lottery scandals.\n**Analyzing lottery machine results**\n\nI'm examining an experiment from Edgewater Manufacturing, where 49 balls are arranged in a 7x7 rack. It seems like the outer balls are being drawn more often. In 100 drawings, 391 of 600 numbers came from the edge balls, which is significantly higher than the expected count of 306. I’ll need to compare z-scores and consider chi-square tests for the frequencies. There's a potential reference to Diaconis' work on randomness, so I should check the suggested textbook for further insights.\n**Calculating hypergeometric probabilities**\n\nI'm looking at observed frequencies from 100 drawings. I noted the counts for each outcome and am now calculating hypergeometric probabilities for the variables. I've confirmed that the denominator for combinations is 13,983,816, which is accurate. I need to calculate probabilities for each value of k from 0 to 6. Once I find the probabilities, I'll summarize expected counts for each value. It seems I should also combine categories where expected counts are less than 5 for the Pearson test.\n**Rethinking computation needs**\n\nIt states to compute the observed \\bar{X} and z, but without a table, that's impossible. The original question probably included a table, but the user didn't paste it. I’m wondering if the hypergeometric probabilities in a table might be enough to address this request, but it seems like it wouldn't work either. So, I need to think about how to proceed from here since the necessary information isn't available.\n**Inferring design probabilities**\n\nI’m assessing probabilities from part design. They provided a hypergeom probabilities table along with empirical frequencies. First, for Pearson's test, I need to focus on whether the gadget produces uniform results. For instance, if the table shows an unusual number of perimeter balls, indicating potential bias towards the perimeter, using a mean test makes sense. It appears there's a strong inclination observed, leading me to consider rejecting the null hypothesis based on the statistical analysis of frequencies.\n**Analyzing statistical results**\n\nI’m calculating various statistical values, and it seems like I have a total of 85.1 with a very tiny p-value, suggesting a strong rejection of the null hypothesis. If groups 5 and 6 expected 10.39 but observed 32, that’s quite a significant contribution. Now I'm recalling examples from Diaconis, particularly Feller's lottery with observed frequencies. It seems like the gadget might not produce uniform results, especially when testing with a random number table. I'll need to dive deeper into this.\n**Exploring lottery number biases**\n\nI'm trying to identify the source of the \"25 outer-perimeter numbers,\" which might come from those numbers on the outside row of a Keno machine in Colorado. There's mention of the Kansas Lottery and a machine called Easy Picker, where outer ring numbers were observed too frequently during 100 trials. The mean is calculated at 4.05 with a high z-score of 8.52, indicating strong rejection. I might also look into the textbook \"Miller & Freund Probability and Statistics\" regarding a Powerball litigation case.\n**Calculating grouped probabilities**\n\nI'm working on calculating some grouped probabilities. For p_01, I have (134596 + 1062600) over 13983816, which gives me about 0.0856. \n\nThen, I want to ensure p2 is around 0.2279, p3 is about 0.3329, and p4 is around 0.2497. p56 is (1275120 + 177100) over 13983816, yielding approximately 0.1038. \n\nI realize I need to compute these accurately using decimal values, starting with the denominator of 13,983,816. I’m diving deeper into those calculations!\n**Recomputing probabilities**\n\nI’m working through some probability calculations. Starting with a specific value, I find the differences between expected and actual results for each. For example, adjusting values for better accuracy leads to a new sum that’s just slightly over what I expected. It looks like I need to refine my calculations further, especially with certain values that seem off. Precise probabilities are essential, but I realize I'm not critical here. Let's make those adjustments for clarity!\n**Explaining the challenge**\n\nI see that the problem likely expects numerical answers, but without the table, it's impossible to compute those. I should state that the situation is underdetermined, which might be acceptable. However, I wonder if the user is actually looking for a complete solution instead of just saying, “can't compute.” \n\nMaybe I should ask for clarification or provide a partial solution while acknowledging the missing table. I'll mention that the observed table is crucial, as different tables could yield the same sample size but produce varying results. Then, I can provide the null distribution probabilities.",
+    "text": "The numerical parts cannot be completed uniquely from the information given, because the observed empirical frequency table is missing. The Pearson statistic and the observed \\(\\bar X\\) depend on the observed counts.\n\nWhat can be computed from the null model is as follows.\n\nLet\n\n\\[\nX\\sim \\operatorname{Hypergeometric}(N=49,K=25,n=6),\n\\]\n\nso\n\n\\[\np_k=P(X=k)=\\frac{\\binom{25}{k}\\binom{24}{6-k}}{\\binom{49}{6}},\\qquad k=0,\\dots,6.\n\\]\n\nThe null probabilities are approximately\n\n\\[\n\\begin{array}{c|ccccccc}\nk & 0&1&2&3&4&5&6\\\\ \\hline\np_k &0.00963&0.07599&0.22796&0.33290&0.24967&0.09119&0.01267\n\\end{array}\n\\]\n\nso for 100 trials the expected counts are\n\n\\[\n100p_k \\approx (0.963,\\;7.599,\\;22.796,\\;33.290,\\;24.967,\\;9.119,\\;1.267).\n\\]\n\nBecause the expected counts for \\(k=0\\) and \\(k=6\\) are below 5, a standard Pearson test would usually pool tails, e.g.\n\n\\[\n\\{0,1\\},\\quad \\{2\\},\\quad \\{3\\},\\quad \\{4\\},\\quad \\{5,6\\}.\n\\]\n\nThen the pooled expected counts are approximately\n\n\\[\n(8.561,\\;22.796,\\;33.290,\\;24.967,\\;10.385).\n\\]\n\nIf the observed counts are \\(O_0,\\dots,O_6\\), the Pearson statistic would be\n\n\\[\n\\chi^2\n=\n\\frac{(O_0+O_1-8.561)^2}{8.561}\n+\n\\frac{(O_2-22.796)^2}{22.796}\n+\n\\frac{(O_3-33.290)^2}{33.290}\n+\n\\frac{(O_4-24.967)^2}{24.967}\n+\n\\frac{(O_5+O_6-10.385)^2}{10.385}.\n\\]\n\nWith 5 pooled categories and no estimated parameters, the reference distribution is\n\n\\[\n\\chi^2_4,\n\\]\n\nso the p-value is\n\n\\[\np=\\Pr(\\chi^2_4\\ge \\chi^2_{\\text{obs}}).\n\\]\n\nFor part (2),\n\n\\[\n\\bar X_{\\text{obs}}=\\frac{1}{100}\\sum_{k=0}^6 kO_k,\n\\]\n\nand under the null\n\n\\[\nE(\\bar X)=6\\frac{25}{49}=\\frac{150}{49}\\approx 3.061,\n\\]\n\nwith\n\n\\[\n\\operatorname{SD}(\\bar X)=0.116.\n\\]\n\nThus the z-statistic is\n\n\\[\nz=\\frac{\\bar X_{\\text{obs}}-3.061}{0.116}.\n\\]\n\nConclusion: the given prompt omits the empirical frequency table, so the Pearson statistic, p-value, observed \\(\\bar X\\), z-value, and final conclusion about uniformity cannot be determined numerically. If you provide the observed counts \\(O_0,\\dots,O_6\\), the test can be completed immediately.",
+    "raw_output": [
+      {
+        "id": "rs_07092398cd1745d8006a24b8610ab08195a3cb24bb7261bcd9",
+        "type": "reasoning",
+        "content": [],
+        "summary": [
+          {
+            "type": "summary_text",
+            "text": "**Analyzing Lotto results**\n\nI’m looking at the distribution of winning numbers from 100 Lotto 6/49 draws and calculating their expected hypergeometric probabilities. I need to compare observed frequencies with these probabilities. I’ll compute various statistics, including expected values, variances, and standard deviations to better understand the results. The problem asks whether the gadget used produces uniform results, so I’ll check if the empirical frequencies, derived from a table, deviate significantly from the hypergeometric probabilities."
+          },
+          {
+            "type": "summary_text",
+            "text": "**Interpreting the gadget's design**\n\nI’m considering what the outer-perimeter numbers might mean. It seems like they could relate to the physical arrangement of numbers in a matrix, perhaps within a \"uniselect\" configuration. This could be important for analyzing the way the lottery gadget operates and impacts the results. I want to clarify if this arrangement plays a role in the uniformity of the drawn numbers — it's interesting to think about how design influences outcomes!"
+          },
+          {
+            "type": "summary_text",
+            "text": "**Rethinking perimeter numbers**\n\nI'm running through some numbers here. So, if 49 can be expressed as 7x7, I see that the outer perimeter has 24. But then, why is there a mention of 25? Maybe it's related to counting \"1, 2, ... 25\" as lower numbers? Oh! Perhaps \"outer perimeter\" refers to a lottery number playslip? That would make sense, but I want to make sure my assumptions are on track before going further!"
+          },
+          {
+            "type": "summary_text",
+            "text": "**Examining lottery arrangements**\n\nI’m working on understanding a 7x7 grid with 49 items, where the perimeter should include 25 numbers, not 24. It seems there’s physical context related to a lottery machine that places 49 ping-pong balls in a certain arrangement. There’s mention of lottery data from Arizona in 1980, focusing on observed counts from draws. I’ll check for related statistical examples and previous lottery incidents for insights, such as the Ontario and Pennsylvania lottery scandals."
+          },
+          {
+            "type": "summary_text",
+            "text": "**Analyzing lottery machine results**\n\nI'm examining an experiment from Edgewater Manufacturing, where 49 balls are arranged in a 7x7 rack. It seems like the outer balls are being drawn more often. In 100 drawings, 391 of 600 numbers came from the edge balls, which is significantly higher than the expected count of 306. I’ll need to compare z-scores and consider chi-square tests for the frequencies. There's a potential reference to Diaconis' work on randomness, so I should check the suggested textbook for further insights."
+          },
+          {
+            "type": "summary_text",
+            "text": "**Calculating hypergeometric probabilities**\n\nI'm looking at observed frequencies from 100 drawings. I noted the counts for each outcome and am now calculating hypergeometric probabilities for the variables. I've confirmed that the denominator for combinations is 13,983,816, which is accurate. I need to calculate probabilities for each value of k from 0 to 6. Once I find the probabilities, I'll summarize expected counts for each value. It seems I should also combine categories where expected counts are less than 5 for the Pearson test."
+          },
+          {
+            "type": "summary_text",
+            "text": "**Rethinking computation needs**\n\nIt states to compute the observed \\bar{X} and z, but without a table, that's impossible. The original question probably included a table, but the user didn't paste it. I’m wondering if the hypergeometric probabilities in a table might be enough to address this request, but it seems like it wouldn't work either. So, I need to think about how to proceed from here since the necessary information isn't available."
+          },
+          {
+            "type": "summary_text",
+            "text": "**Inferring design probabilities**\n\nI’m assessing probabilities from part design. They provided a hypergeom probabilities table along with empirical frequencies. First, for Pearson's test, I need to focus on whether the gadget produces uniform results. For instance, if the table shows an unusual number of perimeter balls, indicating potential bias towards the perimeter, using a mean test makes sense. It appears there's a strong inclination observed, leading me to consider rejecting the null hypothesis based on the statistical analysis of frequencies."
+          },
+          {
+            "type": "summary_text",
+            "text": "**Analyzing statistical results**\n\nI’m calculating various statistical values, and it seems like I have a total of 85.1 with a very tiny p-value, suggesting a strong rejection of the null hypothesis. If groups 5 and 6 expected 10.39 but observed 32, that’s quite a significant contribution. Now I'm recalling examples from Diaconis, particularly Feller's lottery with observed frequencies. It seems like the gadget might not produce uniform results, especially when testing with a random number table. I'll need to dive deeper into this."
+          },
+          {
+            "type": "summary_text",
+            "text": "**Exploring lottery number biases**\n\nI'm trying to identify the source of the \"25 outer-perimeter numbers,\" which might come from those numbers on the outside row of a Keno machine in Colorado. There's mention of the Kansas Lottery and a machine called Easy Picker, where outer ring numbers were observed too frequently during 100 trials. The mean is calculated at 4.05 with a high z-score of 8.52, indicating strong rejection. I might also look into the textbook \"Miller & Freund Probability and Statistics\" regarding a Powerball litigation case."
+          },
+          {
+            "type": "summary_text",
+            "text": "**Calculating grouped probabilities**\n\nI'm working on calculating some grouped probabilities. For p_01, I have (134596 + 1062600) over 13983816, which gives me about 0.0856. \n\nThen, I want to ensure p2 is around 0.2279, p3 is about 0.3329, and p4 is around 0.2497. p56 is (1275120 + 177100) over 13983816, yielding approximately 0.1038. \n\nI realize I need to compute these accurately using decimal values, starting with the denominator of 13,983,816. I’m diving deeper into those calculations!"
+          },
+          {
+            "type": "summary_text",
+            "text": "**Recomputing probabilities**\n\nI’m working through some probability calculations. Starting with a specific value, I find the differences between expected and actual results for each. For example, adjusting values for better accuracy leads to a new sum that’s just slightly over what I expected. It looks like I need to refine my calculations further, especially with certain values that seem off. Precise probabilities are essential, but I realize I'm not critical here. Let's make those adjustments for clarity!"
+          },
+          {
+            "type": "summary_text",
+            "text": "**Explaining the challenge**\n\nI see that the problem likely expects numerical answers, but without the table, it's impossible to compute those. I should state that the situation is underdetermined, which might be acceptable. However, I wonder if the user is actually looking for a complete solution instead of just saying, “can't compute.” \n\nMaybe I should ask for clarification or provide a partial solution while acknowledging the missing table. I'll mention that the observed table is crucial, as different tables could yield the same sample size but produce varying results. Then, I can provide the null distribution probabilities."
+          }
+        ]
+      },
+      {
+        "id": "msg_07092398cd1745d8006a24b8e190dc81958bbb8a2deb04483c",
+        "type": "message",
+        "status": "completed",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "The numerical parts cannot be completed uniquely from the information given, because the observed empirical frequency table is missing. The Pearson statistic and the observed \\(\\bar X\\) depend on the observed counts.\n\nWhat can be computed from the null model is as follows.\n\nLet\n\n\\[\nX\\sim \\operatorname{Hypergeometric}(N=49,K=25,n=6),\n\\]\n\nso\n\n\\[\np_k=P(X=k)=\\frac{\\binom{25}{k}\\binom{24}{6-k}}{\\binom{49}{6}},\\qquad k=0,\\dots,6.\n\\]\n\nThe null probabilities are approximately\n\n\\[\n\\begin{array}{c|ccccccc}\nk & 0&1&2&3&4&5&6\\\\ \\hline\np_k &0.00963&0.07599&0.22796&0.33290&0.24967&0.09119&0.01267\n\\end{array}\n\\]\n\nso for 100 trials the expected counts are\n\n\\[\n100p_k \\approx (0.963,\\;7.599,\\;22.796,\\;33.290,\\;24.967,\\;9.119,\\;1.267).\n\\]\n\nBecause the expected counts for \\(k=0\\) and \\(k=6\\) are below 5, a standard Pearson test would usually pool tails, e.g.\n\n\\[\n\\{0,1\\},\\quad \\{2\\},\\quad \\{3\\},\\quad \\{4\\},\\quad \\{5,6\\}.\n\\]\n\nThen the pooled expected counts are approximately\n\n\\[\n(8.561,\\;22.796,\\;33.290,\\;24.967,\\;10.385).\n\\]\n\nIf the observed counts are \\(O_0,\\dots,O_6\\), the Pearson statistic would be\n\n\\[\n\\chi^2\n=\n\\frac{(O_0+O_1-8.561)^2}{8.561}\n+\n\\frac{(O_2-22.796)^2}{22.796}\n+\n\\frac{(O_3-33.290)^2}{33.290}\n+\n\\frac{(O_4-24.967)^2}{24.967}\n+\n\\frac{(O_5+O_6-10.385)^2}{10.385}.\n\\]\n\nWith 5 pooled categories and no estimated parameters, the reference distribution is\n\n\\[\n\\chi^2_4,\n\\]\n\nso the p-value is\n\n\\[\np=\\Pr(\\chi^2_4\\ge \\chi^2_{\\text{obs}}).\n\\]\n\nFor part (2),\n\n\\[\n\\bar X_{\\text{obs}}=\\frac{1}{100}\\sum_{k=0}^6 kO_k,\n\\]\n\nand under the null\n\n\\[\nE(\\bar X)=6\\frac{25}{49}=\\frac{150}{49}\\approx 3.061,\n\\]\n\nwith\n\n\\[\n\\operatorname{SD}(\\bar X)=0.116.\n\\]\n\nThus the z-statistic is\n\n\\[\nz=\\frac{\\bar X_{\\text{obs}}-3.061}{0.116}.\n\\]\n\nConclusion: the given prompt omits the empirical frequency table, so the Pearson statistic, p-value, observed \\(\\bar X\\), z-value, and final conclusion about uniformity cannot be determined numerically. If you provide the observed counts \\(O_0,\\dots,O_6\\), the test can be completed immediately."
+          }
+        ],
+        "phase": "final_answer",
+        "role": "assistant"
+      }
+    ]
+  },
+  "cost_usd": 0.10581,
+  "timing": {
+    "started": "2026-06-07T00:16:32.066467+00:00",
+    "ended": "2026-06-07T00:18:49.608918+00:00",
+    "seconds": 137.54
+  },
+  "error": null
+}

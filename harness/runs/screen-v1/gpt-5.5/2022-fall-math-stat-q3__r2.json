@@ -1,0 +1,73 @@
+{
+  "question_id": "2022-fall-math-stat-q3",
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "rep": 2,
+  "exam": {
+    "year": 2022,
+    "term": "fall",
+    "level": "ms",
+    "part": "math-stat"
+  },
+  "request": {
+    "system": "You are sitting a PhD-level qualifying examination in statistics. Solve the problem rigorously and completely. Show your work and reasoning, justify each step, and clearly state your final answer(s). If the problem has multiple parts, answer every part, labeled. If you invoke a known theorem, name it.",
+    "user": "[2022 fall ms math-stat — problem 3]\n\nTwo COVID-19 vaccines (A, B) and a control: $n$ observations from group A, $m$ from B, $k$ from control. Overall mean $\\mu$, group effects $\\alpha_1, \\alpha_2, \\alpha_3$. (1) Write a regression model for the vaccination effects. (2) Give the corresponding model matrix. (3) Can all of $\\mu, \\alpha_1, \\alpha_2, \\alpha_3$ be estimated? If not, why, and give a fix.",
+    "max_tokens": 24000,
+    "mode": {
+      "effort": "high"
+    }
+  },
+  "response": {
+    "id": "resp_04dc459c2e051b82006a24b53d297c8193a61045e5371ae308",
+    "model": "gpt-5.5-2026-04-23",
+    "stop_reason": "completed",
+    "usage": {
+      "input_tokens": 197,
+      "output_tokens": 4447,
+      "output_tokens_details": {
+        "reasoning_tokens": 3106
+      }
+    },
+    "thinking": "**Analyzing regression models**\n\nI'm thinking about how to approach this question regarding two COVID-19 vaccines and a control group in fixed-effects ANOVA. I realize that if there’s an imbalance, the overall mean doesn't represent everything accurately. The task involves writing a regression model to assess vaccination effects and creating the corresponding model matrix. \n\nI suspect they want to know if all parameters can be estimated and why not, hinting at rank deficiencies. I might offer a solution to manage this overparameterization issue.\n**Clarifying statistical estimates**\n\nI need to include \"drop intercept and estimate cell means,\" but I also need to clarify that there’s no overall separation between group means and intercepts. The problem asks for a fix, and I might provide options, discussing how not all means can be estimated if there are constraints like sum-to-zero. I'll define estimators more rigorously, and then decide on the final format with labels. It’s important to show the reasoning behind rank too.",
+    "text": "### (1) Regression model\n\nLet the observations be ordered as\n\n\\[\nY_{A1},\\dots,Y_{An},\\quad Y_{B1},\\dots,Y_{Bm},\\quad Y_{C1},\\dots,Y_{Ck},\n\\]\n\nwhere \\(C\\) denotes the control group. A standard one-way ANOVA/regression model is\n\n\\[\nY_{ij}=\\mu+\\alpha_i+\\varepsilon_{ij}, \\qquad i=1,2,3,\n\\]\n\nwhere\n\n\\[\ni=1 \\text{ for vaccine A},\\qquad i=2 \\text{ for vaccine B},\\qquad i=3 \\text{ for control},\n\\]\n\nand typically\n\n\\[\n\\varepsilon_{ij}\\stackrel{\\text{iid}}{\\sim} N(0,\\sigma^2)\n\\]\n\nor at least are independent with mean \\(0\\) and common variance \\(\\sigma^2\\). Thus the group means are\n\n\\[\n\\theta_1=\\mu+\\alpha_1,\\qquad \n\\theta_2=\\mu+\\alpha_2,\\qquad \n\\theta_3=\\mu+\\alpha_3.\n\\]\n\n---\n\n### (2) Model matrix\n\nLet\n\n\\[\n\\beta=(\\mu,\\alpha_1,\\alpha_2,\\alpha_3)^\\top.\n\\]\n\nThen the model can be written as\n\n\\[\nY=X\\beta+\\varepsilon,\n\\]\n\nwhere, with the observations ordered by group,\n\n\\[\nX=\n\\begin{pmatrix}\n\\mathbf 1_n & \\mathbf 1_n & \\mathbf 0_n & \\mathbf 0_n\\\\\n\\mathbf 1_m & \\mathbf 0_m & \\mathbf 1_m & \\mathbf 0_m\\\\\n\\mathbf 1_k & \\mathbf 0_k & \\mathbf 0_k & \\mathbf 1_k\n\\end{pmatrix}.\n\\]\n\nEquivalently, the rows are\n\n\\[\n\\begin{array}{c|cccc}\n\\text{group} & \\mu & \\alpha_1 & \\alpha_2 & \\alpha_3\\\\\n\\hline\nA & 1 & 1 & 0 & 0\\\\\nB & 1 & 0 & 1 & 0\\\\\nC & 1 & 0 & 0 & 1\n\\end{array}\n\\]\n\nrepeated \\(n,m,k\\) times respectively.\n\n---\n\n### (3) Estimability of \\(\\mu,\\alpha_1,\\alpha_2,\\alpha_3\\)\n\nNo, the four parameters cannot all be estimated as written.\n\nThe reason is that the design matrix \\(X\\) is not full column rank. Its first column is the sum of the three group-indicator columns:\n\n\\[\n\\mathbf 1_{n+m+k}=z_1+z_2+z_3.\n\\]\n\nTherefore,\n\n\\[\n\\operatorname{rank}(X)=3<4.\n\\]\n\nEquivalently,\n\n\\[\nX\n\\begin{pmatrix}\n1\\\\\n-1\\\\\n-1\\\\\n-1\n\\end{pmatrix}\n=0,\n\\]\n\nso the null space of \\(X\\) is nontrivial. For any constant \\(c\\),\n\n\\[\n\\mu'=\\mu+c,\\qquad \\alpha_i'=\\alpha_i-c,\\quad i=1,2,3,\n\\]\n\ngives exactly the same fitted values because\n\n\\[\n\\mu'+\\alpha_i'=\\mu+\\alpha_i.\n\\]\n\nThus \\(\\mu,\\alpha_1,\\alpha_2,\\alpha_3\\) are not separately identifiable. Only combinations such as\n\n\\[\n\\mu+\\alpha_i\n\\]\n\nand contrasts such as\n\n\\[\n\\alpha_1-\\alpha_3,\\qquad \\alpha_2-\\alpha_3\n\\]\n\nare estimable.\n\nA common fix is to impose a constraint, for example\n\n\\[\n\\alpha_1+\\alpha_2+\\alpha_3=0.\n\\]\n\nThen the parameters become identifiable. Under this constraint,\n\n\\[\n\\mu=\\frac{\\theta_1+\\theta_2+\\theta_3}{3},\n\\]\n\nand the least-squares estimators are\n\n\\[\n\\widehat{\\mu}\n=\n\\frac{\\bar Y_A+\\bar Y_B+\\bar Y_C}{3},\n\\]\n\n\\[\n\\widehat{\\alpha}_1=\\bar Y_A-\\widehat{\\mu},\\qquad\n\\widehat{\\alpha}_2=\\bar Y_B-\\widehat{\\mu},\\qquad\n\\widehat{\\alpha}_3=\\bar Y_C-\\widehat{\\mu}.\n\\]\n\nIf one wants \\(\\mu\\) to be the sample-size weighted grand mean, then instead impose\n\n\\[\nn\\alpha_1+m\\alpha_2+k\\alpha_3=0,\n\\]\n\ngiving\n\n\\[\n\\widehat{\\mu}\n=\n\\frac{n\\bar Y_A+m\\bar Y_B+k\\bar Y_C}{n+m+k}.\n\\]\n\nAnother common fix is to use the control group as the baseline by setting \\(\\alpha_3=0\\). Then the model becomes\n\n\\[\nY_{ij}=\\beta_0+\\delta_1 I\\{i=A\\}+\\delta_2 I\\{i=B\\}+\\varepsilon_{ij},\n\\]\n\nwhere\n\n\\[\n\\beta_0=\\theta_3,\\qquad\n\\delta_1=\\theta_1-\\theta_3,\\qquad\n\\delta_2=\\theta_2-\\theta_3.\n\\]\n\nThe corresponding full-rank design matrix has rows\n\n\\[\n\\begin{array}{c|ccc}\n\\text{group} & \\beta_0 & \\delta_1 & \\delta_2\\\\\n\\hline\nA & 1 & 1 & 0\\\\\nB & 1 & 0 & 1\\\\\nC & 1 & 0 & 0\n\\end{array}\n\\]\n\nand the vaccine effects relative to control are estimated by\n\n\\[\n\\widehat{\\delta}_1=\\bar Y_A-\\bar Y_C,\\qquad\n\\widehat{\\delta}_2=\\bar Y_B-\\bar Y_C.\n\\]\n\nSo the original four-parameter model is overparameterized; one must impose a constraint or remove one redundant column.",
+    "raw_output": [
+      {
+        "id": "rs_04dc459c2e051b82006a24b53dcb50819389476c277f3ab216",
+        "type": "reasoning",
+        "content": [],
+        "summary": [
+          {
+            "type": "summary_text",
+            "text": "**Analyzing regression models**\n\nI'm thinking about how to approach this question regarding two COVID-19 vaccines and a control group in fixed-effects ANOVA. I realize that if there’s an imbalance, the overall mean doesn't represent everything accurately. The task involves writing a regression model to assess vaccination effects and creating the corresponding model matrix. \n\nI suspect they want to know if all parameters can be estimated and why not, hinting at rank deficiencies. I might offer a solution to manage this overparameterization issue."
+          },
+          {
+            "type": "summary_text",
+            "text": "**Clarifying statistical estimates**\n\nI need to include \"drop intercept and estimate cell means,\" but I also need to clarify that there’s no overall separation between group means and intercepts. The problem asks for a fix, and I might provide options, discussing how not all means can be estimated if there are constraints like sum-to-zero. I'll define estimators more rigorously, and then decide on the final format with labels. It’s important to show the reasoning behind rank too."
+          }
+        ]
+      },
+      {
+        "id": "msg_04dc459c2e051b82006a24b57a2f0481938fd5fb8378b42500",
+        "type": "message",
+        "status": "completed",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "### (1) Regression model\n\nLet the observations be ordered as\n\n\\[\nY_{A1},\\dots,Y_{An},\\quad Y_{B1},\\dots,Y_{Bm},\\quad Y_{C1},\\dots,Y_{Ck},\n\\]\n\nwhere \\(C\\) denotes the control group. A standard one-way ANOVA/regression model is\n\n\\[\nY_{ij}=\\mu+\\alpha_i+\\varepsilon_{ij}, \\qquad i=1,2,3,\n\\]\n\nwhere\n\n\\[\ni=1 \\text{ for vaccine A},\\qquad i=2 \\text{ for vaccine B},\\qquad i=3 \\text{ for control},\n\\]\n\nand typically\n\n\\[\n\\varepsilon_{ij}\\stackrel{\\text{iid}}{\\sim} N(0,\\sigma^2)\n\\]\n\nor at least are independent with mean \\(0\\) and common variance \\(\\sigma^2\\). Thus the group means are\n\n\\[\n\\theta_1=\\mu+\\alpha_1,\\qquad \n\\theta_2=\\mu+\\alpha_2,\\qquad \n\\theta_3=\\mu+\\alpha_3.\n\\]\n\n---\n\n### (2) Model matrix\n\nLet\n\n\\[\n\\beta=(\\mu,\\alpha_1,\\alpha_2,\\alpha_3)^\\top.\n\\]\n\nThen the model can be written as\n\n\\[\nY=X\\beta+\\varepsilon,\n\\]\n\nwhere, with the observations ordered by group,\n\n\\[\nX=\n\\begin{pmatrix}\n\\mathbf 1_n & \\mathbf 1_n & \\mathbf 0_n & \\mathbf 0_n\\\\\n\\mathbf 1_m & \\mathbf 0_m & \\mathbf 1_m & \\mathbf 0_m\\\\\n\\mathbf 1_k & \\mathbf 0_k & \\mathbf 0_k & \\mathbf 1_k\n\\end{pmatrix}.\n\\]\n\nEquivalently, the rows are\n\n\\[\n\\begin{array}{c|cccc}\n\\text{group} & \\mu & \\alpha_1 & \\alpha_2 & \\alpha_3\\\\\n\\hline\nA & 1 & 1 & 0 & 0\\\\\nB & 1 & 0 & 1 & 0\\\\\nC & 1 & 0 & 0 & 1\n\\end{array}\n\\]\n\nrepeated \\(n,m,k\\) times respectively.\n\n---\n\n### (3) Estimability of \\(\\mu,\\alpha_1,\\alpha_2,\\alpha_3\\)\n\nNo, the four parameters cannot all be estimated as written.\n\nThe reason is that the design matrix \\(X\\) is not full column rank. Its first column is the sum of the three group-indicator columns:\n\n\\[\n\\mathbf 1_{n+m+k}=z_1+z_2+z_3.\n\\]\n\nTherefore,\n\n\\[\n\\operatorname{rank}(X)=3<4.\n\\]\n\nEquivalently,\n\n\\[\nX\n\\begin{pmatrix}\n1\\\\\n-1\\\\\n-1\\\\\n-1\n\\end{pmatrix}\n=0,\n\\]\n\nso the null space of \\(X\\) is nontrivial. For any constant \\(c\\),\n\n\\[\n\\mu'=\\mu+c,\\qquad \\alpha_i'=\\alpha_i-c,\\quad i=1,2,3,\n\\]\n\ngives exactly the same fitted values because\n\n\\[\n\\mu'+\\alpha_i'=\\mu+\\alpha_i.\n\\]\n\nThus \\(\\mu,\\alpha_1,\\alpha_2,\\alpha_3\\) are not separately identifiable. Only combinations such as\n\n\\[\n\\mu+\\alpha_i\n\\]\n\nand contrasts such as\n\n\\[\n\\alpha_1-\\alpha_3,\\qquad \\alpha_2-\\alpha_3\n\\]\n\nare estimable.\n\nA common fix is to impose a constraint, for example\n\n\\[\n\\alpha_1+\\alpha_2+\\alpha_3=0.\n\\]\n\nThen the parameters become identifiable. Under this constraint,\n\n\\[\n\\mu=\\frac{\\theta_1+\\theta_2+\\theta_3}{3},\n\\]\n\nand the least-squares estimators are\n\n\\[\n\\widehat{\\mu}\n=\n\\frac{\\bar Y_A+\\bar Y_B+\\bar Y_C}{3},\n\\]\n\n\\[\n\\widehat{\\alpha}_1=\\bar Y_A-\\widehat{\\mu},\\qquad\n\\widehat{\\alpha}_2=\\bar Y_B-\\widehat{\\mu},\\qquad\n\\widehat{\\alpha}_3=\\bar Y_C-\\widehat{\\mu}.\n\\]\n\nIf one wants \\(\\mu\\) to be the sample-size weighted grand mean, then instead impose\n\n\\[\nn\\alpha_1+m\\alpha_2+k\\alpha_3=0,\n\\]\n\ngiving\n\n\\[\n\\widehat{\\mu}\n=\n\\frac{n\\bar Y_A+m\\bar Y_B+k\\bar Y_C}{n+m+k}.\n\\]\n\nAnother common fix is to use the control group as the baseline by setting \\(\\alpha_3=0\\). Then the model becomes\n\n\\[\nY_{ij}=\\beta_0+\\delta_1 I\\{i=A\\}+\\delta_2 I\\{i=B\\}+\\varepsilon_{ij},\n\\]\n\nwhere\n\n\\[\n\\beta_0=\\theta_3,\\qquad\n\\delta_1=\\theta_1-\\theta_3,\\qquad\n\\delta_2=\\theta_2-\\theta_3.\n\\]\n\nThe corresponding full-rank design matrix has rows\n\n\\[\n\\begin{array}{c|ccc}\n\\text{group} & \\beta_0 & \\delta_1 & \\delta_2\\\\\n\\hline\nA & 1 & 1 & 0\\\\\nB & 1 & 0 & 1\\\\\nC & 1 & 0 & 0\n\\end{array}\n\\]\n\nand the vaccine effects relative to control are estimated by\n\n\\[\n\\widehat{\\delta}_1=\\bar Y_A-\\bar Y_C,\\qquad\n\\widehat{\\delta}_2=\\bar Y_B-\\bar Y_C.\n\\]\n\nSo the original four-parameter model is overparameterized; one must impose a constraint or remove one redundant column."
+          }
+        ],
+        "phase": "final_answer",
+        "role": "assistant"
+      }
+    ]
+  },
+  "cost_usd": 0.06769,
+  "timing": {
+    "started": "2026-06-07T00:03:09.022463+00:00",
+    "ended": "2026-06-07T00:04:27.057124+00:00",
+    "seconds": 78.03
+  },
+  "error": null
+}

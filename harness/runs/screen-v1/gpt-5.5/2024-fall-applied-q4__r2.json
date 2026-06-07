@@ -1,0 +1,64 @@
+{
+  "question_id": "2024-fall-applied-q4",
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "rep": 2,
+  "exam": {
+    "year": 2024,
+    "term": "fall",
+    "level": "ms",
+    "part": "applied"
+  },
+  "request": {
+    "system": "You are sitting a PhD-level qualifying examination in statistics. Solve the problem rigorously and completely. Show your work and reasoning, justify each step, and clearly state your final answer(s). If the problem has multiple parts, answer every part, labeled. If you invoke a known theorem, name it.",
+    "user": "[2024 fall ms applied — problem 4]\n\nMultiple regression of $Y$ on $X_1, X_2, X_3$, $n = 25$, SS(Total) $= 248.0$; table of SSReg for all predictor subsets (SSReg($X_1,X_2,X_3) = 181.8$, SSReg($X_1,X_2) = 145.2$, etc.), $\\alpha = 0.05$. (1) Global F-test of $H_0: \\beta_1=\\beta_2=\\beta_3=0$. (2) Compute the extra SSReg$(X_3\\mid X_1,X_2)$. (3) Test whether $X_3$ can be dropped. (4) Write the first row of the reduced-model $X$-matrix testing $H_0: \\beta_2 = \\beta_3 = 0$ (first obs: $Y=10, X_1=1985, X_2=59.7, X_3=2205$).",
+    "max_tokens": 24000,
+    "mode": {
+      "effort": "high"
+    }
+  },
+  "response": {
+    "id": "resp_00c996fec1ce0a5d006a24b9f871248196996faebe5d1cbe44",
+    "model": "gpt-5.5-2026-04-23",
+    "stop_reason": "completed",
+    "usage": {
+      "input_tokens": 304,
+      "output_tokens": 1568,
+      "output_tokens_details": {
+        "reasoning_tokens": 516
+      }
+    },
+    "thinking": "",
+    "text": "**Given:** \\(n=25\\), \\(SS_T=248.0\\), and for the full model with predictors \\(X_1,X_2,X_3\\),\n\n\\[\nSSReg(X_1,X_2,X_3)=181.8.\n\\]\n\nThus\n\n\\[\nSSE_{\\text{full}}=SS_T-SSReg_{\\text{full}}\n=248.0-181.8=66.2.\n\\]\n\nThe full model has \\(p=3\\) predictors plus intercept, so\n\n\\[\ndf_E=n-p-1=25-3-1=21.\n\\]\n\nTherefore\n\n\\[\nMSE_{\\text{full}}=\\frac{66.2}{21}=3.1524.\n\\]\n\n---\n\n## (1) Global \\(F\\)-test of \\(H_0:\\beta_1=\\beta_2=\\beta_3=0\\)\n\nThe global test statistic is\n\n\\[\nF=\\frac{MSReg}{MSE}\n=\\frac{SSReg/p}{SSE/(n-p-1)}.\n\\]\n\nSo\n\n\\[\nF=\\frac{181.8/3}{66.2/21}\n=\\frac{60.6}{3.1524}\n\\approx 19.22.\n\\]\n\nThe degrees of freedom are\n\n\\[\ndf_1=3,\\qquad df_2=21.\n\\]\n\nAt \\(\\alpha=0.05\\),\n\n\\[\nF_{0.95;3,21}\\approx 3.07.\n\\]\n\nSince\n\n\\[\n19.22>3.07,\n\\]\n\nwe reject \\(H_0\\).\n\n**Conclusion:** The overall regression is significant at the \\(0.05\\) level. At least one of \\(\\beta_1,\\beta_2,\\beta_3\\) is nonzero.\n\n---\n\n## (2) Extra sum of squares \\(SSReg(X_3\\mid X_1,X_2)\\)\n\nBy definition,\n\n\\[\nSSReg(X_3\\mid X_1,X_2)\n=\nSSReg(X_1,X_2,X_3)-SSReg(X_1,X_2).\n\\]\n\nGiven\n\n\\[\nSSReg(X_1,X_2,X_3)=181.8,\n\\qquad\nSSReg(X_1,X_2)=145.2,\n\\]\n\nwe get\n\n\\[\nSSReg(X_3\\mid X_1,X_2)\n=\n181.8-145.2\n=\n36.6.\n\\]\n\n\\[\n\\boxed{SSReg(X_3\\mid X_1,X_2)=36.6}\n\\]\n\n---\n\n## (3) Test whether \\(X_3\\) can be dropped\n\nWe test\n\n\\[\nH_0:\\beta_3=0\n\\]\n\ngiven that \\(X_1\\) and \\(X_2\\) are already in the model.\n\nThe test statistic is\n\n\\[\nF=\\frac{SSReg(X_3\\mid X_1,X_2)/1}{MSE_{\\text{full}}}.\n\\]\n\nThus\n\n\\[\nF=\\frac{36.6/1}{66.2/21}\n=\n\\frac{36.6}{3.1524}\n\\approx 11.61.\n\\]\n\nThe degrees of freedom are\n\n\\[\ndf_1=1,\\qquad df_2=21.\n\\]\n\nAt \\(\\alpha=0.05\\),\n\n\\[\nF_{0.95;1,21}\\approx 4.32.\n\\]\n\nSince\n\n\\[\n11.61>4.32,\n\\]\n\nwe reject \\(H_0\\).\n\n**Conclusion:** \\(X_3\\) provides a significant contribution after accounting for \\(X_1\\) and \\(X_2\\). Therefore, \\(X_3\\) should **not** be dropped from the model.\n\n---\n\n## (4) First row of the reduced-model \\(X\\)-matrix for testing \\(H_0:\\beta_2=\\beta_3=0\\)\n\nThe full model is\n\n\\[\nY=\\beta_0+\\beta_1X_1+\\beta_2X_2+\\beta_3X_3+\\varepsilon.\n\\]\n\nTesting\n\n\\[\nH_0:\\beta_2=\\beta_3=0\n\\]\n\nmeans the reduced model is\n\n\\[\nY=\\beta_0+\\beta_1X_1+\\varepsilon.\n\\]\n\nTherefore the reduced-model design matrix contains only the intercept column and the \\(X_1\\) column.\n\nFor the first observation,\n\n\\[\nY=10,\\qquad X_1=1985,\\qquad X_2=59.7,\\qquad X_3=2205.\n\\]\n\nThe first row of the reduced-model \\(X\\)-matrix is therefore\n\n\\[\n\\boxed{\\begin{bmatrix}1 & 1985\\end{bmatrix}}.\n\\]\n\nThe response value \\(Y=10\\) is not part of the \\(X\\)-matrix.",
+    "raw_output": [
+      {
+        "id": "rs_00c996fec1ce0a5d006a24b9f8fef881969f9c62ff08be3901",
+        "type": "reasoning",
+        "content": [],
+        "summary": []
+      },
+      {
+        "id": "msg_00c996fec1ce0a5d006a24ba0258388196b1af72a2776465d4",
+        "type": "message",
+        "status": "completed",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "**Given:** \\(n=25\\), \\(SS_T=248.0\\), and for the full model with predictors \\(X_1,X_2,X_3\\),\n\n\\[\nSSReg(X_1,X_2,X_3)=181.8.\n\\]\n\nThus\n\n\\[\nSSE_{\\text{full}}=SS_T-SSReg_{\\text{full}}\n=248.0-181.8=66.2.\n\\]\n\nThe full model has \\(p=3\\) predictors plus intercept, so\n\n\\[\ndf_E=n-p-1=25-3-1=21.\n\\]\n\nTherefore\n\n\\[\nMSE_{\\text{full}}=\\frac{66.2}{21}=3.1524.\n\\]\n\n---\n\n## (1) Global \\(F\\)-test of \\(H_0:\\beta_1=\\beta_2=\\beta_3=0\\)\n\nThe global test statistic is\n\n\\[\nF=\\frac{MSReg}{MSE}\n=\\frac{SSReg/p}{SSE/(n-p-1)}.\n\\]\n\nSo\n\n\\[\nF=\\frac{181.8/3}{66.2/21}\n=\\frac{60.6}{3.1524}\n\\approx 19.22.\n\\]\n\nThe degrees of freedom are\n\n\\[\ndf_1=3,\\qquad df_2=21.\n\\]\n\nAt \\(\\alpha=0.05\\),\n\n\\[\nF_{0.95;3,21}\\approx 3.07.\n\\]\n\nSince\n\n\\[\n19.22>3.07,\n\\]\n\nwe reject \\(H_0\\).\n\n**Conclusion:** The overall regression is significant at the \\(0.05\\) level. At least one of \\(\\beta_1,\\beta_2,\\beta_3\\) is nonzero.\n\n---\n\n## (2) Extra sum of squares \\(SSReg(X_3\\mid X_1,X_2)\\)\n\nBy definition,\n\n\\[\nSSReg(X_3\\mid X_1,X_2)\n=\nSSReg(X_1,X_2,X_3)-SSReg(X_1,X_2).\n\\]\n\nGiven\n\n\\[\nSSReg(X_1,X_2,X_3)=181.8,\n\\qquad\nSSReg(X_1,X_2)=145.2,\n\\]\n\nwe get\n\n\\[\nSSReg(X_3\\mid X_1,X_2)\n=\n181.8-145.2\n=\n36.6.\n\\]\n\n\\[\n\\boxed{SSReg(X_3\\mid X_1,X_2)=36.6}\n\\]\n\n---\n\n## (3) Test whether \\(X_3\\) can be dropped\n\nWe test\n\n\\[\nH_0:\\beta_3=0\n\\]\n\ngiven that \\(X_1\\) and \\(X_2\\) are already in the model.\n\nThe test statistic is\n\n\\[\nF=\\frac{SSReg(X_3\\mid X_1,X_2)/1}{MSE_{\\text{full}}}.\n\\]\n\nThus\n\n\\[\nF=\\frac{36.6/1}{66.2/21}\n=\n\\frac{36.6}{3.1524}\n\\approx 11.61.\n\\]\n\nThe degrees of freedom are\n\n\\[\ndf_1=1,\\qquad df_2=21.\n\\]\n\nAt \\(\\alpha=0.05\\),\n\n\\[\nF_{0.95;1,21}\\approx 4.32.\n\\]\n\nSince\n\n\\[\n11.61>4.32,\n\\]\n\nwe reject \\(H_0\\).\n\n**Conclusion:** \\(X_3\\) provides a significant contribution after accounting for \\(X_1\\) and \\(X_2\\). Therefore, \\(X_3\\) should **not** be dropped from the model.\n\n---\n\n## (4) First row of the reduced-model \\(X\\)-matrix for testing \\(H_0:\\beta_2=\\beta_3=0\\)\n\nThe full model is\n\n\\[\nY=\\beta_0+\\beta_1X_1+\\beta_2X_2+\\beta_3X_3+\\varepsilon.\n\\]\n\nTesting\n\n\\[\nH_0:\\beta_2=\\beta_3=0\n\\]\n\nmeans the reduced model is\n\n\\[\nY=\\beta_0+\\beta_1X_1+\\varepsilon.\n\\]\n\nTherefore the reduced-model design matrix contains only the intercept column and the \\(X_1\\) column.\n\nFor the first observation,\n\n\\[\nY=10,\\qquad X_1=1985,\\qquad X_2=59.7,\\qquad X_3=2205.\n\\]\n\nThe first row of the reduced-model \\(X\\)-matrix is therefore\n\n\\[\n\\boxed{\\begin{bmatrix}1 & 1985\\end{bmatrix}}.\n\\]\n\nThe response value \\(Y=10\\) is not part of the \\(X\\)-matrix."
+          }
+        ],
+        "phase": "final_answer",
+        "role": "assistant"
+      }
+    ]
+  },
+  "cost_usd": 0.02504,
+  "timing": {
+    "started": "2026-06-07T00:23:20.332673+00:00",
+    "ended": "2026-06-07T00:23:41.408164+00:00",
+    "seconds": 21.08
+  },
+  "error": null
+}

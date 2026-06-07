@@ -1,0 +1,77 @@
+{
+  "question_id": "2024-fall-applied-q4",
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "rep": 0,
+  "exam": {
+    "year": 2024,
+    "term": "fall",
+    "level": "ms",
+    "part": "applied"
+  },
+  "request": {
+    "system": "You are sitting a PhD-level qualifying examination in statistics. Solve the problem rigorously and completely. Show your work and reasoning, justify each step, and clearly state your final answer(s). If the problem has multiple parts, answer every part, labeled. If you invoke a known theorem, name it.",
+    "user": "[2024 fall ms applied — problem 4]\n\nMultiple regression of $Y$ on $X_1, X_2, X_3$, $n = 25$, SS(Total) $= 248.0$; table of SSReg for all predictor subsets (SSReg($X_1,X_2,X_3) = 181.8$, SSReg($X_1,X_2) = 145.2$, etc.), $\\alpha = 0.05$. (1) Global F-test of $H_0: \\beta_1=\\beta_2=\\beta_3=0$. (2) Compute the extra SSReg$(X_3\\mid X_1,X_2)$. (3) Test whether $X_3$ can be dropped. (4) Write the first row of the reduced-model $X$-matrix testing $H_0: \\beta_2 = \\beta_3 = 0$ (first obs: $Y=10, X_1=1985, X_2=59.7, X_3=2205$).",
+    "max_tokens": 24000,
+    "mode": {
+      "effort": "high"
+    }
+  },
+  "response": {
+    "id": "resp_0c3448e9003b71f8006a24b9ed38388193963aa78001fa178c",
+    "model": "gpt-5.5-2026-04-23",
+    "stop_reason": "completed",
+    "usage": {
+      "input_tokens": 304,
+      "output_tokens": 2655,
+      "output_tokens_details": {
+        "reasoning_tokens": 1552
+      }
+    },
+    "thinking": "**Calculating the reduced model**\n\nI need to compute something related to a statistic: sqrt F=3.407, and t_21 p 2*(1 - CDF 3.407) is about 0.00266. While estimating is not necessary, it looks like I have to reject at alpha.\n\nNext, I should write the first row of the reduced-model X-matrix for testing the null hypothesis H0: beta2 = beta3 = 0. The first observation includes Y=10, X1=1985, X2=59.7, and X3=2205. I want to ensure I understand how the reduced-model X matrix works for this test.\n**Calculating F-statistic and p-value**\n\nI'm considering the global F-test where the null hypothesis states that all parameters are equal to zero. I calculated the F* value as 19.22 and found the critical F-value to be 3.07, so I can reject the null hypothesis. Now, I need to compute the p-value for F(3,21) greater than 19.224. Approximating it appears to give me about 3.4e-6, although 3.8e-6 could also work. I also need to consider the significance of beta3 in the full model.\n**Calculating ANOVA details**\n\nI'm working through the full ANOVA calculations. For the regression, I've got degrees of freedom (df) of 3, sum of squares (SS) of 181.8, mean square (MS) of 60.6, and an F statistic of 19.22. The error df is 21 with SS of 66.2 and MS of 3.1524. Next, I can explore dropping variable X3 and mention the critical values. It’s important to state assumptions about the linear model, too. Let’s finalize the details!",
+    "text": "Let the full model be\n\n\\[\nY_i=\\beta_0+\\beta_1X_{i1}+\\beta_2X_{i2}+\\beta_3X_{i3}+\\varepsilon_i,\n\\]\n\nwith \\(n=25\\). The full-model regression sum of squares is\n\n\\[\nSSReg(X_1,X_2,X_3)=181.8,\n\\]\n\nand\n\n\\[\nSST=248.0.\n\\]\n\nThus the full-model error sum of squares is\n\n\\[\nSSE_{\\text{full}}=SST-SSReg_{\\text{full}}\n=248.0-181.8=66.2.\n\\]\n\nThe full model has \\(3\\) predictors plus an intercept, so\n\n\\[\ndf_E=n-4=25-4=21.\n\\]\n\nHence\n\n\\[\nMSE_{\\text{full}}=\\frac{66.2}{21}=3.1524.\n\\]\n\n---\n\n## (1) Global \\(F\\)-test of \\(H_0:\\beta_1=\\beta_2=\\beta_3=0\\)\n\nThe hypotheses are\n\n\\[\nH_0:\\beta_1=\\beta_2=\\beta_3=0\n\\]\n\nversus\n\n\\[\nH_a:\\text{at least one of } \\beta_1,\\beta_2,\\beta_3 \\neq 0.\n\\]\n\nThe regression degrees of freedom are \\(3\\), so\n\n\\[\nMSReg=\\frac{181.8}{3}=60.6.\n\\]\n\nThe global \\(F\\)-statistic is\n\n\\[\nF=\\frac{MSReg}{MSE}\n=\\frac{60.6}{3.1524}\n=19.22.\n\\]\n\nAt \\(\\alpha=0.05\\),\n\n\\[\nF_{0.95;3,21}\\approx 3.07.\n\\]\n\nSince\n\n\\[\n19.22>3.07,\n\\]\n\nwe reject \\(H_0\\). There is significant evidence that at least one of the predictors is linearly associated with \\(Y\\).\n\n---\n\n## (2) Compute \\(SSReg(X_3\\mid X_1,X_2)\\)\n\nThe extra regression sum of squares for adding \\(X_3\\) after \\(X_1,X_2\\) is\n\n\\[\nSSReg(X_3\\mid X_1,X_2)\n=\nSSReg(X_1,X_2,X_3)-SSReg(X_1,X_2).\n\\]\n\nGiven\n\n\\[\nSSReg(X_1,X_2,X_3)=181.8,\n\\qquad\nSSReg(X_1,X_2)=145.2,\n\\]\n\nwe get\n\n\\[\nSSReg(X_3\\mid X_1,X_2)=181.8-145.2=36.6.\n\\]\n\nSo\n\n\\[\n\\boxed{SSReg(X_3\\mid X_1,X_2)=36.6.}\n\\]\n\n---\n\n## (3) Test whether \\(X_3\\) can be dropped\n\nWe test\n\n\\[\nH_0:\\beta_3=0\n\\]\n\ngiven that \\(X_1\\) and \\(X_2\\) remain in the model, versus\n\n\\[\nH_a:\\beta_3\\neq 0.\n\\]\n\nThe extra sum of squares for \\(X_3\\) given \\(X_1,X_2\\) is \\(36.6\\), with numerator degrees of freedom \\(1\\). Thus\n\n\\[\nF\n=\n\\frac{SSReg(X_3\\mid X_1,X_2)/1}{MSE_{\\text{full}}}\n=\n\\frac{36.6}{3.1524}\n=11.61.\n\\]\n\nAt \\(\\alpha=0.05\\),\n\n\\[\nF_{0.95;1,21}\\approx 4.32.\n\\]\n\nSince\n\n\\[\n11.61>4.32,\n\\]\n\nwe reject \\(H_0:\\beta_3=0\\). Therefore, \\(X_3\\) contributes significantly after adjusting for \\(X_1\\) and \\(X_2\\), so \\(X_3\\) should not be dropped.\n\n---\n\n## (4) First row of the reduced-model \\(X\\)-matrix testing \\(H_0:\\beta_2=\\beta_3=0\\)\n\nTesting\n\n\\[\nH_0:\\beta_2=\\beta_3=0\n\\]\n\nmeans the reduced model keeps only the intercept and \\(X_1\\):\n\n\\[\nY_i=\\beta_0+\\beta_1X_{i1}+\\varepsilon_i.\n\\]\n\nThus the reduced-model design matrix has columns\n\n\\[\n1,\\quad X_1.\n\\]\n\nFor the first observation,\n\n\\[\nY=10,\\qquad X_1=1985,\\qquad X_2=59.7,\\qquad X_3=2205.\n\\]\n\nOnly the intercept and \\(X_1\\) appear in the reduced \\(X\\)-matrix, so the first row is\n\n\\[\n\\boxed{(1,\\ 1985)}.\n\\]\n\nThe value \\(Y=10\\) is part of the response vector, not the design matrix.",
+    "raw_output": [
+      {
+        "id": "rs_0c3448e9003b71f8006a24b9edc3d481938739035aedb54051",
+        "type": "reasoning",
+        "content": [],
+        "summary": [
+          {
+            "type": "summary_text",
+            "text": "**Calculating the reduced model**\n\nI need to compute something related to a statistic: sqrt F=3.407, and t_21 p 2*(1 - CDF 3.407) is about 0.00266. While estimating is not necessary, it looks like I have to reject at alpha.\n\nNext, I should write the first row of the reduced-model X-matrix for testing the null hypothesis H0: beta2 = beta3 = 0. The first observation includes Y=10, X1=1985, X2=59.7, and X3=2205. I want to ensure I understand how the reduced-model X matrix works for this test."
+          },
+          {
+            "type": "summary_text",
+            "text": "**Calculating F-statistic and p-value**\n\nI'm considering the global F-test where the null hypothesis states that all parameters are equal to zero. I calculated the F* value as 19.22 and found the critical F-value to be 3.07, so I can reject the null hypothesis. Now, I need to compute the p-value for F(3,21) greater than 19.224. Approximating it appears to give me about 3.4e-6, although 3.8e-6 could also work. I also need to consider the significance of beta3 in the full model."
+          },
+          {
+            "type": "summary_text",
+            "text": "**Calculating ANOVA details**\n\nI'm working through the full ANOVA calculations. For the regression, I've got degrees of freedom (df) of 3, sum of squares (SS) of 181.8, mean square (MS) of 60.6, and an F statistic of 19.22. The error df is 21 with SS of 66.2 and MS of 3.1524. Next, I can explore dropping variable X3 and mention the critical values. It’s important to state assumptions about the linear model, too. Let’s finalize the details!"
+          }
+        ]
+      },
+      {
+        "id": "msg_0c3448e9003b71f8006a24ba0cda588193995089956ee819ee",
+        "type": "message",
+        "status": "completed",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "Let the full model be\n\n\\[\nY_i=\\beta_0+\\beta_1X_{i1}+\\beta_2X_{i2}+\\beta_3X_{i3}+\\varepsilon_i,\n\\]\n\nwith \\(n=25\\). The full-model regression sum of squares is\n\n\\[\nSSReg(X_1,X_2,X_3)=181.8,\n\\]\n\nand\n\n\\[\nSST=248.0.\n\\]\n\nThus the full-model error sum of squares is\n\n\\[\nSSE_{\\text{full}}=SST-SSReg_{\\text{full}}\n=248.0-181.8=66.2.\n\\]\n\nThe full model has \\(3\\) predictors plus an intercept, so\n\n\\[\ndf_E=n-4=25-4=21.\n\\]\n\nHence\n\n\\[\nMSE_{\\text{full}}=\\frac{66.2}{21}=3.1524.\n\\]\n\n---\n\n## (1) Global \\(F\\)-test of \\(H_0:\\beta_1=\\beta_2=\\beta_3=0\\)\n\nThe hypotheses are\n\n\\[\nH_0:\\beta_1=\\beta_2=\\beta_3=0\n\\]\n\nversus\n\n\\[\nH_a:\\text{at least one of } \\beta_1,\\beta_2,\\beta_3 \\neq 0.\n\\]\n\nThe regression degrees of freedom are \\(3\\), so\n\n\\[\nMSReg=\\frac{181.8}{3}=60.6.\n\\]\n\nThe global \\(F\\)-statistic is\n\n\\[\nF=\\frac{MSReg}{MSE}\n=\\frac{60.6}{3.1524}\n=19.22.\n\\]\n\nAt \\(\\alpha=0.05\\),\n\n\\[\nF_{0.95;3,21}\\approx 3.07.\n\\]\n\nSince\n\n\\[\n19.22>3.07,\n\\]\n\nwe reject \\(H_0\\). There is significant evidence that at least one of the predictors is linearly associated with \\(Y\\).\n\n---\n\n## (2) Compute \\(SSReg(X_3\\mid X_1,X_2)\\)\n\nThe extra regression sum of squares for adding \\(X_3\\) after \\(X_1,X_2\\) is\n\n\\[\nSSReg(X_3\\mid X_1,X_2)\n=\nSSReg(X_1,X_2,X_3)-SSReg(X_1,X_2).\n\\]\n\nGiven\n\n\\[\nSSReg(X_1,X_2,X_3)=181.8,\n\\qquad\nSSReg(X_1,X_2)=145.2,\n\\]\n\nwe get\n\n\\[\nSSReg(X_3\\mid X_1,X_2)=181.8-145.2=36.6.\n\\]\n\nSo\n\n\\[\n\\boxed{SSReg(X_3\\mid X_1,X_2)=36.6.}\n\\]\n\n---\n\n## (3) Test whether \\(X_3\\) can be dropped\n\nWe test\n\n\\[\nH_0:\\beta_3=0\n\\]\n\ngiven that \\(X_1\\) and \\(X_2\\) remain in the model, versus\n\n\\[\nH_a:\\beta_3\\neq 0.\n\\]\n\nThe extra sum of squares for \\(X_3\\) given \\(X_1,X_2\\) is \\(36.6\\), with numerator degrees of freedom \\(1\\). Thus\n\n\\[\nF\n=\n\\frac{SSReg(X_3\\mid X_1,X_2)/1}{MSE_{\\text{full}}}\n=\n\\frac{36.6}{3.1524}\n=11.61.\n\\]\n\nAt \\(\\alpha=0.05\\),\n\n\\[\nF_{0.95;1,21}\\approx 4.32.\n\\]\n\nSince\n\n\\[\n11.61>4.32,\n\\]\n\nwe reject \\(H_0:\\beta_3=0\\). Therefore, \\(X_3\\) contributes significantly after adjusting for \\(X_1\\) and \\(X_2\\), so \\(X_3\\) should not be dropped.\n\n---\n\n## (4) First row of the reduced-model \\(X\\)-matrix testing \\(H_0:\\beta_2=\\beta_3=0\\)\n\nTesting\n\n\\[\nH_0:\\beta_2=\\beta_3=0\n\\]\n\nmeans the reduced model keeps only the intercept and \\(X_1\\):\n\n\\[\nY_i=\\beta_0+\\beta_1X_{i1}+\\varepsilon_i.\n\\]\n\nThus the reduced-model design matrix has columns\n\n\\[\n1,\\quad X_1.\n\\]\n\nFor the first observation,\n\n\\[\nY=10,\\qquad X_1=1985,\\qquad X_2=59.7,\\qquad X_3=2205.\n\\]\n\nOnly the intercept and \\(X_1\\) appear in the reduced \\(X\\)-matrix, so the first row is\n\n\\[\n\\boxed{(1,\\ 1985)}.\n\\]\n\nThe value \\(Y=10\\) is part of the response vector, not the design matrix."
+          }
+        ],
+        "phase": "final_answer",
+        "role": "assistant"
+      }
+    ]
+  },
+  "cost_usd": 0.04134,
+  "timing": {
+    "started": "2026-06-07T00:23:08.664451+00:00",
+    "ended": "2026-06-07T00:23:50.600649+00:00",
+    "seconds": 41.94
+  },
+  "error": null
+}
