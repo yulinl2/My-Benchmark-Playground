@@ -2,7 +2,7 @@
 
 > **TL;DR**
 > - 📚 Built a **95-problem** question bank from Rutgers Stat qual exams (PhD 2018–2025 + recent MS), every entry linked to its source PDF+page. → [`bank.jsonl`](../question_bank/bank.jsonl)
-> - 🤖 Built a **multi-provider collection harness** (GPT-5.5 + Claude, trajectories + cost) and ran a **cross-model hardness screen** (516 responses, **$41**). → [`harness/`](../harness)
+> - 🤖 Built a **multi-provider collection harness** (GPT-5.5 + Claude, trajectories + cost) and ran a **cross-model hardness screen** — GPT-5.5, Haiku, + Opus sub-agents — (**570 responses, $46**). → [`harness/`](../harness)
 > - 🎯 Goal = **filter the best contribution candidates** by cross-model behavior. Top candidates are the **hardest PhD theory problems**. → [issue #8](https://github.com/yulinl2/My-Benchmark-Playground/issues/8) · [interactive demo](../demo/index.html)
 > - 🚧 **Gate not yet crossed:** ground-truth **grading** (deferred). The shortlist is a *behavioral prefilter, not a correctness verdict.*
 
@@ -14,10 +14,11 @@
 |---|---|
 | Questions in bank | **95** (PhD 62 · MS 33) |
 | Source PDFs linked | 29 (0 dangling) · 9 carry datasets |
-| Screen responses collected | **516** (GPT-5.5 + Haiku × 86 × k=3) |
+| Screen responses collected | **570** (GPT-5.5 + Haiku × **95** × k=3) |
+| Sub-agent solutions (Opus, closed-book) | 8 (top theory candidates) |
 | Trajectories captured (free haiku pass) | 95 (`haiku-full-v1`) |
-| Total spend to date | **~$49** (calib ~$7.6 · screen $41.1) |
-| Output tokens collected | 3.6M (screen) + 0.4M (haiku) |
+| Total spend to date | **~$54** API (calib $7.6 · screen $46.4) · sub-agents session-billed |
+| Output tokens collected | 4.0M (screen) + 0.4M (haiku) |
 | `verified: true` entries | **0 / 95** (audit pending) |
 
 ---
@@ -26,7 +27,7 @@
 
 ```
 PDFs ──extract──▶ question bank (95) ──┬─▶ audit UI (verify + grade-type)  [human gate, built]
-                                       └─▶ harness ──▶ screen (516 resp) ──▶ behavioral analysis ──▶ candidate shortlist
+                                       └─▶ harness ──▶ screen (570 resp, 3 models) ──▶ behavioral analysis ──▶ candidate shortlist
                                                                                                          │
                                                                                           GRADER (deferred) ─▶ confirmed-hard ─▶ contribute
 ```
@@ -57,7 +58,7 @@ PDFs ──extract──▶ question bank (95) ──┬─▶ audit UI (verify 
 | Opus 4.7 | $0.613 | 8,025 | 6,215 |
 | Haiku 4.5 | ~$0.02 | 4,414 | 2,390 |
 
-**Screen** ([`screen-v1`](../harness/runs/screen-v1)) — GPT-5.5 + Haiku × 86 (data-dependent excluded) × k=3, high effort. **516/516 ok, $41.09.**
+**Screen** ([`screen-v1`](../harness/runs/screen-v1)) — GPT-5.5 + Haiku × **95** × k=3, high effort. **570/570 ok, $46.43.** Plus a third model — **Claude Opus sub-agents, closed-book (no web)** — on the top 8 theory candidates (session-billed; final solutions in [`subagent-v1/raw`](../harness/runs/subagent-v1/raw)). Every problem (incl. the 9 dataset-backed ones) is collected and accessible — nothing hidden.
 
 ## 🎯 Candidate shortlist (theory) — [explore interactively »](../demo/index.html)
 
@@ -88,7 +89,7 @@ Theory view re-z-scores the same signals **within the 60 theory problems**. **Pr
 
 ## 💸 Costs & budget
 
-Plan + measured: [issue #7](https://github.com/yulinl2/My-Benchmark-Playground/issues/7). Funnel ≈ $106–137 ($53–68 batched). Spent so far **~$49**. Ceiling **~$150 Anthropic + ~$50 OpenAI**.
+Plan + measured: [issue #7](https://github.com/yulinl2/My-Benchmark-Playground/issues/7). Funnel ≈ $106–137 ($53–68 batched). Spent so far **~$54** API (+ sub-agents, session-billed). Ceiling **~$150 Anthropic + ~$50 OpenAI**.
 
 ## 🔑 Key findings & decisions
 
