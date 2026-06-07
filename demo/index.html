@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Candidate Screen — Interactive Results</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked@12/marked.min.js"></script>
+<script defer src="data.js"></script>
+<style>
+  :root{--bd:#e3e8ee;--bg:#f6f8fa;--ink:#1f2328;--mut:#5b6573;--acc:#0969da;
+        --hot:#cf222e;--warm:#bc4c00;--cool:#1a7f37;--card:#fff;}
+  *{box-sizing:border-box}
+  body{margin:0;font:14px/1.55 -apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--bg)}
+  code{font-family:ui-monospace,SFMono-Regular,monospace;font-size:.92em}
+  header{background:#0d1117;color:#e6edf3;padding:14px 18px}
+  header h1{margin:0 0 6px;font-size:17px}
+  .stats{display:flex;gap:18px;flex-wrap:wrap;font-size:12.5px;color:#9da7b3}
+  .stats b{color:#e6edf3;font-variant-numeric:tabular-nums}
+  .note{font-size:12px;color:#9da7b3;margin-top:6px;max-width:1100px}
+  .note .warn{color:#ffa657}
+  main{display:grid;grid-template-columns:340px 1fr;height:calc(100vh - 96px)}
+  #list{overflow:auto;border-right:1px solid var(--bd);background:#fff}
+  .filters{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--bd);padding:8px;display:flex;gap:6px;flex-wrap:wrap;z-index:2}
+  .filters select,.filters label{font-size:12px}
+  .row{padding:8px 10px;border-bottom:1px solid var(--bg);cursor:pointer}
+  .row:hover{background:var(--bg)}.row.sel{background:#ddf4ff}
+  .row .top{display:flex;gap:8px;align-items:center}
+  .rank{font-weight:700;color:var(--mut);width:26px;font-variant-numeric:tabular-nums}
+  .qid{font-family:ui-monospace,monospace;font-size:11.5px;flex:1;word-break:break-all}
+  .score{font-weight:700;font-variant-numeric:tabular-nums}
+  .bars{display:flex;gap:3px;margin-top:5px}
+  .bars .b{height:5px;border-radius:3px;background:var(--bd);flex:1;overflow:hidden}
+  .bars .b>i{display:block;height:100%}
+  .b.reason>i{background:#8957e5}.b.instab>i{background:var(--hot)}.b.trunc>i{background:var(--warm)}
+  .pill{display:inline-block;font-size:10.5px;padding:0 6px;border-radius:9px;border:1px solid var(--bd);color:var(--mut)}
+  .pill.ms{background:#fff8c5;border-color:#eac54f}
+  #pane{overflow:auto;padding:18px 22px}
+  .meta{color:var(--mut);font-size:12.5px}
+  .tags span{display:inline-block;background:#fff;border:1px solid var(--bd);border-radius:10px;padding:0 8px;margin:2px 4px 2px 0;font-size:11.5px}
+  .scorebox{display:flex;gap:14px;flex-wrap:wrap;margin:12px 0;padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:#fff}
+  .sc{font-size:12px}.sc b{display:block;font-size:16px;font-variant-numeric:tabular-nums}
+  .block{border:1px solid var(--bd);border-radius:10px;padding:12px 14px;margin:12px 0;background:#fff}
+  .block h3{margin:0 0 8px;font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--mut)}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:1000px){.cols{grid-template-columns:1fr}}
+  .repcard{border:1px solid var(--bd);border-radius:10px;margin:10px 0;background:#fff;overflow:hidden}
+  .rephead{padding:7px 10px;background:var(--bg);display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:12px}
+  .chip{font-size:11px;padding:1px 7px;border-radius:8px;background:#fff;border:1px solid var(--bd);font-variant-numeric:tabular-nums}
+  .chip.trunc{background:#ffebe9;border-color:#ffaba8;color:var(--hot)}
+  details{padding:6px 10px}details>summary{cursor:pointer;color:var(--mut);font-size:12px}
+  .ans{padding:8px 10px;border-top:1px solid var(--bg)}
+  .ans p{margin:.4em 0}.think{white-space:pre-wrap;font-size:12px;color:#444;background:var(--bg);padding:8px;border-radius:6px;margin-top:6px}
+  .modeltitle{font-weight:700;margin-bottom:2px}
+  .frontier{color:#8957e5}.floor{color:#1a7f37}.sub{color:#0969da}
+  a{color:var(--acc)}
+  .legend{font-size:11px;color:var(--mut);margin-top:4px}
+</style>
+</head>
+<body>
+<header>
+  <h1>Candidate Screen — cross-model behavioral results</h1>
+  <div class="stats" id="stats"></div>
+  <div class="note" id="scoring"></div>
+  <div class="note">📂 <a href="../docs/PROJECT_SYNTHESIS.md">project synthesis</a> ·
+    <a href="https://github.com/yulinl2/My-Benchmark-Playground/issues/8">full results (#8)</a> ·
+    <a href="../question_bank/bank.jsonl">question bank</a> ·
+    <a href="../harness/runs/screen-v1/analysis.md">analysis table</a>
+    — every problem below is accessible regardless of auto-gradability; applied ones are flagged, not hidden.</div>
+  <div class="note"><span class="warn">⚠ Proxy, not a verdict.</span> High reasoning + answer-instability suggests the frontier struggled; it does <b>not</b> prove the answer is wrong. Confirming the 0/3 hardness bar needs ground-truth grading (deferred). Scoring code:
+    <a id="codelink" href="#">analyze_screen.py</a>.</div>
+</header>
+<main>
+  <div id="list"><div class="filters">
+    <select id="fScope"><option value="all">all problems (nothing hidden)</option><option value="theory">theory ranking pool</option></select>
+    <select id="fLevel"><option value="">all levels</option><option>phd</option><option>ms</option></select>
+    <select id="fPart"><option value="">all parts</option><option>probability</option><option>math-stat</option><option>applied</option></select>
+  </div><div id="rows"></div></div>
+  <div id="pane"><div class="meta" style="padding:40px">Loading… (if blank, run <code>python demo/build_demo.py</code>)</div></div>
+</main>
+<script>
+let D=null, view=[], cur=null, MAX={};
+const $=id=>document.getElementById(id);
+function esc(s){return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}
+function math(el){if(window.renderMathInElement)renderMathInElement(el,{delimiters:[
+  {left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false},
+  {left:"\\[",right:"\\]",display:true},{left:"\\(",right:"\\)",display:false}],throwOnError:false})}
+function md(t){try{return marked.parse(t||"")}catch(e){return "<pre>"+esc(t)+"</pre>"}}
+function bar(v,max){return `<i style="width:${max?Math.min(100,100*v/max):0}%"></i>`}
+
+function rowsHTML(){
+  $("rows").innerHTML = view.map((p,i)=>{
+    const sc = p.is_theory? p.tscore : p.score;
+    const ins = p.signals.instab==null? 0 : p.signals.instab;
+    return `<div class="row ${p===cur?'sel':''}" data-id="${p.id}">
+      <div class="top"><span class="rank">${p.is_theory?('#'+p.trank):'·'}</span>
+        <span class="qid">${p.id}</span>
+        <span class="score" style="color:${sc>3?'var(--hot)':sc>1?'var(--warm)':'var(--mut)'}">${sc.toFixed(1)}</span>
+        <span class="pill ${p.exam.level==='ms'?'ms':''}">${p.exam.level}</span></div>
+      <div class="bars">
+        <div class="b reason" title="frontier reasoning tokens">${bar(p.signals.f_reason,MAX.reason)}</div>
+        <div class="b instab" title="answer instability">${bar(ins,1)}</div>
+        <div class="b trunc" title="truncation rate">${bar(p.signals.f_trunc,1)}</div>
+      </div></div>`;
+  }).join("") || `<div class="meta" style="padding:20px">no matches</div>`;
+}
+function applyFilters(){
+  const scope=$("fScope").value, lv=$("fLevel").value, pt=$("fPart").value;
+  view = D.problems.filter(p=>{
+    if(scope==="theory" && !p.is_theory) return false;
+    if(lv && p.exam.level!==lv) return false;
+    if(pt && p.exam.part!==pt) return false;
+    return true;
+  });
+  rowsHTML();
+}
+function repCard(r){
+  const trunc = (r.stop_reason==="max_tokens"||r.stop_reason==="incomplete");
+  const chips=[];
+  if(r.output_tokens!=null) chips.push(`<span class="chip">out ${r.output_tokens}</span>`);
+  if(r.reasoning_tokens!=null) chips.push(`<span class="chip">reason ${r.reasoning_tokens}</span>`);
+  if(r.cost_usd!=null) chips.push(`<span class="chip">$${r.cost_usd.toFixed(3)}</span>`);
+  if(r.stop_reason) chips.push(`<span class="chip ${trunc?'trunc':''}">${r.stop_reason}</span>`);
+  if(r.seconds) chips.push(`<span class="chip">${r.seconds|0}s</span>`);
+  return `<div class="repcard"><div class="rephead"><b>rep ${r.rep}</b>${chips.join("")}</div>
+    ${r.note?`<div class="legend" style="padding:4px 10px">${esc(r.note)}</div>`:""}
+    ${r.thinking?`<details><summary>trajectory (thinking)</summary><div class="think">${esc(r.thinking)}</div></details>`:""}
+    <div class="ans">${md(r.text)}</div></div>`;
+}
+function select(p){
+  cur=p; rowsHTML();
+  const s=p.signals, ins=s.instab==null?"—":s.instab.toFixed(2);
+  const parts=(p.parts||[]).map(x=>`<div>${esc(x)}</div>`).join("");
+  const cols=[
+    {title:"GPT-5.5 (frontier) · k=3", cls:"frontier", reps:p.runs.gpt},
+    {title:"Haiku 4.5 (floor) · k=3", cls:"floor", reps:p.runs.haiku},
+  ];
+  if(p.runs.subagent) cols.push({title:"Claude sub-agent (Opus, closed-book) · k=1", cls:"sub", reps:p.runs.subagent});
+  $("pane").innerHTML=`
+    <div class="meta">${p.id} · ${p.exam.year} ${p.exam.term} · <b>${p.exam.level}</b> · ${p.exam.part} · diff ${p.difficulty||"—"}
+      ${p.is_theory?` · theory rank <b>#${p.trank}</b>`:` · <b>applied*</b> (proxy confounded by open-endedness)`}</div>
+    <div class="tags">${p.topics.map(t=>`<span>${esc(t)}</span>`).join("")}</div>
+    <div class="scorebox">
+      <div class="sc">score<b>${(p.is_theory?p.tscore:p.score).toFixed(2)}</b></div>
+      <div class="sc">gpt reasoning<b>${s.f_reason.toFixed(0)}</b></div>
+      <div class="sc">instability<b>${ins}</b></div>
+      <div class="sc">truncation<b>${(s.f_trunc*100).toFixed(0)}%</b></div>
+      <div class="sc">gpt out<b>${s.f_out.toFixed(0)}</b></div>
+      <div class="sc">haiku out<b>${s.h_out.toFixed(0)}</b></div>
+    </div>
+    <div class="block"><h3>Problem</h3><div id="prompt">${esc(p.prompt)}</div>${parts?`<h3 style="margin-top:10px">Parts</h3><div id="parts">${parts}</div>`:""}
+      ${p.source?.pdf?`<div class="legend">📄 primary source: <a href="../${esc(p.source.pdf)}" target="_blank">${esc(p.source.pdf)}</a> · p.${p.source.page??"—"}${(p.data&&p.data.length)?` · datasets: ${p.data.map(esc).join("; ")}`:""}</div>`:""}</div>
+    <div class="cols" style="grid-template-columns:repeat(${cols.length},1fr)">
+      ${cols.map(c=>`<div><div class="modeltitle ${c.cls}">${c.title}</div>${(c.reps||[]).map(repCard).join("")||"<div class=meta>no runs</div>"}</div>`).join("")}
+    </div>`;
+  math($("pane"));
+}
+window.addEventListener("DOMContentLoaded",()=>{
+  D=window.DEMO;
+  if(!D){return;}
+  const t=D.totals;
+  $("stats").innerHTML=`<span><b>${t.problems}</b> problems</span><span><b>${t.responses}</b> responses</span>
+    <span>k=<b>${D.k}</b></span><span>frontier <b>${D.models.frontier}</b> · floor <b>${D.models.floor}</b></span>
+    <span>spend <b>$${t.cost_usd}</b></span><span>out tokens <b>${(t.output_tokens/1e6).toFixed(2)}M</b></span>
+    <span>run <b>${D.run}</b></span>`;
+  $("scoring").innerHTML="<b>Ranking:</b> "+esc(D.scoring);
+  $("codelink").href="../harness/analyze_screen.py";
+  MAX.reason=Math.max(...D.problems.map(p=>p.signals.f_reason));
+  ["fScope","fLevel","fPart"].forEach(id=>$(id).onchange=applyFilters);
+  $("rows").onclick=e=>{const r=e.target.closest(".row"); if(r){const p=D.problems.find(x=>x.id===r.dataset.id); if(p)select(p);}};
+  applyFilters();
+  if(view.length) select(view[0]);
+});
+</script>
+</body>
+</html>

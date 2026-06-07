@@ -221,3 +221,4 @@ __marimo__/
 # Force-add with `git add -f` if you intentionally want to track one.
 exams/pdfs/*.pdf
 audit/data.js
+demo/data.js
