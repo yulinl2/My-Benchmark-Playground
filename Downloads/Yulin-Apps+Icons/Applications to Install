@@ -1,0 +1,50 @@
+----------
+Homebrew
+----------
+(1) FluxMarkdown
+(2) ModernCSV
+
+brew install --cask flux-markdown
+brew install --cask modern-csv
+
+Note: They will automatically show up in the Applications folder (--cask means it installs an application like you would from an internet browser, excluding --cask is for when you want to install a command line tool for terminal use).
+
+******************************************************
+
+----------
+App Store
+----------
+(3) Folder QuickLook (Free)
+
+Allows you to preview folder contents when you press [space]
+
+DO NOT PAY FOR THE $2.99 VERSION THE FREE ONE WORKS FINE!!
+
+https://apps.apple.com/us/app/folder-quicklook/id6745825026?mt=12
+Folder QuickLook
+
+
+******************************************************
+
+----------
+Internet
+----------
+(4) Raycast
+Useful spotlight replacement tool with alot of extra features (in-line macro text substitutions)
+
+https://www.raycast.com/
+
+***************************
+
+(5) Supercharge
+
+- has a few features that increase usability of macOS. (just download and we'll chat)
+- While technically a paid app the free trial works indefinitely (it just has an annoying pop-up saying "give me 12 hours")
+
+https://sindresorhus.com/supercharge
+
+***************************
+
+(6) Swish: trackpad gesture - window management tool. 7 day free trial, otherwise $16), try it!!
+
+https://highlyopinionated.co/swish/

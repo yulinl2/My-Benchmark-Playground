@@ -1,0 +1,78 @@
+========================================
+			Yulin's Terminal Shortcuts
+========================================
+
+Process Control
+ctrl + Z 		Suspend current process
+ctrl + C 		Cancel current command
+ctrl + D 		Send EOF / exit shell
+
+========================================
+
+Typing/Deletion
+Tab 			Autocomplete file/command names 
+↑ / ↓ 			Scroll through previous commands
+ctrl + R 		Search command history 
+
+ctrl + W 		Delete previous word
+ctrl + U 		Delete whole line
+ctrl + K 		Delete from cursor to end of line 
+
+ctrl + L 		Clear screen (instant version of `clear`) 
+
+========================================
+
+Cursor Movement
+option + ← 		Jump word backward
+option + → 		Jump word forward
+ctrl + A 		Jump to start of line
+ctrl + E 		Jump to end of line
+
+========================================
+			Yulin's Keyboard Shortcuts
+========================================
+
+
+Note: Letter Only <=> Cmd + [/]
+
+========================================
+
+Mac
+
+Q				Quit
+W				Window
+,				Settings/Preferences
+Z				Undo
+Z + Shift		Redo
+X/C/V			Cut/Copy/Paste
+
+========================================
+
+Cursor Navigation
+
+Shift = Highlight (carries over to all the below)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Cmd + [↑↓]			Jump to top/bottom
+Cmd + [←→]			Jump to beginning/end of line
+Option + [↑↓]		Jump up/down by 1 line (hugs end of line)
+Option + [←→]		Jump left/right by 1 "word"
+
+Remember: apply shift with the above to highlight! Very useful.
+
+========================================
+
+Finder
+
+N			New Window
+T			New Tab
+I			Get Info (change icons/default application for extension)
+F			Find
+1/2/3		Change view to: Icons/List/Columns
+
+
+========================================
+
+Selecting files/folders:
+
+[Hold: Cmd] + [Mouse Click]			Select non-adjacent items as a group
+Shift + Option + [←↑→]				Select files in similar fashion to cursor navigation
