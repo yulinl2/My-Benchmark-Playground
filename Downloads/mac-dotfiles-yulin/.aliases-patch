@@ -1,0 +1,28 @@
+The final snippet for you to replace in your aliases file
+
+#========================================
+#                Listing
+#========================================
+
+# oh-my-zsh pre-defines ls/l/la/ll/lsa (lib/directories.zsh + theme-and-appearance.zsh,
+# loaded before this file). Wipe them so our definitions below are the single source of
+# truth -- else any name we don't redefine silently falls back to oh-my-zsh's version.
+# Done here, not by editing the bundle, so it stays portable + survives `antigen update`.
+unalias ls l la ll lla lsa lt 2>/dev/null
+# -----------------------------
+# Common flags to compose with aliases:
+# -d = directories only
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# -t = sort by time modified |OR| -S = sort by size
+# -r = toggle: descending -> ascending (reverse sort order)
+# -----------------------------
+alias l='lsd'
+alias la='lsd -A -1'             		# hidden
+alias ll='lsd -l'                		# long format
+alias lla='lsd -lA'             		# long format + hidden
+# -----------------------------
+alias lt='lsd --tree --depth'
+alias lat='lsd -A -1 --tree --depth'
+alias llt='lsd -l --tree --depth'
+alias llat='lsd -lA --tree --depth'
+# -----------------------------
