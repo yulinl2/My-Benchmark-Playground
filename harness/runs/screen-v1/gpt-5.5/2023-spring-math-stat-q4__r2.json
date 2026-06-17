@@ -1,0 +1,77 @@
+{
+  "question_id": "2023-spring-math-stat-q4",
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "rep": 2,
+  "exam": {
+    "year": 2023,
+    "term": "spring",
+    "level": "ms",
+    "part": "math-stat"
+  },
+  "request": {
+    "system": "You are sitting a PhD-level qualifying examination in statistics. Solve the problem rigorously and completely. Show your work and reasoning, justify each step, and clearly state your final answer(s). If the problem has multiple parts, answer every part, labeled. If you invoke a known theorem, name it.",
+    "user": "[2023 spring ms math-stat — problem 4]\n\n$X, Y$ independent exponentials with joint density $f(x,y\\mid\\theta_1,\\theta_2) = \\theta_1 e^{-\\theta_1 x}\\theta_2 e^{-\\theta_2 y}$, $x,y>0$. (1) Find the most powerful test of $H_0: \\theta_1 = \\theta_2 = 2$ vs $H_1: \\theta_1 = 1, \\theta_2 = 3$. (2) For $H_0: \\theta_1 = \\theta_2$ vs $H_1: \\theta_1 \\ne \\theta_2$, find the LRT and write it as a function of $x/(x+y)$.",
+    "max_tokens": 24000,
+    "mode": {
+      "effort": "high"
+    }
+  },
+  "response": {
+    "id": "resp_0d901a4836e42350006a24b8ad72008195be821f9271fcfa8d",
+    "model": "gpt-5.5-2026-04-23",
+    "stop_reason": "completed",
+    "usage": {
+      "input_tokens": 243,
+      "output_tokens": 6431,
+      "output_tokens_details": {
+        "reasoning_tokens": 5178
+      }
+    },
+    "thinking": "**Determining critical region**\n\nI need to determine the critical region and the distribution under H0 for size α. I should find the likelihood ratio test (LRT) and express it as a function of x/(x+y). Under H0, where θ1 equals θ2 and is unknown, I’m looking at the distribution of U = X/(X+Y). Since X and Y are iid exponential with rate θ, I find that U  Uniform(0,1). I might use this to set the critical value independent of θ, deciding to reject for λ ≤ c, which means U ≤ a or U ≥ 1-a. Perhaps I should set a = α/2?\n**Discussing parameters in hypothesis testing**\n\nI should mention that under H0, the U uniform distribution is applicable because the shape parameters are equal to 1, specifically for the first sample. There might be nuances to consider, like if α isn't specified, then I can't provide a \"LRT statistic\" or critical constant. I could phrase it as \"At size α...\" but it seems important to clarify when discussing hypotheses and statistical methods.\n**Preparing statistical tests**\n\nI’m considering whether I should apply a conditional test for the hypothesis H0 θ1=θ2 vs H1 θ1≠θ2, especially since the LRT statistic depends on U only. It’s crucial to clarify that there's no single MP test without a stated level. I can start by mentioning that since a significance level isn’t specified, I’ll present the NP/LRT tests at a generic level α. While being rigorous, I need to ensure the final output isn't overly verbose and includes necessary formulas with proper labels.",
+    "text": "Since no significance level is stated, I state the tests at a generic level \\(0<\\alpha<1\\).\n\n## (1) MP test of \\(H_0:\\theta_1=\\theta_2=2\\) vs. \\(H_1:\\theta_1=1,\\theta_2=3\\)\n\nUnder \\(H_0\\),\n\n\\[\nf_0(x,y)=4e^{-2x-2y},\n\\]\n\nand under \\(H_1\\),\n\n\\[\nf_1(x,y)=3e^{-x-3y}.\n\\]\n\nThus the likelihood ratio is\n\n\\[\n\\frac{f_1(x,y)}{f_0(x,y)}\n=\n\\frac{3}{4}e^{x-y}.\n\\]\n\nBy the Neyman–Pearson lemma, the most powerful level-\\(\\alpha\\) test rejects \\(H_0\\) for large values of \\(f_1/f_0\\), equivalently for large values of \\(x-y\\). Hence the MP test has rejection region\n\n\\[\nR_\\alpha=\\{(x,y):x-y>c_\\alpha\\}.\n\\]\n\nTo choose \\(c_\\alpha\\), note that under \\(H_0\\), \\(X,Y\\stackrel{\\text{iid}}{\\sim}\\operatorname{Exp}(2)\\). Then \\(D=X-Y\\) has density\n\n\\[\nf_D(d)=e^{-2|d|},\\qquad -\\infty<d<\\infty.\n\\]\n\nTherefore\n\n\\[\nP_0(D>c)=\n\\begin{cases}\n\\dfrac12 e^{-2c}, & c\\ge 0,\\\\[1ex]\n1-\\dfrac12 e^{2c}, & c<0.\n\\end{cases}\n\\]\n\nSo \\(c_\\alpha\\) is determined by \\(P_0(D>c_\\alpha)=\\alpha\\), namely\n\n\\[\nc_\\alpha=\n\\begin{cases}\n-\\dfrac12\\log(2\\alpha), & 0<\\alpha\\le \\dfrac12,\\\\[2ex]\n\\dfrac12\\log\\{2(1-\\alpha)\\}, & \\dfrac12<\\alpha<1.\n\\end{cases}\n\\]\n\nThus the MP level-\\(\\alpha\\) test is\n\n\\[\n\\boxed{\\text{Reject }H_0\\text{ if }x-y>c_\\alpha.}\n\\]\n\nEquivalently,\n\n\\[\n\\boxed{\\text{Reject }H_0\\text{ for large }e^{x-y}.}\n\\]\n\n---\n\n## (2) LRT for \\(H_0:\\theta_1=\\theta_2\\) vs. \\(H_1:\\theta_1\\neq\\theta_2\\)\n\nThe likelihood is\n\n\\[\nL(\\theta_1,\\theta_2;x,y)\n=\n\\theta_1\\theta_2 e^{-\\theta_1x-\\theta_2y}.\n\\]\n\n### Unrestricted MLE\n\nMaximizing over \\(\\theta_1,\\theta_2>0\\),\n\n\\[\n\\widehat\\theta_1=\\frac1x,\\qquad \\widehat\\theta_2=\\frac1y.\n\\]\n\nThus\n\n\\[\n\\sup_{\\theta_1,\\theta_2}L(\\theta_1,\\theta_2)\n=\n\\frac1x\\frac1y e^{-2}\n=\n\\frac{e^{-2}}{xy}.\n\\]\n\n### Restricted MLE under \\(H_0\\)\n\nUnder \\(H_0\\), write \\(\\theta_1=\\theta_2=\\theta\\). Then\n\n\\[\nL_0(\\theta)=\\theta^2 e^{-\\theta(x+y)}.\n\\]\n\nMaximizing,\n\n\\[\n\\widehat\\theta_0=\\frac{2}{x+y}.\n\\]\n\nHence\n\n\\[\n\\sup_{\\theta_1=\\theta_2}L(\\theta_1,\\theta_2)\n=\n\\left(\\frac{2}{x+y}\\right)^2e^{-2}\n=\n\\frac{4e^{-2}}{(x+y)^2}.\n\\]\n\nTherefore the likelihood ratio statistic is\n\n\\[\n\\Lambda(x,y)\n=\n\\frac{\\sup_{\\theta_1=\\theta_2}L(\\theta_1,\\theta_2)}\n{\\sup_{\\theta_1,\\theta_2}L(\\theta_1,\\theta_2)}\n=\n\\frac{4e^{-2}/(x+y)^2}{e^{-2}/(xy)}\n=\n\\frac{4xy}{(x+y)^2}.\n\\]\n\nLet\n\n\\[\nU=\\frac{x}{x+y}.\n\\]\n\nThen\n\n\\[\n\\frac{y}{x+y}=1-U,\n\\]\n\nso\n\n\\[\n\\Lambda(x,y)\n=\n4\\frac{x}{x+y}\\frac{y}{x+y}\n=\n4U(1-U).\n\\]\n\nThus\n\n\\[\n\\boxed{\\Lambda(x,y)=4\\frac{x}{x+y}\\left(1-\\frac{x}{x+y}\\right).}\n\\]\n\nThe LRT rejects \\(H_0\\) for small values of \\(\\Lambda\\), equivalently when \\(U=x/(x+y)\\) is close to \\(0\\) or \\(1\\).\n\nUnder \\(H_0\\), \\(X,Y\\) are iid exponentials with common rate \\(\\theta\\), and\n\n\\[\nU=\\frac{X}{X+Y}\\sim \\operatorname{Unif}(0,1).\n\\]\n\nTherefore the exact level-\\(\\alpha\\) LRT rejects when\n\n\\[\nU\\le \\frac{\\alpha}{2}\n\\qquad\\text{or}\\qquad\nU\\ge 1-\\frac{\\alpha}{2}.\n\\]\n\nEquivalently,\n\n\\[\n\\boxed{\\text{Reject }H_0\\text{ if }4U(1-U)\\le 2\\alpha-\\alpha^2.}\n\\]",
+    "raw_output": [
+      {
+        "id": "rs_0d901a4836e42350006a24b8ae1bf88195b4c552c971a313d1",
+        "type": "reasoning",
+        "content": [],
+        "summary": [
+          {
+            "type": "summary_text",
+            "text": "**Determining critical region**\n\nI need to determine the critical region and the distribution under H0 for size α. I should find the likelihood ratio test (LRT) and express it as a function of x/(x+y). Under H0, where θ1 equals θ2 and is unknown, I’m looking at the distribution of U = X/(X+Y). Since X and Y are iid exponential with rate θ, I find that U  Uniform(0,1). I might use this to set the critical value independent of θ, deciding to reject for λ ≤ c, which means U ≤ a or U ≥ 1-a. Perhaps I should set a = α/2?"
+          },
+          {
+            "type": "summary_text",
+            "text": "**Discussing parameters in hypothesis testing**\n\nI should mention that under H0, the U uniform distribution is applicable because the shape parameters are equal to 1, specifically for the first sample. There might be nuances to consider, like if α isn't specified, then I can't provide a \"LRT statistic\" or critical constant. I could phrase it as \"At size α...\" but it seems important to clarify when discussing hypotheses and statistical methods."
+          },
+          {
+            "type": "summary_text",
+            "text": "**Preparing statistical tests**\n\nI’m considering whether I should apply a conditional test for the hypothesis H0 θ1=θ2 vs H1 θ1≠θ2, especially since the LRT statistic depends on U only. It’s crucial to clarify that there's no single MP test without a stated level. I can start by mentioning that since a significance level isn’t specified, I’ll present the NP/LRT tests at a generic level α. While being rigorous, I need to ensure the final output isn't overly verbose and includes necessary formulas with proper labels."
+          }
+        ]
+      },
+      {
+        "id": "msg_0d901a4836e42350006a24b910c73481958bcbeac672589ca3",
+        "type": "message",
+        "status": "completed",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "Since no significance level is stated, I state the tests at a generic level \\(0<\\alpha<1\\).\n\n## (1) MP test of \\(H_0:\\theta_1=\\theta_2=2\\) vs. \\(H_1:\\theta_1=1,\\theta_2=3\\)\n\nUnder \\(H_0\\),\n\n\\[\nf_0(x,y)=4e^{-2x-2y},\n\\]\n\nand under \\(H_1\\),\n\n\\[\nf_1(x,y)=3e^{-x-3y}.\n\\]\n\nThus the likelihood ratio is\n\n\\[\n\\frac{f_1(x,y)}{f_0(x,y)}\n=\n\\frac{3}{4}e^{x-y}.\n\\]\n\nBy the Neyman–Pearson lemma, the most powerful level-\\(\\alpha\\) test rejects \\(H_0\\) for large values of \\(f_1/f_0\\), equivalently for large values of \\(x-y\\). Hence the MP test has rejection region\n\n\\[\nR_\\alpha=\\{(x,y):x-y>c_\\alpha\\}.\n\\]\n\nTo choose \\(c_\\alpha\\), note that under \\(H_0\\), \\(X,Y\\stackrel{\\text{iid}}{\\sim}\\operatorname{Exp}(2)\\). Then \\(D=X-Y\\) has density\n\n\\[\nf_D(d)=e^{-2|d|},\\qquad -\\infty<d<\\infty.\n\\]\n\nTherefore\n\n\\[\nP_0(D>c)=\n\\begin{cases}\n\\dfrac12 e^{-2c}, & c\\ge 0,\\\\[1ex]\n1-\\dfrac12 e^{2c}, & c<0.\n\\end{cases}\n\\]\n\nSo \\(c_\\alpha\\) is determined by \\(P_0(D>c_\\alpha)=\\alpha\\), namely\n\n\\[\nc_\\alpha=\n\\begin{cases}\n-\\dfrac12\\log(2\\alpha), & 0<\\alpha\\le \\dfrac12,\\\\[2ex]\n\\dfrac12\\log\\{2(1-\\alpha)\\}, & \\dfrac12<\\alpha<1.\n\\end{cases}\n\\]\n\nThus the MP level-\\(\\alpha\\) test is\n\n\\[\n\\boxed{\\text{Reject }H_0\\text{ if }x-y>c_\\alpha.}\n\\]\n\nEquivalently,\n\n\\[\n\\boxed{\\text{Reject }H_0\\text{ for large }e^{x-y}.}\n\\]\n\n---\n\n## (2) LRT for \\(H_0:\\theta_1=\\theta_2\\) vs. \\(H_1:\\theta_1\\neq\\theta_2\\)\n\nThe likelihood is\n\n\\[\nL(\\theta_1,\\theta_2;x,y)\n=\n\\theta_1\\theta_2 e^{-\\theta_1x-\\theta_2y}.\n\\]\n\n### Unrestricted MLE\n\nMaximizing over \\(\\theta_1,\\theta_2>0\\),\n\n\\[\n\\widehat\\theta_1=\\frac1x,\\qquad \\widehat\\theta_2=\\frac1y.\n\\]\n\nThus\n\n\\[\n\\sup_{\\theta_1,\\theta_2}L(\\theta_1,\\theta_2)\n=\n\\frac1x\\frac1y e^{-2}\n=\n\\frac{e^{-2}}{xy}.\n\\]\n\n### Restricted MLE under \\(H_0\\)\n\nUnder \\(H_0\\), write \\(\\theta_1=\\theta_2=\\theta\\). Then\n\n\\[\nL_0(\\theta)=\\theta^2 e^{-\\theta(x+y)}.\n\\]\n\nMaximizing,\n\n\\[\n\\widehat\\theta_0=\\frac{2}{x+y}.\n\\]\n\nHence\n\n\\[\n\\sup_{\\theta_1=\\theta_2}L(\\theta_1,\\theta_2)\n=\n\\left(\\frac{2}{x+y}\\right)^2e^{-2}\n=\n\\frac{4e^{-2}}{(x+y)^2}.\n\\]\n\nTherefore the likelihood ratio statistic is\n\n\\[\n\\Lambda(x,y)\n=\n\\frac{\\sup_{\\theta_1=\\theta_2}L(\\theta_1,\\theta_2)}\n{\\sup_{\\theta_1,\\theta_2}L(\\theta_1,\\theta_2)}\n=\n\\frac{4e^{-2}/(x+y)^2}{e^{-2}/(xy)}\n=\n\\frac{4xy}{(x+y)^2}.\n\\]\n\nLet\n\n\\[\nU=\\frac{x}{x+y}.\n\\]\n\nThen\n\n\\[\n\\frac{y}{x+y}=1-U,\n\\]\n\nso\n\n\\[\n\\Lambda(x,y)\n=\n4\\frac{x}{x+y}\\frac{y}{x+y}\n=\n4U(1-U).\n\\]\n\nThus\n\n\\[\n\\boxed{\\Lambda(x,y)=4\\frac{x}{x+y}\\left(1-\\frac{x}{x+y}\\right).}\n\\]\n\nThe LRT rejects \\(H_0\\) for small values of \\(\\Lambda\\), equivalently when \\(U=x/(x+y)\\) is close to \\(0\\) or \\(1\\).\n\nUnder \\(H_0\\), \\(X,Y\\) are iid exponentials with common rate \\(\\theta\\), and\n\n\\[\nU=\\frac{X}{X+Y}\\sim \\operatorname{Unif}(0,1).\n\\]\n\nTherefore the exact level-\\(\\alpha\\) LRT rejects when\n\n\\[\nU\\le \\frac{\\alpha}{2}\n\\qquad\\text{or}\\qquad\nU\\ge 1-\\frac{\\alpha}{2}.\n\\]\n\nEquivalently,\n\n\\[\n\\boxed{\\text{Reject }H_0\\text{ if }4U(1-U)\\le 2\\alpha-\\alpha^2.}\n\\]"
+          }
+        ],
+        "phase": "final_answer",
+        "role": "assistant"
+      }
+    ]
+  },
+  "cost_usd": 0.09768,
+  "timing": {
+    "started": "2026-06-07T00:17:49.321598+00:00",
+    "ended": "2026-06-07T00:19:42.581795+00:00",
+    "seconds": 113.26
+  },
+  "error": null
+}

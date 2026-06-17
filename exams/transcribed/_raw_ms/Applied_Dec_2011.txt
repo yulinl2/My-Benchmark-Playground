@@ -1,0 +1,134 @@
+
+----- page 1 -----
+ 
+ 
+MASTER’S COMPREHENSIVE EXAMINATION 
+ 
+Part II Applied (90 minutes) December 3rd, 2011 
+Instructions: Attempt any three out of the following four questions on both pages. 
+Mention which three you would like to have graded. Open book and open notes. 
+ 
+ 
+1.  In 2010 the known size of the ceiling tile markets in the US and China were 
+                  In the US    -   2,000,000 Units (log10 = 6.30) 
+                  In China      -   1,000,000 Units (log10 = 6.00) 
+ and we want to make predictions about these market sizes in 2020  
+ 
+Let X1, X2, ……, X10 be random variables representing the growth of the log10  ceiling tile market size in 
+the US for the next 10 years with each Xi independent and normal with mean=0.1 and std-dev=0.2.  For 
+example the size of the log10US ceiling tile market in 2012 is 6.30 + X1 + X2 
+ 
+Let Y1, Y2, ……, Y10 be random variables representing the growth of the log10 ceiling tile market size in 
+China for the next 10 years with each Yi independent and Normal with mean=0.2 and std-dev=0.1.   
+ 
+A.  What is the probability that the US market size will be smaller in 2020 than it was in 2010  
+ 
+B. Assume that for each year i, the correlation of Xi and Yi is 0.5, but as before that growth 
+between different years is independent. Derive a 95% prediction (i.e. confidence) interval for 
+the ratio of the (China Market Size / US market size) in 2020.  
+______________________________________________________________________________ 
+2.  A bicycle manufacturer designs an experiment to compare two of their “off-the-road” bicycle    
+models.      Model 1 is the Schwinn Frontier.  Model 2 is the Schwinn High Timber. 
+The manufacturer takes a sample of four bicycles of each model. A sample of 64 bicycle riders are 
+assigned at random, 8 to each bicycle.  Each bicycle rider will ride over a five-mile up-hill trail and the 
+response variable y, is the time to complete the trip.   
+The manufacturer wants to see how gear-setting and tire pressure combinations affects the 
+comparative performance of the bicycles.  The experiment uses two gear settings (G1 and G2) and two 
+tire pressures (P1 and P2).  The 8 riders on a given bicycle are randomly assigned to the 4 combinations 
+of levels of G and P:  For 2 riders the bikes will be set at G1P1, for 2 at G1P2, for 2 at G2P1, and for 2 at 
+G2P2. 
+For the ANOVA table corresponding to this experiment, write out the Sources of Variability. For 
+each Source of Variability give degrees of freedom, Expected Mean Squares, and the appropriate 
+denominator of the F statistic. 
+_________________________________________________________________________ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+OVER
+
+----- page 2 -----
+3.  We have the following model for the probability that a pine tree will survive  
+|
+1
+F
+Survuval
+F
+e
+P
+F
+e
+α β
+α β
++
++
+= +
+ where α and  β are unknown parameters and F is the number of units of fertilizer 
+given to the tree.  The following MLE point estimates and standard deviations are obtained for α and β;  
+ˆ
+ˆ
+0.12
+0.01,
+0.024
+0.003
+α
+β
+=
+±
+=
+±
+ with 
+ˆ
+ˆ
+( ,
+)
+Corr α β = - 0.1 
+A. Give a 95% confidence interval for the ratio of odds of survival for a tree given F=100 units  
+over those of a tree given F=80 units of fertilizer 
+ 
+B. It costs $1000 for each tree that dies. Let C denote the cost per unit of fertilizer given to the 
+tree. Find the MLE for the value of C at which F=80 units and F=100 have the same expected 
+combined costs for fertilizer and dead trees. 
+____________________________________________________________________________________ 
+4.   A medical researcher wanted to compare the effectiveness of two medicines A and B commonly 
+prescribed for treatment of migraine headaches.  As part of good experimental practice, there was a 
+placebo, medication C that was used in the experiment.  However the researcher was not particularly 
+interested in comparing A or B to C. 
+ 
+ The experiment took 100 individuals with chronic migraine headaches, and had each individual use all 
+three medications, each medication for a one-week period.   (The order of using the medications was 
+randomized independently for each individual.)  At the end of each week, each individual was asked “Did 
+the medication you used during the past week help? (Yes or no).  The following is a summary of the 
+outcomes of the experiment for the 100 individuals: 
+Table 1:                                Medicine A          Medicine B          Medicine C (placebo) 
+31  individuals said                    No                        No                         No 
+10  individuals said                   Yes                       No                         No 
+  2  individuals said                    No                       Yes                        No 
+14  individuals said                    Yes                      Yes                        No 
+14   individuals said                   No                        No                        Yes 
+  4  individuals said                    Yes                       No                        Yes 
+  7  individuals said                     No                       Yes                       Yes 
+18  individuals said                     Yes                      Yes                      Yes 
+The researcher summarized the data for medicine A and B: 
+Table 2:                             Medicine A             Medicine B          
+45  individuals said                   No                        No                        
+14  individuals said                   Yes                       No                          
+  9  individuals said                    No                       Yes                         
+32  individuals said                    Yes                      Yes        
+a) Based just on Table 2, is there evidence (statistically significant at 0.05 level) of a  difference between 
+A and B?  Show your analysis, including formula for test statistic used, its computed values and 
+conclusion  of test.   (Do not just say reject or accept, but explain in terms researcher can understand.) 
+ 
+b) From Table 1 we see that there are 43 individuals  with chronic migraines who said the Placebo 
+helped their headaches.  Think about what this implies.    Explain how you would analyze the data to  
+see if there is a difference between the effectiveness of Medicine A and Medicine B.   
+ 
+c) Carry out the analysis you proposed in part (b) and explain your conclusions.   

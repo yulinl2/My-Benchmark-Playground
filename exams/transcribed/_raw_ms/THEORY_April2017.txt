@@ -1,0 +1,38 @@
+
+----- page 1 -----
+MASTER’S COMPREHENSIVE EXAMINATION 
+Part I Theory (2 hours) April 1st, 2017 
+Instructions: Attempt any three out of the following four questions on both pages. 
+Mention which three you would like to have graded. Open book and open notes. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+3.   Suppose that Y has a log-normal distribution with density 𝑓𝑓(𝑦𝑦) =
+1
+𝑦𝑦√2𝜋𝜋𝜎𝜎2 𝑒𝑒−(log(𝑦𝑦)−𝜇𝜇)2
+2𝜎𝜎2
+,   𝑦𝑦> 0  
+(i) 
+Show that Z = log(Y) has a   𝑁𝑁𝑁𝑁𝑁𝑁𝑁𝑁𝑁𝑁𝑁𝑁(𝜇𝜇, 𝜎𝜎2)    distribution. 
+ 
+(ii) 
+Calculate the expected value and variance of Y. 
+ 
+(iii) 
+Show that if  Y1, Y2,…, Yn  are independent and with the same distribution as Y  then 
+∏
+𝑌𝑌𝑖𝑖
+𝑛𝑛
+𝑖𝑖=1
+ also has a log-normal distribution. 
+ 
+ 
+4.   Suppose X has a Beta(𝜃𝜃, 1) distribution. Then the most powerful test of level 𝛼𝛼 for testing the 
+null hypothesis 𝜃𝜃= 1 vs the alternative hypothesis 𝜃𝜃= 2 rejects the null hypothesis when 𝑋𝑋>
+1 − 𝛼𝛼 and otherwise does not reject. Check that this is the UMP test against the alternative 
+hypothesis 𝜃𝜃> 1 
+ 

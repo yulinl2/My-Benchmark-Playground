@@ -1,0 +1,196 @@
+
+----- page 1 -----
+Ph.D. Applied Qualifying Exam 2025 (Take Home)
+July 10 (9 AM) to July 11 (5 PM)
+IMPORTANT - PLEASE READ THESE INSTRUCTIONS CAREFULLY BEFORE
+YOU START:
+This is the Applied Part of the First-Year PhD Qualifying Exam in Statistics. The exam consists
+of three problems, all of which you need to answer. You are permitted to consult textbooks and
+other scholarly resources to help you in completing the assignment, but you may not consult or
+discuss these problems in any way with anyone during the time that the exam is being
+administered. If you draw on information from any outside resources (i.e., resources other than
+class material and notes) then you should clearly cite the source in your write-up.
+You should complete the exam alone, in a room separate from any other test-takers.
+If
+you have questions, please email Prof Zhiqiang Tan (ztan@stat.rutgers.edu) for Problem 1 and
+Prof. Ying Hung (yhung@stat.rutgers.edu) for Problems 2 and 3, cc’ing Prof Tirthankar Dasgupta
+(td370@stat.rutgers.edu) and Prof Han Xiao (hxiao@stat.rutgers.edu).
+Submission Instructions:
+1. Create a folder containing the following:
+(a) A word or pdf ﬁle containing your answers to the two problems, including all tables,
+ﬁgures and Appendices (this may be generated from an R markdown ﬁle).
+(b) An R (or python) ﬁle containing the codes used to generate your results, or an R mark-
+down ﬁle from which your output html or pdf is generated.
+(c) A word or a text ﬁle that gives a summary of the codes submitted (not required if you
+submit an R markdown ﬁle).
+2. Name the folder yourlastname yourﬁrstname Appliedexam2025. Zip this folder and
+email it to hxiao@stat.rutgers.edu AND td370@stat.rutgers.edu by 5 PM July 5, Friday.
+1
+
+----- page 2 -----
+Problem 1
+Let (Xi, Yi), i = 1, . . . , n, be a set of n observations, where Xi is a scalar covariate and Yi is a
+scalar response. For ﬁxed σ > 0 and λ > 0, consider
+ˆf = argminb0,b1∈R,f∈Hσ
+(
+1
+n
+n
+X
+i=1
+(Yi −b0 −b1Xi −f(Xi))2 + λ∥f∥2
+)
+,
+(1)
+where Hσ is the reproducing kernel Hilbert space (RKHS) deﬁned by the kernel
+Kσ(x, z) = exp
+
+−(x −z)2
+2σ2
+
+,
+x, z ∈R,
+and ∥f∥is the norm of f in the RKHS.
+1) Show that a solution in (1) can be represented as
+ˆf(x) = b0 + b1x +
+n
+X
+i=1
+ciKσ(Xi, x),
+for some constants b0, b1, c1, . . . , cn ∈R, independent of x.
+2) The coeﬃcient vectors, b = (b0, b1)T and c = (c1, . . . , cn)T, associated with ˆf, denoted as ˆb
+and ˆc, can be determined as
+(ˆb, ˆc) = argminb∈R2,c∈Rn
+(
+1
+n
+n
+X
+i=1
+(Yi −b0 −b1Xi −f(Xi; c))2 + λ pen(c)
+)
+,
+where f(x; c) = Pn
+i=1 ciKσ(Xi, x), and pen(c) is a penalty term. Give an explicit expression for
+pen(c), and derive a closed-form formula for (ˆb, ˆc).
+3) Show that ˆf is a linear smoother, i.e., the vector of ﬁtted values ˆf = ( ˆf(X1), . . . , ˆf(Xn))T
+can be obtained as ˆf = SY for an n × n matrix S, independent of Y = (Y1, . . . , Yn)T. Give an
+explicit expression for S.
+4) Write R code to implement ˆf in (1) using your formula for (ˆb, ˆc) and S. For your code,
+include (σ, λ) as tuning parameters, and provide the degree of freedom (df), deﬁned as the trace
+of S, as part of output.
+5) Apply your R code to the ozone dataset (LAozone.data) as used in Stat 596, with the
+covariate dpg and response ozone.
+Please use σ = 10 and manually pick the choices of λ to
+achieve df= 4, 6, 8, 12 up to the ﬁrst decimal. For example, for df=8, your actual df should fall in
+[7.95, 8.05). Draw your four ﬁtted functions over dpg range (−80, 120) along with the original data
+in a single ﬁgure. For df= 8, report the ﬁtted values ˆf at the 5 smallest and 5 largest dpg values.
+6) Repeat your application in Question 5, except with σ = 40.
+2
+
+----- page 3 -----
+Problem 2
+A k-mean clustering with K prespeciﬁed:.... Assume n data points X1, · · · , Xn, where Xi =
+(Xi1, · · · , Xip)T . Denote the K groups by A1, · · · , AK with centers denoted by C1, · · · , CK, where
+Ck = (Ck1, · · · , Ckp)T . A k-mean approach is to optimize:
+min
+Ak,Ck
+K
+X
+k=1
+X
+xi∈Ak
+||Xi −Ck||2,
+where || · || is the standard Euclidean norm.
+(1). Design a simulation with three groups (the true K is 3) and p = 10 to demonstrate the
+performance of k-means clustering with diﬀerent choices of K.
+(2). To perform k-means clustering while simultaneously identifying K, one approach is to modify
+the objective function to:
+min
+Ak,Ck
+1
+n
+K
+X
+k=1
+X
+xi∈Ak
+||Xi −Ck||2 +
+p
+X
+j=1
+λ||C(j)||,
+where C(j) = (C1j, · · · , CKj)T . Proof the following equation:
+K
+X
+k=1
+X
+xi∈Ak
+||Xi −Ck||2 +
+p
+X
+j=1
+λ||C(j)|| =
+p
+X
+j=1
+( 1
+n(X(j) −LC(j))T (X(j) −LC(j)) + λ||C(j)||),
+where X(j) = (X1j, · · · , Xnj)T is the j-th variable across all sample points, and L is a cluster
+assignment matrix with Lik = 1(Xi ∈Ak), 1(·) is an indicator function, i = 1, · · · , n,
+k = 1, · · · , K.
+(3). Based on (2), provide the pseudo code and analyze the same simulated data from (1). You
+may pre-specify the tuning parameter λ as a constant in your code.
+(4). Another approach is to assume that each observation Xi is drawn from a mixture model
+with f(x) = PK
+k=1 πkfk(x; θk), where πk is the mixture weight and fk(x; θk) is a multivariate
+normal distribution.
+Using the same idea in (2), we can add a penalty term to the log-
+likelihood function for the estimation of unknown parameters in the mixture model:
+n
+X
+i=1
+log(
+K
+X
+k=1
+πkfk(Xi, θk)) −nλ
+p
+X
+j=1
+|C(j)|
+| ˜C(j)|
+,
+where ˜C(1), · · · , ˜C(p) are the estimated cluster center from the standard k-mean clustering.
+Assume the cluster assignments, Lik, are missing data (latent variables), and develop an
+EM algorithm to solve the problem. Please provide pseudo code with details for the E-step
+and M-step. Then, analyze the same simulation data from (1) using this method. You may
+pre-specify the tuning parameter λ as a constant in your code.
+(5). Compare the performance of the three methods and comment on the diﬀerence.
+3
+
+----- page 4 -----
+Problem 3
+Assume you have to cut a very rare diamond. Before doing so, you want to ensure that the
+settings of your cutting machine are ﬁnely tuned to minimize the cutting force applied to the
+diamond. This can reduce power requirements, elastic distortion of the diamond, and tool wear.
+To do so, we ﬁrst conduct a series of experiments. The ﬁrst variable considered is the type of
+cutting tool, denoted by chamfer or hone, in the DIAMOND dataset. If chamfer is chosen, there
+are two additional variables, angle and length, required to be speciﬁed. The remaining variables
+are edge radius, rake angle, nose radius, cutting speed, feed, and depth of cut. The last column is
+the response variable, the cutting force.
+(1). First, ignore the columns “angle” and “length”. Based on the remaining seven variables,
+ﬁt a Gaussian process model. Please describe your assumptions, the ﬁtted model, and the
+estimated parameters. Then, calculate the mean squared prediction error based on the ﬁtted
+model.
+(2). Based on this cutting process, which of the seven variables has the greatest eﬀect on the
+cutting force? Please provide detailed reasoning.
+(3). Plot the predicted cutting force along with its pointwise 95% percent prediction conﬁdence
+intervals as a function of the variable you identiﬁed in (2).
+(4). Based on model (1), ﬁnd the optimal setting that minimizes the cutting force. Under this
+optimal setting, what is the predicted cutting force and its prediction uncertainty?
+(5). If we need to incorporate both “angle” and “length” and ﬁt a single model based on these
+nine variables, what would be a reasonable choice of model? Please describe your model and
+the assumptions (It does not have to be a Gaussian process model, and you do not need to
+analyze the data.).
+4

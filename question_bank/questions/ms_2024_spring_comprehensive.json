@@ -1,0 +1,163 @@
+[
+  {
+    "id": "2024-spring-math-stat-q1",
+    "exam": {
+      "year": 2024,
+      "term": "spring",
+      "level": "ms",
+      "part": "math-stat"
+    },
+    "number": 1,
+    "topics": [
+      "Laplace distribution",
+      "maximum likelihood",
+      "median",
+      "censored data"
+    ],
+    "difficulty": "hard",
+    "prompt": "Density $f(X) = (\\lambda/2)e^{-\\lambda|X-a|}$, $\\lambda > 0$. Observations: $-7,-5,-3,1,2,6,10$. (1) For fixed $\\lambda$, find the MLE of $a$. (2) Find the MLE of $\\lambda$ at that $a$. (3) In a new world with $a = 2$ known but only censored data (of 20 obs, 5 are $> 15$ and 15 are $\\le 15$), find the MLE of $\\lambda$.",
+    "solution": "(1) $\\partial_a\\ell = \\lambda\\sum_i[\\mathbb{1}(a<x_i) - \\mathbb{1}(a>x_i)]$; setting to zero, $\\hat a$ = sample median $= 1$. (2) $\\partial_\\lambda\\ell = n/\\lambda - \\sum_i|x_i - 1| = 0$ gives $\\hat\\lambda = n/\\sum_i|x_i-1| = 7/33$. (3) $P(X>15) = \\frac12 e^{-13\\lambda}$ (with $a=2$). The likelihood is $\\binom{20}{5}(\\frac12 e^{-13\\lambda})^5(1 - \\frac12 e^{-13\\lambda})^{15}$; maximizing gives $\\frac12 e^{-13\\lambda} = 1/4$, i.e. $e^{-13\\lambda} = 1/2$, so $\\hat\\lambda = -\\frac1{13}\\log(0.5) \\approx 0.0533$.",
+    "source": {
+      "pdf": "Downloads/past-ms-exams-solution/ms24Mar Q & A.pdf",
+      "page": 1
+    },
+    "verified": false,
+    "notes": "MS comprehensive. Transcribed with solution from answer key.",
+    "ai_audit": "pass",
+    "grading_type": "numeric"
+  },
+  {
+    "id": "2024-spring-applied-q2",
+    "exam": {
+      "year": 2024,
+      "term": "spring",
+      "level": "ms",
+      "part": "applied"
+    },
+    "number": 2,
+    "topics": [
+      "paired t-test",
+      "confidence interval",
+      "prediction interval",
+      "experimental design"
+    ],
+    "difficulty": "medium",
+    "prompt": "Cholesterol measured before and after 6 months of a new drug on 10 patients (paired data). (1) Determine whether the drug reduced cholesterol from baseline (state $H_0, H_1$; assume normality). (2) Give a 95% CI for the final cholesterol of an 11th randomly recruited patient. (3) What design mistake was made?",
+    "solution": "(1) Paired $t$-test: $H_0:$ mean reduction $= 0$ vs $H_1:$ mean (Final $-$ Baseline) $< 0$. Mean change $= -14$, $s = 18.38$, SE $= 5.81$, $T = -14/5.81 = -2.4 < -1.833 = t_{9,0.05}$ — reject $H_0$ (drug reduces cholesterol). (2) Using final values: mean $206$, $s = 14.30$; 95% prediction interval $206 \\pm t_{9,0.975}\\,s\\sqrt{1 + 1/10} = 206 \\pm 2.262(14.30)(1.049) \\approx (172.1, 239.9)$. (3) No untreated control group — cannot separate the drug effect from time/placebo effects.",
+    "source": {
+      "pdf": "Downloads/past-ms-exams-solution/ms24Mar Q & A.pdf",
+      "page": 3
+    },
+    "verified": false,
+    "notes": "MS comprehensive. Transcribed with solution from answer key.",
+    "ai_audit": "pass",
+    "grading_type": "numeric"
+  },
+  {
+    "id": "2024-spring-probability-q3",
+    "exam": {
+      "year": 2024,
+      "term": "spring",
+      "level": "ms",
+      "part": "probability"
+    },
+    "number": 3,
+    "topics": [
+      "mixture distribution",
+      "cumulative distribution function",
+      "Bayes rule",
+      "covariance"
+    ],
+    "difficulty": "medium",
+    "prompt": "Generate $X$ from $f(x) = 2x$ ($0<x<1$) if $Y=1$, or $g(x) = 3x^2$ if $Y=0$, where $P(Y=1) = 1/2$. (1) Find the cdf of $X$. (2) Find $P(Y=1 \\mid X \\le 1/2)$. (3) Find $\\operatorname{Cov}(X, Y)$.",
+    "solution": "(1) $F(x) = x^2$ under $f$, $G(x) = x^3$ under $g$, so the marginal cdf is $(x^2 + x^3)/2$, $0<x<1$. (2) $P(Y=1\\mid X\\le\\tfrac12) = \\frac{(1/2)^2\\cdot(1/2)}{[(1/2)^2 + (1/2)^3]/2} = 2/3$. (3) $\\mathbb{E}[X\\mid Y=1] = 2/3$, $\\mathbb{E}[X\\mid Y=0] = 3/4$, so $\\mathbb{E} X = 17/24$, $\\mathbb{E} Y = 1/2$, $\\mathbb{E}[XY] = \\frac12\\cdot\\frac23 = 1/3$; $\\operatorname{Cov}(X,Y) = 1/3 - (17/24)(1/2) = 1/48$.",
+    "source": {
+      "pdf": "Downloads/past-ms-exams-solution/ms24Mar Q & A.pdf",
+      "page": 4
+    },
+    "verified": false,
+    "notes": "MS comprehensive. Transcribed with solution from answer key.",
+    "ai_audit": "pass",
+    "grading_type": "numeric"
+  },
+  {
+    "id": "2024-spring-math-stat-q4",
+    "exam": {
+      "year": 2024,
+      "term": "spring",
+      "level": "ms",
+      "part": "math-stat"
+    },
+    "number": 4,
+    "topics": [
+      "mean squared error",
+      "estimator comparison",
+      "unbiased estimation"
+    ],
+    "difficulty": "medium",
+    "prompt": "$X$ has density $f(x\\mid\\theta) = 2x/\\theta^2$, $0 < x < \\theta$. (1) Find $\\mathbb{E}_\\theta X$ and $\\operatorname{Var}_\\theta X$. (2) Under squared-error loss, among estimators $\\delta_c(x) = cx$, find the $c$ minimizing MSE. (3) Is that estimator unbiased for $\\theta$? (4) Find an unbiased estimator of $\\theta(1-\\theta)$.",
+    "solution": "(1) $\\mathbb{E}_\\theta X = 2\\theta/3$, $\\mathbb{E}_\\theta X^2 = \\theta^2/2$, $\\operatorname{Var}_\\theta X = \\theta^2/18$. (2) $\\mathrm{MSE}(c) = c^2\\mathbb{E} X^2 - 2c\\theta\\mathbb{E} X + \\theta^2$; minimizing, $c = \\theta\\mathbb{E} X/\\mathbb{E} X^2 = 4/3$, so $\\delta(x) = 4x/3$. (3) $\\mathbb{E}_\\theta[4X/3] = 8\\theta/9 \\ne \\theta$ — not unbiased. (4) $\\mathbb{E}_\\theta[\\frac32 X - 2X^2] = \\theta(1-\\theta)$, so $\\frac32 X - 2X^2$ is unbiased.",
+    "source": {
+      "pdf": "Downloads/past-ms-exams-solution/ms24Mar Q & A.pdf",
+      "page": 5
+    },
+    "verified": false,
+    "notes": "MS comprehensive. Transcribed with solution from answer key.",
+    "ai_audit": "pass",
+    "grading_type": "numeric"
+  },
+  {
+    "id": "2024-spring-applied-q5",
+    "exam": {
+      "year": 2024,
+      "term": "spring",
+      "level": "ms",
+      "part": "applied"
+    },
+    "number": 5,
+    "topics": [
+      "logistic regression",
+      "dose-response",
+      "median lethal dose"
+    ],
+    "difficulty": "medium",
+    "prompt": "1500 insects in six dose groups of 250; $X_j$ = log-dose, $Y_j$ = number dead. Logistic regression with MLEs $\\hat\\beta_0 = -2.64$, $\\hat\\beta_1 = 0.67$. (1) State the fitted response function. (2) Estimated probability of death at $X = 3.5$. (3) Estimated median lethal dose (50% mortality).",
+    "solution": "(1) $\\hat\\pi(x) = \\frac{e^{-2.64 + 0.67x}}{1 + e^{-2.64 + 0.67x}} = \\frac1{1 + e^{2.64 - 0.67x}}$. (2) $\\hat\\pi(3.5) = \\frac1{1 + e^{2.64 - 0.67(3.5)}} \\approx 0.4268$. (3) Set $\\hat\\pi = 0.5$: $2.64 - 0.67x = 0 \\Rightarrow x = 2.64/0.67 \\approx 3.94$.",
+    "source": {
+      "pdf": "Downloads/past-ms-exams-solution/ms24Mar Q & A.pdf",
+      "page": 6
+    },
+    "verified": false,
+    "notes": "MS comprehensive. Transcribed with solution from answer key.",
+    "ai_audit": "pass",
+    "grading_type": "numeric"
+  },
+  {
+    "id": "2024-spring-applied-q6",
+    "exam": {
+      "year": 2024,
+      "term": "spring",
+      "level": "ms",
+      "part": "applied"
+    },
+    "number": 6,
+    "topics": [
+      "multiple regression",
+      "R output",
+      "t-test",
+      "F-test",
+      "nested model ANOVA"
+    ],
+    "difficulty": "medium",
+    "prompt": "Regression of kid's IQ on mom's IQ ($X_1$) and mom's age ($X_2$) with partial R output (some values blanked): $\\hat\\beta_0 = 17.596$, $\\hat\\beta_{X_1} = 0.604$ (SE 0.0587), $\\hat\\beta_{X_2} = 0.388$ (SE 0.326), residual se 18.26 on 431 df, $R^2 = 0.2036$; plus a nested anova(m2,m1) table. Answer: (1) sample size; (2) report fitted m1; (3) LS estimate of $\\beta_1$ and interpretation; (4) test $\\beta_1 = 0$ at 5%; (5) overall F statistic for m1; (6) t statistic for $\\beta_2 = 0$; (7) $H_0, H_1$ of the anova(m2,m1) test; (8) the blanked A, B, F, df, p-value, and conclusion.",
+    "solution": "(1) $n = 431 + 2 + 1 = 434$. (2) $\\widehat{\\text{kid\\_score}} = 17.596 + 0.604\\,\\text{mom\\_iq} + 0.388\\,\\text{mom\\_age}$. (3) $\\hat\\beta_1 = 0.604$: each extra mom-IQ point raises predicted kid score by ~0.6, holding age fixed. (4) $T = 0.604/0.0587 = 10.28 > t_{431,.975}\\approx1.97$ — reject. (5) With $\\mathrm{RSS} = 143665$, $p = 2$, $R^2 = 0.2036 \\Rightarrow \\mathrm{TSS} = 180393$; $F = \\frac{(\\mathrm{TSS}-\\mathrm{RSS})/2}{\\mathrm{RSS}/431} \\approx 55.1$. (6) $t = 0.388/0.326 = 1.19$. (7) $H_0: \\beta_2 = 0$ vs $H_1: \\beta_2 \\ne 0$. (8) $A = 432 - 431 = 1$, $B = 144137 - 143665 = 472$; $F = \\frac{B/A}{143665/431} \\sim F_{1,431}$, p-value $0.2348$ — do not reject (mom_age not significant).",
+    "source": {
+      "pdf": "Downloads/past-ms-exams-solution/ms24Mar Q & A.pdf",
+      "page": 6
+    },
+    "verified": false,
+    "notes": "MS comprehensive. Transcribed with solution from answer key.",
+    "ai_audit": "pass",
+    "grading_type": "numeric"
+  }
+]

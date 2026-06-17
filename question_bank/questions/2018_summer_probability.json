@@ -1,0 +1,71 @@
+[
+  {
+    "id": "2018-summer-probability-q1",
+    "exam": {
+      "year": 2018,
+      "term": "summer",
+      "part": "probability"
+    },
+    "number": 1,
+    "topics": [
+      "uniform distribution",
+      "order statistics",
+      "conditional expectation",
+      "conditional variance"
+    ],
+    "difficulty": "medium",
+    "prompt": "Let $X_1, X_2$ be i.i.d. random variables with a Uniform distribution on $[0,1]$. Further let $T = \\max\\{X_1, \\bar X\\}$, where $\\bar X$ is the sample mean of $X_1$ and $X_2$.",
+    "parts": [
+      "(a) Find the cumulative distribution function of $T$.",
+      "(b) Find $\\mathbb{E}[T]$.",
+      "(c) Find $\\mathbb{E}[X_1 \\mid T = t]$ for $0 \\le t \\le 1$.",
+      "(d) Find $\\operatorname{Var}[X_1 \\mid T = t]$ for $0 \\le t \\le 1$."
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/probability_exam_2018.pdf",
+      "page": 2
+    },
+    "verified": false,
+    "notes": "Stat 592/654 based exam. Transcribed from extracted text; LaTeX reconstructed by hand.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
+  },
+  {
+    "id": "2018-summer-probability-q2",
+    "exam": {
+      "year": 2018,
+      "term": "summer",
+      "part": "probability"
+    },
+    "number": 2,
+    "topics": [
+      "Markov chains",
+      "coupling from the past",
+      "random mapping representation",
+      "stationary distribution",
+      "perfect simulation"
+    ],
+    "difficulty": "hard",
+    "prompt": "Let $\\mathcal{X}$ be a finite set and let $P(\\cdot,\\cdot)$ be an irreducible and aperiodic transition matrix on $\\mathcal{X}$, with stationary distribution $\\pi$.\n\n**Random mapping representation.** Assume there exists a random variable $Z$ valued in some set $\\Lambda$ and a function $f : \\mathcal{X} \\times \\Lambda \\to \\mathcal{X}$ such that for any $x, y \\in \\mathcal{X}$ we have $P(f(x,Z) = y) = P(x,y)$. Let $(Z_t)_{t \\in \\mathbb{Z}}$ be a countable sequence of i.i.d. copies of $Z$.\n\n**Assumption (C).** For the grand coupling defined by $X^x_0 = x$ for all $x \\in \\mathcal{X}$ and $X^x_t = f(X^x_{t-1}, Z_t)$ for $t \\ge 1$, the coalescence time $\\tau_c$ is finite with probability one, where $\\tau_c = \\min\\{t \\ge 0 : X^x_t = X^y_t \\ \\text{for all } x,y \\in \\mathcal{X}\\}$ (and $\\tau_c = +\\infty$ if that set is empty).",
+    "parts": [
+      "**Part 0.** Give an example of a random mapping representation of some aperiodic and irreducible Markov chain such that Assumption (C) does NOT hold, i.e. an example with $P(\\tau_c = +\\infty) > 0$. (In the rest of the exam, assume Assumption (C) always holds.)",
+      "**Part I.** Give an example of a random mapping representation of some aperiodic and irreducible Markov chain on $\\mathcal{X} = \\{0,1,2\\}$ such that the random variable $X^{x_0}_{\\tau_c}$ for $x_0 \\in \\mathcal{X}$ is NOT distributed according to $\\pi$.",
+      "**Part II.** For any $t \\in \\mathbb{Z}$ define $f_t(x) = f(x, Z_t)$, and for $s < t$ define $F^t_s = f_{t-1} \\circ f_{t-2} \\circ \\cdots \\circ f_{s+1} \\circ f_s$. (2) Prove that for fixed $t > 0$ and $x_0, y \\in \\mathcal{X}$: $P(F^0_{-t}(x_0) = y) = P(F^{t+1}_1(x_0) = y)$, and $P(\\forall x \\in \\mathcal{X},\\, F^0_{-t}(x) = y) = P(\\forall x \\in \\mathcal{X},\\, F^{t+1}_1(x) = y)$.",
+      "(3) Call $F : \\mathcal{X} \\to \\mathcal{X}$ constant iff $\\{F(x) : x \\in \\mathcal{X}\\}$ has exactly one element. Define $M = \\min\\{t > 0 : F^0_{-t} \\text{ is constant}\\}$. Prove that $M$ is finite with probability one under Assumption (C).",
+      "(4) Prove that $P\\big(F^0_{-M}(x) = F^0_{-k-M}(y)\\big) = 1$ for any $x,y \\in \\mathcal{X}$ and any integer $k \\ge 0$.",
+      "(5) (Most important and difficult part.) Prove that $F^0_{-M}(x_0)$ has distribution $\\pi$ for any $x_0 \\in \\mathcal{X}$. Hint: you may prove and use the fact that if a random variable $\\hat X$ independent of $Z$ satisfies $f(\\hat X, Z) \\stackrel{d}{=} \\hat X$, then $\\hat X$ has distribution $\\pi$.",
+      "(6) Deduce an algorithm that outputs a random variable distributed according to $\\pi$, by sequentially generating i.i.d. random variables $Z_{-1}, Z_{-2}, Z_{-3}, \\dots$",
+      "**Part III.** Consider Algorithm 2: (a) set $t = 1$; (b) generate $Z_{-1}, \\dots, Z_{-t}$ i.i.d. copies of $Z$ independently of previous iterations; (c) if $F^0_{-t}$ is constant, output $F^0_{-t}(x_0)$ and stop; otherwise discard the $Z$'s, set $t \\leftarrow t+1$ and return to (b). (7) For the chain on $\\mathcal{X} = \\{0,1,2\\}$ with random mapping representation $f(i,z) = \\max(0, \\min(i+z, 2))$ and $P(Z = 1) = P(Z = -1) = 1/2$, find the stationary distribution $\\pi$ and show that Algorithm 2 does NOT output a random variable distributed according to $\\pi$."
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/probability_exam_2018.pdf",
+      "page": 3
+    },
+    "verified": false,
+    "notes": "Coupling-from-the-past (Propp-Wilson) perfect-simulation problem. Transcribed from extracted text.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
+  }
+]

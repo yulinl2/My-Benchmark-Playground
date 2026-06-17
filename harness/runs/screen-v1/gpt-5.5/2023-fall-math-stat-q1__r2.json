@@ -1,0 +1,73 @@
+{
+  "question_id": "2023-fall-math-stat-q1",
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "rep": 2,
+  "exam": {
+    "year": 2023,
+    "term": "fall",
+    "level": "ms",
+    "part": "math-stat"
+  },
+  "request": {
+    "system": "You are sitting a PhD-level qualifying examination in statistics. Solve the problem rigorously and completely. Show your work and reasoning, justify each step, and clearly state your final answer(s). If the problem has multiple parts, answer every part, labeled. If you invoke a known theorem, name it.",
+    "user": "[2023 fall ms math-stat — problem 1]\n\n$Y_1, \\dots, Y_n$ i.i.d. with density $f_\\theta(y) = \\frac1\\theta r y^{r-1} e^{-y^r/\\theta}$, $y>0$, where $r>0$ is known. (1) Find the MLE of $\\theta$. (2) Find its limiting distribution as $n \\to \\infty$.",
+    "max_tokens": 24000,
+    "mode": {
+      "effort": "high"
+    }
+  },
+  "response": {
+    "id": "resp_03319907dda3be22006a24b81af62081969d2f4d7cbcb062ac",
+    "model": "gpt-5.5-2026-04-23",
+    "stop_reason": "completed",
+    "usage": {
+      "input_tokens": 169,
+      "output_tokens": 1540,
+      "output_tokens_details": {
+        "reasoning_tokens": 516
+      }
+    },
+    "thinking": "**Analyzing Weibull Distribution**\n\nI need to tackle this problem rigorously, starting with the given density function for a Weibull distribution. It seems important to note that when \\( Y \\) has a Weibull distribution, \\( X = Y^r \\) follows an exponential distribution. I should also focus on deriving the maximum likelihood estimate (MLE) for \\( \\theta \\) by using the sample mean of \\( Y_i^r \\).\n\nThe limiting distribution based on the Central Limit Theorem shows convergence towards a normal distribution, which is critical for understanding the behavior of \\( \\hat{\\theta} \\). I should ensure that my parameterization remains clear as I encapsulate the essential elements.\n**Examining the MLE of Theta**\n\nI'm looking at how \\( \\hat{\\theta} \\) approaches \\( \\theta \\) as \\( n \\) goes to infinity. It seems important to articulate that \\( \\hat{\\theta} \\) converges to \\( \\theta \\) in probability and to recognize the limiting behavior, which follows a normal distribution. \n\nI want to maintain a rigorous approach, so I’ll compute the transformation and verify the distribution. By calculating \\( f_Y \\) from \\( Y_i \\) to \\( X_i \\), I confirm that the expected value is \\( \\theta \\) and the variance is \\( \\theta^2 \\). This means the MLE is simply the sample mean \\( \\bar{X} \\) based on the Central Limit Theorem.",
+    "text": "Let \\(\\theta>0\\) and \\(r>0\\) be known. The density is\n\n\\[\nf_\\theta(y)=\\frac1\\theta r y^{r-1}\\exp\\left(-\\frac{y^r}{\\theta}\\right),\\qquad y>0.\n\\]\n\nDefine\n\n\\[\nX_i=Y_i^r.\n\\]\n\nThen \\(X_i\\) has density\n\n\\[\nf_X(x)=\\frac1\\theta e^{-x/\\theta},\\qquad x>0,\n\\]\n\nso \\(X_i\\sim \\operatorname{Exp}(\\text{scale } \\theta)\\). In particular,\n\n\\[\n\\mathbb E_\\theta[X_i]=\\theta,\\qquad \\operatorname{Var}_\\theta(X_i)=\\theta^2.\n\\]\n\n---\n\n## (1) MLE of \\(\\theta\\)\n\nThe likelihood is\n\n\\[\nL(\\theta)\n=\\prod_{i=1}^n \\frac1\\theta r Y_i^{r-1}\\exp\\left(-\\frac{Y_i^r}{\\theta}\\right)\n= \\theta^{-n} r^n \\prod_{i=1}^n Y_i^{r-1}\n\\exp\\left(-\\frac{1}{\\theta}\\sum_{i=1}^n Y_i^r\\right).\n\\]\n\nThe log-likelihood is\n\n\\[\n\\ell(\\theta)\n= -n\\log\\theta+n\\log r+(r-1)\\sum_{i=1}^n \\log Y_i\n-\\frac{1}{\\theta}\\sum_{i=1}^n Y_i^r.\n\\]\n\nLet\n\n\\[\nS_n=\\sum_{i=1}^n Y_i^r.\n\\]\n\nThen\n\n\\[\n\\ell'(\\theta)\n= -\\frac{n}{\\theta}+\\frac{S_n}{\\theta^2}.\n\\]\n\nSetting \\(\\ell'(\\theta)=0\\),\n\n\\[\n-\\frac{n}{\\theta}+\\frac{S_n}{\\theta^2}=0\n\\]\n\ngives\n\n\\[\n\\widehat\\theta_{\\mathrm{MLE}}\n=\\frac{S_n}{n}\n=\\frac1n\\sum_{i=1}^n Y_i^r.\n\\]\n\nTo check this is a maximum, note that\n\n\\[\n\\ell''(\\theta)=\\frac{n}{\\theta^2}-\\frac{2S_n}{\\theta^3}.\n\\]\n\nAt \\(\\theta=\\widehat\\theta=S_n/n\\),\n\n\\[\n\\ell''(\\widehat\\theta)\n=\\frac{n}{\\widehat\\theta^2}-\\frac{2S_n}{\\widehat\\theta^3}\n=\\frac{n}{\\widehat\\theta^2}-\\frac{2n\\widehat\\theta}{\\widehat\\theta^3}\n=-\\frac{n}{\\widehat\\theta^2}<0.\n\\]\n\nAlso \\(\\ell(\\theta)\\to -\\infty\\) as \\(\\theta\\downarrow 0\\) or \\(\\theta\\to\\infty\\), so this critical point is the global maximum.\n\nTherefore,\n\n\\[\n\\boxed{\\widehat\\theta_{\\mathrm{MLE}}=\\frac1n\\sum_{i=1}^n Y_i^r.}\n\\]\n\n---\n\n## (2) Limiting distribution of the MLE\n\nSince\n\n\\[\nX_i=Y_i^r\\sim \\operatorname{Exp}(\\text{scale } \\theta),\n\\]\n\nwe have\n\n\\[\n\\widehat\\theta_{\\mathrm{MLE}}\n=\\frac1n\\sum_{i=1}^n X_i.\n\\]\n\nBy the classical central limit theorem,\n\n\\[\n\\sqrt n\\left(\\widehat\\theta_{\\mathrm{MLE}}-\\theta\\right)\n=\n\\sqrt n\\left(\\frac1n\\sum_{i=1}^n X_i-\\theta\\right)\n\\overset{d}{\\longrightarrow}\nN(0,\\theta^2),\n\\]\n\nbecause \\(\\operatorname{Var}(X_i)=\\theta^2\\).\n\nEquivalently,\n\n\\[\n\\boxed{\n\\sqrt n\\left(\\widehat\\theta_{\\mathrm{MLE}}-\\theta\\right)\n\\overset{d}{\\longrightarrow}\nN(0,\\theta^2)\n}\n\\]\n\nor, in asymptotic normal form,\n\n\\[\n\\boxed{\n\\widehat\\theta_{\\mathrm{MLE}}\n\\approx N\\left(\\theta,\\frac{\\theta^2}{n}\\right)\n\\quad\\text{for large }n.\n}\n\\]\n\nAlso,\n\n\\[\n\\widehat\\theta_{\\mathrm{MLE}}\\xrightarrow{p}\\theta\n\\]\n\nby the law of large numbers.",
+    "raw_output": [
+      {
+        "id": "rs_03319907dda3be22006a24b81bf9cc8196a61a48e7faa58bfe",
+        "type": "reasoning",
+        "content": [],
+        "summary": [
+          {
+            "type": "summary_text",
+            "text": "**Analyzing Weibull Distribution**\n\nI need to tackle this problem rigorously, starting with the given density function for a Weibull distribution. It seems important to note that when \\( Y \\) has a Weibull distribution, \\( X = Y^r \\) follows an exponential distribution. I should also focus on deriving the maximum likelihood estimate (MLE) for \\( \\theta \\) by using the sample mean of \\( Y_i^r \\).\n\nThe limiting distribution based on the Central Limit Theorem shows convergence towards a normal distribution, which is critical for understanding the behavior of \\( \\hat{\\theta} \\). I should ensure that my parameterization remains clear as I encapsulate the essential elements."
+          },
+          {
+            "type": "summary_text",
+            "text": "**Examining the MLE of Theta**\n\nI'm looking at how \\( \\hat{\\theta} \\) approaches \\( \\theta \\) as \\( n \\) goes to infinity. It seems important to articulate that \\( \\hat{\\theta} \\) converges to \\( \\theta \\) in probability and to recognize the limiting behavior, which follows a normal distribution. \n\nI want to maintain a rigorous approach, so I’ll compute the transformation and verify the distribution. By calculating \\( f_Y \\) from \\( Y_i \\) to \\( X_i \\), I confirm that the expected value is \\( \\theta \\) and the variance is \\( \\theta^2 \\). This means the MLE is simply the sample mean \\( \\bar{X} \\) based on the Central Limit Theorem."
+          }
+        ]
+      },
+      {
+        "id": "msg_03319907dda3be22006a24b828a0288196b042c913328d435e",
+        "type": "message",
+        "status": "completed",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "Let \\(\\theta>0\\) and \\(r>0\\) be known. The density is\n\n\\[\nf_\\theta(y)=\\frac1\\theta r y^{r-1}\\exp\\left(-\\frac{y^r}{\\theta}\\right),\\qquad y>0.\n\\]\n\nDefine\n\n\\[\nX_i=Y_i^r.\n\\]\n\nThen \\(X_i\\) has density\n\n\\[\nf_X(x)=\\frac1\\theta e^{-x/\\theta},\\qquad x>0,\n\\]\n\nso \\(X_i\\sim \\operatorname{Exp}(\\text{scale } \\theta)\\). In particular,\n\n\\[\n\\mathbb E_\\theta[X_i]=\\theta,\\qquad \\operatorname{Var}_\\theta(X_i)=\\theta^2.\n\\]\n\n---\n\n## (1) MLE of \\(\\theta\\)\n\nThe likelihood is\n\n\\[\nL(\\theta)\n=\\prod_{i=1}^n \\frac1\\theta r Y_i^{r-1}\\exp\\left(-\\frac{Y_i^r}{\\theta}\\right)\n= \\theta^{-n} r^n \\prod_{i=1}^n Y_i^{r-1}\n\\exp\\left(-\\frac{1}{\\theta}\\sum_{i=1}^n Y_i^r\\right).\n\\]\n\nThe log-likelihood is\n\n\\[\n\\ell(\\theta)\n= -n\\log\\theta+n\\log r+(r-1)\\sum_{i=1}^n \\log Y_i\n-\\frac{1}{\\theta}\\sum_{i=1}^n Y_i^r.\n\\]\n\nLet\n\n\\[\nS_n=\\sum_{i=1}^n Y_i^r.\n\\]\n\nThen\n\n\\[\n\\ell'(\\theta)\n= -\\frac{n}{\\theta}+\\frac{S_n}{\\theta^2}.\n\\]\n\nSetting \\(\\ell'(\\theta)=0\\),\n\n\\[\n-\\frac{n}{\\theta}+\\frac{S_n}{\\theta^2}=0\n\\]\n\ngives\n\n\\[\n\\widehat\\theta_{\\mathrm{MLE}}\n=\\frac{S_n}{n}\n=\\frac1n\\sum_{i=1}^n Y_i^r.\n\\]\n\nTo check this is a maximum, note that\n\n\\[\n\\ell''(\\theta)=\\frac{n}{\\theta^2}-\\frac{2S_n}{\\theta^3}.\n\\]\n\nAt \\(\\theta=\\widehat\\theta=S_n/n\\),\n\n\\[\n\\ell''(\\widehat\\theta)\n=\\frac{n}{\\widehat\\theta^2}-\\frac{2S_n}{\\widehat\\theta^3}\n=\\frac{n}{\\widehat\\theta^2}-\\frac{2n\\widehat\\theta}{\\widehat\\theta^3}\n=-\\frac{n}{\\widehat\\theta^2}<0.\n\\]\n\nAlso \\(\\ell(\\theta)\\to -\\infty\\) as \\(\\theta\\downarrow 0\\) or \\(\\theta\\to\\infty\\), so this critical point is the global maximum.\n\nTherefore,\n\n\\[\n\\boxed{\\widehat\\theta_{\\mathrm{MLE}}=\\frac1n\\sum_{i=1}^n Y_i^r.}\n\\]\n\n---\n\n## (2) Limiting distribution of the MLE\n\nSince\n\n\\[\nX_i=Y_i^r\\sim \\operatorname{Exp}(\\text{scale } \\theta),\n\\]\n\nwe have\n\n\\[\n\\widehat\\theta_{\\mathrm{MLE}}\n=\\frac1n\\sum_{i=1}^n X_i.\n\\]\n\nBy the classical central limit theorem,\n\n\\[\n\\sqrt n\\left(\\widehat\\theta_{\\mathrm{MLE}}-\\theta\\right)\n=\n\\sqrt n\\left(\\frac1n\\sum_{i=1}^n X_i-\\theta\\right)\n\\overset{d}{\\longrightarrow}\nN(0,\\theta^2),\n\\]\n\nbecause \\(\\operatorname{Var}(X_i)=\\theta^2\\).\n\nEquivalently,\n\n\\[\n\\boxed{\n\\sqrt n\\left(\\widehat\\theta_{\\mathrm{MLE}}-\\theta\\right)\n\\overset{d}{\\longrightarrow}\nN(0,\\theta^2)\n}\n\\]\n\nor, in asymptotic normal form,\n\n\\[\n\\boxed{\n\\widehat\\theta_{\\mathrm{MLE}}\n\\approx N\\left(\\theta,\\frac{\\theta^2}{n}\\right)\n\\quad\\text{for large }n.\n}\n\\]\n\nAlso,\n\n\\[\n\\widehat\\theta_{\\mathrm{MLE}}\\xrightarrow{p}\\theta\n\\]\n\nby the law of large numbers."
+          }
+        ],
+        "phase": "final_answer",
+        "role": "assistant"
+      }
+    ]
+  },
+  "cost_usd": 0.02394,
+  "timing": {
+    "started": "2026-06-07T00:15:22.841604+00:00",
+    "ended": "2026-06-07T00:15:46.171309+00:00",
+    "seconds": 23.33
+  },
+  "error": null
+}

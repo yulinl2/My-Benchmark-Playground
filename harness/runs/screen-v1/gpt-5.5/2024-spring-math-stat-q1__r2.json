@@ -1,0 +1,64 @@
+{
+  "question_id": "2024-spring-math-stat-q1",
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "rep": 2,
+  "exam": {
+    "year": 2024,
+    "term": "spring",
+    "level": "ms",
+    "part": "math-stat"
+  },
+  "request": {
+    "system": "You are sitting a PhD-level qualifying examination in statistics. Solve the problem rigorously and completely. Show your work and reasoning, justify each step, and clearly state your final answer(s). If the problem has multiple parts, answer every part, labeled. If you invoke a known theorem, name it.",
+    "user": "[2024 spring ms math-stat — problem 1]\n\nDensity $f(X) = (\\lambda/2)e^{-\\lambda|X-a|}$, $\\lambda > 0$. Observations: $-7,-5,-3,1,2,6,10$. (1) For fixed $\\lambda$, find the MLE of $a$. (2) Find the MLE of $\\lambda$ at that $a$. (3) In a new world with $a = 2$ known but only censored data (of 20 obs, 5 are $> 15$ and 15 are $\\le 15$), find the MLE of $\\lambda$.",
+    "max_tokens": 24000,
+    "mode": {
+      "effort": "high"
+    }
+  },
+  "response": {
+    "id": "resp_0a6a1b2e27a02a81006a24bab6668c8190a62fe2158005abbf",
+    "model": "gpt-5.5-2026-04-23",
+    "stop_reason": "completed",
+    "usage": {
+      "input_tokens": 212,
+      "output_tokens": 2932,
+      "output_tokens_details": {
+        "reasoning_tokens": 2065
+      }
+    },
+    "thinking": "",
+    "text": "Let the observations be\n\n\\[\nx_1,\\dots,x_7=-7,-5,-3,1,2,6,10.\n\\]\n\nThe likelihood is\n\n\\[\nL(a,\\lambda)=\\prod_{i=1}^7 \\frac{\\lambda}{2}e^{-\\lambda |x_i-a|}\n=\\left(\\frac{\\lambda}{2}\\right)^7\n\\exp\\left\\{-\\lambda\\sum_{i=1}^7 |x_i-a|\\right\\}.\n\\]\n\nEquivalently,\n\n\\[\n\\ell(a,\\lambda)=7\\log(\\lambda/2)-\\lambda \\sum_{i=1}^7 |x_i-a|.\n\\]\n\n---\n\n## (1) MLE of \\(a\\) for fixed \\(\\lambda\\)\n\nFor fixed \\(\\lambda>0\\), maximizing \\(\\ell(a,\\lambda)\\) over \\(a\\) is equivalent to minimizing\n\n\\[\nS(a)=\\sum_{i=1}^7 |x_i-a|.\n\\]\n\nA standard result is that any median minimizes the sum of absolute deviations. Since the ordered data are\n\n\\[\n-7,-5,-3,1,2,6,10,\n\\]\n\nand \\(n=7\\) is odd, the unique sample median is the fourth order statistic,\n\n\\[\nx_{(4)}=1.\n\\]\n\nTherefore,\n\n\\[\n\\boxed{\\hat a=1.}\n\\]\n\n---\n\n## (2) MLE of \\(\\lambda\\) at \\(\\hat a=1\\)\n\nAt \\(a=1\\),\n\n\\[\n\\sum_{i=1}^7 |x_i-1|\n=8+6+4+0+1+5+9\n=33.\n\\]\n\nThus the log-likelihood as a function of \\(\\lambda\\) is\n\n\\[\n\\ell(\\lambda)=7\\log(\\lambda/2)-33\\lambda.\n\\]\n\nDifferentiate:\n\n\\[\n\\ell'(\\lambda)=\\frac{7}{\\lambda}-33.\n\\]\n\nSetting this equal to zero gives\n\n\\[\n\\frac{7}{\\lambda}=33\n\\implies\n\\hat\\lambda=\\frac{7}{33}.\n\\]\n\nAlso,\n\n\\[\n\\ell''(\\lambda)=-\\frac{7}{\\lambda^2}<0,\n\\]\n\nso this is indeed the maximizer. Hence\n\n\\[\n\\boxed{\\hat\\lambda=\\frac{7}{33}.}\n\\]\n\nThus the joint MLE is\n\n\\[\n\\boxed{(\\hat a,\\hat\\lambda)=\\left(1,\\frac{7}{33}\\right).}\n\\]\n\n---\n\n## (3) Censored data with \\(a=2\\) known\n\nNow \\(a=2\\) is known, and we only know that among 20 observations, 5 satisfy \\(X>15\\) and 15 satisfy \\(X\\le 15\\).\n\nFor \\(x>2\\), the density is\n\n\\[\nf(x)=\\frac{\\lambda}{2}e^{-\\lambda(x-2)}.\n\\]\n\nTherefore,\n\n\\[\nP_\\lambda(X>15)\n=\\int_{15}^{\\infty} \\frac{\\lambda}{2}e^{-\\lambda(x-2)}\\,dx\n=\\frac12 e^{-13\\lambda}.\n\\]\n\nLet\n\n\\[\np(\\lambda)=P_\\lambda(X>15)=\\frac12 e^{-13\\lambda}.\n\\]\n\nThe censored likelihood is binomial:\n\n\\[\nL(\\lambda)\\propto p(\\lambda)^5(1-p(\\lambda))^{15}.\n\\]\n\nAs a function of \\(p\\), the binomial likelihood is maximized at\n\n\\[\n\\hat p=\\frac{5}{20}=\\frac14.\n\\]\n\nSo we solve\n\n\\[\n\\frac12 e^{-13\\lambda}=\\frac14.\n\\]\n\nThus\n\n\\[\ne^{-13\\lambda}=\\frac12,\n\\]\n\nand hence\n\n\\[\n-13\\lambda=-\\log 2.\n\\]\n\nTherefore,\n\n\\[\n\\boxed{\\hat\\lambda=\\frac{\\log 2}{13}.}\n\\]",
+    "raw_output": [
+      {
+        "id": "rs_0a6a1b2e27a02a81006a24baba0948819099ba4d02b3c1deb7",
+        "type": "reasoning",
+        "content": [],
+        "summary": []
+      },
+      {
+        "id": "msg_0a6a1b2e27a02a81006a24bae2c2b88190921799f216278a90",
+        "type": "message",
+        "status": "completed",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "Let the observations be\n\n\\[\nx_1,\\dots,x_7=-7,-5,-3,1,2,6,10.\n\\]\n\nThe likelihood is\n\n\\[\nL(a,\\lambda)=\\prod_{i=1}^7 \\frac{\\lambda}{2}e^{-\\lambda |x_i-a|}\n=\\left(\\frac{\\lambda}{2}\\right)^7\n\\exp\\left\\{-\\lambda\\sum_{i=1}^7 |x_i-a|\\right\\}.\n\\]\n\nEquivalently,\n\n\\[\n\\ell(a,\\lambda)=7\\log(\\lambda/2)-\\lambda \\sum_{i=1}^7 |x_i-a|.\n\\]\n\n---\n\n## (1) MLE of \\(a\\) for fixed \\(\\lambda\\)\n\nFor fixed \\(\\lambda>0\\), maximizing \\(\\ell(a,\\lambda)\\) over \\(a\\) is equivalent to minimizing\n\n\\[\nS(a)=\\sum_{i=1}^7 |x_i-a|.\n\\]\n\nA standard result is that any median minimizes the sum of absolute deviations. Since the ordered data are\n\n\\[\n-7,-5,-3,1,2,6,10,\n\\]\n\nand \\(n=7\\) is odd, the unique sample median is the fourth order statistic,\n\n\\[\nx_{(4)}=1.\n\\]\n\nTherefore,\n\n\\[\n\\boxed{\\hat a=1.}\n\\]\n\n---\n\n## (2) MLE of \\(\\lambda\\) at \\(\\hat a=1\\)\n\nAt \\(a=1\\),\n\n\\[\n\\sum_{i=1}^7 |x_i-1|\n=8+6+4+0+1+5+9\n=33.\n\\]\n\nThus the log-likelihood as a function of \\(\\lambda\\) is\n\n\\[\n\\ell(\\lambda)=7\\log(\\lambda/2)-33\\lambda.\n\\]\n\nDifferentiate:\n\n\\[\n\\ell'(\\lambda)=\\frac{7}{\\lambda}-33.\n\\]\n\nSetting this equal to zero gives\n\n\\[\n\\frac{7}{\\lambda}=33\n\\implies\n\\hat\\lambda=\\frac{7}{33}.\n\\]\n\nAlso,\n\n\\[\n\\ell''(\\lambda)=-\\frac{7}{\\lambda^2}<0,\n\\]\n\nso this is indeed the maximizer. Hence\n\n\\[\n\\boxed{\\hat\\lambda=\\frac{7}{33}.}\n\\]\n\nThus the joint MLE is\n\n\\[\n\\boxed{(\\hat a,\\hat\\lambda)=\\left(1,\\frac{7}{33}\\right).}\n\\]\n\n---\n\n## (3) Censored data with \\(a=2\\) known\n\nNow \\(a=2\\) is known, and we only know that among 20 observations, 5 satisfy \\(X>15\\) and 15 satisfy \\(X\\le 15\\).\n\nFor \\(x>2\\), the density is\n\n\\[\nf(x)=\\frac{\\lambda}{2}e^{-\\lambda(x-2)}.\n\\]\n\nTherefore,\n\n\\[\nP_\\lambda(X>15)\n=\\int_{15}^{\\infty} \\frac{\\lambda}{2}e^{-\\lambda(x-2)}\\,dx\n=\\frac12 e^{-13\\lambda}.\n\\]\n\nLet\n\n\\[\np(\\lambda)=P_\\lambda(X>15)=\\frac12 e^{-13\\lambda}.\n\\]\n\nThe censored likelihood is binomial:\n\n\\[\nL(\\lambda)\\propto p(\\lambda)^5(1-p(\\lambda))^{15}.\n\\]\n\nAs a function of \\(p\\), the binomial likelihood is maximized at\n\n\\[\n\\hat p=\\frac{5}{20}=\\frac14.\n\\]\n\nSo we solve\n\n\\[\n\\frac12 e^{-13\\lambda}=\\frac14.\n\\]\n\nThus\n\n\\[\ne^{-13\\lambda}=\\frac12,\n\\]\n\nand hence\n\n\\[\n-13\\lambda=-\\log 2.\n\\]\n\nTherefore,\n\n\\[\n\\boxed{\\hat\\lambda=\\frac{\\log 2}{13}.}\n\\]"
+          }
+        ],
+        "phase": "final_answer",
+        "role": "assistant"
+      }
+    ]
+  },
+  "cost_usd": 0.04504,
+  "timing": {
+    "started": "2026-06-07T00:26:30.117787+00:00",
+    "ended": "2026-06-07T00:27:24.939969+00:00",
+    "seconds": 54.82
+  },
+  "error": null
+}

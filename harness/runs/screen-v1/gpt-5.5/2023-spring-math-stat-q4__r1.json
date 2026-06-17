@@ -1,0 +1,69 @@
+{
+  "question_id": "2023-spring-math-stat-q4",
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "rep": 1,
+  "exam": {
+    "year": 2023,
+    "term": "spring",
+    "level": "ms",
+    "part": "math-stat"
+  },
+  "request": {
+    "system": "You are sitting a PhD-level qualifying examination in statistics. Solve the problem rigorously and completely. Show your work and reasoning, justify each step, and clearly state your final answer(s). If the problem has multiple parts, answer every part, labeled. If you invoke a known theorem, name it.",
+    "user": "[2023 spring ms math-stat — problem 4]\n\n$X, Y$ independent exponentials with joint density $f(x,y\\mid\\theta_1,\\theta_2) = \\theta_1 e^{-\\theta_1 x}\\theta_2 e^{-\\theta_2 y}$, $x,y>0$. (1) Find the most powerful test of $H_0: \\theta_1 = \\theta_2 = 2$ vs $H_1: \\theta_1 = 1, \\theta_2 = 3$. (2) For $H_0: \\theta_1 = \\theta_2$ vs $H_1: \\theta_1 \\ne \\theta_2$, find the LRT and write it as a function of $x/(x+y)$.",
+    "max_tokens": 24000,
+    "mode": {
+      "effort": "high"
+    }
+  },
+  "response": {
+    "id": "resp_07c33a6c5fa98d73006a24b896cfec8190970b7b25a4dec64d",
+    "model": "gpt-5.5-2026-04-23",
+    "stop_reason": "completed",
+    "usage": {
+      "input_tokens": 243,
+      "output_tokens": 4851,
+      "output_tokens_details": {
+        "reasoning_tokens": 3624
+      }
+    },
+    "thinking": "**Considering mathematical formulations**\n\nI’m thinking about the scenario where H1 has a lower θ1 (which results in a larger X) and a higher θ2 (leading to a smaller Y), so it sounds like x minus y is large. That’s promising! I might want to include a randomized formula such as \\(\\phi_\\alpha(x,y)= \\begin{cases}1, & x-y>c\\\\ \\gamma,&x-y=c\\\\0,&x-y<c\\end{cases}\\) with c and γ as chosen variables. I’d still need to consider the implications of continuous γ and whether it affects exact boundaries.",
+    "text": "Let \\(L(\\theta_1,\\theta_2;x,y)=\\theta_1\\theta_2 e^{-\\theta_1x-\\theta_2y}\\), \\(x,y>0\\).\n\n## (1) MP test for \\(H_0:(\\theta_1,\\theta_2)=(2,2)\\) vs. \\(H_1:(\\theta_1,\\theta_2)=(1,3)\\)\n\nThis is a simple-vs-simple testing problem, so by the **Neyman–Pearson lemma**, the most powerful level-\\(\\alpha\\) test rejects \\(H_0\\) for large values of\n\n\\[\n\\frac{f_1(x,y)}{f_0(x,y)}.\n\\]\n\nHere\n\n\\[\nf_0(x,y)=4e^{-2x-2y},\\qquad f_1(x,y)=3e^{-x-3y}.\n\\]\n\nThus\n\n\\[\n\\frac{f_1(x,y)}{f_0(x,y)}\n=\n\\frac{3}{4}e^{x-y}.\n\\]\n\nTherefore the MP test rejects \\(H_0\\) when\n\n\\[\nx-y>c_\\alpha,\n\\]\n\nwhere \\(c_\\alpha\\) is chosen so that\n\n\\[\nP_{H_0}(X-Y>c_\\alpha)=\\alpha.\n\\]\n\nUnder \\(H_0\\), \\(X,Y\\stackrel{\\text{iid}}{\\sim}\\operatorname{Exp}(2)\\). Hence \\(D=X-Y\\) has Laplace density\n\n\\[\nf_D(d)=e^{-2|d|},\\qquad d\\in\\mathbb R.\n\\]\n\nSo\n\n\\[\nP_{H_0}(D>c)=\n\\begin{cases}\n\\dfrac12 e^{-2c}, & c\\ge 0,\\\\[1em]\n1-\\dfrac12 e^{2c}, & c<0.\n\\end{cases}\n\\]\n\nThus for the usual case \\(0<\\alpha\\le 1/2\\),\n\n\\[\nc_\\alpha=-\\frac12\\log(2\\alpha).\n\\]\n\nMore generally,\n\n\\[\nc_\\alpha=\n\\begin{cases}\n-\\dfrac12\\log(2\\alpha), & 0<\\alpha\\le 1/2,\\\\[1em]\n\\dfrac12\\log\\{2(1-\\alpha)\\}, & 1/2<\\alpha<1.\n\\end{cases}\n\\]\n\nSo the MP level-\\(\\alpha\\) test is\n\n\\[\n\\boxed{\\text{Reject }H_0 \\text{ iff } X-Y>c_\\alpha.}\n\\]\n\nEquivalently, reject for large values of \\(\\frac34 e^{X-Y}\\).\n\n---\n\n## (2) LRT for \\(H_0:\\theta_1=\\theta_2\\) vs. \\(H_1:\\theta_1\\ne\\theta_2\\)\n\nThe unrestricted likelihood is\n\n\\[\nL(\\theta_1,\\theta_2)=\\theta_1\\theta_2 e^{-\\theta_1x-\\theta_2y}.\n\\]\n\nFor fixed \\(x,y>0\\), the unrestricted MLEs are\n\n\\[\n\\hat\\theta_1=\\frac1x,\\qquad \\hat\\theta_2=\\frac1y.\n\\]\n\nThus\n\n\\[\n\\sup_{\\theta_1,\\theta_2>0} L(\\theta_1,\\theta_2)\n=\n\\frac1x\\frac1y e^{-1}e^{-1}\n=\n\\frac{e^{-2}}{xy}.\n\\]\n\nUnder \\(H_0\\), write \\(\\theta_1=\\theta_2=\\theta\\). Then\n\n\\[\nL_0(\\theta)=\\theta^2 e^{-\\theta(x+y)}.\n\\]\n\nMaximizing gives\n\n\\[\n\\hat\\theta_0=\\frac{2}{x+y}.\n\\]\n\nTherefore\n\n\\[\n\\sup_{H_0} L\n=\n\\left(\\frac{2}{x+y}\\right)^2 e^{-2}\n=\n\\frac{4e^{-2}}{(x+y)^2}.\n\\]\n\nHence the likelihood ratio statistic is\n\n\\[\n\\Lambda(x,y)\n=\n\\frac{\\sup_{H_0} L}{\\sup_{\\theta_1,\\theta_2>0}L}\n=\n\\frac{4e^{-2}/(x+y)^2}{e^{-2}/(xy)}\n=\n\\frac{4xy}{(x+y)^2}.\n\\]\n\nLet\n\n\\[\nU=\\frac{x}{x+y}.\n\\]\n\nThen\n\n\\[\n\\frac{y}{x+y}=1-U,\n\\]\n\nso\n\n\\[\n\\boxed{\\Lambda(x,y)=4U(1-U)\n=4\\frac{x}{x+y}\\left(1-\\frac{x}{x+y}\\right).}\n\\]\n\nThe LRT rejects for small values of \\(\\Lambda\\), i.e. when \\(U\\) is close to \\(0\\) or \\(1\\).\n\nUnder \\(H_0\\), \\(X,Y\\) are iid exponential with common rate \\(\\theta\\), and\n\n\\[\nU=\\frac{X}{X+Y}\\sim \\operatorname{Unif}(0,1).\n\\]\n\nThus an exact level-\\(\\alpha\\) LRT rejects when\n\n\\[\nU\\le \\frac{\\alpha}{2}\n\\quad\\text{or}\\quad\nU\\ge 1-\\frac{\\alpha}{2}.\n\\]\n\nEquivalently,\n\n\\[\n\\boxed{\n\\text{Reject }H_0 \\text{ iff }\n4\\frac{x}{x+y}\\left(1-\\frac{x}{x+y}\\right)\n\\le 2\\alpha-\\alpha^2.\n}\n\\]",
+    "raw_output": [
+      {
+        "id": "rs_07c33a6c5fa98d73006a24b89781048190b1402b9b42de748a",
+        "type": "reasoning",
+        "content": [],
+        "summary": [
+          {
+            "type": "summary_text",
+            "text": "**Considering mathematical formulations**\n\nI’m thinking about the scenario where H1 has a lower θ1 (which results in a larger X) and a higher θ2 (leading to a smaller Y), so it sounds like x minus y is large. That’s promising! I might want to include a randomized formula such as \\(\\phi_\\alpha(x,y)= \\begin{cases}1, & x-y>c\\\\ \\gamma,&x-y=c\\\\0,&x-y<c\\end{cases}\\) with c and γ as chosen variables. I’d still need to consider the implications of continuous γ and whether it affects exact boundaries."
+          }
+        ]
+      },
+      {
+        "id": "msg_07c33a6c5fa98d73006a24b8de1b5c8190af2b8463fd0ef248",
+        "type": "message",
+        "status": "completed",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "Let \\(L(\\theta_1,\\theta_2;x,y)=\\theta_1\\theta_2 e^{-\\theta_1x-\\theta_2y}\\), \\(x,y>0\\).\n\n## (1) MP test for \\(H_0:(\\theta_1,\\theta_2)=(2,2)\\) vs. \\(H_1:(\\theta_1,\\theta_2)=(1,3)\\)\n\nThis is a simple-vs-simple testing problem, so by the **Neyman–Pearson lemma**, the most powerful level-\\(\\alpha\\) test rejects \\(H_0\\) for large values of\n\n\\[\n\\frac{f_1(x,y)}{f_0(x,y)}.\n\\]\n\nHere\n\n\\[\nf_0(x,y)=4e^{-2x-2y},\\qquad f_1(x,y)=3e^{-x-3y}.\n\\]\n\nThus\n\n\\[\n\\frac{f_1(x,y)}{f_0(x,y)}\n=\n\\frac{3}{4}e^{x-y}.\n\\]\n\nTherefore the MP test rejects \\(H_0\\) when\n\n\\[\nx-y>c_\\alpha,\n\\]\n\nwhere \\(c_\\alpha\\) is chosen so that\n\n\\[\nP_{H_0}(X-Y>c_\\alpha)=\\alpha.\n\\]\n\nUnder \\(H_0\\), \\(X,Y\\stackrel{\\text{iid}}{\\sim}\\operatorname{Exp}(2)\\). Hence \\(D=X-Y\\) has Laplace density\n\n\\[\nf_D(d)=e^{-2|d|},\\qquad d\\in\\mathbb R.\n\\]\n\nSo\n\n\\[\nP_{H_0}(D>c)=\n\\begin{cases}\n\\dfrac12 e^{-2c}, & c\\ge 0,\\\\[1em]\n1-\\dfrac12 e^{2c}, & c<0.\n\\end{cases}\n\\]\n\nThus for the usual case \\(0<\\alpha\\le 1/2\\),\n\n\\[\nc_\\alpha=-\\frac12\\log(2\\alpha).\n\\]\n\nMore generally,\n\n\\[\nc_\\alpha=\n\\begin{cases}\n-\\dfrac12\\log(2\\alpha), & 0<\\alpha\\le 1/2,\\\\[1em]\n\\dfrac12\\log\\{2(1-\\alpha)\\}, & 1/2<\\alpha<1.\n\\end{cases}\n\\]\n\nSo the MP level-\\(\\alpha\\) test is\n\n\\[\n\\boxed{\\text{Reject }H_0 \\text{ iff } X-Y>c_\\alpha.}\n\\]\n\nEquivalently, reject for large values of \\(\\frac34 e^{X-Y}\\).\n\n---\n\n## (2) LRT for \\(H_0:\\theta_1=\\theta_2\\) vs. \\(H_1:\\theta_1\\ne\\theta_2\\)\n\nThe unrestricted likelihood is\n\n\\[\nL(\\theta_1,\\theta_2)=\\theta_1\\theta_2 e^{-\\theta_1x-\\theta_2y}.\n\\]\n\nFor fixed \\(x,y>0\\), the unrestricted MLEs are\n\n\\[\n\\hat\\theta_1=\\frac1x,\\qquad \\hat\\theta_2=\\frac1y.\n\\]\n\nThus\n\n\\[\n\\sup_{\\theta_1,\\theta_2>0} L(\\theta_1,\\theta_2)\n=\n\\frac1x\\frac1y e^{-1}e^{-1}\n=\n\\frac{e^{-2}}{xy}.\n\\]\n\nUnder \\(H_0\\), write \\(\\theta_1=\\theta_2=\\theta\\). Then\n\n\\[\nL_0(\\theta)=\\theta^2 e^{-\\theta(x+y)}.\n\\]\n\nMaximizing gives\n\n\\[\n\\hat\\theta_0=\\frac{2}{x+y}.\n\\]\n\nTherefore\n\n\\[\n\\sup_{H_0} L\n=\n\\left(\\frac{2}{x+y}\\right)^2 e^{-2}\n=\n\\frac{4e^{-2}}{(x+y)^2}.\n\\]\n\nHence the likelihood ratio statistic is\n\n\\[\n\\Lambda(x,y)\n=\n\\frac{\\sup_{H_0} L}{\\sup_{\\theta_1,\\theta_2>0}L}\n=\n\\frac{4e^{-2}/(x+y)^2}{e^{-2}/(xy)}\n=\n\\frac{4xy}{(x+y)^2}.\n\\]\n\nLet\n\n\\[\nU=\\frac{x}{x+y}.\n\\]\n\nThen\n\n\\[\n\\frac{y}{x+y}=1-U,\n\\]\n\nso\n\n\\[\n\\boxed{\\Lambda(x,y)=4U(1-U)\n=4\\frac{x}{x+y}\\left(1-\\frac{x}{x+y}\\right).}\n\\]\n\nThe LRT rejects for small values of \\(\\Lambda\\), i.e. when \\(U\\) is close to \\(0\\) or \\(1\\).\n\nUnder \\(H_0\\), \\(X,Y\\) are iid exponential with common rate \\(\\theta\\), and\n\n\\[\nU=\\frac{X}{X+Y}\\sim \\operatorname{Unif}(0,1).\n\\]\n\nThus an exact level-\\(\\alpha\\) LRT rejects when\n\n\\[\nU\\le \\frac{\\alpha}{2}\n\\quad\\text{or}\\quad\nU\\ge 1-\\frac{\\alpha}{2}.\n\\]\n\nEquivalently,\n\n\\[\n\\boxed{\n\\text{Reject }H_0 \\text{ iff }\n4\\frac{x}{x+y}\\left(1-\\frac{x}{x+y}\\right)\n\\le 2\\alpha-\\alpha^2.\n}\n\\]"
+          }
+        ],
+        "phase": "final_answer",
+        "role": "assistant"
+      }
+    ]
+  },
+  "cost_usd": 0.07398,
+  "timing": {
+    "started": "2026-06-07T00:17:26.703150+00:00",
+    "ended": "2026-06-07T00:18:52.228153+00:00",
+    "seconds": 85.53
+  },
+  "error": null
+}

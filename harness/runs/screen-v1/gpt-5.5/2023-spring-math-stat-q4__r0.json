@@ -1,0 +1,64 @@
+{
+  "question_id": "2023-spring-math-stat-q4",
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "rep": 0,
+  "exam": {
+    "year": 2023,
+    "term": "spring",
+    "level": "ms",
+    "part": "math-stat"
+  },
+  "request": {
+    "system": "You are sitting a PhD-level qualifying examination in statistics. Solve the problem rigorously and completely. Show your work and reasoning, justify each step, and clearly state your final answer(s). If the problem has multiple parts, answer every part, labeled. If you invoke a known theorem, name it.",
+    "user": "[2023 spring ms math-stat — problem 4]\n\n$X, Y$ independent exponentials with joint density $f(x,y\\mid\\theta_1,\\theta_2) = \\theta_1 e^{-\\theta_1 x}\\theta_2 e^{-\\theta_2 y}$, $x,y>0$. (1) Find the most powerful test of $H_0: \\theta_1 = \\theta_2 = 2$ vs $H_1: \\theta_1 = 1, \\theta_2 = 3$. (2) For $H_0: \\theta_1 = \\theta_2$ vs $H_1: \\theta_1 \\ne \\theta_2$, find the LRT and write it as a function of $x/(x+y)$.",
+    "max_tokens": 24000,
+    "mode": {
+      "effort": "high"
+    }
+  },
+  "response": {
+    "id": "resp_0b8a455dbba8ae08006a24b885aa788195ba6561427967ab3c",
+    "model": "gpt-5.5-2026-04-23",
+    "stop_reason": "completed",
+    "usage": {
+      "input_tokens": 243,
+      "output_tokens": 5429,
+      "output_tokens_details": {
+        "reasoning_tokens": 4009
+      }
+    },
+    "thinking": "",
+    "text": "Since “most powerful” requires a size constraint, I state part (1) as the most powerful level-\\(\\alpha\\) test. Without a size constraint, the always-reject test is trivially most powerful.\n\n## (1) MP test of \\(H_0:\\theta_1=\\theta_2=2\\) vs. \\(H_1:\\theta_1=1,\\theta_2=3\\)\n\nUnder \\(H_0\\),\n\n\\[\nf_0(x,y)=4e^{-2x-2y}, \\qquad x,y>0.\n\\]\n\nUnder \\(H_1\\),\n\n\\[\nf_1(x,y)=3e^{-x-3y}, \\qquad x,y>0.\n\\]\n\nThe likelihood ratio in favor of \\(H_1\\) is\n\n\\[\n\\frac{f_1(x,y)}{f_0(x,y)}\n=\n\\frac{3e^{-x-3y}}{4e^{-2x-2y}}\n=\n\\frac34 e^{x-y}.\n\\]\n\nBy the Neyman-Pearson lemma, the most powerful level-\\(\\alpha\\) test rejects \\(H_0\\) for large values of \\(f_1/f_0\\), equivalently for large values of \\(x-y\\). Thus the rejection region has the form\n\n\\[\nR_\\alpha=\\{(x,y):x-y>c_\\alpha\\},\n\\]\n\nwhere \\(c_\\alpha\\) is chosen so that\n\n\\[\nP_{H_0}(X-Y>c_\\alpha)=\\alpha.\n\\]\n\nUnder \\(H_0\\), \\(X,Y\\stackrel{\\text{iid}}{\\sim}\\operatorname{Exp}(2)\\). If \\(D=X-Y\\), then\n\n\\[\nP_{H_0}(D>c)\n=\n\\begin{cases}\n\\dfrac12 e^{-2c}, & c\\ge 0,\\\\[1em]\n1-\\dfrac12 e^{2c}, & c<0.\n\\end{cases}\n\\]\n\nTherefore\n\n\\[\nc_\\alpha\n=\n\\begin{cases}\n-\\dfrac12\\log(2\\alpha), & 0<\\alpha\\le \\dfrac12,\\\\[1em]\n\\dfrac12\\log\\{2(1-\\alpha)\\}, & \\dfrac12<\\alpha<1.\n\\end{cases}\n\\]\n\nSo the MP level-\\(\\alpha\\) test is\n\n\\[\n\\boxed{\\text{Reject }H_0 \\text{ if } X-Y>c_\\alpha.}\n\\]\n\nFor the usual case \\(\\alpha\\le 1/2\\),\n\n\\[\n\\boxed{\\text{Reject }H_0 \\text{ if } X-Y>-\\frac12\\log(2\\alpha).}\n\\]\n\n---\n\n## (2) LRT for \\(H_0:\\theta_1=\\theta_2\\) vs. \\(H_1:\\theta_1\\ne \\theta_2\\)\n\nThe likelihood is\n\n\\[\nL(\\theta_1,\\theta_2)\n=\n\\theta_1\\theta_2 e^{-\\theta_1 x-\\theta_2 y}.\n\\]\n\n### Unrestricted MLE\n\nMaximizing over \\(\\theta_1,\\theta_2>0\\),\n\n\\[\n\\widehat\\theta_1=\\frac1x,\\qquad \\widehat\\theta_2=\\frac1y.\n\\]\n\nThus\n\n\\[\n\\sup_{\\theta_1,\\theta_2} L(\\theta_1,\\theta_2)\n=\n\\frac1x\\frac1y e^{-1}e^{-1}\n=\n\\frac{e^{-2}}{xy}.\n\\]\n\n### MLE under \\(H_0\\)\n\nUnder \\(H_0\\), write \\(\\theta_1=\\theta_2=\\theta\\). Then\n\n\\[\nL_0(\\theta)=\\theta^2 e^{-\\theta(x+y)}.\n\\]\n\nThe log-likelihood is\n\n\\[\n\\ell_0(\\theta)=2\\log\\theta-\\theta(x+y),\n\\]\n\nso\n\n\\[\n\\widehat\\theta=\\frac{2}{x+y}.\n\\]\n\nTherefore\n\n\\[\n\\sup_{\\theta_1=\\theta_2} L(\\theta_1,\\theta_2)\n=\n\\left(\\frac{2}{x+y}\\right)^2 e^{-2}\n=\n\\frac{4e^{-2}}{(x+y)^2}.\n\\]\n\nHence the likelihood ratio statistic is\n\n\\[\n\\Lambda(x,y)\n=\n\\frac{\\sup_{\\theta_1=\\theta_2}L(\\theta_1,\\theta_2)}\n{\\sup_{\\theta_1,\\theta_2}L(\\theta_1,\\theta_2)}\n=\n\\frac{4e^{-2}/(x+y)^2}{e^{-2}/(xy)}\n=\n\\frac{4xy}{(x+y)^2}.\n\\]\n\nLet\n\n\\[\nT=\\frac{x}{x+y}.\n\\]\n\nThen\n\n\\[\n\\frac{y}{x+y}=1-T,\n\\]\n\nso\n\n\\[\n\\boxed{\\Lambda(x,y)=4T(1-T)\n=\n4\\frac{x}{x+y}\\left(1-\\frac{x}{x+y}\\right).}\n\\]\n\nThe LRT rejects for small values of \\(\\Lambda\\), so it rejects when \\(T\\) is far from \\(1/2\\).\n\nUnder \\(H_0\\), \\(X,Y\\) are iid exponentials with the same rate, so\n\n\\[\nT=\\frac{X}{X+Y}\\sim \\operatorname{Unif}(0,1).\n\\]\n\nThus the exact level-\\(\\alpha\\) LRT rejects when\n\n\\[\nT\\le \\frac{\\alpha}{2}\n\\quad \\text{or} \\quad\nT\\ge 1-\\frac{\\alpha}{2}.\n\\]\n\nEquivalently,\n\n\\[\n\\boxed{\n\\text{Reject }H_0\n\\text{ if }\n\\frac{X}{X+Y}\\le \\frac{\\alpha}{2}\n\\text{ or }\n\\frac{X}{X+Y}\\ge 1-\\frac{\\alpha}{2}.\n}\n\\]\n\nIn likelihood-ratio form, since\n\n\\[\n4T(1-T)\\le 2\\alpha-\\alpha^2\n\\]\n\nis equivalent to the above rejection region, the exact level-\\(\\alpha\\) LRT is\n\n\\[\n\\boxed{\n\\text{Reject }H_0\n\\text{ if }\n\\Lambda(X,Y)=4\\frac{X}{X+Y}\\left(1-\\frac{X}{X+Y}\\right)\n\\le 2\\alpha-\\alpha^2.\n}\n\\]",
+    "raw_output": [
+      {
+        "id": "rs_0b8a455dbba8ae08006a24b886653c81959ba19fe828cc48a0",
+        "type": "reasoning",
+        "content": [],
+        "summary": []
+      },
+      {
+        "id": "msg_0b8a455dbba8ae08006a24b8d6328c8195bc31eeab8370dc25",
+        "type": "message",
+        "status": "completed",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "Since “most powerful” requires a size constraint, I state part (1) as the most powerful level-\\(\\alpha\\) test. Without a size constraint, the always-reject test is trivially most powerful.\n\n## (1) MP test of \\(H_0:\\theta_1=\\theta_2=2\\) vs. \\(H_1:\\theta_1=1,\\theta_2=3\\)\n\nUnder \\(H_0\\),\n\n\\[\nf_0(x,y)=4e^{-2x-2y}, \\qquad x,y>0.\n\\]\n\nUnder \\(H_1\\),\n\n\\[\nf_1(x,y)=3e^{-x-3y}, \\qquad x,y>0.\n\\]\n\nThe likelihood ratio in favor of \\(H_1\\) is\n\n\\[\n\\frac{f_1(x,y)}{f_0(x,y)}\n=\n\\frac{3e^{-x-3y}}{4e^{-2x-2y}}\n=\n\\frac34 e^{x-y}.\n\\]\n\nBy the Neyman-Pearson lemma, the most powerful level-\\(\\alpha\\) test rejects \\(H_0\\) for large values of \\(f_1/f_0\\), equivalently for large values of \\(x-y\\). Thus the rejection region has the form\n\n\\[\nR_\\alpha=\\{(x,y):x-y>c_\\alpha\\},\n\\]\n\nwhere \\(c_\\alpha\\) is chosen so that\n\n\\[\nP_{H_0}(X-Y>c_\\alpha)=\\alpha.\n\\]\n\nUnder \\(H_0\\), \\(X,Y\\stackrel{\\text{iid}}{\\sim}\\operatorname{Exp}(2)\\). If \\(D=X-Y\\), then\n\n\\[\nP_{H_0}(D>c)\n=\n\\begin{cases}\n\\dfrac12 e^{-2c}, & c\\ge 0,\\\\[1em]\n1-\\dfrac12 e^{2c}, & c<0.\n\\end{cases}\n\\]\n\nTherefore\n\n\\[\nc_\\alpha\n=\n\\begin{cases}\n-\\dfrac12\\log(2\\alpha), & 0<\\alpha\\le \\dfrac12,\\\\[1em]\n\\dfrac12\\log\\{2(1-\\alpha)\\}, & \\dfrac12<\\alpha<1.\n\\end{cases}\n\\]\n\nSo the MP level-\\(\\alpha\\) test is\n\n\\[\n\\boxed{\\text{Reject }H_0 \\text{ if } X-Y>c_\\alpha.}\n\\]\n\nFor the usual case \\(\\alpha\\le 1/2\\),\n\n\\[\n\\boxed{\\text{Reject }H_0 \\text{ if } X-Y>-\\frac12\\log(2\\alpha).}\n\\]\n\n---\n\n## (2) LRT for \\(H_0:\\theta_1=\\theta_2\\) vs. \\(H_1:\\theta_1\\ne \\theta_2\\)\n\nThe likelihood is\n\n\\[\nL(\\theta_1,\\theta_2)\n=\n\\theta_1\\theta_2 e^{-\\theta_1 x-\\theta_2 y}.\n\\]\n\n### Unrestricted MLE\n\nMaximizing over \\(\\theta_1,\\theta_2>0\\),\n\n\\[\n\\widehat\\theta_1=\\frac1x,\\qquad \\widehat\\theta_2=\\frac1y.\n\\]\n\nThus\n\n\\[\n\\sup_{\\theta_1,\\theta_2} L(\\theta_1,\\theta_2)\n=\n\\frac1x\\frac1y e^{-1}e^{-1}\n=\n\\frac{e^{-2}}{xy}.\n\\]\n\n### MLE under \\(H_0\\)\n\nUnder \\(H_0\\), write \\(\\theta_1=\\theta_2=\\theta\\). Then\n\n\\[\nL_0(\\theta)=\\theta^2 e^{-\\theta(x+y)}.\n\\]\n\nThe log-likelihood is\n\n\\[\n\\ell_0(\\theta)=2\\log\\theta-\\theta(x+y),\n\\]\n\nso\n\n\\[\n\\widehat\\theta=\\frac{2}{x+y}.\n\\]\n\nTherefore\n\n\\[\n\\sup_{\\theta_1=\\theta_2} L(\\theta_1,\\theta_2)\n=\n\\left(\\frac{2}{x+y}\\right)^2 e^{-2}\n=\n\\frac{4e^{-2}}{(x+y)^2}.\n\\]\n\nHence the likelihood ratio statistic is\n\n\\[\n\\Lambda(x,y)\n=\n\\frac{\\sup_{\\theta_1=\\theta_2}L(\\theta_1,\\theta_2)}\n{\\sup_{\\theta_1,\\theta_2}L(\\theta_1,\\theta_2)}\n=\n\\frac{4e^{-2}/(x+y)^2}{e^{-2}/(xy)}\n=\n\\frac{4xy}{(x+y)^2}.\n\\]\n\nLet\n\n\\[\nT=\\frac{x}{x+y}.\n\\]\n\nThen\n\n\\[\n\\frac{y}{x+y}=1-T,\n\\]\n\nso\n\n\\[\n\\boxed{\\Lambda(x,y)=4T(1-T)\n=\n4\\frac{x}{x+y}\\left(1-\\frac{x}{x+y}\\right).}\n\\]\n\nThe LRT rejects for small values of \\(\\Lambda\\), so it rejects when \\(T\\) is far from \\(1/2\\).\n\nUnder \\(H_0\\), \\(X,Y\\) are iid exponentials with the same rate, so\n\n\\[\nT=\\frac{X}{X+Y}\\sim \\operatorname{Unif}(0,1).\n\\]\n\nThus the exact level-\\(\\alpha\\) LRT rejects when\n\n\\[\nT\\le \\frac{\\alpha}{2}\n\\quad \\text{or} \\quad\nT\\ge 1-\\frac{\\alpha}{2}.\n\\]\n\nEquivalently,\n\n\\[\n\\boxed{\n\\text{Reject }H_0\n\\text{ if }\n\\frac{X}{X+Y}\\le \\frac{\\alpha}{2}\n\\text{ or }\n\\frac{X}{X+Y}\\ge 1-\\frac{\\alpha}{2}.\n}\n\\]\n\nIn likelihood-ratio form, since\n\n\\[\n4T(1-T)\\le 2\\alpha-\\alpha^2\n\\]\n\nis equivalent to the above rejection region, the exact level-\\(\\alpha\\) LRT is\n\n\\[\n\\boxed{\n\\text{Reject }H_0\n\\text{ if }\n\\Lambda(X,Y)=4\\frac{X}{X+Y}\\left(1-\\frac{X}{X+Y}\\right)\n\\le 2\\alpha-\\alpha^2.\n}\n\\]"
+          }
+        ],
+        "phase": "final_answer",
+        "role": "assistant"
+      }
+    ]
+  },
+  "cost_usd": 0.08265,
+  "timing": {
+    "started": "2026-06-07T00:17:09.558263+00:00",
+    "ended": "2026-06-07T00:18:45.979364+00:00",
+    "seconds": 96.42
+  },
+  "error": null
+}

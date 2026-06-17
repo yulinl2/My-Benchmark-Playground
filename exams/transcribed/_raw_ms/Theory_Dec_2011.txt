@@ -1,0 +1,99 @@
+
+----- page 1 -----
+ 
+MASTER’S COMPREHENSIVE EXAMINATION 
+Part I: Theory (90 minutes) December 3rd, 2011 
+Instructions:  Attempt any three out of the following four questions.  Mention which three 
+you would like to have graded.  Open book and open notes. 
+ 
+1. Let 
+1
+2
+,
+X
+X be independent normal random variables with mean µ  and variance 1. 
+ 
+a)  Find the mean squared error of 
+1
+2
+(
+) / 2.
+X
+X
++
+ 
+ 
+b)  Find the mean squared error of 
+2
+1.
+X +
+ 
+ 
+2.  Let  
+1
+2
+3
+,
+,
+X
+X
+X  be independent random binomial variables with parameters (1, ).
+p  
+a) Test p  = ¼ vs. p = ½ at level .0156.  That is, determine explicitly the rejection   
+region of the most powerful test. 
+b)  Find the power of the test in (a). 
+ 
+ 
+3.   Urn A has 3 white and 7 black balls. Urn B has 7 white and 3 black balls. We flip a fair 
+coin. If the outcome is heads, then two balls from urn A are selected without 
+replacement (that is, we do not place the first ball back), whereas if the outcome is 
+tails, then two balls from urn B are selected without replacement. Suppose that the first 
+selected ball is white, then:  
+ 
+a)  What is the probability that the coin landed heads 
+ 
+b)  What is the probability that the second selected ball is also white? 
+ 
+ 
+ 
+ 
+4.  The joint density function of  X  and Y is given by  
+ 
+    
+(
+1)
+( ; )
+xe
+       
+0; .0:
+x y
+f x y
+x
+y
+−
++
+=
+>
+ 
+ 
+a)  Find the conditional density of 
+,
+X  given 
+,
+Y
+y
+=
+and that of ,
+Y given 
+.
+X
+x
+=
+ 
+ 
+a)  Find the density function of 
+.
+Z
+XY
+=
+ 

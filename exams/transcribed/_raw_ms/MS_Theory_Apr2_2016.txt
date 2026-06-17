@@ -1,0 +1,128 @@
+
+----- page 1 -----
+ 
+MASTER’S COMPREHENSIVE EXAMINATION 
+Part I Theory (2 hours) April 2nd, 2016 
+Instructions: Attempt any three out of the following four questions on both pages. 
+Mention which three you would like to have graded. Open book and open notes. 
+ 
+ 
+1. (a)  The random variable X has the property that all its moments are equal; more 
+specifically, E(
+)
+n
+X
+c
+=
+ for all integers 
+1
+n ≥ and some constant c, 0 > c < 1.  Find the 
+distribution of X.   
+ 
+(b)  For any random variable Y show that 
+ 
+ 
+0
+0
+E( )
+P(
+) 
+P(
+) 
+.
+Y
+Y
+y dy
+Y
+y dy
+∞
+∞
+=
+>
+−
+> −
+∫
+∫
+  
+ 
+2. Let 
+1
+2
+3
+,
+,
+X
+X
+X  be independent 
+2
+1
+(
+),
+N µ σ
+ 
+2
+ and 
+µ
+σ  unknown. 
+Find a 98% CI for 
+2
+σ  given 
+1
+2
+3
+1, 
+0, 
+1.
+X
+X
+X
+=
+=
+= −
+  
+ 
+3. Let X be a random sample of size 1 have an exponential distribution with parameter .
+θ  
+That is, 
+/
+1
+(x; )
+, 
+0, 
+0.
+x
+xf
+e
+x
+θ
+θ
+θ
+θ
+−
+=
+>
+>
+  
+Find the most powerful test of size 
+1
+e− for
+:
+1
+o
+H
+θ =  vs
+1 :
+3.
+H
+θ =
+  
+ 
+4. (a) Consider a point on a grid that moves to a new position in n steps.  At each step, the 
+point can move up one unit with probability p or right one unit with probability 1 – p.  
+What is the expected area of the smallest rectangle containing the starting and ending 
+positions of the point? 
+(b) A point is chosen uniformly at random on a line segment of length L.  Let Y be the 
+ratio of the length of the shorter segment to the length of the longer segment 
+determined by the selected point.  Find the cumulative distribution function of Y. 
+ 
+ 

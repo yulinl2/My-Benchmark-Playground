@@ -1,0 +1,5 @@
+# Collected run outputs are written incrementally by run_models.py.
+# Ignored while in-progress; the FINAL dataset for a run is committed
+# explicitly with `git add -f harness/runs/<run_id>` once it completes.
+runs/
+runs_*.log

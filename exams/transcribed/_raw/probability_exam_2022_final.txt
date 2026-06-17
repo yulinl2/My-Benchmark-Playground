@@ -1,0 +1,158 @@
+
+----- page 1 -----
+PH.D. QUALIFYING EXAM 2022: PROBABILITY
+Rules: This is a four hour exam consisting of two problems, both of which
+should be answered. You may use ONE page (front and back, 8.5 by 11 inch
+paper) HANDWRITTEN “information sheet” for EACH OF THE TWO
+COURSES (Stat 592 and Stat 654) on which this exam is based. No other
+references are allowed.
+No use of cell phones, calculators, computers, or
+other electronic devices is permitted for any reason during the time while the
+exam is being administered, including any time during which you leave the
+exam room for any reason. Show your work and justify your answers
+clearly. If you use known results (e.g., results stated/proven in
+class), please state them clearly. Please put your name or initials on
+every page. Finally, write your answers clearly and legibly on blank papers,
+preferably using pens, leaving an impression deep enough for the papers to
+be scanned. At the end of the exam, separate out the bunches of pages for
+problems 1 and 2, and hand them over to the proctor. Good luck!
+Date: July 18, 2022
+10 AM to 2 PM.
+1
+
+----- page 2 -----
+2
+PH.D. QUALIFYING EXAM 2022: PROBABILITY
+Problem 1
+Let Y1, . . . , Yn be independent random variables such that, for each i ≥1,
+Yi is distributed according to a distribution having density
+(0.1)
+fi(y) = ie−iy1{y>0}
+with respect to Lebesgue measure, for each i = 1, . . . , n. We deﬁne a random
+ordering ≺Y of the set {1, . . . , n} from the order statistics of {Y1, . . . , Yn}
+by putting
+(0.2)
+i ≺Y j
+⇐⇒
+Yi < Yj.
+(i) For each i = 1, . . . , n, compute the probability that i ≺Y j for all j ̸= i.
+(ii) Compute the probability that ≺Y corresponds to
+i ≺Y j
+⇐⇒
+i < j,
+where < is the usual ordering of positive integers 1 < 2 < · · · < n.
+(iii) Compute the probability that ≺Y corresponds to
+i ≺Y j
+⇐⇒
+j < i,
+where < is the usual ordering of positive integers 1 < 2 < · · · < n as in
+(ii).
+(iv) Let Pn denote the probability from (iii) and Qn denote the probability
+from (ii). Show that (Pn/Qn)1/n ∼4 as n →∞, that is,
+lim
+n→∞
+(Pn/Qn)1/n
+4
+= 1.
+Hint: You may use Stirling’s approximation for factorial.
+(v) Suppose we ﬁrst generate ≺Y as an ordering of 1, . . . , n based on Y1, . . . , Yn
+with distribution in (0.1).
+For 1 < m < n, we deﬁne Y ′
+1, . . . , Y ′
+m by
+Y ′
+1 = Y1, . . . , Y ′
+m = Ym and deﬁne an ordering ≺Y ′ of 1, . . . , m as in (0.2).
+Express the distribution of ≺Y ′ in terms of the distribution of ≺Y .
+Now consider the following sampling process. Let Z1, Z2, . . . be indepen-
+dent random variables with distribution
+Pr(Zi = j) ∝i −j,
+j = 0, 1, . . . , i −1.
+For any n, construct a random ordering ≺Z(n) of 1, . . . , n from Z1, . . . , Zn
+recursively by
+• ≺Z(1) is the trivial ordering of 1 element with probability 1.
+• Given ≺Z(n), deﬁne ≺Z(n+1) to be consistent with ≺Z(n) with element
+n + 1 inserted into the ordering of ≺Z(n) in the (Zn+1 + 1) position.
+
+----- page 3 -----
+PH.D. QUALIFYING EXAM 2022: PROBABILITY
+3
+In particular, for 1 ≤i, j ≤n, we have
+i ≺Z(n+1) j
+if and only if
+i ≺Z(n) j,
+and, writing
+X1 ≺Z(n) X2 ≺Z(n) · · · ≺Z(n) Xn
+to denote the random ordering determined by Z(n),
+Xi ≺Z(n+1) (n + 1),
+for all i ≤Zn+1
+(n + 1) ≺Z(n+1) Xi,
+for all i > Zn+1.
+For example, suppose Z1 = 0, Z2 = 0, Z3 = 1, and Z4 = 3. Then the
+resulting orderings for the ﬁrst few values of n are
+• ≺Z(1): 1
+• ≺Z(2): 2 ≺Z(2) 1
+• ≺Z(3): 2 ≺Z(3) 3 ≺Z(3) 1
+• ≺Z(4): 2 ≺Z(4) 3 ≺Z(4) 1 ≺Z(4) 4
+The above protocol gives rise to an inﬁnite random ordering Z(∞) on the
+positive integers deﬁned by
+i ≺Z(∞) j
+if and only if
+i ≺Z(i∨j) j,
+where i ∨j := max{i, j}.
+For each n = 1, 2, . . ., let Mn be the highest ranked integer in Z(n), i.e.,
+Mn is the random variable such that for every i = 1, . . . , n either Mn = i or
+i ≺Z(n) Mn. Deﬁne M∞:= limn→∞Mn.
+(vi) Prove that M∞exists and is ﬁnite with probability 1.
+
+----- page 4 -----
+4
+PH.D. QUALIFYING EXAM 2022: PROBABILITY
+Problem 2
+Let n be a positive integer. Consider a simple random walk on Z2 starting
+at (n, 0). At each step, the random walker moves one step towards one of
+the following directions: right (1, 0), left (−1, 0), up (0, 1), down (0, −1),
+each with probability 1/4. Let Sk = (Sk,x, Sk,y) ∈Z2 be the position of the
+walker at time k.
+Part A:
+• Is {Sk,x}k≥0 is a Markov chain? If it is, please specify its state space and
+transition probability distribution.
+• Is {Sk,x}k≥0 a martingale?
+Part B: Let T0,x be the ﬁrst time the walker hits the y-axis. That is, the
+ﬁrst time the random walker’s x-coordinate equals 0.
+• Calculate P[T0,x = ∞].
+• Calculate E[T0,x].
+Part C: Let T0 be the ﬁrst time the walker arrives at the origin (0, 0). In
+this problem, ⌊x⌋denotes the largest integer that is no larger than x. For
+example, ⌊1.5⌋= 1, ⌊4⌋= 4.
+• Let Dk be the (Euclidean) distance between the random walker and the
+origin at time k. Let P1,n := P[D⌊n1.5⌋≥n/2] be the probability that
+the distance between the walker and the origin is at least n/2 after ⌊n1.5⌋
+steps. Prove that P1,n →1 as n →∞.
+[Hint: There are more than one way to show this result. You can try
+to prove the complementary event’s probability goes to 0. You can use
+the location of Sk,x to upper bound the probability of the complementary
+event.]
+• Let P2,n := P[T0 ≤⌊n1.5⌋] be the probability that the walker has visited
+the origin in the ﬁrst ⌊n1.5⌋steps. Prove that P2,n →0 as n →∞. [Hint:
+the maximal inequalities may be helpful. See below]
+You may ﬁnd the Doob’s maximal inequality, or Kolmogorov’s maximal
+inequality useful. These inequalities are given below.
+• (Doob’s maximal inequality) Let {Xk} be a submartingale. Then
+P[ max
+1≤i≤k Xi ≥λ] ≤E[max{Xk, 0}]
+λ
+.
+
+----- page 5 -----
+PH.D. QUALIFYING EXAM 2022: PROBABILITY
+5
+• (Kolmogorov’s Maximal Inequality) Let ξ1 . . . , ξk, . . . be a sequence of
+i.i.d. random variables with mean 0 and ﬁnite variance.
+Let Tk :=
+Pk
+i=1 ξi. Then
+P[ max
+1≤i≤k|Ti| ≥λ] ≤V ar[Tk]
+λ2
+.

@@ -1,0 +1,166 @@
+[
+  {
+    "id": "2024-fall-probability-q1",
+    "exam": {
+      "year": 2024,
+      "term": "fall",
+      "level": "ms",
+      "part": "probability"
+    },
+    "number": 1,
+    "topics": [
+      "discrete distribution",
+      "expectation",
+      "variance",
+      "order statistics",
+      "maximum and minimum"
+    ],
+    "difficulty": "medium",
+    "prompt": "$X$ has pmf $P(X=x) = c(2x+1)$ for $x = 0,1,2$. (1) Find $c$. (2) Compute $P(X=2)$. (3) $\\mathbb{E}[X]$. (4) $\\operatorname{Var}(X)$. (5) For 10 i.i.d. copies, find the distribution of the maximum. (6) Compute $P(\\min(X_1,\\dots,X_{10}) > 0)$.",
+    "solution": "(1) $c(1+3+5) = 1 \\Rightarrow c = 1/9$. (2) $P(X=2) = 5/9$. (3) $\\mathbb{E}[X] = (0+3+10)/9 = 13/9$. (4) $\\mathbb{E}[X^2] = 23/9$, $\\operatorname{Var}(X) = 23/9 - (13/9)^2 = 38/81$. (5) With $F(0)=1/9, F(1)=4/9, F(2)=1$, $M_{10} = \\max$ has $P(M_{10}=0) = (1/9)^{10}$, $P(M_{10}=1) = (4/9)^{10} - (1/9)^{10}$, $P(M_{10}=2) = 1 - (4/9)^{10}$. (6) $P(X_i > 0) = 8/9$, so $P(\\min > 0) = (8/9)^{10}$.",
+    "source": {
+      "pdf": "Downloads/past-ms-exams-solution/ms 24 Dec Q & A.pdf",
+      "page": 1
+    },
+    "verified": false,
+    "notes": "MS comprehensive (Master Exam Fall 2024). Transcribed with solution from answer key.",
+    "ai_audit": "pass",
+    "grading_type": "numeric"
+  },
+  {
+    "id": "2024-fall-math-stat-q2",
+    "exam": {
+      "year": 2024,
+      "term": "fall",
+      "level": "ms",
+      "part": "math-stat"
+    },
+    "number": 2,
+    "topics": [
+      "UMP test",
+      "Neyman-Pearson lemma",
+      "power function",
+      "monotone likelihood ratio"
+    ],
+    "difficulty": "medium",
+    "prompt": "Single observation $Y$ with density $f(y\\mid\\theta) = (\\theta+1)y^\\theta$, $0<y<1$. Test $H_0: \\theta = 0$ vs $H_a: \\theta > 0$ at level $\\alpha$. (1) Show a UMP test exists, find it, and give its exact form in terms of $\\alpha$. (2) Give its power function in terms of $\\alpha$.",
+    "solution": "(1) For any $\\theta^* > 0$, the NP most powerful test rejects when $f(y\\mid\\theta^*)/f(y\\mid0) = (\\theta^*+1)y^{\\theta^*} > k$, i.e. $y > k^*$. Since under $H_0$ ($\\theta=0$, uniform) $\\alpha = P_0(Y > k^*) = 1 - k^*$, we get $k^* = 1-\\alpha$. This is independent of $\\theta^*$, so it is UMP: reject when $Y > 1 - \\alpha$. (2) Power $= P_\\theta(Y > 1-\\alpha) = \\int_{1-\\alpha}^1 (\\theta+1)y^\\theta\\,dy = 1 - (1-\\alpha)^{\\theta+1}$.",
+    "source": {
+      "pdf": "Downloads/past-ms-exams-solution/ms 24 Dec Q & A.pdf",
+      "page": 1
+    },
+    "verified": false,
+    "notes": "MS comprehensive. Transcribed with solution from answer key.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
+  },
+  {
+    "id": "2024-fall-math-stat-q3",
+    "exam": {
+      "year": 2024,
+      "term": "fall",
+      "level": "ms",
+      "part": "math-stat"
+    },
+    "number": 3,
+    "topics": [
+      "sufficiency",
+      "maximum likelihood",
+      "unbiasedness",
+      "joint density"
+    ],
+    "difficulty": "medium",
+    "prompt": "$Y_1, Y_2$ have joint density $f(y_1,y_2\\mid\\theta) = \\frac{8}{\\theta^4}y_1 y_2$ for $0 \\le y_2 \\le y_1 \\le \\theta$. (1) Is $Y_2$ a sufficient statistic for $\\theta$? (prove). (2) Find the MLE of $\\theta$. (3) Is the MLE unbiased?",
+    "solution": "(1) The marginal of $Y_2$ is $f_2(y_2\\mid\\theta) = \\int_{y_2}^\\theta \\frac{8y_1y_2}{\\theta^4}dy_1 = \\frac{4y_2}{\\theta^4}(\\theta^2 - y_2^2)$, $0\\le y_2\\le\\theta$. The conditional $f(y_1,y_2)/f_2(y_2)$ still depends on $\\theta$, so $Y_2$ is not sufficient. (2) The density is decreasing in $\\theta$ on $\\theta \\ge Y_1$, so $\\hat\\theta = Y_1$. (3) $\\mathbb{E} Y_1 = \\int_0^\\theta\\int_0^{y_1} y_1\\frac{8y_1y_2}{\\theta^4}\\,dy_2\\,dy_1 = 4\\theta/5 \\ne \\theta$ — not unbiased.",
+    "source": {
+      "pdf": "Downloads/past-ms-exams-solution/ms 24 Dec Q & A.pdf",
+      "page": 1
+    },
+    "verified": false,
+    "notes": "MS comprehensive. Transcribed with solution from answer key.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
+  },
+  {
+    "id": "2024-fall-applied-q4",
+    "exam": {
+      "year": 2024,
+      "term": "fall",
+      "level": "ms",
+      "part": "applied"
+    },
+    "number": 4,
+    "topics": [
+      "multiple regression",
+      "extra sum of squares",
+      "partial F-test",
+      "global F-test",
+      "design matrix"
+    ],
+    "difficulty": "medium",
+    "prompt": "Multiple regression of $Y$ on $X_1, X_2, X_3$, $n = 25$, SS(Total) $= 248.0$; table of SSReg for all predictor subsets (SSReg($X_1,X_2,X_3) = 181.8$, SSReg($X_1,X_2) = 145.2$, etc.), $\\alpha = 0.05$. (1) Global F-test of $H_0: \\beta_1=\\beta_2=\\beta_3=0$. (2) Compute the extra SSReg$(X_3\\mid X_1,X_2)$. (3) Test whether $X_3$ can be dropped. (4) Write the first row of the reduced-model $X$-matrix testing $H_0: \\beta_2 = \\beta_3 = 0$ (first obs: $Y=10, X_1=1985, X_2=59.7, X_3=2205$).",
+    "solution": "(1) $F = \\frac{181.8/3}{(248-181.8)/21} = 19.2 > F_{3,21,.95} = 3.07$ — reject (at least one $\\beta_i \\ne 0$). (2) SSReg$(X_3\\mid X_1,X_2) = 181.8 - 145.2 = 36.6$. (3) $F = \\frac{36.6/1}{(248-181.8)/21} = 11.6 > F_{1,21,.95} = 4.32$ — reject; $X_3$ cannot be dropped. (4) Reduced model is $E(Y) = \\beta_0 + \\beta_1 X_1$, so the first row is $[1\\ \\ 1985]$.",
+    "source": {
+      "pdf": "Downloads/past-ms-exams-solution/ms 24 Dec Q & A.pdf",
+      "page": 1
+    },
+    "verified": false,
+    "notes": "MS comprehensive. Transcribed with solution from answer key.",
+    "ai_audit": "pass",
+    "grading_type": "numeric"
+  },
+  {
+    "id": "2024-fall-applied-q5",
+    "exam": {
+      "year": 2024,
+      "term": "fall",
+      "level": "ms",
+      "part": "applied"
+    },
+    "number": 5,
+    "topics": [
+      "two-way ANOVA",
+      "interaction",
+      "F-test",
+      "multiple comparisons"
+    ],
+    "difficulty": "medium",
+    "prompt": "Water absorption of two mortar types (factor A, 2 levels) at four submersion periods (factor B, 4 levels), 3 obs per cell. SSA $= 322.667$, SSB $= 35.623$, SSE $= 11.266$, SST $= 372.113$. (1) Construct the ANOVA table. (2) State the hypotheses and test at 10%. (3) Critical/p-values. (4) Conclusion. (5) If ANOVA rejects, how to find which means differ?",
+    "solution": "(1) SS(AB) $= 372.113 - 322.667 - 35.623 - 11.266 = 2.557$; df: A 1, B 3, AB 3, Error 16, Total 23. MS: A 322.667, B 11.874, AB 0.852, Error 0.704. $F_A = 458.3$, $F_B = 16.87$, $F_{AB} = 1.21$. (2)-(4) Test interaction $H_{0,AB}$ (no interaction) and main effects; at 10%, interaction is not significant ($F_{AB}=1.21$, p $\\approx 0.39$), but both factors A and B are highly significant. (5) Use a multiple-comparison procedure such as Tukey's HSD.",
+    "source": {
+      "pdf": "Downloads/past-ms-exams-solution/ms 24 Dec Q & A.pdf",
+      "page": 2
+    },
+    "verified": false,
+    "notes": "MS comprehensive. Transcribed with solution from answer key.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
+  },
+  {
+    "id": "2024-fall-applied-q6",
+    "exam": {
+      "year": 2024,
+      "term": "fall",
+      "level": "ms",
+      "part": "applied"
+    },
+    "number": 6,
+    "topics": [
+      "k-modes clustering",
+      "categorical data",
+      "silhouette",
+      "dissimilarity"
+    ],
+    "difficulty": "medium",
+    "prompt": "Seven houses with categorical attributes (township, four-bedrooms, style); two houses are the initial modes for K-Modes clustering (dissimilarity = number of mismatches). (a) Assign each house to a cluster and give the two cluster modes (show work). (b) Compute the silhouette value $s(i) = \\frac{b(i)-a(i)}{\\max(b(i),a(i))}$ for each house. (c) Sketch the silhouette plot; is the clustering well-structured?",
+    "solution": "(a) Iterating K-Modes: Cluster 1 = houses {1,2,5,6}, mode (township A, four-bedrooms Yes, Colonial); Cluster 2 = houses {3,4,7}, mode (township B, four-bedrooms No, Cottage); the assignment is stable. (b) Computing $a(i)$ (mean within-cluster dissimilarity) and $b(i)$ (mean dissimilarity to the other cluster) gives silhouettes $1/5, 3/4, 1/2, 3/4, 9/11, 3/7, 9/11$ for the houses, averaging $\\approx 0.61$. (c) The average silhouette $\\approx 0.61$ indicates a reasonably well-structured clustering.",
+    "source": {
+      "pdf": "Downloads/past-ms-exams-solution/ms 24 Dec Q & A.pdf",
+      "page": 3
+    },
+    "verified": false,
+    "notes": "MS comprehensive. Transcribed with solution from answer key.",
+    "ai_audit": "pass",
+    "grading_type": "numeric"
+  }
+]

@@ -1,0 +1,139 @@
+
+----- page 1 -----
+MASTER’S COMPREHENSIVE EXAMINATION 
+ 
+Part II Applied (2 hours) April, 2nd, 2016. 
+Instructions: Attempt any three out of the following four questions on both pages. 
+Mention which three you would like to have graded. Open book and open notes. 
+ 
+1. Dawn-Holly plants have male and female genders.  The time for a single female Dawn-Holly plant 
+grown alone to bloom from when it is born (i.e. emergence from the ground) in weeks is distributed 
+exponential with λ=10; f(t) = (1/10) e-t/10.  The time for a single male Dawn-Holly grown alone to 
+bloom is exponential with parameter λ=15; (1/15) e-t/15.  However, if a female plant is grown paired 
+with (i.e. within 50 feet of) a male plant the time to blooming for both plants is independent except that 
+once the male plant blooms, the pollen released by the male triggers the female plant to immediately 
+bloom if the female plant did not bloom first. Thus when a male and female Dolly-Holly are paired 
+together, the time for the female plant to bloom is min (Y, Z) where Y ~ exponential(λ=10) and Z ~ 
+exponential(λ=15). 
+ 
+A. Compared to growing a female Dolly-Holly alone, by how much time on average does 
+pairing the female plant with a male Dolly-Holly plant reduce the expected time to bloom 
+for a female Dolly-Holly?  
+ 
+B. If N=100 independent pairs of female and male Dolly-Holly plants are grown, Let X be then 
+number of pairs where the male Dolly-Holly bloomed first and stimulated the female plant 
+to bloom.   What is the probability that X ≥ 50? 
+________________________________________________________________________________ 
+ 
+2.    Liquor stores and convenience stores are frequently targeted by robbers.  A criminologist wants to 
+compare the effectiveness of three commonly used alternative methods (M1, M2, M3.) of police car 
+patrolling of these stores.    A large city police department agrees to cooperate in the conduct of the 
+experiment.  The city has multiple police “precinct” stations each serving a section of the city.  12 
+precincts are randomly picked to participate in the study, and the criminologist randomly assigns 4 
+precincts to Method M1, 4 to method M2, and 4 to M3.   For each precinct in the study, 2 liquor stores 
+and 2 convenience stores are randomly picked. The study continues for one month, and for each 
+individual store, Yijk the number of robberies is recorded.   
+a) Show the data layout for this study. 
+b) Show an ANOVA table listing Source of variability, degrees of freedom, Expected Mean Squares, 
+and which F ratios you would use to test the Sources of Variability.   
+________________________________________________________________________________ 
+3.  A therapist wants to compare two methods for reducing stress.  One method is Yoga, and the other is 
+Reiki therapy. For 24 suitable patients, the therapist measures their initial stress level, and randomly 
+refers 12 to a Yoga therapist, and the other 12 to a Reiki therapist.   After 3 months of therapy the stress 
+levels of the 24 patients are again measured.  Stress is measured on a psychological scale that is 
+standardized to a normal distribution.  A summary of The Stress Results is given on the next page: 
+ 
+
+----- page 2 -----
+ 
+               [ FOR  REIKI GROUP, n=12 ]                   [ FOR  YOGA GROUP, n=12 ] 
+                Pre-Score  Post-Score  Difference                 Pre-Score  Post-Score      Difference  
+Mean             75.7         26.3            49.3                             79.1           34.8              44.3 
+Std-Dev           9.7         3.8               8.4                               8.6            9.0                 2.9 
+a) The researcher realizes that there is a difference in the Pre stress values, and wants to adjust for this.  
+Carry out a t-test to compare the Effect of the Therapy Methods that adjusts for treatment group 
+differences in the pre values.  Show the formula you used.  Give a corresponding confidence interval 
+for the difference in the average effects of Reiki vs. Yoga. 
+b) A different approach to adjust for the Pre-stress level is to use Post-stress score as the response 
+variable, and the Pre-stress score as a covariate.  A statistician fit the following least-squares model:   
+Where therapy = -1 for Yoga; therapy = 1 for Reiki. 
+Post-stress Score is the Response, Pre-stress Score is in the model as a predictor covariate 
+Term                  
+ 
+Estimate         Stand error        t                   Prob> |t| 
+Intercept 
+ 
+ 
+-16.610804 
+5.8913993 
+-2.8195007 
+0.01058995 
+Therapy 
+ 
+ 
+-3.18221 
+0.67027342 
+-4.7476297 
+0.00012306 
+Pre  
+ 
+ 
+ 
+0.60065756 
+0.07543852 
+7.96221307 
+0.00000013 
+(pre-77.375)*Therapy 
+-0.396054 
+0.07543852 
+-5.2500233 
+0.00003879 
+                        Df            SS                  MS                     F                Prob> F 
+Model  
+3 
+1274.28253 
+424.760844 
+40.9061474        <0.001 
+Error  
+20 
+207.6758 
+10.38379 
+ 
+C. Total 
+23 
+1481.95833 
+. 
+. 
+Interpret the information in part (b) in a way that a non-statistical researcher can understand.  Which is 
+more effective in reducing stress, Reiki or Yoga; in what ways and under what circumstances and for 
+what types of patients? 
+c) Explain to the researcher how to reconcile the conclusions from part (a) and part (b).  Is there a 
+difference in the stress reducing effect of Reiki and Yoga? 
+_____________________________________________________________________________ 
+
+----- page 3 -----
+ 
+4. You read a journal article on TOTAL-cholesterol, HDL-cholesterol and LDL-cholesterol from a 
+study of n=100 patients where TOTAL-cholesterol = HDL + LDL cholesterol.  Assume that for 
+HDL, LDL and TOTAL cholesterol, the distributions are iid multivariate normal. The article 
+reports for: 
+ 
+            HDL:       sample-mean =  145  and p-value for the population mean to be 150 is 0.10 
+            LDL:       sample-mean  =   48  and  p-value for the population mean to be 50 is 0.05 
+            TOTAL:   sample-mean  = 193  and  p-value for the population mean to be 200 is 0.05 
+ 
+       All P-values are Two-Sided 
+ 
+You must derive the standard deviations and covariances for HDL-cholesterol and LDL-cholesterol in a 
+single observation from this information 
+          
+A. Work backwards from the p-values for the population means be equal to the specified values 
+based on the observed sample means to obtain the standard deviations for both HDL-
+cholesterol and LDL-cholesterol in a single observation? 
+ 
+B. What is the covariance of HDL and LDL cholesterol in a single observation? 
+
+----- page 4 -----
+ 
+ 
+ 

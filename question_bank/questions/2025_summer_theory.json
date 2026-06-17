@@ -1,0 +1,189 @@
+[
+  {
+    "id": "2025-summer-probability-q1",
+    "exam": {
+      "year": 2025,
+      "term": "summer",
+      "part": "probability"
+    },
+    "number": 1,
+    "topics": [
+      "Lindeberg-Feller CLT",
+      "central limit theorem",
+      "variance"
+    ],
+    "difficulty": "medium",
+    "prompt": "Part I. Let $X_1, X_2, \\dots$ be independent and $S_n = \\sum_{m=1}^n X_m$.",
+    "parts": [
+      "(i) Use the Lindeberg-Feller CLT to show that if $\\sup_m |X_m| < \\infty$ a.s. and $\\sum_m \\operatorname{Var}(X_m) = \\infty$, then $(S_n - \\mathbb{E} S_n)/\\sqrt{\\operatorname{Var}(S_n)} \\xrightarrow{d} N(0, 1)$.",
+      "(ii) Construct an explicit example where $(S_n - \\mathbb{E} S_n)/\\sqrt{n} \\xrightarrow{d} N(0,1)$ holds but $\\operatorname{Var}(S_n)/n$ does not converge to $1$."
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/qe_2025_theory.pdf",
+      "page": 2
+    },
+    "verified": false,
+    "notes": "2025 unified theory exam, Part I. Transcribed from extracted text.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
+  },
+  {
+    "id": "2025-summer-probability-q2",
+    "exam": {
+      "year": 2025,
+      "term": "summer",
+      "part": "probability"
+    },
+    "number": 2,
+    "topics": [
+      "random walk",
+      "martingales",
+      "stopping times",
+      "generating functions"
+    ],
+    "difficulty": "hard",
+    "prompt": "Part II. Let $S_n = \\sum_{i=1}^n \\xi_i$ be an asymmetric simple random walk from $0$ with $1/2 < p < 1$, and $T_1 = \\inf\\{n : S_n = 1\\}$. Let $\\phi(\\theta) = \\mathbb{E} e^{\\theta\\xi_1} = pe^\\theta + qe^{-\\theta}$.",
+    "parts": [
+      "(i) Construct an appropriate martingale to show $e^\\theta \\mathbb{E}\\,\\phi(\\theta)^{-T_1} = 1$ for all $\\theta \\ge 0$.",
+      "(ii) Use (i) to compute $\\mathbb{E}\\, s^{T_1}$ for $s \\in (0, 1)$."
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/qe_2025_theory.pdf",
+      "page": 4
+    },
+    "verified": false,
+    "notes": "2025 unified theory exam, Part II. Transcribed from extracted text.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
+  },
+  {
+    "id": "2025-summer-math-stat-q1",
+    "exam": {
+      "year": 2025,
+      "term": "summer",
+      "part": "math-stat"
+    },
+    "number": 1,
+    "topics": [
+      "exponential family",
+      "UMP test",
+      "monotone likelihood ratio",
+      "hypothesis testing"
+    ],
+    "difficulty": "medium",
+    "prompt": "Part III, Problem 1 (25 pts). Let $X_1, \\dots, X_n$ be i.i.d. from a one-parameter exponential family $p(x \\mid \\theta) = h(x)\\exp\\{\\eta(\\theta) T(x) - B(\\theta)\\}$, with $\\eta(\\theta)$ monotonically increasing and $\\sum_i T(X_i)$ continuous.",
+    "parts": [
+      "(i) Construct the UMP test for $H_0 : \\theta \\le \\theta_0$ vs $H_1 : \\theta > \\theta_0$.",
+      "(ii) Prove the test in (i) is uniformly most powerful.",
+      "(iii) Prove or disprove the existence of a UMP test for $H_0 : \\theta = \\theta_0$ vs $H_1 : \\theta \\ne \\theta_0$."
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/qe_2025_theory.pdf",
+      "page": 6
+    },
+    "verified": false,
+    "notes": "2025 unified theory exam, Part III. Transcribed from extracted text.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
+  },
+  {
+    "id": "2025-summer-math-stat-q2",
+    "exam": {
+      "year": 2025,
+      "term": "summer",
+      "part": "math-stat"
+    },
+    "number": 2,
+    "topics": [
+      "Cramer-Rao lower bound",
+      "one-step estimator",
+      "Newton-Raphson",
+      "efficiency",
+      "asymptotic normality"
+    ],
+    "difficulty": "hard",
+    "prompt": "Part III, Problem 2 (50 pts). Let $X_1, \\dots, X_n$ be i.i.d. with density $p_\\theta(\\cdot)$; let $l_n(\\theta)$ be the negative log-likelihood with Hessian $H_n(\\theta)$, regularity conditions satisfied.",
+    "parts": [
+      "(i) To estimate $\\psi(\\theta)$, state the Cramér-Rao lower bound for any unbiased $T(X)$ with $\\mathbb{E}[T(X)] = \\psi(\\theta)$, and prove your statement.",
+      "(ii) Given an initial estimator $\\tilde\\theta$ with $\\|\\tilde\\theta - \\theta\\|_2 = o_p(n^{-1/4})$ and $H_n(\\theta)$ $L$-Lipschitz, construct the Newton-Raphson (one-step) estimator $\\hat\\theta$ and show it is asymptotically normal and achieves the Cramér-Rao lower bound. (Hint: you may assume the MLE is asymptotically efficient.)"
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/qe_2025_theory.pdf",
+      "page": 9
+    },
+    "verified": false,
+    "notes": "2025 unified theory exam, Part III. Transcribed from extracted text.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
+  },
+  {
+    "id": "2025-summer-math-stat-q3",
+    "exam": {
+      "year": 2025,
+      "term": "summer",
+      "part": "math-stat"
+    },
+    "number": 3,
+    "topics": [
+      "distributional shift",
+      "importance weighting",
+      "missing data",
+      "density ratio",
+      "covariate shift"
+    ],
+    "difficulty": "hard",
+    "prompt": "Part III, Problem 3 (25 pts). Let $\\{(X_i, Y_i, R_i)\\}_{i=1}^n$ be i.i.d. with covariates $X_i \\in \\mathbb{R}^d$, response $Y_i$, and missingness indicator $R_i \\in \\{0, 1\\}$ ($R_i = 1$ if $Y_i$ observed). Assume (a) $Y_i \\mid X_i, R_i = 1 \\stackrel{d}{=} Y_i \\mid X_i, R_i = 0$, and (b) $X_i \\mid R_i = 1 \\sim P_X$, $X_i \\mid R_i = 0 \\sim Q_X$ (possibly different). Target: $\\beta^* = \\arg\\min_\\beta \\mathbb{E}[(Y_i - X_i^\\top\\beta)^2 \\mid R_i = 0]$.",
+    "parts": [
+      "(i) Show $\\mathbb{E}[(Y_i - X_i^\\top\\beta)^2 \\mid R_i = 0] = \\mathbb{E}[(Y_i - X_i^\\top\\beta)^2 \\frac{f_{X|R=0}(X_i)}{f_{X|R=1}(X_i)} \\mid R_i = 1]$.",
+      "(ii) Prove $\\frac{f_{X|R=0}(x)}{f_{X|R=1}(x)} = \\frac{P(R=0\\mid x)}{P(R=1\\mid x)}\\cdot\\frac{P(R=1)}{P(R=0)}$.",
+      "(iii) Apply (i) and (ii) to construct an estimator of $\\beta^*$."
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/qe_2025_theory.pdf",
+      "page": 11
+    },
+    "verified": false,
+    "notes": "2025 unified theory exam, Part III. Transcribed from extracted text.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
+  },
+  {
+    "id": "2025-summer-math-stat-q4",
+    "exam": {
+      "year": 2025,
+      "term": "summer",
+      "part": "math-stat"
+    },
+    "number": 4,
+    "topics": [
+      "debiased Lasso",
+      "semiparametric inference",
+      "logistic regression",
+      "Neyman orthogonality",
+      "high-dimensional",
+      "treatment effect"
+    ],
+    "difficulty": "hard",
+    "prompt": "Part IV. Observe i.i.d. $(X_i, Y_i)$ with $\\mathbb{E}(Y \\mid X) = X^T\\beta^*$; split $X = (Z, W^T)^T$, $\\beta^* = (\\theta^*, \\alpha^{*T})^T$ with $Z, \\theta^*$ scalar and $Z$ binary. Let $\\hat\\beta$ be the Lasso-penalized least squares estimator, and $\\hat\\gamma$ the Lasso-penalized logistic-regression estimator of $Z$ on $W$. Consider the debiased estimator $\\tilde\\theta = \\frac{(Z - \\mathrm{expit}(W\\hat\\gamma))^T(Y - W\\hat\\alpha)/n}{(Z - \\mathrm{expit}(W\\hat\\gamma))^T Z/n}$, with $\\mathrm{expit}(u) = e^u/(1 + e^u)$. The goal is the asymptotic expansion $\\tilde\\theta - \\theta^* = \\frac{(Z - \\mathrm{expit}(W\\bar\\gamma))^T(Y - Z\\theta^* - W\\alpha^*)/n}{(Z - \\mathrm{expit}(W\\bar\\gamma))^T Z/n} + o_p(n^{-1/2})$, reducing to establishing equation (4) in the exam.",
+    "parts": [
+      "1) Show $|(Z - \\mathrm{expit}(W\\hat\\gamma))^T(Y - Z\\theta^* - W\\hat\\alpha)/n - (Z - \\mathrm{expit}(W\\bar\\gamma))^T(Y - Z\\theta^* - W\\alpha^*)/n| \\le \\underbrace{|(Z - \\mathrm{expit}(W\\hat\\gamma))^T W(\\hat\\alpha - \\alpha^*)/n|}_{I} + \\underbrace{|(\\mathrm{expit}(W\\hat\\gamma) - \\mathrm{expit}(W\\bar\\gamma))^T(Y - Z\\theta^* - W\\alpha^*)/n|}_{II}$.",
+      "2) Show, under suitable conditions, $I = O_p(1)(|S_{\\beta^*}| + |S_{\\bar\\gamma}|)\\frac{\\log(n\\vee p)}{n}$. State the conditions explicitly (you may use standard $\\hat\\beta, \\hat\\gamma$ rate properties).",
+      "3) Show that for any $u, \\tilde u \\in \\mathbb{R}$: $|\\mathrm{expit}_2(u) - \\mathrm{expit}_2(\\tilde u)| \\le \\mathrm{expit}_2(\\tilde u)|u - \\tilde u|$ and $|\\mathrm{expit}(u) - \\mathrm{expit}(\\tilde u) - \\mathrm{expit}_2(\\tilde u)(u - \\tilde u)| \\le \\mathrm{expit}_2(\\tilde u)(u - \\tilde u)^2$, where $\\mathrm{expit}_2(u) = \\mathrm{expit}(u)(1 - \\mathrm{expit}(u))$.",
+      "4) Assume $Y - Z\\theta^* - W^T\\alpha^*$ is bounded by $B_0$ a.s. Show under suitable (explicitly stated) conditions that $II = O_p(1)(|S_{\\beta^*}| + |S_{\\bar\\gamma}|)\\frac{\\log(n\\vee p)}{n}$. (Combining 1,2,4 gives (4) when $(|S_{\\beta^*}| + |S_{\\bar\\gamma}|)\\frac{\\log(n\\vee p)}{\\sqrt n} = o(1)$.)"
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/qe_2025_theory.pdf",
+      "page": 14
+    },
+    "verified": false,
+    "notes": "2025 unified theory exam, Part IV (Stat 594). Transcribed from extracted text.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
+  }
+]

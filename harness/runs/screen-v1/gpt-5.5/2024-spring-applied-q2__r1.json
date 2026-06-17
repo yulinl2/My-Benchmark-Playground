@@ -1,0 +1,97 @@
+{
+  "question_id": "2024-spring-applied-q2",
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "rep": 1,
+  "exam": {
+    "year": 2024,
+    "term": "spring",
+    "level": "ms",
+    "part": "applied"
+  },
+  "request": {
+    "system": "You are sitting a PhD-level qualifying examination in statistics. Solve the problem rigorously and completely. Show your work and reasoning, justify each step, and clearly state your final answer(s). If the problem has multiple parts, answer every part, labeled. If you invoke a known theorem, name it.",
+    "user": "[2024 spring ms applied — problem 2]\n\nCholesterol measured before and after 6 months of a new drug on 10 patients (paired data). (1) Determine whether the drug reduced cholesterol from baseline (state $H_0, H_1$; assume normality). (2) Give a 95% CI for the final cholesterol of an 11th randomly recruited patient. (3) What design mistake was made?",
+    "max_tokens": 24000,
+    "mode": {
+      "effort": "high"
+    }
+  },
+  "response": {
+    "id": "resp_0f755c7174c0f785006a24ba7be9d48190acb546814a99cb7f",
+    "model": "gpt-5.5-2026-04-23",
+    "stop_reason": "completed",
+    "usage": {
+      "input_tokens": 162,
+      "output_tokens": 3607,
+      "output_tokens_details": {
+        "reasoning_tokens": 2588
+      }
+    },
+    "thinking": "**Clarifying cholesterol intervals**\n\nI need to determine whether I’m assuming alpha, likely 5%. I should state null and alternative hypotheses (H0, H1) and provide a decision condition, like if p < 0.05.\n\nFor the final cholesterol prediction of an 11th patient, it seems it’s about the predictive interval for an individual rather than a confidence interval (CI). I want to ensure I'm using the right formulas, and while the final cholesterol distribution might be normal, I need to clarify that it's about prediction intervals due to paired data.\n**Analyzing cholesterol prediction**\n\nI’m thinking about the prediction for the final cholesterol of an 11th patient. It seems like it's looking for a prediction interval rather than a mean, but I'm concerned about potential confounding due to design issues. The study is structured with all patients receiving the drug and no control group, making it difficult to attribute cholesterol reduction solely to the drug. I also wonder about the need for randomization and control when testing efficacy.  A lack of these can significantly impact the results.\n**Considering confidence intervals**\n\nI’m thinking about the request for a 95% confidence interval for the final cholesterol of an 11th patient. The task seems to test knowledge on prediction intervals, and I realize I should refer to it as a predictive interval due to the uncertainty in observations. Since there’s no numeric data provided in the problem, I feel like I’d need to emphasize the inability to compute an answer without it. It may be essential to mention that actual data is required and perhaps suggest a template for plugging in values or compute if any pairs exist.\n**Formulating hypothesis testing**\n\nI'm setting up some notation: Let \\(X_i\\) represent the baseline and \\(Y_i\\) the values after 6 months, with \\(i\\) from 1 to 10. I'm defining \\(D_i\\) as the difference, or \\(X_i - Y_i\\), and assuming that these differences \\(D_i\\) are independent and normally distributed.\n\nNow for the hypotheses: the null hypothesis \\(H_0\\) states that the mean reduction \\(\\mu_D\\) is less than or equal to zero, while the alternative hypothesis \\(H_1\\) suggests \\(\\mu_D\\) is greater than zero. The test statistic \\(T\\) will follow a t-distribution under the null hypothesis.\n**Clarifying distribution estimates**\n\nI'm considering how to approach estimating final distributions in the absence of a baseline. Without a baseline, I rely on what the sample shows after the estimate. But if a baseline is available, I should use predictions based on that baseline for my final distribution. This subtlety in approach is important to ensure accuracy in outcomes, and I want to make sure I'm clear on when to apply each method.\n**Ensuring statistical rigor**\n\nI'm focusing on deriving predictive values rigorously. Given that each Y_i and Y_11 are independent and normally distributed with mean μ and variance σ², I want to confirm that the average, represented as \\bar Y, follows a normal distribution as well, specifically N(μ, σ²/n). It’s important to maintain accuracy in these assumptions since they form the basis of my analysis. Let’s keep everything clear and straightforward!\n**Analyzing design mistakes**\n\nI’m considering a potential design mistake related to randomization and control in a cholesterol drug study. If the sample of patients isn’t truly random, it raises questions. The selection could lead to regression to the mean, particularly since they chose patients with high baseline cholesterol. The problem is that with paired data measuring cholesterol before and after six months, the key oversight seems to be the absence of a control group, making it tricky to assess the drug's effectiveness accurately.\n**Clarifying design issues**\n\nI’m considering the limitations of using paired data in this study, and it’s clear that before-and-after data alone isn’t sufficient. While they might consider using a one-sided test, the prompt focuses on design rather than analysis. I think the small sample size of 10 could be worth mentioning, although it might not be a direct \"mistake.\" The absence of a control group is significant, and I want to outline how to approach the analysis properly, starting with the numerical data and computing markers.",
+    "text": "The numerical cholesterol values are not included in the prompt, so a numerical test statistic, p-value, and interval cannot be computed. Below is the complete solution in terms of the observed data.\n\nLet\n\n\\[\nX_i=\\text{baseline cholesterol of patient }i,\\qquad \nY_i=\\text{final cholesterol after 6 months},\\qquad i=1,\\dots,10.\n\\]\n\nDefine paired differences as\n\n\\[\nD_i=X_i-Y_i,\n\\]\n\nso that \\(D_i>0\\) means cholesterol decreased.\n\n---\n\n## (1) Test whether the drug reduced cholesterol\n\nBecause the data are paired, the correct test is a paired \\(t\\)-test on the differences \\(D_i\\), not an unpaired two-sample test.\n\nAssume\n\n\\[\nD_1,\\dots,D_{10}\\overset{iid}{\\sim}N(\\mu_D,\\sigma_D^2).\n\\]\n\nWe want to test whether the mean reduction is positive.\n\n\\[\nH_0:\\mu_D\\le 0\n\\]\n\nversus\n\n\\[\nH_1:\\mu_D>0.\n\\]\n\nEquivalently, using the boundary null,\n\n\\[\nH_0:\\mu_D=0,\\qquad H_1:\\mu_D>0.\n\\]\n\nLet\n\n\\[\n\\bar D=\\frac1{10}\\sum_{i=1}^{10}D_i,\n\\qquad \nS_D^2=\\frac1{9}\\sum_{i=1}^{10}(D_i-\\bar D)^2.\n\\]\n\nThe paired \\(t\\)-statistic is\n\n\\[\nT=\\frac{\\bar D}{S_D/\\sqrt{10}}.\n\\]\n\nUnder \\(H_0\\),\n\n\\[\nT\\sim t_9.\n\\]\n\nAt significance level \\(\\alpha=0.05\\), reject \\(H_0\\) if\n\n\\[\nT>t_{0.95,9}.\n\\]\n\nNumerically,\n\n\\[\nt_{0.95,9}\\approx 1.833.\n\\]\n\nThus the decision rule is:\n\n\\[\n\\boxed{\\text{Conclude the drug reduced cholesterol if }\n\\frac{\\bar D}{S_D/\\sqrt{10}}>1.833.}\n\\]\n\nThe one-sided p-value is\n\n\\[\np=P(t_9\\ge T_{\\text{obs}}).\n\\]\n\nIf \\(p<0.05\\), conclude there is statistically significant evidence that the drug reduced cholesterol from baseline.\n\n---\n\n## (2) 95% interval for the final cholesterol of an 11th randomly recruited patient\n\nFor an individual future patient, this should be a **prediction interval**, not a confidence interval for a mean.\n\nLet\n\n\\[\n\\bar Y=\\frac1{10}\\sum_{i=1}^{10}Y_i,\n\\qquad \nS_Y^2=\\frac1{9}\\sum_{i=1}^{10}(Y_i-\\bar Y)^2.\n\\]\n\nAssuming the final cholesterols are iid normal,\n\n\\[\nY_i\\sim N(\\mu_Y,\\sigma_Y^2),\n\\]\n\nthen for a future patient \\(Y_{11}\\),\n\n\\[\n\\frac{Y_{11}-\\bar Y}{S_Y\\sqrt{1+1/10}}\\sim t_9.\n\\]\n\nTherefore a 95% prediction interval for the final cholesterol of an 11th patient is\n\n\\[\n\\boxed{\n\\bar Y\\pm t_{0.975,9}S_Y\\sqrt{1+\\frac1{10}}\n}\n\\]\n\nwith\n\n\\[\nt_{0.975,9}\\approx 2.262.\n\\]\n\nSo the interval is\n\n\\[\n\\boxed{\n\\bar Y\\pm 2.262\\,S_Y\\sqrt{1.1}.\n}\n\\]\n\nIf instead the question intended a 95% confidence interval for the **mean** final cholesterol, that would be\n\n\\[\n\\bar Y\\pm t_{0.975,9}\\frac{S_Y}{\\sqrt{10}},\n\\]\n\nbut for an individual 11th patient the correct object is the prediction interval above.\n\n---\n\n## (3) Design mistake\n\nThe major design mistake is that there was apparently **no randomized control group**.\n\nThis is only a before-after study on patients who all received the drug. Even if cholesterol decreased, the decrease cannot necessarily be attributed to the drug. Other explanations include:\n\n- regression to the mean,\n- diet or exercise changes,\n- natural time trends,\n- measurement variability,\n- placebo or Hawthorne effects,\n- other concurrent treatments.\n\nA better design would be a randomized controlled trial, ideally double-blind, in which patients are randomly assigned to the new drug or to placebo/control, and the change in cholesterol is compared between groups.\n\n\\[\n\\boxed{\\text{Design flaw: no randomized placebo/control group, so causality is not established.}}\n\\]",
+    "raw_output": [
+      {
+        "id": "rs_0f755c7174c0f785006a24ba7c8ca08190846d40c692cf1005",
+        "type": "reasoning",
+        "content": [],
+        "summary": [
+          {
+            "type": "summary_text",
+            "text": "**Clarifying cholesterol intervals**\n\nI need to determine whether I’m assuming alpha, likely 5%. I should state null and alternative hypotheses (H0, H1) and provide a decision condition, like if p < 0.05.\n\nFor the final cholesterol prediction of an 11th patient, it seems it’s about the predictive interval for an individual rather than a confidence interval (CI). I want to ensure I'm using the right formulas, and while the final cholesterol distribution might be normal, I need to clarify that it's about prediction intervals due to paired data."
+          },
+          {
+            "type": "summary_text",
+            "text": "**Analyzing cholesterol prediction**\n\nI’m thinking about the prediction for the final cholesterol of an 11th patient. It seems like it's looking for a prediction interval rather than a mean, but I'm concerned about potential confounding due to design issues. The study is structured with all patients receiving the drug and no control group, making it difficult to attribute cholesterol reduction solely to the drug. I also wonder about the need for randomization and control when testing efficacy.  A lack of these can significantly impact the results."
+          },
+          {
+            "type": "summary_text",
+            "text": "**Considering confidence intervals**\n\nI’m thinking about the request for a 95% confidence interval for the final cholesterol of an 11th patient. The task seems to test knowledge on prediction intervals, and I realize I should refer to it as a predictive interval due to the uncertainty in observations. Since there’s no numeric data provided in the problem, I feel like I’d need to emphasize the inability to compute an answer without it. It may be essential to mention that actual data is required and perhaps suggest a template for plugging in values or compute if any pairs exist."
+          },
+          {
+            "type": "summary_text",
+            "text": "**Formulating hypothesis testing**\n\nI'm setting up some notation: Let \\(X_i\\) represent the baseline and \\(Y_i\\) the values after 6 months, with \\(i\\) from 1 to 10. I'm defining \\(D_i\\) as the difference, or \\(X_i - Y_i\\), and assuming that these differences \\(D_i\\) are independent and normally distributed.\n\nNow for the hypotheses: the null hypothesis \\(H_0\\) states that the mean reduction \\(\\mu_D\\) is less than or equal to zero, while the alternative hypothesis \\(H_1\\) suggests \\(\\mu_D\\) is greater than zero. The test statistic \\(T\\) will follow a t-distribution under the null hypothesis."
+          },
+          {
+            "type": "summary_text",
+            "text": "**Clarifying distribution estimates**\n\nI'm considering how to approach estimating final distributions in the absence of a baseline. Without a baseline, I rely on what the sample shows after the estimate. But if a baseline is available, I should use predictions based on that baseline for my final distribution. This subtlety in approach is important to ensure accuracy in outcomes, and I want to make sure I'm clear on when to apply each method."
+          },
+          {
+            "type": "summary_text",
+            "text": "**Ensuring statistical rigor**\n\nI'm focusing on deriving predictive values rigorously. Given that each Y_i and Y_11 are independent and normally distributed with mean μ and variance σ², I want to confirm that the average, represented as \\bar Y, follows a normal distribution as well, specifically N(μ, σ²/n). It’s important to maintain accuracy in these assumptions since they form the basis of my analysis. Let’s keep everything clear and straightforward!"
+          },
+          {
+            "type": "summary_text",
+            "text": "**Analyzing design mistakes**\n\nI’m considering a potential design mistake related to randomization and control in a cholesterol drug study. If the sample of patients isn’t truly random, it raises questions. The selection could lead to regression to the mean, particularly since they chose patients with high baseline cholesterol. The problem is that with paired data measuring cholesterol before and after six months, the key oversight seems to be the absence of a control group, making it tricky to assess the drug's effectiveness accurately."
+          },
+          {
+            "type": "summary_text",
+            "text": "**Clarifying design issues**\n\nI’m considering the limitations of using paired data in this study, and it’s clear that before-and-after data alone isn’t sufficient. While they might consider using a one-sided test, the prompt focuses on design rather than analysis. I think the small sample size of 10 could be worth mentioning, although it might not be a direct \"mistake.\" The absence of a control group is significant, and I want to outline how to approach the analysis properly, starting with the numerical data and computing markers."
+          }
+        ]
+      },
+      {
+        "id": "msg_0f755c7174c0f785006a24bab7dee48190b82874dd3ae123c9",
+        "type": "message",
+        "status": "completed",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "The numerical cholesterol values are not included in the prompt, so a numerical test statistic, p-value, and interval cannot be computed. Below is the complete solution in terms of the observed data.\n\nLet\n\n\\[\nX_i=\\text{baseline cholesterol of patient }i,\\qquad \nY_i=\\text{final cholesterol after 6 months},\\qquad i=1,\\dots,10.\n\\]\n\nDefine paired differences as\n\n\\[\nD_i=X_i-Y_i,\n\\]\n\nso that \\(D_i>0\\) means cholesterol decreased.\n\n---\n\n## (1) Test whether the drug reduced cholesterol\n\nBecause the data are paired, the correct test is a paired \\(t\\)-test on the differences \\(D_i\\), not an unpaired two-sample test.\n\nAssume\n\n\\[\nD_1,\\dots,D_{10}\\overset{iid}{\\sim}N(\\mu_D,\\sigma_D^2).\n\\]\n\nWe want to test whether the mean reduction is positive.\n\n\\[\nH_0:\\mu_D\\le 0\n\\]\n\nversus\n\n\\[\nH_1:\\mu_D>0.\n\\]\n\nEquivalently, using the boundary null,\n\n\\[\nH_0:\\mu_D=0,\\qquad H_1:\\mu_D>0.\n\\]\n\nLet\n\n\\[\n\\bar D=\\frac1{10}\\sum_{i=1}^{10}D_i,\n\\qquad \nS_D^2=\\frac1{9}\\sum_{i=1}^{10}(D_i-\\bar D)^2.\n\\]\n\nThe paired \\(t\\)-statistic is\n\n\\[\nT=\\frac{\\bar D}{S_D/\\sqrt{10}}.\n\\]\n\nUnder \\(H_0\\),\n\n\\[\nT\\sim t_9.\n\\]\n\nAt significance level \\(\\alpha=0.05\\), reject \\(H_0\\) if\n\n\\[\nT>t_{0.95,9}.\n\\]\n\nNumerically,\n\n\\[\nt_{0.95,9}\\approx 1.833.\n\\]\n\nThus the decision rule is:\n\n\\[\n\\boxed{\\text{Conclude the drug reduced cholesterol if }\n\\frac{\\bar D}{S_D/\\sqrt{10}}>1.833.}\n\\]\n\nThe one-sided p-value is\n\n\\[\np=P(t_9\\ge T_{\\text{obs}}).\n\\]\n\nIf \\(p<0.05\\), conclude there is statistically significant evidence that the drug reduced cholesterol from baseline.\n\n---\n\n## (2) 95% interval for the final cholesterol of an 11th randomly recruited patient\n\nFor an individual future patient, this should be a **prediction interval**, not a confidence interval for a mean.\n\nLet\n\n\\[\n\\bar Y=\\frac1{10}\\sum_{i=1}^{10}Y_i,\n\\qquad \nS_Y^2=\\frac1{9}\\sum_{i=1}^{10}(Y_i-\\bar Y)^2.\n\\]\n\nAssuming the final cholesterols are iid normal,\n\n\\[\nY_i\\sim N(\\mu_Y,\\sigma_Y^2),\n\\]\n\nthen for a future patient \\(Y_{11}\\),\n\n\\[\n\\frac{Y_{11}-\\bar Y}{S_Y\\sqrt{1+1/10}}\\sim t_9.\n\\]\n\nTherefore a 95% prediction interval for the final cholesterol of an 11th patient is\n\n\\[\n\\boxed{\n\\bar Y\\pm t_{0.975,9}S_Y\\sqrt{1+\\frac1{10}}\n}\n\\]\n\nwith\n\n\\[\nt_{0.975,9}\\approx 2.262.\n\\]\n\nSo the interval is\n\n\\[\n\\boxed{\n\\bar Y\\pm 2.262\\,S_Y\\sqrt{1.1}.\n}\n\\]\n\nIf instead the question intended a 95% confidence interval for the **mean** final cholesterol, that would be\n\n\\[\n\\bar Y\\pm t_{0.975,9}\\frac{S_Y}{\\sqrt{10}},\n\\]\n\nbut for an individual 11th patient the correct object is the prediction interval above.\n\n---\n\n## (3) Design mistake\n\nThe major design mistake is that there was apparently **no randomized control group**.\n\nThis is only a before-after study on patients who all received the drug. Even if cholesterol decreased, the decrease cannot necessarily be attributed to the drug. Other explanations include:\n\n- regression to the mean,\n- diet or exercise changes,\n- natural time trends,\n- measurement variability,\n- placebo or Hawthorne effects,\n- other concurrent treatments.\n\nA better design would be a randomized controlled trial, ideally double-blind, in which patients are randomly assigned to the new drug or to placebo/control, and the change in cholesterol is compared between groups.\n\n\\[\n\\boxed{\\text{Design flaw: no randomized placebo/control group, so causality is not established.}}\n\\]"
+          }
+        ],
+        "phase": "final_answer",
+        "role": "assistant"
+      }
+    ]
+  },
+  "cost_usd": 0.05491,
+  "timing": {
+    "started": "2026-06-07T00:25:31.784572+00:00",
+    "ended": "2026-06-07T00:26:43.715068+00:00",
+    "seconds": 71.93
+  },
+  "error": null
+}

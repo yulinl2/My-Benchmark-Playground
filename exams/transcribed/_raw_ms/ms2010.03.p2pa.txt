@@ -1,0 +1,104 @@
+
+----- page 1 -----
+MASTER’S COMPREHENSIVE EXAMINATION 
+ 
+Part II  
+Applied (90 minutes) 
+April 10, 2010 
+ 
+Instructions:  Attempt any three out of the following four questions on both pages.  Mention 
+which three you would like to have graded.  Open book and open notes. 
+ 
+1.  The Kenton Company is testing 4 different package designs for a new breakfast cereal; 20 stores, 
+with about equal sales volumes, are the experimental units. Each store is randomly assigned one 
+package designs, with each package design being assigned to 5 stores. A fire later destroys one store 
+so this store is dropped from the study. Sales, in number of cases, for the study period are recorded 
+in Table 1. The characteristics of 4 package designs are shown in Table 2. The data is analyzed 
+using one-way layout with fixed effects. 
+        Table 1: Number of Cases Sold by Stores for Each of Four Package Designs 
+ 
+                                                  Package Design 
+          1                                 2                                3                               4 
+Cases Sold Per Store 
+         11                              12                             23                             27 
+         17                              10                             20                             33 
+         16                              15                             18                             22 
+         14                              19                             17                             26 
+         15                              11                                                               28 
+        Mean 
+      y 1=14.6                    y 2=13.4                  y 3=19.5                   y 4 =27.2 
+ Standard Deviation 
+         2.3                              3.6                           2.6                             4.0 
+ 
+ Table 2: Characteristics of Four Package Designs 
+Package Design            Characteristics 
+                1                        3 color, with cartoons 
+                2                        3 color, without cartoons  
+                3                        5 color, with cartoons 
+                4                        5 color, with cartoons 
+ 
+A. Copy the ANOVA table below to your Blue Book and fill in the blanks 
+               One-way ANOVA Table 
+                                        Degrees of           Sum of                    Mean  
+Source                           Freedom              Squares                  Squares                 F 
+Between design                     3                 __________         __________      ___________ 
+Error                                  _______         __________         __________        
+Total                                    18                 __________          
+B.  Conduct an F test to test at at α = 0.05  of the null hypothesis that the four package designs 
+have the same sales. 
+C.  Use Tukey’s method to perform multiple comparisons of the four package designs at α = 0.05  
+ 
+ 
+ 
+OVER 
+
+----- page 2 -----
+2. A scientist observes grackles’ attempts at mating. In 75 such attempts, 21 are successful. It is 
+well known that successful matings can only result in 1 or 2 offsrping. Among the successful 
+attempts, 10 have single offspring born and 11 have two offspring born.  
+ 
+A.  What is the point estimate and 90% large sample confidence interval for the expected 
+number of offspring per mating? 
+ 
+B.  What is a point estimate and 90% large sample confidence interval for the probability that a 
+randomly chosen newborn grackle will have a twin? 
+ 
+ 
+3. While trying to recreate a dinosaur, some Rutgers scientists mistakenly created a new animal that  
+     is now known as the Piscataway Carnivorous Turtle (PCT).   The animals immediately escaped   
+     and are now found throughout New Jersey. Weights of PCTs are distributed N(u=50, σ=10) for  
+     males and N(u=45, σ=9) for females; 60% of PCTs are female. 
+ 
+a. What is the overall mean and standard deviation of weight for all PCTs? 
+                   
+b. New Jersey State regulations only allow PCTs that weigh more than 60 to be 
+sampled.  If a PCT weighs exactly 60 what is the probability it is a male? 
+ 
+c. If a PCT weighs > 60, what is the probability if weighs > 65?  
+ 
+ 
+4.   In a study, 31 of 534 chickens with genotype X are determined to be unfit for human  
+      consumption compared to   52 of 1476 chickens that do not have do not have genotype X.   
+      Let PX+ and PX- be the true probabilities that chickens who do and do not have genotype X,  
+      Respectively, are unfit to eat. 
+ 
+A. Do a statistical test of H0: PX+ = PX- at α = 0.05 
+ 
+ 
+B. Give a 95% confidence interval for the difference   
+X
+X
+X
+D
+P
+P  
+ 
+C. Give a 95% confidence interval for the ratio   
+X
+X
+X
+P
+R
+P
+ 
+ 

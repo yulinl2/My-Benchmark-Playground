@@ -1,0 +1,176 @@
+
+----- page 1 -----
+PH.D. APPLIED QUALIFYING EXAM 2019 (TAKE HOME)
+IMPORTANT - PLEASE READ THESE INSTRUCTIONS CAREFULLY BEFORE
+YOU START:
+This is the Applied Part of the First-Year PhD Qualifying Exam in Statistics. You are permitted
+to consult textbooks and other scholarly resources to help you in completing the assignment, but
+you may not consult or discuss these problems in any way with anyone during the time
+that the exam is being administered. If you draw on information from any outside resources
+(i.e., resources other than class material and notes) then you should clearly cite the source in your
+write-up.
+You should complete the exam alone, in a room separate from any other test-takers. If you
+have technical questions about the two exam problems, you may email Prof.
+Sijian Wang at
+sijian.wang@stat.rutgers.edu (for problem 1) and Prof. Ying Hung at yhung@stat.rutgers.edu (for
+problem 2), cc’ing Prof. Harry Crane (hcrane@stat.rutgers.edu) AND Prof Tirthankar Dasgupta
+(td370@stat.rutgers.edu). If you have questions regarding logistics (e.g., submission instructions
+given below), please email Prof.
+Harry Crane (hcrane@stat.rutgers.edu) AND Prof Tirthankar
+Dasgupta (td370@stat.rutgers.edu).
+Submission Instructions:
+(1) Type up your answers to the two problems in two separate Word or Latex ﬁles.
+(2) Create a folder for each problem. The folder must contain the following:
+(a) A word or pdf ﬁle containing your answers to the problem, including all tables, ﬁgures
+and Appendices.
+(b) An R (or python) ﬁle containing the codes used to generate your results.
+(c) A word or a text ﬁle that gives a summary of the codes submitted.
+(3) Place the two folders into a single folder titled yourlastname yourﬁrstname Appliedexam2018.
+Zip this folder and email it to hcrane@stat.rutgers.edu AND td370@stat.rutgers.edu by 5
+PM July 26, Friday.
+Date: July 25 (9 AM) to July 26 (5 PM).
+1
+
+----- page 2 -----
+2
+PH.D. APPLIED QUALIFYING EXAM 2019 (TAKE HOME)
+Problem 1
+Background
+As of 2010, 82% of the U.S. and 50.5% of the worldwide population lived in urban areas.
+As urban lands and population continue to increase, urban areas are sources of greenhouse gas
+emission, increased streamﬂow, nutrient export, and decreased biodiversity. However, urban forests
+provide a range of ecosystem services to oﬀset these negative environmental eﬀects of urbanization.
+Urban trees sequester carbon through photosynthesis, decrease stormwater runoﬀby intercepting
+rainwater, reduce nutrient export through blue their root systems, and increase biodiversity by
+providing habitat and food to a variety of wildlife. Information on tree species composition and
+stand structure are necessary for understanding urban forest status and functions. It can be also
+used to assess the impacts of insect disturbance (e.g. Emerald ash borer, and Dutch elm disease),
+and help city foresters make management strategies.
+Rapid advances in remote sensing technology enable eﬃcient surveying of large areas of for-
+est. Generally, remote sensing is to acquire information of objects on the earth through sensor
+instruments put on a platform such as an airplane or satellite. Diﬀerent sensors are designed for
+a wide range of purposes and applications. For example, multi-spectral remote sensing has been
+widely used in global mapping of land cover and land use change. For the purpose of this project,
+two types of sensor (Lidar and AVIRIS hyperspectral sensors) are of particular interest (see Data
+section for more details).
+Objective and description of data
+The overarching goal of this research is to map the tree species composition for forests in certain
+areas in the U.S., using remote sensing data. The speciﬁc goal is to use remote sensing data to
+build predictive models for the proportion of abundance for a given species as measured by relative
+basal area (RBA) estimated from ﬁeld data. The two types of data: remote sensing data and ﬁeld
+data are described below.
+Remote sensing data. The remote sensing data include two sources: (1) Hyperspectral imagery
+from NASA’s AVIRIS sensor, and (2) Lidar data collected by the city of Madison. Hyperspectral
+data consist of reﬂectance measurements every 10 nm between 400 and 2500 nm, excluding wave-
+lengths for which there are atmospheric absorption features that interfere with the remote sensing
+signal. This means that there are on the order of 182 “bands” of data.
+Lidar data consist of measurements that come from laser pulses reﬂected from canopies, branches,
+or ground, and are summarized into a number of metrics of both height distribution from the lidar
+return and intensity distribution. Think of it this way: the hyperspectral information tells you the
+
+----- page 3 -----
+PH.D. APPLIED QUALIFYING EXAM 2019 (TAKE HOME)
+3
+reﬂectance of the canopy by sunlight, and the lidar data gives you information about the vertical
+structure of the canopy.
+Diﬀerent species have diﬀerent reﬂectance characteristics and diﬀerent vertical proﬁles that we
+can use to identify the composition of the species that occur in a location. The diﬀerences in the
+species may have to do with diﬀerent leaf shapes (broad vs. needle leaves), or diﬀerent chemistries,
+or diﬀerent canopy shapes (think of how a conical ﬁr tree is diﬀerent from a more spherical oak).
+To that end, we have used the hyperspectral imagery and lidar data to map canopy chemistry
+and vertical structure, independent of species composition. Speciﬁcally, we have measures of foliar
+concentration of carbon, cellulose, ﬁber, lignin, leaf mass per area (LMA), nitrogen, as well as
+indices NDVI, PRI, NDWI and NDII capturing vegetation abundance, light use eﬃciency and
+water content, all derived from the hyperspectral images. In addition, we have biomass, basal area,
+average tree diameter, canopy height, crown length, and crown width, all derived from lidar.
+Field data. For the ﬁeld data, each observation is a measurement from a ﬁeld plot sampled by
+expert forestry students. At each plot, the researchers have calculated the basal area (BA, trunk
+cross sectional area) of each species present at the plot. Composition can therefore be described
+two ways: basal area by species, or relative basal area by species. That is, for each species on a
+plot, we can divide its basal area by the total plot basal area to get an estimate of relative basal
+area. The relative basal area (RBA) by species is what we want to predict. At each location we are
+really only interested in correctly estimating species with RBA greater than about 10%. Species
+with less than 5-10% would just be considered low or rare, compared to other species. All estimates
+of species need to add to 100% (we cannot have more than 100% relative basal area). This gives us
+proportional estimates of composition by species. Later we can group these together to estimate
+forest types.
+Data file
+The data set available includes:
+(1) Field data: plot ID, total basal area, basal area for 10 tree species, and basal area for the
+rest of species in the ﬁeld plots;
+(2) Remote sensing data derived from lidar data: The measures of forest structure derived from
+lidar for all the listed ﬁeld plots are shown in the columns AGB, BA, DBH, Ht, CL and
+CW;
+(3) Remote sensing data derived from hyperspectral data: The measures of canopy chemistry,
+LMA and indices derived from hyperspectral imagery for all the listed ﬁeld plots are shown
+in the columns of C, Cellulose, Fiber, Lig, LMA, N, NDVI, PRI, NDWI and NDII, as well
+as standard deviations of these measures within the plot:
+C_sd, Cellulose_sd, Fiber_sd, Lig_sd, LMA_sd, N_sd, NDVI_sd, PRI_sd, NDWI_sd, NDII_sd.
+
+----- page 4 -----
+4
+PH.D. APPLIED QUALIFYING EXAM 2019 (TAKE HOME)
+(4) The datasheet with the “Data” tab lists ﬁeld data and remote sensing data; and that with
+the “Description” tab gives more detailed description of each column of data.
+Questions
+A. Conduct an exploratory data analysis to assess the relation between RBA and lidar/hyperspectral
+data. In particular, use a speciﬁc dimension reduction method and create visualizations for
+the relationship.
+B. Using hyperspectral data, construct a predictive model for the proportion of: (1) white oak
+(2) white pine and (3) ash. Provide statistical evaluation of prediction performance and
+statistical assessment of variable importance (for prediction) for your model. Remember
+that the summation of three predicted RBA for the three species should be always less than
+or equal to 1 (on any future data).
+C. Repeat the analysis of question B using the lidar data.
+D. An emerging idea is to combine both types of remote sensing data for the purpose of
+constructing a predictive model.
+Explore this possibility with each of the three species
+above (i.e., (1) white oak (2) white pine and (3) ash) and argue for or against this idea of
+combining hyperspectral data and lidar data.)
+E. What are the essential steps to take next for achieving the overarching goal of mapping tree
+species composition for forests in this study area, using remote sensing data? Provide your
+recommendations to the researchers and explain your reasoning.
+
+----- page 5 -----
+PH.D. APPLIED QUALIFYING EXAM 2019 (TAKE HOME)
+5
+Problem 2
+Generate seven equally spaced points denoted by (x1, · · · , x7), from the interval [0,1]. For each
+of these input points, generate seven responses (y1, · · · , y7) using the function:
+(1)
+Y (x) = exp(−1.4x) cos
+7πx
+2
+
+.
+(1) Consider a Gaussian process model:
+Y (x) = µ + Z(x),
+where µ is an unknown constant and Z(x) is a Gaussian process with mean 0 and covariance
+function deﬁned as cov [Z(x + h), Z(x)] = σ2φ(h; θ).
+Assume the following form of the
+correlation function φ(h; θ):
+φ(h; θ) = exp(−θh2).
+Write down the expressions for the maximum likelihood estimators (MLE) for parameters
+µ, θ, and σ2 and calculate their values based on the generated seven pairs of observations
+(xj, yj), j = 1, . . . , 7.
+(2) Write down the Best linear unbiased predictor (BLUP) of Y (x0) at x = x0 and its predictive
+distribution after plugging in the MLEs of the parameters.
+(3) Now generate 1000 equally spaced points x∗
+j, j = 1, . . . , 1000 over (0,1).
+Generate the
+corresponding responses y using the same function (1).
+(4) Compare the MLE-EBLUP (the empirical BLUPs based on the MLEs) at input points
+x∗
+j, j = 1, . . . , 1000 with the corresponding true values generated in (3) by plotting the
+predictions along with the true values.
+(5) Using the predictive distribution described in (2), add the 95% predictive conﬁdence bands
+to the plot generated in (4).
+(6) Prove that the BLUP is an interpolator and demonstrate the interpolation property using
+your answers to (4) and (5).
+(7) Using the same training data (seven data points) used earlier to ﬁt the Gaussian process
+model, ﬁt a spline-based interpolating model to predict Y (x) from x.
+Using the data
+generated in (3) as the testing data, compare the prediction performances of the Gaussian
+process model and the spline-based model and comment. Do you think there is any tangible
+advantage or disadvantage that one method has over the other, apart from their predictive
+performances? If so, mention it in a couple of sentences.

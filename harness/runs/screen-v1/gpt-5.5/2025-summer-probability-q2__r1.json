@@ -1,0 +1,68 @@
+{
+  "question_id": "2025-summer-probability-q2",
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "rep": 1,
+  "exam": {
+    "year": 2025,
+    "term": "summer",
+    "part": "probability"
+  },
+  "request": {
+    "system": "You are sitting a PhD-level qualifying examination in statistics. Solve the problem rigorously and completely. Show your work and reasoning, justify each step, and clearly state your final answer(s). If the problem has multiple parts, answer every part, labeled. If you invoke a known theorem, name it.",
+    "user": "[2025 summer phd probability — problem 2]\n\nPart II. Let $S_n = \\sum_{i=1}^n \\xi_i$ be an asymmetric simple random walk from $0$ with $1/2 < p < 1$, and $T_1 = \\inf\\{n : S_n = 1\\}$. Let $\\phi(\\theta) = \\mathbb{E} e^{\\theta\\xi_1} = pe^\\theta + qe^{-\\theta}$.\n(i) Construct an appropriate martingale to show $e^\\theta \\mathbb{E}\\,\\phi(\\theta)^{-T_1} = 1$ for all $\\theta \\ge 0$.\n(ii) Use (i) to compute $\\mathbb{E}\\, s^{T_1}$ for $s \\in (0, 1)$.",
+    "max_tokens": 24000,
+    "mode": {
+      "effort": "high"
+    }
+  },
+  "response": {
+    "id": "resp_0f5e55241684e33a006a24be34664c8197917a474bbec031a9",
+    "model": "gpt-5.5-2026-04-23",
+    "stop_reason": "completed",
+    "usage": {
+      "input_tokens": 253,
+      "output_tokens": 5635,
+      "output_tokens_details": {
+        "reasoning_tokens": 4412
+      }
+    },
+    "thinking": "**Evaluating quadratic roots**\n\nI’m working through a quadratic equation where I need to find roots for \\(x = e^{-\\theta}\\) with \\(\\theta \\geq 0\\) and \\(x \\in (0,1]\\). The solutions are \\(x = \\frac{1 \\pm \\sqrt{1-4pq s^2}}{2qs}\\). I need to decide which root to choose. When \\(s\\) is near 1, the values at \\(s=1\\) simplify. To keep \\(x\\) within the interval, I’ll go with the minus root since it fits the requirement of \\(x \\leq 1\\).",
+    "text": "Let \\(q=1-p\\), and let \\(\\mathcal F_n=\\sigma(\\xi_1,\\dots,\\xi_n)\\).\n\nSince \\(p>q\\), by the Strong Law of Large Numbers,\n\n\\[\n\\frac{S_n}{n}\\to p-q>0 \\quad \\text{a.s.}\n\\]\n\nHence \\(S_n\\to +\\infty\\) a.s., and because the walk is nearest-neighbor, it must hit \\(1\\). Thus\n\n\\[\n\\mathbb P(T_1<\\infty)=1.\n\\]\n\n## (i) Exponential martingale and optional stopping\n\nFor fixed \\(\\theta\\ge 0\\), define\n\n\\[\nM_n(\\theta):=\\frac{e^{\\theta S_n}}{\\phi(\\theta)^n},\n\\qquad \n\\phi(\\theta)=\\mathbb E e^{\\theta \\xi_1}=pe^\\theta+qe^{-\\theta}.\n\\]\n\nThen\n\n\\[\n\\mathbb E[M_{n+1}(\\theta)\\mid \\mathcal F_n]\n=\n\\frac{e^{\\theta S_n}}{\\phi(\\theta)^{n+1}}\n\\mathbb E e^{\\theta \\xi_{n+1}}\n=\n\\frac{e^{\\theta S_n}}{\\phi(\\theta)^n}\n=\nM_n(\\theta),\n\\]\n\nso \\((M_n(\\theta))_{n\\ge0}\\) is a martingale with \\(M_0=1\\).\n\nLet \\(\\tau_n=T_1\\wedge n\\). By the Optional Stopping Theorem for bounded stopping times,\n\n\\[\n1=\\mathbb E M_{\\tau_n}(\\theta).\n\\]\n\nOn \\(\\{T_1\\le n\\}\\), we have \\(S_{T_1}=1\\), so\n\n\\[\nM_{T_1}(\\theta)=\\frac{e^\\theta}{\\phi(\\theta)^{T_1}}.\n\\]\n\nThus\n\n\\[\n1\n=\ne^\\theta \\mathbb E\\left[\\phi(\\theta)^{-T_1}\\mathbf 1_{\\{T_1\\le n\\}}\\right]\n+\n\\mathbb E\\left[\n\\frac{e^{\\theta S_n}}{\\phi(\\theta)^n}\\mathbf 1_{\\{T_1>n\\}}\n\\right].\n\\]\n\nOn \\(\\{T_1>n\\}\\), the walk has not yet hit \\(1\\), hence \\(S_n\\le 0\\). Since \\(\\theta\\ge0\\),\n\n\\[\ne^{\\theta S_n}\\le 1.\n\\]\n\nAlso \\(\\phi(\\theta)\\ge \\phi(0)=1\\) for \\(\\theta\\ge0\\). Therefore\n\n\\[\n0\\le \n\\mathbb E\\left[\n\\frac{e^{\\theta S_n}}{\\phi(\\theta)^n}\\mathbf 1_{\\{T_1>n\\}}\n\\right]\n\\le\n\\mathbb P(T_1>n)\\to 0.\n\\]\n\nBy monotone convergence,\n\n\\[\ne^\\theta \\mathbb E\\left[\\phi(\\theta)^{-T_1}\\mathbf 1_{\\{T_1\\le n\\}}\\right]\n\\to\ne^\\theta \\mathbb E\\left[\\phi(\\theta)^{-T_1}\\right].\n\\]\n\nHence\n\n\\[\n\\boxed{\ne^\\theta \\mathbb E\\left[\\phi(\\theta)^{-T_1}\\right]=1\n}\n\\]\n\nfor every \\(\\theta\\ge0\\).\n\nEquivalently,\n\n\\[\n\\boxed{\n\\mathbb E\\left[\\phi(\\theta)^{-T_1}\\right]=e^{-\\theta}.\n}\n\\]\n\n---\n\n## (ii) Computing \\(\\mathbb E s^{T_1}\\)\n\nFor \\(\\theta\\ge0\\),\n\n\\[\n\\phi(\\theta)=pe^\\theta+qe^{-\\theta}.\n\\]\n\nSince\n\n\\[\n\\phi'(\\theta)=pe^\\theta-qe^{-\\theta}>0\n\\]\n\nfor \\(\\theta\\ge0\\), \\(\\phi\\) maps \\([0,\\infty)\\) bijectively onto \\([1,\\infty)\\). Thus for any \\(s\\in(0,1)\\), there exists a unique \\(\\theta>0\\) such that\n\n\\[\n\\phi(\\theta)=\\frac1s.\n\\]\n\nUsing part (i),\n\n\\[\n\\mathbb E s^{T_1}\n=\n\\mathbb E\\left[\\phi(\\theta)^{-T_1}\\right]\n=\ne^{-\\theta}.\n\\]\n\nLet\n\n\\[\nx=e^{-\\theta}\\in(0,1).\n\\]\n\nThen \\(e^\\theta=1/x\\), and the equation \\(\\phi(\\theta)=1/s\\) becomes\n\n\\[\n\\frac{p}{x}+qx=\\frac1s.\n\\]\n\nMultiplying by \\(sx\\),\n\n\\[\nps+qsx^2=x.\n\\]\n\nSo\n\n\\[\nqsx^2-x+ps=0.\n\\]\n\nSolving the quadratic,\n\n\\[\nx=\\frac{1\\pm \\sqrt{1-4pqs^2}}{2qs}.\n\\]\n\nThe valid root is the one in \\((0,1)\\), namely the minus root. Therefore\n\n\\[\n\\boxed{\n\\mathbb E s^{T_1}\n=\n\\frac{1-\\sqrt{1-4pqs^2}}{2qs}\n}\n\\qquad 0<s<1.\n\\]\n\nEquivalently,\n\n\\[\n\\boxed{\n\\mathbb E s^{T_1}\n=\n\\frac{2ps}{1+\\sqrt{1-4pqs^2}}.\n}\n\\]",
+    "raw_output": [
+      {
+        "id": "rs_0f5e55241684e33a006a24be3512e4819792ae5c63ed063240",
+        "type": "reasoning",
+        "content": [],
+        "summary": [
+          {
+            "type": "summary_text",
+            "text": "**Evaluating quadratic roots**\n\nI’m working through a quadratic equation where I need to find roots for \\(x = e^{-\\theta}\\) with \\(\\theta \\geq 0\\) and \\(x \\in (0,1]\\). The solutions are \\(x = \\frac{1 \\pm \\sqrt{1-4pq s^2}}{2qs}\\). I need to decide which root to choose. When \\(s\\) is near 1, the values at \\(s=1\\) simplify. To keep \\(x\\) within the interval, I’ll go with the minus root since it fits the requirement of \\(x \\leq 1\\)."
+          }
+        ]
+      },
+      {
+        "id": "msg_0f5e55241684e33a006a24bea2708c8197a03f17a995bb3007",
+        "type": "message",
+        "status": "completed",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "Let \\(q=1-p\\), and let \\(\\mathcal F_n=\\sigma(\\xi_1,\\dots,\\xi_n)\\).\n\nSince \\(p>q\\), by the Strong Law of Large Numbers,\n\n\\[\n\\frac{S_n}{n}\\to p-q>0 \\quad \\text{a.s.}\n\\]\n\nHence \\(S_n\\to +\\infty\\) a.s., and because the walk is nearest-neighbor, it must hit \\(1\\). Thus\n\n\\[\n\\mathbb P(T_1<\\infty)=1.\n\\]\n\n## (i) Exponential martingale and optional stopping\n\nFor fixed \\(\\theta\\ge 0\\), define\n\n\\[\nM_n(\\theta):=\\frac{e^{\\theta S_n}}{\\phi(\\theta)^n},\n\\qquad \n\\phi(\\theta)=\\mathbb E e^{\\theta \\xi_1}=pe^\\theta+qe^{-\\theta}.\n\\]\n\nThen\n\n\\[\n\\mathbb E[M_{n+1}(\\theta)\\mid \\mathcal F_n]\n=\n\\frac{e^{\\theta S_n}}{\\phi(\\theta)^{n+1}}\n\\mathbb E e^{\\theta \\xi_{n+1}}\n=\n\\frac{e^{\\theta S_n}}{\\phi(\\theta)^n}\n=\nM_n(\\theta),\n\\]\n\nso \\((M_n(\\theta))_{n\\ge0}\\) is a martingale with \\(M_0=1\\).\n\nLet \\(\\tau_n=T_1\\wedge n\\). By the Optional Stopping Theorem for bounded stopping times,\n\n\\[\n1=\\mathbb E M_{\\tau_n}(\\theta).\n\\]\n\nOn \\(\\{T_1\\le n\\}\\), we have \\(S_{T_1}=1\\), so\n\n\\[\nM_{T_1}(\\theta)=\\frac{e^\\theta}{\\phi(\\theta)^{T_1}}.\n\\]\n\nThus\n\n\\[\n1\n=\ne^\\theta \\mathbb E\\left[\\phi(\\theta)^{-T_1}\\mathbf 1_{\\{T_1\\le n\\}}\\right]\n+\n\\mathbb E\\left[\n\\frac{e^{\\theta S_n}}{\\phi(\\theta)^n}\\mathbf 1_{\\{T_1>n\\}}\n\\right].\n\\]\n\nOn \\(\\{T_1>n\\}\\), the walk has not yet hit \\(1\\), hence \\(S_n\\le 0\\). Since \\(\\theta\\ge0\\),\n\n\\[\ne^{\\theta S_n}\\le 1.\n\\]\n\nAlso \\(\\phi(\\theta)\\ge \\phi(0)=1\\) for \\(\\theta\\ge0\\). Therefore\n\n\\[\n0\\le \n\\mathbb E\\left[\n\\frac{e^{\\theta S_n}}{\\phi(\\theta)^n}\\mathbf 1_{\\{T_1>n\\}}\n\\right]\n\\le\n\\mathbb P(T_1>n)\\to 0.\n\\]\n\nBy monotone convergence,\n\n\\[\ne^\\theta \\mathbb E\\left[\\phi(\\theta)^{-T_1}\\mathbf 1_{\\{T_1\\le n\\}}\\right]\n\\to\ne^\\theta \\mathbb E\\left[\\phi(\\theta)^{-T_1}\\right].\n\\]\n\nHence\n\n\\[\n\\boxed{\ne^\\theta \\mathbb E\\left[\\phi(\\theta)^{-T_1}\\right]=1\n}\n\\]\n\nfor every \\(\\theta\\ge0\\).\n\nEquivalently,\n\n\\[\n\\boxed{\n\\mathbb E\\left[\\phi(\\theta)^{-T_1}\\right]=e^{-\\theta}.\n}\n\\]\n\n---\n\n## (ii) Computing \\(\\mathbb E s^{T_1}\\)\n\nFor \\(\\theta\\ge0\\),\n\n\\[\n\\phi(\\theta)=pe^\\theta+qe^{-\\theta}.\n\\]\n\nSince\n\n\\[\n\\phi'(\\theta)=pe^\\theta-qe^{-\\theta}>0\n\\]\n\nfor \\(\\theta\\ge0\\), \\(\\phi\\) maps \\([0,\\infty)\\) bijectively onto \\([1,\\infty)\\). Thus for any \\(s\\in(0,1)\\), there exists a unique \\(\\theta>0\\) such that\n\n\\[\n\\phi(\\theta)=\\frac1s.\n\\]\n\nUsing part (i),\n\n\\[\n\\mathbb E s^{T_1}\n=\n\\mathbb E\\left[\\phi(\\theta)^{-T_1}\\right]\n=\ne^{-\\theta}.\n\\]\n\nLet\n\n\\[\nx=e^{-\\theta}\\in(0,1).\n\\]\n\nThen \\(e^\\theta=1/x\\), and the equation \\(\\phi(\\theta)=1/s\\) becomes\n\n\\[\n\\frac{p}{x}+qx=\\frac1s.\n\\]\n\nMultiplying by \\(sx\\),\n\n\\[\nps+qsx^2=x.\n\\]\n\nSo\n\n\\[\nqsx^2-x+ps=0.\n\\]\n\nSolving the quadratic,\n\n\\[\nx=\\frac{1\\pm \\sqrt{1-4pqs^2}}{2qs}.\n\\]\n\nThe valid root is the one in \\((0,1)\\), namely the minus root. Therefore\n\n\\[\n\\boxed{\n\\mathbb E s^{T_1}\n=\n\\frac{1-\\sqrt{1-4pqs^2}}{2qs}\n}\n\\qquad 0<s<1.\n\\]\n\nEquivalently,\n\n\\[\n\\boxed{\n\\mathbb E s^{T_1}\n=\n\\frac{2ps}{1+\\sqrt{1-4pqs^2}}.\n}\n\\]"
+          }
+        ],
+        "phase": "final_answer",
+        "role": "assistant"
+      }
+    ]
+  },
+  "cost_usd": 0.08579,
+  "timing": {
+    "started": "2026-06-07T00:41:24.287363+00:00",
+    "ended": "2026-06-07T00:43:29.279162+00:00",
+    "seconds": 124.99
+  },
+  "error": null
+}

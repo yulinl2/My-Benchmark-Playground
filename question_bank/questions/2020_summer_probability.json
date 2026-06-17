@@ -1,0 +1,71 @@
+[
+  {
+    "id": "2020-summer-probability-q1",
+    "exam": {
+      "year": 2020,
+      "term": "summer",
+      "part": "probability"
+    },
+    "number": 1,
+    "topics": [
+      "triangular arrays",
+      "weak law of large numbers",
+      "Lindeberg CLT",
+      "survey sampling",
+      "Bernoulli sampling"
+    ],
+    "difficulty": "hard",
+    "prompt": "This problem is about convergence properties of triangular arrays of random variables and their applications. A triangular array is a doubly indexed sequence $\\{X_{n,j} : n = 1,2,\\dots,\\ j = 1,\\dots,n\\}$.",
+    "parts": [
+      "**Part I, Question 1 (WLLN for row-iid triangular arrays).** For each $n$, let $X_{n,1}, \\dots, X_{n,n}$ be i.i.d., and let $S_n = X_{n,1} + \\cdots + X_{n,n}$. Show that if $\\sup_n \\mathbb{E}(X_{n,j}^2) < \\infty$, then $\\frac{S_n - \\mathbb{E}(S_n)}{n} \\xrightarrow{p} 0$.",
+      "**Question 2 (Deriving the i.i.d. CLT from the triangular-array CLT).** Theorem 1 (triangular-array CLT under Lindeberg): for $X_{n,1},\\dots,X_{n,n}$ independent with $\\mathbb{E}(X_{n,j}) = 0$, $\\operatorname{var}(X_{n,j}) = \\sigma_{n,j}^2 < \\infty$, $S_n = \\sum_j X_{n,j}$, $s_n^2 = \\operatorname{var}(S_n)$, $Z_n = S_n/s_n$: if for each $\\epsilon \\in (0,1)$, $\\mathrm{Lind}_{\\epsilon,n} \\equiv \\sum_{j=1}^n \\mathbb{E}\\big[(X_{n,j}/s_n)^2 \\,\\mathbb{1}\\{|X_{n,j}|/s_n > \\epsilon\\}\\big] \\to 0$, then $Z_n \\xrightarrow{d} N(0,1)$. Theorem 2 (i.i.d. CLT): for $Y_1,Y_2,\\dots$ i.i.d. with mean $0$ and variance $\\sigma^2 < \\infty$, $\\tilde Z_n = \\tilde S_n/(\\sqrt{n}\\sigma) \\xrightarrow{d} N(0,1)$. Show that Theorem 2 is a special case of Theorem 1 (prove Theorem 2 assuming Theorem 1). Hint: connect $X_{n,j}$ in Theorem 1 with $Y_j$ in Theorem 2.",
+      "**Part II (application).** For each $N$, consider a finite population $\\pi_N$ of $N$ units with fixed values $Y_{N,1}, \\dots, Y_{N,N}$. A sample is drawn by Bernoulli sampling: unit $j$ is included iff $K_j = 1$, where $K_1,\\dots,K_N \\stackrel{iid}{\\sim} \\mathrm{Bern}(n/N)$. The estimator of the total $\\sum_{j=1}^N Y_{N,j}$ is $\\sum_{j=1}^N K_j Y_{N,j}$. Question 3(a): Define $X_{N,j} = (Y_{N,j} - \\bar Y_N)(K_j - n/N)$, where $\\bar Y_N = N^{-1}\\sum_j Y_{N,j}$. Find the expectation and variance of $X_{N,j}$.",
+      "(b) Are $X_{N,1}, \\dots, X_{N,N}$ independent? Give a proof.",
+      "(c) Show that the triangular array $\\{X_{N,j}\\}$ satisfies Lindeberg's condition if $\\displaystyle \\frac{\\max_{1\\le j\\le N}(Y_{N,j}-\\bar Y_N)^2}{\\sum_{j=1}^N (Y_{N,j}-\\bar Y_N)^2}\\, \\max\\!\\Big(\\frac{N-n}{n}, \\frac{n}{N-n}\\Big) \\to 0$ as both $n$ and $N-n$ tend to infinity.",
+      "(d) Derive the asymptotic distribution of $T_N \\equiv \\sum_{j=1}^N K_j(Y_{N,j} - \\bar Y_N)$ as $n$ and $N-n$ tend to infinity, assuming the condition in (c) holds."
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/probability_exam_2020.pdf",
+      "page": 2
+    },
+    "verified": false,
+    "notes": "Profs. Crane & Dasgupta. Transcribed from extracted text.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
+  },
+  {
+    "id": "2020-summer-probability-q2",
+    "exam": {
+      "year": 2020,
+      "term": "summer",
+      "part": "probability"
+    },
+    "number": 2,
+    "topics": [
+      "branching processes",
+      "extinction probability",
+      "generating functions",
+      "almost sure convergence",
+      "martingales"
+    ],
+    "difficulty": "hard",
+    "prompt": "A population in which each individual is at any time in one of three states $A$, $B$, $C$ evolves in discrete time: (1) each individual in state $A$ in generation $n$ produces a random number $\\xi_x$ of offspring in generation $n+1$, all of type $B$, then dies, where $P(\\xi_x = k) = \\alpha^k(1-\\alpha)$, $k = 0,1,2,\\dots$, for $0 < \\alpha < 1$; (2) each individual in state $B$ in generation $n$ mutates to state $A$ with probability $p$ or to state $C$ with probability $q = 1-p$ ($0 < p < 1$); (3) each individual in state $C$ dies; (4) all individuals act independently. Let $Z^i_n$ be the number of individuals in state $i$ in generation $n$; assume $Z^A_0 = 1$ (a single individual in state $A$ at time $0$).",
+    "parts": [
+      "(a) Show that with probability $1$, either $Z^A_n = Z^B_n = Z^C_n = 0$ for all large $n$, or $\\lim_{n\\to\\infty}(Z^A_n + Z^B_n + Z^C_n) = \\infty$.",
+      "(b) Express $\\mathbb{E}(Z^A_n)$, $\\mathbb{E}(Z^B_n)$ and $\\mathbb{E}(Z^C_n)$ as functions of $\\alpha$, $p$ and $n$.",
+      "(c) Let $p_e = P(Z^A_n = Z^B_n = Z^C_n = 0 \\text{ for all large } n)$ be the extinction probability. For which values of $\\alpha$ and $p$ is $p_e = 1$? Give a proof.",
+      "(d) In the case $p_e < 1$, find an explicit closed-form expression for $p_e$ in terms of $\\alpha$ and $p$.",
+      "(e) Define sequences $\\{a(n)\\}_{n\\ge1}$ and $\\{b(n)\\}_{n\\ge1}$ such that $Y_n := Z^B_{a(n)}/b(n)$ converges almost surely to a finite limiting random variable. Give explicit forms of $a(n), b(n)$ and prove the convergence."
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/probability_exam_2020.pdf",
+      "page": 4
+    },
+    "verified": false,
+    "notes": "Transcribed from extracted text.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
+  }
+]

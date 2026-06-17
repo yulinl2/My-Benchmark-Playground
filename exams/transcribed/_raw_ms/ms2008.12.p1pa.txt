@@ -1,0 +1,24 @@
+
+----- page 1 -----
+Master’s Exam: Theory Part. Answer all 4 questions. Show work in bluebook.
+Saturday 6 December 2008
+1. In a class of 30 students, 5 of the students play chess, and the other 25 do not. Four
+students are picked at random from the class. Given that at least one of the four students
+plays chess, what is the probability that at least two of the four students play chess?
+2. Let X be a continuous random variable with probability density function f(x) =
+0.4x + 0.1, for 0 ≤x ≤2. Let Y = 3X −4.
+a. Find V ar(Y ).
+b. Find the probability density function of Y .
+3. Let Y have a binomial distribution with 10 trials and success probability π; that is,
+Y ∼B(10, π). Test H : π = 1/2 vs. K : π > 1/2. Suppose Y = 9. Find the p-value of a test
+for the null hypothesis H vs. the alternative hypothesis K. If the size of the test is α = .05,
+do I accept or reject?
+4. In a large national park, the number of raccoons in a randomly-picked acre is a Poisson
+random variable X, with E(X) = λ. Given x raccoons in a particular acre, the “number of
+raccoons that have rabies” is Y , a binomial random variable:
+P(Y = y|X = x) =
+x!
+y!(x −y)!πy(1 −π)x−y.
+We draw a random acre and ﬁnd that there are exactly 4 raccoons with rabies. Given this,
+and given λ = 5, π = .3, what is the expected number of raccoons on the acre.
+1

@@ -1,0 +1,63 @@
+{
+  "question_id": "2023-summer-probability-q2",
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "rep": 2,
+  "exam": {
+    "year": 2023,
+    "term": "summer",
+    "part": "probability"
+  },
+  "request": {
+    "system": "You are sitting a PhD-level qualifying examination in statistics. Solve the problem rigorously and completely. Show your work and reasoning, justify each step, and clearly state your final answer(s). If the problem has multiple parts, answer every part, labeled. If you invoke a known theorem, name it.",
+    "user": "[2023 summer phd probability — problem 2]\n\nPart I, Exercise 2. Let $X$ be a discrete random variable valued in $\\{1, 2, \\dots, n\\}$ with $P(X = j) > 0$ for all $j$.\nFor any integer $k \\in \\{1, \\dots, n-1\\}$ and events $E = \\{X \\ge k\\}$, $F = \\{X \\ge k+1\\}$, prove $\\mathbb{E}[X \\mid E] \\le \\mathbb{E}[X \\mid F]$.",
+    "max_tokens": 24000,
+    "mode": {
+      "effort": "high"
+    }
+  },
+  "response": {
+    "id": "resp_050ef54f72fd6bcc006a24b974569c81949afcb5eead1c1990",
+    "model": "gpt-5.5-2026-04-23",
+    "stop_reason": "completed",
+    "usage": {
+      "input_tokens": 203,
+      "output_tokens": 946,
+      "output_tokens_details": {
+        "reasoning_tokens": 411
+      }
+    },
+    "thinking": "",
+    "text": "Let \\(p_j=P(X=j)\\), with \\(p_j>0\\) for all \\(j=1,\\dots,n\\). Fix \\(k\\in\\{1,\\dots,n-1\\}\\). Define\n\n\\[\nE=\\{X\\ge k\\}, \\qquad F=\\{X\\ge k+1\\}.\n\\]\n\nThen \\(F\\subset E\\), and\n\n\\[\nE=\\{X=k\\}\\,\\dot\\cup\\, F\n\\]\n\nis a disjoint union. Since all \\(p_j>0\\), both \\(P(E)>0\\) and \\(P(F)>0\\), so the conditional expectations are well-defined.\n\nLet\n\n\\[\nq=P(F)=\\sum_{j=k+1}^n p_j>0.\n\\]\n\nThen\n\n\\[\n\\mathbb{E}[X\\mid F]\n= \\frac{\\sum_{j=k+1}^n j p_j}{q}.\n\\]\n\nCall this quantity \\(m\\). Since \\(X\\ge k+1\\) on \\(F\\), we have\n\n\\[\nm=\\mathbb{E}[X\\mid F]\\ge k+1>k.\n\\]\n\nNow compute \\(\\mathbb{E}[X\\mid E]\\). Using the disjoint decomposition \\(E=\\{X=k\\}\\dot\\cup F\\),\n\n\\[\n\\mathbb{E}[X\\mid E]\n= \\frac{k p_k+\\sum_{j=k+1}^n j p_j}{p_k+q}\n= \\frac{k p_k+q m}{p_k+q}.\n\\]\n\nThis is a weighted average of \\(k\\) and \\(m=\\mathbb{E}[X\\mid F]\\), with positive weights \\(p_k\\) and \\(q\\). Since \\(k<m\\),\n\n\\[\n\\frac{k p_k+q m}{p_k+q}\\le m.\n\\]\n\nTherefore,\n\n\\[\n\\mathbb{E}[X\\mid E]\\le \\mathbb{E}[X\\mid F].\n\\]\n\nIn fact, because \\(p_k>0\\) and \\(m>k\\), the inequality is strict:\n\n\\[\n\\mathbb{E}[X\\mid E]<\\mathbb{E}[X\\mid F].\n\\]\n\nThus,\n\n\\[\n\\boxed{\\mathbb{E}[X\\mid \\{X\\ge k\\}]\\le \\mathbb{E}[X\\mid \\{X\\ge k+1\\}].}\n\\]",
+    "raw_output": [
+      {
+        "id": "rs_050ef54f72fd6bcc006a24b975189c8194a7a659c7dfb7865b",
+        "type": "reasoning",
+        "content": [],
+        "summary": []
+      },
+      {
+        "id": "msg_050ef54f72fd6bcc006a24b97ecd6c8194bfff677500b119d6",
+        "type": "message",
+        "status": "completed",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "Let \\(p_j=P(X=j)\\), with \\(p_j>0\\) for all \\(j=1,\\dots,n\\). Fix \\(k\\in\\{1,\\dots,n-1\\}\\). Define\n\n\\[\nE=\\{X\\ge k\\}, \\qquad F=\\{X\\ge k+1\\}.\n\\]\n\nThen \\(F\\subset E\\), and\n\n\\[\nE=\\{X=k\\}\\,\\dot\\cup\\, F\n\\]\n\nis a disjoint union. Since all \\(p_j>0\\), both \\(P(E)>0\\) and \\(P(F)>0\\), so the conditional expectations are well-defined.\n\nLet\n\n\\[\nq=P(F)=\\sum_{j=k+1}^n p_j>0.\n\\]\n\nThen\n\n\\[\n\\mathbb{E}[X\\mid F]\n= \\frac{\\sum_{j=k+1}^n j p_j}{q}.\n\\]\n\nCall this quantity \\(m\\). Since \\(X\\ge k+1\\) on \\(F\\), we have\n\n\\[\nm=\\mathbb{E}[X\\mid F]\\ge k+1>k.\n\\]\n\nNow compute \\(\\mathbb{E}[X\\mid E]\\). Using the disjoint decomposition \\(E=\\{X=k\\}\\dot\\cup F\\),\n\n\\[\n\\mathbb{E}[X\\mid E]\n= \\frac{k p_k+\\sum_{j=k+1}^n j p_j}{p_k+q}\n= \\frac{k p_k+q m}{p_k+q}.\n\\]\n\nThis is a weighted average of \\(k\\) and \\(m=\\mathbb{E}[X\\mid F]\\), with positive weights \\(p_k\\) and \\(q\\). Since \\(k<m\\),\n\n\\[\n\\frac{k p_k+q m}{p_k+q}\\le m.\n\\]\n\nTherefore,\n\n\\[\n\\mathbb{E}[X\\mid E]\\le \\mathbb{E}[X\\mid F].\n\\]\n\nIn fact, because \\(p_k>0\\) and \\(m>k\\), the inequality is strict:\n\n\\[\n\\mathbb{E}[X\\mid E]<\\mathbb{E}[X\\mid F].\n\\]\n\nThus,\n\n\\[\n\\boxed{\\mathbb{E}[X\\mid \\{X\\ge k\\}]\\le \\mathbb{E}[X\\mid \\{X\\ge k+1\\}].}\n\\]"
+          }
+        ],
+        "phase": "final_answer",
+        "role": "assistant"
+      }
+    ]
+  },
+  "cost_usd": 0.0152,
+  "timing": {
+    "started": "2026-06-07T00:21:08.224635+00:00",
+    "ended": "2026-06-07T00:21:26.518246+00:00",
+    "seconds": 18.29
+  },
+  "error": null
+}

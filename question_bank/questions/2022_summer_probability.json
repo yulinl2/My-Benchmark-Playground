@@ -1,0 +1,69 @@
+[
+  {
+    "id": "2022-summer-probability-q1",
+    "exam": {
+      "year": 2022,
+      "term": "summer",
+      "part": "probability"
+    },
+    "number": 1,
+    "topics": [
+      "exponential distribution",
+      "order statistics",
+      "random orderings",
+      "Stirling's approximation",
+      "almost sure convergence"
+    ],
+    "difficulty": "hard",
+    "prompt": "Let $Y_1, \\dots, Y_n$ be independent random variables such that, for each $i \\ge 1$, $Y_i$ has density $f_i(y) = i e^{-iy}\\mathbb{1}\\{y > 0\\}$ with respect to Lebesgue measure. Define a random ordering $\\prec_Y$ of $\\{1,\\dots,n\\}$ from the order statistics of $\\{Y_1,\\dots,Y_n\\}$ by $i \\prec_Y j \\iff Y_i < Y_j$.",
+    "parts": [
+      "(i) For each $i = 1,\\dots,n$, compute the probability that $i \\prec_Y j$ for all $j \\ne i$.",
+      "(ii) Compute the probability that $\\prec_Y$ corresponds to $i \\prec_Y j \\iff i < j$ (usual ordering $1 < 2 < \\cdots < n$).",
+      "(iii) Compute the probability that $\\prec_Y$ corresponds to $i \\prec_Y j \\iff j < i$.",
+      "(iv) Let $P_n$ be the probability from (iii) and $Q_n$ the probability from (ii). Show that $(P_n/Q_n)^{1/n} \\sim 4$ as $n \\to \\infty$, i.e. $\\lim_{n\\to\\infty}(P_n/Q_n)^{1/n}/4 = 1$. Hint: use Stirling's approximation.",
+      "(v) Generate $\\prec_Y$ from $Y_1,\\dots,Y_n$ as above. For $1 < m < n$, set $Y'_1 = Y_1, \\dots, Y'_m = Y_m$ and define an ordering $\\prec_{Y'}$ of $1,\\dots,m$ analogously. Express the distribution of $\\prec_{Y'}$ in terms of the distribution of $\\prec_Y$. Then consider the sampling process where $Z_1, Z_2, \\dots$ are independent with $P(Z_i = j) \\propto i - j$, $j = 0,1,\\dots,i-1$, and a random ordering $\\prec_{Z(n)}$ of $1,\\dots,n$ is built recursively by inserting element $n+1$ into the $(Z_{n+1}+1)$-th position of $\\prec_{Z(n)}$. This gives rise to an infinite random ordering $\\prec_{Z(\\infty)}$ on the positive integers. For each $n$, let $M_n$ be the highest-ranked integer in $Z(n)$, and define $M_\\infty := \\lim_{n\\to\\infty} M_n$.",
+      "(vi) Prove that $M_\\infty$ exists and is finite with probability $1$."
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/probability_exam_2022_final.pdf",
+      "page": 2
+    },
+    "verified": false,
+    "notes": "Based on Stat 592 and Stat 654. Transcribed from extracted text.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
+  },
+  {
+    "id": "2022-summer-probability-q2",
+    "exam": {
+      "year": 2022,
+      "term": "summer",
+      "part": "probability"
+    },
+    "number": 2,
+    "topics": [
+      "simple random walk",
+      "Markov chains",
+      "martingales",
+      "hitting times",
+      "recurrence"
+    ],
+    "difficulty": "hard",
+    "prompt": "Let $n$ be a positive integer. Consider a simple random walk on $\\mathbb{Z}^2$ starting at $(n, 0)$. At each step the walker moves one step in one of the directions right $(1,0)$, left $(-1,0)$, up $(0,1)$, down $(0,-1)$, each with probability $1/4$. Let $S_k = (S_{k,x}, S_{k,y}) \\in \\mathbb{Z}^2$ be the position at time $k$.",
+    "parts": [
+      "**Part A.** Is $\\{S_{k,x}\\}_{k\\ge 0}$ a Markov chain? If so, specify its state space and transition probability distribution. Is $\\{S_{k,x}\\}_{k\\ge 0}$ a martingale?",
+      "**Part B.** Let $T_{0,x}$ be the first time the walker hits the $y$-axis (its $x$-coordinate equals $0$). Calculate $P[T_{0,x} = \\infty]$ and $\\mathbb{E}[T_{0,x}]$.",
+      "**Part C.** Let $T_0$ be the first time the walker reaches the origin $(0,0)$ ($\\lfloor x\\rfloor$ = floor), and let $D_k$ be the Euclidean distance from the walker to the origin at time $k$. (i) With $P_{1,n} := P[D_{\\lfloor n^{1.5}\\rfloor} \\ge n/2]$ (distance $\\ge n/2$ after $\\lfloor n^{1.5}\\rfloor$ steps), prove $P_{1,n} \\to 1$ as $n \\to \\infty$. [Hint: bound the complementary event via the location of $S_{k,x}$.] (ii) With $P_{2,n} := P[T_0 \\le \\lfloor n^{1.5}\\rfloor]$ (origin visited within the first $\\lfloor n^{1.5}\\rfloor$ steps), prove $P_{2,n} \\to 0$ as $n \\to \\infty$. [Hint: a maximal inequality helps.] You may use **Doob's maximal inequality** (submartingale $\\{X_k\\}$: $P[\\max_{1\\le i\\le k} X_i \\ge \\lambda] \\le \\mathbb{E}[\\max\\{X_k,0\\}]/\\lambda$) or **Kolmogorov's maximal inequality** (i.i.d. mean-zero finite-variance $\\xi_i$, $T_k=\\sum_{i=1}^k \\xi_i$: $P[\\max_{1\\le i\\le k}|T_i| \\ge \\lambda] \\le \\operatorname{Var}[T_k]/\\lambda^2$)."
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/probability_exam_2022_final.pdf",
+      "page": 4
+    },
+    "verified": false,
+    "notes": "Part C statement is truncated in the text extraction; verify the tail against the source PDF before marking verified.\n\n[audit] corrected during audit: completed the truncated Part C (P_{1,n}->1, P_{2,n}->0, with Doob/Kolmogorov maximal inequalities) from source.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
+  }
+]

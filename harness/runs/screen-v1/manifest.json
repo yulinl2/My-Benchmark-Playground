@@ -1,0 +1,18 @@
+{
+  "run_id": "screen-v1",
+  "created": "2026-06-17T04:15:04.545999+00:00",
+  "models": [
+    "gpt-5.5",
+    "claude-haiku-4-5-20251001"
+  ],
+  "n_questions": 3,
+  "max_tokens": 24000,
+  "effort": "high",
+  "k": 3,
+  "dry_run": false,
+  "question_ids": [
+    "2019-fall-applied-q3",
+    "2019-fall-applied-q5",
+    "2022-summer-probability-q2"
+  ]
+}

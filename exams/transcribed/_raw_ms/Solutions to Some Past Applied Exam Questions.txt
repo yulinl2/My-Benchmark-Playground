@@ -1,0 +1,5059 @@
+
+----- page 1 -----
+ 
+1
+ 
+SOLUTIONS TO SOME OF THE QUESTIONS ON THE 
+STATISTICS APPLIED MASTERS COMPREHENSIVE EXAM 
+ 
+These are Solutions that have been found to some of the questions that were asked 
+since 2008.  
+ 
+ Please Note that in some cases what is presented here may be the initial questions 
+and solutions that were submitted when the exam was prepared.  It is possible that 
+the questions (as well as the solutions that were used for grading) for the exams 
+which were given  may have changed slightly to end up being different.   
+ 
+Also Note that these answers may not be the only way do address the question, in 
+some cases there may be other solutions that would get partial or even full credit. 
+ 
+ 
+Also in Blue the COMPETENCIES reflect the areas of knowledge that he 
+questions are covering.
+
+----- page 2 -----
+ 
+2
+ 
+_____________________________________________________________ 
+FALL 2018 
+ 
+1. A random sample of 20 adult Busch Bears is obtained from a forest in New Jersey. The following stem 
+& leaf gives the weights in pounds for these animals 
+          
+1 
+|  2789  
+ 
+ 
+2 
+|  12346679 
+ 
+ 
+3 
+|  1358 
+4 
+|  0112 
+ 
+COMPETENCIES =  Descriptive Statistics, Binomial Distribution Properties 
+ 
+ 
+a) Compute the median weight in the sample__________ 
+                                                             (26 + 27) / 2 = 26.5 
+ 
+ 
+b) Compute the interquartile range of weight in the sample_________ 
+                                                             (21 + 22) / 2 = 20.5  to (35 + 38) / 2 = 36.5 
+ 
+ 
+c) The median weight of an adult Rutgers-Wombat is known to be 39 pounds.   Test the null hypothesis 
+that the median weight of an adult Busch bear is heavier than this against the alternative that it is not 
+at P = 0.001. 
+ 
+Best answer 
+20
+20
+20
+20
+20
+20
+[
+]*0.5
+0
+1
+2
+3
+4
+
+
+
+
+
+
+
+
+
+
++
++
++
++
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ or 
+20
+2*[1
+20 190 1140
+4845]*0.5
++
++
++
++
+ or 0.0059 
+Do not Reject H0 at P = 0.01 
+Not so Good Answer
+16 10
+6
+2.68
+2.23
+0.5*0.5*20
+Z
+−
+=
+=
+=
+  P = 0.0076 
+Reject H0 at P = 0.01 
+ 
+ 
+ 
+d) A scientist believes that 25% of adult Busch Bears weigh 11 pounds or less.  Is this refuted by the 
+data (explain your answer)? 
+  
+               If this were true the chance to see all 20 adult Busch Bears weigh 12 pounds or more  
+(which is what happened) is .7520 = 0.003 …. This is not very likely .So this belief is refuted by 
+the data. 
+ 
+
+----- page 3 -----
+ 
+3
+4. Puntious Pilot the Roman who pioneered kicking egg-shaped air inflated balls is building 
+a linear model for force applied to the ball and the distance the ball travels.  The model is Y 
+= bX  + ε  where X is the force Applied, Y is the distance the ball travels and ε is iid error 
+with mean 0 and constant variance σ2.  NOTE that the intercept of this model is 0.  
+Puntious has the following data to use to estimate b 
+ 
+X 
+1 
+2 
+3 
+4 
+5 
+6 
+7 
+Y 
+3 
+4 
+5 
+9 
+8 
+20 
+18 
+ 
+COMPETENCIES =  Linear Models, Least Squares Estimates 
+ 
+a.  Write out the design matrix X 
+[1 2 3 4 5 6 7]’ 
+ 
+b. Estimate b  
+ˆb = ΣXY
+ΣX 2 = 1x3+2x4+3x5+4x9+5x8+6x20+7x18
+12 +22 +32 +42 +52 +62 +72
+= 348
+140 = 2.49 
+ 
+c. Estimate σ2 
+ 
+Y 
+3 
+4 
+5 
+9 
+8 
+20 
+18 
+ˆY  
+2.49 
+4.98 
+7.47 
+9.96 
+12.45 
+14.94 
+17.43 
+( ˆY −Y)2
+0.24 
+0.96 
+6.10 
+0.92 
+19.80 
+25.60 
+0.34 
+ So
+ˆσ 2 = Σ( ˆY −Y)2
+n−1
+= 0.24+0.96+6.10+0.92+19.80+25.60+0.34
+7−1
+= 53.96
+6
+=8.99
+ 
+ 
+d. What is the variance of  ˆb  your estimate for b up above 
+σ
+
+
+=
+
+
+
+
+
+
+
+2
+2
+ˆ
+( )
+2
+X
+Var b
+X
+= 
+(
+)
++
++
++
++
++
++
+2
+2
+2
+2
+2
+2
+2
+2
+1
+2
+3
+4
+5
+6
+7
+140
+ = 1
+140 8.99 = 0.064 
+ 
+ 
+e. If a new person kicks the ball with force X = 4, use the model to give a 95% 
+confidence interval for Y, how far the ball travels. 
+ 
+σ
+σ
+±
++
+=
+±
++
+=
+±
+2
+2
+2
+2
+6,.975
+6,.975
+ˆ
+ˆ
+ˆ
+ˆ
+ˆ
+4
+(1
+4 var( ))
+4
+(1
+4 /140)
+4 2.49
+2.447 8.99 1.12
+b
+t
+b
+b
+t
+x
+x
+ 
+=
+±
+=
+9.96
+2.447 3.17
+(2.19,17.73)
+x
+ 
+ 
+
+----- page 4 -----
+ 
+4
+ 
+______________________________________________ 
+SPRING 2018 
+ 
+1. HIV research scientists are studying the associations of three normally distributed 
+parameters of HIV infection; CD4 count, log-HIV-viral load (LHVL) and P24-Antigen 
+(P24).  These are measured on 100 independent subjects and the following sample 
+correlations are observed. 
+ 
+                r_CD4,LHVL  =  0.25 
+                r_CD4,P24  =   0.17 
+                r_LHVL,P24  =  0.35 
+ 
+              NOTE THE INVERSE TRANSFORMAION OF 
+1
+0.5*ln 1
+x
+x
++
+
+
+
+
+−
+
+
+ is 
+2
+2
+1
+1
+x
+x
+e
+e
+
+
+−
+
+
++
+
+
+ 
+ 
+COMPETENCIES – Statistical properties of correlation coefficients 
+ 
+a. Use the best test for the null hypothesis that ρ_CD4,P24  = 0  against the alternative that 
+ρ_CD4,P24  > 0  at α = 0.05 
+ 
+ANSWER   test statistic for testing a correlation equals 0 is 
+2
+2
+1
+r n
+r
+−
+−
+ or 
+2
+0.17 100
+2
+1 (0.17)
+−
+−
+ = 
+1.68
+1.705
+0.985 =
+  > Z1-0.05 = 1.65 so reject H0 
+ 
+ 
+b. Give the best 95% confidence interval for   r_CD4,LHVL   
+ 
+Do a 95% confidence interval on Fisher’s Z transformation 
+1
+0.5*ln 1
+r
+r
+z
+r
++
+
+
+=
+
+
+−
+
+
+ 
+=
+1
+0.25
+0.5*ln
+0.5(0.51)
+0.255
+1 0.25.
+rz
++
+
+
+=
+=
+=
+
+
+−
+
+
+.   The variance of zr is 
+1
+1
+1
+3
+100
+3
+97
+N
+=
+=
+−
+−
+  so the 95% confidence interval for 
+1
+0.5*ln 1
+ρ
+ρ
+
+
++
+
+
+−
+
+
+ is   
+                  
+1
+1
+1
+0.255 – 1.96
+0.5*ln
+0.255
+1.96
+97
+1
+97
+ 
+ 
+ + 
+ρ
+ρ
+
+
++
+<
+<
+
+
+−
+
+
+ 
+                   
+1
+0.255 – 1.96(0.101)
+0.5*ln
+0.255
+– 1.96(0.101)
+1
+ 
+ 
+ + 
+ 
+ρ
+ρ
+
+
++
+<
+<
+
+
+−
+
+
+ 
+                   0.057 <
+1
+0.5*ln 1
+ρ
+ρ
+
+
++
+
+
+−
+
+
+ < 0.453 
+
+----- page 5 -----
+ 
+5
+                 Converting this back to a 95% CI for ρ is  
+ 
+                    
+2(0.057)
+1
+(0.057 1
+e
+e
+
+
+−
+
+
++
+
+
+ < ρ < 
+2(0.453)
+2(0.453)
+1
+1
+e
+e
+
+
+−
+
+
++
+
+
+  or  
+0.114
+0.114
+1
+1
+e
+e
+
+
+−
+
+
++
+
+
+ < ρ < 
+0.906
+0.906
+1
+1
+e
+e
+
+
+−
+
+
++
+
+
+   
+            or 1.12 1
+1.12 1
+−
+
+
+
+
++
+
+
+ < ρ < 2.47 1
+2.47
+1
+−
+
+
+
+
++
+
+
+  or 0.057 < ρ < 0.424 
+ 
+c. Give a point estimate for the partial correlation of LHVL and P24 after adjusting for 
+CD4 
+ 
+ 
+                 
+, 24
+4,
+4,P24
+, 24 |CD4
+2
+2
+4,
+4,P24
+_
+( _
+_
+)
+_
+1 ( _
+)
+1 ( _
+)
+ 
+LHVL P
+CD
+LHVL
+CD
+LHVL P
+CD
+LHVL
+CD
+r
+r
+x r
+r
+r
+r
+−
+=
+−
+−
+2
+2
+0.35
+(0.25
+)
+1 (0.25)
+1 (0.17)
+ 0.17
+x
+−
+=
+−
+−
+ 
+                     
+0.3075
+0.9375 0.9711
+=
+= 0.322 
+ 
+NOTE – DEPENDING ON THE TEXTBOOKS USED THERE MAY BE SOME VARIATIAON IN 
+USE OF T DISTRIBTUIONS INSTEAD OF X AND ON THE FORMULAS FOR THE 
+VARIANCE.  ALL WILL BE ACCEPTED. 
+ 
+ 
+3.  The following data exist on the moisture output from a furnace and the volume if ice forming 
+on the outside tubing over 5 days 
+ 
+Day                            1            2                3               4             5 
+Moisture                   5            1                3                2            4   
+Ice                             8            1                4                4            8                  
+ 
+Assume the standard linear model   Y = a + bX + e  where Y is ice, X is moisture and e is iid 
+error with mean 0 and a, b are unknown parameters 
+ 
+COMPETENCIES = Linear Regression 
+ 
+A. Derive the minimum variance unbiased estimates for a and b  
+ 
+X_bar =  (5 + 1 + 3 + 2 + 4) / 5 = 15/5 = 3 
+Y_bar =  (8 + 1 + 4 + 4 + 8) / 5 = 25/5 = 5 
+ 
+b_hat = Σ[(X – X_bar) (Y – Y_bar)]/ Σ( (X – X_bar)2                             (*) 
+ 
+ 
+Day                          1              2            3           4           5 
+(X – X_bar)             2             -2           0            -1        1 
+(Y – Y_bar)             3             -4           -1          -1          3 
+ 
+So (*)   =   (2x3 + -2x-4 + 0x-1 +  -1x-1 + 1x3)  /  (2x2 +-2x-2 + 0x0 +-1x-2 + 1x1) 
+
+----- page 6 -----
+ 
+6
+       =  ( 6 + 8 +0 + 1 + 3) / (4 + 4 + 0 + 1 + 1) 
+       = 18 / 10 = 1.8 
+ 
+a_hat = Y_bar – b_hat X-bar =  5  - 3 x 1.8  = -0.4 
+ 
+ 
+B. What is an unbiased estimate for the variance of e? 
+ 
+          Σ (Y – Y_Hat)2 / n-2                  (**) 
+ 
+Where Y-hat = a_hat + b_hat X 
+ 
+So   for  
+ 
+X =1   Y_hat =   -0.4 + 1.8 x 1  = 1.4 
+X =2   Y_hat =   -0.4 + 1.8 x 2  = 3.2 
+X =3  Y_hat =   -0.4 + 1.8 x 3  = 5 
+X =4   Y_hat =   -0.4 + 1.8 x 4  = 6.8 
+X =5   Y_hat =   -0.4 + 1.8 x 9  = 8.6 
+ 
+ 
+ 
+Or 
+ 
+Day                          1              2            3           4           5 
+Y                                 8               1              4            4            8                  
+Y-Hat                      8.6            1.4         5         3.2        6.8 
+ 
+and (**) 
+ 
+           = [(8 – 8.6)2 + (1 – 1.4)2 +(4 – 5)2 + (4 – 3.2)2 + (8 – 6.8)2] / (5-1) 
+            =  [0.36 + 0.16 + 1 + 0.64 + 1.96) / 3 
+            =  1.20 
+ 
+C.   It is now proposed that the variance of e is proportional to X in other words Var(e) = c  *  X 
+for some constant c.   What approach would you use to derive better estimates for a and b.   You 
+are  being asked to describe the approach well enough to show full understanding , but do not 
+need to work out the mathematical details to actually derive the estimates.  
+ 
+Use weighted least squares 
+ 
+[a_hat b_hat] =  [X’V-1X] [X V-1Y] 
+ 
+where 
+ 
+X’ is    the design matrix      1            1                1                 1            1 
+                                                    5            1                3                 2            4   
+ 
+
+----- page 7 -----
+ 
+7
+Y is the outcome matrix       8            1                4                4            8    
+ 
+V is a diagonal 5 x 5 matrix with the diagonal elements being               
+ 
+                                                    1/5          1              1/3          1/2      ¼ 
+
+----- page 8 -----
+ 
+8
+ 
+___________________________________________________________ 
+FALL 2O17 
+ 
+2.  Dr. Jones is testing a new home delivered education program to increase 
+kindergarten test scores.   He will randomly chose 50 independent children to have 
+his program given to them by their parents and then compare the results to 50 other 
+independent children who are not given the program.  From normative data, typical 
+education test scored without the intervention have a standard deviation of 15 units 
+and are normally distributed.  Higher test scores are better. He will test the null 
+hypothesis that the intervention has not effect on test scores with a two sided α = 0 
+.05. Let Δ represent the true amount of units on average that the intervention 
+improves test score in the population. 
+ 
+COMPETENCIES = Power Estimation,  
+ 
+A. Assume the intervention has no effect on the standard deviation of a test score 
+and give the power to detect a difference of  Δ=14 under HA. 
+ 
+  
+(1−β)= Z
+−1
+∆
+σ 2/n
+−Z
+1−α/2
+é
+ë
+ê
+ù
+û
+ú= Z
+−1
+14
+15 2/50
+−1.96
+é
+ë
+ê
+ù
+û
+ú= Z
+−1 4.66−1.96
+éë
+ùû= Z
+−1 2.70
+éë
+ùû=0.9965
+  
+ 
+ 
+B. Now further assume that after the study is done that 21 of the 50 parents who 
+were supposed to give the program to their child did not, so the child had no 
+benefit,  
+ 
+i. Assuming the 21 parents cannot be identified and all  50 children  
+    parents randomized to receive Dr. Jones program must be analyzed     
+    together, will power to detect  Δ = 14 under HA be more or less than  
+    what is calculated above for Part A.?  Explain why 
+ 
+    Will have lower power than what is calculated in A. as the actual difference  
+    will only be (29/50 ) 14 = 8.12.  Furthermore, the standard deviation of the  
+     experimental group will increase. 
+ 
+ii. If the 21 parents can be identified will excluding their children from the 50 
+and only comparing the 29 who delivered the program to the 50 controls 
+typically improve power over analyzing al 50 together?  Explain why or why not 
+ 
+      Should improve power as the difference will once again be Δ=14 which  
+
+----- page 9 -----
+ 
+9
+      By removing the 21 “contaminated” observations will offset the reduction in  
+       sample size to 29 in that arm  
+ 
+\ 
+4. This data exists on the number of hurricanes that have hit Typhoon Island, a place that 
+lies on the equator and thus has hurricanes throughout the year. 
+NUMBER OF HURRICANES HITTING TYPHOON ISLAND 
+Year 
+2007 
+2008 
+2009 
+2010 
+2011 
+2012 
+2013 
+2014 
+2015 
+2016 
+Number
+2 
+5 
+7 
+1 
+4 
+0 
+9 
+3 
+8 
+5 
+ 
+COMPETENCIES = Central Limit Theorem, Properties of expectation and variance, 
+Poisson distribution  
+ 
+A. Assume that the number of hurricanes each year is independent with a common 
+standard deviation, but that the intensity can differ randomly from year to year. 
+Then derive a large sample estimate for the expected number of hurricanes in 2017 
+and the standard deviation of this estimate. 
+ 
+Normal Distribution Central Limit Theorem 
+ 
+Mean = (2+5+7+1+4+0+9+3+8+5) / 10 = 4.4 
+ 
+Variance of Estimated Mean 
+                   = {[(22 + 52  + 72  + 12  + 42  + 02  + 92  + 32  + 82  + 52  )  - 10 (4.42  )] 
+                                                                   /(10-1)}}/10 
+ 
+                   = {[[4 + 25 + 49 + 1 + 16 + 0 +81 +9 + 64 + 25] -193.6 ] / 9} / 10 
+ 
+                   =   {(274 -193.6]/ 9 }/10 = 8.93 / 10 = 0.893 
+ 
+Std-Err = SQRT(0.893) = 0.945 
+ 
+B.   Assume that monetary damages from each hurricane is independently distributed 
+including being independent of the number of hurricanes that occur in one year . 
+Use the information on monetary damages from 8 randomly chosen hurricanes 
+below along with your answer to A  above to give an estimate for the expected total 
+monetary damages from all hurricanes in 2017  
+ 
+MONETARY DAMAGES FROM 8 RANDOMPLY CHOSEN HURRICAINES 
+Hurricane 
+1 
+2 
+3 
+4 
+5 
+6 
+7 
+8 
+Damages
+5 
+6 
+4 
+8 
+7 
+6 
+5 
+6 
+ 
+For Expected Costs of each Hurricane Based on The Above Table   
+Mean Costs of Damages is  (5+6+4+8+7+6+5+7) / 8= 5.87 
+ 
+Variance of the estimated mean is 
+                    = {[(52  + 62  + 42  + 82 + 72  + 62  + 52  + 72)  - 8 (62 )] /(8-1)} / 8 
+
+----- page 10 -----
+ 
+10
+             = {[(25  + 36  + 16  + 64 + 49  + 36  + 25  + 49)  - 275.7 )] /(8-1)} / 8 
+             = [(300 -275.7) /7]/8 = 3.47 / 8 = 0.43 
+ 
+       Expected Expenditures  = Expected Number x Expected Cost Per Event  
+ 
+                                                       =    4.4 x 5.87   = 25.83 
+ 
+ 
+C. Now assume that the number of hurricanes each year is independent with the same 
+intensity over time and derive a large sample estimate for the expected number of 
+hurricanes in 2017 and the standard deviation of this estimate. 
+ 
+Poisson Distribution 
+ 
+Mean = (2+5+7+1+4+0+9+3+8+5) / 2 = 4.4 
+Variance = 4.4 / 10  = 0.44 
+Std-Dev = SQRT(0.44) = 0.66  
+ 
+ 
+
+----- page 11 -----
+ 
+11
+ 
+___________________________________________ 
+SPRING 2017 
+ 
+1. THE TOWERS OF THANG-LONG are ceramics that were produced by only two 
+schools in the 14th century, the Borneo-cast and the Malacca-cast.  It is very difficult 
+to determine which school had manufactured a given ceramic tower but it is known  
+ 
+Competencies – Bayes Theorem Properties of the Normal Distribution  
+ 
+• height of towers made by the Borneo-cast are distributed N(25.00, 10.00)  
+• height of towers made by the Malacca-cast are distributed N(30.00,5.00). 
+• also 40% of Thang-Long towers were made by the Borneo cast. 
+ 
+a. An archeologist discovers a Thang-Long tower that is 27.50 units. Use the 
+above information to estimate the probability that it was made by the 
+Borneo-cast school 
+ 
+P{B|B U M} = f{B} / [f{B} + f{M}]  when M and B are disjoint 
+ 
+2
+2
+(27.5 25)
+2 5
+1
+( ) 0.4 2 5
+x
+f B
+e
+π
+−
+−
+=
+     
+2
+2
+(27.5 30)
+2 10
+1
+(
+)
+0.6 2 10
+x
+f M
+e
+π
+−
+−
+=
+ 
+ 
+2
+2
+2
+2
+2
+2
+(27.5 25)
+2 5
+(27.5
+)
+(27.5 30)
+2 5
+2 10
+1
+0.4 2 5
+1
+1
+0.4
+0.6
+2 5
+2 10
+x
+x
+x
+e
+e
+e
+µ
+π
+π
+π
+−
+−
+−
+−
+−
+−
++
+=
+6.25
+50
+6.25
+6.25
+50
+200
+0.75
+e
+e
+e
+−
+−
+−
++
+=
+0.125
+0.125
+0.0325
+0.75
+e
+e
+e
+−
+−
+−
++
+= 
+0.882
+0.882
+0.75(0.969)
++
+=0.548 
+ 
+ 
+b.  An archeologist has 5 Thang-Long towers that were all made by the same 
+school  the mean height is 27.50 units.  Use this to estimate the probability 
+that it was made by the Borneo-cast school. 
+ 
+Now 
+2
+2
+(27.5 25)
+5
+2
+5
+1
+(B)
+0.4
+5
+2
+5
+x
+f
+e
+π
+−
+−
+
+
+
+
+
+
+=
+ and 
+2
+2
+(27.5 25)
+10
+2
+5
+1
+(
+)
+0.6
+10
+2
+5
+x
+f M
+e
+π
+−
+−
+
+
+
+
+
+
+=
+ 
+
+----- page 12 -----
+ 
+12
+2
+2
+2
+2
+2
+2
+(27.5 25)
+5
+2
+5
+(27.5 25)
+(27.5 25)
+5
+10
+2
+2
+5
+5
+1
+0.4
+5
+2
+5
+1
+1
+0.4
+0.6
+5
+10
+2
+2
+5
+5
+x
+x
+x
+e
+e
+e
+π
+π
+π
+−
+−
+
+
+
+
+
+
+−
+−
+−
+−
+
+
+
+
+
+
+
+
+
+
+
+
++
+=
+6.25
+10
+6.25
+6.25
+10
+40
+0.75
+e
+e
+e
+−
+−
+−
++
+= 
+ 
+0.625
+0.625
+0.156
+0.75
+e
+e
+e
+−
+−
+−
++
+= 
+0.535
+0.535
+0.75(0.855)
++
+=0.455 
+ 
+ 
+ 
+c. What additional information from the measures of the 5 towers in b. could 
+help to produce a better estimate for the probability that it was made by the 
+Borneo-cast school.  Only describe the information not why it could be useful 
+ 
+Knowing the standard deviation of the 5 measures would be useful as 
+Malacca-cast towers standard deviation is smaller so a smaller sample 
+standard deviation would put more evidence towards Malacca-cast and a 
+larger standard deviation would support  Borneo-cast. 
+ 
+ Or better than that, knowing the value for each of the five observations so 
+that an overall likelihood ratio could be constructed as the product of each of 
+the five LRs 
+ 
+ 
+4.  THE SNAKES OF THE KALAHARI undergo a long migration during the summer months 
+where many of the snakes die.  Dr. Lizard-Beth Taylor (LBT) measured pre-migration 
+weight centigrams (cg) and length in centimeters (Cm) and on 100 snakes plus whether or 
+not the snakes survived the migration. 
+ 
+COMPETENCIES – Logistic Regression, Delta Method, Causal Inference  
+ 
+SHE FIRST FITS THIS LOGISTIC REGRESION MODEL FOR SURVIVING MIGRATION THAT 
+USES WEIGHT AS A PREDICTOR 
+                                             Estimate          Variance 
+        Intercept ( a⌢)                -0.7                     0.25              
+( , )
+Cov a b
+⌢
+⌢
+ = -0.007 
+        Weight   (b
+⌢
+)                    0.2 /cg             0.0004 
+ 
+  
+A. Snake A is 2 cg heavier than Snake B.  Give an OR and 95% confidence interval for the 
+odds ratio of Snake A surviving the migration Vs. Snake B. 
+               
+
+----- page 13 -----
+ 
+13
+                 Point Estimate is e2(0.2) = e0.4 = 1.49 
+ 
+                  For 95% CI do 95% CI for b first which is 0.2 1.96* 0.0004
+±
+ or 0.2 1.96*0.02
+±
+ or 
+                     (LL=0.16, UL = 0.24) 
+ 
+                  Then 95% CI is  [e2*LL < OR < e2*UL] or [e0.32 < OR < e0.48] or 1.37 < OR < 1.62 
+ 
+B. Give a point estimate and 95% confidence interval for the probability that a 10 Cg snake 
+survives the migration 
+ 
+               Point Estimate is 
+0.7 10(0.2)
+1.3
+0.7 10(0.2)
+1.3
+3.67
+0.79
+1
+1
+1 3.67
+e
+e
+e
+e
+−
++
+−
++
+=
+=
+=
++
++
++
+ 
+ 
+               For 95% CI, do 95% CI for a + 10 (a) first 
+ 
+                 Point Estimate of a + 10 (b) is -0.7 + 10(0.2) = 1.3 
+ 
+                 StdDev of α + 10 (β) is
+2
+( )
+10 (Var( ))
+2*10(Cov( ,
+))
+Var α
+β
+α β
++
++
+ 
+                                                          = 
+0.25 100*0.0004
+2*10*0.007
++
+−
+ 
+                                                          = 
+0.15  = 0.39 
+ 
+                   So 95% CI for α + 10 (β)  is 1.3 ± 1.96 * 0.39 or (LL=0.53 to UL=2.06) 
+                          
+1
+1
+LL
+UL
+LL
+UL
+e
+e
+S
+e
+e
+<
+<
++
++
+ is a 95% confidence interval 
+                                 
+e0.53
+1+ e0.53 < S <
+e2.06
+1+ e2.06 or 1.70
+1+1.70 < S <
+7.84
+1+ 7.84 or 0.63 < S < 0.88 
+ 
+ 
+SHE THEN FITS TWO MORE MODELS FOR SURVIVING THE MIGRATION WITH [LENGTH] 
+AND [LENGTH + WEIGHT] AS PREDICTORS 
+ 
+                                             Estimate          Variance     |                            Estimate          Variance      
+        Intercept                     1.3                     0.32            |        Intercept       -0.4                  0.50 
+        Length                        -0.05                   0.004         |        Length           -0.6                  0.003 
+                                                                                               |       Weight            0.3                  0.0003 
+ 
+ C. Use the information on all Three models fitted to determine the best answer for if there 
+is a causal association between length and probability to survive 
+ 
+ANSWER IS NO   
+ 
+   From the model with only length, the Z-Value for weight is 
+0.05 /
+0.004
+0.05 / 0.2
+0.25
+−
+= −
+= −
+  which has a two sided P-Value of 0.80 
+ 
+
+----- page 14 -----
+ 
+14
+NOTE – The adjusted model using Weight and Length is not a good model to use.   Since we 
+know that longer lizards have bigger body volume and thus are heavier.  We know that 
+heavier weight is associated with longer survival.  It stands to reason that if two lizards 
+have the same weight that the longer lizard is “skinnier” and hence if it is skinnier lizards 
+are more likely to die then length should have a negative coefficient after adjusting for 
+weight.    
+ 
+
+----- page 15 -----
+ 
+15
+ 
+____________________________________________ 
+FALL 2016 
+ 
+1.  People want to compare two plantations for pesticide levels in bananas. They have tested the levels 
+of 6 randomly chosen bunches of bananas each from these two plantations.    From each bunch, two 
+randomly chosen bananas are tested. The following pesticide level results are observed for the two 
+bananas within each Bunch 
+ 
+COMPETENCIES = Linear Models / Design of Experiments (Nested Design) 
+ 
+PLANTATION A  - Bunch-1  20, 24  Bunch-2  30, 24  Bunch-3  19, 19  Bunch-4  12, 18  Bunch-5 27, 21  
+Bunch-6  15, 23 
+ 
+PLANTATION B  - Bunch-1  20, 14  Bunch-2  20, 24  Bunch-3  16, 14  Bunch-4  17, 13  Bunch-5 17, 15  
+Bunch-6  19, 17 
+ 
+You can assume the observations are independently normally distributed with equal variance 
+ 
+MODEL  Yijk = u  + b I{From Plantation B Effect} + γj(Plantation)  + ϵijk 
+ 
+    Where i = A, B 
+                J = 1, … 6 
+                k = 1,2 
+ 
+NOTE No one should consider the repeated bananas in the same bunch as independent without 
+including the γj Bunch Effect 
+ 
+From the data we get 
+1
+2
+3
+4
+5
+6
+..
+22,
+27,
+19,
+15,
+24,
+19
+21
+    
+A
+A
+A
+A
+A
+A
+A
+Y
+Y
+Y
+Y
+Y
+Y
+Y
+=
+=
+=
+=
+=
+=
+=
+  
+1
+2
+3
+4
+5
+5
+17,
+22,
+15,
+14,
+16,
+18
+B
+B
+B
+B
+B
+B
+Y
+Y
+Y
+Y
+Y
+Y
+=
+=
+=
+=
+=
+=
+   
+B..
+17
+Y
+=
+ 
+ 
+The pooled variance of 
+..
+B
+Y
+Yi.. is  
+2
+2
+2
+2
+2
+2
+2
+2
+2
+2
+2
+2
+(22
+21)
+(27
+21)
+(19
+21)
+(15
+21)
+(24
+21)
+(19
+21)
+(17
+17)
+(22
+17)
+(15
+17)
+(14
+17)
+(18
+17)
+(17
+17)
+(6
+1)
+(6
+1)
+−
++
+−
++
+−
++
+−
++
+−
++
+−
++
+−
++
+−
++
+−
++
+−
++
+−
++
+−
+−
++
+−
+ 
+= 1
+36
+4
+36
+9
+4
+0
+25
+4
+9
+1
+0
+10
+12.7
++
++
++
++
++
++
++
++
++
++ + =
+ 
+So ˆ
+12.7
+3.56
+σ =
+=
+ with 10 degrees of freedom 
+ 
+ 
+A. Give the best 95% confidence interval for the mean level of pesticides in Bananas from 
+Plantation A 
+ 
+..
+10,0.975 ˆ
+(
+/
+6)
+A
+Y
+t
+σ
+±
+  or 21
+2.23 (3.56 / 2.45)
+x
+±
+  or (17.67, 24.24) 
+ 
+
+----- page 16 -----
+ 
+16
+NOTE – Some people may base the variance only on
+1
+2
+3
+4
+5
+6
+..
+,
+,
+,
+,
+,
+  
+  
+A
+A
+A
+A
+A
+A
+A
+Y
+Y
+Y
+Y
+Y
+Y
+about Y
+  which is 
+17.4 or std-dev = 4.17  in which case they should also use 5,0.975
+t
+= 2.57 
+ 
+ 
+ 
+B. Give the best statistical test of whether mean pesticide levels differ in Plantation A and B at a 
+two sided α=0.05 
+ 
+..
+..
+10
+(
+)
+(21 17)
+4
+1.95
+2.05
+ˆ 1/ 6 1/ 6)
+3.56 1/ 3
+B
+A
+df
+Y
+Y
+t
+σ
+−
+−
+=
+=
+=
+=
++
+  p > 0.05 for 10 d.f . 
+ 
+ 
+ 
+4.  Three types of Fish live in Rutgers pond; Busch-fish, Livingston-fish and Douglas-fish. Drs. HD and DH 
+each recorded fish caught in Rutgers pond from randomly chosen samples.   
+• Out of a random sample of 120 fish recorded by Dr. HD, 40 were Douglas, 40 were 
+Livingston and 40 were Busch.    
+• Dr. DH recorded results from a different independent random sample. But he did not 
+record the number of Busch fish   Thus out of 90 fish that were either Douglas or 
+Livingston, Dr. HD recorded 60 Livingston and 30 Douglas 
+ 
+Assume that the fish recorded by Drs. HD and DH both random, independent of each other and 
+obtained under the same probabilities to be a Douglas, Livingston or a Busch. 
+ 
+COMPETENCIES = Binomial Distributions, Bayes Theorem and related statistical properties 
+ 
+A. Use this data from Drs. HD and DH to find the best point estimates for the probability 
+that the species of a fish caught at Rutgers pond were i) Douglas, ii) Livingston and iii) 
+Busch 
+ 
+The only sample that can be used to estimate probability a fish is a Busch is from  Dr. HD which is 
+40/120  = 1/3 
+ 
+The probability to be a Douglas is determined by both samples 
+ 
+                     P{Not-Busch}        * P{Douglas | Not-Busch} 
+ 
+                          80 / 120              *  (40 + 30) / (80 + 90) 
+                       From HD                           from DH & HD 
+ 
+             =           2/3                     *   70/170        = 14/51    
+                                                         
+The probability to be a Livingston is determined by both samples 
+ 
+                     P{Not-Busch}         * P{Livingston | Not-Busch} 
+ 
+                          80 / 120              *  (40 + 60) / (80 + 90) 
+
+----- page 17 -----
+ 
+17
+                       From HD                           from DH & HD 
+ 
+             =           2/3                     *   100/170        = 20/51    
+ 
+ 
+B. Give a large sample 95% confidence interval for the probability that the species of a fish 
+caught at Rutgers Pond is a Busch 
+ 
+Use Var (A * B )  = Var(A) * [E[B]]2  + Var(B) * [E[A]]2 
+ 
+Where  
+ 
+     A is probability to not be Busch 
+ 
+     B is probability to be Douglas | Not-Busch 
+ 
+E[A]  = 80/120  Var[A] = [80/120 * 40/120]/120 = 2/1,080 
+ 
+E[B]  = 7/17  Var[B] = [7/17 * 10/17]/170 = 70/49,130 = 7/4,913 
+ 
+So Var(A*B) = [80/120]2 * 7/4,913 + [7/17]2 * 2/1,080 = 0.000947 
+ 
+      Or Std-Dev (A*B) = (0.000947)0.5 = 0.031 
+ 
+Thus 95% CI  is 14/51 ± 1.96 * 0.031 = (0.2745 – 0.0608, 0.2745 + 0.0608) 
+                                                                  (0.2137, 0.3353) 
+ 
+ALTERNATE METHOD USING DELTA METHOD ON LOG TRANSFORMED DATA 
+ 
+Var [ Log(A * B) ]  = Var(Log(A)) + Var(Log(B)) 
+ 
+Var[Log(A)]  = Var(A)/[E[A]]2 = 2/1,080 / [80/120]2 = 9 / 2,160 
+ 
+Var[Log(B)]  = Var(B)/[E[B]]2 = 7/4,913 / [7/17]2 = 289 / 34,391 
+ 
+So Var [ Log(A * B) ]  = 9/2,160 + 289/34,391 = 0.01257 
+ 
+Std-Dev[Log(A * B)] = (0.01257)0.5  = 0.112 
+ 
+So 95% CI log(A*B) is Log(14/51) ± 1.96 * 0112  = -1.29 ± 0.22 = (-1.51, -1.07) 
+ 
+             Exponenting back is  e-1.51,  e-1.07  or (0.22, 
+
+----- page 18 -----
+ 
+18
+ 
+___________________________________________ 
+SPRING 2016 
+ 
+1. An investigator reads a journal article on Total-cholesterol, HDL-cholesterol and LDL-cholesterol 
+from a study of 100 patients where Total-cholesterol = HDL + LDL cholesterol.  Assume that for 
+HDL, LDL and Total cholesterol the distributions are iid multivariate normal. The article reports 
+for: 
+ 
+            HDL:       sample-mean =  145  and p-value for the population mean to be 150 is 0.10 
+            LDL:       sample-mean  =   48  and  p-value for the population mean to be 50 is 0.05 
+            TOTAL:   sample-mean  = 193  and  p-value for the population mean to be 200 is 0.05 
+ 
+       All P-values are TWO-SIDED 
+ 
+COMPETENCY = Basic properties of normal distribution and means / covariances  
+ 
+He must derive standard deviations and covariances for HDL and LDL from this information 
+          
+A. Work backwards from the p-values for the populations means equaling the specified values 
+based on the observed sample means to obtain the standard deviations for both HDL and LDL 
+in the observations? 
+ 
+For HDL 
+   
+1 0.10/ 2
+|150 145|
+/ 100
+Z
+σ
+−
+−
+=
+ or 
+5
+1.65
+/ 100
+σ
+=
+ or 
+5
+1.65/10
+σ
+=
+ or 
+50
+30.3
+1.65
+σ =
+=
+ 
+ 
+For LDL 
+ 
+1 0.05/2
+| 50
+48|
+/ 100
+Z
+σ
+−
+−
+=
+ or 
+2
+1.96
+/ 100
+σ
+=
+ or 
+2
+1.96/10
+σ
+=
+ or 
+20
+10.2
+1.96
+σ =
+=
+ 
+ 
+B. What is the covariance of HDL and LDL cholesterol in a single observation? 
+ 
+Since HDL + LDL = TOTAL  
+ 
+Var(TOTAL) = Var(HDL) + Var(LDL) + 2*Cov(HDL, HDL) 
+ 
+But from A we just saw that Var(HDL) = (30.3)2 = 918 
+                                                               Var(LDL) = (10.2)2 = 104 
+ 
+          To get the Variance of the TOTAL 
+ 
+1 0.20/ 2
+| 200 193|
+/ 100
+Z
+σ
+−
+−
+=
+ or 
+7
+1.96
+/ 100
+σ
+=
+ or 
+7
+1.96/10
+σ
+=
+ or 
+70
+35.7
+1.96
+σ =
+=
+ 
+ 
+
+----- page 19 -----
+ 
+19
+    or Var(HDL) = (35.7)2 = 1,274 
+ 
+    So   1,274 = 918 + 104 + 2*Cov(HDL, HDL) 
+           1,274 -  (918 + 104) =  2*Cov(HDL, HDL) 
+               252 =  2*Cov(HDL, HDL) 
+            Cov(HDL, HDL) = 252/2 = 126 
+ 
+ 
+2. Dawn-Holly plants have male and female genders.  The time for a single female Dawn-Holly 
+plant grown alone to bloom from birth (i.e. emergence from the ground) in weeks is distributed 
+exponential with lambda=10; f(t) = (1/10) e-t/10.  The time for a single male Dawn-Holly grown 
+alone to bloom is exponential with parameter lambda=15; (1/15) e-t/15.  However, if a female 
+plant is grown paired with (i.e. within 50 feet of) a male plant the time to blooming for both 
+plants is independent except that once the male plant blooms, the pollen released by the male 
+triggers the female plant to immediately bloom if the female plant did not bloom first. Thus 
+when a male and female Dolly-Holly are paired together, the time for the female plant is min (Y, 
+Z) where Y ~ exp(10) and Z ~ exp(15). 
+COMPETNECY = Properties of exponential and normal approximation 
+ 
+A. Compared to growing a female Dolly-Holly alone, by how much time on average does 
+pairing the female plant with a male Dolly-Holly plant reduce the expected time to bloom 
+for a female Dolly-Holly?  
+ 
+The mean of the time to blooming for a female plant that is not paired is 1/(1/10) = 10 
+weeks.   
+ 
+When paired with the main plant, the CDF if time to bloom for the female plant is e-t/10 x e-
+t/15 = e-5/30 = e-1/6.  So the mean time to bloom is now 6 weeks. 
+ 
+This means that adding the male plant has reduced the time to bloom on average by 4 
+weeks = 10 – 6 weeks 
+ 
+B. If N=100 independent pairs of female and male Dolly-Holly plants are grown, Let X be then 
+number of pairs where the male Dolly-Holly bloomed first and stimulated the female plant 
+to bloom.   What is the probability that X >= 50. 
+ 
+For each pair, the probability the male blooms first is 4/10 derived as follows.  The probability 
+the male blooms first is 
+0
+(
+) (Pr
+)
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+f male blooms at x
+ob female Not Bloomed By X
+∞
+ = 
+/10
+/15
+( /10
+/15)
+( /6)
+( /6)
+0
+0
+0
+0
+(1/15)
+(1/15)
+(1/15)
+|
+(6 /15)
+ 
+t
+t
+t
+t
+t
+t
+e
+e
+dt
+e
+dt
+e
+dt
+e
+∞
+∞
+∞
+−
+−
+−
++
+−
+∞
+−
+=
+=
+=
+−
+
+
+
+  
+                                                                       =  6/15 = 0.4 
+So using the normal approximation to the binomial, the probability to observe 50 or more pairs 
+(0.5 of the 100 pairs) in which the male blooms first is 1 minus the CDF of Z where 
+ 
+0.5 0.4
+(0.4)(1 0.4)/100
+0.1
+2.04
+0.0489
+Z
+−
+−
+=
+=
+=
+ and Z-1(2.04) = 0.9793  so the answer is 
+ 
+1 – 0.9793 = 0.02
+
+----- page 20 -----
+ 
+20
+ 
+___________________________________________ 
+FALL 2015 
+ 
+1. Dr. Jones obtained least squares linear regression estimates for parameters of this linear model with 
+an interaction term Y  = a + b1 X1  + b2 X2  + b12 X1 X2 + ε  using 94 adults;  where  Y is hematocrit, X1 is sex 
+(0=female, 1=male)  X2 is [age in years  – 30] ;  a, b1, b2, and b12 and are unknown constants; and ε is 
+normally distributed error with mean 0 and unknown variance σ2 and obtained the following estimates. 
+You can assume that all of these previous assumptions are valid when you answer the questions. 
+PARAMETER 
+ESTIMATE 
+STD-ERROR 
+a 
+40 
+1.1 
+b1 
+-0.1 
+0.025 
+b2 
+-2 
+0.5 
+b12 
+-0.5 
+0.025 
+ and 
+2ˆ
+10
+σ
+=
+ 
+ 
+A. Give a 95% confidence interval for σ2 or if you cannot answer the question from the 
+information given explain what additional information you would need to answer the question 
+ 
+COMPETENCY = LINEAR MODELS 
+                        
+2
+2
+ˆ
+(
+/
+)  90
+x
+σ
+σ
+   has a chisquare distribution with 94-4 = 90 d.f. 
+ 
+            So 
+2
+2
+2
+2
+2
+(94,0.975)
+(94,0.025)
+ˆ
+ˆ
+(
+/ 90)
+ < 
+ < (
+/ 90)
+χ
+σ
+σ
+χ
+σ  is a balanced 95% confidence  
+              interval for σ2  where
+2
+(94,0.975)
+65.647 / 90
+0.73
+χ
+=
+=
+ and 
+               
+2
+(94,0.025) / 90
+118.136 / 90
+1.31
+χ
+=
+=
+  
+            thus  0.73 * 10 <  σ2 < 1.31 * 10    
+                               7.3 <  σ2  < 13.1   is a balanced 95% CI for σ2 
+ 
+B. Give a 95% confidence interval for the mean hemoglobin of 30 year old women or if you 
+cannot answer the question from the information given explain what additional information 
+you would need to answer the question 
+Start By Getting the Expected Value First: 
+For a 30 years old woman, X1 = X2 = 0 so     E[Y]  = a + b1 X1  + b2 X2  + b12 X1 X2    
+ 
+E[Y]  = a + b1 0  + b2 0 + b12 0   = a    
+ 
+And Now you can see that the 95% CI for a is the 95% confidence interval for E[Y] of a 30 year 
+old woman ….  Since df = 90 which is > 60 you can use Z statistic and  
+ 
+ˆ
+ˆ
+ˆ
+ˆ
+1.96(
+( ))
+  
+1.96(
+( ))
+a
+std
+err a
+a
+a
+std
+err a
+−
+−
+<
+<
++
+−
+ 
+            
+40 1.96(1.1)
+  
+40 1.96(1.1)
+a
+−
+<
+<
++
+   or      40
+2.16
+  
+40
+2.16
+a
+−
+<
+<
++
+ or 
+ 
+  (37.84, 42.16) is the 95% confidence interval for the expected 
+                hematocrit of a 42 year old woman
+
+----- page 21 -----
+ 
+21
+ 
+4. Dr. Lee developed The Dooku-Test for infection by the Dooku virus. 
+I. He tests 1,000 persons who truly have the Dooku virus The Dooku-Test 
+• 
+correctly identifies that 990 have the Dooku virus  
+• 
+falsely identifies that 10 do not have the Dooku virus 
+II. He then tests 1,000 persons who don’t have the Dooku virus The Dooku-Test 
+• 
+correctly identifies that 990 do not  have the Dooku virus  
+• 
+falsely identifies that 10 do have the Dooku virus 
+             
+              Remember that the numbers in I and II are sample estimates   
+ 
+             Suppose in the United States that exactly 1/1000 of the persons (0.001) are   
+             infected with the Dooku virus which means 0.999 are not.   You should take this  
+             number to be known and not an estimate 
+ 
+COMPETENCIES =  Applied Probability, Normal Approximation to Binomial, Bayes Theorem  
+ 
+A. Give the best point estimates for 
+a. probability that a US person is both infected with the Dooku virus and would test 
+positive for Dooku by the Dooku-Test.  
+ 
+ANSWER 
+P{infected} x P{test positive | infected} 
+                            0.001    *      0.99                                           = 0.00099 
+ 
+b. Give the best point estimated for the probability that a US person is both not infected 
+with the Dooku virus and would test positive for Dooku by the Dooku Test.  
+ 
+ANSWER 
+P{Not infected} x P{test positive | not infected} 
+ 
+                           (1-0.001)       *                     0.01                     = 0.0099 
+ 
+ 
+ 
+B. Give a large sample 95% confidence interval for the point estimate in A-a. up above 
+ 
+It is known that 0.001 are infected so with Dooku this is a constant.  The 0.99 probability for a 
+person infected with Dooku to test positive by the Dooku test is a point estimate.  The 95% large 
+sample CI is
+0.01*0.99
+0.99 1.96
+1,000
+±
+or 0.99±0.003 or 0.987 – 0.993.   
+ 
+Since the probablilty to be infected with the Dooku virus was given as a constant, we just use it 
+to multiply these limits 
+ 
+Thus [0.001 x 0.987] to   [0.001 x 0.993]   or 0.000987 – 0.000993 is a 95% confidence interval for 
+a US person to be infected with Dooku and to test positive  
+ 
+      
+
+----- page 22 -----
+ 
+22
+ 
+C. If a US person tests positive for the Dooku virus, give the best point estimate for the probability 
+they are really infected with that virus.  
+ 
+From Bayes Theorem  P {A | (A U B)}  = 
+{ }
+{ }
+{B}
+P{A
+B}
+P A
+P A
+P
++
+−
+∩
+ 
+ 
+         P{A} + P{B}  - P{A∩B}    where 
+ 
+          A = Person is Truly positive and tests positive  P{A} = 0.0099 
+          B = Person is Truly negative and tests positive  P{B} = 0.00099 
+         P{A∩B}  = 0 since a person can’t be both truly positive and 
+                                Truly negative at the same time 
+ 
+  So P {A | (A U B)}  = 
+0.00099
+1
+0.0909
+0.00099
+0.099
+11
+=
+=
++
+ 
+        
+
+----- page 23 -----
+ 
+23
+ 
+___________________________________________ 
+SPRING 2015 
+ 
+4.  A researcher wants to compare the effectiveness of three anti-wrinkle creams as used for 
+different age groups.   The response variable is a numerical measure on a ratio scale of the 
+reduction of wrinkles.  6 doctors participate in the study.  2 doctors are assigned at random to 
+each cream.   Each doctor has 4 participating patients aged 40-45,  4 participating patients aged 
+50-55, and 4 participating patients aged 60-65.  The researcher views the doctors as a random 
+sample of doctors, and the patients as a random sample of their patients within those age 
+groups.  The data layout is as follows. 
+ 
+                        Cream 1                                       Cream 2                                          Cream 3 
+         
+  Doctor 1     Doctor 2         Doctor 3               Doctor 4          Doctor 5       Doctor 6 
+ 
+40-45          4  
+ 4 
+ 
+4 
+ 
+4 
+ 
+4 
+ 
+4 
+ 
+ 
+50-55         4  
+ 4 
+ 
+4 
+ 
+4 
+ 
+4 
+ 
+4 
+ 
+60-65         4  
+4 
+ 
+4 
+ 
+4 
+ 
+4 
+ 
+4 
+ 
+Write out the ANOVA table showing source of variability, degrees of freedom, Expected Mean 
+Squares, and show which F ratios to take. 
+ 
+COMPETENCIES 
+                 Linear Models 
+                 Design of Experiments 
+ 
+BEST WAY TO ANSWER THIS IS TO HAVE A BOOK THAT HAS A LAYOUT FOR THIS TYPE OF ANOVA 
+DESIGN IF THEY ARE STILL PRINTED 
+ 
+NOTE – Doctor is nested within cream 
+                     i  enumerates age group 
+                     J  enumerates cream 
+                     k enumerates doctor nested within cream 
+                     l  enumerates patient 
+ 
+3 x 2 x 3 x 4 = 72 subjects 
+ 
+Model is Yijkl
+  = u + ai + bj + ck(j) + εijkl     with εijkl iid N(0,σe
+2) 
+ 
+Where    u has 1 degree of freedom  
+            Σ aI = 0     so   3-1 = 2 degrees of freedom, but as random effects,  aI
+  iid N (0 σa
+2),  
+            Σ bJ  = 0     so   3-1 = 2 degrees of freedom, but as random effects,  bJ
+  iid N (0 σb
+2),   
+
+----- page 24 -----
+ 
+24
+             Within each j= 1,2, 3    Σ ck(j)  = 0   so 3 x (2-1) = 3 degrees of freedom 
+                                 but as random effects, ck(J)    iid N (0 σc
+2),   
+ 
+So model has 1 + 2 + 2 + 3 =  8  degrees of freedom.  Residual d.f. = 72  - 8 = 64 
+ 
+ANOVA TABLE  
+ 
+SOURCE         SUM-OF-SQUARES                               D.F             MS                   EMS  
+AGE                 
+3
+2
+..
+...
+1
+3 2 4
+(
+)
+i
+i
+x x
+Y
+Y
+=
+−
+
+                              2                 MSa              σe
+2  +   24 σa
+2        
+CREAM           
+3
+2
+. .
+...
+1
+3 2 4
+(
+)
+j
+j
+x x
+Y
+Y
+=
+−
+
+                              2                 MSb              σe
+2 + 4 σb
+2  +  24 σc
+2       
+ 
+DOCTOR          
+3
+2
+2
+. k
+.j.
+.
+1
+1
+3 4
+(
+)
+j
+j
+k
+x
+Y
+Y
+=
+=
+−
+
+                           3                  MSc              σe
+2  +  4 σb
+2     
+ 
+RESIDUAL      
+3
+3
+2
+4
+2
+..
+. k
+.j.
+.
+1
+1
+1
+1
+(Y
+)
+ijkl
+i
+j
+i
+j
+k
+l
+Y
+Y
+Y
+=
+=
+=
+=
+−
+−
++
+
+        64               MSe              σe
+2         
+TOTAL            
+3
+3
+2
+4
+2
+....
+1
+1
+1
+1
+(Y
+)
+ijkl
+i
+j
+k
+l
+Y
+=
+=
+=
+=
+−
+
+                           71                
+ 
+F – Ratios tp Take 
+ 
+                MSa / MSe  to Test Age Effect 
+                MSb / MSc  to Test Cream Effect  
+                MSc / MSe  to Test Doctor Effect 
+
+----- page 25 -----
+ 
+25
+ 
+_________________________________________ 
+FALL 2014 
+ 
+1. Below are data on numbers of AIDs  Cases, number of AIDs Cases caused by PCP and KS for 
+North American cities. (Note AIDS Being Caused by PCP and by KS is mutually exclusive). 
+ 
+AIDS CASES 
+CITY 
+TOTAL 
+CAUSED BY PCP 
+CAUSED BY KS 
+Des Moines 
+200 
+30 
+30 
+El Paso 
+200 
+20 
+50 
+                      Let pD  be the portion of all AIDS cases in Des Moines caused by PCP 
+                             pE  be the portion of all AIDS cases in El Paso caused by PCP 
+ 
+                                           kD  be the portion of all AIDS cases in Des Moines caused by KS 
+                             kE  be the portion of all AIDS cases in El Paso caused by KS 
+COMPETENCIES 
+         Two BY Two Table Word Problem – Question a  
+         Conditional Chisquare Approximation Word Problem – Question b  
+ 
+a. Dr. LP believes that pE = pD .  Give a large sample test of this alternative hypothesis against 
+the appropriate null at α=0.05 
+ 
+TWO BY TWO TABLE (WITHOUT CONTINUITY CORRECTION) 
+ 
+ 
+AIDS - PCP+ 
+AIDS - PCP+ 
+TOTAL 
+Des Moines 
+30 
+170 
+200 
+El Paso 
+20 
+180 
+200 
+TOTAL 
+50 
+350 
+400 
+ 
+−
+2
+(180*30 170*20) 400
+50*350*200*200
+=2.28 P > 0.05 two sided H0 
+ 
+b. Dr. PL believes kD = 2pD  Give a large sample test of this alternative hypothesis against the 
+appropriate null at α=0.05 
+CONDITIONAL TWO BY TWO TABLE (WITHOUT CONTINUITY CORRECTION) 
+ 
+AIDS - PCP 
+AIDS – KS 
+TOTAL 
+Des Moines 
+30 
+30 
+60 
+ 
+     Conditional on 30 PCP + KS cases = 60 total in Des Moines, under the null hypothesis the 
+expected number of PCP and KS cases are 20 and 40 each 
+ 
+−
+−
+−
+=
++
+=
++
+=
+
+2
+2
+2
+(
+)
+(30
+20)
+(30
+40)
+5
+2.5
+7.5
+20
+40
+O
+E
+E
+ 
+ 
+Compare this to 3.84  the upper (1-0.05) level of a χ2
+1df and reject H0 
+
+----- page 26 -----
+ 
+26
+______________________________________________ 
+SPRING 2014 
+ 
+ 
+2. 400 points are independently and randomly chosen on a square.  
+ 
+ 
+ 
+ 
+    
+ A.  If 329 of the 400 points randomly chosen are within the inscribed circle test the null hypothesis of 
+the probability to fall within the circle is random versus the alternative that it is greater than by chance 
+alone relative to area of the circle at α = 0.05. 
+ 
+B. Now consider only the 329 independent points inside the inscribed circle.  Suppose the radius of 
+this circle is 1 and the sample mean distance of a point from the center of the circle (C) is 
+X =0.65 with a variance of S2 =0.056 (you can use this variance to estimate the variance for the 
+population).  Give a large sample test of the two sided null hypothesis on whether or not the 
+points are closer to the center of the circle than they should be by chance alone if the points 
+were randomly distributed inside the circle. 
+ 
+COMPETENCIES 
+           Single Proportion Hypothesis Normal Approximation Word Problem - Question A 
+           Using Calculus to Find Expected Value and Normal Approximation – Question B 
+ 
+ 
+2. ANSWER TO A 
+ 
+i). If r is the radius of the inscribed circle, then 2r is the height and width of the square.  The area of 
+the inscribed circle is πr2 and the area of the square is 4r2.  So by chance alone, the probability to be 
+inside the circle is πr2 / 4r2 = π/4 = 0.785.  This means if 400 points are independently and randomly 
+chosen, and expected 0.785 will be inside the circle and the variance of this observed portion is 
+0.785 * 0.215 / 400. 
+ 
+ii) 
+In 400 tries 329 or 0.8225 of the points were inside the circle. 
+ 
+iii) 
+Assume the Null Hypothesis and do a Z test 
+ 
+Z = 
+0.8225 - 0.785
+0.785 * 0.215 / 400
+ = 0.0375
+0.0205
+ = 1.83 
+ 
+         
+Since 1.83 > 1.65 = Z0.95 reject Ho for Ha that there is a greater than expected (by relative area) 
+chance for a point to be inside the inscribed circle 
+ 
+ 
+ANSWER TO B 
+*
+    C 
+      
+
+----- page 27 -----
+ 
+27
+ 
+ 
+i) 
+The expected distance of a point from the Center of the Circle is: 
+ 
+            
+1
+0
+(2
+)
+x
+x dx
+π
+π
+
+ = 
+1
+2
+0
+2 x dx
+π
+π
+
+ = 
+3
+1
+0| (2/3) x
+π
+π
+ = 0.667 
+ 
+ 
+ii) 
+Using The Z-Test,  Z = 0.65
+0.667
+0.056/329
+−
+ = 0.0167
+0.0130
+−
+ = -1.23 
+ 
+iii) 
+Since |-1.23| < 1.96 do not reject Ho 
+ 
+ 
+NOTE -  Some students may figure out by using calculus to find E[x2]  that if the distribution of points is 
+random, then the variance of the  distance from the center of the circle is ½ - 4/9 = 0.0555555…..  so the 
+“standard deviation” being 0.056 is likely a misprint.  If so and a student used 0.056 as the variance 
+rather than the standard deviation they would get …. And in fact would probably get most to full credit 
+even if 0.056 did turn out to be the standard deviation, but the student showed their calculations as to 
+why they thought it was the variance. 
+ 
+
+----- page 28 -----
+ 
+28
+ 
+_____________________________________________ 
+FALL 2013 
+ 
+1. Assume that birthdays are iid distributed across 365 days of the year (exclude Feb 29th on leap 
+year).  We have two groups of people 
+ 
+G1 – Has 10 Persons 
+G2 – Has 10 different persons 
+ 
+Applications of Probability 
+ 
+A. What is the probability that no two persons in G1 were born on the same day of the year?  
+ 
+364/365 x 363/365 x   … x 356/365 = 0.883 
+ 
+B. Assume that no two persons in G1 have the same birthdate, then what is the probability that 
+none of the persons in G2 were born on the same day as a person in G1? 
+ 
+(355/365)10 = 0.757 
+ 
+C. Assume again that no two persons in G1 have the same birthdate, what is the probability that 
+none of the 20 persons in G1 and G2 combined have the same birthdate? 
+ 
+355/365 x 354/365 x … 346/365 = 0.667 
+ 
+ 
+
+----- page 29 -----
+ 
+29
+ 
+___________________________________________ 
+SPRING 2013 
+ 
+3.   A Statistics Professor believes that adding videos of statisticians consulting on applied problems to 
+her standard instructional material will help students solve problems.  She designs an experiment to find 
+evidence to support this hypothesis. A total of 167 students are given a test prior to receiving her class 
+(the “pretest”) to see how they approach applied statistics problems.  The pretest is graded Pass or Fail.  
+The students are then randomly divided into two groups: The Experimental Group with 106 students, and 
+the Control Group with 61 students.   Over the next 2 weeks, the Experimental group are shown videos 
+plus her standard instructional material, while the Control group receives only her standard instructional 
+material.  After this is done, all students take the same Pass/Fail test again on solving applied statistics 
+problems (the “post-test”).  You can assume that all students are independent. The following are the 
+combined Pretest Posttest outcomes: 
+ 
+Group        
+ 
+Pretest       Posttest         Number of subjects 
+Experimental                Fail             Fail                      37 
+Experimental                Fail             Pass                     29 
+Experimental                Pass            Fail                      11 
+Experimental                Pass            Pass                     29 
+ 
+Control  
+            Fail             Fail      
+       26 
+Control  
+            Fail             Pass      
+         9 
+Control  
+             Pass            Fail  
+         7 
+Control  
+             Pass            Pass 
+        19 
+ 
+a)  Using only the data for the experimental group is there statistically significant evidence of an 
+improvement between Pretest and Posttest performance.  What is the Null Hypothesis; the Alternative 
+Hypothesis, and show the details for the test used.   
+b)  Using only the data for the control group is there statistically significant evidence of an improvement 
+between the pretest and posttest?  
+c) Now combine the analyses for the experimental and control groups to see if there is statistically 
+significant evidence that adding the video to the instruction was helpful.   
+ 
+ 
+COMPETENCY 
+         McNemars Discordant Pairs 
+         Two by Two Table Word Problem 
+ 
+ 
+ANSWER 
+  
+              H0: Probability to Pass post video is the same as the probability to pass pre-video 
+              HA: Probability to Pass post video is higher than probability to pass pre-video 
+ 
+a)_   Two by Two Table of Matched Responses in Experimental Group 
+ 
+Posttest Result 
+Pretest Result 
+Fail 
+Pass 
+
+----- page 30 -----
+ 
+30
+Fail 
+37 
+29 
+Pass 
+11 
+29 
+ 
+Focus on the discordant pairs 11 + 29 =  40.   If H0 is true, conditional on 40 discordant pairs, the 
+expected number   who fail pre and pass post = number who pass pretest and fail post test =  40 / 2 =  
+20.  If HA true,  the number who pass post and fail pre is larger. 
+ 
+Test Statistic is 
+2
+2
+2
+(
+)
+(29
+20)
+(11 20)
+8.1
+20
+20
+E
+O
+E
+−
+−
+−
+=
++
+=
+
+  Compare to 
+2
+1 (1 0.05)
+χ
+−
+ = 3.84.   P < 
+0.05 
+ 
+ 
+b)_   Two by Two Table of Matched Responses in Control Group 
+ 
+              H0: Probability to Pass post video is the same as the probability to pass prevideo 
+              HA: Probability to Pass post video is higher than probability to pass prevideo 
+ 
+Posttest Result 
+Pretest Result 
+Fail 
+Pass 
+Fail 
+26 
+9 
+Pass 
+7 
+19 
+ 
+Focus on the discordant pairs 7+ 9 = 16.   If H0 is true, conditional on 8 discordant pairs, the expected 
+number   who fail pre and pass post = number who pass pretest and fail posttest = (7+9)/2 = 8.  If HA 
+true,  the number who pass post and fail pre is larger. 
+ 
+ Test Statistic is 
+2
+2
+2
+(
+)
+(9
+8)
+(7
+8)
+0.25
+8
+8
+E
+O
+E
+−
+−
+−
+=
++
+=
+
+  Compare to 
+2
+1 (1 0.05)
+χ
+−
+ = 3.84.   P > 0.05 
+ 
+c)  There are some potential  problems with any answer to this that would be easy enough to complete 
+on the exam.   I believe this answer which tests if the matched OR for discordant pairs was the same for 
+each treatment arm would get full credit.   Comparative two by two table of discordant results in 
+experimental versus control arm. 
+   
+              H0: Ratio of Probability to Pass-post / Pass-pre video in the discordant pairs is the same  
+                     for both Experimental and Control arms 
+              H0: Ratio of Probability to Pass-post / Pass-pre video in the discordant pairs is greater  
+                     for Experimental arm 
+Posttest Result 
+Pretest Result 
+Fail-Pre Pass-Post 
+Pas-Pre Fail-Post 
+Experimental 
+29 
+11 
+ Control 
+9 
+7 
+                                                                                   38                                                        18                             56 
+ 
+Test of Independence   
+2
+(29*7
+9*11) 56
+38*18*40*16
+−
+ = 1.38 Compare to 
+2
+1 (1 0.05)
+χ
+−
+ = 3.84.   P > 0.05
+
+----- page 31 -----
+ 
+31
+ 
+____________________________________________ 
+FALL 2012 
+ 
+2.  Researchers seek to estimate changes in the total number of polar bears in particular regions.  Polar 
+bears hunt on floes of ice in the seas off the coast of the “Artic ring of life” where seals are abundant.    
+One region is by the coast of the Southern Beaufort Sea.  This is an area, 1000 kilometers in length by 
+200 kilometers in width (land on coast plus adjacent sea).   The 200,000 square kilometer region was 
+divided into a grid of 8000 subsquares, each 5 kilometers in length by 5 kilometers in width.    In 1986 a 
+random sample of 400 subsquares were flown over, and a total of 90 polar bears were observed.    In 
+2006 an independent random sample of 400 subsquares were flown over, and a total of 75 polar bears 
+were observed.   You can assume that the polar bears are distributed completely at random over the 
+region.    
+      a)   Estimate the total number of polar bears in the region in 1986, and in 2006. 
+b) For each estimate, give a standard error of the estimate 
+c) Test the null hypothesis at the 0.10 level of significance of no change (between 1986 and 2006) 
+in number of polar bears in the region, versus the research hypothesis that there has been a 
+decrease in the number of polar bears. 
+ 
+COMPETENCIES 
+ 
+Sampling (possibly including finite populations) 
+ 
+Poisson Approximation 
+       Conditional Probability 
+ 
+ANSWER 
+ 
+ 
+To  Part a) 
+ 
+ 
+400 subsquares is 1/20th of of the total 8000 subsquares  so 
+ 
+ 
+ 
+In 1986, 90 is 1/20th of expected total or expected total = 20 x 90 = 1800 
+ 
+   
+ 
+In 2006, 75 is 1/20th of expected total or expected total = 20 x 75 = 1500 
+___________________________________________________________________________ 
+ 
+     To Part b)   based on Poisson approximation with λ being the expected number of polar  
+     bears in 400 subsquares  
+ 
+THIS ANSWER SHOULD GET MOST ….  IF NOT ALL CREDIT 
+         In 1986  ˆλ  = 90 so standard error of ˆ
+ˆ
+90
+9.49
+λ
+λ
+≈
+=
+=
+ So the  
+                   Standard error of the Estimated Total is 20 * 9.49  =  189.8 
+ 
+         In 2006  ˆλ  = 90 so standard error of ˆ
+ˆ
+75
+8.66
+λ
+λ
+≈
+=
+=
+ So the 
+                    Standard error of the Estimated Total is 20 * 8.66  =  189.8 
+
+----- page 32 -----
+ 
+32
+ 
+ 
+BUT ALSO NOTE THE “MENSA” ANSWER – The grader could decide that in 1986 and 2006 the 
+answers are known to be 90 and 70 in the 400 subsquares and it is only the 7,600 other 
+subsquares where the additional numbers are being estimated with the ratio 7,600 / 400 = 19. 
+In that case 
+         In 1986  the Standard error of the Estimated Total is 19 * 9.49  =  180.3 
+ 
+         In 2006  the Standard error of the Estimated Total is 19 * 8.66  =  164.5 
+ 
+But I suspect that at most the loss in points for not doing this would be 0.5 for 10 total on the 
+problem 
+_____________________________________________________________________________ 
+ 
+To Part c)  based on conditional expectation 
+ 
+    H0:  u400,1986 = u400,2006 
+    HA:  u400,1986 > u400,2006  One Sided Alternative. 
+ 
+           Choose Type 1 Error of 0.05 
+ 
+  90 in 1986  is > 75 in 2006 so result is in the direction of the alternative 
+ 
+  (75 + 90 ) / 2 = 82.5 so under H0 the expected number in both years is 82.5 
+ 
+Test Statistic is 
+2
+2
+2
+(
+)
+(90
+82.5)
+(75
+82.5)
+1.36
+82.5
+82.5
+E
+O
+E
+−
+−
+−
+=
++
+=
+
+ 
+                   Compare to 
+2
+1 (1 2 0.05)
+x
+χ
+−
+ = 2.72.   1.36 < 2.72 so one sided  P > 0.05
+
+----- page 33 -----
+ 
+33
+ 
+_____________________________________________ 
+SPRING 2012 
+ 
+1) A researcher wants to compare two methods (M1 vs M2) to teach math.  The researcher 
+picks a random sample of 8 students, and assigns at random 4 students to learn under M1, 
+and the other 4 students under M2.  At the end of the term, the researcher picks at random 
+3 algebra problems, and 3 geometry problems.  All 8 students are given the same 6 
+problems.   The response variable Y is the number of minutes to solve the problem. 
+In what follows, let M denote Method, S denote Subject, P denote Problem, and T denote Type 
+of math(algebra vs geometry). 
+ 
+Competency:  Design of experiments – Balanced Design 
+ 
+[8 Students (S) Nested within 2 Methods (M)]  X  [6 Problems (P) Nested within 2 Types(T)] 
+Total df = 8 subjects x 6 problems - 1 = 48 – 1 = 47 
+ 
+THE PROBLEM DOES NOT MENTION INTERACTION WHICH MEANS THAT YOU CAN GO EITHER 
+WAY.  I THINK THAT IT IS SIMPLER TO ASSUME NO INTERACTION 
+ 
+a) Write out the ANOVA table just showing Sources of Variability and degrees of Freedom. 
+and indicate which SV are fixed effects and which are random. 
+ 
+ANOVA Table 
+                               SS              df          MS               
+M                           SSM            1          SSM/1          This is a Fixed Effect 
+S(M)                      SSS             6           SSS/6            This is a Random Effect 
+T                           SST              1           SST/1            This is a Fixed Effect 
+P(T)                       SSP             4           SSP/4            This is a Random Effect  
+Error                      SSE           35          SSE/35          This is technically also a Random Effect 
+Total                      SSA           47 
+ 
+ 
+Where 
+(.)
+
+denotes summations made over all 48 observations 
+ 
+SSS = 
+2
+..
+...
+(
+)
+ms
+m
+Y
+Y
+−
+
+(or =  6 * 
+2
+...
+...
+(
+)
+ms
+m
+m
+s
+Y
+Y
+−
+
+) 
+SSM = 
+2
+...
+....
+(
+)
+m
+Y
+Y
+−
+
+(or =  24 * 
+2
+...
+....
+(
+)
+m
+m
+Y
+Y
+−
+
+) 
+SSP = 
+2
+...
+.. .
+(
+)
+tp
+t
+Y
+Y
+−
+
+(or =  8 * 
+2
+..
+.. .
+(
+)
+tp
+t
+t
+p
+Y
+Y
+−
+
+) 
+SST = 
+2
+.. .
+....
+(
+)
+t
+Y
+Y
+−
+
+  (or =  24 * 
+2
+.. .
+....
+(
+)
+t
+t
+Y
+Y
+−
+
+) 
+
+----- page 34 -----
+ 
+34
+SSE = 
+2
+..
+..
+....
+(
+)
+mstp
+ms
+tp
+Y
+Y
+Y
+Y
+−
+−
++
+
+(or 
+2
+..
+..
+....
+(
+)
+mstp
+ms
+tp
+m
+s
+t
+p
+Y
+Y
+Y
+Y
+−
+−
++
+
+) 
+SSA = 
+2
+....
+(
+)
+mstp
+Y
+Y
+−
+
+(or 
+2
+....
+(
+)
+mstp
+m
+s
+t
+p
+Y
+Y
+−
+
+) 
+ 
+ 
+b)To test for Method effect, what MS terms go in numerator and what MS terms go in 
+denominator. 
+ 
+Numerator =  SSM / 1 
+Denominator = SSS / 6  
+ 
+ 
+2) Scientists are studying the sizes of radio-electric disturbances known as “ka-chings” that 
+occur on Mars and Pluto.   They have obtained 15 measures of ka-chings from Mars and 10 
+measures from Pluto.  Since Mars is closer to Earth, ka-chings of any size on Mars can be 
+detected.  However, because Pluto is much further away from Earth, only ka-chings that are 
+larger than 3 units can be measured. 
+ 
+Table of the 15 ordered Ka-ching measures from Mars and 10 ordered measures from Pluto 
+Mars 
+0.1 
+0.3 
+0.5 
+0.7 
+1 
+20 
+200 
+600 
+800 
+10,000 
+100,000 
+250,000 
+500,000 
+2,000,000
+Pluto 
+5 
+50 
+55 
+1,200 
+2,000 
+5,000 
+25,000 
+40,000 
+1,000,000 
+10,000,000 
+ 
+ 
+A.  It is believed that the median size of a Ka-ching on Mars is 6 units.  Statistically test if 
+the data dispute this belief with a Type-1 error of 0.05.  
+ 
+Competency – Nonparametric Statistics (Sign Test) 
+                   - Properties of a binomial 
+ 
+ANSWER -   5 of 15 observations were less than 6.  If the median was 6, then the 
+probability for this is. 
+ 
+15
+15
+15
+15
+15
+15
+15
+[
+]*(0.5)
+0
+1
+2
+3
+4
+5
+
+
+
+
+
+
+
+
+
+
+
+
++
++
++
++
++
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ = (1+15+105+455+1365+3003) *(0.5)15 
+= 0.151 
+ 
+Converting this to a two sided test gives P = 2 * 0.151 = 0.302 
+ 
+So the chances of seeing 5 Ka-chings from Mars less than 6 and 15 greater than 6 if the 
+median is 6 is 0.302. The data do not refute the belief 
+ 
+ 
+
+----- page 35 -----
+ 
+35
+B. Perform the best test within the limits of the available data of whether the central 
+tendency of the size of a Ka-ching is the same for Pluto as for Mars.  Remember, that 
+because Pluto is much further away from Earth, only Ka-chings that are larger than 3 
+units can be measured on Pluto. Again use a type-1 error of 0.05. 
+ 
+COMPETENCIES 
+- 
+Understanding of conditioning (must be > 3) 
+- 
+Understanding Assumptions of Central Limit Theorem, data not normal  
+- 
+Knowledge of either non-parametric comparison of two samples or of using the 
+logarithmic transformation to normalize data 
+ 
+Since Ka-Chings ≤ 3 cannot be measured on Pluto, we must restrict our comparisons to 
+Ka-Chings > 3 on both planets.  The null hypothesis then becomes that given Ka-Chings 
+are >  3, then they are the same size on both planets.  
+ 
+With Ka-chings ≤ 3 on Mars excluded, we have the following data 
+ 
+Mars 
+20 
+200 
+600 
+800 
+10,000 
+100,000 
+250,000 
+500,000 
+2,000,000 
+5,000,000 
+Pluto 
+5 
+50 
+55 
+1,200 
+2,000 
+5,000 
+25,000 
+40,000 
+1,000,000 
+10,000,000 
+ 
+ 
+These data are clearly not normally distributed so the rank sum test should be used.  
+The Ranks added  n are 
+ 
+ 
+2 
+5 
+6 
+7 
+11 
+14 
+15 
+16 
+18 
+19 
+Mars 
+20 
+200 
+600 
+800 
+10,000 
+100,000 
+250,000 
+500,000 
+2,000,000 
+5,000,000 
+Pluto 
+5 
+50 
+55 
+1,200 
+2,000 
+5,000 
+25,000 
+40,000 
+1,000,000 
+10,000,000 
+ 
+1 
+3 
+4 
+8 
+9 
+10 
+12 
+13 
+17 
+20 
+ 
+There are no ties so no correction for ties is need.   
+ 
+The sum of the ranks for Mars is   U1 = 2 +  5 + 6 + 7 + 11 + 14 + 15 + 16 + 18 + 19 = 113 
+ 
+Since n1 =10 and  n2 = 10 both n1 and n2 are ≥ 10  
+ 
+And by normal approximation with no correction for ties 
+ 
+U1 ~ N [n1 (n1 +n2 +1)/2, n1 n2 (n1 +n2 +1)/12)] 
+ 
+    or N [10 (21)/2, (10 )(10) (21)/12)]  or N(105, 175) 
+ 
+so the Z-test is 113 105
+8
+0.60
+13.23
+175
+−
+=
+=
+ P > 0.05 
+
+----- page 36 -----
+ 
+36
+so conditioning on the Ka-Ching being 3 or greater, there is no statistical evidence for 
+directional difference in the central tendency of size between Pluto and Mars. 
+ 
+ 
+WORKING THIS OUT USING THE LOG TRANSFORMATION 
+ 
+Log Transformed Observations 
+ 
+Mars 
+1.301 
+2.301 
+2.778 
+2.903 
+4.000 
+5.000 
+5.398 
+5.699 
+6.301 
+6.699 
+Pluto 
+0.699 
+1.699 
+1.740 
+3.079 
+3.301 
+3.699 
+4.398 
+4.602 
+6.000 
+7.000 
+ 
+Summary Statistics 
+ 
+                          Mean           Std-Dev 
+Mars                 4.238             1.848                       
+ 
+NOTE for both Groups Mean ~ Median suggesting normal approximation will be good 
+ 
+Pluto                 3.622             1.967 
+ 
+T-test = 
+2
+2
+4.328
+3.622
+9*(1.848)
+9*(1.967)
+1
+1
+(
+)
+9
+9
+10
+10
+−
++
++
++
+ = 
+0.706
+0.827
+3.64(0.2)
+=
+ two sided p for t = 18 
+df = 0.48 
+So again conditioning on the Ka-Ching being 3 or greater, there is no statistical evidence 
+for directional difference in the central tendency of size between Pluto and Mars. 
+ 
+ 
+NOTE -  If in a problem such as this you have the train of thought right but the numbers or 
+wrong or you write in “Ran Out of Time”  you should get  some or maybe even most of the 
+points. 
+ 
+ 
+ 
+
+----- page 37 -----
+ 
+37
+ 
+__________________________________________ 
+FALL 2011 
+ 
+3.  We have the following model for the probability that a pine tree will survive  
+|
+1
+F
+Survuval
+F
+e
+P
+F
+e
+α β
+α β
++
++
+= +
+ where α and  β are unknown parameters and F is the number of units of 
+fertilizer given to the tree.  The following MLE point estimates and standard deviations are 
+obtained for α and β;  
+ˆ
+ˆ
+0.12
+0.01,
+0.024
+0.003
+α
+β
+=
+±
+=
+±
+ with 
+ˆ
+ˆ
+( , )
+Corr α β = - 0.1 
+ 
+A. Give a 95% confidence interval for the ratio of odds of survival for a tree given F=100 
+units  over those of a tree given F=80 units of fertilizer 
+ 
+COMPETENCIES 
+       - Logistic Regression 
+ 
+e[β-hat - 1.96(stderr β)] (100-80)  < OR(100 Vs 80) < e(β-hat + 1.96(stderr β) (100-80)   
+e[0.024 - 1.96(0.003)] (100-80)  < OR(100 Vs 80) < e[0.024 + 1.96(0.003)] (100-80)   
+1.43 < OR(100 Vs 80) < 1.81 
+ 
+It costs $1000 for each tree that dies. Let C denote the cost per unit of fertilizer given 
+to the tree. Find the MLE for the value of C at which F=80 units and F=100 have the 
+same expected combined cost for fertilizer and dead trees. 
+ 
+COMPETENCIES 
+- 
+Logistic Regression 
+- 
+Problem solving with Algebra 
+ 
+TOTAL COST IS   
+ 
+1,000 * [Probability Tree Dies Given C] + [C * Units of Fertilizer]    
+ 
+1 1
+F
+F
+e
+e
+α β
+α β
++
++
+−+
+ is the probability a tree dies so we solve for C which gives equal net costs 
+at 80 and 100 units of fertilizer 
+ 
+0.12 80*.024
+0.12 100*.024
+0.12 80*.024
+0.12 100*.024
+[1,000(1
+)
+80]
+[1,000(1
+)
+100]
+1
+1
+e
+e
+C
+C
+e
+e
++
++
++
++
+−
++
+=
+−
++
++
++
+  or 
+0.12 80*.024
+0.12 100*.024
+1
+1
+[1,000
+]
+[1,000
+20]
+1
+1
+C
+e
+e
++
++
+=
++
++
++
+ or 
+0.12 80*.024
+0.12 100*.024
+1
+1
+50[
+]
+50[0.1151 0.0745]
+2.03
+1
+1
+C
+e
+e
++
++
+=
+−
+=
+−
+=
++
++
+
+----- page 38 -----
+ 
+38
+ 
+__________________________________________ 
+SPRING 2011 
+ 
+ 
+4. A rocket company is firing missile into a square region with each side of length of 2r that 
+has an inscribed circle with a radius r as shown below. 
+ 
+One of the scientists believes that the rockets are biased to go towards the upper left and 
+away from the lower right.  Specifically that the rocket is more likely to land in Region I 
+than it is to land in Region II.   
+ 
+A. State the scientist’s Null and Alternative Hypothesis and all the assumptions needed 
+to test these. 
+ 
+COMPETENCY 
+    - Formulating a Hypothesis Test 
+ 
+H0 – Probability to fall in region I is the same as probability to fall in region II (and the 
+probability to fall in any region of the square is proportional to the size of the region) 
+HA – Probability to fall in region I is greater than probability to fall in region II 
+Assumptions all rocket shots have independent and identical probabilities to fall at any 
+point in the square 
+ 
+B. What are the expected numbers of rockets each that land in Region I and in Region II 
+if HO is true 
+ 
+COMPETENCY 
+    -  Algebraic Construction of a Probability based on areas of a square and circle 
+ 
+Ratio of the area outside of circle to that in square is [(2r)2-πr2]/ (2r)2 = [4-π]/4 = 
+0.2146  but I and II are 1/4th of this area or 0.2146/4 = 0.05365 of the entire square 
+so if H0 is true 0.05365 * 1,000 ~ 53.5 rockets will land in each region. 
+ 
+
+----- page 39 -----
+ 
+39
+C. Out of 1,000 shots, fired, 63 have landed in Region I and 44 have landed in Region II.  
+Give a best large sample statistical test of the Null Hypothesis against the Alternative 
+at  α = 0.05 
+ 
+COMPENTENCIES 
+- 
+Large sample approximation to the multinomial 
+Or 
+-     Conditioning and large sample approximation to the binomial 
+CONDITIONAL APPROACH -  Since Region I and Region II have the same size, condition 
+on the sum of shots falling in either regions 
+44 + 63 = 107. 
+Given that 107 fell in either regions, the probability for each of these to fall in I is 0.5 so 
+the large sample distribution of the number of shots falling in Region I is 
+(107/ 2, 107*0.5*0.5) = N(53.5, 5.17)
+N
+ 
+The Test Statistic is  63
+53.5
+5.17
+−
+= 1.84 
+Since 1.84 > 1.65 reject H0 with a large sample one sided P-value of 0.05 
+ 
+UNCONDITIONAL APPROACH  
+The probability to fall in Region I is  0.25 * (4-3.14)/4 = 0.05375  
+                                and has variance 0.05375 * (1 – 0.05375)  
+ 
+The probability to fall in Region II is  0.25 * (4-3.14)/4 = 0.05375  
+                                and has variance 0.05375 * (1 – 0.05375) 
+ 
+The covariance of falling in Regions I and II is –(0.05375)2 
+ 
+ So under H0 with 1,000 shots fired, the difference in the numbers falling in Region I and 
+II has a large sample distribution of  
+N (0, 
+2
+(1,000)[0.05375(1 0.05375)
+0.05375(1 0.05375)
+2* (0.05375)
+−
++
+−
+−
+−
+ ) 
+Or N(0, 10.37) 
+ 
+So the Test Statistic is  63
+44
+10.37
+−
+= 1.84.  Since 1.84 > 1.65 Reject H0 at a one sided P = 0.05   
+
+----- page 40 -----
+ 
+40
+______________________________________________ 
+FALL 2010 
+ 
+1. The Body mass Index BMI of a person is Weight / (Height)2  where weight is in Kg and height is in 
+meters.  BMI  is used as a measure of height adjusted body mass.   
+ 
+A. Suppose for country X, all of the following are known about height and BMI  
+* height of adults is uniformly distributed on 1.5 to 2.1 Meters 
+* height is independent of BMI 
+*  the true population mean for BMI is 23.0 
+ 
+                  what is the mean weight of an adult in country X? 
+ 
+COMPETENCIES 
+                  Understanding of what Expectation is 
+                   Understanding of Properties of Expectations  
+                   Calculus 
+ 
+      ANSWER 
+ 
+ 
+f(Ht) 
+        1/0.6 
+ 
+ 
+                                                                       1.5                           2.1 
+- 
+BMI = Weight / (Height)2  means Weight = (Height)2 * BMI 
+- 
+The expected value of (Height)2 is 
+2.1
+3
+2.1
+2
+1.5
+1.5
+1
+1
+1
+(
+)
+ = |
+(9.261 3.375)
+3.27
+0.6
+0.6 3
+1.8
+X
+X
+dx
+=
+−
+=
+
+ 
+- 
+Since Height and  BMI are independent it follows that E[Weight] = E [ (Height)2 * BMI] = E 
+[(Height)2 ]  *E[BMI] = 23.0 * 3.27 = 75.21 
+ 
+B. But now someone questions whether height and BMI are independent in this population and 
+has collected the following data for means and standard deviations of BMI for different 
+ranges of height 
+Height Category 
+Mean BMI 
+1.5 – 1.65 =20 subjects 
+24 
+1.65 – 1.80  n= 20 subjects 
+22 
+1.80 – 1.95 n=20 subjects 
+26 
+1.95-2.10  n=20 subjects 
+20 
+The standard deviation of BMI is the same for all height categories and the pooled estimate of 
+the variance (with 80 – 4 = 76 d.f.) is 56.5 
+ 
+Find the best test  (which most efficiently adjusts for multiple comparisons) of 
+      H0: u1.5-1.85 = u1.65-1.80 = u1.80-1.95 =  u1.55-2.10 
+Against 
+
+----- page 41 -----
+ 
+41
+     Ha: At least one of the group means is different 
+ 
+NOTE – The test is for any group difference and not for a trend 
+ 
+COMPETENCIES – Linear Models, Multiple Comparisons 
+ 
+ANSWER 
+ 
+I would use Tukey’s Range (or studentized t) rather than the one-way ANOVA F-Test 
+ 
+Pooled Variance is = 56.5 
+ 
+So MAX
+MIN
+SEM
+−
+=
+26
+20
+6
+3.56
+1.81
+56.5/ 20
+−
+=
+=
+ 
+ 
+and 3.56 < 3.69 the threshold standardized value to reject Ho at α=0.05 for 4 groups with 120 d.f. 
+(which is more than the 76 df we have here. So we fail to reject Ho) 
+ 
+But I would give most (maybe all) of the maximum possible points for solutions done using either the 
+F-Test one way ANOVA  
+ 
+ 
+3.  An experiment was designed where 3 machines are randomly selected and each machine is 
+assigned to a different group of 3 operators selected at random. Each operator uses the 
+machine 2 times at different periods during a given week. The amounts of time needed to 
+produce 1 item given in standard units are below: 
+                 
+                  Machine          1                                        2                                       3 
+                     ------------------------------------------------------------------------------------------------------------ 
+            Operator      1       2        3                   4        5       6                      7         8        9         
+                 ---------------------------------------------------------------------------------------------------------------        
+                               13.2  14.1  13.8              9.5     12.6     9.7               17.4    16.0   15.4    
+                               14.3  14.6  12.7              9.8     11.7    11.2              17.6     13.0   14.4     
+                 --------------------------------------------------------------------------------------------------------------- 
+(a) Calculate the appropriate quantities (SS df MS F) and Write down the standard 
+ANOVA table.  
+(b) Describe how to test if there are differences in completion time among the 
+machines. 
+(c) Describe how to test if there are differences in completion times between 
+operators within machines.  
+COMPETENCY 
+- 
+Linear Models 
+- 
+Design of Experiments 
+- 
+Nested Models 
+Since the time periods are not 
+labeled 1 and 2 you can assume 
+that these are just random 
+observations and that order of 
+the observation does not matter 
+
+----- page 42 -----
+ 
+42
+ 
+ 
+ANSWER TO (a) 
+  
+Nested Model with Operator Nested Within Machine. Two measures per operator 
+ 
+Overall Mean 
+y… = 13.39 
+ 
+Machine Means 
+y1.. = 13.78 
+y2.. = 10.75 
+y3.. = 15.63 
+ 
+Operator Means 
+y11. = 13.75 
+y12. = 14.35 
+y13. =  13.25 
+ 
+y21. =  9.65 
+y22. = 12.15 
+y23. = 10.45 
+ 
+y31. = 17.5 
+y32. =  14.5 
+y33. = 14.9 
+ 
+ 
+(a)  
+3
+3
+2
+2
+2
+1
+1
+1
+3 3 2(
+) 3325.94
+3226.722
+99.22
+T
+ijk
+i
+j
+k
+SS
+y
+y•••
+=
+=
+=
+=
+−× ×
+=
+−
+=
+
+ 
+3
+2
+2
+1
+2 3
+3 3 2(
+)
+3299.663-3226.722=72.94
+Machine
+i
+i
+SS
+y
+y
+••
+•••
+=
+=
+×
+−× ×
+=
+
+ 
+3
+3
+3
+2
+2
+(
+)
+1
+1
+1
+2
+2 3
+3318.01-3299.663=18.35
+op machine
+ij
+i
+i
+j
+i
+SS
+x
+y
+x
+y
+•
+••
+=
+=
+=
+=
+−×
+=
+
+
+ 
+(
+)
+(
+)
+99.22
+(72.94 18.35)
+7.93
+E
+T
+Machine
+op machine
+SS
+SS
+SS
+SS
+=
+−
++
+=
+−
++
+=
+ 
+ 
+ANOVA Table 
+                               SS              df          MS               F 
+Machine            72.94         2        36.47        11.92 (36.47 / 3.06) 
+Op(Machine)    18.35          6        3.06          3.48 (3.06 / 0.88) 
+Error                    7.93          9        0.88 
+Total                  99.22           17 
+ 
+ANSWER TO (b)  
+Due to time constraints of the exam 
+it helps to know orthogonal 
+decompositions calculation of these 
+variances about a mean
+
+----- page 43 -----
+ 
+43
+        Compare   11.92 with 
+,2,6
+Fα
+. Reject H0 if  
+,2,6
+11.92
+Fα
+>
+ 
+ 
+ 
+ ANSWER TO (c)  
+        Compare  3.48 with 
+,6,9
+Fα
+. Reject H0 if  
+,6,9
+3.48
+Fα
+>
+ 
+
+----- page 44 -----
+ 
+44
+ 
+_____________________________________________ 
+SPRING 2010 
+ 
+1.  The Kenton Company is testing 4 different package designs for a new breakfast cereal; 20 
+stores, with about equal sales volumes, are the experimental units. Each store is randomly 
+assigned one package designs, with each package design being assigned to 5 stores. A fire later 
+destroys one store so this store is dropped from the study. Sales, in number of cases, for the 
+study period are recorded in Table 1. The characteristics of 4 package designs are shown in 
+Table 2. The data is analyzed using one-way layout with fixed effects. 
+        Table 1: Number of Cases Sold by Stores for Each of Four Package Designs 
+ 
+                                                  Package Design 
+          1                                 2                                3                               4 
+Cases Sold Per Store 
+         11                              12                             23                             27 
+         17                              10                             20                             33 
+         16                              15                             18                             22 
+         14                              19                             17                             26 
+         15                              11                                                               28 
+        Mean 
+      
+=14.6                    
+=13.4                  
+=19.5                   
+=27.2 
+ Standard Deviation 
+         2.3                              3.6                           2.6                             4.0 
+ 
+ Table 2: Characteristics of Four Package Designs 
+Package Design            Characteristics 
+                1                        3 color, with cartoons 
+                2                        3 color, without cartoons  
+                3                        5 color, with cartoons 
+                4                        5 color, with cartoons 
+COMPETENCIES 
+                - One Way ANOVA, unbalanced design 
+ 
+ 
+A. Copy the ANOVA table below to your Blue Book and fill in the blanks 
+               One-way ANOVA Table 
+                                        Degrees of           Sum of                    Mean  
+Source                           Freedom              Squares                  Squares                 F 
+Between design                     3                 __________         __________      ___________ 
+Error                                  _______         __________         __________        
+Total                                    18                 __________          
+ 
+A     One-way ANOVA Table 
+                                      Degrees of         Sum of            Mean  
+Source                           Freedom            Squares         Squares                 F 
+Between design                3                     __610.5___    __203.5__      _19.4 
+Error                                15__                 __157.2__        10.5_        
+
+----- page 45 -----
+ 
+45
+Total                                18                   __746.4         
+ 
+1
+2
+3
+4
+.
+.
+5
+5
+4
+5
+5(14.6)
+5(13.4)
+4(19.5)
+5(27.2)
+18.6
+5
+5
+4
+5
+5
+5
+4
+5
+y
+y
+y
+y
+y
++
++
++
++
++
++
+=
+=
+=
++ +
++
++ +
++
+ 
+SSE = 4 (sd_y1)2 + 4 (sd_y2)2 + 3 (sd_y3)2 + 4(sd_y4)2   
+       = 4 (2.3)2 + 4 (3.6)2 + 3 (2.6)2 + 4(4.0)2 = 157.2 
+SSD = 
+2
+2
+2
+2
+2
+1
+2
+3
+4
+.
+5(
+)
+5(
+)
+4(
+)
+5(
+)
+19( )
+y
+y
+y
+y
+y
++
++
++
+−
+ = 
+2
+2
+2
+2
+2
+5(14.6)
+5(13.4)
+4(19.5)
+5(27.2)
+19(18.6)
++
++
++
+−
+ = 7183.8 – 6573.2 = 610.5 
+B.  Conduct an F test to test at at α = 0.05  of the null hypothesis that the four package 
+designs have the same sales. 
+       F3,15,0.05=3.29,  F=19.4= 203.5 / 10.5 >F3,15,0.05. Reject the null hypothesis. 
+ 
+COMPETENCIES 
+         - Multiple Comparisons, unequal sample size 
+C.  Use Tukey’s method to perform multiple comparisons of the four package designs at α = 
+0.05  
+ 
+      
+2ˆσ  = 10.5   so 
+2 1
+1
+ˆ (
+)
+2.05
+5
+5
+σ
++
+=
+, 
+2 1
+1
+ˆ (
+)
+2.17
+5
+4
+σ
++
+=
+, 
+4,15,0.05
+1
+1 4.08
+2.88
+2
+2
+q
+=
+=
+ 
+               
+1
+2
+1,2
+0.59
+2.05
+y
+y
+t
+•
+•
+−
+=
+=
+, 
+1
+3
+1,3
+2.26
+2.17
+y
+y
+t
+•
+•
+−
+=
+= −
+ 
+                
+1
+4
+1,4
+6.15
+2.05
+y
+y
+t
+•
+•
+−
+=
+= −
+, 
+2
+3
+2,3
+2.81
+2.17
+y
+y
+t
+•
+•
+−
+=
+= −
+ 
+ 
+2
+4
+2,4
+6.73
+2.05
+y
+y
+t
+•
+•
+−
+=
+= −
+, 
+3
+4
+3,4
+3.55
+2.17
+y
+y
+t
+•
+•
+−
+=
+= −
+ 
+                 
+1,4
+2,4
+,
+t
+t
+,and 
+3,4
+t
+ are larger than 
+4,15,0.05
+1
+2
+q
+= 4.37
+2.88
+1.414 =
+  so conclude that  
+                  design 4 sells better than all other designs 
+
+----- page 46 -----
+ 
+46
+ 
+___________________________________________ 
+FALL 2009 
+ 
+1. The current laboratory test for amounts of “Testro” in a student’s blood has too much 
+intraperson measurement variation and a new test for Testro is believed to perform better.  
+Eight Graduate Students each are tested twice for Testro with the Standard Test and twice with 
+the New Test with the following results. 
+TESTRO STANDARD TEST 
+ 
+TESTRO NEW TEST 
+Student 
+1st Test 
+2nd Test 
+Mean of 
+Both Tests 
+ 
+1st Test 
+2nd Test 
+Mean of 
+Both Tests 
+1 
+30 
+36 
+33 
+ 
+28 
+24 
+26 
+2 
+44 
+44 
+44 
+ 
+41 
+43 
+42 
+3 
+78 
+70 
+74 
+ 
+73 
+78 
+75.5 
+4 
+55 
+61 
+58 
+ 
+60 
+52 
+56 
+5 
+62 
+67 
+64.5 
+ 
+71 
+67 
+69 
+6 
+39 
+38 
+38.5 
+ 
+40 
+40 
+40 
+7 
+23 
+33 
+28 
+ 
+30 
+26 
+28 
+8 
+52 
+46 
+49 
+ 
+48 
+44 
+46 
+ 
+Assume that all tests on each person are normally distributed and independent and 
+what is observed from each test j on person i, is Yij = Xi + εij Where 
+• Xi is the True value for person i  
+• εij is the measurement error of test j on person i which has mean 0 and 
+variance 
+2
+s
+σ   for the standard test and mean 0 with variance 
+2
+n
+σ  for the  
+“New” Test 
+ 
+A.  Give the Best Estimate for  
+2
+s
+σ   and 
+2
+n
+σ  from the data 
+COMPETENCY – Estimation of Variance 
+ 
+ANSWER  
+ 
+     For the same person i with both tests using the standard method 
+ 
+                  Yij - Yij’  = (Xi + εij) - (Xi + εij’) = (εij - εij’) which has expectation 0 and  
+                                    variance 2
+2
+s
+σ  
+ 
+     For the same person i with both tests using the “New” Method 
+ 
+                  Yij - Yij’  = (Xi + εij) - (Xi + εij’) = (εij - εij’) which has expectation 0 and  
+                                    variance 2
+2
+n
+σ  
+ 
+
+----- page 47 -----
+ 
+47
+Thus the best estimates are: 
+ 
+2ˆs
+σ  = 
+2
+2
+2
+2
+2
+2
+2
+2
+1 (30
+36)
+(44
+44)
+(78
+70)
+(55
+61)
+(62
+67)
+(39
+38)
+(23
+33)
+(52
+46)
+2
+8
+−
++
+−
++
+−
++
+−
++
+−
++
+−
++
+−
++
+−
+ 
+       = 18.625 
+ 
+2ˆn
+σ =
+2
+2
+2
+2
+2
+2
+2
+2
+1 (28
+24)
+(41
+43)
+(73
+78)
+(60
+52)
+(71
+67)
+(40
+40)
+(30
+26)
+(44
+46)
+2
+8
+−
++
+−
++
+−
++
+−
++
+−
++
+−
++
+−
++
+−
+ 
+       = 9.0625 
+ 
+ 
+B. State any additional Assumptions needed and test  
+            Ho : 
+2
+s
+σ   = 
+2
+n
+σ  against Ha : 
+2
+s
+σ   >  
+2
+n
+σ  with a Type 1 Error of 0.05 
+ 
+COMPETENCY – F Distribution and F Test 
+ 
+           Assume Normality then under Ho 
+2
+2
+ˆ
+ˆ
+2
+/ 2
+n
+s
+σ
+σ  = 
+2
+2
+ˆ
+ˆ
+/
+n
+s
+σ
+σ  ~ F8,8 
+      
+           The Test Statistic is 9.0625 / 18.625 = 0.4866 > 0.291 = F8,8 (0.05) so do not reject Ho 
+ 
+ 
+C.  Now only consider the Means of both tests as the outcome. Dr. W claims these means are 
+not normally distributed .  Assume Dr. W’s claim and do a two sided test of the null hypothesis 
+H0: that for a given person that the median of the differences between two test means is 4 
+units higher for the new test than for the standard test against the alternative that the median 
+difference is something else. Use a type-1 error of 0.10. 
+ 
+COMPETENCY – Nonparametric, sign test 
+ 
+Assumption = Not Normality 
+Sign Test Using   D4i = (Ni – Si) - 4 
+ 
+ 
+ 
+Person 
+Mean of 
+Standard 
+Tests 
+Mean of 
+New Tests 
+Difference 
+Difference 
+Minus 4 
+1 
+33 
+26 
+7 
+3 
+2 
+44 
+42 
+2 
+-2 
+3 
+74 
+75.5 
+-1.5 
+-7.5 
+4 
+58 
+56 
+2 
+-4 
+5 
+64.5 
+69 
+-4.5 
+-8.5 
+6 
+38.5 
+40 
+-1.5 
+-5.5 
+7 
+28 
+28 
+0 
+-4 
+
+----- page 48 -----
+ 
+48
+8 
+49 
+46 
+3 
+-1 
+ 
+Seven of the eight paired differences are < 4.  The Two sided P-value for this is 
+ 
+8
+8
+8
+8
+2*[
+(0.5)
+(0.5) ]
+8
+7
+
+
++
+
+
+
+
+ = 0.07   Since 0.07 < 0.10, reject H0 
+
+----- page 49 -----
+ 
+49
+ 
+_____________________________________________ 
+SPRING 2009 
+ 
+4. Two methods (Method A and Method B) to produce vials of a vaccine are tested with the 
+outcome being that the vial is either good or bad. Each method is allowed to produce new vials 
+one at a time until the first bad vial from that method was observed, then production using that 
+method is stopped.  In other words, 
+• For Methods A & B each, if the last vial produced is good the method is allowed to 
+produce another vial.  
+• But once a bad vial is produced, the Method is stopped and no new vials are produced 
+with that method. 
+COMPETENCIES – Negative Binomial / Geometric Distribution, means and variances,  
+                                 conditioning 
+ 
+A.  Assume that the probability for a vial produced by Method A to be bad is p = 0.05 and the 
+probability for a vial produced by Method B to be bad is 0.10 and all vials are independent.  
+        i) What is the expected total number of good vials produced by both Methods A  
+            and B combined before both methods are stopped? 
+       ii) What is the variance of the total number of good vials produced by both Methods  
+            A and B combined before both methods are stopped 
+ 
+ANSWER 
+ 
+A.  Negative binomials (p=.05, r=1) and (p=.10, r=1) 
+ 
+      Expectation of successes for a negative binomial is r(1-p)/p   
+                                  = (1-.05)/.05 or 19 for Method A    
+                                  = (1-.10)/.10 or 9 for Method B  
+ 
+      Variance of successes is r(1-p)/(p)2 
+                                 = (1-.05)/(.05)2 = 380 for method A 
+                                 = (1-.10)/(.10)2 = 90 for method B 
+ 
+      Total Expectation for Both Methods = 19 + 9 = 28 
+      Total Variance for Both Methods = 380 + 90 = 470   
+ 
+B.  Now assume that the probabilities for vials produced by each method to be bad are  
+      unknown and the following results are observed: 
+ 
+• Method A - On its first try, the vial was bad so production stopped  
+• Method B produced 15 good vials but on its 16th try, the vial was bad so production 
+was stopped then 
+ 
+
+----- page 50 -----
+ 
+50
+Derive the appropriate model that conditions on 15 bad vials being produced and give a P-value 
+for observing a result this extreme if each method is equally likely to produce a bad vial.    
+ 
+ Negative binomial models with possibly different parameters pA and pB 
+ 
+For Method A if X is the number of successes observed before the first failure 
+                   P{X=x} = pA (1-pA)x 
+ 
+For Method B if Y is the number of successes observed before the first failure 
+                   P{Y=y} = pB (1-pB)y 
+ 
+ 
+Let Z = X + Y be the number of successes total observed before the single failure in each group 
+or 2 failures in both groups 
+ 
+Under the null hypothesis that pA= pB = p WLOG assume that Method A was applied first then 
+Method B, the distribution of Z is 
+ 
+                P{Z=z} = 
+2
+z
+ z+1
+p  (1-p)
+   1
+
+
+
+
+
+
+ 
+ 
+This means that given each method has the same probability to produce an impure lot, then  
+conditional on 15 successes being observed in both Method A and B combined before their first 
+failures, the probability to observe 0 successes in Method A before its failure and 15 successes 
+in Method B before its failure is: 
+ 
+P{C|D} = P{C∩D} / P{D}  
+ 
+Where 
+ 
+D = 15 successes before 2 failures in both methods under Ho 
+C = 0 successes before 1 failure in method A and 15 successes before 1 failure in Method B  
+       under Ho 
+ 
+=  
+x
+y
+2
+z
+p (1-p)  p (1-p)
+ z+1
+p  (1-p)
+   1
+
+
+
+
+
+
+ = 
+0
+15
+2
+15
+p (1-p)  p (1-p)
+ 16
+p  (1-p)
+  1
+
+
+
+
+
+
+ = 1
+16  
+ 
+Thus for a two sided test, the P-Value is 2/16 = 1/8 
+
+----- page 51 -----
+ 
+51
+ 
+__________________________________________ 
+FALL 2008 
+2. The time it takes for an engine to fail is exponentially distributed.  We have  
+     observed the following ordered failure times (in years) for 8 engines 
+ 
+          1.2    2.3   4 .3    5.4    7.6    8.4   10.2    14.5 
+COMPETENCIES – Exponential Distribution. Confidence limits 
+    
+A. Give the best estimate of the mean failure time and the standard deviation of this 
+estimate and state all assumptions needed 
+ 
+The additional assumptions beyond those stated in the problem are that the observations 
+are independent, identical.   
+ 
+     For an exponential distribution, the mean failure time is λ and the MLE for λ is   
+       ˆλ  = X  = [(1.2 + 2.3 + 4.3 + 5.4 + 7.6 + 8.4 + 10.2 + 14.5) / 8] 
+                         = 6.74 
+          and the MLE for the std-dev of ˆλ  is ˆ /
+n
+λ
+ = 6.74/ 2.828   = 2.38 
+ 
+B. Give the best estimate of the timepoint X for which exactly 90% of the engines fail in X 
+or less years. Give a 95% confidence interval for X  
+ 
+      Ninety percent of the engines fail by time x where e-x/λ = (1- 0.90) = 0.10 
+ 
+Substituting ˆλ  for λ gives e-x/ ˆλ  = e-x/6.74  = 0.10 
+ 
+Working backwards 
+                          e-x/6.74 = 0.10 
+                  log[e-x/6.74] = log[0.10] 
+                        -x/6.74 = -2.3025 
+                                        x = 2.3025 * 6.74 = 15.5 
+ 
+      To get 95% confidence intervals for X, plug in the corresponding 95%  
+      confidence intervals for λ 
+ 
+      from ˆλ ± 1.96 ˆ /
+n
+λ
+ 
+                 or 
+                 λL = 6.74 – 1.96 *  2.38 = 2.08 
+                 λU = 6.74 + 1.96 * 2.38 =  11.40 
+    So the  
+               Lower Limit is x = 2.3025 * 2.08 = 4.79 
+               Upper Limit is x = 2.3025 * 11.40 = 26.24 
+
+----- page 52 -----
+ 
+52
+                                                                So the 95% CI is 4.79 < X < 26.24 

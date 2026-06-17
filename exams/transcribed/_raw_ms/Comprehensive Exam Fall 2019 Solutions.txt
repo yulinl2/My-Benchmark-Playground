@@ -1,0 +1,434 @@
+
+----- page 1 -----
+ 
+1 
+MS COMPREHENSIVE EXAM FALL 2019  SOLUTIONS 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+----- page 2 -----
+ 
+2 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+----- page 3 -----
+ 
+3 
+Problem 3  A college recruiter wants to show that 10 years after graduation, the incomes 
+of graduates from RU are higher than the income of those from University of Connecticut 
+(UC) and of Penn State (PS). Five former students from each school were selected at 
+random and their current salaries are given below in units of $1000.  
+ 
+  
+RU 
+PS 
+UC 
+1 
+31 
+30 
+22 
+2 
+56 
+54 
+21 
+3 
+143 
+37 
+24 
+4 
+78 
+26 
+65 
+5 
+210 
+70 
+36 
+ 
+We are interested in comparing the salaries among the 3 samples (RU, UC, PS). 
+1. Draw a boxplot of the groups by calculating median, quartiles and extremes of the 
+three samples. The p-value of the ANOVA F-test for comparing the means of the 3 
+groups is not significant (p-value=0.06). Can you interpret the boxplot and explain 
+this p-value? Are the samples skewed? Do the samples meet the F-test assumptions? 
+2. Use the median and quartiles to construct a Spread-Vs-Level plot. From the Spread-
+Vs-Level plot determine if there is a relationship between spread and level and find 
+the optimal power transformation that will eliminate it. 
+3. Perform an ANOVA F-test with the data after transformation.  Is there a statistically 
+significant difference among the group salaries? 
+(Hint: The Spread-Vs-Level plot is performed by plotting the log(Interquartile Range) vs 
+log(Median) and the slope b of this graph gives the suggested power transformation with 
+power 1-b.)  
+ 
+ 
+Problem 3 Solution. 
+ 
+1. Data is skewed not normal, variances are not equal, the ANOVA F-test is not 
+appropriate. The boxplot shows big difference in favor of RU but the F-test p-value 
+cannot detect it.  
+ 
+ 
+ 
+2. The Spread Vs level plot has a slope between 1 and 1.5 so the transformation is 
+powers 0 to -0.5.  
+
+----- page 4 -----
+ 
+4 
+ 
+3. After transformation the ANOVA F-test is significant with p-value 0.04, which 
+suggest that there is a difference between the salaries of graduates of the three 
+schools after 10 years. 
+ 
+ 
+ 
+Problem 4  Suppose that the vector (X, Z) has a bivariate distribution given by: 
+ 
+ 
+ 
+1. Give the probability distribution of random variable Z|X=x  
+ 
+2. Calculate the E(Z|X=x) 
+  
+ 
+Problem 4   Solution 
+ 
+ 
+ 
+
+----- page 5 -----
+ 
+5 
+Problem 5. The below temperatures in Fahrenheit were observed in Piscataway and New Brunswick on 
+the same date for both cities for 7 randomly chosen days in the month of July over the past 7 years (i.e. 
+one day was randomly chosen in each year). For this question assume that the central tendency and 
+variance of the temperatures in each city is normally distributed with a constant mean and variance for 
+all days in July that is remaining the same over the past 7 years and into the future … i.e. no global 
+warming.  But note that the means and standard deviations could differ between the two cities. You can 
+also assume that measures taken in different years are independent but that measures taken the same day 
+in Piscataway and New Brunswick are not independent. 
+Year 
+The Temperature Below the Year is for a Randomly Chosen Date in July 
+Where the Date is the same for Both Piscataway and New Brunswick 
+2013 
+2014 
+2015 
+2016 
+2017 
+2018 
+2019 
+New 
+Brunswick 
+78 oF 
+81 oF 
+90 oF 
+85 oF 
+88 oF 
+83 oF 
+83 oF 
+Piscataway 78 oF 
+79 oF 
+90 oF 
+82 oF 
+87 oF 
+82 oF 
+81 oF 
+A. Give separate point estimates for the average temperature for a random day in July and for the 
+standard deviations of these estimates for New Brunswick and for Piscataway.  
+SOLUTUION  
+ 
+New Brunswick 
+ 
+Mean =  (78 + 81 + 90 + 85 + 88  + 83 + 83) / 7 = 84 
+ 
+Variance =  
+ 
+= 
+   STD-DEV = SQRT(16.67) = 4.08 
+Standard Error of the Mean = 
+ 
+ 
+ 
+Piscataway 
+ 
+Mean =  (78 + 79 + 90 + 82 + 87  + 82 + 81) / 7 = 82.71 
+ 
+Variance =  
+ = 
+2
+2
+2
+2
+2
+2
+2
+ (78  - 84)  + (81-84)
+(90-84) +(85-84)
+(88-84) +(83-84)
+(83-84)
+7 1
++
++
++
+-
+ 36 + 9
+36+1 16+1 1
+100
+16.67
+6
+6
++
++
++
+=
+=
+16.67 /
+7 = 1.54
+2
+2
+2
+2
+2
+2
+2
+ (78  - 82.71)  + (79-82.71)
+(90-82.71) +(82-82.71)
+(87-82.71) +(82-82.71)
+(81-82.71)
+7 1
++
++
++
+-
+
+----- page 6 -----
+ 
+6 
+   
+             STD-DEV = SQRT(18.56) = 4.31 
+ 
+Standard Error of the Mean = 
+ 
+ 
+ 
+B. Next year (2020) another day in July will be randomly chosen in New Brunswick and the 
+temperature taken. Give a 95% confidence interval for what this temperature will be.  
+SOLUTION 
+84 ± t6,.0975
+ or 84 ± 2.45 x 4.46   or  (84 – 10.68 to 84 + 10.68) 
+               or (73.32 to 94.68) 
+ 
+C. Test the null hypotheses that in July the average temperatures are the same for New 
+Brunswick and Piscataway versus the alternative that are different with an overall Type 1 error 
+of 0.05  
+SOLUTION 
+ 
+Temperatures on the same day are not independent for Piscataway and New 
+Brunswick so look at paired differences  
+ 
+Day 
+1 
+2 
+3 
+4 
+5 
+6 
+7 
+New 
+Brunswick 
+78 
+81 
+90 
+85 
+88 
+83 
+83 
+Piscataway 
+78 
+79 
+90 
+82 
+87 
+82 
+81 
+Difference 
+0 
+2 
+0 
+3 
+1 
+1 
+2 
+ 
+SOLUTION 
+ 
+The Mean paired difference is (0 + 2 + 0 + 3 + 1 + 1 +2) / 7 = 1.29 
+ 
+The variance of a single difference is 
+ 
+  
+ 
+= 
+ 
+So the standard deviation of a single difference is SQRT(1.23) = 1.11  
+ 
+ 22.18 + 13.76
+53.14+0.50
+18.40+0.50
+2.92
+111.4
+18.56
+6
+6
++
++
++
+=
+=
+4.31/
+7 = 1.63
+4.08 1 1/ 6
++
+2
+2
+2
+2
+2
+2
+2
+ (0  - 1.29)  + (2-1.29)
+(0-1.29) +(3-1.29)
+(1-1.29) +(1-1.29)
+(2-1.29)
+7 1
++
++
++
+-
+ 1.66 + 0.50 1.66+2.92
+0.08+0.08
+0.50
+7.41.23
+6
+6
++
++
++
+=
+
+----- page 7 -----
+ 
+7 
+And the standard deviation of the men difference is 
+ 
+ 
+So the t-value is 1.29 / 0.42 = 3.07 which is greater than t6,.0975 = 2.45 so reject H0 
+1.11
+0.42
+7
+=
+
+----- page 8 -----
+ 
+8 
+ 
+Problem 6. Conservationists in France have captured 150 “dahuts”.  However, they do not know 
+the sex yet of each of these animals as such is hard to identify. It is known that on average 52% of 
+dahuts are male. You can assume that the sex of each of the 150 captured dahuts is independent 
+from that of the others.  
+A. What is the large sample estimate for probability that between 40% and 60% of the captured 150 
+dahuts are male?  
+SOLUTION 
+ 
+The expectation of the mean is 0.52 
+ 
+The standard error of the mean is 
+ 
+ 
+So the large sample approximation to the probability to have between 0.4 and 
+0.6 dahuts being male is the probability that a standard normal variate falls 
+between   
+ and 
+ which from standard normal probabilities 
+is  0.975, - 0.002  = 0.973 
+ 
+ 
+ 
+B. It costs on average 10 Euros to main a male dahut for one year. But this cost differs from bird 
+to bird with a standard deviation of 3 Euros. Similarity it costs on average 8 Euros to main a 
+female dahut for one year with again a bird to bird standard deviation of 3 Euros. What are i) the 
+expected costs and ii) standard deviation of the expected costs to maintain a randomly chosen 
+dahut (based on its probability to be male or female)? 
+SOLUTION 
+ 
+E[X] is 0.52 x 10 + 0.48 x 8 = 9.04 
+ 
+ 
+The variance is E[X2] – (E[X])2 
+ 
+ Again E[X] is 0.52 x 10 + 0.48 x 8 = 9.04 
+ 
+So (E[X])2 = (9.04)2 = 81.72 
+ 
+E[X2]  = 0.52 x E[X2] | Male + 0.48 E[X2] | Female 
+0.52 0.48
+0.0408
+150
+x
+=
+0.4
+0.52
+2.94
+0.408
+-
+-
+=
+0.6
+0.52
+1.96
+0.408
+-
+=
+
+----- page 9 -----
+ 
+9 
+ 
+Now  for each sex E[X2] = [mean of that sex]2 + [stddev of that sex]2 
+ 
+ 
+Which is 102 + 32 = 109 for males 
+                 82 + 32 = 73 for females 
+ 
+So the overall E[X2] is 0.52 x 109 + 0.48 x 73 = 56.68 + 35.04 = 91.72 
+ 
+Thus overall  E[X2] – (E[X])2 = 91.72 – 81.72 = 10 
+And the standard deviation is SQRT(10) = 3.16 

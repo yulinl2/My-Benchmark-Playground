@@ -1,0 +1,77 @@
+{
+  "question_id": "2023-spring-math-stat-q5",
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "rep": 1,
+  "exam": {
+    "year": 2023,
+    "term": "spring",
+    "level": "ms",
+    "part": "math-stat"
+  },
+  "request": {
+    "system": "You are sitting a PhD-level qualifying examination in statistics. Solve the problem rigorously and completely. Show your work and reasoning, justify each step, and clearly state your final answer(s). If the problem has multiple parts, answer every part, labeled. If you invoke a known theorem, name it.",
+    "user": "[2023 spring ms math-stat — problem 5]\n\n$Y_i = \\beta x_i + \\varepsilon_i$, $i = 1,\\dots,n$, with fixed $x_i$ and $\\varepsilon_i \\sim N(0,\\sigma^2)$ iid, $\\sigma^2$ unknown. (1) Find a two-dimensional sufficient statistic for $(\\beta, \\sigma^2)$. (2) Find the MLE of $\\beta$ and show it is unbiased. (3) Find the distribution of the MLE of $\\beta$.",
+    "max_tokens": 24000,
+    "mode": {
+      "effort": "high"
+    }
+  },
+  "response": {
+    "id": "resp_0e311d985e02e2a8006a24b8b56b7081949b059c2d0f6d8863",
+    "model": "gpt-5.5-2026-04-23",
+    "stop_reason": "completed",
+    "usage": {
+      "input_tokens": 187,
+      "output_tokens": 3997,
+      "output_tokens_details": {
+        "reasoning_tokens": 2588
+      }
+    },
+    "thinking": "**Analyzing MLE distribution**\n\nI’m considering whether to use the t-distribution with an estimated sigma. The maximum likelihood estimator (MLE) of beta follows a normal distribution, but when sigma is unknown, we have to account for that. I think I should note that beta_hat is normally distributed and independent of the residual sum of squares. I also want to clarify the assumptions needed for identifiability, especially if all x_i are zero. We can’t get a unique MLE then.\n**Analyzing MLE distribution**\n\nI'm considering if the user intends for \"distribution\" with an unknown variance. In part three, they might expect to find the distribution of the MLE of β, possibly a normal distribution. Their wording suggests that since σ² is unknown, I may need to derive βhat  N(β, σ²/Σx²) and consider using t for the replacement. It's essential to look at both the exact normal and Studentized distributions as additional options. I also need to ensure I'm considering a two-dimensional sufficient statistic correctly.\n**Exploring sufficient statistics**\n\nI'm considering the problem of finding a two-dimensional sufficient statistic. It mentions minimal sufficiency, but the focus seems to be on just sufficiency itself. I wonder if T=(Σx_iY_i, ΣY_i²) could be sufficient but not minimal when dealing with a vector. For a normal curved exponential model, I’m thinking about the natural parameters (β/σ², −1/(2σ²)). It brings to mind the natural parameter space and how these relate to sufficiency in this context.",
+    "text": "Assume throughout that\n\n\\[\nS_{xx}:=\\sum_{i=1}^n x_i^2>0,\n\\]\n\nso that \\(\\beta\\) is identifiable. If \\(S_{xx}=0\\), then all \\(x_i=0\\) and the likelihood does not depend on \\(\\beta\\), so \\(\\beta\\) has no unique MLE.\n\n---\n\n## (1) A two-dimensional sufficient statistic for \\((\\beta,\\sigma^2)\\)\n\nThe joint density of \\(Y=(Y_1,\\dots,Y_n)\\) is\n\n\\[\nf(y;\\beta,\\sigma^2)\n=(2\\pi\\sigma^2)^{-n/2}\n\\exp\\left\\{-\\frac{1}{2\\sigma^2}\\sum_{i=1}^n (y_i-\\beta x_i)^2\\right\\}.\n\\]\n\nExpand the quadratic term:\n\n\\[\n\\sum_{i=1}^n (y_i-\\beta x_i)^2\n=\n\\sum_{i=1}^n y_i^2\n-2\\beta\\sum_{i=1}^n x_i y_i\n+\\beta^2\\sum_{i=1}^n x_i^2.\n\\]\n\nSince \\(\\sum x_i^2\\) is fixed and known, the likelihood depends on the data only through\n\n\\[\n\\sum_{i=1}^n x_iY_i\n\\qquad\\text{and}\\qquad\n\\sum_{i=1}^n Y_i^2.\n\\]\n\nThus by the Neyman–Fisher factorization theorem,\n\n\\[\n\\boxed{\nT(Y)=\\left(\\sum_{i=1}^n x_iY_i,\\ \\sum_{i=1}^n Y_i^2\\right)\n}\n\\]\n\nis a two-dimensional sufficient statistic for \\((\\beta,\\sigma^2)\\).\n\nEquivalently, one could use \\((\\widehat\\beta,\\mathrm{RSS})\\), since it is a one-to-one transformation of the above statistic.\n\n---\n\n## (2) MLE of \\(\\beta\\) and unbiasedness\n\nThe log-likelihood, up to an additive constant, is\n\n\\[\n\\ell(\\beta,\\sigma^2)\n=\n-\\frac n2\\log\\sigma^2\n-\\frac{1}{2\\sigma^2}\n\\sum_{i=1}^n (Y_i-\\beta x_i)^2.\n\\]\n\nFor fixed \\(\\sigma^2\\), maximizing the likelihood with respect to \\(\\beta\\) is equivalent to minimizing\n\n\\[\nQ(\\beta)=\\sum_{i=1}^n (Y_i-\\beta x_i)^2.\n\\]\n\nDifferentiate:\n\n\\[\n\\frac{d}{d\\beta}Q(\\beta)\n=\n-2\\sum_{i=1}^n x_i(Y_i-\\beta x_i).\n\\]\n\nSetting this equal to zero gives\n\n\\[\n\\sum_{i=1}^n x_iY_i\n-\n\\beta\\sum_{i=1}^n x_i^2\n=0.\n\\]\n\nTherefore\n\n\\[\n\\boxed{\n\\widehat\\beta\n=\n\\frac{\\sum_{i=1}^n x_iY_i}{\\sum_{i=1}^n x_i^2}\n}\n\\]\n\nis the MLE of \\(\\beta\\).\n\nTo show unbiasedness, note that\n\n\\[\nY_i=\\beta x_i+\\varepsilon_i,\n\\qquad E[\\varepsilon_i]=0.\n\\]\n\nThus\n\n\\[\nE[Y_i]=\\beta x_i.\n\\]\n\nTherefore\n\n\\[\nE[\\widehat\\beta]\n=\nE\\left[\n\\frac{\\sum_{i=1}^n x_iY_i}{\\sum_{i=1}^n x_i^2}\n\\right]\n=\n\\frac{\\sum_{i=1}^n x_iE[Y_i]}{\\sum_{i=1}^n x_i^2}\n=\n\\frac{\\sum_{i=1}^n x_i(\\beta x_i)}{\\sum_{i=1}^n x_i^2}\n=\n\\beta.\n\\]\n\nHence\n\n\\[\n\\boxed{E[\\widehat\\beta]=\\beta,}\n\\]\n\nso the MLE of \\(\\beta\\) is unbiased.\n\n---\n\n## (3) Distribution of the MLE of \\(\\beta\\)\n\nWe have\n\n\\[\n\\widehat\\beta\n=\n\\frac{\\sum_{i=1}^n x_iY_i}{\\sum_{i=1}^n x_i^2}.\n\\]\n\nUsing \\(Y_i=\\beta x_i+\\varepsilon_i\\),\n\n\\[\n\\widehat\\beta\n=\n\\frac{\\sum_{i=1}^n x_i(\\beta x_i+\\varepsilon_i)}{\\sum_{i=1}^n x_i^2}\n=\n\\beta\n+\n\\frac{\\sum_{i=1}^n x_i\\varepsilon_i}{\\sum_{i=1}^n x_i^2}.\n\\]\n\nSince the \\(\\varepsilon_i\\) are iid \\(N(0,\\sigma^2)\\),\n\n\\[\n\\sum_{i=1}^n x_i\\varepsilon_i\n\\sim\nN\\left(0,\\sigma^2\\sum_{i=1}^n x_i^2\\right).\n\\]\n\nTherefore\n\n\\[\n\\widehat\\beta-\\beta\n\\sim\nN\\left(0,\\frac{\\sigma^2}{\\sum_{i=1}^n x_i^2}\\right),\n\\]\n\nand hence\n\n\\[\n\\boxed{\n\\widehat\\beta\n\\sim\nN\\left(\n\\beta,\\ \\frac{\\sigma^2}{\\sum_{i=1}^n x_i^2}\n\\right).\n}\n\\]\n\nEquivalently,\n\n\\[\n\\boxed{\n\\frac{\\widehat\\beta-\\beta}{\\sigma/\\sqrt{\\sum_{i=1}^n x_i^2}}\n\\sim N(0,1).\n}\n\\]\n\nSince \\(\\sigma^2\\) is unknown, if one uses the unbiased residual variance estimator\n\n\\[\ns^2=\\frac{1}{n-1}\\sum_{i=1}^n (Y_i-\\widehat\\beta x_i)^2,\n\\]\n\nthen\n\n\\[\n\\frac{\\widehat\\beta-\\beta}{s/\\sqrt{\\sum_{i=1}^n x_i^2}}\n\\sim t_{n-1}.\n\\]\n\nBut the exact distribution of the MLE itself is the normal distribution above.",
+    "raw_output": [
+      {
+        "id": "rs_0e311d985e02e2a8006a24b8b5ece081949c8197dc8c31cb60",
+        "type": "reasoning",
+        "content": [],
+        "summary": [
+          {
+            "type": "summary_text",
+            "text": "**Analyzing MLE distribution**\n\nI’m considering whether to use the t-distribution with an estimated sigma. The maximum likelihood estimator (MLE) of beta follows a normal distribution, but when sigma is unknown, we have to account for that. I think I should note that beta_hat is normally distributed and independent of the residual sum of squares. I also want to clarify the assumptions needed for identifiability, especially if all x_i are zero. We can’t get a unique MLE then."
+          },
+          {
+            "type": "summary_text",
+            "text": "**Analyzing MLE distribution**\n\nI'm considering if the user intends for \"distribution\" with an unknown variance. In part three, they might expect to find the distribution of the MLE of β, possibly a normal distribution. Their wording suggests that since σ² is unknown, I may need to derive βhat  N(β, σ²/Σx²) and consider using t for the replacement. It's essential to look at both the exact normal and Studentized distributions as additional options. I also need to ensure I'm considering a two-dimensional sufficient statistic correctly."
+          },
+          {
+            "type": "summary_text",
+            "text": "**Exploring sufficient statistics**\n\nI'm considering the problem of finding a two-dimensional sufficient statistic. It mentions minimal sufficiency, but the focus seems to be on just sufficiency itself. I wonder if T=(Σx_iY_i, ΣY_i²) could be sufficient but not minimal when dealing with a vector. For a normal curved exponential model, I’m thinking about the natural parameters (β/σ², −1/(2σ²)). It brings to mind the natural parameter space and how these relate to sufficiency in this context."
+          }
+        ]
+      },
+      {
+        "id": "msg_0e311d985e02e2a8006a24b8f082008194b26fcbc60926c7c2",
+        "type": "message",
+        "status": "completed",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "Assume throughout that\n\n\\[\nS_{xx}:=\\sum_{i=1}^n x_i^2>0,\n\\]\n\nso that \\(\\beta\\) is identifiable. If \\(S_{xx}=0\\), then all \\(x_i=0\\) and the likelihood does not depend on \\(\\beta\\), so \\(\\beta\\) has no unique MLE.\n\n---\n\n## (1) A two-dimensional sufficient statistic for \\((\\beta,\\sigma^2)\\)\n\nThe joint density of \\(Y=(Y_1,\\dots,Y_n)\\) is\n\n\\[\nf(y;\\beta,\\sigma^2)\n=(2\\pi\\sigma^2)^{-n/2}\n\\exp\\left\\{-\\frac{1}{2\\sigma^2}\\sum_{i=1}^n (y_i-\\beta x_i)^2\\right\\}.\n\\]\n\nExpand the quadratic term:\n\n\\[\n\\sum_{i=1}^n (y_i-\\beta x_i)^2\n=\n\\sum_{i=1}^n y_i^2\n-2\\beta\\sum_{i=1}^n x_i y_i\n+\\beta^2\\sum_{i=1}^n x_i^2.\n\\]\n\nSince \\(\\sum x_i^2\\) is fixed and known, the likelihood depends on the data only through\n\n\\[\n\\sum_{i=1}^n x_iY_i\n\\qquad\\text{and}\\qquad\n\\sum_{i=1}^n Y_i^2.\n\\]\n\nThus by the Neyman–Fisher factorization theorem,\n\n\\[\n\\boxed{\nT(Y)=\\left(\\sum_{i=1}^n x_iY_i,\\ \\sum_{i=1}^n Y_i^2\\right)\n}\n\\]\n\nis a two-dimensional sufficient statistic for \\((\\beta,\\sigma^2)\\).\n\nEquivalently, one could use \\((\\widehat\\beta,\\mathrm{RSS})\\), since it is a one-to-one transformation of the above statistic.\n\n---\n\n## (2) MLE of \\(\\beta\\) and unbiasedness\n\nThe log-likelihood, up to an additive constant, is\n\n\\[\n\\ell(\\beta,\\sigma^2)\n=\n-\\frac n2\\log\\sigma^2\n-\\frac{1}{2\\sigma^2}\n\\sum_{i=1}^n (Y_i-\\beta x_i)^2.\n\\]\n\nFor fixed \\(\\sigma^2\\), maximizing the likelihood with respect to \\(\\beta\\) is equivalent to minimizing\n\n\\[\nQ(\\beta)=\\sum_{i=1}^n (Y_i-\\beta x_i)^2.\n\\]\n\nDifferentiate:\n\n\\[\n\\frac{d}{d\\beta}Q(\\beta)\n=\n-2\\sum_{i=1}^n x_i(Y_i-\\beta x_i).\n\\]\n\nSetting this equal to zero gives\n\n\\[\n\\sum_{i=1}^n x_iY_i\n-\n\\beta\\sum_{i=1}^n x_i^2\n=0.\n\\]\n\nTherefore\n\n\\[\n\\boxed{\n\\widehat\\beta\n=\n\\frac{\\sum_{i=1}^n x_iY_i}{\\sum_{i=1}^n x_i^2}\n}\n\\]\n\nis the MLE of \\(\\beta\\).\n\nTo show unbiasedness, note that\n\n\\[\nY_i=\\beta x_i+\\varepsilon_i,\n\\qquad E[\\varepsilon_i]=0.\n\\]\n\nThus\n\n\\[\nE[Y_i]=\\beta x_i.\n\\]\n\nTherefore\n\n\\[\nE[\\widehat\\beta]\n=\nE\\left[\n\\frac{\\sum_{i=1}^n x_iY_i}{\\sum_{i=1}^n x_i^2}\n\\right]\n=\n\\frac{\\sum_{i=1}^n x_iE[Y_i]}{\\sum_{i=1}^n x_i^2}\n=\n\\frac{\\sum_{i=1}^n x_i(\\beta x_i)}{\\sum_{i=1}^n x_i^2}\n=\n\\beta.\n\\]\n\nHence\n\n\\[\n\\boxed{E[\\widehat\\beta]=\\beta,}\n\\]\n\nso the MLE of \\(\\beta\\) is unbiased.\n\n---\n\n## (3) Distribution of the MLE of \\(\\beta\\)\n\nWe have\n\n\\[\n\\widehat\\beta\n=\n\\frac{\\sum_{i=1}^n x_iY_i}{\\sum_{i=1}^n x_i^2}.\n\\]\n\nUsing \\(Y_i=\\beta x_i+\\varepsilon_i\\),\n\n\\[\n\\widehat\\beta\n=\n\\frac{\\sum_{i=1}^n x_i(\\beta x_i+\\varepsilon_i)}{\\sum_{i=1}^n x_i^2}\n=\n\\beta\n+\n\\frac{\\sum_{i=1}^n x_i\\varepsilon_i}{\\sum_{i=1}^n x_i^2}.\n\\]\n\nSince the \\(\\varepsilon_i\\) are iid \\(N(0,\\sigma^2)\\),\n\n\\[\n\\sum_{i=1}^n x_i\\varepsilon_i\n\\sim\nN\\left(0,\\sigma^2\\sum_{i=1}^n x_i^2\\right).\n\\]\n\nTherefore\n\n\\[\n\\widehat\\beta-\\beta\n\\sim\nN\\left(0,\\frac{\\sigma^2}{\\sum_{i=1}^n x_i^2}\\right),\n\\]\n\nand hence\n\n\\[\n\\boxed{\n\\widehat\\beta\n\\sim\nN\\left(\n\\beta,\\ \\frac{\\sigma^2}{\\sum_{i=1}^n x_i^2}\n\\right).\n}\n\\]\n\nEquivalently,\n\n\\[\n\\boxed{\n\\frac{\\widehat\\beta-\\beta}{\\sigma/\\sqrt{\\sum_{i=1}^n x_i^2}}\n\\sim N(0,1).\n}\n\\]\n\nSince \\(\\sigma^2\\) is unknown, if one uses the unbiased residual variance estimator\n\n\\[\ns^2=\\frac{1}{n-1}\\sum_{i=1}^n (Y_i-\\widehat\\beta x_i)^2,\n\\]\n\nthen\n\n\\[\n\\frac{\\widehat\\beta-\\beta}{s/\\sqrt{\\sum_{i=1}^n x_i^2}}\n\\sim t_{n-1}.\n\\]\n\nBut the exact distribution of the MLE itself is the normal distribution above."
+          }
+        ],
+        "phase": "final_answer",
+        "role": "assistant"
+      }
+    ]
+  },
+  "cost_usd": 0.06089,
+  "timing": {
+    "started": "2026-06-07T00:17:57.295799+00:00",
+    "ended": "2026-06-07T00:19:12.683707+00:00",
+    "seconds": 75.39
+  },
+  "error": null
+}

@@ -1,0 +1,81 @@
+[
+  {
+    "id": "2019-summer-probability-q1",
+    "exam": {
+      "year": 2019,
+      "term": "summer",
+      "part": "probability"
+    },
+    "number": 1,
+    "topics": [
+      "survey sampling",
+      "Bernoulli sampling",
+      "simple random sampling",
+      "Hajek's lemma",
+      "central limit theorem",
+      "Eve's law"
+    ],
+    "difficulty": "hard",
+    "prompt": "(Nine parts, all to be attempted; question 8 proves Hájek's lemma and question 9 ties it together.) For each $N = 1, 2, \\dots$, consider a population $\\pi_N$ of $N$ units with fixed values $Y_{N1}, \\dots, Y_{NN}$. We want to infer the population total $\\sum_{i=1}^N Y_{Ni}$ from a sample of size $n$, drawn two ways: (a) **Bernoulli sampling** — unit $i$ included iff $K_i = 1$, with $K_1, \\dots, K_N \\stackrel{iid}{\\sim} \\mathrm{Bern}(n/N)$; (b) **simple random sampling (SRS)** without replacement of size $n$, with inclusion indicators $J_1, \\dots, J_N$. Let $\\bar Y_N = N^{-1}\\sum_i Y_{Ni}$.",
+    "parts": [
+      "1. (5 pts) Write the joint distribution of $K_1, \\dots, K_N$, stating where it is zero/non-zero.",
+      "2. (5 pts) Write the joint distribution of $J_1, \\dots, J_N$, stating where it is zero/non-zero.",
+      "3. (6 pts) Find $\\mathbb{E}(J_i)$ and $\\operatorname{var}(J_i)$ for fixed $i$.",
+      "4. (4 pts) Let $S_N = \\sum_{i=1}^N J_i Y_{Ni}$. Describe in words what $S_N$ represents.",
+      "5. (15 pts) Define $T_N = \\sum_{i=1}^N K_i(Y_{Ni} - \\bar Y_N) + n\\bar Y_N$. Find $\\mathbb{E}(T_N)$ and $\\operatorname{var}(T_N)$, and show $\\mathbb{E}(T_N - S_N) = 0$.",
+      "6. (20 pts) Using the conditioning identity $\\operatorname{var}(T_N - S_N \\mid \\tilde n) = \\frac{\\Delta n}{N}\\frac{N - \\Delta n}{N-1}\\sum_{i=1}^N (Y_{Ni} - \\bar Y_N)^2$ (with $\\Delta n = |\\tilde n - n|$, $\\tilde n = \\sum_i K_i$), show $\\operatorname{var}(T_N - S_N) \\le \\sqrt{N}\\,\\frac{n}{N}(1 - \\frac{n}{N})\\frac1N\\sum_{i=1}^N (Y_{Ni} - \\bar Y_N)^2$. Hint: Eve's law and Jensen's inequality.",
+      "7. (10 pts) Show that if both $n$ and $N - n$ tend to infinity as $N \\to \\infty$, then $\\mathbb{E}(T_N - S_N)^2 / \\operatorname{var}(T_N) \\to 0$.",
+      "8. (25 pts) Prove **Hájek's lemma**: if $\\frac{U_n - \\mathbb{E}(U_n)}{\\sqrt{\\operatorname{var}(U_n)}} \\xrightarrow{d} L$ and $\\frac{\\mathbb{E}(U_n - V_n)^2}{\\operatorname{var}(U_n)} \\to 0$, then $\\frac{V_n - \\mathbb{E}(V_n)}{\\sqrt{\\operatorname{var}(V_n)}} \\xrightarrow{d} L$. Work through: (i) $\\frac{U_n - \\mathbb{E}(U_n)}{\\sqrt{\\operatorname{var}(U_n)}} - \\frac{V_n - \\mathbb{E}(V_n)}{\\sqrt{\\operatorname{var}(U_n)}} \\xrightarrow{p} 0$; (ii) $\\frac{V_n - \\mathbb{E}(V_n)}{\\sqrt{\\operatorname{var}(U_n)}} \\xrightarrow{d} L$; (iii) $\\operatorname{var}(U_n)/\\operatorname{var}(V_n) \\to 1$.",
+      "9. (10 pts) Given that $\\frac{T_N - \\mathbb{E}(T_N)}{\\sqrt{\\operatorname{var}(T_N)}} \\xrightarrow{d} L$ under regularity (with $n, N-n \\to \\infty$): (i) what is the asymptotic distribution of $S_N$? (ii) what does '$n$ and $N-n$ approach infinity as $N$ does' mean here? (iii) what can such a result be called?"
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/probability_exam_2019.pdf",
+      "page": 2
+    },
+    "verified": false,
+    "notes": "Transcribed from extracted text.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
+  },
+  {
+    "id": "2019-summer-probability-q2",
+    "exam": {
+      "year": 2019,
+      "term": "summer",
+      "part": "probability"
+    },
+    "number": 2,
+    "topics": [
+      "Markov chains",
+      "random walk on graph",
+      "coupling",
+      "total variation distance",
+      "mixing time",
+      "hitting times"
+    ],
+    "difficulty": "hard",
+    "prompt": "For $n \\ge 2$, consider the undirected graph with vertices $\\mathcal{X} = \\{-n, \\dots, -1, 0, 1, \\dots, n\\}$ and edges: $\\{-x, -y\\}$ for all $1 \\le x < y \\le n$ (the negatives form a clique), $\\{x, y\\}$ for all $1 \\le x < y \\le n$ (the positives form a clique), and $\\{-1, 0\\}$, $\\{0, 1\\}$ (so $0$ is the only bridge). Let $P$ be the simple-random-walk transition matrix and $(X_t)_{t \\ge 0}$ the chain; $\\mathbb{E}_x, \\mathbb{P}_x$ denote expectation/probability started from $x$.",
+    "parts": [
+      "1. (2.5 pts) Draw the graph for $n = 4$ (should have 9 nodes and 14 edges).",
+      "2. (2.5 pts) For general $n$, how many neighbors do $1$ and $-1$ have? How many do $2$ and $-2$ have?",
+      "3. (15 pts) Let $\\tau = \\min\\{t \\ge 0 : X_t = 0\\}$. By constructing a coupling (describe it in words and symbols), prove $\\max_{x \\in \\mathcal{X}} \\|P^t(x, \\cdot) - P^t(-x, \\cdot)\\|_{TV} \\le \\mathbb{P}_x(\\tau > t)$.",
+      "4a. (10 pts) Derive a bound $\\max_{x} \\mathbb{P}_x[\\tau > 2] \\le 1 - \\epsilon_n$ for some deterministic $\\epsilon_n > 0$ depending only on $n$ (handle $x = \\pm 1$ separately).",
+      "4b. (10 pts) For any $k \\ge 0$, derive a geometric upper bound on $\\max_y \\mathbb{P}_y[\\tau > k]$.",
+      "4c. (10 pts) Prove $\\max_y \\mathbb{E}_y[\\tau] \\le C n^\\alpha$ for finite absolute constants $\\alpha, C$ not depending on $n$; specify $C, \\alpha$ with the best possible exponent $\\alpha$.",
+      "5. (10 pts) For $x, y \\ge 1$, prove both inequalities $\\|P^t(x, \\cdot) - P^t(y, \\cdot)\\|_{TV} \\le \\|P(x, \\cdot) - P(y, \\cdot)\\|_{TV} \\le \\frac{2}{n-1}$.",
+      "6. (15 pts) Assume $n \\ge 65$. Show $\\max_{x \\ne 0}\\max_{y \\ne 0}\\|P^t(x, \\cdot) - P^t(y, \\cdot)\\|_{TV} \\le 1/16$ for all $t \\ge t_0$, expressing $t_0$ as a function of $n$.",
+      "7. (15 pts) By expressing $P^t(0, \\cdot)$ as a linear combination of $P^{t-1}(-1, \\cdot)$ and $P^{t-1}(1, \\cdot)$ (or otherwise), show $\\max_x \\max_y \\|P^t(x, \\cdot) - P^t(y, \\cdot)\\|_{TV} \\le 1/4$ for $t \\ge t_1$, expressing $t_1$ as a function of $n$.",
+      "8. (10 pts, open) Argue whether the order of magnitude of the bound in question 7 is optimal."
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/probability_exam_2019.pdf",
+      "page": 5
+    },
+    "verified": false,
+    "notes": "Mixing-time / coupling problem. Transcribed from extracted text.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
+  }
+]

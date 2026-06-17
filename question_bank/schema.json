@@ -1,0 +1,97 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Rutgers Stat PhD Qual Question",
+  "description": "A single transcribed question (or multi-part problem) from a Rutgers Statistics PhD qualifying exam.",
+  "type": "object",
+  "required": ["id", "exam", "number", "topics", "prompt", "source"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Stable unique id, convention: <year>-<term>-<part>-q<number>, e.g. 2019-fall-probability-q3",
+      "pattern": "^[0-9]{4}-[a-z]+-[a-z-]+-q[0-9]+[a-z]?$"
+    },
+    "exam": {
+      "type": "object",
+      "required": ["year", "term", "part"],
+      "additionalProperties": false,
+      "properties": {
+        "year": { "type": "integer", "minimum": 1990, "maximum": 2100 },
+        "term": { "type": "string", "enum": ["spring", "summer", "fall", "winter", "unknown"] },
+        "level": {
+          "type": "string",
+          "description": "Which qualifying exam this came from: the first-year PhD qual or the MS comprehensive exam.",
+          "enum": ["phd", "ms"]
+        },
+        "part": {
+          "type": "string",
+          "description": "Which part of the qual this came from.",
+          "enum": ["probability", "math-stat", "applied", "other"]
+        }
+      }
+    },
+    "number": {
+      "type": "integer",
+      "description": "Problem number as printed on the exam.",
+      "minimum": 1
+    },
+    "topics": {
+      "type": "array",
+      "description": "Free-form topic tags, e.g. 'CLT', 'MLE', 'sufficiency', 'linear regression'.",
+      "items": { "type": "string", "minLength": 1 },
+      "minItems": 1
+    },
+    "difficulty": {
+      "type": ["string", "null"],
+      "enum": ["easy", "medium", "hard", null],
+      "description": "Optional subjective difficulty."
+    },
+    "grading_type": {
+      "type": ["string", "null"],
+      "enum": ["exact-match", "numeric", "proof-rubric", "data-analysis", "other", null],
+      "description": "How the problem should be graded (set during human audit). 'exact-match'/'numeric' are auto-gradable; 'proof-rubric'/'data-analysis' need a judge/rubric."
+    },
+    "prompt": {
+      "type": "string",
+      "description": "The full problem statement, Markdown + LaTeX (use $...$ / $$...$$).",
+      "minLength": 1
+    },
+    "parts": {
+      "type": "array",
+      "description": "Optional list of sub-parts (a), (b), ... if you want them itemized.",
+      "items": { "type": "string" }
+    },
+    "solution": {
+      "type": ["string", "null"],
+      "description": "Optional worked solution (Markdown + LaTeX). null/omit if not transcribed."
+    },
+    "data": {
+      "type": "array",
+      "description": "Optional dataset files the problem depends on (applied/take-home exams). Repo-relative paths when the file is committed, or a bare filename + note when the dataset was not distributed with the PDF.",
+      "items": { "type": "string" }
+    },
+    "source": {
+      "type": "object",
+      "required": ["pdf"],
+      "additionalProperties": false,
+      "properties": {
+        "pdf": { "type": "string", "description": "Path under exams/pdfs/ this was transcribed from." },
+        "page": { "type": ["integer", "null"], "minimum": 1 }
+      }
+    },
+    "verified": {
+      "type": "boolean",
+      "description": "Whether a HUMAN has checked the transcription against the source PDF.",
+      "default": false
+    },
+    "ai_audit": {
+      "type": ["string", "null"],
+      "enum": ["pass", "fix", null],
+      "description": "Result of an automated cross-check of the transcription against the extracted source text. 'pass' = faithful; 'fix' = discrepancy noted in notes. Not a substitute for human `verified`."
+    },
+    "notes": {
+      "type": "string",
+      "description": "Any transcriber notes (ambiguities, OCR issues, etc.)."
+    }
+  }
+}

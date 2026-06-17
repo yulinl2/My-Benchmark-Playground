@@ -1,0 +1,159 @@
+
+----- page 1 -----
+ 
+1 
+MASTER’S COMPREHENSIVE EXAMINATION 
+ 
+Part II Applied (2 hours) December 2nd, 2017. 
+Instructions: Attempt any three out of the following four questions. 
+Mention which three you would like to have graded. Open book and open notes. 
+1. A researcher seeks to compare 4 different diets on the egg production of chickens 
+(hens). Each diet is of a mixture of one Energy feed and one Protein Feed as follows  
+• Two Possible Energy Feeds Are: Corn(C), or Barley(B) 
+• Two Possible Protein Feeds: Soybean Meal (SM) or Cottonseed Meal (CM) 
+• The 4 possible diets are Diet-l: (C,SM) ; Diet-2: (C,CM) ; Diet-3: (B,SM) ; Diet-
+4: (B,CM) 
+The response variable for each chicken is the egg production - number of eggs in a month. 
+A random sample of 12 chicken farms were picked from a larger population of chicken 
+farms. Then 3 of the 12 farms were assigned (completely at random) to Diet-1; 3 farms to 
+Diet-2; 3 farms to Diet-3; and 3 farms to Diet-4. On each farm, 20 chickens were fed the 
+assigned diet, and egg yield was recorded for each chicken. (There are a total of 240 
+chickens in this experiment). 
+Now Answer the Following 
+A. For the factors: Energy Feed, Protein Feed, Farms, Chickens, and any interactions, 
+state which involve fixed effects, and which involve random effects? 
+B. For each pair of factors, state which are crossed, and which are nested. 
+C. Show the ANOVA Table showing Source of Variability, Degrees of Freedom, 
+Expected Mean Squares, and show which F Tests to take. .. (Assume the normality and 
+homogeneity assumptions of ANOVA are satisfied.). The researcher is specifically 
+interested in the effects on egg production of Energy Feed, Protein Feed and Their 
+Interaction. Your ANOVA table should show what is the numerator and denominator to 
+test each of these factors. 
+_____________________________________________________________________ 
+2. Dr. Jones is testing a new home delivered education program to increase kindergarten 
+test scores.   He will randomly chose 50 independent children to have his program given 
+to them by their parents and then compare the results to 50 other independent children 
+who are not given the program.  From normative data, typical education test scores 
+without the intervention have a standard deviation of 15 units and are normally 
+distributed.  Higher test scores are better. He will test the null hypothesis that the 
+intervention has no effect on test scores with a two sided α = 0 .05. Let Δ represent the 
+true amount of units on average that the intervention improves test score in the 
+population.  
+ 
+
+----- page 2 -----
+ 
+2 
+A. Assume the intervention has no effect on the standard deviation of a test score and 
+give the power to detect a difference of Δ=14 under HA. 
+ 
+ 
+B. Now further assume that after the study is done that 21 of the 50 parents who were 
+supposed to give the program to their child did not, so the child had no benefit,  
+ 
+i. Assuming the 21 parents cannot be identified and all 50 children  
+               randomized to receive Dr. Jones program must be analyzed  
+               together, will power to detect  Δ = 14 under HA be more or less than  
+               what is calculated above for Part A?  Explain why. 
+ 
+ii. If the 21 parents can be identified, will excluding their children from the 50 and 
+only comparing the 29 who delivered the program to the 50 controls typically 
+improve power over analyzing al 50 together?  Explain why or why not. 
+______________________________________________________________________ 
+3. A commuter uses Google Maps to estimate the travel time by car to get from 
+downtown New Brunswick to 34th Street and 1st Avenue in New York City.  The 
+departure times can be 6 AM, 7 AM, or 8 AM.  Google maps gives two alternative 
+routes: either take the Lincoln Tunnel, or the Holland Tunnel.  Assume that the following 
+are Google maps times (in minutes): 
+                                                    Lincoln Tunnel                         Holland Tunnel 
+                                                 6AM      7AM   8AM            6AM       7AM      8AM 
+Monday November 13               79          100     180               80           110       168 
+Tuesday November 14               90          120     172               95           122       165 
+Wednesday November 15          90          115     185              107          128       171 
+Thursday November 16              87          150     180               90           130       165 
+ 
+Assume that travel times between days of week are independent of each other.   However 
+travel times within a day are not independent.  Also travel times using Lincoln tunnel and 
+Holland tunnel on same day and starting time are not independent of each other (both 
+routes use the NJ turnpike for part of trip). 
+ 
+a) Is there statistically significant evidence (at the 0.05) level of a difference in travel 
+time between the two routes for a 6 AM departure?   Carry out an appropriate test.  Show 
+test statistic and p-value. 
+ 
+b) Is there statistically significant evidence (at the 0.05) level of a difference in travel 
+time between the two routes for a 7 AM departure?   Carry out an appropriate test.  Show 
+test statistic and p-value. 
+ 
+c) Is there statistically significant evidence (at the 0.05) level of a difference in travel 
+time between the two routes for an 8 AM departure?   Carry out an appropriate test. Show 
+test statistic and p-value. 
+_______________________________________________________________________________________________ 
+ 
+
+----- page 3 -----
+ 
+3 
+ 
+ 
+ 
+4. This data exists on the number of hurricanes that have hit Typhoon Island, a place 
+that lies on the equator and thus has hurricanes throughout the year. 
+NUMBER OF HURRICANES HITTING TYPHOON ISLAND 
+Year 
+2007 
+2008 
+2009 
+2010 
+2011 
+2012 
+2013 
+2014 
+2015 
+2016 
+Number 
+2 
+5 
+7 
+1 
+4 
+0 
+9 
+3 
+8 
+5 
+ 
+ 
+A. Assume that the number of hurricanes each year is independent with a 
+common standard deviation, but that the intensity can differ randomly from 
+year to year. Then derive a large sample estimate for the expected number of 
+hurricanes in 2017 and the standard deviation of this estimate. 
+ 
+B.   Assume that monetary damages from each hurricane is independently 
+distributed including being independent of the number of hurricanes that 
+occur in one year. Use the information on monetary damages from 8 
+randomly chosen hurricanes below along with your answer to A above to 
+give an estimate for the expected total monetary damages from all hurricanes 
+in 2017  
+ 
+MONETARY DAMAGES FROM 8 RANDOMPLY CHOSEN HURRICAINES 
+Hurricane 
+1 
+2 
+3 
+4 
+5 
+6 
+7 
+8 
+Damages 
+5 
+6 
+4 
+8 
+7 
+6 
+5 
+6 
+ 
+ 

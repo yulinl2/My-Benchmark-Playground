@@ -1,0 +1,141 @@
+
+----- page 1 -----
+ 
+ 
+MASTER’S COMPREHENSIVE EXAMINATION 
+ 
+Part I Theory (90 minutes) April 7th, 2012 
+Instructions: Attempt any three out of the following four questions on both pages. 
+Mention which three you would like to have graded. Open book and open notes. 
+ 
+ 
+1.  Let 
+1
+2
+,
+X
+X be independent with density 
+/
+2
+( ;
+)
+,  
+0.
+x
+X
+e
+x
+f
+x
+x
+β
+β
+β
+−
+=
+>
+ 
+ 
+  
+a)  Find the MLE of β . 
+ 
+b)  Find the MLE of 
+1.
+eβ +  
+ 
+ 
+ 
+2.  An urn initially contains 1 red ball and 1 blue ball.  At each stage a ball is randomly withdrawn and 
+replaced by two other balls of the same color.  (For instance, if the red ball is initially chosen, then there 
+would be 2 red and 1 blue ball in the urn when the next selection occurs.)  Let 
+,
+n i
+P be the probability that 
+there are exactly i red balls in the urn after n stages have been completed 1
+1.
+i
+n
+≤≤
++
+ 
+ 
+ 
+a)  Derive an equation for 
+,
+n i
+P  in terms of 
+1, ,
+n
+j
+P −
+with boundary conditions. 
+ 
+b)  Calculate 
+9,1
+9,2
+and 
+.
+P
+P
+ 
+ 
+ 
+ 
+3.    Let X be a single observation from a population whose density is 
+ 
+ 
+ 
+ 
+0 1
+( ;0)
+0
+,
+0
+1
+      
+0,
+otherwise
+Xf
+x
+x
+x
+−
+=
+<
+<
+=
+ 
+    Find the most powerful text of size α =.05 for 
+0
+1
+: 0
+1 vs 
+:0
+2
+H
+H
+=
+=
+ 
+ 
+ 
+4.  There are two bins that contain two different types of batteries.  When in use, batteries in bin i last (in 
+hours an exponentially distributed time with rate 
+,
+1,2.
+i i
+λ
+=
+  Three batteries are independently chosen 
+from the bins, each with probability 
+ip from bin 
+1
+2
+,
+1.
+i p
+p
++
+=
+  If all batteries are still operating after t 
+hours of use, what is the probability that all three will still be operating after an additional s hours? 

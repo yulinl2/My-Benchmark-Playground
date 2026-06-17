@@ -1,0 +1,126 @@
+
+----- page 1 -----
+1 
+ 
+MASTER’S COMPREHENSIVE EXAMINATION 
+ 
+Part II Applied (90 minutes) April 7, 2012 
+Instructions: Attempt any three out of the following four questions on both pages. 
+Mention which three you would like to have graded. Open book and open notes. 
+ 
+ 
+1) A researcher wants to compare two methods (M1 vs M2) to teach math.  The researcher 
+picks a random sample of 8 students, and assigns at random 4 students to learn under M1, 
+and the other 4 students under M2.  At the end of the term, the researcher picks at random 3 
+algebra problems, and 3 geometry problems.  All 8 students are given the same 6 problems.   
+The response variable Y is the number of minutes to solve the problem. 
+ 
+In what follows, let M denote Method, S denote Subject, P denote Problem, and T denote Type 
+of math(algebra vs geometry). 
+ 
+a) Write out the ANOVA table just showing Sources of Variability and degrees of Freedom. 
+and indicate which SV are fixed effects and which are random. 
+ 
+b) To test for Method effect, what MS terms go in numerator and what MS terms go in 
+denominator. 
+ 
+ 
+2) Scientists are studying  the sizes of radio-electric disturbances known as “ka-chings” that occur on 
+Mars and Pluto.   They have obtained 15 measures of ka-chings from Pluto and 10 measures from 
+Mars.  Since Mars is closer to Earth, ka-chings of any size on Mars can be detected.  However, 
+because Pluto is much further away from Earth, only ka-chings that are larger than 3 units can be 
+measured. 
+ 
+Table of the 15 ordered Ka-ching measures from Mars and 10 ordered measures from Pluto 
+Mars
+0.1
+0.3
+0.5 
+0.7
+1
+20
+200
+600
+800
+10,000
+100,000
+250,000
+500,000
+2,000,000
+5,000,000
+Pluto
+5
+50
+55 
+1,200
+2,000
+5,000
+25,000
+40,000
+1,000,000
+10,000,000
+ 
+A.  It is believed that the median size of a Ka-ching on Mars is 6 units.  Statistical test if the data 
+dispute this belief with a Type-1 error of 0.05.  
+ 
+B. Perform the best test within the limits of the available data of whether the central tendency of 
+the size of a Ka-ching is the same for Pluto as for Mars.  Remember, that because Pluto is much 
+further away from Earth, only Ka-chings that are larger than 3 units can be measured on Pluto. 
+Again use a type-1 error of 0.05. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+----- page 2 -----
+2 
+ 
+ 
+ 
+ 
+ 
+ 
+3)  A student adviser wants to estimate the average number of hours per day Rutgers students 
+worked on outside jobs. The adviser took a random sample of 50 Rutgers students and observed 
+the following amounts. 
+ 
+Hours worked          frequency 
+0   
+  
+ 
+    37           
+1                                        8 
+2                                        2 
+3                                        1                             
+4                                        0                                      
+5                                        0 
+6                                        0 
+7                                        0 
+8                                        2 
+ 
+ 
+a) Compute the sample mean and sample standard deviation of the job hours worked per 
+student. 
+b) Give the standard large sample 95% confidence interval   for the average(mean) job hours 
+per Rutgers students.  (choose either z.025=1.96 or  t49,.025 = 2.01)    
+c) Is the sample of size 50 large enough to justify your C.I. in part (b)?   
+ 
+ 
+ 
+4)   A snow plow is used each time there is a snow storm.  After each use, the snow plow must 
+have its carburetor serviced.  If the carburetor is not broken, it costs $50 to service it.  If the 
+carburetor is broken it is not serviced but it costs $500 to replace it.  The probability for a 
+carburetor to be broken each time is 5% and is independent across storms.  The city has just 
+purchased a new snow plow with its first carburetor. 
+ 
+ 
+A.  What is the mean total cost to service the first carburetor across all of the storms it is used 
+before it is replaced?  Give the best 90% two sided confidence interval for these costs to 
+service the first carburetor before it is replaced. 
+ 
+B. Give the expected  mean and standard deviation for total costs to service and replace all 
+carburetors used on this snow plow through the first 30 snow storms 
+ 

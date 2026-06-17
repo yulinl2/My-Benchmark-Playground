@@ -1,0 +1,64 @@
+{
+  "question_id": "2024-fall-math-stat-q3",
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "rep": 0,
+  "exam": {
+    "year": 2024,
+    "term": "fall",
+    "level": "ms",
+    "part": "math-stat"
+  },
+  "request": {
+    "system": "You are sitting a PhD-level qualifying examination in statistics. Solve the problem rigorously and completely. Show your work and reasoning, justify each step, and clearly state your final answer(s). If the problem has multiple parts, answer every part, labeled. If you invoke a known theorem, name it.",
+    "user": "[2024 fall ms math-stat — problem 3]\n\n$Y_1, Y_2$ have joint density $f(y_1,y_2\\mid\\theta) = \\frac{8}{\\theta^4}y_1 y_2$ for $0 \\le y_2 \\le y_1 \\le \\theta$. (1) Is $Y_2$ a sufficient statistic for $\\theta$? (prove). (2) Find the MLE of $\\theta$. (3) Is the MLE unbiased?",
+    "max_tokens": 24000,
+    "mode": {
+      "effort": "high"
+    }
+  },
+  "response": {
+    "id": "resp_07d4e90450d33efe006a24ba5d42508190b36d03a00066ad06",
+    "model": "gpt-5.5-2026-04-23",
+    "stop_reason": "completed",
+    "usage": {
+      "input_tokens": 184,
+      "output_tokens": 2374,
+      "output_tokens_details": {
+        "reasoning_tokens": 1034
+      }
+    },
+    "thinking": "",
+    "text": "**Given joint density**\n\\[\nf(y_1,y_2\\mid \\theta)=\\frac{8}{\\theta^4}y_1y_2,\\qquad 0\\le y_2\\le y_1\\le \\theta.\n\\]\n\nEquivalently,\n\\[\nf(y_1,y_2\\mid \\theta)=\\frac{8}{\\theta^4}y_1y_2\\,\\mathbf 1\\{0\\le y_2\\le y_1\\le \\theta\\}.\n\\]\n\n---\n\n## (1) Is \\(Y_2\\) sufficient for \\(\\theta\\)?\n\nNo, \\(Y_2\\) is **not** sufficient for \\(\\theta\\).\n\nOne way to prove this is by examining the conditional distribution of \\(Y_1\\) given \\(Y_2\\). If \\(Y_2\\) were sufficient for \\(\\theta\\), then the conditional distribution of the full data \\((Y_1,Y_2)\\) given \\(Y_2\\) would not depend on \\(\\theta\\).\n\nFirst find the marginal density of \\(Y_2\\):\n\n\\[\nf_{Y_2}(y_2\\mid \\theta)\n= \\int_{y_2}^{\\theta} \\frac{8}{\\theta^4}y_1y_2\\,dy_1,\n\\qquad 0\\le y_2\\le \\theta.\n\\]\n\nThus\n\n\\[\nf_{Y_2}(y_2\\mid \\theta)\n= \\frac{8y_2}{\\theta^4}\\int_{y_2}^{\\theta} y_1\\,dy_1\n= \\frac{8y_2}{\\theta^4}\\cdot \\frac{\\theta^2-y_2^2}{2}\n= \\frac{4y_2(\\theta^2-y_2^2)}{\\theta^4}.\n\\]\n\nTherefore, for \\(y_2\\le y_1\\le \\theta\\),\n\n\\[\nf_{Y_1\\mid Y_2}(y_1\\mid y_2,\\theta)\n=\n\\frac{f(y_1,y_2\\mid \\theta)}{f_{Y_2}(y_2\\mid \\theta)}.\n\\]\n\nSo\n\n\\[\nf_{Y_1\\mid Y_2}(y_1\\mid y_2,\\theta)\n=\n\\frac{\\frac{8}{\\theta^4}y_1y_2}{\\frac{4y_2(\\theta^2-y_2^2)}{\\theta^4}}\n=\n\\frac{2y_1}{\\theta^2-y_2^2},\n\\qquad y_2\\le y_1\\le \\theta.\n\\]\n\nThis conditional density depends on \\(\\theta\\), both through the denominator and through the support \\(y_1\\le \\theta\\). Hence the conditional distribution of \\(Y_1\\) given \\(Y_2\\) depends on \\(\\theta\\).\n\nTherefore, by the conditional distribution characterization of sufficiency, \\(Y_2\\) is **not sufficient** for \\(\\theta\\).\n\n---\n\n## (2) Find the MLE of \\(\\theta\\)\n\nThe likelihood is\n\n\\[\nL(\\theta;y_1,y_2)\n=\n\\frac{8}{\\theta^4}y_1y_2\\mathbf 1\\{0\\le y_2\\le y_1\\le \\theta\\}.\n\\]\n\nFor observed \\(0<y_2\\le y_1\\), the likelihood as a function of \\(\\theta\\) is\n\n\\[\nL(\\theta)\n=\n\\frac{8y_1y_2}{\\theta^4},\\qquad \\theta\\ge y_1.\n\\]\n\nSince \\(\\theta^{-4}\\) is strictly decreasing in \\(\\theta\\), the likelihood is maximized by taking the smallest allowable value of \\(\\theta\\), namely\n\n\\[\n\\widehat\\theta_{\\text{MLE}}=Y_1.\n\\]\n\nSo the MLE is\n\n\\[\n\\boxed{\\widehat\\theta=Y_1.}\n\\]\n\n---\n\n## (3) Is the MLE unbiased?\n\nThe MLE is \\(\\widehat\\theta=Y_1\\). We compute \\(E_\\theta[Y_1]\\).\n\nFirst find the marginal density of \\(Y_1\\):\n\n\\[\nf_{Y_1}(y_1\\mid \\theta)\n=\n\\int_0^{y_1}\\frac{8}{\\theta^4}y_1y_2\\,dy_2,\n\\qquad 0\\le y_1\\le \\theta.\n\\]\n\nThus\n\n\\[\nf_{Y_1}(y_1\\mid \\theta)\n=\n\\frac{8y_1}{\\theta^4}\\int_0^{y_1}y_2\\,dy_2\n=\n\\frac{8y_1}{\\theta^4}\\cdot \\frac{y_1^2}{2}\n=\n\\frac{4y_1^3}{\\theta^4}.\n\\]\n\nThen\n\n\\[\nE_\\theta[Y_1]\n=\n\\int_0^\\theta y_1\\frac{4y_1^3}{\\theta^4}\\,dy_1\n=\n\\frac{4}{\\theta^4}\\int_0^\\theta y_1^4\\,dy_1\n=\n\\frac{4}{\\theta^4}\\cdot \\frac{\\theta^5}{5}\n=\n\\frac{4\\theta}{5}.\n\\]\n\nTherefore,\n\n\\[\nE_\\theta[\\widehat\\theta]\n=\nE_\\theta[Y_1]\n=\n\\frac{4\\theta}{5}\n\\neq \\theta.\n\\]\n\nSo the MLE is biased downward, with bias\n\n\\[\n\\operatorname{Bias}_\\theta(\\widehat\\theta)\n=\n\\frac{4\\theta}{5}-\\theta\n=\n-\\frac{\\theta}{5}.\n\\]\n\nHence the MLE is **not unbiased**.\n\n\\[\n\\boxed{\\widehat\\theta=Y_1 \\text{ is biased, with } E_\\theta[\\widehat\\theta]=\\frac{4\\theta}{5}.}\n\\]",
+    "raw_output": [
+      {
+        "id": "rs_07d4e90450d33efe006a24ba5dfe1c81908dbb0623e0d56805",
+        "type": "reasoning",
+        "content": [],
+        "summary": []
+      },
+      {
+        "id": "msg_07d4e90450d33efe006a24ba72d8988190b0c95c723701ec9b",
+        "type": "message",
+        "status": "completed",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "**Given joint density**\n\\[\nf(y_1,y_2\\mid \\theta)=\\frac{8}{\\theta^4}y_1y_2,\\qquad 0\\le y_2\\le y_1\\le \\theta.\n\\]\n\nEquivalently,\n\\[\nf(y_1,y_2\\mid \\theta)=\\frac{8}{\\theta^4}y_1y_2\\,\\mathbf 1\\{0\\le y_2\\le y_1\\le \\theta\\}.\n\\]\n\n---\n\n## (1) Is \\(Y_2\\) sufficient for \\(\\theta\\)?\n\nNo, \\(Y_2\\) is **not** sufficient for \\(\\theta\\).\n\nOne way to prove this is by examining the conditional distribution of \\(Y_1\\) given \\(Y_2\\). If \\(Y_2\\) were sufficient for \\(\\theta\\), then the conditional distribution of the full data \\((Y_1,Y_2)\\) given \\(Y_2\\) would not depend on \\(\\theta\\).\n\nFirst find the marginal density of \\(Y_2\\):\n\n\\[\nf_{Y_2}(y_2\\mid \\theta)\n= \\int_{y_2}^{\\theta} \\frac{8}{\\theta^4}y_1y_2\\,dy_1,\n\\qquad 0\\le y_2\\le \\theta.\n\\]\n\nThus\n\n\\[\nf_{Y_2}(y_2\\mid \\theta)\n= \\frac{8y_2}{\\theta^4}\\int_{y_2}^{\\theta} y_1\\,dy_1\n= \\frac{8y_2}{\\theta^4}\\cdot \\frac{\\theta^2-y_2^2}{2}\n= \\frac{4y_2(\\theta^2-y_2^2)}{\\theta^4}.\n\\]\n\nTherefore, for \\(y_2\\le y_1\\le \\theta\\),\n\n\\[\nf_{Y_1\\mid Y_2}(y_1\\mid y_2,\\theta)\n=\n\\frac{f(y_1,y_2\\mid \\theta)}{f_{Y_2}(y_2\\mid \\theta)}.\n\\]\n\nSo\n\n\\[\nf_{Y_1\\mid Y_2}(y_1\\mid y_2,\\theta)\n=\n\\frac{\\frac{8}{\\theta^4}y_1y_2}{\\frac{4y_2(\\theta^2-y_2^2)}{\\theta^4}}\n=\n\\frac{2y_1}{\\theta^2-y_2^2},\n\\qquad y_2\\le y_1\\le \\theta.\n\\]\n\nThis conditional density depends on \\(\\theta\\), both through the denominator and through the support \\(y_1\\le \\theta\\). Hence the conditional distribution of \\(Y_1\\) given \\(Y_2\\) depends on \\(\\theta\\).\n\nTherefore, by the conditional distribution characterization of sufficiency, \\(Y_2\\) is **not sufficient** for \\(\\theta\\).\n\n---\n\n## (2) Find the MLE of \\(\\theta\\)\n\nThe likelihood is\n\n\\[\nL(\\theta;y_1,y_2)\n=\n\\frac{8}{\\theta^4}y_1y_2\\mathbf 1\\{0\\le y_2\\le y_1\\le \\theta\\}.\n\\]\n\nFor observed \\(0<y_2\\le y_1\\), the likelihood as a function of \\(\\theta\\) is\n\n\\[\nL(\\theta)\n=\n\\frac{8y_1y_2}{\\theta^4},\\qquad \\theta\\ge y_1.\n\\]\n\nSince \\(\\theta^{-4}\\) is strictly decreasing in \\(\\theta\\), the likelihood is maximized by taking the smallest allowable value of \\(\\theta\\), namely\n\n\\[\n\\widehat\\theta_{\\text{MLE}}=Y_1.\n\\]\n\nSo the MLE is\n\n\\[\n\\boxed{\\widehat\\theta=Y_1.}\n\\]\n\n---\n\n## (3) Is the MLE unbiased?\n\nThe MLE is \\(\\widehat\\theta=Y_1\\). We compute \\(E_\\theta[Y_1]\\).\n\nFirst find the marginal density of \\(Y_1\\):\n\n\\[\nf_{Y_1}(y_1\\mid \\theta)\n=\n\\int_0^{y_1}\\frac{8}{\\theta^4}y_1y_2\\,dy_2,\n\\qquad 0\\le y_1\\le \\theta.\n\\]\n\nThus\n\n\\[\nf_{Y_1}(y_1\\mid \\theta)\n=\n\\frac{8y_1}{\\theta^4}\\int_0^{y_1}y_2\\,dy_2\n=\n\\frac{8y_1}{\\theta^4}\\cdot \\frac{y_1^2}{2}\n=\n\\frac{4y_1^3}{\\theta^4}.\n\\]\n\nThen\n\n\\[\nE_\\theta[Y_1]\n=\n\\int_0^\\theta y_1\\frac{4y_1^3}{\\theta^4}\\,dy_1\n=\n\\frac{4}{\\theta^4}\\int_0^\\theta y_1^4\\,dy_1\n=\n\\frac{4}{\\theta^4}\\cdot \\frac{\\theta^5}{5}\n=\n\\frac{4\\theta}{5}.\n\\]\n\nTherefore,\n\n\\[\nE_\\theta[\\widehat\\theta]\n=\nE_\\theta[Y_1]\n=\n\\frac{4\\theta}{5}\n\\neq \\theta.\n\\]\n\nSo the MLE is biased downward, with bias\n\n\\[\n\\operatorname{Bias}_\\theta(\\widehat\\theta)\n=\n\\frac{4\\theta}{5}-\\theta\n=\n-\\frac{\\theta}{5}.\n\\]\n\nHence the MLE is **not unbiased**.\n\n\\[\n\\boxed{\\widehat\\theta=Y_1 \\text{ is biased, with } E_\\theta[\\widehat\\theta]=\\frac{4\\theta}{5}.}\n\\]"
+          }
+        ],
+        "phase": "final_answer",
+        "role": "assistant"
+      }
+    ]
+  },
+  "cost_usd": 0.03653,
+  "timing": {
+    "started": "2026-06-07T00:25:01.127504+00:00",
+    "ended": "2026-06-07T00:25:37.331485+00:00",
+    "seconds": 36.2
+  },
+  "error": null
+}

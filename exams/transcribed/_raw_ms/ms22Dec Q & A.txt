@@ -1,0 +1,491 @@
+
+----- page 1 -----
+STATISTICS MASTER’S COMPREHENSIVE EXAMINATION
+3 December 2022
+Instructions: Attempt any five out of the following six questions. Spec-
+ify which five you would like to have graded. Students are allowed cal-
+culators, laptops, books and notes – no internet use and no cell phones
+out.
+Problem 1. Let (X1, Y1), . . . , (Xn, Yn) be i.i.d. samples with Xi ∼
+N(0, 1) and Yi|Xi = x ∼N(x2θ, 1).
+(1) Find the MLE ˆθn of θ.
+Answer: The joint density of (X, Y ) is fθ(x, y) = exp(−x2/2 −
+(y −x2θ)2/2)/2π, so the log likelihood function is
+ℓn(θ) = −1
+2
+n
+X
+i=1
+X2
+i −1
+2
+n
+X
+i=1
+(Yi −X2
+i θ)2 −n log(2π).
+Hence the MLE is solved by the zero of the derivative the like-
+lihood function
+ℓ′
+n(θ) = −2
+n
+X
+i=1
+X2
+i (Yi −X2
+i θ) = 0,
+i.e.
+ˆθn =
+Pn
+i=1 XiYi
+Pn
+i=1 X4
+i
+.
+(2) Find the limiting distribution of √n(ˆθn −θ).
+Answer: The Fisher information is
+I(θ) = −Eθ
+d2
+dθ2 log fθ(X, Y ) = EθX4 = 3.
+Hence
+√n(ˆθn −θ) →d N(0, 1/3).
+Problem 2. Lord Rayleigh was one of the earliest scientists to study
+the density of nitrogen. In his studies, he noticed something peculiar.
+The nitrogen densities produced from chemical compounds tended to
+be smaller than the densities of nitrogen produced from the atmo-
+sphere. Lord Rayleigh’s measurements 18 are given in the following
+table. These measurements correspond to the mass of nitrogen filling
+a flask of specified volume under specified temperature and pressure.
+1
+
+----- page 2 -----
+2
+Compound Chemical
+Atmosphere
+2.30143
+2.31017
+2.29890
+2.30986
+2.29816
+2.31010
+2.30182
+2.31001
+2.29869
+2.31024
+2.29940
+2.31010
+2.29849
+2.31028
+2.29889
+2.31163
+2.30074
+2.30956
+2.30054
+(1) Is there sufficient evidence to indicate a difference in the mean
+mass of nitrogen per flask for chemical compounds and the at-
+mosphere? What can be said about the p-value associated with
+your test?
+Answer: The hypotheses are H0 : µ1−µ2 = 0 vs. H1 : µ1−µ2 ̸=
+0, where µ1= mean nitrogen density for chemical compounds
+and µ2= mean nitrogen density for air. Then the value of t-test
+can be computed to be |t| = 22.17 with 17-degrees of freedom.
+The p-value is extremely small (and uninteresting to explicitly
+write down).
+(2) Find a 95% confidence interval for the difference in mean mass
+of nitrogen per flask for chemical compounds and air.
+Answer: The 95% CI for µ1 −µ2 is (–.001151, –0.000951) that
+does not contain 0, so there is evidence that the mean densities
+are different.
+Problem 3. Suppose we plan to study the effects of two vaccines for
+COVID-19, vaccine A and vaccine B. We collect n observations, de-
+noted by (y1, · · · , yn), from the group taking vaccine A and m observa-
+tions, denoted by (yn+1, · · · , yn+m), from the group taking vaccine B,
+and k observations from the control group (neither A nor B), denoted
+by (yn+m+1, · · · , yn+m+k).
+(1) Denote the overall mean effect by µ, vaccine A group effect by
+α1, vaccine B group effect by α2, and the control group effect
+by α3. Write down a regression model to study the effects of
+vaccinations.
+Answer: yi = µ+α1 +εi for i = 1, 2, . . . , n, yi = µ+α2 +εi for
+i = n+1, . . . , n+m, yi = µ+α3 +εi for i = n+m+1, . . . , n+
+m + k, where εi are iid N(0, σ2) for i = 1, . . . , n + m + k.
+(2) What is the corresponding model matrix for (1)?
+
+----- page 3 -----
+3
+Answer: y = Xβ+ε where y =
+
+
+y1
+. . .
+yn+m+k
+
+, X =
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1
+1
+0
+0
+...
+...
+...
+...
+1
+1
+0
+0
+1
+0
+1
+0
+...
+...
+...
+...
+1
+0
+1
+0
+1
+0
+0
+1
+...
+...
+...
+...
+1
+0
+0
+1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+,
+β =
+
+
+
+
+µ
+α1
+α2
+α2
+
+
+
+, and ε =
+
+
+ε1
+. . .
+εn+m+k
+
+,
+(3) Is it possible to estimate all the parameters, including µ, α1,
+α2, and α3? If yes, please explain the estimation procedure. If
+not, please write down the reasons and provide a solution that
+makes the estimation possible.
+Answer: No. β is not identifiable because X⊤X =
+
+
+
+
+n + m + k
+n
+m
+k
+n
+n
+0
+0
+m
+0
+m
+0
+k
+0
+0
+k
+
+
+
+
+is not full rank. The first row equals the sum of the next three rows.
+Make β identifiable by putting adding a constraint line µ = 0 or α1 +
+α2 + α3 = 0.
+Problem 4. We have the following confidence ellipse for two regression
+parameters β15 and β75. What can you comment, based on Figure 1,
+about the results of the following tests? Explain your reasons.
+(1) Three null hypotheses denoted by H1
+0, H2
+0, and H3
+0, where
+H1
+0 : β15 = −0.4,
+H2
+0 : β75 = −0.4, and
+H3
+0 : β15 = β75 = −0.4.
+Answer: H1
+0: not reject; H2
+0: not reject; H3
+0: not reject.
+(2) Another three null hypotheses denoted by H4
+0, H5
+0, and H6
+0,
+where
+H4
+0 : β15 = −0.2,
+H5
+0 : β75 = 0.6, and
+H6
+0 : β15 = −0.2, and β75 = 0.6.
+Answer: H1
+0: not reject; H2
+0: reject; H3
+0: not reject.
+
+----- page 4 -----
+4
+Figure 1. A confidence ellipse
+(3) Now modify Figure 1 to Figure 2. Where should the point (-
+0.6,0) located if the data reject H7
+0 and H8
+0 but do not reject
+H9
+0, where
+H7
+0 : β15 = −0.6,
+H8
+0 : β75 = 0, and
+H9
+0 : β15 = −0.6, and β75 = 0.
+Answer: D
+Problem 5. In an Enchanted Kingdom, the Great Fox discovered a
+Six-Sided “Transitive” dice with numbers 1, 2, 3, 4, 5 and 6, each of
+which independently occurs with 1/6 probability whenever the dice is
+rolled.
+• Each time she rolls the dice, she receives as many gold ingots
+as the number on the dice.
+• She continues to roll the dice as long as a 1, 3 , 4 or 5 occur.
+• But once a 2 or a 6 occurs, after she gets her gold ingots from
+that roll the dice vanishes and she never rolls the dice again.
+She keeps rolling the dice until it vanishes.
+
+----- page 5 -----
+5
+Figure 2. A modified confidence ellipse
+The table below shows results of her up to first three rolls:
+IN ALL ROLLS SHE GETS AND KEEPS THE NUMBER OF GOLD INGOTS SHOWN ON THE DICE
+First Roll Result
+Second Roll Result
+Third Roll Result
+Forth, Fifth, Six, Seventh,
+and Succeding Results
+2 or 6: Die vanishes
+NO ROLL
+NO ROLL
+NO ROLL
+2 or 6: Die vanishes
+NO ROLL
+NO ROLL
+1, 3, 4, 5: She rolls again
+1, 3, 4, 5: She rolls again
+2 or 6: Die vanishes
+NO ROLL
+1, 3, 4, 5: She rolls again
+And So On Until the Die
+Vanishes
+(1) What is the expected number of times she rolls the dice before
+it vanishes?
+
+----- page 6 -----
+6
+Dice roll result
+Unconditional probability
+1st roll 6 - dice vanishes
+1/6
+1st roll 4, 2nd roll 2 - dice vanishes
+1/6 × 1/6 = 1/36
+1st roll 3, 2nd roll 1, 3rd roll 2 - dice van-
+ishes
+1/6 × 1/6 × 1/6 = 1/216
+1st roll 1, 2nd roll 3, 3rd roll 2 - dice van-
+ishes
+1/6 × 1/6 × 1/6 = 1/216
+1st roll 1, 2nd roll 1, 3rd roll 1, 4th roll 1,
+5th roll 2 - dice vanishes
+1/6×1/6×1/6×1/6×1/6 =
+1/7776
+Answer: Number of rolls have Geometric distribution with 2/3
+probability to continue rolling each time the expected number is
+1/(1 −2/3) = 3.
+(2) What is the expected number of gold Ingots that she acquires
+from all of her rolls?
+Answer: ANSWER On her last roll where dice vanishes the
+expected number is (2 + 6) / 2 = 4
+But she has an expectation of (3-1) = 2 other rolls. On each
+of those rolls her expected number of gold ingots is (1 + 3 + 4 +
+5)/4 = 3.25.
+So the Total Expected Number is 4 + 2 × 3.25 = 10.5.
+(3) i) What possible combination of results on the 1st, 2nd, . . . . and
+so on dice rolls would give the Great Fox 6 gold ingots before the
+dice vanishes and ii) What is the Probability for each of these
+combination of Rolls? Remember the dice vanishes whenever a
+2 or a 6 is rolled and the Fox receives her gold ingots from the
+roll before the dice vanishes.
+Answer: These are the possible combinations that result in 6
+gold ingots before the dice vanishes.
+(4) Given you know that the Great Fox received 6 gold ingots before
+the dice vanished, from your answer to c what is the probability
+that the dice vanished on the second roll?
+Answer: From the above table, the conditional probability is
+(1/36)/(1/6 + 1/36 + 1/216 + 1/216 + 1/7776) = 216/63757 =
+0.0034.
+Problem 6. Rutgers scientists fit a linear regression model to rates
+of crystallization of two substances they recently discovered in outer
+space; Noops and Poons based on Degrees Celsius. They had the fol-
+lowing results on 10 independent observations (5 each for Poons and
+
+----- page 7 -----
+7
+X
+Y1
+ˆy1
+(Y1 −ˆy1)2
+-2
+2
+2.4
+0.16
+-1
+4
+3.2
+0.64
+0
+4
+4
+0
+1
+4
+4.8
+0.64
+2
+6
+5.6
+0.16
+Noops).
+X = Degrees
+Crystallization Rates
+Celcius
+Y1 = for Noops
+Y = 2 for Poons
+-2
+2
+6
+-1
+4
+4
+0
+4
+4
+1
+4
+4
+2
+6
+2
+Assume for each substance a linear model Y = a + bX + e with e iid
+N(0, σ2).
+(1) Calculate the least squares estimates for the slopes ˆb1 for Noops
+and ˆb2 for Poons.
+Answer: The general formula is ˆb = (P XY −(n¯x¯y))/(P X2 −
+(n¯x2)). The same values of X were used for both Noops and
+Poons, and ¯x = (−2 + −1 + 0 + 1 + 2)/5 = 0, P X2 = 4 + 1 +
+0 + 1 + 4 = 10. For Noops, ¯y1 = (2 + 4 + 4 + 4 + 6)/5 = 4,
+P XY1 = −4 + −4 + 0 + 4 + 12 = 8, and so ˆb1 = (P XY −
+(n¯x¯y))/(P X2 −(n¯x2)) = (8 −5 × 02)/(10 −5 × 0 × 10) = 0.8.
+For Poons, ¯y2 = (6+4+4+4+2)/5 = 4, P XY2 = −12+−4+
+0+4+4 = −8, and so ˆb2 = (P XY −(n¯x¯y))/(P X2−(n¯x2)) =
+(−8 −5 × 02)/(10 −5 × 0 × 10) = −0.8.
+(2) What are ˆa1 for Noops and ˆa2 for Poons?
+Answer: The general formula is ˆa = ¯y + ˆb(0 −¯x). For both
+Noops and Poons ¯x = 0 so ˆb(0 −¯x) = 0 and ¯y1 = ¯y2 = 0. So
+for both Noops and Poons, ˆa = ¯y + ˆb(0 −¯x)4 + ˆb(0) = 4.
+NOTE ONLY ANSWER QUESTIONS 3 AND 4 FOR NOOPS.
+(3) Estimate ˆσ for Noops.
+Answer: The general formula is ˆσ2 = P(Y −ˆy)2/(n−p) where n
+is teh number of observations and p is teh number of parameters
+in the model. For both Noops and Poons, n = 5 and p = 2.
+From the table, P(Y −ˆy)2 = 1.6, and ˆσ2
+1 = P(Y −ˆy)2/(n −
+p) = 1.6/3 = 0.533.
+(4) What is the estimated variance for ˆb1 for Noops?
+
+----- page 8 -----
+8
+X
+Y1
+ˆy1
+(Y1 −ˆy1)2
+-2
+2
+2.4
+0.16
+-1
+4
+3.2
+0.64
+0
+4
+4
+0
+1
+4
+4.8
+0.64
+2
+6
+5.6
+0.16
+Answer: The general formula is P(Y −ˆy)2/(n −p) where n is
+the number of observations and p is the number of parameters
+in the model. For both Noops and Poons, n = 5 and p = 2.
+From the table, P(Y −ˆy)2 = 1.6, and ˆσ2
+1 = P(Y −ˆy)2/(n −
+p) = 1.6/3 = 0.533.
+(5) What is the estimated variance for ˆb1 for Noops?
+Answer: The general formula is V ar(ˆb) = ˆσ2/ P(X−¯x)2. From
+C we have ˆσ2 = 0.533.
+And as has already been calculated before in a different way
+up above P(X −¯x)2 = (−2 −0)2 + (−1 −0)2 + (0 −0)2 + (1 −
+0)2 + (2 −0)2 = 10. So estimate V ar(ˆb1) = 0.0533/10 = 0.053.

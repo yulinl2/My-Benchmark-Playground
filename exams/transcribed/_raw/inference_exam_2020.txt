@@ -1,0 +1,98 @@
+
+----- page 1 -----
+PH.D. QUALIFYING EXAM 2020: STATISTICAL
+INFERENCE
+Rules: This is a four hour exam consisting of two problems, both of which
+should be answered. You can take the exam at any location where you have
+the facility to scan or take pictures of your answers and convert them into
+pdf ﬁles. You are allowed to use any material of your choice prepared before
+the time of the exam, but use of online materials or consulting anyone else
+during the exam is not be permitted.
+If you have any questions during
+the exam, please email Professor Zhiqiang Tan (ztan@stat.rutgers.edu) for
+problem 1 or Professor David Tyler (dtyler@stat.rutgers.edu) for problem
+2.
+Please make sure to handwrite your answers clearly and legibly on blank
+papers, preferably using pens, leaving an impression deep enough for the
+papers to be scanned. Typed answers are not permitted.
+Create two pdf ﬁles for your answers - one for each problem. Both the pdf
+ﬁles containing your answers should be emailed to td370@stat.rutgers.edu
+and hcrane@stat.rutgers.edu by 2:15 PM. Show your work and jus-
+tify your answers clearly. If you use known results (e.g., results
+stated/proven in class), please state them clearly. Good luck!
+Date: July 22, 2020
+10 AM to 2 PM.
+1
+
+----- page 2 -----
+2
+PH.D. QUALIFYING EXAM 2020: STATISTICAL INFERENCE
+Problem 1
+Suppose that (Y1, . . . , Yn) are observed, where Yi = max(0, Xi) for i =
+1, . . . , n and (X1, . . . , Xn) are independent and identically distributed as
+N(µ∗, σ∗2), where (µ∗, σ∗) are unknown. For i = 1, . . . , n, it is useful to
+deﬁne the binary variable
+Ri =
+
+1,
+if Yi > 0,
+0,
+if Yi = 0.
+Denote by Φ(·) the cumulative distribution function (CDF) of N(0, 1). For
+the following questions, denote by Pθ the distribution N(µ, σ2), with θ =
+(β, σ) and β = µ/σ. Moreover, let θ∗= (β∗, σ∗).
+i) Deﬁne an estimator ˆθ1 = (ˆβ1, ˆσ1) as a solution to the simultaneous
+equations
+Eθ(R1) = 1
+n
+n
+X
+i=1
+Ri,
+Eθ(R1Y1) = 1
+n
+n
+X
+i=1
+RiYi,
+where Eθ(·) denotes the expectation taken with respect to Pθ. Find closed-
+form expressions for (ˆβ1, ˆσ1). You may use Φ(·) and its inverse function.
+ii) Show that (ˆβ1, ˆσ1) are consistent estimators of (β∗, σ∗).
+iii) Show that √n(ˆθ1 −θ∗) →D N(0, τ1) as n →∞for some variance
+τ1. Find a closed-form expression for τ1. You may use Φ(·) and its inverse
+function.
+iv) Write down the log-likelihood function ℓ(θ), and compute Eθ{ 1
+n
+∂ℓ(θ)
+∂θ }
+and nvarθ{ 1
+n
+∂ℓ(θ)
+∂θ } in closed-form expressions, where varθ(·) denotes the vari-
+ance taken with respect to Pθ.
+v) The maximum likelihood estimator of θ, denoted as ˆθ2 = (ˆβ2, ˆσ2), can
+be shown to be consistent and √n(ˆθ2 −θ∗) →D N(0, τ2) as n →∞for some
+variance τ2. (You are not asked to prove this.) Find a closed-form expression
+for τ2.
+vi) Show that τ1 ≥τ2.
+Give a direct proof, instead of invoking the
+asymptotic eﬃciency of maximum likelihood estimation.
+
+----- page 3 -----
+PH.D. QUALIFYING EXAM 2020: STATISTICAL INFERENCE
+3
+Problem 2
+Let X1, . . . , Xn be a random sample from a multivariate Normalq(µ, Σ)
+distribution. Consider the model µ = ηa and Σ = αI + βaa′, where a ∈Rq
+is a ﬁxed vector with norm one, i.e. a′a = 1, and with η, α, and β being
+unknown real parameters.
+(a) Find necessary and suﬃcient conditions on (α, β) for Σ > 0, i.e. for
+Σ to be positive deﬁnite.
+(b) Find the eigenvalues of Σ, their corresponding eigenspaces and eigen-
+projections, and the trace of the eigenprojections.
+(c) Find the maximum likelihood estimator bθ = (bη, bα, bβ) of θ = (η, α, β).
+Clearly justify why it is the mle.
+(d) Find the limiting distribution of the √n(bα + bβ −α −β).
+(e) Find the expected value of bθ. Use this result to ﬁnd minimum vari-
+ance unbiased estimators of η, of α and of β. Clearly justify your
+answers.

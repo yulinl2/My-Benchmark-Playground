@@ -1,0 +1,23 @@
+{
+  "run_id": "calib-v1",
+  "created": "2026-06-06T23:25:10.834937+00:00",
+  "models": [
+    "claude-opus-4-7"
+  ],
+  "n_questions": 10,
+  "max_tokens": 20000,
+  "effort": "high",
+  "dry_run": false,
+  "question_ids": [
+    "2018-summer-math-stat-q1",
+    "2019-summer-probability-q1",
+    "2021-summer-probability-q2",
+    "2022-fall-applied-q6",
+    "2022-summer-math-stat-q1",
+    "2023-spring-probability-q3",
+    "2024-fall-math-stat-q3",
+    "2024-fall-probability-q1",
+    "2024-summer-probability-q4",
+    "2025-summer-math-stat-q2"
+  ]
+}

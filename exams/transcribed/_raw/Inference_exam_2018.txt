@@ -1,0 +1,93 @@
+
+----- page 1 -----
+Ph.D. Qualifying Exam 2018: Statistical Inference
+August 22, 2018
+10 AM to 2 PM
+Rules: This is a four hour exam.
+You may use ONE page (front and back, 8.5 by 11
+inch paper) HANDWRITTEN “cheat sheet”. No other references are allowed. No use of cell
+phones, calculators, computers, or other electronic devices is permitted for any reason during
+the time while the exam is being administered, including any time during which you leave
+the exam room for any reason. Show your work and justify your answers clearly. If
+you use known results (e.g., results stated/proven in class), please state them
+clearly. Please put your name or initials on every page. Good luck!
+1
+
+----- page 2 -----
+Problem 1
+Name
+We observe the single discrete random variable X having probability mass function
+fθ(x) = Pθ (X = x) ,
+where
+fθ(x) =
+
+
+
+
+
+
+
+
+
+
+
+θ/6,
+x = 0,
+θ/2,
+x = 1,
+1 −θ,
+x = 2,
+θ/3,
+x = 3.
+The parameter space is Θ = {θ : 0 ≤θ ≤1}.
+(a) Does this family have the monotone likelihood ratio property in x? (Prove or disprove)
+(b) We want to test the null hypothesis H0 : θ ≤1/4 versus the alternative H1 : θ > 1/4.
+(i) Does there exist a UMP level α test? Prove or disprove. If so, ﬁnd it and establish
+that it is a UMP level α test.
+(ii) Using the Uniform distribution on [0, 1] as a prior distribution for θ what is the
+size of the Bayes test procedure?
+(c) Does a complete suﬃcient statistic exist? If so, ﬁnd it and prove that it is complete
+suﬃcient.
+(d) Does there exist a uniformly minimum variance unbiased estimator (UMVUE) of θ?
+(Prove or disprove). If so, obtain it and establish that it is a UMVUE estimator.
+2
+
+----- page 3 -----
+Problem 2
+Name
+Let {(Xi, Yi) : i = 1, . . . , n} be an iid sample, where Yi is a binary variable taking values
+in {0, 1} and Xi is a p × 1 vector of covariates. Consider a logistic model
+P(Yi = 1|Xi) = π(Xi; β),
+where β is a vector of unknown parameters and
+π(Xi; β) =
+eXT
+i β
+1 + eXT
+i β .
+Assume that the model is correctly speciﬁed, and denote by β∗the true coeﬃcient vector.
+Let ˆβ be the maximum likelihood estimator (MLE) of β. You may use the result that under
+suitable conditions, √n(ˆβ −β∗) is asymptotically distributed as N(0, Uβ∗) as n →∞and p
+is ﬁxed, where Uβ∗is a variance matrix.
+(i) Let ˜β be an estimator deﬁned as a solution to the equation,
+1
+n
+n
+X
+i=1
+Yi −π(Xi; β)
+p
+π(Xi; β)(1 −π(Xi; β))
+Xi = 0.
+Show that there exists a loss function κ(β) such that
+˜β = argminβ κ(β),
+and express κ(β) in as simple a form as possible.
+(ii) For ﬁxed p, show that ˜β is a consistent estimator of β∗as n →∞. You may impose
+technical conditions as needed, but weaker conditions are preferred.
+(iii) For ﬁxed p, show that √n(˜β−β∗) is asymptotically distributed as N(0, Vβ∗) as n →∞,
+where Vβ∗is a variance matrix. You may impose technical conditions as needed, but weaker
+conditions are preferred.
+(iv) Determine Vβ∗in (iii) in as simple a form as possible and show that Vβ∗≥Uβ∗in the
+sense that the diﬀerence Vβ∗−Uβ∗is non-negative deﬁnite. Recall that Uβ∗is the asymptotic
+variance of the MLE ˆβ. Is this result intuitive? Explain why or why not in a sentence or
+two.
+3

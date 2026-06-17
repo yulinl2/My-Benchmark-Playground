@@ -1,0 +1,94 @@
+{
+  "decisions": {
+    "2024-fall-applied-q4": {
+      "ai_audit": "pass",
+      "grading_type": "numeric",
+      "notes": ""
+    },
+    "2024-fall-applied-q5": {
+      "ai_audit": "pass",
+      "grading_type": "proof-rubric",
+      "notes": ""
+    },
+    "2024-fall-applied-q6": {
+      "ai_audit": "pass",
+      "grading_type": "numeric",
+      "notes": ""
+    },
+    "2024-fall-math-stat-q2": {
+      "ai_audit": "pass",
+      "grading_type": "proof-rubric",
+      "notes": ""
+    },
+    "2024-fall-math-stat-q3": {
+      "ai_audit": "pass",
+      "grading_type": "proof-rubric",
+      "notes": ""
+    },
+    "2024-fall-probability-q1": {
+      "ai_audit": "pass",
+      "grading_type": "numeric",
+      "notes": ""
+    },
+    "2019-fall-applied-q3": {
+      "ai_audit": "fix",
+      "grading_type": "data-analysis",
+      "notes": "The transcribed prompt omits the salary data table (RU: 31,56,143,78,210; PS: 30,54,37,26,70; UC: 22,21,24,65,36) that appears in the raw source and is required to draw boxplots and perform the analyses. The problem cannot be solved without these numbers."
+    },
+    "2019-fall-applied-q5": {
+      "ai_audit": "fix",
+      "grading_type": "numeric",
+      "notes": "The transcribed prompt omits the temperature data table (7 years of New Brunswick and Piscataway July temperatures: NB = 78,81,90,85,88,83,83; Piscataway = 78,79,90,82,87,82,81) that appears in the raw source. The numerical answers to parts A, B, and C cannot be computed without this data."
+    },
+    "2019-fall-probability-q6": {
+      "ai_audit": "pass",
+      "grading_type": "numeric",
+      "notes": ""
+    },
+    "2021-summer-applied-q1": {
+      "ai_audit": "pass",
+      "grading_type": "data-analysis",
+      "notes": ""
+    },
+    "2021-summer-applied-q2": {
+      "ai_audit": "pass",
+      "grading_type": "data-analysis",
+      "notes": ""
+    },
+    "2021-summer-applied-q3": {
+      "ai_audit": "pass",
+      "grading_type": "data-analysis",
+      "notes": ""
+    },
+    "2018-summer-probability-q1": {
+      "ai_audit": "pass",
+      "grading_type": "proof-rubric",
+      "notes": ""
+    },
+    "2018-summer-probability-q2": {
+      "ai_audit": "pass",
+      "grading_type": "proof-rubric",
+      "notes": ""
+    },
+    "2020-summer-math-stat-q1": {
+      "ai_audit": "pass",
+      "grading_type": "proof-rubric",
+      "notes": ""
+    },
+    "2020-summer-math-stat-q2": {
+      "ai_audit": "pass",
+      "grading_type": "proof-rubric",
+      "notes": ""
+    },
+    "2022-summer-probability-q1": {
+      "ai_audit": "pass",
+      "grading_type": "proof-rubric",
+      "notes": ""
+    },
+    "2022-summer-probability-q2": {
+      "ai_audit": "fix",
+      "grading_type": "proof-rubric",
+      "notes": "Part C is truncated: the bank entry has only a placeholder acknowledging incompleteness, but the raw source contains two full sub-questions (prove P1,n -> 1 as n->inf; prove P2,n -> 0 as n->inf) with hints (Doob's and Kolmogorov's maximal inequalities). The transcribed Part C must be completed with these two bullet points."
+    }
+  }
+}

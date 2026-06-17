@@ -1,0 +1,275 @@
+
+----- page 1 -----
+PH.D. APPLIED QUALIFYING EXAM 2022 (TAKE HOME)
+IMPORTANT - PLEASE READ THESE INSTRUCTIONS CAREFULLY BEFORE
+YOU START:
+This is the Applied Part of the First-Year PhD Qualifying Exam in Statistics. The exam consists
+of three problems, all of which you need to answer. You are permitted to consult textbooks and
+other scholarly resources to help you in completing the assignment, but you may not consult or
+discuss these problems in any way with anyone during the time that the exam is being
+administered. If you draw on information from any outside resources (i.e., resources other than
+class material and notes) then you should clearly cite the source in your write-up.
+You should complete the exam alone, in a room separate from any other test-takers. If you have
+questions, please email Prof. Han Xiao (hxiao@stat.rutgers.edu) AND Prof Tirthankar Dasgupta
+(td370@stat.rutgers.edu).
+Submission Instructions:
+(1) Type up your answers to the two problems in two separate Word or Latex ﬁles.
+(2) Create a folder for each problem. The folder must contain the following:
+(a) A word or pdf ﬁle containing your answers to the problem, including all tables, ﬁgures
+and Appendices.
+(b) An R (or python) ﬁle containing the codes used to generate your results.
+(c) A word or a text ﬁle that gives a summary of the codes submitted.
+(3) Place the two folders into a single folder titled yourlastname yourﬁrstname Appliedexam2022.
+Zip this folder and email it to hxiao@stat.rutgers.edu AND td370@stat.rutgers.edu by 5 PM
+July 22, Friday.
+Date: July 21 (9 AM) to July 22 (5 PM).
+1
+
+----- page 2 -----
+2
+PH.D. APPLIED QUALIFYING EXAM 2022 (TAKE HOME)
+Problem 1
+Suppose that n × p covariate matrix X = (xT
+1, . . . , xT
+n)T and n × 1 response vector Y
+=
+(y1, . . . , yn)T are generated as follows: for i = 1, . . . , n,
+xi = Wzi + ui,
+yi = θTzi + vi,
+where W is a p × d constant matrix, θ is a d × 1 constant vector, z1, . . . , zn are independent
+with zi ∼N(0, Id), u1, . . . , un are independent with ui ∼N(0, Ip), v1, . . . , vn are independent with
+vi ∼N(0, σ2
+v), zi’s, ui’s, and vi’s are also independent of each other, and Id, Ip denotes the d × d
+and p × p identity matrix respectively.
+We are interested in studying the in-sample and out-of-sample prediction errors for the ridge
+estimator of β, which is deﬁned as
+ˆβλ = argminβ
+(
+1
+n
+n
+X
+i=1
+(yi −βTxi)2 + λ∥β∥2
+2
+)
+,
+where λ ≥0 is a tuning parameter. The in-sample and out-of-sample prediction errors are deﬁned
+as
+Err.in = 1
+n
+n
+X
+i=1
+(xT
+i ˆβλ −xT
+i β)2,
+Err.out = Eout(xT
+0 ˆβλ −xT
+0β)2,
+where x0 is a test covariate vector, independent of the training data (X, Y ), and Eout(·) is taken
+with respect to x0, conditionally on the training data (X, Y ).
+(i) Show that (xi, yi), i = 1, . . . , n, satisfy a linear model:
+yi = xT
+i β + εi,
+where εi ∼N(0, σ2
+ε). Show that
+β = W(Id + W TW)−1θ,
+σ2
+ε = σ2
+v + θT(Id + W TW)−1θ
+(ii) Show that xi ∼N(0, Σ) for i = 1, . . . , n, where
+Σ = Ip + WW T
+(iii) Find the expectation of Err.in, called expected Err.in, over the distribution of Y condition-
+ally on X. Express your answer in terms of β, σ2
+ε, the (nonzero) eigenvalues and their corresponding
+eigenvectors of ˆΣ = XTX
+n
+.
+In the remaining questions, suppose that (W, θ, σ2
+v) are speciﬁed as follows with p = 2d:
+W = (wT
+1 , . . . , wT
+p )T/
+√
+d,
+θ = 1d/
+√
+d,
+σ2
+v = 1,
+
+----- page 3 -----
+PH.D. APPLIED QUALIFYING EXAM 2022 (TAKE HOME)
+3
+where w1, . . . , wp (with p = 2d) correspond to all possible length-d arrangements of −1 or 1, and
+1d denotes a d × 1 vector of all ones. For example, for d = 3 and p = 8,
+
+
+
+
+wT
+1
+...
+wT
+p
+
+
+
+=
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+−1
+−1
+−1
+1
+−1
+−1
+−1
+1
+−1
+−1
+−1
+1
+1
+1
+−1
+1
+−1
+1
+−1
+1
+1
+1
+1
+1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.
+(iv) For the preceding speciﬁcation, show that the diagonal elements of Σ are all equal to 2, i.e.,
+the marginal variances of the components of xi are 2. Moreover, show that the eigenvalues of Σ, in
+the decreasing order, are
+λ1 = · · · = λd = p
+d + 1,
+λd+1 = · · · = λ2d = 1.
+For a simulation study, generate training and test data as follows in R (please run these codes
+exactly with the random seed):
+#-----------------------------------
+set.seed(1)
+### training data
+d <- 9
+n <- 50
+p <- 2^d
+theta <- rep(1/sqrt(d), d)
+P <- expand.grid(replicate(d, 0:1, simplify = FALSE))
+W <- as.matrix((2*P - 1)/sqrt(d))
+Z <- matrix(rnorm(n*d), nrow = n, ncol = d)
+Y <- Z %*% theta + rnorm(n)
+X <- Z %*% t(W) + matrix(rnorm(n*p), nrow = n, ncol = p)
+#-----------------------------------
+For all questions requiring coding, please provide both your R codes and output.
+
+----- page 4 -----
+4
+PH.D. APPLIED QUALIFYING EXAM 2022 (TAKE HOME)
+(v) For the following choices of λ,
+10−4, 10−3, 10−2, 10−1, 1, 2.5, 5, 7.5, 10, 20, 30, 40, 50, 100, 250, 500, 103, 104, 105, 106
+compute and report Err.in and Err.out and plot them against −log(λ), given the training data
+generated above.
+(vi) Repeat the experiment for 100 times, i.e., generating training data in the same way as
+above (except for removing the set.seed line) and computing Err.in and Err.out. Plot the averages
+of Err.in and Err.out against −log(λ).
+(vii) Given the training data as used in Question (v), compute and report the expected Err.in
+using your formula from Question (iii) and plot them against −log(λ) together with Err.in from
+Question (v).
+Moreover, please repeat the experiment for 100 times (except for removing the
+set.seed line), plot the averages of the expected Err.in against −log(λ) together with the averages
+of Err.in from Question (vi).
+
+----- page 5 -----
+PH.D. APPLIED QUALIFYING EXAM 2022 (TAKE HOME)
+5
+Problem 2
+Consider the following linear model with random eﬀect ui:
+yij = β0 + ui + xijβ + ϵij,
+where i = 1, · · · , k represents each of k groups and j = 1, · · · , ni represents the number of observa-
+tions in the i-th group, ui are i.i.d. samples from N(0, σ2
+u), ϵij are i.i.d. samples from N(0, σ2
+e), ui
+and ϵij are independent, and σu and σe are known. Deﬁne the unknown parameters by θ = (β0, β).
+The observed data consists of (yij, xij) pairs while ui’s are unobserved.
+(1) To estimate the parameters by EM algorithm, we assume the complete data to be (yi, ui),
+where yi = (yi1, · · · , yini). Write down the log-likelihood for the complete data.
+(2) Assuming that σu and σe are known, starting with some initial values denoted by β(0)
+0
+and
+β(0), write down an explicit updating procedure based on the EM-algorithm, explaining the
+E-Step and the M-Step clearly.
+(3) Let k = 30, n1 = · · · = n30 = 20, σ2
+n = 1, σ2
+e = 1.5, β0 = 0.5, β = 1.5, xij are random
+samples from Unif(10, 60). Simulate one set of (yij, xij) and write your own code to estimate
+θ based on the answer in (3). Repeat this procedure 100 times, evaluate the estimation
+performance based on mean squared errors (MSE) of the estimated parameters.
+
+----- page 6 -----
+6
+PH.D. APPLIED QUALIFYING EXAM 2022 (TAKE HOME)
+Problem 3
+Importance sampling (IS) is a technique that can be used to approximate the expectation of a
+function with respect to an intractable distribution. We assume that the random variable we want
+to compute the expectation is of the form f(x), where the distribution of x is absolutely continuous
+and p(x) is the density. The goal is to compute
+µ = E(f(x)) =
+Z
+f(x)p(x)dx.
+Deﬁne q(x) to be the proposal distribution. By sampling x1, · · · , xn from q(x), important sampling
+algorithm estimates µ by
+ˆµq = 1
+n
+n
+X
+i=1
+f(xi)p(xi)
+q(xi)
+,
+assuming f(x)p(x)/q(x) is computable.
+(1) Prove that ˆµq is an unbiased estimator of µ, i.e., Eq (ˆµq) = µ, where Eq(·) represents
+expectation with respect to the proposal distribution q.
+(2) What is the variance of ˆµq?
+(3) What is the optimal choice of the proposal distribution, q(x), that minimizes the variance
+in (2)?
+(4) Use the idea of importance sampling with the proposal distribution q ∼N(6, 1) to estimate
+P(y ≥3), where y follows a standard normal distribution, N(0, 1). Write your own impor-
+tance sampling algorithm and report the estimated mean and variance of P(y ≥3) based
+on 1000 replicates of simulations with size 100.
+(5) Based on the answer in (3), can you recommend a better proposal in compared to N(6, 1)
+in (4) ?

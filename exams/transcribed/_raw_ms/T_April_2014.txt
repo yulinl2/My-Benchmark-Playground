@@ -1,0 +1,92 @@
+
+----- page 1 -----
+ 
+ 
+MASTER’S COMPREHENSIVE EXAMINATION 
+ 
+Part I Theory (90 minutes) March 29th, 2014 
+Instructions: Attempt any three out of the following four questions on both pages. 
+Mention which three you would like to have graded. Open book and open notes. 
+ 
+ 
+1) The color of a person's eyes is determined by a single pair of genes. If they are both blue-eyed genes, 
+then the person will have blue eyes; if they are both brown-eyed genes, then the person will have 
+brown eyes; and if one of them is a blue-eyed gene and the other a brown-eyed gene, then the person 
+will have brown eyes. A newborn child independently receives one gene from each of his parents and 
+the gene he receives from a parent is equally likely to be either of the two eye genes of that parent. 
+Suppose that Joe and both his parents have brown eyes, but Joe's sister and Joe's wife Joelle have blue 
+eyes. 
+a) What is the probability that Joe possesses a blue-eyed gene? 
+b) What is the probability that Joe and Joelle's first child will have blue eyes? 
+c) If Joe and Joelle's first child has brown eyes, what is the probability that their next child will also 
+have brown eyes? Hint: This is not the same as one minus the answer of part (b). 
+  
+2)    a) Suppose that X~Laplace(σ), with σ>0; that is, the density of X is       
+  1
+2 	
+||/,        . 
+What is the density of |X|? 
+b)  Now suppose that X~exponential(λ), with λ>0; that is, the CDF of X is 
+  1  	
+,        0. 
+Let S be a random variable such that   1    1  1/2, and suppose that S is 
+independent of X.  Show that SX~Laplace(1/λ). 
+ 
+ 
+3)   Suppose that S is a pxp nonsingular sample covariance matrix which can be written as  
+1
+p
+T
+i
+i
+i
+i
+S
+v v
+λ
+=
+= ∑
+, 
+where 
+1
+2
+0
+p
+λ
+λ
+λ
+≥
+≥
+≥
+≥
+
+ are called eigenvalues and
+1
+2
+,
+,
+,
+p
+v v
+v
+…
+ are their corresponding 
+eigenvectors. 
+1
+2
+,
+,
+,
+p
+v v
+v
+…
+are orthogonal vectors of length 1.  
+Prove that the sequence xn+1= Σ  xn/|Σ  xn| converges to the eigenvector of the largest 
+eigenvalue of S. Is there any condition on x1 for this to be true? 
+ 
+4)  The CDF of a chis-square distribution with 2 degrees of freedom is   
+F(y) = 1 – exp(-y/2) 
+Given a Uniform (0,1) random variable  U find the transformation Y=h(U) such that Y has a chi-square 
+distribution with 2 degrees of freedom. 
+ 

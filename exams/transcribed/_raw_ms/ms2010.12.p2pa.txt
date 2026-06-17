@@ -1,0 +1,104 @@
+
+----- page 1 -----
+ 
+MASTER’S COMPREHENSIVE EXAMINATION 
+ 
+Part II 
+Applied (90 minutes) 
+December 4, 2010 
+ 
+ Instructions: Attempt any three out of the following four questions on both pages. 
+Mention which three you would like to have graded. Open book and open notes. 
+1. The Body mass Index BMI of a person is Weight / (Height)2 where weight is in 
+Kg and height is in meters.  BMI  measures Weight adjusted for Height.   
+ 
+A. Suppose for country X, all of the following are true for Height and BMI of  
+     Adults  
+* Height is uniformly distributed on 1.50 to 2.10 Meters 
+* Height is independent of BMI 
+* The population mean for BMI is 23.0 
+                 Then what is the mean Weight of an adult in country X? 
+ 
+B. Now someone believes Adult Height and BMI are not independent in country 
+X and has the following data for means of BMI by different ranges of Height 
+Height Category (Range in M) 
+Mean BMI (in Kg) 
+[1.50 – 1.65) n =20 adults 
+24 
+[1.65 – 1.80)  n= 20 adults 
+22 
+[1.80 – 1.95) n=20 adults 
+26 
+[1.95 – 2.10)  n=20 adults 
+20 
+Assume that the variance of BMI is the same for all height categories and the 
+pooled estimate of this variance (with 80 – 4 = 76 df) is 56.5 
+ 
+Use the best test (which most efficiently adjusts for multiple comparisons) of 
+      H0: u[1.50-1.65)  =  u[1.65-1.80)  =  u[1..80 - 1.95)   =   u[1.95-2.10) 
+Against 
+     Ha: For at least one of the categories, the mean BMI is different 
+ 
+2.  A random sample of 80 men and 120 women infected with HIV is obtained, some (but 
+not all) of whom have AIDS.  All subjects have HIV viral load (HVL) measured in a 
+blood sample. The following analyses are done. 
+ 
+I. Comparison of HVL between Men and Women 
+               Gender                           Mean of HVL      Std-Dev of HVL  
+               Men (n=80)                           5.05                      2.07 
+               Women (n=120)                    4.13                      1.05     
+II. Logistic Regression Models of having AIDs (Yes, No) 
+   II-1. Unadjusted Association of Female Gender with having AIDS  
+                     Variable                    Beta          Std-Err 
+                     Female  Vs. Male      0.02             0.20                   
+   II-2. Multivariate Association of Female Gender and HVL with having AIDS  
+              Variable                    Beta            Std-Err 
+              Female  Vs. Male      -0.53            0.22 
+              HVL (per Unit)           0.55            0.24 
+ 
+OVER 
+
+----- page 2 -----
+Use P=0.05  for all questions do not adjust for multiple comparisons. 
+ 
+a. Is there statistical evidence that the mean of HVL differs between men and 
+women in the population that produced this sample? State any assumptions you 
+need to make to answer this? 
+ 
+b. Give an approximate 95 percent confidence for the ratios of the odds for a man to 
+a woman in the population with the same viral load to have AIDS.  
+ 
+c. Is there statistical evidence that the overall  probability of men and women from 
+the population that generated this  sample to have AIDs is different  
+ 
+ 
+ 
+3. An experiment is designed where 3 machines are randomly selected and each machine 
+is assigned to a different group of 3 operators selected at random. Each operator uses the 
+machine 2 times at different periods during a given week. The amounts of time needed to 
+produce 1 item (completion time) given in standard units are shown below: 
+                 
+                  Machine                1                                    2                                       3 
+                     -------------------------------------------------------------------------------------------- 
+            Operator      1       2        3                   4        5       6                      7         8        9         
+                 -----------------------------------------------------------------------------------------------     
+                               13.2  14.1  13.8              9.5     12.6     9.7               17.4     16.0   15.4    
+                               14.3  14.6  12.7              9.8     11.7    11.2              17.6     13.0   14.4     
+                 ----------------------------------------------------------------------------------------------- 
+ 
+(a) Calculate the appropriate quantities (SS, df, MS, F) and write down the 
+standard ANOVA table.  
+(b) Test at α=0.05 if there are differences in completion times among the 
+machines (show details). 
+(c) Test at α=0.05 if there are differences in completion times between operators 
+within the machines (show details).  
+ 
+ 
+4.   (a) A gambler has a fair coin (with one head and one tail) and a two-headed coin. He 
+selects one of the coins at random, and when he flips it, it shows heads. What is the 
+probability that the coin he selected is the fair coin? 
+ 
+   (b) Suppose that he flips the same coin a second time and again it shows heads. Then he 
+flips the coin 2 more times.  What is the expected number of heads across all 4 flips and 
+the variance of the number of heads across all 4 flips? 
+ 

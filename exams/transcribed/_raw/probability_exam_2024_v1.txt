@@ -1,0 +1,199 @@
+
+----- page 1 -----
+PH.D. QUALIFYING EXAM 2024: PROBABILITY
+Rules: This is a four hour exam consisting of two Parts - Part I and Part II, both of which should be
+answered. Part I contains three independent problems. Part II consists of ten questions on
+one problem. You may use ONE page (front and back, 8.5 by 11 inch paper) HANDWRITTEN
+“information sheet” for EACH OF THE TWO COURSES (Stat 592 and Stat 654) on which this
+exam is based. No other references are allowed. No use of cell phones, calculators, computers,
+or other electronic devices is permitted for any reason during the time while the exam is being
+administered, including any time during which you leave the exam room for any reason. Show
+your work and justify your answers clearly. If you use known results (e.g., results
+stated/proven in class), please state them clearly. Please put your name or initials on every
+page. Finally, write your answers clearly and legibly in the space provided after each problem,
+preferably using pens, leaving an impression deep enough for the papers to be scanned. Please
+use only one-side of the pages to write your answers and insert blank pages if you need more space
+to write an answer. Good luck!
+Date: July 1, 2024
+10 AM to 2 PM.
+1
+
+----- page 2 -----
+2
+PH.D. QUALIFYING EXAM 2024: PROBABILITY
+PART I
+Problem 1
+Suppose X has a uniform distribution on [0, 1], and let N represent the first decimal place for
+which the digit is non-zero. For example, if X = 0.00532, then N = 3. Find the mean and
+variance of N. Your final answer should be given as two simple numerical values.
+
+----- page 3 -----
+PH.D. QUALIFYING EXAM 2024: PROBABILITY
+3
+Problem 2
+X has a Geometric(p), 0 < p < 1, distribution if it has a probability mass function of the form
+f(x; p) = (1 −p)x−1p for x ∈{1, 2, . . .}. Suppose X1 and X2 are independent, with Xj having a
+Geometric(pj) distribution for j = 1, 2. Define Y = X1 + X2.
+a) Find the moment generating function of Y if it exists, or otherwise verify that it does not
+exist.
+
+----- page 4 -----
+4
+PH.D. QUALIFYING EXAM 2024: PROBABILITY
+b) Find the probability mass function of Y . Your answer should be given in a simple closed
+form.
+
+----- page 5 -----
+PH.D. QUALIFYING EXAM 2024: PROBABILITY
+5
+c) Prove or disprove: For each fixed y ∈{1, 2, . . .}, the probability mass function of Y , say
+f(y; p1, p2) is continuous as p1 →p2.
+
+----- page 6 -----
+6
+PH.D. QUALIFYING EXAM 2024: PROBABILITY
+Problem 3
+Suppose X has density of the form f(x) = c log x
+x2
+for x > 1.
+a) Find the value of the normalizing constant c.
+
+----- page 7 -----
+PH.D. QUALIFYING EXAM 2024: PROBABILITY
+7
+b) Find E[Xk] for k = 1, 2, . . . if it exists, or otherwise verify it does not exist.
+
+----- page 8 -----
+8
+PH.D. QUALIFYING EXAM 2024: PROBABILITY
+c) Find the moment generating function of X if it exists, or otherwise verify it does not exist.
+
+----- page 9 -----
+PH.D. QUALIFYING EXAM 2024: PROBABILITY
+9
+d) If X1, X2 are independent copies of X, find the density of Y = X1X2.
+
+----- page 10 -----
+10
+PH.D. QUALIFYING EXAM 2024: PROBABILITY
+PART II
+Let (V, E) be an undirected graph with a finite set V = {1, ..., n} of vertices. Two vertices v, v′
+are connected if and only if {v, v′} ∈E. We write v ∼v′ if the two vertices are connected.
+Let X = {−1, 1}n be the state space. This corresponds to a configuration of spins, either +1
+or −1, on each vertex. Define a function H : X →R by
+H(x) =
+X
+{v,v′}∈E
+1{x(v) ̸= x(v′)} = 1
+2
+X
+{v,v′}∈E
+
+1 −x(v)x(v′)
+
+where 1{x(v) ̸= x(v′)} an indicator function value in {0, 1}. Let
+π(x) =
+exp(−H(x))
+P
+y∈X exp(−H(y)).
+Consider the following Markov Chain update: Given a current state xt, sample the next state
+Xt+1 = ft+1(xt) where the random function ft+1 : X →X is defined as follows:
+Algorithm 1 Random function ft+1
+Input: xt ∈X
+Sample vt+1 ∈V uniformly at random,
+Sample St+1 ∈{−1, 1} uniformly at random independently of vt+1,
+Sample Ut+1 ∼Unif[0, 1] independently of (vt+1, St+1).
+Propose a move y defined as y(vt+1) = St+1 and y(w) = xt(w) for all w ̸= vt+1.
+if Ut+1 ≤min{1, exp(−H(y))
+exp(−H(xt))} then
+Accept the move and set ft+1(xt) = y
+else
+Reject the move and set ft+1(xt) = xt.
+end if
+For two states x, z, define the transition matrix as P(x, z) = P(ft+1(x) = z).
+(1) Compute P(x, z) for any two states x, z ∈X such that P(x, z) > 0 and z ̸= x. You need
+not compute P(x, x).
+
+----- page 11 -----
+PH.D. QUALIFYING EXAM 2024: PROBABILITY
+11
+(2) Prove that π is a stationary distribution for this chain.
+
+----- page 12 -----
+12
+PH.D. QUALIFYING EXAM 2024: PROBABILITY
+(3) Inside the algorithm that defines ft+1, denote by Nt+1 ⊂V the random subset containing
+the neighbors of vt+1 and denote by y ∈X be the proposed move (as in the algorithm’s
+definition). Show that
+exp(−H(y))
+exp(−H(xt)) = exp
+1
+2
+X
+w∈Nt+1
+
+St+1 −xt(vt+1)
+
+xt(w)
+
+.
+
+----- page 13 -----
+PH.D. QUALIFYING EXAM 2024: PROBABILITY
+13
+(4) Write x ⪯y if x(v) ≤y(v) for all vertices v ∈V . Prove rigorously that if x ⪯z then
+P(ft+1(x) ⪯ft+1(z)) = 1. You may handle the cases St+1 = +1 and St+1 = −1 separately.
+
+----- page 14 -----
+14
+PH.D. QUALIFYING EXAM 2024: PROBABILITY
+(5) Let x¯ = (−1, −1, . . . , −1) contain only the value −1, n times, and let ¯x = (1, 1, . . . , 1)
+contain only the value +1, n times. Prove rigorously that F = ft ◦ft−1 ◦· · · ◦f1 is a
+constant function if and only if F(x¯) = F(¯x).
+Let T = min{t ≥1 : ft ◦ft−1 ◦· · · ◦f1(x¯) = ft ◦ft−1 ◦· · · ◦f1(¯x)}. Our goal in the
+next questions is to show that E[T] is not much larger than the mixing time defined as
+usual by
+d(t) = max
+x∈X ∥P t(x, ·) −π∥TV ,
+tmix = min{t ≥0 : d(t) ≤1/4}.
+We also define, as usual, ¯d(t) = maxx,y∈X ∥P t(x, ·) −P t(y, ·)∥TV .
+
+----- page 15 -----
+PH.D. QUALIFYING EXAM 2024: PROBABILITY
+15
+(6) For any state z ∈X, let h(z) be the maximal number k of distinct states x1, ..., xk such
+that x1 ⪯x2 ⪯· · · ⪯xk = z. Prove that if xt ⪯yt and xt ̸= yt then h(xt) + 1 ≤h(yt).
+
+----- page 16 -----
+16
+PH.D. QUALIFYING EXAM 2024: PROBABILITY
+(7) Let X0 = x¯ and Xt = ft ◦· · · ◦f1(x¯), and similarly Y0 = ¯x and Yt = ft ◦· · · ◦f1(¯x), so that
+{T > t} = {Xt ̸= Yt}. Prove rigorously that
+P(T > t) ≤E[h(Yt) −h(Xt)].
+
+----- page 17 -----
+PH.D. QUALIFYING EXAM 2024: PROBABILITY
+17
+(8) Prove rigorously that 0 ≤h(z) ≤|V | for any z ∈X, and that E[h(Yt) −h(Xt)] ≤|V | ¯d(t).
+
+----- page 18 -----
+18
+PH.D. QUALIFYING EXAM 2024: PROBABILITY
+(9) Assume that |V | = 2L for some integer L > 1. Let k ≥0 be another integer. Prove
+rigorously that
+P
+
+T > tmix(k + L)
+
+≤1
+2k .
+Carefully state any property of d(t), ¯d(t) or tmix that are used for the proof.
+
+----- page 19 -----
+PH.D. QUALIFYING EXAM 2024: PROBABILITY
+19
+(10) Prove that E[T] ≤cLtmix for some absolute constant c > 0.
+You may first prove as
+an intermediate result that any non-negative random variable U (not necessarily integer
+valued) with P(U > k) ≤1/2k for all integer k ≥0 has finite expectation smaller than a
+finite constant c > 0. The constant c > 0 need not be the best possible.

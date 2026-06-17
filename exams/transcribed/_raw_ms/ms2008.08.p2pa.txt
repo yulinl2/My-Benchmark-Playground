@@ -1,0 +1,112 @@
+
+----- page 1 -----
+Part II
+Applied (90 Minutes)
+16 August 2008
+MASTER’S COMPREHENSIVE EXAMINATION
+Instructions: Attempt any three out of the following four questions. Indicate on your blue
+books which three you would like to have graded. You may use books and notes.
+1. Does switching from ice cream to frozen yogurt for desserts reduce cholesterol? A
+study consisting of ﬁve randomly-chosen individuals yields the following cholesterol counts:
+Individual Ice Cream Frozen Yogurt
+1
+210
+212
+2
+217
+220
+3
+209
+210
+4
+215
+213
+5
+204
+200
+Assume joint normality of the counts.
+a) Test the hypothesis that the mean cholesterol level is the same for those who eat ice
+cream as for those who eat frozen yogurt, at level .05. Find the p-value.
+b) Calculate a 95% conﬁdence interval for the diﬀerence between the mean cholesterol level
+for those who eat ice cream and the mean for those who eat frozen yogurt.
+2. Many college graduates have taken out loans to pay for college. A researcher seeks to
+study the loan burden on students who graduated college in the United States in May 2008.
+The researcher seeks to estimate the average (mean) outstanding loan amount per college
+graduate. The researcher plans to take a simple random sample of 150 college graduates,
+from all U.S. May college graduates.
+(You can assume that the number of graduates is
+very, very large.) A simple random sample of 150 students is drawn, and among them 100
+students have some outstanding loan. Among the 100 students with some outstanding loan,
+the sample mean loan outstanding is $2,500 , and the sample standard deviation of loan
+outstanding is $700.
+a) Give a 95% conﬁdence interval for the proportion of all students who have some out-
+standing loans.
+b) Give a 95% conﬁdence for the mean outstanding loan for the population of all stu-
+dents. (This population includes students without outstanding loans and students with
+outstanding loans.)
+3. A regression model is ﬁt , modeling the volume V of lumber in a type of tree as
+a function of the tree’s diameter D. Diagnostic plots indicated that a linear relation ship
+proved adequate.
+Fitting this model yielded the following coeﬃcients, along with their
+standard errors
+Intercept
+105
+5.42
+D′
+12.1
+3.7
+Here the variable D′ is calculated from D by subtracting oﬀthe sample mean of D. The
+estimate of the residual standard deviation of V , after accounting for D′, is 2.3.
+These
+calculations were performed on a sample of 20 trees.
+a) Test the null hypothesis that tree diameter is unrelated to lumber volume, vs.
+the
+alternative that some relationship (positive or negative) exists. Use a test of size .05.
+Report a p-value.
+1
+
+----- page 2 -----
+Part II
+Applied (90 Minutes)
+16 August 2008
+b) Estimate the mean volume of trees whose diameter matches the mean of the sampled
+trees’ diameters. Construct an interval in such a way that such intervals contain the
+population mean value 95% of the time.
+c) Predict the volume of a new tree whose diameter matches the mean of the sampled trees’
+diameters. Construct an interval in such a way that such intervals contain the new value
+95% of the time.
+4. Below is an ANOVA table as for a factorial design. The ANOVA table implicitly
+incorporates the assumption that all eﬀects are ﬁxed. In fact, although A is ﬁxed, B is a
+random eﬀect, so the values of the F statistic are incorrect.
+Source
+df
+SS
+MS
+F
+A
+3
+7410
+2470
+123.5
+B
+5
+800
+160
+8.0
+A×B
+15
+1050
+70
+3.5
+Error
+216
+4320
+20
+For the questions below, you should use the unrestricted mixed model.
+a) Please show the expected mean square for each row of the table.
+b) Please calculate the correct value for the F statistic for each term as well as the corre-
+sponding degrees of freedom.
+c) Please estimate σ2
+B and σ2
+A×B
+2

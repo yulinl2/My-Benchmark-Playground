@@ -1,0 +1,77 @@
+{
+  "question_id": "2024-fall-math-stat-q3",
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "rep": 1,
+  "exam": {
+    "year": 2024,
+    "term": "fall",
+    "level": "ms",
+    "part": "math-stat"
+  },
+  "request": {
+    "system": "You are sitting a PhD-level qualifying examination in statistics. Solve the problem rigorously and completely. Show your work and reasoning, justify each step, and clearly state your final answer(s). If the problem has multiple parts, answer every part, labeled. If you invoke a known theorem, name it.",
+    "user": "[2024 fall ms math-stat — problem 3]\n\n$Y_1, Y_2$ have joint density $f(y_1,y_2\\mid\\theta) = \\frac{8}{\\theta^4}y_1 y_2$ for $0 \\le y_2 \\le y_1 \\le \\theta$. (1) Is $Y_2$ a sufficient statistic for $\\theta$? (prove). (2) Find the MLE of $\\theta$. (3) Is the MLE unbiased?",
+    "max_tokens": 24000,
+    "mode": {
+      "effort": "high"
+    }
+  },
+  "response": {
+    "id": "resp_0c4795f1fb33d33e006a24ba6057d88193a03847cd68b8f155",
+    "model": "gpt-5.5-2026-04-23",
+    "stop_reason": "completed",
+    "usage": {
+      "input_tokens": 184,
+      "output_tokens": 4595,
+      "output_tokens_details": {
+        "reasoning_tokens": 3475
+      }
+    },
+    "thinking": "**Exploring conditional distributions**\n\nI need to consider theta in both the denominator and the support, which means I can't say it's sufficient yet. I think I should show that the event, like P_theta(Y1<=a | Y2=t), also depends on theta for fixed t and a. I remember that using a fixed t with support for all theta > t could be crucial. I need to choose t and x carefully to get the right formal expression.\n**Evaluating conditional probabilities and sufficiency**\n\nI’m working through conditional probabilities and considering whether T is sufficient. It looks like the calculations show no common conditional distribution, which points to T not being sufficient. I’m also thinking about the factorization theorem, asking whether the density can be expressed that way. Tracking joint densities for order statistics could help clarify the structure of Y1 and Y2. This could involve comparing properties of maximum and minimum in a sample from a power distribution.\n**Analyzing MLE and unbiasedness**\n\nI’m working through whether the maximum likelihood estimator (MLE) is unbiased when n=2 and using F=(x/θ)^2. The MLE is biased since the expected value of θ-hat is 4θ/5, which is not equal to θ, indicating a bias of -θ/5. I should double-check if I've missed anything. If y2=0 and y1 is non-positive, it affects the likelihood considerably. I might need to consider if Y2 alone serves as a sufficient statistic for θ, since it has relevant support.",
+    "text": "Let the parameter space be \\(\\Theta=(0,\\infty)\\). Write the joint density as\n\n\\[\nf_\\theta(y_1,y_2)=\\frac{8}{\\theta^4}y_1y_2\\,\\mathbf 1\\{0\\le y_2\\le y_1\\le \\theta\\}.\n\\]\n\n## (1) Is \\(Y_2\\) sufficient for \\(\\theta\\)?\n\nNo.\n\nTo prove this rigorously, compute the conditional distribution of \\(Y_1\\) given \\(Y_2\\). First, the marginal density of \\(Y_2\\) is\n\n\\[\nf_{Y_2}(t\\mid \\theta)\n= \\int_t^\\theta \\frac{8}{\\theta^4} y_1 t\\,dy_1\n= \\frac{4t}{\\theta^4}(\\theta^2-t^2),\n\\qquad 0<t<\\theta.\n\\]\n\nHence, for \\(0<t<\\theta\\),\n\n\\[\nf_{Y_1\\mid Y_2}(x\\mid t;\\theta)\n=\n\\frac{f_\\theta(x,t)}{f_{Y_2}(t\\mid\\theta)}\n=\n\\frac{\\frac{8}{\\theta^4}xt}{\\frac{4t}{\\theta^4}(\\theta^2-t^2)}\n=\n\\frac{2x}{\\theta^2-t^2},\n\\qquad t\\le x\\le \\theta.\n\\]\n\nThis conditional density depends on \\(\\theta\\), both through the denominator and through its support.\n\nFor example, for \\(0<t<2\\),\n\n\\[\nP_\\theta(Y_1\\le 2\\mid Y_2=t)\n=\n\\frac{\\int_t^2 2x\\,dx}{\\theta^2-t^2}\n=\n\\frac{4-t^2}{\\theta^2-t^2}.\n\\]\n\nTaking \\(\\theta=3\\) and \\(\\theta=4\\), this gives\n\n\\[\nP_3(Y_1\\le 2\\mid Y_2=t)\n=\n\\frac{4-t^2}{9-t^2},\n\\]\n\nwhereas\n\n\\[\nP_4(Y_1\\le 2\\mid Y_2=t)\n=\n\\frac{4-t^2}{16-t^2}.\n\\]\n\nThese differ on a set of positive probability. Therefore the conditional distribution of the full data given \\(Y_2\\) depends on \\(\\theta\\). By the conditional-distribution criterion for sufficiency, \\(Y_2\\) is not sufficient for \\(\\theta\\).\n\n\\[\n\\boxed{Y_2 \\text{ is not sufficient for } \\theta.}\n\\]\n\n---\n\n## (2) Find the MLE of \\(\\theta\\)\n\nFor an observed pair \\((y_1,y_2)\\) with \\(0\\le y_2\\le y_1\\), the likelihood is\n\n\\[\nL(\\theta;y_1,y_2)\n=\n\\frac{8}{\\theta^4}y_1y_2\\,\\mathbf 1\\{\\theta\\ge y_1\\}.\n\\]\n\nFor \\(\\theta\\ge y_1\\),\n\n\\[\nL(\\theta;y_1,y_2)\\propto \\theta^{-4},\n\\]\n\nwhich is strictly decreasing in \\(\\theta\\). Thus the likelihood is maximized by taking the smallest allowable value of \\(\\theta\\), namely\n\n\\[\n\\widehat\\theta_{\\text{MLE}}=y_1.\n\\]\n\nTherefore,\n\n\\[\n\\boxed{\\widehat\\theta_{\\text{MLE}}=Y_1.}\n\\]\n\n---\n\n## (3) Is the MLE unbiased?\n\nWe need compute \\(E_\\theta[Y_1]\\). The marginal density of \\(Y_1\\) is\n\n\\[\nf_{Y_1}(x\\mid\\theta)\n=\n\\int_0^x \\frac{8}{\\theta^4}xy_2\\,dy_2\n=\n\\frac{8x}{\\theta^4}\\cdot \\frac{x^2}{2}\n=\n\\frac{4x^3}{\\theta^4},\n\\qquad 0<x<\\theta.\n\\]\n\nThus\n\n\\[\nE_\\theta[Y_1]\n=\n\\int_0^\\theta x\\frac{4x^3}{\\theta^4}\\,dx\n=\n\\frac{4}{\\theta^4}\\int_0^\\theta x^4\\,dx\n=\n\\frac{4}{\\theta^4}\\cdot \\frac{\\theta^5}{5}\n=\n\\frac{4\\theta}{5}.\n\\]\n\nSince\n\n\\[\nE_\\theta[\\widehat\\theta_{\\text{MLE}}]\n=\nE_\\theta[Y_1]\n=\n\\frac{4\\theta}{5}\n\\neq \\theta,\n\\]\n\nthe MLE is biased downward. Its bias is\n\n\\[\n\\operatorname{Bias}_\\theta(Y_1)\n=\n\\frac{4\\theta}{5}-\\theta\n=\n-\\frac{\\theta}{5}.\n\\]\n\nTherefore,\n\n\\[\n\\boxed{\\widehat\\theta_{\\text{MLE}}=Y_1 \\text{ is not unbiased.}}\n\\]",
+    "raw_output": [
+      {
+        "id": "rs_0c4795f1fb33d33e006a24ba6105248193a298015044a99e5d",
+        "type": "reasoning",
+        "content": [],
+        "summary": [
+          {
+            "type": "summary_text",
+            "text": "**Exploring conditional distributions**\n\nI need to consider theta in both the denominator and the support, which means I can't say it's sufficient yet. I think I should show that the event, like P_theta(Y1<=a | Y2=t), also depends on theta for fixed t and a. I remember that using a fixed t with support for all theta > t could be crucial. I need to choose t and x carefully to get the right formal expression."
+          },
+          {
+            "type": "summary_text",
+            "text": "**Evaluating conditional probabilities and sufficiency**\n\nI’m working through conditional probabilities and considering whether T is sufficient. It looks like the calculations show no common conditional distribution, which points to T not being sufficient. I’m also thinking about the factorization theorem, asking whether the density can be expressed that way. Tracking joint densities for order statistics could help clarify the structure of Y1 and Y2. This could involve comparing properties of maximum and minimum in a sample from a power distribution."
+          },
+          {
+            "type": "summary_text",
+            "text": "**Analyzing MLE and unbiasedness**\n\nI’m working through whether the maximum likelihood estimator (MLE) is unbiased when n=2 and using F=(x/θ)^2. The MLE is biased since the expected value of θ-hat is 4θ/5, which is not equal to θ, indicating a bias of -θ/5. I should double-check if I've missed anything. If y2=0 and y1 is non-positive, it affects the likelihood considerably. I might need to consider if Y2 alone serves as a sufficient statistic for θ, since it has relevant support."
+          }
+        ]
+      },
+      {
+        "id": "msg_0c4795f1fb33d33e006a24baad27408193a558e2d4e9d97d35",
+        "type": "message",
+        "status": "completed",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "Let the parameter space be \\(\\Theta=(0,\\infty)\\). Write the joint density as\n\n\\[\nf_\\theta(y_1,y_2)=\\frac{8}{\\theta^4}y_1y_2\\,\\mathbf 1\\{0\\le y_2\\le y_1\\le \\theta\\}.\n\\]\n\n## (1) Is \\(Y_2\\) sufficient for \\(\\theta\\)?\n\nNo.\n\nTo prove this rigorously, compute the conditional distribution of \\(Y_1\\) given \\(Y_2\\). First, the marginal density of \\(Y_2\\) is\n\n\\[\nf_{Y_2}(t\\mid \\theta)\n= \\int_t^\\theta \\frac{8}{\\theta^4} y_1 t\\,dy_1\n= \\frac{4t}{\\theta^4}(\\theta^2-t^2),\n\\qquad 0<t<\\theta.\n\\]\n\nHence, for \\(0<t<\\theta\\),\n\n\\[\nf_{Y_1\\mid Y_2}(x\\mid t;\\theta)\n=\n\\frac{f_\\theta(x,t)}{f_{Y_2}(t\\mid\\theta)}\n=\n\\frac{\\frac{8}{\\theta^4}xt}{\\frac{4t}{\\theta^4}(\\theta^2-t^2)}\n=\n\\frac{2x}{\\theta^2-t^2},\n\\qquad t\\le x\\le \\theta.\n\\]\n\nThis conditional density depends on \\(\\theta\\), both through the denominator and through its support.\n\nFor example, for \\(0<t<2\\),\n\n\\[\nP_\\theta(Y_1\\le 2\\mid Y_2=t)\n=\n\\frac{\\int_t^2 2x\\,dx}{\\theta^2-t^2}\n=\n\\frac{4-t^2}{\\theta^2-t^2}.\n\\]\n\nTaking \\(\\theta=3\\) and \\(\\theta=4\\), this gives\n\n\\[\nP_3(Y_1\\le 2\\mid Y_2=t)\n=\n\\frac{4-t^2}{9-t^2},\n\\]\n\nwhereas\n\n\\[\nP_4(Y_1\\le 2\\mid Y_2=t)\n=\n\\frac{4-t^2}{16-t^2}.\n\\]\n\nThese differ on a set of positive probability. Therefore the conditional distribution of the full data given \\(Y_2\\) depends on \\(\\theta\\). By the conditional-distribution criterion for sufficiency, \\(Y_2\\) is not sufficient for \\(\\theta\\).\n\n\\[\n\\boxed{Y_2 \\text{ is not sufficient for } \\theta.}\n\\]\n\n---\n\n## (2) Find the MLE of \\(\\theta\\)\n\nFor an observed pair \\((y_1,y_2)\\) with \\(0\\le y_2\\le y_1\\), the likelihood is\n\n\\[\nL(\\theta;y_1,y_2)\n=\n\\frac{8}{\\theta^4}y_1y_2\\,\\mathbf 1\\{\\theta\\ge y_1\\}.\n\\]\n\nFor \\(\\theta\\ge y_1\\),\n\n\\[\nL(\\theta;y_1,y_2)\\propto \\theta^{-4},\n\\]\n\nwhich is strictly decreasing in \\(\\theta\\). Thus the likelihood is maximized by taking the smallest allowable value of \\(\\theta\\), namely\n\n\\[\n\\widehat\\theta_{\\text{MLE}}=y_1.\n\\]\n\nTherefore,\n\n\\[\n\\boxed{\\widehat\\theta_{\\text{MLE}}=Y_1.}\n\\]\n\n---\n\n## (3) Is the MLE unbiased?\n\nWe need compute \\(E_\\theta[Y_1]\\). The marginal density of \\(Y_1\\) is\n\n\\[\nf_{Y_1}(x\\mid\\theta)\n=\n\\int_0^x \\frac{8}{\\theta^4}xy_2\\,dy_2\n=\n\\frac{8x}{\\theta^4}\\cdot \\frac{x^2}{2}\n=\n\\frac{4x^3}{\\theta^4},\n\\qquad 0<x<\\theta.\n\\]\n\nThus\n\n\\[\nE_\\theta[Y_1]\n=\n\\int_0^\\theta x\\frac{4x^3}{\\theta^4}\\,dx\n=\n\\frac{4}{\\theta^4}\\int_0^\\theta x^4\\,dx\n=\n\\frac{4}{\\theta^4}\\cdot \\frac{\\theta^5}{5}\n=\n\\frac{4\\theta}{5}.\n\\]\n\nSince\n\n\\[\nE_\\theta[\\widehat\\theta_{\\text{MLE}}]\n=\nE_\\theta[Y_1]\n=\n\\frac{4\\theta}{5}\n\\neq \\theta,\n\\]\n\nthe MLE is biased downward. Its bias is\n\n\\[\n\\operatorname{Bias}_\\theta(Y_1)\n=\n\\frac{4\\theta}{5}-\\theta\n=\n-\\frac{\\theta}{5}.\n\\]\n\nTherefore,\n\n\\[\n\\boxed{\\widehat\\theta_{\\text{MLE}}=Y_1 \\text{ is not unbiased.}}\n\\]"
+          }
+        ],
+        "phase": "final_answer",
+        "role": "assistant"
+      }
+    ]
+  },
+  "cost_usd": 0.06985,
+  "timing": {
+    "started": "2026-06-07T00:25:04.227033+00:00",
+    "ended": "2026-06-07T00:26:33.312940+00:00",
+    "seconds": 89.09
+  },
+  "error": null
+}

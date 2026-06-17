@@ -1,0 +1,71 @@
+[
+  {
+    "id": "2021-summer-probability-q1",
+    "exam": {
+      "year": 2021,
+      "term": "summer",
+      "part": "probability"
+    },
+    "number": 1,
+    "topics": [
+      "order statistics",
+      "spacings",
+      "exponential distribution",
+      "convergence in probability",
+      "central limit theorem",
+      "extreme values"
+    ],
+    "difficulty": "hard",
+    "prompt": "This problem concerns distributional properties of order statistics. For a sample $x = (x_1, \\dots, x_n)$, the order statistics are $x_{(1)} < \\cdots < x_{(n)}$. For the first three parts, let $U_1, \\dots, U_n$ be i.i.d. Uniform$[0,1]$ with order statistics $U_{(1)} < \\cdots < U_{(n)}$, and define the spacings $Y_1 = U_{(1)} - 0$, $Y_i = U_{(i)} - U_{(i-1)}$, $Y_{n+1} = 1 - U_{(n)}$. Hint (usable without proof): the joint distribution of $(Y_1, \\dots, Y_{n+1})$ equals that of $(X_1/T_{n+1}, \\dots, X_{n+1}/T_{n+1})$ where $X_i$ are i.i.d. standard exponential and $T_{n+1} = X_1 + \\cdots + X_{n+1}$.",
+    "parts": [
+      "Question 1: For $k = 2, 3, 4, \\dots$, let $S_n^{(k)} = \\sum_{i=1}^{n+1} Y_i^k$. Show there exist constants $b_k > 0$, $c_k > 0$ with $n^{b_k} S_n^{(k)} \\xrightarrow{P} c_k$ as $n \\to \\infty$. Identify $b_k, c_k$ and note $b_2 < b_3 < \\cdots$.",
+      "Question 2: State and prove a CLT to accompany the convergence in Question 1.",
+      "Question 3: Let $M_n = \\max(Y_1, \\dots, Y_{n+1})$. Show $M_n \\xrightarrow{P} 0$ as $n \\to \\infty$.",
+      "Question 4: Let $J = (x_0, \\infty)$, $f$ a continuous strictly positive density on $J$, $X = (X_1, \\dots, X_n)$ a sample from $f$ with order statistics $X_{(1)}, \\dots, X_{(n)}$. For $1 \\le k < n$ and $y \\in J$, show the conditional joint distribution of $(X_{(k+1)}, \\dots, X_{(n)})$ given $X_{(k)} = y$ equals that of the order statistics of a sample of size $n - k$ from $f_y(x) = f(x) I_{(y,\\infty)}(x) / \\int_y^\\infty f(t)\\,dt$.",
+      "Question 5: With $J = (0, \\infty)$ and $f(x) = e^{-x} I_{(0,\\infty)}(x)$ (unit-rate exponential), for given $1 \\le j \\le n$ find the distribution of $S_{n,j} = \\sum_{k=j+1}^n (X_{(k)} - X_{(j)})$."
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/probability_exam_2021.pdf",
+      "page": 2
+    },
+    "verified": false,
+    "notes": "Transcribed from extracted text.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
+  },
+  {
+    "id": "2021-summer-probability-q2",
+    "exam": {
+      "year": 2021,
+      "term": "summer",
+      "part": "probability"
+    },
+    "number": 2,
+    "topics": [
+      "simple random walk",
+      "Markov chains",
+      "recurrence",
+      "supermartingales",
+      "stopping times",
+      "Markov's inequality"
+    ],
+    "difficulty": "medium",
+    "prompt": "Consider a simple symmetric random walk on $\\mathbb{Z}$ starting at $0$: $S_0 = 0$, $S_n = \\sum_{i=1}^n X_i$ for $n \\ge 1$, where $X_1, X_2, \\dots$ are i.i.d. uniform on $\\{-1, 1\\}$.",
+    "parts": [
+      "**Part 1.** Q1: Show $\\{S_n\\}$ is a Markov chain; specify its state space and transition distribution. Q2: Does $\\{S_n\\}$ have a stationary distribution? Prove your answer. Q3: For any state $x$, show $\\mathbb{P}(S_n = x \\text{ for infinitely many } n) = 1$.",
+      "**Part 2.** Let $A$ be a fixed constant and $N = \\min\\{n : S_n \\ge \\frac n2 + A\\}$ (with $N = \\infty$ if never). Target: prove $\\mathbb{P}(N < \\infty) \\le e^{-A}$. Q4: Let $Z_n = e^{S_n - n/2 - A}$. Prove $Z_n$ is a supermartingale.",
+      "Q5: Prove $\\mathbb{P}(S_n \\ge \\frac n2 + A \\text{ for some } n \\le k) \\le e^{-A}$. Hint: Markov's inequality; define $N_k = \\min\\{N, k\\}$.",
+      "Q6: Prove $\\mathbb{P}(N < \\infty) \\le e^{-A}$."
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/probability_exam_2021.pdf",
+      "page": 4
+    },
+    "verified": false,
+    "notes": "Transcribed from extracted text.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
+  }
+]

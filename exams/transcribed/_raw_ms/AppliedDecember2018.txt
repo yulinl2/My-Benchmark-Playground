@@ -1,0 +1,118 @@
+
+----- page 1 -----
+ 
+1
+ 
+      MASTER’S COMPREHENSIVE EXAMINATION 
+ 
+Part II Applied (2 hours) December 1st, 2018. 
+Instructions: Attempt any three out of the following four questions on both pages. 
+Mention which three you would like to have graded. Open book and open notes. 
+         
+ 
+__________________________________________________________________________________________ 
+1. A random sample of 20 adult Busch Bears is obtained from a forest in New Jersey. The 
+following stem & leaf plot gives the weights in pounds for these animals 
+          
+1 |  2789  
+ 
+ 
+2 |  12346679 
+ 
+ 
+3 |  1358 
+4 |  0112 
+ 
+a) Compute the median weight in the sample__________ 
+ 
+b) Compute the interquartile range of weight in the sample_________ 
+ 
+c) Test the null hypothesis that the median weight of an adult Busch bear is heavier than 
+39 pounds against the alternative that it is not heavier than 39 pounds at P = 0.001. 
+ 
+d) A scientist believes that 25% of adult Busch Bears weigh 11 pounds or less.  Is this 
+hypothesis refuted by the data (explain your answer)? 
+______________________________________________________________________ 
+2.  A market survey research group took a random sample of 800 teenage boys, and an 
+independent random sample of 800 teenage girls from all teenagers in the United States.  
+Each teenager was asked the following two questions: 
+Question 1:  Do you use Facebook?    Circle one:     Yes  or No       
+Question 2:  Do you use Snapchat ?    Circle one:     Yes  or No       
+Every teenager answered either Yes or No.   
+On Question 1:  392 boys, and  424 girls answered Yes. 
+On Question 2:  536 boys and 576 girls answered Yes. 
+ 
+a.  Based on this data is there statistically significant evidence (at 0.05 level) of a 
+difference between the proportion of U.S. teenage boys and the proportion of U.S. 
+teenage girls who use Facebook?   Carry out the test.   
+ 
+
+----- page 2 -----
+ 
+2
+b. Your Director of Market Research asks you “Based on this data, is there statistically 
+significant evidence (at 0.05 level) of a difference between the proportion of U.S. teenage 
+boys who use Snapchat, and the proportion of U.S. teenage boys who use Facebook.?”  
+You realize that here the two sample proportions are not independent.  Some of the 800 
+boys may have answered No to both questions, some may have answered Yes to both 
+questions, and so on, but this data is not available.  However, you do know from the 
+above data that the number of boys who answered No to both questions is between 0 and 
+264.   Hint: try 0, try 264, try other possible values x, to see if the conclusion is the same 
+for any values of x the range from 0 to 264. 
+______________________________________________________________________ 
+3.  A golf ball manufacturer has developed a new golf ball that the manufacturer claims 
+will lead to longer drives on tee off.  The manufacturer has an experiment conducted by 
+an independent testing company.  The testing company draws independent random 
+samples of 10 high school team golfers, 10 college team golfers, 10 professional golfers. 
+Each golfer does 20 drives with the new ball, and 20 drives with the leading competitor’s 
+ball (the order of the 20 drives is randomized for each golfer).   The response variable is 
+the distance of the drive.  Assume that the response variable is normally distributed for a 
+given golfer using a given ball, and that the assumptions of the Analysis of Variance 
+apply,    The main interest is in effect on the response variable of the BALL (new vs 
+competitor).  The manufacturer is also interested in whether the BALL effect differs for 
+different LEVELS of golfers (Highschool, College, Professional). 
+a.  Write out the ANOVA table showing Source of Variability, Degrees of Freedom.   
+Note that your Sources of Variability should include the variability of length of DRIVES 
+for a given GOLFER  at a given LEVEL using a given BALL;(This Source of Variability 
+can be listed as ERROR).     In the ANOVA table you should indicate that factor A1 is 
+
+----- page 3 -----
+ 
+3
+nested within A2 which is nested within (A3 crossed with A4) by using the notation 
+A1|A2|A3A4.   
+b.  For each Source of Variability , state whether effect is Fixed or Random, and write out 
+Expected Mean Squares,  
+c. Use the Expected Means Squares in (b) to find the Sources of variability in 
+denominator of F ratios to test the significance of the ANOVA Sources of Variability 
+_____________________________________________________________________ 
+ 
+4. Puntious Pilot the Roman who pioneered kicking egg-shaped air inflated balls is 
+building a linear model for force applied to the ball and the distance the ball travels.  
+The model is Y = bX  + ε  where X is the force Applied, Y is the distance the ball 
+travels and ε is iid error with mean 0 and constant variance σ2.  NOTE that the 
+intercept of this model is 0.  Puntious has the following data to use to estimate b 
+ 
+X 
+1 
+2 
+3 
+4 
+5 
+6 
+7 
+Y 
+3 
+4 
+5 
+9 
+8 
+20 
+18 
+ 
+a. Write out the design matrix X 
+b. Estimate b  
+c. Estimate σ2 
+d. Estimate the variance of the estimate for b you gave above 
+________________________________________________________________________ 
+ 

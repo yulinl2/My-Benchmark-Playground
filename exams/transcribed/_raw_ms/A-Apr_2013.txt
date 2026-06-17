@@ -1,0 +1,121 @@
+
+----- page 1 -----
+ 
+MASTER’S COMPREHENSIVE EXAMINATION 
+ 
+Part II Applied (90 minutes) April 6th, 2013 
+Instructions: Attempt any three out of the following four questions on both pages. 
+Mention which three you would like to have graded. Open book and open notes. 
+ 
+ 
+1. A random sample of 20 adult Colobus monkeys is obtained from a jungle in Angola. The 
+following stem & leaf gives the results of a Monkey IQ test performed on these animals with test 
+scores ranging from 0 = least intelligent to 50 = most intelligent 
+          
+1 |  1,4,8,9 
+ 
+ 
+ 
+2 |  0,2,3,45,6,7,8 
+ 
+3 |  1,1,3,5,8 
+4 |  0,3,6 
+ 
+a) Compute the median Monkey-IQ in the sample__________ 
+ 
+b) Compute the interquartile range of Monkey-IQ in the sample_________ 
+ 
+c) It is known that the Median Monkey-IQ of an adult Chacma Baboon is 37. Perform a 
+hypothesis test of the null hypothesis that the median Monkey-IQ of an adult Colobus 
+monkey is the same as this against the alternative that it is not at α = 0.01 
+ 
+d) A scientist believes that 10% of these Colobus Monkeys have a monkey IQ of 47 or greater.  
+Is this refuted by the data, explain your answer? 
+ 
+2.  The Heights of Asperella cacti at 1 year from being planted are N(u=80,σ2 =900).  A botanist has 
+developed a fertilizer that he believes will increase the mean height to 86 but not change the standard 
+deviation N(u=86,σ2 =900).  He will test this belief on the increase in height as follows   
+• 
+ n cacti without fertilizer will be planted (Group A) 
+• 
+The same number n with fertilizer will be planted (Group B) 
+• 
+The heights in Groups A and B at one year will be compared at a two sided α = 0.05 using the 
+best test to make this comparison 
+ 
+A. What is the best statistical approach to test for the null hypothesis (i..e the name of the test 
+that would be used) and what assumptions, if any, in addition to those already given above 
+are needed  
+ 
+B. Give a large sample approximation estimate of the smallest number of Asperella that must be 
+planted for which there is 90% power to reject Ho if the botanist’s belief on the fertilizer is 
+correct 
+ 
+C. Suppose now that the botanist had chosen n =1000 and conducted the experiment, but that for 
+½ of the plants in Group B the fertilizer was misapplied so that it could have no effect on 
+Height.  Estimate the power to reject Ho in this setting if the botanist’s belief on the fertilizer 
+(when correctly applied) is correct. 
+ 
+ 
+ 
+
+----- page 2 -----
+3.   A Statistics Professor believes that adding videos of statisticians consulting on applied problems to 
+her standard instructional material will help students solve problems.  She designs an experiment to find 
+evidence to support this hypothesis. A total of 167 students are given a test prior to receiving her class 
+(the “pretest”) to see how they solve applied statistics problems.  The pretest is graded Pass or Fail.  The 
+students are then randomly divided into two groups: The Experimental Group with 106 students, and the 
+Control Group with 61 students.   Over the next 2 weeks, the Experimental group are shown videos plus 
+her standard instructional material, while the Control group receives only her standard instructional 
+material.  After this is done, all students take the same Pass/Fail test again on solving applied statistics 
+problems (the “post-test”).  You can assume that all students are independent. The following are the 
+combined Pretest Posttest outcomes: 
+ 
+Group        
+ 
+Pretest       Posttest         Number of subjects 
+Experimental                Fail             Fail                      37 
+Experimental                Fail             Pass                     29 
+Experimental                Pass            Fail                      11 
+Experimental                Pass            Pass                     29 
+ 
+Control  
+            Fail             Fail      
+       26 
+Control  
+            Fail             Pass      
+         9 
+Control  
+            Pass            Fail  
+         7 
+Control  
+            Pass            Pass  
+        19 
+ 
+a)  Using only the data for the experimental group is there statistically significant evidence of an 
+improvement between Pretest and Posttest performance.? What is the Null Hypothesis; the 
+Alternative Hypothesis, and show the details for the test used  ? 
+b)  Using only the data for the control group is there statistically significant evidence of an improvement 
+between the pretest and posttest?  
+c) Now combine the analyses for the experimental and control groups to see if there is statistically 
+significant evidence that adding the video to the instruction was helpful.   
+ 
+ 
+4.  A large fertilizer Company seeks to design an experiment to study the effect of minerals in fertilizer 
+mixes used to grow corn.  Two levels (low, high) are used for mineral A, and two levels (low, high) are 
+used for mineral B.  Three varieties of corn are included in the study.  The response variable is yield per 
+acre. 
+A sample of 6 farms are picked at random from the farms in the State to participate in the study.  
+Each farm will have 12 randomly picked plots to be planted in corn for use in the experiment. There 
+are thus a total of 72 plots in the experiment.  
+You are asked to consider two alternative designs for the experiment in a) and b) below. For each design, 
+write down the data layout, the ANOVA table with sources of variability, degrees of freedom, Expected 
+Means Squares, and indicate which F-ratios to take. Include in your model all estimable interactions 
+(including interaction with Farms).  Explain based on your analysis the pros and cons of the two designs. 
+a) Design I: For Farm 1 assign completely at random the 12 plots on the farm to the 12 combinations of 
+levels of A,B, and Variety, so that each combination will appear exactly once on Farm 1.  Do a 
+similar but independent randomization for each of the six farms. 
+ 
+b) Design II: Pick at random two of the farms for variety 1, two farms for variety 2, and two farms for 
+variety 3.  For each farm assign at random 3 plots to each of the combinations of levels of Factors A 
+and B. 

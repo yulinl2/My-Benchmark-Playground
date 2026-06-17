@@ -1,0 +1,104 @@
+{
+  "decisions": {
+    "2023-fall-applied-q2": {
+      "ai_audit": "pass",
+      "grading_type": "numeric",
+      "notes": ""
+    },
+    "2023-fall-applied-q3": {
+      "ai_audit": "pass",
+      "grading_type": "numeric",
+      "notes": ""
+    },
+    "2023-fall-applied-q4": {
+      "ai_audit": "pass",
+      "grading_type": "numeric",
+      "notes": ""
+    },
+    "2023-fall-math-stat-q1": {
+      "ai_audit": "pass",
+      "grading_type": "numeric",
+      "notes": ""
+    },
+    "2023-fall-math-stat-q6": {
+      "ai_audit": "pass",
+      "grading_type": "numeric",
+      "notes": ""
+    },
+    "2023-fall-probability-q5": {
+      "ai_audit": "pass",
+      "grading_type": "numeric",
+      "notes": ""
+    },
+    "2025-summer-math-stat-q1": {
+      "ai_audit": "pass",
+      "grading_type": "proof-rubric",
+      "notes": ""
+    },
+    "2025-summer-math-stat-q2": {
+      "ai_audit": "pass",
+      "grading_type": "proof-rubric",
+      "notes": ""
+    },
+    "2025-summer-math-stat-q3": {
+      "ai_audit": "pass",
+      "grading_type": "proof-rubric",
+      "notes": ""
+    },
+    "2025-summer-math-stat-q4": {
+      "ai_audit": "pass",
+      "grading_type": "proof-rubric",
+      "notes": ""
+    },
+    "2025-summer-probability-q1": {
+      "ai_audit": "pass",
+      "grading_type": "proof-rubric",
+      "notes": ""
+    },
+    "2025-summer-probability-q2": {
+      "ai_audit": "pass",
+      "grading_type": "proof-rubric",
+      "notes": ""
+    },
+    "2018-summer-math-stat-q1": {
+      "ai_audit": "pass",
+      "grading_type": "proof-rubric",
+      "notes": ""
+    },
+    "2018-summer-math-stat-q2": {
+      "ai_audit": "pass",
+      "grading_type": "proof-rubric",
+      "notes": ""
+    },
+    "2019-summer-probability-q1": {
+      "ai_audit": "pass",
+      "grading_type": "proof-rubric",
+      "notes": ""
+    },
+    "2019-summer-probability-q2": {
+      "ai_audit": "pass",
+      "grading_type": "proof-rubric",
+      "notes": ""
+    },
+    "2021-summer-probability-q1": {
+      "ai_audit": "pass",
+      "grading_type": "proof-rubric",
+      "notes": ""
+    },
+    "2021-summer-probability-q2": {
+      "ai_audit": "pass",
+      "grading_type": "proof-rubric",
+      "notes": ""
+    },
+    "2024-summer-applied-q1": {
+      "ai_audit": "pass",
+      "grading_type": "data-analysis",
+      "notes": ""
+    },
+    "2024-summer-applied-q2": {
+      "ai_audit": "pass",
+      "grading_type": "data-analysis",
+      "notes": ""
+    }
+  }
+}

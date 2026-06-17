@@ -1,0 +1,64 @@
+{
+  "question_id": "2023-fall-math-stat-q1",
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "rep": 1,
+  "exam": {
+    "year": 2023,
+    "term": "fall",
+    "level": "ms",
+    "part": "math-stat"
+  },
+  "request": {
+    "system": "You are sitting a PhD-level qualifying examination in statistics. Solve the problem rigorously and completely. Show your work and reasoning, justify each step, and clearly state your final answer(s). If the problem has multiple parts, answer every part, labeled. If you invoke a known theorem, name it.",
+    "user": "[2023 fall ms math-stat — problem 1]\n\n$Y_1, \\dots, Y_n$ i.i.d. with density $f_\\theta(y) = \\frac1\\theta r y^{r-1} e^{-y^r/\\theta}$, $y>0$, where $r>0$ is known. (1) Find the MLE of $\\theta$. (2) Find its limiting distribution as $n \\to \\infty$.",
+    "max_tokens": 24000,
+    "mode": {
+      "effort": "high"
+    }
+  },
+  "response": {
+    "id": "resp_07be95760e23dcd2006a24b819d0488193895abf5862d68935",
+    "model": "gpt-5.5-2026-04-23",
+    "stop_reason": "completed",
+    "usage": {
+      "input_tokens": 169,
+      "output_tokens": 1286,
+      "output_tokens_details": {
+        "reasoning_tokens": 516
+      }
+    },
+    "thinking": "",
+    "text": "Let\n\n\\[\nX_i=Y_i^r,\\qquad i=1,\\dots,n.\n\\]\n\nSince \\(x=y^r\\) and \\(dx=r y^{r-1}dy\\), the density of \\(X_i\\) is\n\n\\[\nf_\\theta^X(x)=\\frac1\\theta e^{-x/\\theta},\\qquad x>0.\n\\]\n\nThus \\(X_i=Y_i^r\\sim \\operatorname{Exp}(\\text{mean } \\theta)\\).\n\n---\n\n## (1) MLE of \\(\\theta\\)\n\nThe likelihood is\n\n\\[\nL(\\theta)\n=\\prod_{i=1}^n \\frac1\\theta r y_i^{r-1} e^{-y_i^r/\\theta}\n=\\theta^{-n}\\left(\\prod_{i=1}^n r y_i^{r-1}\\right)\n\\exp\\left\\{-\\frac{1}{\\theta}\\sum_{i=1}^n y_i^r\\right\\}.\n\\]\n\nThe log-likelihood, ignoring constants not depending on \\(\\theta\\), is\n\n\\[\n\\ell(\\theta)=-n\\log\\theta-\\frac{1}{\\theta}\\sum_{i=1}^n y_i^r.\n\\]\n\nDifferentiate:\n\n\\[\n\\ell'(\\theta)=-\\frac{n}{\\theta}+\\frac{1}{\\theta^2}\\sum_{i=1}^n y_i^r.\n\\]\n\nSetting \\(\\ell'(\\theta)=0\\) gives\n\n\\[\n-n\\theta+\\sum_{i=1}^n y_i^r=0,\n\\]\n\nso\n\n\\[\n\\widehat\\theta_{\\mathrm{MLE}}\n=\\frac1n\\sum_{i=1}^n Y_i^r.\n\\]\n\nThe second derivative is\n\n\\[\n\\ell''(\\theta)=\\frac{n}{\\theta^2}-\\frac{2}{\\theta^3}\\sum_{i=1}^n y_i^r,\n\\]\n\nand at \\(\\widehat\\theta\\),\n\n\\[\n\\ell''(\\widehat\\theta)\n=-\\frac{n}{\\widehat\\theta^2}<0,\n\\]\n\nso this critical point is the maximizer.\n\nTherefore,\n\n\\[\n\\boxed{\\widehat\\theta=\\frac1n\\sum_{i=1}^n Y_i^r.}\n\\]\n\n---\n\n## (2) Limiting distribution\n\nSince \\(X_i=Y_i^r\\sim \\operatorname{Exp}(\\text{mean }\\theta)\\),\n\n\\[\nE_\\theta[X_i]=\\theta,\\qquad \\operatorname{Var}_\\theta(X_i)=\\theta^2.\n\\]\n\nAlso,\n\n\\[\n\\widehat\\theta=\\frac1n\\sum_{i=1}^n X_i.\n\\]\n\nBy the central limit theorem,\n\n\\[\n\\sqrt n\\left(\\widehat\\theta-\\theta\\right)\n\\overset{d}{\\longrightarrow}\nN(0,\\theta^2).\n\\]\n\nEquivalently,\n\n\\[\n\\frac{\\sqrt n(\\widehat\\theta-\\theta)}{\\theta}\n\\overset{d}{\\longrightarrow}\nN(0,1).\n\\]\n\nThus the asymptotic distribution is\n\n\\[\n\\boxed{\\sqrt n(\\widehat\\theta-\\theta)\\ \\xrightarrow{d}\\ N(0,\\theta^2).}\n\\]\n\nIn particular, \\(\\widehat\\theta\\to\\theta\\) in probability, so without normalization its limiting distribution is degenerate at \\(\\theta\\).",
+    "raw_output": [
+      {
+        "id": "rs_07be95760e23dcd2006a24b81a83f08193ac160413e8428509",
+        "type": "reasoning",
+        "content": [],
+        "summary": []
+      },
+      {
+        "id": "msg_07be95760e23dcd2006a24b8264f8c81938a20c500bdadd1c7",
+        "type": "message",
+        "status": "completed",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "Let\n\n\\[\nX_i=Y_i^r,\\qquad i=1,\\dots,n.\n\\]\n\nSince \\(x=y^r\\) and \\(dx=r y^{r-1}dy\\), the density of \\(X_i\\) is\n\n\\[\nf_\\theta^X(x)=\\frac1\\theta e^{-x/\\theta},\\qquad x>0.\n\\]\n\nThus \\(X_i=Y_i^r\\sim \\operatorname{Exp}(\\text{mean } \\theta)\\).\n\n---\n\n## (1) MLE of \\(\\theta\\)\n\nThe likelihood is\n\n\\[\nL(\\theta)\n=\\prod_{i=1}^n \\frac1\\theta r y_i^{r-1} e^{-y_i^r/\\theta}\n=\\theta^{-n}\\left(\\prod_{i=1}^n r y_i^{r-1}\\right)\n\\exp\\left\\{-\\frac{1}{\\theta}\\sum_{i=1}^n y_i^r\\right\\}.\n\\]\n\nThe log-likelihood, ignoring constants not depending on \\(\\theta\\), is\n\n\\[\n\\ell(\\theta)=-n\\log\\theta-\\frac{1}{\\theta}\\sum_{i=1}^n y_i^r.\n\\]\n\nDifferentiate:\n\n\\[\n\\ell'(\\theta)=-\\frac{n}{\\theta}+\\frac{1}{\\theta^2}\\sum_{i=1}^n y_i^r.\n\\]\n\nSetting \\(\\ell'(\\theta)=0\\) gives\n\n\\[\n-n\\theta+\\sum_{i=1}^n y_i^r=0,\n\\]\n\nso\n\n\\[\n\\widehat\\theta_{\\mathrm{MLE}}\n=\\frac1n\\sum_{i=1}^n Y_i^r.\n\\]\n\nThe second derivative is\n\n\\[\n\\ell''(\\theta)=\\frac{n}{\\theta^2}-\\frac{2}{\\theta^3}\\sum_{i=1}^n y_i^r,\n\\]\n\nand at \\(\\widehat\\theta\\),\n\n\\[\n\\ell''(\\widehat\\theta)\n=-\\frac{n}{\\widehat\\theta^2}<0,\n\\]\n\nso this critical point is the maximizer.\n\nTherefore,\n\n\\[\n\\boxed{\\widehat\\theta=\\frac1n\\sum_{i=1}^n Y_i^r.}\n\\]\n\n---\n\n## (2) Limiting distribution\n\nSince \\(X_i=Y_i^r\\sim \\operatorname{Exp}(\\text{mean }\\theta)\\),\n\n\\[\nE_\\theta[X_i]=\\theta,\\qquad \\operatorname{Var}_\\theta(X_i)=\\theta^2.\n\\]\n\nAlso,\n\n\\[\n\\widehat\\theta=\\frac1n\\sum_{i=1}^n X_i.\n\\]\n\nBy the central limit theorem,\n\n\\[\n\\sqrt n\\left(\\widehat\\theta-\\theta\\right)\n\\overset{d}{\\longrightarrow}\nN(0,\\theta^2).\n\\]\n\nEquivalently,\n\n\\[\n\\frac{\\sqrt n(\\widehat\\theta-\\theta)}{\\theta}\n\\overset{d}{\\longrightarrow}\nN(0,1).\n\\]\n\nThus the asymptotic distribution is\n\n\\[\n\\boxed{\\sqrt n(\\widehat\\theta-\\theta)\\ \\xrightarrow{d}\\ N(0,\\theta^2).}\n\\]\n\nIn particular, \\(\\widehat\\theta\\to\\theta\\) in probability, so without normalization its limiting distribution is degenerate at \\(\\theta\\)."
+          }
+        ],
+        "phase": "final_answer",
+        "role": "assistant"
+      }
+    ]
+  },
+  "cost_usd": 0.02014,
+  "timing": {
+    "started": "2026-06-07T00:15:21.692929+00:00",
+    "ended": "2026-06-07T00:15:42.920637+00:00",
+    "seconds": 21.23
+  },
+  "error": null
+}

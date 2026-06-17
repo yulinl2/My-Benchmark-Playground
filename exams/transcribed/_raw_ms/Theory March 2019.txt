@@ -1,0 +1,35 @@
+
+----- page 1 -----
+MASTER’S COMPREHENSIVE EXAMINATION 
+ 
+Part I Theory (2 hours)  March 30th, 2019 
+Instructions: Attempt any three out of the following four questions.  Mention which three 
+you would like to have graded.  Open book and notes, plus non-programmable calculators can 
+be used.  No computers, programmable calculators, cell phones or other communications / web 
+accessing devices. 
+ 
+Put Your Name Both on the Blue Book and the Test Sheet 
+ 
+ 
+ 
+ 
+ 
+ 
+Problem 3.  Let Y be a random variable that has a Poisson distribution with parameter  and 
+suppose that  is also a random variable with a Gamma distribution with parameters = 2 and 
+=1. 
+(1) Find the joint distribution of Y and  
+(2) Find the unconditional marginal distribution of Y and calculate P(Y=1). 
+ 
+Problem 4.  Suppose that A is a pxp nonsingular covariance matrix with eigenvalues {1,…,p} 
+and eigenvectors {v1,…, vp} and let {xn} be a sequence of p-dimensional vectors defined as 
+follows: xn+1=  xn / | xn| = n x1 / | nx1|  for n = 1,…,, . As n goes to  the sequence {xn} 
+converges to v1, the eigenvector of the largest eigenvalue of A under the condition that x1 is not 
+orthogonal to v1.  
+ 
+(a) Give a similar sequence for calculating the largest eigenvalue of A and prove that your 
+sequence converges to the largest eigenvalue of . 
+ 
+(b) How would you use the previous results to compute the second largest eigenvector and 
+eigenvalue of ?   
+ 

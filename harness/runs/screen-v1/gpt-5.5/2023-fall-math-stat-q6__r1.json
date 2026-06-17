@@ -1,0 +1,73 @@
+{
+  "question_id": "2023-fall-math-stat-q6",
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "rep": 1,
+  "exam": {
+    "year": 2023,
+    "term": "fall",
+    "level": "ms",
+    "part": "math-stat"
+  },
+  "request": {
+    "system": "You are sitting a PhD-level qualifying examination in statistics. Solve the problem rigorously and completely. Show your work and reasoning, justify each step, and clearly state your final answer(s). If the problem has multiple parts, answer every part, labeled. If you invoke a known theorem, name it.",
+    "user": "[2023 fall ms math-stat — problem 6]\n\n$X$ has density $f(x\\mid\\theta) = 2x/\\theta^2$ for $0 < x \\le \\theta$ (0 otherwise), with $\\theta \\in (0,1)$. (1) Find $\\mathbb{E}_\\theta\\{X\\}$ and $\\operatorname{Var}_\\theta\\{X\\}$. (2) Find the MLE of $\\theta$. (3) Find an unbiased estimator of $\\theta(1-\\theta)$.",
+    "max_tokens": 24000,
+    "mode": {
+      "effort": "high"
+    }
+  },
+  "response": {
+    "id": "resp_08fe070a6115570f006a24b8302e9081968dd5fd9ac16ef352",
+    "model": "gpt-5.5-2026-04-23",
+    "stop_reason": "completed",
+    "usage": {
+      "input_tokens": 189,
+      "output_tokens": 2442,
+      "output_tokens_details": {
+        "reasoning_tokens": 1552
+      }
+    },
+    "thinking": "**Evaluating unbiased estimators**\n\nI'm trying to find an unbiased estimator for θ(1-θ) given a sample size n. The parameter space is θ∈(0,1), which adds a nuance. I need to check specific expectations like E[X] and E[X^2] to evaluate a single observation estimator. \n\nIt seems I could also consider using the MLE sample maximum to potentially find an unbiased estimator for θ. There are several calculations I need to run to confirm the unbiased nature, particularly regarding the maximum distribution. I wonder which method is expected since the sample size isn't specified.\n**Interpreting the MLE task**\n\nI'm focused on finding the MLE of θ using one observation X, which seems fine. The prompt mentions \"find an unbiased estimator,\" but since it only refers to a single X, I need to consider that I'm effectively working with one observation rather than a sample.\n\nI should confirm the density and then find both the expected value and variance, but it looks like the problem doesn't mention whether the sample is iid. The maximum likelihood estimator, in this case, is simply θ̂=X, acknowledging the parameter restriction within the bounds 0<x≤θ.",
+    "text": "For one observation \\(X\\) with density\n\n\\[\nf(x\\mid \\theta)=\\frac{2x}{\\theta^2},\\qquad 0<x\\le \\theta,\\quad 0<\\theta<1,\n\\]\n\nwe proceed as follows.\n\n## (1) Mean and variance\n\n\\[\n\\mathbb E_\\theta[X]\n=\\int_0^\\theta x\\frac{2x}{\\theta^2}\\,dx\n=\\frac{2}{\\theta^2}\\int_0^\\theta x^2\\,dx\n=\\frac{2}{\\theta^2}\\cdot \\frac{\\theta^3}{3}\n=\\frac{2\\theta}{3}.\n\\]\n\nAlso,\n\n\\[\n\\mathbb E_\\theta[X^2]\n=\\int_0^\\theta x^2\\frac{2x}{\\theta^2}\\,dx\n=\\frac{2}{\\theta^2}\\int_0^\\theta x^3\\,dx\n=\\frac{2}{\\theta^2}\\cdot \\frac{\\theta^4}{4}\n=\\frac{\\theta^2}{2}.\n\\]\n\nTherefore,\n\n\\[\n\\operatorname{Var}_\\theta(X)\n=\\mathbb E_\\theta[X^2]-\\{\\mathbb E_\\theta[X]\\}^2\n=\\frac{\\theta^2}{2}-\\left(\\frac{2\\theta}{3}\\right)^2\n=\\frac{\\theta^2}{2}-\\frac{4\\theta^2}{9}\n=\\frac{\\theta^2}{18}.\n\\]\n\nSo\n\n\\[\n\\boxed{\\mathbb E_\\theta[X]=\\frac{2\\theta}{3}},\\qquad\n\\boxed{\\operatorname{Var}_\\theta(X)=\\frac{\\theta^2}{18}}.\n\\]\n\n---\n\n## (2) MLE of \\(\\theta\\)\n\nFor an observed value \\(x\\), the likelihood is\n\n\\[\nL(\\theta\\mid x)=\\frac{2x}{\\theta^2}\\mathbf 1_{\\{x\\le \\theta<1\\}}.\n\\]\n\nFor fixed \\(x\\), this is proportional to \\(\\theta^{-2}\\) over the allowable region \\(\\theta\\ge x\\). Since \\(\\theta^{-2}\\) is strictly decreasing in \\(\\theta\\), the likelihood is maximized by the smallest allowable value of \\(\\theta\\), namely \\(\\theta=x\\).\n\nThus the MLE is\n\n\\[\n\\boxed{\\widehat\\theta_{\\text{MLE}}=X}.\n\\]\n\nIf instead one has an i.i.d. sample \\(X_1,\\dots,X_n\\), then the same argument gives\n\n\\[\n\\boxed{\\widehat\\theta_{\\text{MLE}}=X_{(n)}=\\max\\{X_1,\\dots,X_n\\}}.\n\\]\n\n---\n\n## (3) An unbiased estimator of \\(\\theta(1-\\theta)\\)\n\nWe look for an estimator of the form\n\n\\[\naX+bX^2.\n\\]\n\nUsing the moments found above,\n\n\\[\n\\mathbb E_\\theta[aX+bX^2]\n=a\\frac{2\\theta}{3}+b\\frac{\\theta^2}{2}.\n\\]\n\nWe want this to equal\n\n\\[\n\\theta(1-\\theta)=\\theta-\\theta^2\n\\]\n\nfor all \\(0<\\theta<1\\). Matching coefficients gives\n\n\\[\n\\frac{2a}{3}=1,\\qquad \\frac{b}{2}=-1.\n\\]\n\nHence\n\n\\[\na=\\frac32,\\qquad b=-2.\n\\]\n\nTherefore,\n\n\\[\nT(X)=\\frac32 X-2X^2\n\\]\n\nis unbiased for \\(\\theta(1-\\theta)\\), since\n\n\\[\n\\mathbb E_\\theta\\left[\\frac32 X-2X^2\\right]\n=\\frac32\\cdot \\frac{2\\theta}{3}-2\\cdot \\frac{\\theta^2}{2}\n=\\theta-\\theta^2\n=\\theta(1-\\theta).\n\\]\n\nThus an unbiased estimator is\n\n\\[\n\\boxed{\\frac32 X-2X^2}.\n\\]",
+    "raw_output": [
+      {
+        "id": "rs_08fe070a6115570f006a24b830dbc08196a9c23bbc32393e30",
+        "type": "reasoning",
+        "content": [],
+        "summary": [
+          {
+            "type": "summary_text",
+            "text": "**Evaluating unbiased estimators**\n\nI'm trying to find an unbiased estimator for θ(1-θ) given a sample size n. The parameter space is θ∈(0,1), which adds a nuance. I need to check specific expectations like E[X] and E[X^2] to evaluate a single observation estimator. \n\nIt seems I could also consider using the MLE sample maximum to potentially find an unbiased estimator for θ. There are several calculations I need to run to confirm the unbiased nature, particularly regarding the maximum distribution. I wonder which method is expected since the sample size isn't specified."
+          },
+          {
+            "type": "summary_text",
+            "text": "**Interpreting the MLE task**\n\nI'm focused on finding the MLE of θ using one observation X, which seems fine. The prompt mentions \"find an unbiased estimator,\" but since it only refers to a single X, I need to consider that I'm effectively working with one observation rather than a sample.\n\nI should confirm the density and then find both the expected value and variance, but it looks like the problem doesn't mention whether the sample is iid. The maximum likelihood estimator, in this case, is simply θ̂=X, acknowledging the parameter restriction within the bounds 0<x≤θ."
+          }
+        ]
+      },
+      {
+        "id": "msg_08fe070a6115570f006a24b8531b54819691a6241a3222481b",
+        "type": "message",
+        "status": "completed",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "For one observation \\(X\\) with density\n\n\\[\nf(x\\mid \\theta)=\\frac{2x}{\\theta^2},\\qquad 0<x\\le \\theta,\\quad 0<\\theta<1,\n\\]\n\nwe proceed as follows.\n\n## (1) Mean and variance\n\n\\[\n\\mathbb E_\\theta[X]\n=\\int_0^\\theta x\\frac{2x}{\\theta^2}\\,dx\n=\\frac{2}{\\theta^2}\\int_0^\\theta x^2\\,dx\n=\\frac{2}{\\theta^2}\\cdot \\frac{\\theta^3}{3}\n=\\frac{2\\theta}{3}.\n\\]\n\nAlso,\n\n\\[\n\\mathbb E_\\theta[X^2]\n=\\int_0^\\theta x^2\\frac{2x}{\\theta^2}\\,dx\n=\\frac{2}{\\theta^2}\\int_0^\\theta x^3\\,dx\n=\\frac{2}{\\theta^2}\\cdot \\frac{\\theta^4}{4}\n=\\frac{\\theta^2}{2}.\n\\]\n\nTherefore,\n\n\\[\n\\operatorname{Var}_\\theta(X)\n=\\mathbb E_\\theta[X^2]-\\{\\mathbb E_\\theta[X]\\}^2\n=\\frac{\\theta^2}{2}-\\left(\\frac{2\\theta}{3}\\right)^2\n=\\frac{\\theta^2}{2}-\\frac{4\\theta^2}{9}\n=\\frac{\\theta^2}{18}.\n\\]\n\nSo\n\n\\[\n\\boxed{\\mathbb E_\\theta[X]=\\frac{2\\theta}{3}},\\qquad\n\\boxed{\\operatorname{Var}_\\theta(X)=\\frac{\\theta^2}{18}}.\n\\]\n\n---\n\n## (2) MLE of \\(\\theta\\)\n\nFor an observed value \\(x\\), the likelihood is\n\n\\[\nL(\\theta\\mid x)=\\frac{2x}{\\theta^2}\\mathbf 1_{\\{x\\le \\theta<1\\}}.\n\\]\n\nFor fixed \\(x\\), this is proportional to \\(\\theta^{-2}\\) over the allowable region \\(\\theta\\ge x\\). Since \\(\\theta^{-2}\\) is strictly decreasing in \\(\\theta\\), the likelihood is maximized by the smallest allowable value of \\(\\theta\\), namely \\(\\theta=x\\).\n\nThus the MLE is\n\n\\[\n\\boxed{\\widehat\\theta_{\\text{MLE}}=X}.\n\\]\n\nIf instead one has an i.i.d. sample \\(X_1,\\dots,X_n\\), then the same argument gives\n\n\\[\n\\boxed{\\widehat\\theta_{\\text{MLE}}=X_{(n)}=\\max\\{X_1,\\dots,X_n\\}}.\n\\]\n\n---\n\n## (3) An unbiased estimator of \\(\\theta(1-\\theta)\\)\n\nWe look for an estimator of the form\n\n\\[\naX+bX^2.\n\\]\n\nUsing the moments found above,\n\n\\[\n\\mathbb E_\\theta[aX+bX^2]\n=a\\frac{2\\theta}{3}+b\\frac{\\theta^2}{2}.\n\\]\n\nWe want this to equal\n\n\\[\n\\theta(1-\\theta)=\\theta-\\theta^2\n\\]\n\nfor all \\(0<\\theta<1\\). Matching coefficients gives\n\n\\[\n\\frac{2a}{3}=1,\\qquad \\frac{b}{2}=-1.\n\\]\n\nHence\n\n\\[\na=\\frac32,\\qquad b=-2.\n\\]\n\nTherefore,\n\n\\[\nT(X)=\\frac32 X-2X^2\n\\]\n\nis unbiased for \\(\\theta(1-\\theta)\\), since\n\n\\[\n\\mathbb E_\\theta\\left[\\frac32 X-2X^2\\right]\n=\\frac32\\cdot \\frac{2\\theta}{3}-2\\cdot \\frac{\\theta^2}{2}\n=\\theta-\\theta^2\n=\\theta(1-\\theta).\n\\]\n\nThus an unbiased estimator is\n\n\\[\n\\boxed{\\frac32 X-2X^2}.\n\\]"
+          }
+        ],
+        "phase": "final_answer",
+        "role": "assistant"
+      }
+    ]
+  },
+  "cost_usd": 0.03758,
+  "timing": {
+    "started": "2026-06-07T00:15:44.051808+00:00",
+    "ended": "2026-06-07T00:16:29.378426+00:00",
+    "seconds": 45.33
+  },
+  "error": null
+}

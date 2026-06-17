@@ -1,0 +1,163 @@
+[
+  {
+    "id": "2023-spring-applied-q1",
+    "exam": {
+      "year": 2023,
+      "term": "spring",
+      "level": "ms",
+      "part": "applied"
+    },
+    "number": 1,
+    "topics": [
+      "chi-squared goodness of fit",
+      "hypergeometric distribution",
+      "z-test"
+    ],
+    "difficulty": "medium",
+    "prompt": "A lottery gadget picks a 6-subset of $\\{1,\\dots,49\\}$; $X$ = number of the six balls landing on the 25 outer-perimeter numbers. Under uniformity $X \\sim$ Hypergeometric. 100 trials give empirical frequencies vs the hypergeometric probabilities (table). (1) Carry out Pearson's chi-squared test; report the statistic and p-value. (2) Using $\\bar X$ as a statistic with null $\\mathbb{E}(\\bar X) = 3.06$, $\\mathrm{SD}(\\bar X) = 0.116$, compute the observed $\\bar X$ and z-value. (3) Does the gadget produce uniform results?",
+    "solution": "(1) $\\chi^2 = 10.23$ on 6 df, p-value slightly above 10% (fail to reject). (2) Observed $\\bar X = 3.40$, z $= (3.40 - 3.06)/0.116 = 2.92$. (3) The chi-squared test fails to reject uniformity, but the z-test gives convincing evidence against it; since chi-squared needs large samples and the z-test targets the mean directly, the z-test is more convincing here — evidence against uniformity.",
+    "source": {
+      "pdf": "Downloads/past-ms-exams-solution/ms23Mar Q & A.pdf",
+      "page": 1
+    },
+    "verified": false,
+    "notes": "MS comprehensive. Transcribed with solution from answer key.",
+    "ai_audit": "pass",
+    "grading_type": "numeric"
+  },
+  {
+    "id": "2023-spring-applied-q2",
+    "exam": {
+      "year": 2023,
+      "term": "spring",
+      "level": "ms",
+      "part": "applied"
+    },
+    "number": 2,
+    "topics": [
+      "simple linear regression",
+      "least squares",
+      "residuals",
+      "R-squared"
+    ],
+    "difficulty": "easy",
+    "prompt": "Model $y_i = \\beta_0 + x_i\\beta_1 + \\varepsilon_i$, $\\varepsilon_i \\sim N(0,\\sigma^2)$, with data $X = (-5,-3,0,2,1)$, $Y = (-2,1,4,6,3)$. (1) Estimate $\\beta_0, \\beta_1$ and draw the scatterplot with fitted line. (2) Compute fitted values $\\hat y_i$. (3) Compute residuals and draw the residual plot. (4) Compute $R^2$.",
+    "solution": "$\\bar x = 1$, $\\bar y = 2.4$ (note: as given), $s_{xx} = 34$, $s_{xy} = 34$, so $\\hat\\beta_1 = 34/34 = 1$ and $\\hat\\beta_0 = 3.4$. (2) Fitted values $-1.6, 0.4, 3.4, 5.4, 4.4$. (3) Residuals $-0.4, 0.6, 0.6, 0.6, -1.4$. (4) $R^2 \\approx 0.91$.",
+    "source": {
+      "pdf": "Downloads/past-ms-exams-solution/ms23Mar Q & A.pdf",
+      "page": 1
+    },
+    "verified": false,
+    "notes": "MS comprehensive. Transcribed with solution from answer key.",
+    "ai_audit": "pass",
+    "grading_type": "numeric"
+  },
+  {
+    "id": "2023-spring-probability-q3",
+    "exam": {
+      "year": 2023,
+      "term": "spring",
+      "level": "ms",
+      "part": "probability"
+    },
+    "number": 3,
+    "topics": [
+      "conditional probability",
+      "law of total probability",
+      "expectation",
+      "sampling"
+    ],
+    "difficulty": "medium",
+    "prompt": "A box has 3 yellow and 2 red balls. Flip a fair coin: heads $\\Rightarrow$ sample 2 balls with replacement, tails $\\Rightarrow$ without replacement. Let $Y$ = number of red balls obtained. (1) Distribution of $Y$. (2) $\\mathbb{E} Y$. (3) $P(\\text{first ball red} \\mid \\text{second ball red})$. (4) $P(\\text{sampled with replacement} \\mid Y = 2)$.",
+    "solution": "(1) $P(Y=0) = \\frac12\\cdot\\frac35\\cdot\\frac35 + \\frac12\\cdot\\frac35\\cdot\\frac24 = 33/100$; $P(Y=2) = \\frac12\\cdot\\frac25\\cdot\\frac25 + \\frac12\\cdot\\frac25\\cdot\\frac14 = 13/100$; $P(Y=1) = 54/100$. (2) $\\mathbb{E} Y = 54/100 + 2(13/100) = 0.8$. (3) $P(1\\text{st red}\\mid 2\\text{nd red}) = P(Y=2)/P(2\\text{nd red}) = (13/100)/(2/5) = 13/40$. (4) $P(\\text{head}\\mid Y=2) = \\frac{\\frac12\\cdot\\frac25\\cdot\\frac25}{13/100} = 8/13$.",
+    "source": {
+      "pdf": "Downloads/past-ms-exams-solution/ms23Mar Q & A.pdf",
+      "page": 2
+    },
+    "verified": false,
+    "notes": "MS comprehensive. Transcribed with solution from answer key.",
+    "ai_audit": "pass",
+    "grading_type": "numeric"
+  },
+  {
+    "id": "2023-spring-math-stat-q4",
+    "exam": {
+      "year": 2023,
+      "term": "spring",
+      "level": "ms",
+      "part": "math-stat"
+    },
+    "number": 4,
+    "topics": [
+      "Neyman-Pearson lemma",
+      "most powerful test",
+      "likelihood ratio test",
+      "exponential distribution"
+    ],
+    "difficulty": "medium",
+    "prompt": "$X, Y$ independent exponentials with joint density $f(x,y\\mid\\theta_1,\\theta_2) = \\theta_1 e^{-\\theta_1 x}\\theta_2 e^{-\\theta_2 y}$, $x,y>0$. (1) Find the most powerful test of $H_0: \\theta_1 = \\theta_2 = 2$ vs $H_1: \\theta_1 = 1, \\theta_2 = 3$. (2) For $H_0: \\theta_1 = \\theta_2$ vs $H_1: \\theta_1 \\ne \\theta_2$, find the LRT and write it as a function of $x/(x+y)$.",
+    "solution": "(1) By Neyman-Pearson, reject $H_0$ when $\\frac{f(x,y\\mid1,3)}{f(x,y\\mid2,2)} = \\frac32 e^{x-y} > c$, i.e. for large $x - y$. (2) Under $H_0$ the max likelihood is at $\\theta_1 = 2/(x+y)$; under $H_1$ at $\\theta_1 = 1/x, \\theta_2 = 1/y$. The LRT rejects for small $\\max_{H_0}/\\max_{H_1}$, equivalently for large $\\frac{xy}{(x+y)^2} = \\frac{x}{x+y}(1 - \\frac{x}{x+y}) = (\\frac{x}{x+y} - \\frac12)^2$ — i.e. extreme values of $x/(x+y)$.",
+    "source": {
+      "pdf": "Downloads/past-ms-exams-solution/ms23Mar Q & A.pdf",
+      "page": 3
+    },
+    "verified": false,
+    "notes": "MS comprehensive. Transcribed with solution from answer key.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
+  },
+  {
+    "id": "2023-spring-math-stat-q5",
+    "exam": {
+      "year": 2023,
+      "term": "spring",
+      "level": "ms",
+      "part": "math-stat"
+    },
+    "number": 5,
+    "topics": [
+      "sufficiency",
+      "factorization theorem",
+      "maximum likelihood",
+      "regression through origin",
+      "unbiasedness"
+    ],
+    "difficulty": "medium",
+    "prompt": "$Y_i = \\beta x_i + \\varepsilon_i$, $i = 1,\\dots,n$, with fixed $x_i$ and $\\varepsilon_i \\sim N(0,\\sigma^2)$ iid, $\\sigma^2$ unknown. (1) Find a two-dimensional sufficient statistic for $(\\beta, \\sigma^2)$. (2) Find the MLE of $\\beta$ and show it is unbiased. (3) Find the distribution of the MLE of $\\beta$.",
+    "solution": "(1) Factorizing the likelihood, $(\\sum_i Y_i^2, \\sum_i x_i Y_i)$ is sufficient for $(\\beta, \\sigma^2)$. (2) $\\partial_\\beta \\log L = \\frac{1}{\\sigma^2}(\\sum_i x_i Y_i - \\beta\\sum_i x_i^2) = 0 \\Rightarrow \\hat\\beta = \\frac{\\sum_i x_i Y_i}{\\sum_i x_i^2}$ (a maximum since the second derivative is negative); $\\mathbb{E}\\hat\\beta = \\frac{\\sum_i x_i\\beta x_i}{\\sum_i x_i^2} = \\beta$. (3) $\\hat\\beta$ is a linear combination of Gaussians, so $\\hat\\beta \\sim N(\\beta, \\sigma^2/\\sum_i x_i^2)$.",
+    "source": {
+      "pdf": "Downloads/past-ms-exams-solution/ms23Mar Q & A.pdf",
+      "page": 3
+    },
+    "verified": false,
+    "notes": "MS comprehensive. Transcribed with solution from answer key.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
+  },
+  {
+    "id": "2023-spring-applied-q6",
+    "exam": {
+      "year": 2023,
+      "term": "spring",
+      "level": "ms",
+      "part": "applied"
+    },
+    "number": 6,
+    "topics": [
+      "one-way ANOVA",
+      "F-test",
+      "sum of squares"
+    ],
+    "difficulty": "medium",
+    "prompt": "Weight loss (lbs) over 8 weeks for four diet groups (low calorie, low fat, low carbohydrate, control), 4 subjects each. (1) State the hypotheses for a difference in mean weight loss among the four diets. (2) Construct the ANOVA table given total SS = 114.4. (3) Do you reject the null?",
+    "solution": "(1) $H_0: \\mu_1 = \\mu_2 = \\mu_3 = \\mu_4$ vs $H_1:$ not all equal. (2) Group means $7.50, 3.50, 3.50, 0.75$; between-treatment SS $= 92.7$ on 3 df (MS $= 30.9$), error SS $= 21.8$ on 12 df (MS $\\approx 1.81$), total $114.4$ on 15 df; $F = 30.9/1.81 \\approx 17.05$. (3) Critical value $F_{3,12,.05} = 3.49$; since $F > 3.49$, reject $H_0$.",
+    "source": {
+      "pdf": "Downloads/past-ms-exams-solution/ms23Mar Q & A.pdf",
+      "page": 4
+    },
+    "verified": false,
+    "notes": "MS comprehensive. Answer key shows F=17.05 from the ANOVA table (a separate '8.54' figure in the text appears to be a typo). Transcribed with solution from answer key.",
+    "ai_audit": "pass",
+    "grading_type": "numeric"
+  }
+]

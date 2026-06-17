@@ -1,0 +1,64 @@
+{
+  "question_id": "2024-fall-math-stat-q3",
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "rep": 2,
+  "exam": {
+    "year": 2024,
+    "term": "fall",
+    "level": "ms",
+    "part": "math-stat"
+  },
+  "request": {
+    "system": "You are sitting a PhD-level qualifying examination in statistics. Solve the problem rigorously and completely. Show your work and reasoning, justify each step, and clearly state your final answer(s). If the problem has multiple parts, answer every part, labeled. If you invoke a known theorem, name it.",
+    "user": "[2024 fall ms math-stat — problem 3]\n\n$Y_1, Y_2$ have joint density $f(y_1,y_2\\mid\\theta) = \\frac{8}{\\theta^4}y_1 y_2$ for $0 \\le y_2 \\le y_1 \\le \\theta$. (1) Is $Y_2$ a sufficient statistic for $\\theta$? (prove). (2) Find the MLE of $\\theta$. (3) Is the MLE unbiased?",
+    "max_tokens": 24000,
+    "mode": {
+      "effort": "high"
+    }
+  },
+  "response": {
+    "id": "resp_007917f3c1d207dd006a24ba6731608195a103c2d4690edcf6",
+    "model": "gpt-5.5-2026-04-23",
+    "stop_reason": "completed",
+    "usage": {
+      "input_tokens": 184,
+      "output_tokens": 2198,
+      "output_tokens_details": {
+        "reasoning_tokens": 1034
+      }
+    },
+    "thinking": "",
+    "text": "**(1) Is \\(Y_2\\) sufficient for \\(\\theta\\)?**\n\nNo.\n\nBy the Neyman–Fisher factorization theorem, \\(Y_2\\) would be sufficient for \\(\\theta\\) only if the joint density could be written as\n\n\\[\nf(y_1,y_2\\mid \\theta)=g_\\theta(y_2)h(y_1,y_2),\n\\]\n\nwhere all dependence on \\(\\theta\\) is through \\(y_2\\).\n\nBut the joint density is\n\n\\[\nf(y_1,y_2\\mid \\theta)=\\frac{8}{\\theta^4}y_1y_2 \\mathbf 1\\{0\\le y_2\\le y_1\\le \\theta\\}.\n\\]\n\nThe support condition contains the restriction \\(y_1\\le \\theta\\), which depends on \\(y_1\\), not only on \\(y_2\\). Thus the likelihood depends on \\(\\theta\\) through \\(Y_1\\), so \\(Y_2\\) cannot be sufficient.\n\nEquivalently, compute the conditional distribution of \\(Y_1\\) given \\(Y_2=y_2\\). First,\n\n\\[\nf_{Y_2}(y_2\\mid \\theta)\n=\n\\int_{y_2}^{\\theta} \\frac{8}{\\theta^4}y_1y_2\\,dy_1\n=\n\\frac{8y_2}{\\theta^4}\\cdot \\frac{\\theta^2-y_2^2}{2}\n=\n\\frac{4y_2(\\theta^2-y_2^2)}{\\theta^4},\n\\]\n\nfor \\(0\\le y_2\\le \\theta\\). Hence\n\n\\[\nf_{Y_1\\mid Y_2}(y_1\\mid y_2,\\theta)\n=\n\\frac{f(y_1,y_2\\mid \\theta)}{f_{Y_2}(y_2\\mid \\theta)}\n=\n\\frac{\\frac{8}{\\theta^4}y_1y_2}{\\frac{4y_2(\\theta^2-y_2^2)}{\\theta^4}}\n=\n\\frac{2y_1}{\\theta^2-y_2^2},\n\\]\n\nfor\n\n\\[\ny_2\\le y_1\\le \\theta.\n\\]\n\nThis conditional distribution depends on \\(\\theta\\). Therefore \\(Y_2\\) is not sufficient for \\(\\theta\\).\n\n\\[\n\\boxed{Y_2 \\text{ is not sufficient for } \\theta.}\n\\]\n\n---\n\n**(2) Find the MLE of \\(\\theta\\).**\n\nFor observed \\((y_1,y_2)\\), the likelihood is\n\n\\[\nL(\\theta;y_1,y_2)\n=\n\\frac{8}{\\theta^4}y_1y_2 \\mathbf 1\\{\\theta\\ge y_1\\}.\n\\]\n\nFor fixed data with \\(y_1y_2>0\\), this is proportional to\n\n\\[\n\\theta^{-4}\\mathbf 1\\{\\theta\\ge y_1\\}.\n\\]\n\nSince \\(\\theta^{-4}\\) is strictly decreasing in \\(\\theta\\), the likelihood is maximized by taking the smallest permissible \\(\\theta\\), namely\n\n\\[\n\\widehat{\\theta}_{\\text{MLE}}=y_1.\n\\]\n\nThus\n\n\\[\n\\boxed{\\widehat{\\theta}_{\\text{MLE}}=Y_1.}\n\\]\n\n---\n\n**(3) Is the MLE unbiased?**\n\nSince the MLE is \\(\\widehat{\\theta}=Y_1\\), we compute \\(E_\\theta[Y_1]\\).\n\nThe marginal density of \\(Y_1\\) is\n\n\\[\nf_{Y_1}(y_1\\mid \\theta)\n=\n\\int_0^{y_1} \\frac{8}{\\theta^4}y_1y_2\\,dy_2\n=\n\\frac{8y_1}{\\theta^4}\\cdot \\frac{y_1^2}{2}\n=\n\\frac{4y_1^3}{\\theta^4},\n\\]\n\nfor \\(0\\le y_1\\le \\theta\\). Therefore\n\n\\[\nE_\\theta[Y_1]\n=\n\\int_0^\\theta y_1 \\frac{4y_1^3}{\\theta^4}\\,dy_1\n=\n\\frac{4}{\\theta^4}\\int_0^\\theta y_1^4\\,dy_1\n=\n\\frac{4}{\\theta^4}\\cdot \\frac{\\theta^5}{5}\n=\n\\frac{4}{5}\\theta.\n\\]\n\nThus\n\n\\[\nE_\\theta[\\widehat{\\theta}_{\\text{MLE}}]\n=\n\\frac{4}{5}\\theta \\neq \\theta.\n\\]\n\nSo the MLE is biased downward. Its bias is\n\n\\[\n\\operatorname{Bias}_\\theta(\\widehat{\\theta})\n=\nE_\\theta[\\widehat{\\theta}]-\\theta\n=\n\\frac{4}{5}\\theta-\\theta\n=\n-\\frac{1}{5}\\theta.\n\\]\n\nTherefore,\n\n\\[\n\\boxed{\\widehat{\\theta}_{\\text{MLE}}=Y_1 \\text{ is biased, with bias } -\\frac{\\theta}{5}.}\n\\]",
+    "raw_output": [
+      {
+        "id": "rs_007917f3c1d207dd006a24ba6812808195abf8215aef6ac1db",
+        "type": "reasoning",
+        "content": [],
+        "summary": []
+      },
+      {
+        "id": "msg_007917f3c1d207dd006a24ba7f279081958d4ab2adb8db7719",
+        "type": "message",
+        "status": "completed",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "**(1) Is \\(Y_2\\) sufficient for \\(\\theta\\)?**\n\nNo.\n\nBy the Neyman–Fisher factorization theorem, \\(Y_2\\) would be sufficient for \\(\\theta\\) only if the joint density could be written as\n\n\\[\nf(y_1,y_2\\mid \\theta)=g_\\theta(y_2)h(y_1,y_2),\n\\]\n\nwhere all dependence on \\(\\theta\\) is through \\(y_2\\).\n\nBut the joint density is\n\n\\[\nf(y_1,y_2\\mid \\theta)=\\frac{8}{\\theta^4}y_1y_2 \\mathbf 1\\{0\\le y_2\\le y_1\\le \\theta\\}.\n\\]\n\nThe support condition contains the restriction \\(y_1\\le \\theta\\), which depends on \\(y_1\\), not only on \\(y_2\\). Thus the likelihood depends on \\(\\theta\\) through \\(Y_1\\), so \\(Y_2\\) cannot be sufficient.\n\nEquivalently, compute the conditional distribution of \\(Y_1\\) given \\(Y_2=y_2\\). First,\n\n\\[\nf_{Y_2}(y_2\\mid \\theta)\n=\n\\int_{y_2}^{\\theta} \\frac{8}{\\theta^4}y_1y_2\\,dy_1\n=\n\\frac{8y_2}{\\theta^4}\\cdot \\frac{\\theta^2-y_2^2}{2}\n=\n\\frac{4y_2(\\theta^2-y_2^2)}{\\theta^4},\n\\]\n\nfor \\(0\\le y_2\\le \\theta\\). Hence\n\n\\[\nf_{Y_1\\mid Y_2}(y_1\\mid y_2,\\theta)\n=\n\\frac{f(y_1,y_2\\mid \\theta)}{f_{Y_2}(y_2\\mid \\theta)}\n=\n\\frac{\\frac{8}{\\theta^4}y_1y_2}{\\frac{4y_2(\\theta^2-y_2^2)}{\\theta^4}}\n=\n\\frac{2y_1}{\\theta^2-y_2^2},\n\\]\n\nfor\n\n\\[\ny_2\\le y_1\\le \\theta.\n\\]\n\nThis conditional distribution depends on \\(\\theta\\). Therefore \\(Y_2\\) is not sufficient for \\(\\theta\\).\n\n\\[\n\\boxed{Y_2 \\text{ is not sufficient for } \\theta.}\n\\]\n\n---\n\n**(2) Find the MLE of \\(\\theta\\).**\n\nFor observed \\((y_1,y_2)\\), the likelihood is\n\n\\[\nL(\\theta;y_1,y_2)\n=\n\\frac{8}{\\theta^4}y_1y_2 \\mathbf 1\\{\\theta\\ge y_1\\}.\n\\]\n\nFor fixed data with \\(y_1y_2>0\\), this is proportional to\n\n\\[\n\\theta^{-4}\\mathbf 1\\{\\theta\\ge y_1\\}.\n\\]\n\nSince \\(\\theta^{-4}\\) is strictly decreasing in \\(\\theta\\), the likelihood is maximized by taking the smallest permissible \\(\\theta\\), namely\n\n\\[\n\\widehat{\\theta}_{\\text{MLE}}=y_1.\n\\]\n\nThus\n\n\\[\n\\boxed{\\widehat{\\theta}_{\\text{MLE}}=Y_1.}\n\\]\n\n---\n\n**(3) Is the MLE unbiased?**\n\nSince the MLE is \\(\\widehat{\\theta}=Y_1\\), we compute \\(E_\\theta[Y_1]\\).\n\nThe marginal density of \\(Y_1\\) is\n\n\\[\nf_{Y_1}(y_1\\mid \\theta)\n=\n\\int_0^{y_1} \\frac{8}{\\theta^4}y_1y_2\\,dy_2\n=\n\\frac{8y_1}{\\theta^4}\\cdot \\frac{y_1^2}{2}\n=\n\\frac{4y_1^3}{\\theta^4},\n\\]\n\nfor \\(0\\le y_1\\le \\theta\\). Therefore\n\n\\[\nE_\\theta[Y_1]\n=\n\\int_0^\\theta y_1 \\frac{4y_1^3}{\\theta^4}\\,dy_1\n=\n\\frac{4}{\\theta^4}\\int_0^\\theta y_1^4\\,dy_1\n=\n\\frac{4}{\\theta^4}\\cdot \\frac{\\theta^5}{5}\n=\n\\frac{4}{5}\\theta.\n\\]\n\nThus\n\n\\[\nE_\\theta[\\widehat{\\theta}_{\\text{MLE}}]\n=\n\\frac{4}{5}\\theta \\neq \\theta.\n\\]\n\nSo the MLE is biased downward. Its bias is\n\n\\[\n\\operatorname{Bias}_\\theta(\\widehat{\\theta})\n=\nE_\\theta[\\widehat{\\theta}]-\\theta\n=\n\\frac{4}{5}\\theta-\\theta\n=\n-\\frac{1}{5}\\theta.\n\\]\n\nTherefore,\n\n\\[\n\\boxed{\\widehat{\\theta}_{\\text{MLE}}=Y_1 \\text{ is biased, with bias } -\\frac{\\theta}{5}.}\n\\]"
+          }
+        ],
+        "phase": "final_answer",
+        "role": "assistant"
+      }
+    ]
+  },
+  "cost_usd": 0.03389,
+  "timing": {
+    "started": "2026-06-07T00:25:10.976735+00:00",
+    "ended": "2026-06-07T00:25:48.952019+00:00",
+    "seconds": 37.98
+  },
+  "error": null
+}

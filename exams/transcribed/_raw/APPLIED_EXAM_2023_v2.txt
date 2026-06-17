@@ -1,0 +1,152 @@
+
+----- page 1 -----
+PH.D. APPLIED QUALIFYING EXAM 2023 (TAKE HOME)
+IMPORTANT - PLEASE READ THESE INSTRUCTIONS CAREFULLY BEFORE
+YOU START:
+This is the Applied Part of the First-Year PhD Qualifying Exam in Statistics. The exam consists
+of two problems, both of which you need to answer. You are permitted to consult textbooks and
+other scholarly resources to help you in completing the assignment, but you may not consult or
+discuss these problems in any way with anyone during the time that the exam is being
+administered. If you draw on information from any outside resources (i.e., resources other than
+class material and notes) then you should clearly cite the source in your write-up.
+You should complete the exam alone, in a room separate from any other test-takers. If you have
+questions, please email Prof. Han Xiao (hxiao@stat.rutgers.edu) AND Prof Tirthankar Dasgupta
+(td370@stat.rutgers.edu).
+Submission Instructions:
+(1) Create a folder containing the following:
+(a) A word, html or pdf file containing your answers to the two problems, including all
+tables, figures and Appendices (this may be generated from an R markdown file)
+(b) An R (or python) file containing the codes used to generate your results, or an R
+markdown file from which your output html or pdf is generated.
+(c) A word or a text file that gives a summary of the codes submitted (not required if you
+submit an R markdown file).
+(2) Name the folder yourlastname yourfirstname Appliedexam2023. Zip this folder and
+email it to hxiao@stat.rutgers.edu AND td370@stat.rutgers.edu by 5 PM July 7, Friday.
+Date: July 5 (5 PM) to July 7 (5 PM).
+1
+
+----- page 2 -----
+2
+PH.D. APPLIED QUALIFYING EXAM 2023 (TAKE HOME)
+Problem 1
+1. Overview
+In this problem, you will be acting as statistical consultants for a company that manufactures
+consumer products, and answer specific questions asked by the company management, who do
+not care much about the novelty of statistical methodology you use, as long as their questions are
+answered. However, your methodology (and its statistical validity) is accountable to your despicable
+bosses – Ying Hung and Tirthankar Dasgupta. There is no need to restrict your answers to what
+was covered in Stat 596 and Stat 597. Use your instincts, your previous training in data analysis,
+and focus on answering the questions of interest using correct statistical methodology.
+2. Background
+The company has conducted a product marketing experiment before launching a new dish-
+washing detergent. Two “test” detergents were manufactured. A total of 549 households were
+chosen as the experimental units for this study, and the two test products were assigned randomly
+to these households. Each household received by mail one of two test products, used the product
+and returned a survey regarding the product’s performance. The survey data ia available in the file
+market_survey_data_mod.csv.
+The first column (A) of the file contains the household identification number ranging from 1 to
+549, and the second column (B) contains the test product number (nominal variable with values
+1–2) assigned to the household. The Columns C through K marked in green contain the outcomes
+or the response variables and are answers to the following questions on a scale of 1–3, with 1 being
+the worst and 3 being the best.
+(1) Column C: Does the product provide value for money? (1:Poor, 3:Excellent)
+(2) Column D: How would you rate the product overall? (1:Poor, 3:Excellent)
+(3) Column E: How do you rate the product with respect to its performance (cleaning dishes)?
+(1:Poor, 3:Excellent)
+(4) Column F: Do you like the scent (perfume) of the product? (1:Poor, 3:Excellent)
+(5) Column G: Does use of the product irritate your hand? (1:A lot, 3:Not at all)
+(6) Column H: Did you like the color of the product? (1: Not at all, 2: Very much)
+(7) Column I: Are you satisfied with the packaging? (1:Not at all, 3: Extremely satisfied)
+(8) Column J: How much effort did you spend in dispensing the detergent? (1:A lot of effort,
+3: It was very easy)
+(9) Column K: Did you think the package was filled as per your expectation: (1:Poor, 3:Excel-
+lent)
+
+----- page 3 -----
+PH.D. APPLIED QUALIFYING EXAM 2023 (TAKE HOME)
+3
+Note that the responses in columns C and D represent the users’ overall evaluation of the
+product, whereas the other columns represent their views on specific aspects of the product. The
+outcome in column D (overall rating) is the one of primary interest to the management, although
+they are also interested in the other outcomes.
+The survey also collected covariate information that are reported in the blue columns L through
+R. Descriptions of these columns are given below:
+(1) Column L: Do you place the product directly under a running stream of water? (Yes/No)
+(2) Column M: How do you wash dishes (1= only by hand; 2=most of them by hand but
+some in machine; 3=some by hand but most of them in machine; 4= equally by hand and
+machine; 5=only in machine)
+(3) Column N: Have you been using brand X of dishwashing detergent during the past six
+months (prior to this survey)? (Yes/No)
+(4) Column O: Household income (nominal variable with 11 levels)
+(5) Column P: Age of the person primarily responsible for washing dishes in the house (nominal
+variable with 6 levels, each level measuring an interval, e.g. 15-24.)
+(6) Column Q: Number of hand washes per week (discrete variable)
+(7) Column R: Hispanic? (Yes/No)
+3. Questions
+(1) There are many missing observations in the Excel file, both with respect to outcomes
+and covariates. Can you quickly compile these missing values by questions and create a
+visualization to see whether there are specific questions that have lower response rates?
+(2) Is it possible to predict the overall performance measures (columns C and D) from the
+remaining performance measures (columns E to K)? That is, do the ratings on specific fea-
+tures like performance, perfume, color, packaging, effect on hand, ease of dispensing, extent
+to which the package is filled, affect the overall performance measures? If so, fit appropri-
+ate models (individual model for each overall performance measure) for each product, and
+compare them.
+(3) How well can you predict the overall performance measures for each product from the co-
+variates? Fit appropriate statistical models (individual model for each overall performance
+measure) and compare them for the two products.
+(4) Does it appear that the two test products differ significantly with respect to the response
+of primary interest (overall rating)? If they do, which is better?
+Write a report to the management answering the above four questions. Feel free to use any statistical
+methodology you want to, but state your analysis methods clearly and unambiguously. You can
+use any R package you want to and/or write your own codes. Submit your R codes so that your
+
+----- page 4 -----
+4
+PH.D. APPLIED QUALIFYING EXAM 2023 (TAKE HOME)
+results can be replicated. You can also create a single R markdown file with your codes and the
+html or pdf file generated from it.
+
+----- page 5 -----
+PH.D. APPLIED QUALIFYING EXAM 2023 (TAKE HOME)
+5
+Problem 2
+Assume that a deep learning algorithm involving two tuning parameters, x1 and x2, is given to
+perform image recognition. It is also assumed that the underlying performance of these two tuning
+parameters in terms of prediction error can be described by the following deterministic function:
+y =
+[1 + (x1 + x2 + 1)2(19 −14x1 + 3x2
+1 −14x2 + 6x1x2 + 3x2
+2)] ×
+[30 + (2x1 −3x2)2(18 −32x1 + 12x2
+1 + 48x2 −36x1x2 + 27x2
+2)],
+where y is the average prediction error, x1 and x2 are evaluated on a square defined by xi ∈[−2, 2]
+for i = 1, 2.
+(1) In reality, this relationship is unknown. Instead we can train the deep learning algorithm on
+50 different tuning parameters settings sampled from the square, denoted by (x1j, x2j) and
+collect the corresponding y, denoted by yj, from the given relationship, where i = 1, · · · , 50.
+Based on this idea, conduct a simulation to generate training data on the tuning parameters
+and the prediction error with sample size 50. Visualize the training data by plotting
+(1a) the true deterministic function v.s. x1 with x2 = 2,
+(1b) the true deterministic function v.s. x2 with x1 = −2,
+(1c) the true deterministic function (3D plot) with the training data labelled.
+(2) Fit a surrogate model based on the training data by assuming the data are realizations from
+a Gaussian process Y = µ+Z(x), where µ is unknown and Z(x) is a Gaussian process with
+mean 0 and covariance function defined by cov(Y ((x + h), Y (x)) = σ2ϕ(h; θ). Define the
+correlation function ϕ(h; θ) by
+ϕ(h; θ) = exp(−θh2).
+Write down the theoretical expressions of MLEs for parameters µ, θ, and σ2. Based on the
+50 observations, what are your estimated MLEs?
+(3) Based on (2), write down the best linear unbiased predictor (BLUP) and the (plugin)
+predictive distribution of y at x1 = x∗
+1 and x2 = x∗
+2?
+(4) Based on the predictive distribution described in (3), plot the BLUP and the 95% predictive
+confidence bands on (1a) and (1b).
+(5) Based on the BLUP found in (3), what is the best tuning parameter setting that minimizes
+y?
+(6) If you are allowed to add five more training data points, what are the parameter settings
+you would like to try? Provide a brief justification behind selection of these points.
+(7) Based on the same set of data, fit a spline-based model and find the corresponding best
+tuning parameter settings that minimize y.

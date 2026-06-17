@@ -1,0 +1,68 @@
+{
+  "question_id": "2025-summer-math-stat-q3",
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "rep": 0,
+  "exam": {
+    "year": 2025,
+    "term": "summer",
+    "part": "math-stat"
+  },
+  "request": {
+    "system": "You are sitting a PhD-level qualifying examination in statistics. Solve the problem rigorously and completely. Show your work and reasoning, justify each step, and clearly state your final answer(s). If the problem has multiple parts, answer every part, labeled. If you invoke a known theorem, name it.",
+    "user": "[2025 summer phd math-stat — problem 3]\n\nPart III, Problem 3 (25 pts). Let $\\{(X_i, Y_i, R_i)\\}_{i=1}^n$ be i.i.d. with covariates $X_i \\in \\mathbb{R}^d$, response $Y_i$, and missingness indicator $R_i \\in \\{0, 1\\}$ ($R_i = 1$ if $Y_i$ observed). Assume (a) $Y_i \\mid X_i, R_i = 1 \\stackrel{d}{=} Y_i \\mid X_i, R_i = 0$, and (b) $X_i \\mid R_i = 1 \\sim P_X$, $X_i \\mid R_i = 0 \\sim Q_X$ (possibly different). Target: $\\beta^* = \\arg\\min_\\beta \\mathbb{E}[(Y_i - X_i^\\top\\beta)^2 \\mid R_i = 0]$.\n(i) Show $\\mathbb{E}[(Y_i - X_i^\\top\\beta)^2 \\mid R_i = 0] = \\mathbb{E}[(Y_i - X_i^\\top\\beta)^2 \\frac{f_{X|R=0}(X_i)}{f_{X|R=1}(X_i)} \\mid R_i = 1]$.\n(ii) Prove $\\frac{f_{X|R=0}(x)}{f_{X|R=1}(x)} = \\frac{P(R=0\\mid x)}{P(R=1\\mid x)}\\cdot\\frac{P(R=1)}{P(R=0)}$.\n(iii) Apply (i) and (ii) to construct an estimator of $\\beta^*$.",
+    "max_tokens": 24000,
+    "mode": {
+      "effort": "high"
+    }
+  },
+  "response": {
+    "id": "resp_0f4a5e0e346a7ab2006a24bd96ce6c8190afa57e8beac83515",
+    "model": "gpt-5.5-2026-04-23",
+    "stop_reason": "completed",
+    "usage": {
+      "input_tokens": 462,
+      "output_tokens": 6766,
+      "output_tokens_details": {
+        "reasoning_tokens": 5178
+      }
+    },
+    "thinking": "**Evaluating estimator construction**\n\nI'm thinking about how to use complete cases and may apply a covariate-shift weighted estimator. The expression involves minimizing a sum related to probabilities of R. Since the ratio p1/p0 is constant, I can ignore it. While the problem is focused on constructing an estimator rather than proving consistency, it feels important to consider justification. The developer instructed rigorously, so including a consistency proof and defining notation seems vital. I should work through the details and assumptions.",
+    "text": "Let  \n\\[\np_r=P(R=r),\\qquad f_r(x)=f_{X\\mid R=r}(x),\\qquad r\\in\\{0,1\\},\n\\]\nand assume the usual overlap/positivity condition\n\\[\nf_0(x)>0\\implies f_1(x)>0,\n\\]\nso that \\(w(x):=f_0(x)/f_1(x)\\) is well defined \\(Q_X\\)-a.e. Also assume the relevant second moments are finite.\n\n---\n\n## (i) Change-of-measure identity\n\nFor fixed \\(\\beta\\), define\n\\[\nm_\\beta(x,r):=\\mathbb E\\left[(Y-X^\\top\\beta)^2\\mid X=x,R=r\\right].\n\\]\nAssumption (a) says\n\\[\nY\\mid X=x,R=1 \\stackrel d= Y\\mid X=x,R=0,\n\\]\nso in particular\n\\[\nm_\\beta(x,1)=m_\\beta(x,0)=:m_\\beta(x).\n\\]\n\nThen\n\\[\n\\begin{aligned}\n\\mathbb E\\left[(Y-X^\\top\\beta)^2\\mid R=0\\right]\n&=\\mathbb E\\left[m_\\beta(X)\\mid R=0\\right] \\\\\n&=\\int m_\\beta(x) f_0(x)\\,dx \\\\\n&=\\int m_\\beta(x)\\frac{f_0(x)}{f_1(x)} f_1(x)\\,dx \\\\\n&=\\mathbb E\\left[m_\\beta(X)\\frac{f_0(X)}{f_1(X)}\\mid R=1\\right] \\\\\n&=\\mathbb E\\left[(Y-X^\\top\\beta)^2\\frac{f_{X\\mid R=0}(X)}{f_{X\\mid R=1}(X)}\\mid R=1\\right].\n\\end{aligned}\n\\]\n\nThus\n\\[\n\\boxed{\n\\mathbb E\\left[(Y-X^\\top\\beta)^2\\mid R=0\\right]\n=\n\\mathbb E\\left[(Y-X^\\top\\beta)^2\\frac{f_{X\\mid R=0}(X)}{f_{X\\mid R=1}(X)}\\mid R=1\\right].\n}\n\\]\n\nThis is simply importance weighting/covariate-shift reweighting from the observed-response covariate distribution to the missing-response covariate distribution.\n\n---\n\n## (ii) Bayes formula for the density ratio\n\nBy Bayes’ rule, for \\(r\\in\\{0,1\\}\\),\n\n\\[\nP(R=r\\mid X=x)\n=\n\\frac{f_{X\\mid R=r}(x)P(R=r)}{f_X(x)}.\n\\]\n\nTherefore,\n\n\\[\n\\frac{P(R=0\\mid X=x)}{P(R=1\\mid X=x)}\n=\n\\frac{f_{X\\mid R=0}(x)P(R=0)}{f_{X\\mid R=1}(x)P(R=1)}.\n\\]\n\nRearranging gives\n\n\\[\n\\boxed{\n\\frac{f_{X\\mid R=0}(x)}{f_{X\\mid R=1}(x)}\n=\n\\frac{P(R=0\\mid X=x)}{P(R=1\\mid X=x)}\n\\cdot\n\\frac{P(R=1)}{P(R=0)}.\n}\n\\]\n\nEquivalently, if \\(\\pi(x):=P(R=1\\mid X=x)\\), then\n\n\\[\n\\frac{f_{X\\mid R=0}(x)}{f_{X\\mid R=1}(x)}\n=\n\\frac{1-\\pi(x)}{\\pi(x)}\\cdot \\frac{p_1}{p_0}.\n\\]\n\n---\n\n## (iii) Estimator of \\(\\beta^*\\)\n\nBy parts (i) and (ii), \\(\\beta^*\\) can be characterized as the minimizer of a weighted least-squares risk over the observed cases \\(R_i=1\\):\n\n\\[\n\\beta^*\n=\n\\arg\\min_\\beta\n\\mathbb E\\left[\n(Y-X^\\top\\beta)^2\n\\frac{f_{X\\mid R=0}(X)}{f_{X\\mid R=1}(X)}\n\\mid R=1\n\\right].\n\\]\n\nUsing the propensity score \\(\\pi(x)=P(R=1\\mid X=x)\\),\n\n\\[\nw(x)\n=\n\\frac{f_{X\\mid R=0}(x)}{f_{X\\mid R=1}(x)}\n=\n\\frac{1-\\pi(x)}{\\pi(x)}\\cdot \\frac{p_1}{p_0}.\n\\]\n\nIn practice, estimate \\(\\pi(x)\\) from the data \\(\\{(X_i,R_i)\\}_{i=1}^n\\), for example by logistic regression or another classification method. Let \\(\\widehat\\pi(x)\\) be the fitted propensity and let\n\n\\[\n\\widehat p_1=\\frac1n\\sum_{i=1}^n R_i,\\qquad \n\\widehat p_0=1-\\widehat p_1.\n\\]\n\nDefine the estimated weight\n\n\\[\n\\widehat w_i\n=\n\\frac{1-\\widehat\\pi(X_i)}{\\widehat\\pi(X_i)}\n\\cdot\n\\frac{\\widehat p_1}{\\widehat p_0}.\n\\]\n\nThen an estimator of \\(\\beta^*\\) is the inverse-propensity/covariate-shift weighted least-squares estimator\n\n\\[\n\\boxed{\n\\widehat\\beta\n=\n\\arg\\min_{\\beta\\in\\mathbb R^d}\n\\sum_{i=1}^n\nR_i\\,\\widehat w_i\\,(Y_i-X_i^\\top\\beta)^2.\n}\n\\]\n\nThe constant factor \\(\\widehat p_1/\\widehat p_0\\) does not affect the minimizer, so equivalently one may use weights\n\n\\[\n\\widehat a_i\n=\n\\frac{1-\\widehat\\pi(X_i)}{\\widehat\\pi(X_i)}.\n\\]\n\nThus,\n\n\\[\n\\widehat\\beta\n=\n\\arg\\min_{\\beta\\in\\mathbb R^d}\n\\sum_{i=1}^n\nR_i\\,\\widehat a_i\\,(Y_i-X_i^\\top\\beta)^2.\n\\]\n\nWhen the weighted design matrix is invertible, the closed-form estimator is\n\n\\[\n\\boxed{\n\\widehat\\beta\n=\n\\left(\n\\sum_{i=1}^n R_i\\,\\widehat a_i\\,X_iX_i^\\top\n\\right)^{-1}\n\\left(\n\\sum_{i=1}^n R_i\\,\\widehat a_i\\,X_iY_i\n\\right).\n}\n\\]\n\nThis estimator uses only observed responses \\(Y_i\\) with \\(R_i=1\\), but reweights them so that their covariate distribution mimics the covariate distribution among the missing-response group \\(R_i=0\\). Under standard consistency conditions for \\(\\widehat\\pi\\), positivity, and nonsingularity of the target second-moment matrix, this weighted least-squares estimator is consistent for \\(\\beta^*\\).",
+    "raw_output": [
+      {
+        "id": "rs_0f4a5e0e346a7ab2006a24bd97a0a48190a94dd8117fe8e2ab",
+        "type": "reasoning",
+        "content": [],
+        "summary": [
+          {
+            "type": "summary_text",
+            "text": "**Evaluating estimator construction**\n\nI'm thinking about how to use complete cases and may apply a covariate-shift weighted estimator. The expression involves minimizing a sum related to probabilities of R. Since the ratio p1/p0 is constant, I can ignore it. While the problem is focused on constructing an estimator rather than proving consistency, it feels important to consider justification. The developer instructed rigorously, so including a consistency proof and defining notation seems vital. I should work through the details and assumptions."
+          }
+        ]
+      },
+      {
+        "id": "msg_0f4a5e0e346a7ab2006a24be00845c8190b1bfea38445a2cd0",
+        "type": "message",
+        "status": "completed",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "Let  \n\\[\np_r=P(R=r),\\qquad f_r(x)=f_{X\\mid R=r}(x),\\qquad r\\in\\{0,1\\},\n\\]\nand assume the usual overlap/positivity condition\n\\[\nf_0(x)>0\\implies f_1(x)>0,\n\\]\nso that \\(w(x):=f_0(x)/f_1(x)\\) is well defined \\(Q_X\\)-a.e. Also assume the relevant second moments are finite.\n\n---\n\n## (i) Change-of-measure identity\n\nFor fixed \\(\\beta\\), define\n\\[\nm_\\beta(x,r):=\\mathbb E\\left[(Y-X^\\top\\beta)^2\\mid X=x,R=r\\right].\n\\]\nAssumption (a) says\n\\[\nY\\mid X=x,R=1 \\stackrel d= Y\\mid X=x,R=0,\n\\]\nso in particular\n\\[\nm_\\beta(x,1)=m_\\beta(x,0)=:m_\\beta(x).\n\\]\n\nThen\n\\[\n\\begin{aligned}\n\\mathbb E\\left[(Y-X^\\top\\beta)^2\\mid R=0\\right]\n&=\\mathbb E\\left[m_\\beta(X)\\mid R=0\\right] \\\\\n&=\\int m_\\beta(x) f_0(x)\\,dx \\\\\n&=\\int m_\\beta(x)\\frac{f_0(x)}{f_1(x)} f_1(x)\\,dx \\\\\n&=\\mathbb E\\left[m_\\beta(X)\\frac{f_0(X)}{f_1(X)}\\mid R=1\\right] \\\\\n&=\\mathbb E\\left[(Y-X^\\top\\beta)^2\\frac{f_{X\\mid R=0}(X)}{f_{X\\mid R=1}(X)}\\mid R=1\\right].\n\\end{aligned}\n\\]\n\nThus\n\\[\n\\boxed{\n\\mathbb E\\left[(Y-X^\\top\\beta)^2\\mid R=0\\right]\n=\n\\mathbb E\\left[(Y-X^\\top\\beta)^2\\frac{f_{X\\mid R=0}(X)}{f_{X\\mid R=1}(X)}\\mid R=1\\right].\n}\n\\]\n\nThis is simply importance weighting/covariate-shift reweighting from the observed-response covariate distribution to the missing-response covariate distribution.\n\n---\n\n## (ii) Bayes formula for the density ratio\n\nBy Bayes’ rule, for \\(r\\in\\{0,1\\}\\),\n\n\\[\nP(R=r\\mid X=x)\n=\n\\frac{f_{X\\mid R=r}(x)P(R=r)}{f_X(x)}.\n\\]\n\nTherefore,\n\n\\[\n\\frac{P(R=0\\mid X=x)}{P(R=1\\mid X=x)}\n=\n\\frac{f_{X\\mid R=0}(x)P(R=0)}{f_{X\\mid R=1}(x)P(R=1)}.\n\\]\n\nRearranging gives\n\n\\[\n\\boxed{\n\\frac{f_{X\\mid R=0}(x)}{f_{X\\mid R=1}(x)}\n=\n\\frac{P(R=0\\mid X=x)}{P(R=1\\mid X=x)}\n\\cdot\n\\frac{P(R=1)}{P(R=0)}.\n}\n\\]\n\nEquivalently, if \\(\\pi(x):=P(R=1\\mid X=x)\\), then\n\n\\[\n\\frac{f_{X\\mid R=0}(x)}{f_{X\\mid R=1}(x)}\n=\n\\frac{1-\\pi(x)}{\\pi(x)}\\cdot \\frac{p_1}{p_0}.\n\\]\n\n---\n\n## (iii) Estimator of \\(\\beta^*\\)\n\nBy parts (i) and (ii), \\(\\beta^*\\) can be characterized as the minimizer of a weighted least-squares risk over the observed cases \\(R_i=1\\):\n\n\\[\n\\beta^*\n=\n\\arg\\min_\\beta\n\\mathbb E\\left[\n(Y-X^\\top\\beta)^2\n\\frac{f_{X\\mid R=0}(X)}{f_{X\\mid R=1}(X)}\n\\mid R=1\n\\right].\n\\]\n\nUsing the propensity score \\(\\pi(x)=P(R=1\\mid X=x)\\),\n\n\\[\nw(x)\n=\n\\frac{f_{X\\mid R=0}(x)}{f_{X\\mid R=1}(x)}\n=\n\\frac{1-\\pi(x)}{\\pi(x)}\\cdot \\frac{p_1}{p_0}.\n\\]\n\nIn practice, estimate \\(\\pi(x)\\) from the data \\(\\{(X_i,R_i)\\}_{i=1}^n\\), for example by logistic regression or another classification method. Let \\(\\widehat\\pi(x)\\) be the fitted propensity and let\n\n\\[\n\\widehat p_1=\\frac1n\\sum_{i=1}^n R_i,\\qquad \n\\widehat p_0=1-\\widehat p_1.\n\\]\n\nDefine the estimated weight\n\n\\[\n\\widehat w_i\n=\n\\frac{1-\\widehat\\pi(X_i)}{\\widehat\\pi(X_i)}\n\\cdot\n\\frac{\\widehat p_1}{\\widehat p_0}.\n\\]\n\nThen an estimator of \\(\\beta^*\\) is the inverse-propensity/covariate-shift weighted least-squares estimator\n\n\\[\n\\boxed{\n\\widehat\\beta\n=\n\\arg\\min_{\\beta\\in\\mathbb R^d}\n\\sum_{i=1}^n\nR_i\\,\\widehat w_i\\,(Y_i-X_i^\\top\\beta)^2.\n}\n\\]\n\nThe constant factor \\(\\widehat p_1/\\widehat p_0\\) does not affect the minimizer, so equivalently one may use weights\n\n\\[\n\\widehat a_i\n=\n\\frac{1-\\widehat\\pi(X_i)}{\\widehat\\pi(X_i)}.\n\\]\n\nThus,\n\n\\[\n\\widehat\\beta\n=\n\\arg\\min_{\\beta\\in\\mathbb R^d}\n\\sum_{i=1}^n\nR_i\\,\\widehat a_i\\,(Y_i-X_i^\\top\\beta)^2.\n\\]\n\nWhen the weighted design matrix is invertible, the closed-form estimator is\n\n\\[\n\\boxed{\n\\widehat\\beta\n=\n\\left(\n\\sum_{i=1}^n R_i\\,\\widehat a_i\\,X_iX_i^\\top\n\\right)^{-1}\n\\left(\n\\sum_{i=1}^n R_i\\,\\widehat a_i\\,X_iY_i\n\\right).\n}\n\\]\n\nThis estimator uses only observed responses \\(Y_i\\) with \\(R_i=1\\), but reweights them so that their covariate distribution mimics the covariate distribution among the missing-response group \\(R_i=0\\). Under standard consistency conditions for \\(\\widehat\\pi\\), positivity, and nonsingularity of the target second-moment matrix, this weighted least-squares estimator is consistent for \\(\\beta^*\\)."
+          }
+        ],
+        "phase": "final_answer",
+        "role": "assistant"
+      }
+    ]
+  },
+  "cost_usd": 0.1038,
+  "timing": {
+    "started": "2026-06-07T00:38:46.677589+00:00",
+    "ended": "2026-06-07T00:40:51.410387+00:00",
+    "seconds": 124.73
+  },
+  "error": null
+}

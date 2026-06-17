@@ -1,0 +1,74 @@
+[
+  {
+    "id": "2018-summer-applied-q1",
+    "exam": {
+      "year": 2018,
+      "term": "summer",
+      "part": "applied"
+    },
+    "number": 1,
+    "topics": [
+      "observational study",
+      "covariate balance",
+      "exploratory data analysis",
+      "regression modeling",
+      "longitudinal data"
+    ],
+    "difficulty": "medium",
+    "prompt": "Problem 1 (Bone development & gymnastics). A study of 46 female subjects (GYM vs NON groups, the latter matched on age at menarche, size, physical maturity) with annual DXA scans; response is Sub-head bone mineral content (BMC), with covariates recorded at each scan. Acting as the analyst:",
+    "parts": [
+      "1. Is this a randomized experiment or an observational study? What is the treatment whose effect is studied?",
+      "2. Examine to what extent the matching covariates (age at menarche, standing height, FA length, Sub-Head LM) are balanced between NON and GYM. Summarize with tables/graphs (≤2 pages).",
+      "3. Perform exploratory analysis (summaries and plots, no modeling) of the association between gymnastics and bone development, with interpretation (≤2 pages).",
+      "4. Develop a model for the association between gymnastics and bone development, explaining your logic and interpreting parameters (iterative model building with diagnostics).",
+      "5. Provide a written assessment of the effect of gymnastics on bone development."
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/Applied_exam_2018.pdf",
+      "page": 2
+    },
+    "verified": false,
+    "notes": "Prof. Sijian Wang. Data-analysis problem; dataset not in repo. Transcribed from extracted text.",
+    "data": [
+      "GYM VS NON (Excel) — not distributed with the SharePoint PDF download"
+    ],
+    "ai_audit": "pass",
+    "grading_type": "data-analysis"
+  },
+  {
+    "id": "2018-summer-applied-q2",
+    "exam": {
+      "year": 2018,
+      "term": "summer",
+      "part": "applied"
+    },
+    "number": 2,
+    "topics": [
+      "multinomial",
+      "EM algorithm",
+      "data augmentation",
+      "observed Fisher information",
+      "maximum likelihood",
+      "simulation"
+    ],
+    "difficulty": "hard",
+    "prompt": "Problem 2. Observe $Y = (y_1, y_2, y_3, y_4) \\sim \\mathrm{Multinomial}(n; \\frac{1+\\theta}{3}, \\frac{1-\\theta}{3}, \\frac{1-\\theta}{3}, \\frac{\\theta}{3})$ with $n = 200$. Consider the augmentation $Z = (u_1, u_2, y_2, y_3, y_4)$ with $y_1 = u_1 + u_2$ and $Z \\sim \\mathrm{Multinomial}(n; \\frac13, \\frac{\\theta}{3}, \\frac{1-\\theta}{3}, \\frac{1-\\theta}{3}, \\frac{\\theta}{3})$.",
+    "parts": [
+      "(i) Derive an EM algorithm based on this data augmentation to find the MLE $\\hat\\theta$.",
+      "(ii) With $p(y;\\theta)$ the pmf of $Y$ and $f(z;\\theta)$ that of $Z$, show $\\frac{d^2}{d\\theta^2}\\log p(Y;\\theta) = \\mathbb{E}_\\theta[\\frac{d^2}{d\\theta^2}\\log p(Z;\\theta)] + \\operatorname{var}_\\theta[\\frac{d}{d\\theta}\\log p(Z;\\theta)]$, the expectation/variance under the conditional distribution of $Z$ given $Y$.",
+      "(iii) Use (ii) to show the observed Fisher information, hence an estimate $\\hat V$ of the asymptotic variance of $\\hat\\theta$, can be obtained from the EM output.",
+      "(iv) Implement the EM in R; report $\\hat\\theta \\pm$ SE when $Y = (108, 31, 27, 34)$.",
+      "(v) Design and run a simulation (fixed $n$) to check (1) approximate normality of the MLE about the true $\\theta$, and (2) that $\\operatorname{var}(\\hat\\theta)$ is well estimated by $\\hat V$."
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/Applied_exam_2018.pdf",
+      "page": 5
+    },
+    "verified": false,
+    "notes": "Prof. Zhiqiang Tan. Self-contained simulation problem. Transcribed from extracted text.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
+  }
+]

@@ -1,0 +1,135 @@
+
+----- page 1 -----
+ 
+ 
+1
+MASTER’S COMPREHENSIVE EXAMINATION 
+ 
+Part II Applied (2 hours) March 30th, 2019 
+Instructions: Attempt any three out of the following four questions on all three pages.   
+Indicate which three you would like to have graded. Open book and notes, plus non-
+programmable calculators can be used.  No computers, programmable calculators, cell 
+phones or other communications / web accessing devices. 
+ 
+Put Your Name Both on the Blue Book and the Test Sheet 
+ 
+ 
+1. Captain Krik has obtained 5 independent random observations on the magnitude of 
+interstellar blips which have the following values;  -7, -4, -1, 4, 8.  These are 
+presented as single digits to simplify computation, but assume for your answers 
+these are taken down to two decimal places. 
+ 
+a. Give the best estimates from this sample for ;the population mean, standard 
+deviation, skewness and kurtosis.   Show your formulas and calculations,  
+ 
+b. Assume that these five values come from a normal distribution and that 
+the next interstellar blip to occur will be random / independent.  Give a 
+95% confidence interval for the value of this next interstellar blip out to 2 
+decimal places 
+ 
+2.  The shelf lives of two types of carbonated beverages A and B are to be 
+compared. It is only important to know if the average shelf life of beverage B is 
+longer than that of the average shelf life of beverage A. Ten bottles of A and 12 
+bottles of B are tested for shelf lives and the following data are obtained: 
+ 
+Beverage A 
+119, 127, 117, 141, 128, 117, 130, 132, 131, 122 
+ 
+ 
+Beverage B 
+126, 134, 124, 148, 135, 124, 137, 139, 138, 129, 147, 136 
+ 
+a) State the null hypothesis that you would test. Also state the alternative 
+hypothesis.  
+b) Assuming that the two groups of observations come from populations with the 
+same variance, suggest an appropriate test statistic and calculate its value. 
+State any other assumptions that you make. 
+c) Let pt(q,v) denote the area below q in the curve of the t-distribution with v 
+degrees of freedom. Given the following: pt(2.482,10)= 0.9837842, pt(2.482,20)= 
+0.9889678, pt(2.482,30)= 0.9905558,  what is the p-value associated with the 
+computed value of the test statistic? Can you reject the null hypothesis at the 
+5% level of significance? Can you reject it at the 1% level? 
+d) Obtain a 95% confidence interval for the difference between the average shelf 
+lives of beverage B and beverage A. Use the information from the following 
+that you need for this purpose: pt(2.84534,20)=.995, pt(2.527977,20)= .99, 
+pt(2.085963,20 = .975, pt(1.724718,20)=.950.  
+ 
+ 
+ 
+
+----- page 2 -----
+ 
+ 
+2
+3.  A textile company conducted an experiment to study whether K machines were 
+able to provide similar measurements of fiber strength. From the same batch, K x 
+M different samples of fiber were taken, and randomly assigned to the K 
+machines so that each machine measured M similar fiber samples. A one-way 
+analysis of variance (ANOVA) was performed with the experimental data. 
+Answer the following questions. 
+ 
+➢ anova(a) 
+➢  
+Response: y (measured fiber strength) 
+                      Df     Sum Sq      Mean Sq   F value     
+Machine         2       11.1049          ?           ?  
+Residuals      12           ?             0.3541   
+ 
+a. How many machines were compared in the study, i.e., what is the value of K? 
+b. How many samples of fiber did each machine measure, i.e., what is the value 
+of M? 
+c. Write down the statistical model for the above analysis of variance. 
+d. Fill in the missing values in the ANOVA table. Write this in your blue book 
+not on the test sheet. 
+e. Provide an estimate of the residual standard error. 
+f. Let pf(q,a,b) denote the area below q in the curve of the F-distribution with 
+a,b degrees of freedom. If 1-pf(10,2,12)=.003, what can you conclude from 
+the ANOVA table? 
+ 
+4. Dr. AP has used independent observations from 100 federally funded 
+projects to fit a linear regression model to Y = Deficit Spending based on XR = 
+Resources Score and  XN = Needs Score.  The model fit is 
+     Y =  a + bRXR + bNXN +  ε, 
+where “Resources_Score” and “Needs_Score” are continuous variables taking 
+on both positive and negative values and ε is normally distributed random 
+error with mean 0 and constant variance. Note that a positive value of Y 
+means that the project will have a spending deficit, a negative value means 
+the project will have a spending surplus, and a value of zero means the 
+project will break even. 
+ 
+Dr. AP obtains the following parameter estimates:  
+ 
+    Predictor                         Point            Std-Err 
+ 
+ 
+ 
+  Estimate 
+    Intercept                       10.5                 5.2 
+    Resources_Score            -5.6                 1.8 
+    Needs_Score                
+7.8                  3.0, 
+with the following covariances Cov(
+) = 2.5 , Cov(
+) =  -3.2,  
+Cov(
+) = -1.0.    
+
+----- page 3 -----
+ 
+ 
+3
+ 
+A. Test the null hypothesis that a project with both Resources_Score (XR) 
+and Needs_Score (XN) equaling 0 will have an expected deficit spending of 
+0 against a two sided alternative at p = 0.01 
+ 
+B.  Give a 95% confidence interval for the expected deficit spending of a 
+project with a Resources_Score XR = 1 and Needs_Score  XN = 1. 
+ 
+C. Assume there are two Projects:  A. Project-I has a Resources_Score XR = a 
+and Needs_Score  XN = b  B. Project-II has a Resources_Score XR = a+1 and 
+Needs_Score  XN = b+1 for the same values a and b.  Calculate the p-value 
+testing the null hypothesis that Project-II has the same expected deficit 
+spending than does Project-I, vs. the alternative that Project-II has 
+       a higher expected deficit spending. 
+ 

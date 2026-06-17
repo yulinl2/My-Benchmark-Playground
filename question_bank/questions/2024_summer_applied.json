@@ -1,0 +1,79 @@
+[
+  {
+    "id": "2024-summer-applied-q1",
+    "exam": {
+      "year": 2024,
+      "term": "summer",
+      "part": "applied"
+    },
+    "number": 1,
+    "topics": [
+      "precision matrix",
+      "Lasso",
+      "coordinate descent",
+      "proximal gradient",
+      "convex optimization",
+      "soft-thresholding"
+    ],
+    "difficulty": "hard",
+    "prompt": "Problem 1 (Computing a Lasso precision-matrix estimator). For $X_1, \\dots, X_n \\sim N(0, \\Sigma)$ and fixed $\\xi^*$, estimate $u^* = \\Omega\\xi^*$ ($\\Omega = \\Sigma^{-1}$) via $\\hat u_\\lambda = \\arg\\min_u\\{\\frac12 u^T\\hat\\Sigma u - u^T\\xi^* + \\lambda\\|u\\|_1\\}$, $\\hat\\Sigma = X^TX/n$. Use the given R code (set.seed(1), $n=p=600$, $\\rho=0.3$) to generate the data; initial value $0$; stop when the $\\ell_1$ change $< 10^{-5}$.",
+    "parts": [
+      "1) For fixed $\\lambda$, state the stationary (KKT) condition satisfied by $\\hat u_\\lambda$.",
+      "2) Derive a coordinate descent algorithm: give the update for the $j$-th component of the current iterate $u^0$ with the rest fixed.",
+      "3) Derive a proximal gradient algorithm: give the update from $u^0$ to the next iterate given step size $\\tau$.",
+      "4) Implement coordinate descent in R with $\\lambda = 1.2\\sqrt{\\log(p)/n}$; report the number of iterations, the first 10 components of the final iterate, and plots of components $j = 2,4,6,8,10$; check the stationary condition.",
+      "5) Implement proximal gradient with the same $\\lambda$ and step sizes $\\tau \\in \\{0.01, 0.005, 0.001\\}$; for each, report as in 4) and check the stationary condition."
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/APPLIED_EXAM_2024_v2.pdf",
+      "page": 2
+    },
+    "verified": false,
+    "notes": "Prof. Zhiqiang Tan. Self-contained simulation. Transcribed from extracted text.",
+    "ai_audit": "pass",
+    "grading_type": "data-analysis"
+  },
+  {
+    "id": "2024-summer-applied-q2",
+    "exam": {
+      "year": 2024,
+      "term": "summer",
+      "part": "applied"
+    },
+    "number": 2,
+    "topics": [
+      "linear models",
+      "generalized least squares",
+      "variance components",
+      "REML",
+      "fixed effects testing",
+      "design matrix"
+    ],
+    "difficulty": "hard",
+    "prompt": "Problem 2 (Rat skin-strength experiment, GLS with correlated errors). 24 rats (14 treated, 10 control), strength measured at 5 sites (A-E), $n=104$ log-measurements $y_{is}$; $t(i)=1$ for treated ($1\\le i\\le 14$).",
+    "parts": [
+      "(a) Fit $y_{is} = m_0 + \\mu_{t(i)} + \\epsilon_{is}$, $\\epsilon_{is} \\sim N(0,\\sigma_0^2)$ (dummy coding, $\\mu_0 = 0$). Report $\\hat\\sigma_0^2$ and the p-value for $H_0: \\mu_1 = 0$.",
+      "(b) Fit $y_{is} = \\beta_0 + \\gamma_{t(i)} + \\beta_s + \\epsilon_{is}$ (site effects; $\\gamma_0 = 0$). Report the fitted model and the p-value for $H_0: \\gamma_1 = 0$.",
+      "(c) For $y_{is} = \\beta_0 + \\gamma_{t(i)} + \\beta_s + \\epsilon_{is}$ with $\\operatorname{Cov}(\\epsilon_{is},\\epsilon_{jr}) = \\sigma_1^2\\delta_{ij}\\delta_{sr} + \\sigma_2^2\\delta_{ij}$, write it as $y = X\\beta + \\epsilon$ (dummy coding $\\gamma_0=0$, $\\beta_1=0$; $X$ is $n\\times 6$, $\\beta = (\\beta_0,\\gamma_1,\\beta_2,\\dots,\\beta_5)'$, ordering $y$ by rat) and report $X$.",
+      "(d) With $Z$ the $n\\times 24$ rat-indicator matrix, show $\\operatorname{Cov}(\\epsilon) = \\sigma_1^2 I_n + \\sigma_2^2 ZZ'$.",
+      "(e) Find an orthogonal $U = [U_1, U_2, U_\\perp]$ with $\\operatorname{col}(U_1) = \\operatorname{col}(X)$, $\\operatorname{col}(U_1, U_2) = \\operatorname{col}(X, Z)$; give the dimensions of $U_1, U_2, U_\\perp$.",
+      "(f) Show $U_\\perp' y \\sim N(0, \\sigma_1^2 I)$ and find the MLE of $\\sigma_1^2$ from $U_\\perp' y$.",
+      "(g) Taking $\\hat\\sigma_2^2 = 0.148$, estimate $\\widehat{\\operatorname{Cov}}(\\epsilon) = \\hat\\sigma_1^2 I_n + \\hat\\sigma_2^2 ZZ'$.",
+      "(h) Fit $y = X\\beta + \\epsilon$ by GLS using $\\widehat{\\operatorname{Cov}}(\\epsilon)$; report the fitted model and the p-value for $H_0: \\gamma_1 = 0$.",
+      "(i) Compare and comment on the three analyses."
+    ],
+    "solution": null,
+    "source": {
+      "pdf": "Downloads/past-PhD exams/APPLIED_EXAM_2024_v2.pdf",
+      "page": 3
+    },
+    "verified": false,
+    "notes": "Prof. Han Xiao. Dataset not in repo. Transcribed from extracted text.",
+    "data": [
+      "qe 2024.txt — not distributed with the SharePoint PDF download"
+    ],
+    "ai_audit": "pass",
+    "grading_type": "data-analysis"
+  }
+]

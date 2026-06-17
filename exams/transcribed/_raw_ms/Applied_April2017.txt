@@ -1,0 +1,111 @@
+
+----- page 1 -----
+ 
+MASTER’S COMPREHENSIVE EXAMINATION 
+ 
+Part II Applied (2 hours) April 1st, 2017. 
+Instructions: Attempt any three out of the following four questions on both pages. 
+Mention which three you would like to have graded. Open book and open notes. 
+ 
+ 
+1) A researcher wants to see the effect of different types of music in alleviating depression in 
+patients.  The dependent variable is the Improvement in Mood measured on a scale that is 
+normally distributed for the population studied.  In an experiment, 6 male subjects and 6 female 
+subjects are picked at random from the population.  2 males, and 2 females are randomly 
+assigned to listen to rock music; 2 males, and 2 females are randomly assigned to listen to 
+classical music; the remaining 2 males, and 2 females are assigned to listen to Jazz music.  Each 
+subject is measured on the Improvement in Mood after a morning (9 to 11 am) listening session, 
+after an afternoon (3 to 4pm) listening session, and after an evening (7 to 9 pm) session.  A 
+subject listens to the same type of music for all three sessions, 
+ 
+a) Show the data layout for the experiment. 
+ 
+b) Show the ANOVA table filling in the columns for Source of Variability, degree of freedom, 
+Expected Mean Square, and denominator of F-ratio (for testing Source of Variability).    
+__________________________________________________________________________ 
+ 
+2.  THE TOWERS OF THANG-LONG are ceramics that were produced by only two schools in 
+the 14th century, the Borneo-cast school and the Malacca-cast school.  It is very difficult to 
+determine which school had manufactured a given ceramic tower but it is known that: 
+ 
+• Height of towers made by the Borneo-cast are distributed N(25.00, 10.00)  
+• Height of towers made by the Malacca-cast are distributed N(30.00, 5.00). 
+• Also 40% of all Thang-Long towers ever made were made by the Borneo 
+cast. 
+ 
+a. An archeologist discovers a Thang-Long tower that is 27.50 units. Use the 
+above information to estimate the probability that it was made by the  
+        Borneo-cast school 
+ 
+b.  An archeologist has 5 Thang-Long towers that were all made by the same 
+school   their mean height is 27.50 units.  Use this to estimate the probability that 
+they were made by the Borneo-cast school. 
+ 
+c. What additional information from the measurements of these 5 Thang-Long 
+towers in b  could help to produce a better estimate for the probability that it 
+was made by the Borneo-cast school.  Only describe the additional information 
+needed; no calculations are expected 
+_____________________________________________________________________________
+ 
+1 
+
+----- page 2 -----
+3.  A Spanish to English dictionary has 200 pages, each page containing 40 entries.  Each entry 
+gives a Spanish word followed by its English translation.  A Spanish teacher wants to carry out a 
+hypothesis test to see if a student knows the translation of more than half the words in that 
+dictionary. The teacher picks a simple random sample with replacement of 6 pages from the 200 
+pages.  The teacher asks the student to translate all 40 words on each chosen page.  (a total of 
+240 words).  The teacher records for each sampled page the number of Spanish words on the 
+page for which the student knew the correct English translation.  The following are the number 
+of words the student knew correctly for 6 chosen pages:     13,  36,  37,  13,  12,   15 . 
+ 
+a) Test H0:  that the student does not know the correct translation of more than half the words in 
+the (200 pages of the) dictionary), against the alternative at the 0.05 level of significance.  Show 
+the formula for the test statistic used, and the substitution of numbers in the formula. 
+ 
+b) Estimate the total number of Spanish words that the student knows the correct English 
+translation in the (200 pages of the) dictionary.  Give the standard error of this estimate.  Show 
+formula used and substitution in formula. 
+____________________________________________________________________________ 
+4.  THE SNAKES OF THE KALAHARI undergo a long migration during the summer months 
+where many of the snakes die.  Dr. Taylor measured pre-migration weight centigrams (cg) 
+and length in centimeters (Cm) on 100 
+snakes plus whether or not those snakes 
+survived the migration. 
+ 
+ 
+                                                                                
+SHE FIRST FITS THIS LOGISTIC REGRESION 
+MODEL FOR SURVIVING MIGRATION THAT USES WEIGHT AS A PREDICTOR 
+                                                Estimate           Variance 
+        Intercept ( a)                -0.7 
+           0.25                     
+( , )
+Cov a b
+
+
+ = -0.007 
+        Weight   (b
+
+)                  0.2 /cg             0.0004 
+ 
+A. If Snake A is 2 cg heavier than Snake B.  Give an odds ratio and 95% confidence interval 
+for the odds ratio of Snake A surviving the migration Vs. Snake B.          
+ 
+B. Give a point estimate and 95% confidence interval for the probability that a 10 cg snake 
+survives the migration 
+ 
+SHE THEN FITS TWO MORE MODELS FOR SURVIVING THE MIGRATION WITH [LENGTH] 
+AND [LENGTH + WEIGHT] AS PREDICTORS 
+                
+           MODEL WITH ONLY LENGTH                                     MODEL WITH LENGTH +_ WEIGHT   
+                                             Estimate          Variance   |                            Estimate          Variance      
+        Intercept                     1.3                     0.32            |        Intercept       -0.4                  0.50 
+        Length                        -0.05                   0.004         |        Length           -0.6                  0.003 
+                                                                                              |         Weight            0.3                  0.0003 
+ 
+ C. Use the information on all three models fitted to determine the best answer for if there 
+is a causal association between length and probability to survive 
+ 
+ 
+2 

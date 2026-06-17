@@ -1,0 +1,102 @@
+
+----- page 1 -----
+Masters Comprehensive Examination
+                                                       Applied (90 Minutes)                           March 21, 2009
+Answer ONLY 3 QUESTIONS. Open book and open notes.
+______________________________________________________________________________________
+1.  Weights of pears are normally distributed.  Dr. Y believes that the average weight of a pear grown in 
+Hawaii should be exactly the same as the average weight of a pear grown in Michigan.   He has recorded 
+data from 
+                                    n = 11 pears in Hawaii with 
+H
+X
+= 1030.5 gm   
+2
+H
+S
+ = 500.1
+                                    n = 11 pears in Michigan with 
+M
+X
+= 1029.3 gm   
+2
+M
+S
+ = 1000.1
+A. Test HO: 
+2
+H
+
+= 
+2
+M
+
+ against HO: 
+2
+H
+
+ ≠ 
+2
+M
+
+ at α=0.10.  Show your work and give the result
+B. Dr. X is certain that the null hypothesis uH = uM is True.  But he also believes that Dr. Y has 
+falsified his data to make the results better than they should be by chance alone.   He wants you to 
+examine Dr. X’s data for any evidence of thus type of falsification. 
+i)
+Formulate and state null and alternate hypotheses to test this.  You can use words 
+instead of symbols to do this if you wish, keep your answer reasonably short.
+ii)
+Test the null hypothesis at α=0.05. For this question, now assume that σ2 is known 
+and equals 750 for both pears grown in Hawaii and in Michigan
+_____________________________________________________________________________________
+2. The time it takes for an engine to fail is exponentially distributed.  We have observed the following 
+ordered failure times (in years) for 8 engines
+          1.2    2.3   4 .3    5.4    7.6    8.4   10.2    14.5
+   
+A. Give the best estimate of the mean failure time and the standard deviation of this estimate and 
+state all assumptions needed.
+B. Give the best estimate of the timepoint X for which exactly 90% of the engines fail in X or less 
+years. Give a 95% confidence interval for X. 
+_____________________________________________________________________________________
+3. Unborn babies of pregnant woman infected with HIV, are at risk at contracting HIV at birth.   A doctor 
+believes when there are twins, the one who is born first has a bigger chance to be HIV infected than does 
+the one who is born second.  He has data from 200 mothers infected with HIV that had twins; a) for 50 of 
+these mothers both twins were born infected with HIV; b) for 20 mothers the first born twin was infected 
+with HIV and the second born twin was not; c) for 10 the second born twin was infected with HIV and the 
+first born was not and, d) for 120 mothers neither twin was infected.
+A. Use a large sample approximation to derive the best test statistic for the null hypothesis 
+that the first and second born twins are equally likely to be HIV infected and compare 
+this to the rejection region at a two sided α = 0.05.
+B. Based on this data if a randomly chosen twin born to an HIV infected mother is infected 
+with HIV, give a point estimate and 95% confidence interval for the probability that the 
+sibling twin (the chosen twin’s twin brother or sister) is also infected with HIV  Assume 
+that the order of birth does not matter for this problem.
+
+----- page 2 -----
+_______________________________________________________________________
+4. Two methods (Method A and Method B) to produce vials of a vaccine are tested with the outcome being 
+that the vial is either good or bad. Each method is allowed to produce new vials one at a time until the first 
+bad vial from that method was observed, then production using that method is stopped.  In other words,
+•
+For Methods A & B each, if the last vial produced is good the method is allowed to produce 
+another vial. 
+•
+But once a bad vial is produced, the Method is stopped and no new vials are produced with that 
+method.
+A.  Assume that the probability for a vial produced by Method A to be bad is p = 0.05 and the probability 
+for a vial produced by Method B to be bad is 0.10 and all vials are independent. 
+        i) What is the expected total number of good vials produced by both Methods A and B combined 
+            before both methods are stopped?
+       ii) What is the variance of the total number of good vials produced by both Methods A and B 
+            combined before both methods are stopped?
+B.  Now assume that the probabilities for vials produced by each method to be bad are 
+      unknown and the following results are observed:
+•
+Method A - On its first try, the vial was bad so production stopped 
+•
+Method B produced 15 good vials but on its 16th try, the vial was bad so production was 
+stopped then
+       Derive the appropriate model that conditions on 15 bad vials being produced and give a P-value for 
+       observing a result this extreme if each method is equally likely to produce a bad vial.   
+____________________________________________________________________

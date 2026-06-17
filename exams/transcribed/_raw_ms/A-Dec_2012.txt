@@ -1,0 +1,71 @@
+
+----- page 1 -----
+MASTER’S COMPREHENSIVE EXAMINATION 
+ 
+Part II Applied (90 minutes) December 1st, 2012 
+Instructions: Attempt any three out of the following four questions on both pages. 
+Mention which three you would like to have graded. Open book and open notes. 
+ 
+1.  An investor must choose between buying two buckets each with 25 rocks of gold.  He 
+randomly chooses 5 rocks from Bucket A and 5 rocks from Bucket B and calculates the 
+grams of gold in each of the rocks with the following results 
+              BUCKET A    -   81, 75,   92, 108, 77 
+               BUCKET B  -    59,  64,  81,  83,  63,    
+            Use a large sample approximation for your answers below and state your assumptions 
+ 
+A. Using only the data from Bucket A, Give a point estimate and 95% confidence interval 
+for the total amount of gold in bucket A 
+B. The investor believes that there is at least 175 more units of gold in bucket A than Bucket 
+B.  Statistically test this hypothesis. at p = 0.01 
+ 
+2.  Researchers seek to estimate changes in the total number of polar bears in particular regions.  Polar 
+bears hunt on floes of ice in the seas off the coast of the “Artic ring of life” where seals are abundant.    
+One region is by the coast of the Southern Beaufort Sea.  This is an area, 1000 kilometers in length by 
+200 kilometers in width (land on coast plus adjacent sea).   The 200,000 square kilometer region was 
+divided into a grid of 8000 subsquares, each 5 kilometers in length by 5 kilometers in width.    In 1986 a 
+random sample of 400 subsquares were flown over, and a total of 90 polar bears were observed.    In 
+2006 an independent random sample of 400 subsquares were flown over, and a total of 75  polar bears 
+were observed.   You can assume that the polar bears are distributed completely at random over the 
+region.    
+      a)   Estimate the total number of polar bears in the region in 1986, and in 2006. 
+b) For each estimate, give a standard error of the estimate 
+c) Test the null hypothesis at the 0.10 level of significance of no change (between 1986 and 2006) 
+in number of polar bears in the region, versus the research hypothesis that there has been a 
+decrease in the number of polar bears. 
+ 
+3. Scientists from Rutgers have built a spaceship to go to Saturn, but forgot that the space 
+ship had to go through the asteroid belt.   The spaceship can survive a single impact from 
+an asteroid of at most 1,000 Newtons.    
+ 
+• Assume the Newton impact from each asteroid hitting the spaceship is distributed 
+normally with u = 750 and σ = 200.when answering the questions below   
+
+----- page 2 -----
+•  If the ship is not destroyed by an asteroid,  it recovers completely. There is no 
+residual or additive damage.  A hit from an asteroid that does not destroy a ship does 
+not weaken the ship for the next asteroid hit 
+• Each asteroid hit is independent 
+• Only hits by asteroids prevent the ship from surviving. 
+ 
+A. Assume the ship is destined to be hit by 10 asteroids on a trip as long as it survives. 
+What is the probability it survives this trip? 
+B. How likely is the ship to be destroyed on the impact of a 5th asteroid? You can 
+assume that the ship will be hit by at least 5 asteroids (if it survives that long) 
+C. How many Newtons would the ship need to be able to survive from a single hit to 
+have an 80% chance to survive a trip with exactly 10 impacts? 
+4. A researcher wants to compare different treatments to reduce cholesterol levels.   
+The response variable is the reduction in cholesterol level.  (You can assume normality and 
+homogeneity of variance.).  The treatments include different combinations of the factors:  Diet  and  
+Exercise.   
+Diet has 2 levels:  Low Sugar/carb Diet,       High fruit/vegetable Diet. 
+Exercise has 3 levels: Walking,     Jogging,      Zumba dancing.     
+Eight cardiologists participate in the study, and are divided at random into two groups of 4 
+cardiologists each.  For each cardiologist there are 18 patients.  (a total of 144 patients).  All the 
+patients of a given cardiologist have the same diet.  For 4 of the cardiologists the patients’ diet 
+was Low Sugar/Carb, for 4 of the cardiologists the patients’ diet was High fruit/vegetable.  For 
+each cardiologist the 18 patients were divided at random into three groups of 6 patients each.  6 
+patients assigned to Walking, 6 assigned to Jogging, and 6 assigned to Zumba dancing. 
+Show the ANOVA Table, showing Source of Variability, degrees of freedom,    
+        Expected Mean Squares, and show which F Tests to take.  
+ 
+ 

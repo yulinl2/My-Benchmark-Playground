@@ -1,0 +1,161 @@
+[
+  {
+    "id": "2022-fall-math-stat-q1",
+    "exam": {
+      "year": 2022,
+      "term": "fall",
+      "level": "ms",
+      "part": "math-stat"
+    },
+    "number": 1,
+    "topics": [
+      "maximum likelihood",
+      "Fisher information",
+      "asymptotic normality"
+    ],
+    "difficulty": "medium",
+    "prompt": "Let $(X_1, Y_1), \\dots, (X_n, Y_n)$ be i.i.d. with $X_i \\sim N(0,1)$ and $Y_i \\mid X_i = x \\sim N(x^2\\theta, 1)$. (1) Find the MLE $\\hat\\theta_n$ of $\\theta$. (2) Find the limiting distribution of $\\sqrt{n}(\\hat\\theta_n - \\theta)$.",
+    "solution": "(1) The log-likelihood (in $\\theta$) is $\\ell_n(\\theta) = -\\frac12\\sum_i(Y_i - X_i^2\\theta)^2 + \\text{const}$, so $\\ell_n'(\\theta) = \\sum_i X_i^2(Y_i - X_i^2\\theta) = 0$ gives $\\hat\\theta_n = \\frac{\\sum_i X_i^2 Y_i}{\\sum_i X_i^4}$. (2) The Fisher information is $I(\\theta) = \\mathbb{E}\\,X^4 = 3$, so $\\sqrt{n}(\\hat\\theta_n - \\theta) \\xrightarrow{d} N(0, 1/3)$.",
+    "source": {
+      "pdf": "Downloads/past-ms-exams-solution/ms22Dec Q & A.pdf",
+      "page": 1
+    },
+    "verified": false,
+    "notes": "MS comprehensive (attempt any 5 of 6). Transcribed with solution from answer key.",
+    "ai_audit": "pass",
+    "grading_type": "numeric"
+  },
+  {
+    "id": "2022-fall-applied-q2",
+    "exam": {
+      "year": 2022,
+      "term": "fall",
+      "level": "ms",
+      "part": "applied"
+    },
+    "number": 2,
+    "topics": [
+      "two-sample t-test",
+      "confidence interval",
+      "hypothesis testing"
+    ],
+    "difficulty": "easy",
+    "prompt": "Lord Rayleigh's nitrogen-density measurements compare nitrogen from chemical compounds vs the atmosphere (data table of ~9-10 values per group). (1) Is there sufficient evidence of a difference in mean mass of nitrogen per flask between chemical compounds and the atmosphere? What about the p-value? (2) Find a 95% CI for the difference in mean mass.",
+    "solution": "(1) Test $H_0: \\mu_1 - \\mu_2 = 0$ vs $H_1: \\mu_1 - \\mu_2 \\ne 0$ with a two-sample $t$-test: $|t| = 22.17$ on 17 df, p-value extremely small (reject $H_0$). (2) The 95% CI for $\\mu_1 - \\mu_2$ is $(-0.001151, -0.000951)$, which excludes 0 — evidence the mean densities differ.",
+    "source": {
+      "pdf": "Downloads/past-ms-exams-solution/ms22Dec Q & A.pdf",
+      "page": 1
+    },
+    "verified": false,
+    "notes": "MS comprehensive. Transcribed with solution from answer key.",
+    "ai_audit": "pass",
+    "grading_type": "numeric"
+  },
+  {
+    "id": "2022-fall-math-stat-q3",
+    "exam": {
+      "year": 2022,
+      "term": "fall",
+      "level": "ms",
+      "part": "math-stat"
+    },
+    "number": 3,
+    "topics": [
+      "linear models",
+      "design matrix",
+      "identifiability",
+      "one-way layout"
+    ],
+    "difficulty": "medium",
+    "prompt": "Two COVID-19 vaccines (A, B) and a control: $n$ observations from group A, $m$ from B, $k$ from control. Overall mean $\\mu$, group effects $\\alpha_1, \\alpha_2, \\alpha_3$. (1) Write a regression model for the vaccination effects. (2) Give the corresponding model matrix. (3) Can all of $\\mu, \\alpha_1, \\alpha_2, \\alpha_3$ be estimated? If not, why, and give a fix.",
+    "solution": "(1) $y_i = \\mu + \\alpha_1 + \\varepsilon_i$ for group A, $\\mu + \\alpha_2 + \\varepsilon_i$ for B, $\\mu + \\alpha_3 + \\varepsilon_i$ for control, with $\\varepsilon_i \\sim N(0, \\sigma^2)$ iid. (2) $y = X\\beta + \\varepsilon$ with $\\beta = (\\mu, \\alpha_1, \\alpha_2, \\alpha_3)^T$ and rows $(1,1,0,0)$, $(1,0,1,0)$, $(1,0,0,1)$ repeated $n, m, k$ times. (3) No — $\\beta$ is not identifiable because $X^TX$ is rank-deficient (the intercept column equals the sum of the three group columns). Impose a constraint such as $\\mu = 0$ or $\\alpha_1 + \\alpha_2 + \\alpha_3 = 0$.",
+    "source": {
+      "pdf": "Downloads/past-ms-exams-solution/ms22Dec Q & A.pdf",
+      "page": 2
+    },
+    "verified": false,
+    "notes": "MS comprehensive. Transcribed with solution from answer key.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
+  },
+  {
+    "id": "2022-fall-math-stat-q4",
+    "exam": {
+      "year": 2022,
+      "term": "fall",
+      "level": "ms",
+      "part": "math-stat"
+    },
+    "number": 4,
+    "topics": [
+      "confidence ellipse",
+      "hypothesis testing",
+      "joint vs marginal tests"
+    ],
+    "difficulty": "medium",
+    "prompt": "Given a 95% confidence ellipse for two regression parameters $\\beta_{15}, \\beta_{75}$, comment on the outcomes of the following tests. (1) $H_0^1: \\beta_{15} = -0.4$; $H_0^2: \\beta_{75} = -0.4$; $H_0^3: \\beta_{15} = \\beta_{75} = -0.4$. (2) $H_0^4: \\beta_{15} = -0.2$; $H_0^5: \\beta_{75} = 0.6$; $H_0^6: \\beta_{15} = -0.2, \\beta_{75} = 0.6$. (3) For a modified ellipse, where must the point $(-0.6, 0)$ lie if the data reject $H_0^7: \\beta_{15} = -0.6$ and $H_0^8: \\beta_{75} = 0$ but not $H_0^9: \\beta_{15} = -0.6, \\beta_{75} = 0$?",
+    "solution": "Marginal tests use the projection of the ellipse onto each axis; the joint test uses whether the point lies inside the ellipse. (1) All three not rejected (point and both projections inside). (2) $\\beta_{15} = -0.2$ not rejected, $\\beta_{75} = 0.6$ rejected, but the joint point not rejected (inside the ellipse). (3) The point must lie outside both marginal confidence intervals yet inside the joint ellipse — i.e. in a corner region of the ellipse where neither axis-projection contains it but the 2-D point is still inside.",
+    "source": {
+      "pdf": "Downloads/past-ms-exams-solution/ms22Dec Q & A.pdf",
+      "page": 3
+    },
+    "verified": false,
+    "notes": "MS comprehensive. Figure-based; transcribed with solution from answer key.",
+    "ai_audit": "pass",
+    "grading_type": "exact-match"
+  },
+  {
+    "id": "2022-fall-probability-q5",
+    "exam": {
+      "year": 2022,
+      "term": "fall",
+      "level": "ms",
+      "part": "probability"
+    },
+    "number": 5,
+    "topics": [
+      "geometric distribution",
+      "expectation",
+      "conditional probability",
+      "Bayes"
+    ],
+    "difficulty": "medium",
+    "prompt": "A fair six-sided die: each roll she keeps as many gold ingots as the number shown. She keeps rolling while a 1, 3, 4, or 5 appears, but a 2 or 6 makes the die vanish (after collecting that roll's ingots). (1) Expected number of rolls before it vanishes? (2) Expected total gold ingots acquired? (3) What roll combinations give exactly 6 ingots before vanishing, and their probabilities? (4) Given she received 6 ingots before vanishing, probability the die vanished on the second roll?",
+    "solution": "(1) Each roll continues with probability $2/3$; the number of rolls is Geometric, so $\\mathbb{E} = 1/(1 - 2/3) = 3$. (2) On the final (vanishing) roll the expected ingots are $(2+6)/2 = 4$; on each of the expected $3 - 1 = 2$ non-final rolls the expected ingots are $(1+3+4+5)/4 = 3.25$. Total $= 4 + 2 \\times 3.25 = 10.5$. (3) Enumerate sequences of $\\{1,3,4,5\\}$ ending in a $\\{2,6\\}$ that sum to 6 (each non-vanishing roll prob $1/6$, vanishing roll prob $1/6$). (4) $P(\\text{vanish on roll 2} \\mid 6 \\text{ ingots}) = \\frac{1/36}{1/6 + 1/36 + 1/216 + 1/216 + 1/7776} = 216/63757 \\approx 0.0034$.",
+    "source": {
+      "pdf": "Downloads/past-ms-exams-solution/ms22Dec Q & A.pdf",
+      "page": 4
+    },
+    "verified": false,
+    "notes": "MS comprehensive. Transcribed with solution from answer key.",
+    "ai_audit": "pass",
+    "grading_type": "numeric"
+  },
+  {
+    "id": "2022-fall-applied-q6",
+    "exam": {
+      "year": 2022,
+      "term": "fall",
+      "level": "ms",
+      "part": "applied"
+    },
+    "number": 6,
+    "topics": [
+      "simple linear regression",
+      "least squares",
+      "residual variance",
+      "standard error"
+    ],
+    "difficulty": "easy",
+    "prompt": "Two substances (Noops, Poons) each have 5 observations of crystallization rate $Y$ vs degrees Celsius $X \\in \\{-2,-1,0,1,2\\}$; fit $Y = a + bX + e$, $e \\sim N(0,\\sigma^2)$ iid. (1) Compute the LS slope estimates $\\hat b_1$ (Noops) and $\\hat b_2$ (Poons). (2) Find $\\hat a_1, \\hat a_2$. (3) Estimate $\\hat\\sigma$ for Noops. (4) Estimated variance of $\\hat b_1$ for Noops.",
+    "solution": "Since $\\bar x = 0$ and $\\sum X^2 = 10$: (1) Noops $\\sum XY = 8 \\Rightarrow \\hat b_1 = 0.8$; Poons $\\sum XY = -8 \\Rightarrow \\hat b_2 = -0.8$. (2) $\\hat a = \\bar y = 4$ for both. (3) $\\hat\\sigma^2 = \\sum(Y - \\hat y)^2/(n - p) = 1.6/3 = 0.533$, so $\\hat\\sigma \\approx 0.73$. (4) $\\widehat{\\operatorname{Var}}(\\hat b_1) = \\hat\\sigma^2/\\sum(X - \\bar x)^2 = 0.533/10 \\approx 0.053$.",
+    "source": {
+      "pdf": "Downloads/past-ms-exams-solution/ms22Dec Q & A.pdf",
+      "page": 6
+    },
+    "verified": false,
+    "notes": "MS comprehensive. Transcribed with solution from answer key.",
+    "ai_audit": "pass",
+    "grading_type": "numeric"
+  }
+]

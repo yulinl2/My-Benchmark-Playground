@@ -1,0 +1,178 @@
+
+----- page 1 -----
+ 
+ 
+MASTER’S COMPREHENSIVE EXAMINATION 
+ 
+Part I Theory (90 minutes) December 1st , 2012 
+Instructions: Attempt any three out of the following four questions on both pages. 
+Mention which three you would like to have graded. Open book and open notes. 
+ 
+  
+1. A physicist measures the length of an object using two methods, and let 
+A
+X and 
+B
+X be the 
+measurements.  Assume 
+A
+X and 
+B
+X are jointly normal, and 
+2
+2
+( ,3 ),
+( ,4 ),
+A
+B
+X
+N
+X
+N
+µ
+µ
+∼
+∼
+ where µ is 
+the true length of the object.  Assume also that 
+A
+X and 
+B
+X are correlated with 
+(
+,
+)
+0.2.
+A
+B
+Corr X
+X
+=
+ 
+ 
+• 
+If the physicist uses the weighted average 
+0.7
+0.3
+A
+B
+X
+X
+X
+=
++
+ as the final measurement value, 
+what is the distribution of X? 
+• 
+If the physicist used the formula 
+(1
+)
+A
+B
+X
+X
+X
+δ
+δ
+=
++
+−
+ as the final measurement value, what is 
+the distribution of X? 
+ 
+ 
+ 
+2.  A theater sells tickets for three seating areas, A, B, C, with 20, 30, 50 seats respectively.  If all seats 
+are occupied for a show, but ticket holders are assigned random empty seats upon arrival.  Find the 
+expected number of ticket holders sitting in the correct area indicated on their tickets. 
+ 
+ 
+ 
+ 
+ 
+3.    Let 
+1
+2
+,
+X
+X be independent gamma variables with parameters 
+2,
+, i.e.
+α
+β
+=
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+/
+2
+( ;2,
+)
+,
+0.
+x
+X
+e
+x
+f
+x
+x
+β
+β
+β
+−
+=
+>
+ 
+ 
+ 
+(a)  Find a sufficient statistic. 
+ 
+(b)  Find the MLE of 
+.
+β  
+ 
+ 
+ 
+ 
+ 
+4.  Let X be a single observation from a population whose density is 
+ 
+ 
+ 
+1
+( ; )
+,    0
+1
+0,             otherwise.
+Xf
+x
+x
+x
+θ
+θ
+θ
+−
+=
+<
+<
+ 
+ 
+     Find the most powerful test of size 
+0
+1
+.05 for 
+: =1 vs 
+: =2. 
+H
+H
+α
+θ
+θ
+=
+ 
+ 

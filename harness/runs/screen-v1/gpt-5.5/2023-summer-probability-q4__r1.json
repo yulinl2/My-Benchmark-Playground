@@ -1,0 +1,76 @@
+{
+  "question_id": "2023-summer-probability-q4",
+  "model": "gpt-5.5",
+  "provider": "openai",
+  "rep": 1,
+  "exam": {
+    "year": 2023,
+    "term": "summer",
+    "part": "probability"
+  },
+  "request": {
+    "system": "You are sitting a PhD-level qualifying examination in statistics. Solve the problem rigorously and completely. Show your work and reasoning, justify each step, and clearly state your final answer(s). If the problem has multiple parts, answer every part, labeled. If you invoke a known theorem, name it.",
+    "user": "[2023 summer phd probability — problem 4]\n\nPart I, Problem. Let $(X_i)_{i\\ge1}$ be i.i.d. with $P(X_i > 0) = 1$, $\\mathbb{E}[\\sqrt{X_i}] < \\infty$ but $\\mathbb{E}[X_i] = +\\infty$; write $\\mu = \\mathbb{E}[\\sqrt{X_i}]$. You may use that $\\int_1^{+\\infty} u^{-\\alpha}\\,du < \\infty$ for $\\alpha > 1$ and $\\lim_n (1 - c/n)^n = e^{-c}$.\n(1) Applying the LLN to $\\frac1n\\sum_{i=1}^n \\sqrt{X_i}$, prove $P(\\sum_{i=1}^n X_i \\le (\\mu + \\varepsilon)^2 n^2) \\to 1$ for any constant $\\varepsilon > 0$.\n(2) For fixed $s \\in (\\tfrac12, 1]$ and i.i.d. $(X_i)$ with $P(X_i > u) = u^{-s}$ for $u \\ge 1$, find the range and density of $X_i$. (Use this density for parts 3-5.)\n(3) Prove $\\mathbb{E}[\\sqrt{X_i}] < \\infty$.\n(4) For real $y > 1$, express $P(\\max_{i\\le n} X_i > y)$ as a function of $P(X_1 > y)$ and $n$ only.\n(5) Find $\\lim_{n\\to\\infty} P(\\max_{i\\le n} X_i > n^{1/s})$.\n(6) Is it possible, for any i.i.d. $(X_i)$ with $\\mathbb{E}[\\sqrt{X_i}] < \\infty$, that $\\lim_n P(\\sum_{i=1}^n X_i \\le C n^{1.99}) = 1$ for a constant $C > 0$?",
+    "max_tokens": 24000,
+    "mode": {
+      "effort": "high"
+    }
+  },
+  "response": {
+    "id": "resp_0104ffeb1c9d7cb8006a24b99bd1488190b8590ea0c835fb0b",
+    "model": "gpt-5.5-2026-04-23",
+    "stop_reason": "completed",
+    "usage": {
+      "input_tokens": 532,
+      "output_tokens": 6744,
+      "output_tokens_details": {
+        "reasoning_tokens": 5178
+      }
+    },
+    "thinking": "**Analyzing convergence and probabilities**\n\nI’m looking at the integral ∫_1∞ x^{-s-1/2} dx and figuring out that it converges if s > 1/2. I might find the value s/(s-1/2) useful here. It’s essential to note that for s ≤ 1, the integral diverges. I’m also working on parts about tail probabilities and the Pareto distribution, exploring how thresholds like y = n^{1/s} fit in. I need clarity on the final formulation, especially regarding i.i.d. variables and their probabilities!\n**Exploring interpretations of the theorem**\n\nI’m considering two interpretations of the problem regarding independent identically distributed (i.i.d.) positive variables with finite expectations of the square root. For the first interpretation, I conclude that no universal theorem exists, using a Pareto distribution as a counterexample. For the second interpretation, if the question is whether some distribution can satisfy the limit, then yes, but the user likely wants to explore changing n^2 to n^1.99 uniformly, which I still answer is no. I should clarify that under finite mean conditions, it works, but with infinite expectations, the answer’s not universal.\n**Clarifying constants in distributions**\n\nI’m thinking about whether \"for a constant C>0\" means a universal constant that applies to all distributions. It seems like my counterexample shows there's no distribution-specific C. If they meant for every sequence to have some C, that's also a no. I should mention that the constant C can depend on the distribution, but even then, it might not work.  Also, I need to state that the mean is infinite for the Pareto example.",
+    "text": "Let \\(S_n=\\sum_{i=1}^n X_i\\) and \\(M_n=\\max_{1\\le i\\le n}X_i\\).\n\n## (1)\n\nLet \\(Y_i=\\sqrt{X_i}\\). Then \\((Y_i)\\) are i.i.d., nonnegative, and\n\n\\[\n\\mathbb E[Y_i]=\\mathbb E[\\sqrt{X_i}]=\\mu<\\infty.\n\\]\n\nBy the weak law of large numbers,\n\n\\[\n\\frac1n\\sum_{i=1}^n Y_i \\to \\mu\n\\]\n\nin probability. Hence for every \\(\\varepsilon>0\\),\n\n\\[\nP\\left(\\frac1n\\sum_{i=1}^n \\sqrt{X_i}\\le \\mu+\\varepsilon\\right)\\to 1.\n\\]\n\nNow, since \\(Y_i\\ge 0\\),\n\n\\[\n\\sum_{i=1}^n X_i=\\sum_{i=1}^n Y_i^2 \\le \\left(\\sum_{i=1}^n Y_i\\right)^2.\n\\]\n\nTherefore, on the event\n\n\\[\n\\frac1n\\sum_{i=1}^n \\sqrt{X_i}\\le \\mu+\\varepsilon,\n\\]\n\nwe have\n\n\\[\n\\sum_{i=1}^n X_i\n\\le \\left(\\sum_{i=1}^n \\sqrt{X_i}\\right)^2\n\\le (\\mu+\\varepsilon)^2 n^2.\n\\]\n\nThus\n\n\\[\nP\\left(S_n\\le (\\mu+\\varepsilon)^2n^2\\right)\n\\ge\nP\\left(\\frac1n\\sum_{i=1}^n \\sqrt{X_i}\\le \\mu+\\varepsilon\\right)\\to 1.\n\\]\n\nHence\n\n\\[\n\\boxed{\nP\\left(\\sum_{i=1}^n X_i\\le (\\mu+\\varepsilon)^2 n^2\\right)\\to 1.\n}\n\\]\n\n---\n\n## (2)\n\nAssume\n\n\\[\nP(X_i>u)=u^{-s},\\qquad u\\ge 1,\n\\]\n\nwhere \\(s\\in(1/2,1]\\).\n\nSince \\(P(X_i>1)=1\\), we have \\(X_i>1\\) almost surely. Thus the range is\n\n\\[\n\\boxed{(1,\\infty)}\n\\]\n\nalmost surely.\n\nThe distribution function is\n\n\\[\nF(x)=P(X_i\\le x)\n=\n\\begin{cases}\n0, & x\\le 1,\\\\[4pt]\n1-x^{-s}, & x>1.\n\\end{cases}\n\\]\n\nDifferentiating for \\(x>1\\), the density is\n\n\\[\n\\boxed{\nf(x)=s x^{-s-1}\\mathbf 1_{\\{x>1\\}}.\n}\n\\]\n\n---\n\n## (3)\n\nUsing the density from part (2),\n\n\\[\n\\mathbb E[\\sqrt{X_i}]\n=\n\\int_1^\\infty \\sqrt{x}\\, s x^{-s-1}\\,dx\n=\ns\\int_1^\\infty x^{-s-\\frac12}\\,dx.\n\\]\n\nSince \\(s>1/2\\), we have\n\n\\[\ns+\\frac12>1.\n\\]\n\nTherefore the integral converges. In fact,\n\n\\[\n\\mathbb E[\\sqrt{X_i}]\n=\ns\\cdot \\frac{1}{s-\\frac12}\n=\n\\frac{s}{s-\\frac12}<\\infty.\n\\]\n\nSo\n\n\\[\n\\boxed{\\mathbb E[\\sqrt{X_i}]<\\infty.}\n\\]\n\n---\n\n## (4)\n\nFor \\(y>1\\),\n\n\\[\nP(M_n>y)\n=\n1-P(M_n\\le y).\n\\]\n\nBy independence,\n\n\\[\nP(M_n\\le y)\n=\nP(X_1\\le y,\\dots,X_n\\le y)\n=\nP(X_1\\le y)^n.\n\\]\n\nTherefore\n\n\\[\nP(M_n>y)\n=\n1-\\left(1-P(X_1>y)\\right)^n.\n\\]\n\nThus\n\n\\[\n\\boxed{\nP\\left(\\max_{i\\le n}X_i>y\\right)\n=\n1-\\left(1-P(X_1>y)\\right)^n.\n}\n\\]\n\nFor the Pareto law here, since \\(P(X_1>y)=y^{-s}\\),\n\n\\[\n\\boxed{\nP(M_n>y)=1-(1-y^{-s})^n.\n}\n\\]\n\n---\n\n## (5)\n\nTake \\(y=n^{1/s}\\). Then\n\n\\[\nP(X_1>n^{1/s})\n=\n(n^{1/s})^{-s}\n=\n\\frac1n.\n\\]\n\nUsing part (4),\n\n\\[\nP(M_n>n^{1/s})\n=\n1-\\left(1-\\frac1n\\right)^n.\n\\]\n\nSince\n\n\\[\n\\left(1-\\frac1n\\right)^n\\to e^{-1},\n\\]\n\nwe get\n\n\\[\n\\boxed{\n\\lim_{n\\to\\infty}P\\left(\\max_{i\\le n}X_i>n^{1/s}\\right)\n=\n1-e^{-1}.\n}\n\\]\n\n---\n\n## (6)\n\nNo. The exponent \\(2\\) in part (1) cannot in general be improved to \\(1.99\\) under only the assumption \\(\\mathbb E[\\sqrt{X_i}]<\\infty\\).\n\nTake the Pareto example above with\n\n\\[\ns=\\frac{1}{1.99}=\\frac{100}{199}.\n\\]\n\nThen \\(s\\in(1/2,1]\\), so by part (3),\n\n\\[\n\\mathbb E[\\sqrt{X_i}]<\\infty.\n\\]\n\nLet \\(C>0\\) be arbitrary. Since \\(X_i>0\\),\n\n\\[\n\\left\\{S_n\\le Cn^{1.99}\\right\\}\n\\subseteq\n\\left\\{M_n\\le Cn^{1.99}\\right\\}.\n\\]\n\nBut because \\(1.99=1/s\\),\n\n\\[\nCn^{1.99}=Cn^{1/s}.\n\\]\n\nThus, for large \\(n\\),\n\n\\[\nP(M_n\\le Cn^{1.99})\n=\n\\left(1-P(X_1>Cn^{1/s})\\right)^n.\n\\]\n\nNow\n\n\\[\nP(X_1>Cn^{1/s})\n=\n(Cn^{1/s})^{-s}\n=\nC^{-s}n^{-1}.\n\\]\n\nTherefore\n\n\\[\nP(M_n\\le Cn^{1.99})\n=\n\\left(1-\\frac{C^{-s}}{n}\\right)^n\n\\to e^{-C^{-s}}.\n\\]\n\nSince \\(e^{-C^{-s}}<1\\), we have\n\n\\[\n\\limsup_{n\\to\\infty}\nP(S_n\\le Cn^{1.99})\n\\le e^{-C^{-s}}<1.\n\\]\n\nHence the limit cannot equal \\(1\\) for any \\(C>0\\).\n\nTherefore\n\n\\[\n\\boxed{\n\\text{No, such a bound is not possible in general.}\n}\n\\]",
+    "raw_output": [
+      {
+        "id": "rs_0104ffeb1c9d7cb8006a24b99ca2a4819080a9895df06f65f2",
+        "type": "reasoning",
+        "content": [],
+        "summary": [
+          {
+            "type": "summary_text",
+            "text": "**Analyzing convergence and probabilities**\n\nI’m looking at the integral ∫_1∞ x^{-s-1/2} dx and figuring out that it converges if s > 1/2. I might find the value s/(s-1/2) useful here. It’s essential to note that for s ≤ 1, the integral diverges. I’m also working on parts about tail probabilities and the Pareto distribution, exploring how thresholds like y = n^{1/s} fit in. I need clarity on the final formulation, especially regarding i.i.d. variables and their probabilities!"
+          },
+          {
+            "type": "summary_text",
+            "text": "**Exploring interpretations of the theorem**\n\nI’m considering two interpretations of the problem regarding independent identically distributed (i.i.d.) positive variables with finite expectations of the square root. For the first interpretation, I conclude that no universal theorem exists, using a Pareto distribution as a counterexample. For the second interpretation, if the question is whether some distribution can satisfy the limit, then yes, but the user likely wants to explore changing n^2 to n^1.99 uniformly, which I still answer is no. I should clarify that under finite mean conditions, it works, but with infinite expectations, the answer’s not universal."
+          },
+          {
+            "type": "summary_text",
+            "text": "**Clarifying constants in distributions**\n\nI’m thinking about whether \"for a constant C>0\" means a universal constant that applies to all distributions. It seems like my counterexample shows there's no distribution-specific C. If they meant for every sequence to have some C, that's also a no. I should mention that the constant C can depend on the distribution, but even then, it might not work.  Also, I need to state that the mean is infinite for the Pareto example."
+          }
+        ]
+      },
+      {
+        "id": "msg_0104ffeb1c9d7cb8006a24b9fdd7148190ad5e577c0b408acf",
+        "type": "message",
+        "status": "completed",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "Let \\(S_n=\\sum_{i=1}^n X_i\\) and \\(M_n=\\max_{1\\le i\\le n}X_i\\).\n\n## (1)\n\nLet \\(Y_i=\\sqrt{X_i}\\). Then \\((Y_i)\\) are i.i.d., nonnegative, and\n\n\\[\n\\mathbb E[Y_i]=\\mathbb E[\\sqrt{X_i}]=\\mu<\\infty.\n\\]\n\nBy the weak law of large numbers,\n\n\\[\n\\frac1n\\sum_{i=1}^n Y_i \\to \\mu\n\\]\n\nin probability. Hence for every \\(\\varepsilon>0\\),\n\n\\[\nP\\left(\\frac1n\\sum_{i=1}^n \\sqrt{X_i}\\le \\mu+\\varepsilon\\right)\\to 1.\n\\]\n\nNow, since \\(Y_i\\ge 0\\),\n\n\\[\n\\sum_{i=1}^n X_i=\\sum_{i=1}^n Y_i^2 \\le \\left(\\sum_{i=1}^n Y_i\\right)^2.\n\\]\n\nTherefore, on the event\n\n\\[\n\\frac1n\\sum_{i=1}^n \\sqrt{X_i}\\le \\mu+\\varepsilon,\n\\]\n\nwe have\n\n\\[\n\\sum_{i=1}^n X_i\n\\le \\left(\\sum_{i=1}^n \\sqrt{X_i}\\right)^2\n\\le (\\mu+\\varepsilon)^2 n^2.\n\\]\n\nThus\n\n\\[\nP\\left(S_n\\le (\\mu+\\varepsilon)^2n^2\\right)\n\\ge\nP\\left(\\frac1n\\sum_{i=1}^n \\sqrt{X_i}\\le \\mu+\\varepsilon\\right)\\to 1.\n\\]\n\nHence\n\n\\[\n\\boxed{\nP\\left(\\sum_{i=1}^n X_i\\le (\\mu+\\varepsilon)^2 n^2\\right)\\to 1.\n}\n\\]\n\n---\n\n## (2)\n\nAssume\n\n\\[\nP(X_i>u)=u^{-s},\\qquad u\\ge 1,\n\\]\n\nwhere \\(s\\in(1/2,1]\\).\n\nSince \\(P(X_i>1)=1\\), we have \\(X_i>1\\) almost surely. Thus the range is\n\n\\[\n\\boxed{(1,\\infty)}\n\\]\n\nalmost surely.\n\nThe distribution function is\n\n\\[\nF(x)=P(X_i\\le x)\n=\n\\begin{cases}\n0, & x\\le 1,\\\\[4pt]\n1-x^{-s}, & x>1.\n\\end{cases}\n\\]\n\nDifferentiating for \\(x>1\\), the density is\n\n\\[\n\\boxed{\nf(x)=s x^{-s-1}\\mathbf 1_{\\{x>1\\}}.\n}\n\\]\n\n---\n\n## (3)\n\nUsing the density from part (2),\n\n\\[\n\\mathbb E[\\sqrt{X_i}]\n=\n\\int_1^\\infty \\sqrt{x}\\, s x^{-s-1}\\,dx\n=\ns\\int_1^\\infty x^{-s-\\frac12}\\,dx.\n\\]\n\nSince \\(s>1/2\\), we have\n\n\\[\ns+\\frac12>1.\n\\]\n\nTherefore the integral converges. In fact,\n\n\\[\n\\mathbb E[\\sqrt{X_i}]\n=\ns\\cdot \\frac{1}{s-\\frac12}\n=\n\\frac{s}{s-\\frac12}<\\infty.\n\\]\n\nSo\n\n\\[\n\\boxed{\\mathbb E[\\sqrt{X_i}]<\\infty.}\n\\]\n\n---\n\n## (4)\n\nFor \\(y>1\\),\n\n\\[\nP(M_n>y)\n=\n1-P(M_n\\le y).\n\\]\n\nBy independence,\n\n\\[\nP(M_n\\le y)\n=\nP(X_1\\le y,\\dots,X_n\\le y)\n=\nP(X_1\\le y)^n.\n\\]\n\nTherefore\n\n\\[\nP(M_n>y)\n=\n1-\\left(1-P(X_1>y)\\right)^n.\n\\]\n\nThus\n\n\\[\n\\boxed{\nP\\left(\\max_{i\\le n}X_i>y\\right)\n=\n1-\\left(1-P(X_1>y)\\right)^n.\n}\n\\]\n\nFor the Pareto law here, since \\(P(X_1>y)=y^{-s}\\),\n\n\\[\n\\boxed{\nP(M_n>y)=1-(1-y^{-s})^n.\n}\n\\]\n\n---\n\n## (5)\n\nTake \\(y=n^{1/s}\\). Then\n\n\\[\nP(X_1>n^{1/s})\n=\n(n^{1/s})^{-s}\n=\n\\frac1n.\n\\]\n\nUsing part (4),\n\n\\[\nP(M_n>n^{1/s})\n=\n1-\\left(1-\\frac1n\\right)^n.\n\\]\n\nSince\n\n\\[\n\\left(1-\\frac1n\\right)^n\\to e^{-1},\n\\]\n\nwe get\n\n\\[\n\\boxed{\n\\lim_{n\\to\\infty}P\\left(\\max_{i\\le n}X_i>n^{1/s}\\right)\n=\n1-e^{-1}.\n}\n\\]\n\n---\n\n## (6)\n\nNo. The exponent \\(2\\) in part (1) cannot in general be improved to \\(1.99\\) under only the assumption \\(\\mathbb E[\\sqrt{X_i}]<\\infty\\).\n\nTake the Pareto example above with\n\n\\[\ns=\\frac{1}{1.99}=\\frac{100}{199}.\n\\]\n\nThen \\(s\\in(1/2,1]\\), so by part (3),\n\n\\[\n\\mathbb E[\\sqrt{X_i}]<\\infty.\n\\]\n\nLet \\(C>0\\) be arbitrary. Since \\(X_i>0\\),\n\n\\[\n\\left\\{S_n\\le Cn^{1.99}\\right\\}\n\\subseteq\n\\left\\{M_n\\le Cn^{1.99}\\right\\}.\n\\]\n\nBut because \\(1.99=1/s\\),\n\n\\[\nCn^{1.99}=Cn^{1/s}.\n\\]\n\nThus, for large \\(n\\),\n\n\\[\nP(M_n\\le Cn^{1.99})\n=\n\\left(1-P(X_1>Cn^{1/s})\\right)^n.\n\\]\n\nNow\n\n\\[\nP(X_1>Cn^{1/s})\n=\n(Cn^{1/s})^{-s}\n=\nC^{-s}n^{-1}.\n\\]\n\nTherefore\n\n\\[\nP(M_n\\le Cn^{1.99})\n=\n\\left(1-\\frac{C^{-s}}{n}\\right)^n\n\\to e^{-C^{-s}}.\n\\]\n\nSince \\(e^{-C^{-s}}<1\\), we have\n\n\\[\n\\limsup_{n\\to\\infty}\nP(S_n\\le Cn^{1.99})\n\\le e^{-C^{-s}}<1.\n\\]\n\nHence the limit cannot equal \\(1\\) for any \\(C>0\\).\n\nTherefore\n\n\\[\n\\boxed{\n\\text{No, such a bound is not possible in general.}\n}\n\\]"
+          }
+        ],
+        "phase": "final_answer",
+        "role": "assistant"
+      }
+    ]
+  },
+  "cost_usd": 0.10382,
+  "timing": {
+    "started": "2026-06-07T00:21:47.703197+00:00",
+    "ended": "2026-06-07T00:23:42.248672+00:00",
+    "seconds": 114.55
+  },
+  "error": null
+}
