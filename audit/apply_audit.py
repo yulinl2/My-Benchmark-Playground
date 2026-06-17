@@ -56,6 +56,8 @@ def main() -> int:
                 q["verified"] = True
             elif d.get("status") == "fix":
                 q["verified"] = False
+            if d.get("ai_audit") in ("pass", "fix"):
+                q["ai_audit"] = d["ai_audit"]
             if d.get("grading_type"):
                 q["grading_type"] = d["grading_type"]
             if d.get("notes"):
@@ -63,7 +65,7 @@ def main() -> int:
             if json.dumps(q, sort_keys=True) != before:
                 dirty = True; changed += 1
                 print(f"  {'would update' if args.dry_run else 'updated'}: {q['id']}"
-                      f" (verified={q.get('verified')}, grading_type={q.get('grading_type','—')})")
+                      f" (ai_audit={q.get('ai_audit','—')}, grading_type={q.get('grading_type','—')})")
         if dirty and not args.dry_run:
             fp.write_text(json.dumps(rows, indent=2, ensure_ascii=False) + "\n")
 

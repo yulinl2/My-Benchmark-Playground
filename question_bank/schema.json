@@ -81,8 +81,13 @@
     },
     "verified": {
       "type": "boolean",
-      "description": "Whether a human has checked the transcription against the source PDF.",
+      "description": "Whether a HUMAN has checked the transcription against the source PDF.",
       "default": false
+    },
+    "ai_audit": {
+      "type": ["string", "null"],
+      "enum": ["pass", "fix", null],
+      "description": "Result of an automated cross-check of the transcription against the extracted source text. 'pass' = faithful; 'fix' = discrepancy noted in notes. Not a substitute for human `verified`."
     },
     "notes": {
       "type": "string",
