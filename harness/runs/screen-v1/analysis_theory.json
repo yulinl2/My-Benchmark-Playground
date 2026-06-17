@@ -9,8 +9,8 @@
     "f_trunc": 0.3333333333333333,
     "instab": 0.2833333333333333,
     "hedge": 0,
-    "score": 6.22,
-    "tscore": 11.863
+    "score": 6.217,
+    "tscore": 11.811
   },
   {
     "qid": "2018-summer-math-stat-q2",
@@ -22,8 +22,8 @@
     "f_trunc": 0.0,
     "instab": 0.5555555555555556,
     "hedge": 0,
-    "score": 4.354,
-    "tscore": 6.055
+    "score": 4.339,
+    "tscore": 5.978
   },
   {
     "qid": "2018-summer-probability-q2",
@@ -35,8 +35,8 @@
     "f_trunc": 0.0,
     "instab": 0.5515151515151515,
     "hedge": 0,
-    "score": 4.164,
-    "tscore": 5.857
+    "score": 4.148,
+    "tscore": 5.78
   },
   {
     "qid": "2018-summer-probability-q1",
@@ -48,8 +48,8 @@
     "f_trunc": 0.0,
     "instab": 0.6,
     "hedge": 0,
-    "score": 2.898,
-    "tscore": 4.765
+    "score": 2.865,
+    "tscore": 4.684
   },
   {
     "qid": "2022-fall-math-stat-q4",
@@ -61,8 +61,8 @@
     "f_trunc": 0.0,
     "instab": 0.5,
     "hedge": 0,
-    "score": 2.228,
-    "tscore": 3.833
+    "score": 2.195,
+    "tscore": 3.761
   },
   {
     "qid": "2019-summer-probability-q2",
@@ -74,8 +74,8 @@
     "f_trunc": 0.0,
     "instab": 0.33333333333333337,
     "hedge": 0,
-    "score": 2.334,
-    "tscore": 3.44
+    "score": 2.318,
+    "tscore": 3.383
   },
   {
     "qid": "2019-summer-math-stat-q2",
@@ -87,8 +87,8 @@
     "f_trunc": 0.0,
     "instab": 0.36111111111111116,
     "hedge": 0.3333333333333333,
-    "score": 1.752,
-    "tscore": 2.729
+    "score": 1.692,
+    "tscore": 2.669
   },
   {
     "qid": "2023-summer-math-stat-q1",
@@ -100,8 +100,8 @@
     "f_trunc": 0.0,
     "instab": 0.4444444444444444,
     "hedge": 0,
-    "score": 0.749,
-    "tscore": 2.231
+    "score": 0.705,
+    "tscore": 2.164
   },
   {
     "qid": "2022-summer-math-stat-q1",
@@ -113,8 +113,21 @@
     "f_trunc": 0.0,
     "instab": 0.16666666666666663,
     "hedge": 0.6666666666666666,
-    "score": 1.831,
-    "tscore": 2.01
+    "score": 1.755,
+    "tscore": 1.969
+  },
+  {
+    "qid": "2022-summer-probability-q2",
+    "part": "probability",
+    "level": "phd",
+    "f_reason": 6381.666666666667,
+    "f_out": 8409,
+    "h_out": 8497,
+    "f_trunc": 0.0,
+    "instab": 0.3833333333333333,
+    "hedge": 0,
+    "score": 0.416,
+    "tscore": 1.704
   },
   {
     "qid": "2023-summer-probability-q4",
@@ -126,8 +139,8 @@
     "f_trunc": 0.0,
     "instab": 0.46825396825396826,
     "hedge": 0,
-    "score": 0.099,
-    "tscore": 1.669
+    "score": 0.046,
+    "tscore": 1.6
   },
   {
     "qid": "2020-summer-math-stat-q1",
@@ -139,8 +152,8 @@
     "f_trunc": 0.0,
     "instab": 0.16666666666666663,
     "hedge": 0,
-    "score": 0.964,
-    "tscore": 1.623
+    "score": 0.948,
+    "tscore": 1.582
   },
   {
     "qid": "2024-summer-math-stat-q5",
@@ -152,8 +165,8 @@
     "f_trunc": 0.0,
     "instab": 0.23333333333333328,
     "hedge": 0,
-    "score": 0.723,
-    "tscore": 1.581
+    "score": 0.699,
+    "tscore": 1.534
   },
   {
     "qid": "2018-summer-math-stat-q1",
@@ -165,8 +178,8 @@
     "f_trunc": 0.0,
     "instab": 0.2222222222222222,
     "hedge": 0,
-    "score": 0.667,
-    "tscore": 1.499
+    "score": 0.643,
+    "tscore": 1.453
   },
   {
     "qid": "2019-summer-math-stat-q1",
@@ -178,8 +191,8 @@
     "f_trunc": 0.0,
     "instab": 0.1333333333333333,
     "hedge": 0.3333333333333333,
-    "score": 1.108,
-    "tscore": 1.437
+    "score": 1.062,
+    "tscore": 1.398
   },
   {
     "qid": "2023-summer-probability-q6",
@@ -191,8 +204,8 @@
     "f_trunc": 0.0,
     "instab": 0.26936026936026936,
     "hedge": 0,
-    "score": 0.002,
-    "tscore": 0.988
+    "score": -0.033,
+    "tscore": 0.938
   },
   {
     "qid": "2024-summer-math-stat-q3",
@@ -204,8 +217,8 @@
     "f_trunc": 0.0,
     "instab": 0.2222222222222222,
     "hedge": 0,
-    "score": 0.008,
-    "tscore": 0.862
+    "score": -0.024,
+    "tscore": 0.816
   },
   {
     "qid": "2024-summer-math-stat-q2",
@@ -217,8 +230,8 @@
     "f_trunc": 0.0,
     "instab": 0.2833333333333333,
     "hedge": 0,
-    "score": -0.179,
-    "tscore": 0.854
+    "score": -0.218,
+    "tscore": 0.802
   },
   {
     "qid": "2025-summer-math-stat-q4",
@@ -230,8 +243,8 @@
     "f_trunc": 0.0,
     "instab": 0.1333333333333333,
     "hedge": 0,
-    "score": 0.178,
-    "tscore": 0.762
+    "score": 0.157,
+    "tscore": 0.724
   },
   {
     "qid": "2024-summer-probability-q4",
@@ -243,8 +256,8 @@
     "f_trunc": 0.0,
     "instab": 0.1333333333333333,
     "hedge": 0,
-    "score": 0.084,
-    "tscore": 0.671
+    "score": 0.061,
+    "tscore": 0.633
   },
   {
     "qid": "2021-summer-math-stat-q1",
@@ -256,8 +269,8 @@
     "f_trunc": 0.0,
     "instab": 0.16666666666666663,
     "hedge": 0,
-    "score": -0.298,
-    "tscore": 0.395
+    "score": -0.327,
+    "tscore": 0.354
   },
   {
     "qid": "2020-summer-probability-q2",
@@ -269,8 +282,8 @@
     "f_trunc": 0.0,
     "instab": 0.0,
     "hedge": 0,
-    "score": 0.096,
-    "tscore": 0.292
+    "score": 0.086,
+    "tscore": 0.266
   },
   {
     "qid": "2019-fall-probability-q6",
@@ -282,8 +295,8 @@
     "f_trunc": 0.0,
     "instab": 0.40555555555555556,
     "hedge": 1.6666666666666667,
-    "score": -0.082,
-    "tscore": 0.174
+    "score": -0.305,
+    "tscore": 0.111
   },
   {
     "qid": "2023-fall-math-stat-q6",
@@ -295,8 +308,8 @@
     "f_trunc": 0.0,
     "instab": 0.38095238095238093,
     "hedge": 0,
-    "score": -1.322,
-    "tscore": 0.034
+    "score": -1.382,
+    "tscore": -0.026
   },
   {
     "qid": "2025-summer-probability-q1",
@@ -308,8 +321,8 @@
     "f_trunc": 0.0,
     "instab": 0.16666666666666663,
     "hedge": 0,
-    "score": -0.751,
-    "tscore": -0.04
+    "score": -0.786,
+    "tscore": -0.081
   },
   {
     "qid": "2023-summer-math-stat-q2",
@@ -321,8 +334,8 @@
     "f_trunc": 0.0,
     "instab": 0.0,
     "hedge": 0,
-    "score": -0.287,
-    "tscore": -0.079
+    "score": -0.302,
+    "tscore": -0.105
   },
   {
     "qid": "2024-fall-probability-q1",
@@ -334,8 +347,8 @@
     "f_trunc": 0.0,
     "instab": 0.4,
     "hedge": 0,
-    "score": -1.548,
-    "tscore": -0.128
+    "score": -1.613,
+    "tscore": -0.19
   },
   {
     "qid": "2021-summer-probability-q2",
@@ -347,8 +360,8 @@
     "f_trunc": 0.0,
     "instab": 0.1333333333333333,
     "hedge": 0,
-    "score": -0.784,
-    "tscore": -0.17
+    "score": -0.816,
+    "tscore": -0.208
   },
   {
     "qid": "2024-spring-math-stat-q4",
@@ -360,8 +373,8 @@
     "f_trunc": 0.0,
     "instab": 0.3650793650793651,
     "hedge": 0,
-    "score": -1.541,
-    "tscore": -0.224
+    "score": -1.602,
+    "tscore": -0.283
   },
   {
     "qid": "2024-summer-math-stat-q4",
@@ -373,8 +386,8 @@
     "f_trunc": 0.0,
     "instab": 0.33333333333333337,
     "hedge": 0,
-    "score": -1.558,
-    "tscore": -0.333
+    "score": -1.617,
+    "tscore": -0.389
   },
   {
     "qid": "2023-fall-probability-q5",
@@ -386,8 +399,8 @@
     "f_trunc": 0.0,
     "instab": 0.3392857142857143,
     "hedge": 0,
-    "score": -1.795,
-    "tscore": -0.547
+    "score": -1.857,
+    "tscore": -0.604
   },
   {
     "qid": "2022-summer-math-stat-q2",
@@ -399,8 +412,8 @@
     "f_trunc": 0.0,
     "instab": 0.0,
     "hedge": 0,
-    "score": -0.808,
-    "tscore": -0.586
+    "score": -0.827,
+    "tscore": -0.612
   },
   {
     "qid": "2024-summer-math-stat-q1",
@@ -412,8 +425,8 @@
     "f_trunc": 0.0,
     "instab": 0.0,
     "hedge": 0,
-    "score": -0.869,
-    "tscore": -0.642
+    "score": -0.89,
+    "tscore": -0.668
   },
   {
     "qid": "2023-spring-probability-q3",
@@ -425,8 +438,8 @@
     "f_trunc": 0.0,
     "instab": 0.3089133089133089,
     "hedge": 0,
-    "score": -1.91,
-    "tscore": -0.747
+    "score": -1.971,
+    "tscore": -0.801
   },
   {
     "qid": "2019-summer-probability-q1",
@@ -438,21 +451,8 @@
     "f_trunc": 0.0,
     "instab": 0.0,
     "hedge": 0,
-    "score": -1.007,
-    "tscore": -0.78
-  },
-  {
-    "qid": "2022-summer-probability-q2",
-    "part": "probability",
-    "level": "phd",
-    "f_reason": 5863.666666666667,
-    "f_out": 7532,
-    "h_out": 5733,
-    "f_trunc": 0.0,
-    "instab": 0.1333333333333333,
-    "hedge": 0,
-    "score": -1.48,
-    "tscore": -0.845
+    "score": -1.029,
+    "tscore": -0.806
   },
   {
     "qid": "2020-summer-probability-q1",
@@ -464,8 +464,8 @@
     "f_trunc": 0.0,
     "instab": 0.16666666666666663,
     "hedge": 0,
-    "score": -1.623,
-    "tscore": -0.89
+    "score": -1.667,
+    "tscore": -0.931
   },
   {
     "qid": "2023-summer-probability-q3",
@@ -477,8 +477,8 @@
     "f_trunc": 0.0,
     "instab": 0.2833333333333333,
     "hedge": 0,
-    "score": -2.169,
-    "tscore": -1.073
+    "score": -2.23,
+    "tscore": -1.125
   },
   {
     "qid": "2022-summer-probability-q1",
@@ -490,8 +490,8 @@
     "f_trunc": 0.0,
     "instab": 0.0,
     "hedge": 0,
-    "score": -1.335,
-    "tscore": -1.1
+    "score": -1.36,
+    "tscore": -1.126
   },
   {
     "qid": "2020-summer-math-stat-q2",
@@ -503,8 +503,8 @@
     "f_trunc": 0.0,
     "instab": 0.0,
     "hedge": 0,
-    "score": -1.395,
-    "tscore": -1.154
+    "score": -1.421,
+    "tscore": -1.18
   },
   {
     "qid": "2021-summer-probability-q1",
@@ -516,8 +516,8 @@
     "f_trunc": 0.0,
     "instab": 0.0,
     "hedge": 0,
-    "score": -1.412,
-    "tscore": -1.171
+    "score": -1.439,
+    "tscore": -1.197
   },
   {
     "qid": "2025-summer-math-stat-q1",
@@ -529,8 +529,8 @@
     "f_trunc": 0.0,
     "instab": 0.0,
     "hedge": 0,
-    "score": -1.462,
-    "tscore": -1.216
+    "score": -1.489,
+    "tscore": -1.242
   },
   {
     "qid": "2025-summer-probability-q2",
@@ -542,8 +542,8 @@
     "f_trunc": 0.0,
     "instab": 0.1333333333333333,
     "hedge": 0,
-    "score": -2.068,
-    "tscore": -1.417
+    "score": -2.114,
+    "tscore": -1.455
   },
   {
     "qid": "2022-fall-probability-q5",
@@ -555,8 +555,8 @@
     "f_trunc": 0.0,
     "instab": 0.12424242424242427,
     "hedge": 0,
-    "score": -2.085,
-    "tscore": -1.461
+    "score": -2.13,
+    "tscore": -1.498
   },
   {
     "qid": "2024-fall-math-stat-q3",
@@ -568,8 +568,8 @@
     "f_trunc": 0.0,
     "instab": 0.19841269841269837,
     "hedge": 0,
-    "score": -2.325,
-    "tscore": -1.474
+    "score": -2.38,
+    "tscore": -1.518
   },
   {
     "qid": "2023-summer-probability-q1",
@@ -581,8 +581,8 @@
     "f_trunc": 0.0,
     "instab": 0.2222222222222222,
     "hedge": 0,
-    "score": -2.619,
-    "tscore": -1.689
+    "score": -2.68,
+    "tscore": -1.735
   },
   {
     "qid": "2023-spring-math-stat-q5",
@@ -594,8 +594,8 @@
     "f_trunc": 0.0,
     "instab": 0.16666666666666663,
     "hedge": 0,
-    "score": -2.468,
-    "tscore": -1.705
+    "score": -2.521,
+    "tscore": -1.746
   },
   {
     "qid": "2024-summer-probability-q1",
@@ -607,8 +607,8 @@
     "f_trunc": 0.0,
     "instab": 0.20000000000000007,
     "hedge": 0,
-    "score": -2.64,
-    "tscore": -1.775
+    "score": -2.698,
+    "tscore": -1.819
   },
   {
     "qid": "2025-summer-math-stat-q2",
@@ -620,8 +620,8 @@
     "f_trunc": 0.0,
     "instab": 0.0,
     "hedge": 0,
-    "score": -2.067,
-    "tscore": -1.805
+    "score": -2.101,
+    "tscore": -1.831
   },
   {
     "qid": "2024-spring-math-stat-q1",
@@ -633,8 +633,8 @@
     "f_trunc": 0.0,
     "instab": 0.17727272727272725,
     "hedge": 0,
-    "score": -2.644,
-    "tscore": -1.846
+    "score": -2.7,
+    "tscore": -1.888
   },
   {
     "qid": "2024-summer-probability-q3",
@@ -646,8 +646,8 @@
     "f_trunc": 0.0,
     "instab": 0.08333333333333337,
     "hedge": 0,
-    "score": -2.622,
-    "tscore": -2.101
+    "score": -2.67,
+    "tscore": -2.134
   },
   {
     "qid": "2024-fall-math-stat-q2",
@@ -659,8 +659,8 @@
     "f_trunc": 0.0,
     "instab": 0.16666666666666663,
     "hedge": 0,
-    "score": -2.984,
-    "tscore": -2.206
+    "score": -3.043,
+    "tscore": -2.246
   },
   {
     "qid": "2025-summer-math-stat-q3",
@@ -672,8 +672,8 @@
     "f_trunc": 0.0,
     "instab": 0.0,
     "hedge": 0,
-    "score": -2.739,
-    "tscore": -2.457
+    "score": -2.781,
+    "tscore": -2.482
   },
   {
     "qid": "2024-summer-probability-q2",
@@ -685,8 +685,8 @@
     "f_trunc": 0.0,
     "instab": 0.0,
     "hedge": 0,
-    "score": -2.743,
-    "tscore": -2.462
+    "score": -2.784,
+    "tscore": -2.488
   },
   {
     "qid": "2022-fall-math-stat-q3",
@@ -698,8 +698,8 @@
     "f_trunc": 0.0,
     "instab": 0.0,
     "hedge": 0,
-    "score": -2.878,
-    "tscore": -2.591
+    "score": -2.921,
+    "tscore": -2.617
   },
   {
     "qid": "2023-summer-probability-q5",
@@ -711,8 +711,8 @@
     "f_trunc": 0.0,
     "instab": 0.08333333333333337,
     "hedge": 0,
-    "score": -3.129,
-    "tscore": -2.593
+    "score": -3.182,
+    "tscore": -2.626
   },
   {
     "qid": "2023-spring-math-stat-q4",
@@ -724,8 +724,8 @@
     "f_trunc": 0.0,
     "instab": 0.0,
     "hedge": 0,
-    "score": -2.904,
-    "tscore": -2.617
+    "score": -2.947,
+    "tscore": -2.643
   },
   {
     "qid": "2024-spring-probability-q3",
@@ -737,8 +737,8 @@
     "f_trunc": 0.0,
     "instab": 0.10256410256410253,
     "hedge": 0,
-    "score": -3.377,
-    "tscore": -2.775
+    "score": -3.435,
+    "tscore": -2.81
   },
   {
     "qid": "2022-fall-math-stat-q1",
@@ -750,8 +750,8 @@
     "f_trunc": 0.0,
     "instab": 0.0,
     "hedge": 0,
-    "score": -3.882,
-    "tscore": -3.567
+    "score": -3.936,
+    "tscore": -3.593
   },
   {
     "qid": "2023-fall-math-stat-q1",
@@ -763,8 +763,8 @@
     "f_trunc": 0.0,
     "instab": 0.0,
     "hedge": 0,
-    "score": -3.95,
-    "tscore": -3.633
+    "score": -4.004,
+    "tscore": -3.658
   },
   {
     "qid": "2023-summer-probability-q2",
@@ -776,7 +776,7 @@
     "f_trunc": 0.0,
     "instab": 0.0,
     "hedge": 0,
-    "score": -4.048,
-    "tscore": -3.727
+    "score": -4.103,
+    "tscore": -3.753
   }
 ]
