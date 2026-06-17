@@ -70,6 +70,8 @@ def main():
         problems.append({
             "id": qid, "exam": b.get("exam"), "topics": b.get("topics", []),
             "difficulty": b.get("difficulty"), "prompt": b.get("prompt"),
+            "grading_type": b.get("grading_type"), "ai_audit": b.get("ai_audit"),
+            "verified": b.get("verified", False),
             "parts": b.get("parts", []), "source": b.get("source"),
             "data": b.get("data", []),
             "is_theory": is_theory,

@@ -23,7 +23,9 @@
       "page": 1
     },
     "verified": false,
-    "notes": "MS comprehensive (Master Exam Fall 2024). Transcribed with solution from answer key."
+    "notes": "MS comprehensive (Master Exam Fall 2024). Transcribed with solution from answer key.",
+    "ai_audit": "pass",
+    "grading_type": "numeric"
   },
   {
     "id": "2024-fall-math-stat-q2",
@@ -48,7 +50,9 @@
       "page": 1
     },
     "verified": false,
-    "notes": "MS comprehensive. Transcribed with solution from answer key."
+    "notes": "MS comprehensive. Transcribed with solution from answer key.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
   },
   {
     "id": "2024-fall-math-stat-q3",
@@ -73,7 +77,9 @@
       "page": 1
     },
     "verified": false,
-    "notes": "MS comprehensive. Transcribed with solution from answer key."
+    "notes": "MS comprehensive. Transcribed with solution from answer key.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
   },
   {
     "id": "2024-fall-applied-q4",
@@ -99,7 +105,9 @@
       "page": 1
     },
     "verified": false,
-    "notes": "MS comprehensive. Transcribed with solution from answer key."
+    "notes": "MS comprehensive. Transcribed with solution from answer key.",
+    "ai_audit": "pass",
+    "grading_type": "numeric"
   },
   {
     "id": "2024-fall-applied-q5",
@@ -124,7 +132,9 @@
       "page": 2
     },
     "verified": false,
-    "notes": "MS comprehensive. Transcribed with solution from answer key."
+    "notes": "MS comprehensive. Transcribed with solution from answer key.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
   },
   {
     "id": "2024-fall-applied-q6",
@@ -149,6 +159,8 @@
       "page": 3
     },
     "verified": false,
-    "notes": "MS comprehensive. Transcribed with solution from answer key."
+    "notes": "MS comprehensive. Transcribed with solution from answer key.",
+    "ai_audit": "pass",
+    "grading_type": "numeric"
   }
 ]

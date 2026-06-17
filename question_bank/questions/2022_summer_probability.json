@@ -30,7 +30,9 @@
       "page": 2
     },
     "verified": false,
-    "notes": "Based on Stat 592 and Stat 654. Transcribed from extracted text."
+    "notes": "Based on Stat 592 and Stat 654. Transcribed from extracted text.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
   },
   {
     "id": "2022-summer-probability-q2",
@@ -52,7 +54,7 @@
     "parts": [
       "**Part A.** Is $\\{S_{k,x}\\}_{k\\ge 0}$ a Markov chain? If so, specify its state space and transition probability distribution. Is $\\{S_{k,x}\\}_{k\\ge 0}$ a martingale?",
       "**Part B.** Let $T_{0,x}$ be the first time the walker hits the $y$-axis (its $x$-coordinate equals $0$). Calculate $P[T_{0,x} = \\infty]$ and $\\mathbb{E}[T_{0,x}]$.",
-      "**Part C.** Let $T_0$ be the first time the walker reaches the origin $(0,0)$, and let $D_k$ be the Euclidean distance from the walker to the origin at time $k$. Let $P_{1,n} := P[D_{\\lfloor n^{1.5}\\rfloor} \\ge n/2]$. (The exam continues analyzing this hitting/recurrence behavior — see source PDF for the full statement of Part C.)"
+      "**Part C.** Let $T_0$ be the first time the walker reaches the origin $(0,0)$ ($\\lfloor x\\rfloor$ = floor), and let $D_k$ be the Euclidean distance from the walker to the origin at time $k$. (i) With $P_{1,n} := P[D_{\\lfloor n^{1.5}\\rfloor} \\ge n/2]$ (distance $\\ge n/2$ after $\\lfloor n^{1.5}\\rfloor$ steps), prove $P_{1,n} \\to 1$ as $n \\to \\infty$. [Hint: bound the complementary event via the location of $S_{k,x}$.] (ii) With $P_{2,n} := P[T_0 \\le \\lfloor n^{1.5}\\rfloor]$ (origin visited within the first $\\lfloor n^{1.5}\\rfloor$ steps), prove $P_{2,n} \\to 0$ as $n \\to \\infty$. [Hint: a maximal inequality helps.] You may use **Doob's maximal inequality** (submartingale $\\{X_k\\}$: $P[\\max_{1\\le i\\le k} X_i \\ge \\lambda] \\le \\mathbb{E}[\\max\\{X_k,0\\}]/\\lambda$) or **Kolmogorov's maximal inequality** (i.i.d. mean-zero finite-variance $\\xi_i$, $T_k=\\sum_{i=1}^k \\xi_i$: $P[\\max_{1\\le i\\le k}|T_i| \\ge \\lambda] \\le \\operatorname{Var}[T_k]/\\lambda^2$)."
     ],
     "solution": null,
     "source": {
@@ -60,6 +62,8 @@
       "page": 4
     },
     "verified": false,
-    "notes": "Part C statement is truncated in the text extraction; verify the tail against the source PDF before marking verified."
+    "notes": "Part C statement is truncated in the text extraction; verify the tail against the source PDF before marking verified.\n\n[audit] corrected during audit: completed the truncated Part C (P_{1,n}->1, P_{2,n}->0, with Doob/Kolmogorov maximal inequalities) from source.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
   }
 ]

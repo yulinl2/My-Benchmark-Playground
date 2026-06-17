@@ -21,7 +21,9 @@
       "page": 1
     },
     "verified": false,
-    "notes": "MS comprehensive. Transcribed with solution from answer key."
+    "notes": "MS comprehensive. Transcribed with solution from answer key.",
+    "ai_audit": "pass",
+    "grading_type": "numeric"
   },
   {
     "id": "2023-spring-applied-q2",
@@ -46,7 +48,9 @@
       "page": 1
     },
     "verified": false,
-    "notes": "MS comprehensive. Transcribed with solution from answer key."
+    "notes": "MS comprehensive. Transcribed with solution from answer key.",
+    "ai_audit": "pass",
+    "grading_type": "numeric"
   },
   {
     "id": "2023-spring-probability-q3",
@@ -71,7 +75,9 @@
       "page": 2
     },
     "verified": false,
-    "notes": "MS comprehensive. Transcribed with solution from answer key."
+    "notes": "MS comprehensive. Transcribed with solution from answer key.",
+    "ai_audit": "pass",
+    "grading_type": "numeric"
   },
   {
     "id": "2023-spring-math-stat-q4",
@@ -96,7 +102,9 @@
       "page": 3
     },
     "verified": false,
-    "notes": "MS comprehensive. Transcribed with solution from answer key."
+    "notes": "MS comprehensive. Transcribed with solution from answer key.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
   },
   {
     "id": "2023-spring-math-stat-q5",
@@ -122,7 +130,9 @@
       "page": 3
     },
     "verified": false,
-    "notes": "MS comprehensive. Transcribed with solution from answer key."
+    "notes": "MS comprehensive. Transcribed with solution from answer key.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
   },
   {
     "id": "2023-spring-applied-q6",
@@ -146,6 +156,8 @@
       "page": 4
     },
     "verified": false,
-    "notes": "MS comprehensive. Answer key shows F=17.05 from the ANOVA table (a separate '8.54' figure in the text appears to be a typo). Transcribed with solution from answer key."
+    "notes": "MS comprehensive. Answer key shows F=17.05 from the ANOVA table (a separate '8.54' figure in the text appears to be a typo). Transcribed with solution from answer key.",
+    "ai_audit": "pass",
+    "grading_type": "numeric"
   }
 ]

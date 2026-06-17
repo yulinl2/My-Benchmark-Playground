@@ -27,7 +27,9 @@
       "page": 2
     },
     "verified": false,
-    "notes": "Stat 592/654 based exam. Transcribed from extracted text; LaTeX reconstructed by hand."
+    "notes": "Stat 592/654 based exam. Transcribed from extracted text; LaTeX reconstructed by hand.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
   },
   {
     "id": "2018-summer-probability-q2",
@@ -62,6 +64,8 @@
       "page": 3
     },
     "verified": false,
-    "notes": "Coupling-from-the-past (Propp-Wilson) perfect-simulation problem. Transcribed from extracted text."
+    "notes": "Coupling-from-the-past (Propp-Wilson) perfect-simulation problem. Transcribed from extracted text.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
   }
 ]

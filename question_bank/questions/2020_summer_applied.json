@@ -32,7 +32,9 @@
     "notes": "Prof. Sijian Wang. Dataset committed in repo. Transcribed from extracted text.",
     "data": [
       "Downloads/past-PhD exams/Applied Exam 2020 packet/AD_dataset_applied2020.csv"
-    ]
+    ],
+    "ai_audit": "pass",
+    "grading_type": "data-analysis"
   },
   {
     "id": "2020-summer-applied-q2",
@@ -70,6 +72,8 @@
     "data": [
       "Downloads/past-PhD exams/Applied Exam 2020 packet/piston slap noise training data.txt",
       "Downloads/past-PhD exams/Applied Exam 2020 packet/piston slap noise test data.txt"
-    ]
+    ],
+    "ai_audit": "pass",
+    "grading_type": "data-analysis"
   }
 ]

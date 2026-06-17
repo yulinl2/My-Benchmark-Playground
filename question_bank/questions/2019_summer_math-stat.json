@@ -29,7 +29,9 @@
       "page": 2
     },
     "verified": false,
-    "notes": "Highly technical LAN / local asymptotic minimax problem. Some operator notation reconstructed from extraction; verify against PDF."
+    "notes": "Highly technical LAN / local asymptotic minimax problem. Some operator notation reconstructed from extraction; verify against PDF.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
   },
   {
     "id": "2019-summer-math-stat-q2",
@@ -67,6 +69,8 @@
       "page": 5
     },
     "verified": false,
-    "notes": "Transcribed from extracted text."
+    "notes": "Transcribed from extracted text.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
   }
 ]

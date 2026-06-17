@@ -21,7 +21,9 @@
       "page": 1
     },
     "verified": false,
-    "notes": "MS comprehensive (attempt any 5 of 6). Transcribed with solution from answer key."
+    "notes": "MS comprehensive (attempt any 5 of 6). Transcribed with solution from answer key.",
+    "ai_audit": "pass",
+    "grading_type": "numeric"
   },
   {
     "id": "2022-fall-applied-q2",
@@ -45,7 +47,9 @@
       "page": 1
     },
     "verified": false,
-    "notes": "MS comprehensive. Transcribed with solution from answer key."
+    "notes": "MS comprehensive. Transcribed with solution from answer key.",
+    "ai_audit": "pass",
+    "grading_type": "numeric"
   },
   {
     "id": "2022-fall-math-stat-q3",
@@ -70,7 +74,9 @@
       "page": 2
     },
     "verified": false,
-    "notes": "MS comprehensive. Transcribed with solution from answer key."
+    "notes": "MS comprehensive. Transcribed with solution from answer key.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
   },
   {
     "id": "2022-fall-math-stat-q4",
@@ -94,7 +100,9 @@
       "page": 3
     },
     "verified": false,
-    "notes": "MS comprehensive. Figure-based; transcribed with solution from answer key."
+    "notes": "MS comprehensive. Figure-based; transcribed with solution from answer key.",
+    "ai_audit": "pass",
+    "grading_type": "exact-match"
   },
   {
     "id": "2022-fall-probability-q5",
@@ -119,7 +127,9 @@
       "page": 4
     },
     "verified": false,
-    "notes": "MS comprehensive. Transcribed with solution from answer key."
+    "notes": "MS comprehensive. Transcribed with solution from answer key.",
+    "ai_audit": "pass",
+    "grading_type": "numeric"
   },
   {
     "id": "2022-fall-applied-q6",
@@ -144,6 +154,8 @@
       "page": 6
     },
     "verified": false,
-    "notes": "MS comprehensive. Transcribed with solution from answer key."
+    "notes": "MS comprehensive. Transcribed with solution from answer key.",
+    "ai_audit": "pass",
+    "grading_type": "numeric"
   }
 ]

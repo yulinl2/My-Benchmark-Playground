@@ -32,7 +32,9 @@
       "page": 2
     },
     "verified": false,
-    "notes": "Prof. Zhiqiang Tan. Self-contained simulation. Transcribed from extracted text."
+    "notes": "Prof. Zhiqiang Tan. Self-contained simulation. Transcribed from extracted text.",
+    "ai_audit": "pass",
+    "grading_type": "data-analysis"
   },
   {
     "id": "2022-summer-applied-q2",
@@ -62,7 +64,9 @@
       "page": 5
     },
     "verified": false,
-    "notes": "Prof. Han Xiao. Self-contained simulation. Transcribed from extracted text."
+    "notes": "Prof. Han Xiao. Self-contained simulation. Transcribed from extracted text.",
+    "ai_audit": "pass",
+    "grading_type": "data-analysis"
   },
   {
     "id": "2022-summer-applied-q3",
@@ -94,6 +98,8 @@
       "page": 6
     },
     "verified": false,
-    "notes": "Prof. Han Xiao. Self-contained simulation. Transcribed from extracted text."
+    "notes": "Prof. Han Xiao. Self-contained simulation. Transcribed from extracted text.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
   }
 ]

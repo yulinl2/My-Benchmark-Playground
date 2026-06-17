@@ -22,7 +22,9 @@
       "page": 2
     },
     "verified": false,
-    "notes": "Transcribed from extracted text."
+    "notes": "Transcribed from extracted text.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
   },
   {
     "id": "2023-summer-probability-q2",
@@ -48,7 +50,9 @@
       "page": 2
     },
     "verified": false,
-    "notes": "Transcribed from extracted text."
+    "notes": "Transcribed from extracted text.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
   },
   {
     "id": "2023-summer-probability-q3",
@@ -74,7 +78,9 @@
       "page": 2
     },
     "verified": false,
-    "notes": "Transcribed from extracted text."
+    "notes": "Transcribed from extracted text.",
+    "ai_audit": "pass",
+    "grading_type": "exact-match"
   },
   {
     "id": "2023-summer-probability-q4",
@@ -107,7 +113,9 @@
       "page": 2
     },
     "verified": false,
-    "notes": "Transcribed from extracted text."
+    "notes": "Transcribed from extracted text.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
   },
   {
     "id": "2023-summer-probability-q5",
@@ -134,7 +142,9 @@
       "page": 13
     },
     "verified": false,
-    "notes": "Transcribed from extracted text."
+    "notes": "Transcribed from extracted text.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
   },
   {
     "id": "2023-summer-probability-q6",
@@ -166,6 +176,8 @@
       "page": 13
     },
     "verified": false,
-    "notes": "Transcribed from extracted text."
+    "notes": "Transcribed from extracted text.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
   }
 ]

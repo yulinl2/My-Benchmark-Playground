@@ -33,7 +33,9 @@
       "page": 2
     },
     "verified": false,
-    "notes": "Based on Stat 593 and Stat 594. Transcribed from extracted text."
+    "notes": "Based on Stat 593 and Stat 594. Transcribed from extracted text.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
   },
   {
     "id": "2022-summer-math-stat-q2",
@@ -67,6 +69,8 @@
       "page": 4
     },
     "verified": false,
-    "notes": "Transcribed from extracted text."
+    "notes": "Transcribed from extracted text.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
   }
 ]

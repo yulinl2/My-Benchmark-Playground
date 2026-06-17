@@ -140,7 +140,8 @@ function select(p){
   if(p.runs.subagent) cols.push({title:"Claude sub-agent (Opus, closed-book) · k=1", cls:"sub", reps:p.runs.subagent});
   $("pane").innerHTML=`
     <div class="meta">${p.id} · ${p.exam.year} ${p.exam.term} · <b>${p.exam.level}</b> · ${p.exam.part} · diff ${p.difficulty||"—"}
-      ${p.is_theory?` · theory rank <b>#${p.trank}</b>`:` · <b>applied*</b> (proxy confounded by open-endedness)`}</div>
+      ${p.is_theory?` · theory rank <b>#${p.trank}</b>`:` · <b>applied*</b> (proxy confounded by open-endedness)`}
+      ${p.grading_type?` · grading: <b>${p.grading_type}</b>`:""}${p.ai_audit?` · ai-audit: <b>${p.ai_audit}</b>`:""} · human-verified: <b>${p.verified?"yes":"no"}</b></div>
     <div class="tags">${p.topics.map(t=>`<span>${esc(t)}</span>`).join("")}</div>
     <div class="scorebox">
       <div class="sc">score<b>${(p.is_theory?p.tscore:p.score).toFixed(2)}</b></div>

@@ -32,7 +32,9 @@
     "notes": "Prof. Sijian Wang. Data-analysis problem; dataset not in repo. Transcribed from extracted text.",
     "data": [
       "GYM VS NON (Excel) — not distributed with the SharePoint PDF download"
-    ]
+    ],
+    "ai_audit": "pass",
+    "grading_type": "data-analysis"
   },
   {
     "id": "2018-summer-applied-q2",
@@ -65,6 +67,8 @@
       "page": 5
     },
     "verified": false,
-    "notes": "Prof. Zhiqiang Tan. Self-contained simulation problem. Transcribed from extracted text."
+    "notes": "Prof. Zhiqiang Tan. Self-contained simulation problem. Transcribed from extracted text.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
   }
 ]

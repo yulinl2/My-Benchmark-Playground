@@ -24,7 +24,9 @@
       "page": 2
     },
     "verified": false,
-    "notes": "Transcribed from extracted text."
+    "notes": "Transcribed from extracted text.",
+    "ai_audit": "pass",
+    "grading_type": "numeric"
   },
   {
     "id": "2024-summer-probability-q2",
@@ -53,7 +55,9 @@
       "page": 3
     },
     "verified": false,
-    "notes": "Transcribed from extracted text."
+    "notes": "Transcribed from extracted text.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
   },
   {
     "id": "2024-summer-probability-q3",
@@ -84,7 +88,9 @@
       "page": 6
     },
     "verified": false,
-    "notes": "Transcribed from extracted text."
+    "notes": "Transcribed from extracted text.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
   },
   {
     "id": "2024-summer-probability-q4",
@@ -122,6 +128,8 @@
       "page": 10
     },
     "verified": false,
-    "notes": "Glauber/Metropolis monotone coupling and coupling-from-the-past bound. Transcribed from extracted text."
+    "notes": "Glauber/Metropolis monotone coupling and coupling-from-the-past bound. Transcribed from extracted text.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
   }
 ]

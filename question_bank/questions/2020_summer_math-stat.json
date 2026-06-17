@@ -31,7 +31,9 @@
       "page": 2
     },
     "verified": false,
-    "notes": "Problem 1 by Prof. Zhiqiang Tan. Transcribed from extracted text."
+    "notes": "Problem 1 by Prof. Zhiqiang Tan. Transcribed from extracted text.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
   },
   {
     "id": "2020-summer-math-stat-q2",
@@ -64,6 +66,8 @@
       "page": 3
     },
     "verified": false,
-    "notes": "Problem 2 by Prof. David Tyler. Transcribed from extracted text."
+    "notes": "Problem 2 by Prof. David Tyler. Transcribed from extracted text.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
   }
 ]

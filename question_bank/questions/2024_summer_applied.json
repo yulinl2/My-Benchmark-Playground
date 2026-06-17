@@ -30,7 +30,9 @@
       "page": 2
     },
     "verified": false,
-    "notes": "Prof. Zhiqiang Tan. Self-contained simulation. Transcribed from extracted text."
+    "notes": "Prof. Zhiqiang Tan. Self-contained simulation. Transcribed from extracted text.",
+    "ai_audit": "pass",
+    "grading_type": "data-analysis"
   },
   {
     "id": "2024-summer-applied-q2",
@@ -70,6 +72,8 @@
     "notes": "Prof. Han Xiao. Dataset not in repo. Transcribed from extracted text.",
     "data": [
       "qe 2024.txt — not distributed with the SharePoint PDF download"
-    ]
+    ],
+    "ai_audit": "pass",
+    "grading_type": "data-analysis"
   }
 ]

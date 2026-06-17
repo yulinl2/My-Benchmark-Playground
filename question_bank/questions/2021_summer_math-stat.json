@@ -31,7 +31,9 @@
       "page": 2
     },
     "verified": false,
-    "notes": "Profs. Crane & Dasgupta administered; contiguity/LAN/Chernoff-Stein. Transcribed from extracted text."
+    "notes": "Profs. Crane & Dasgupta administered; contiguity/LAN/Chernoff-Stein. Transcribed from extracted text.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
   },
   {
     "id": "2021-summer-math-stat-q2",
@@ -62,6 +64,8 @@
       "page": 4
     },
     "verified": false,
-    "notes": "Transcribed from extracted text."
+    "notes": "Transcribed from extracted text.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
   }
 ]

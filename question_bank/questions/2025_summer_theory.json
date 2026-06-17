@@ -24,7 +24,9 @@
       "page": 2
     },
     "verified": false,
-    "notes": "2025 unified theory exam, Part I. Transcribed from extracted text."
+    "notes": "2025 unified theory exam, Part I. Transcribed from extracted text.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
   },
   {
     "id": "2025-summer-probability-q2",
@@ -52,7 +54,9 @@
       "page": 4
     },
     "verified": false,
-    "notes": "2025 unified theory exam, Part II. Transcribed from extracted text."
+    "notes": "2025 unified theory exam, Part II. Transcribed from extracted text.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
   },
   {
     "id": "2025-summer-math-stat-q1",
@@ -81,7 +85,9 @@
       "page": 6
     },
     "verified": false,
-    "notes": "2025 unified theory exam, Part III. Transcribed from extracted text."
+    "notes": "2025 unified theory exam, Part III. Transcribed from extracted text.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
   },
   {
     "id": "2025-summer-math-stat-q2",
@@ -110,7 +116,9 @@
       "page": 9
     },
     "verified": false,
-    "notes": "2025 unified theory exam, Part III. Transcribed from extracted text."
+    "notes": "2025 unified theory exam, Part III. Transcribed from extracted text.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
   },
   {
     "id": "2025-summer-math-stat-q3",
@@ -140,7 +148,9 @@
       "page": 11
     },
     "verified": false,
-    "notes": "2025 unified theory exam, Part III. Transcribed from extracted text."
+    "notes": "2025 unified theory exam, Part III. Transcribed from extracted text.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
   },
   {
     "id": "2025-summer-math-stat-q4",
@@ -172,6 +182,8 @@
       "page": 14
     },
     "verified": false,
-    "notes": "2025 unified theory exam, Part IV (Stat 594). Transcribed from extracted text."
+    "notes": "2025 unified theory exam, Part IV (Stat 594). Transcribed from extracted text.",
+    "ai_audit": "pass",
+    "grading_type": "proof-rubric"
   }
 ]

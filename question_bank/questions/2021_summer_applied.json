@@ -31,7 +31,9 @@
       "page": 2
     },
     "verified": false,
-    "notes": "Prof. Zhiqiang Tan. Exam requires Problem 1 AND one of Problems 2-3. Self-contained simulation. Transcribed from extracted text."
+    "notes": "Prof. Zhiqiang Tan. Exam requires Problem 1 AND one of Problems 2-3. Self-contained simulation. Transcribed from extracted text.",
+    "ai_audit": "pass",
+    "grading_type": "data-analysis"
   },
   {
     "id": "2021-summer-applied-q2",
@@ -64,7 +66,9 @@
       "page": 5
     },
     "verified": false,
-    "notes": "Prof. Ying Hung. Self-contained simulation. Transcribed from extracted text."
+    "notes": "Prof. Ying Hung. Self-contained simulation. Transcribed from extracted text.",
+    "ai_audit": "pass",
+    "grading_type": "data-analysis"
   },
   {
     "id": "2021-summer-applied-q3",
@@ -102,6 +106,8 @@
     "notes": "Prof. Ying Hung. Dataset not in repo. Transcribed from extracted text.",
     "data": [
       "engine_experiment_data.txt — not distributed with the SharePoint PDF download"
-    ]
+    ],
+    "ai_audit": "pass",
+    "grading_type": "data-analysis"
   }
 ]

@@ -34,7 +34,9 @@
     "notes": "2025 unified applied exam, Problem 1. Prof. Zhiqiang Tan. Transcribed from extracted text.",
     "data": [
       "LAozone.data — not distributed with the SharePoint PDF download (Stat 596 ozone dataset)"
-    ]
+    ],
+    "ai_audit": "pass",
+    "grading_type": "data-analysis"
   },
   {
     "id": "2025-summer-applied-q2",
@@ -67,7 +69,9 @@
       "page": 3
     },
     "verified": false,
-    "notes": "2025 unified applied exam, Problem 2. Prof. Ying Hung. Self-contained simulation. Transcribed from extracted text."
+    "notes": "2025 unified applied exam, Problem 2. Prof. Ying Hung. Self-contained simulation. Transcribed from extracted text.",
+    "ai_audit": "pass",
+    "grading_type": "data-analysis"
   },
   {
     "id": "2025-summer-applied-q3",
@@ -103,6 +107,8 @@
     "notes": "2025 unified applied exam, Problem 3. Prof. Ying Hung. Transcribed from extracted text.",
     "data": [
       "DIAMOND dataset — not distributed with the SharePoint PDF download"
-    ]
+    ],
+    "ai_audit": "pass",
+    "grading_type": "data-analysis"
   }
 ]

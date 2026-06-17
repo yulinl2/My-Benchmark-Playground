@@ -19,7 +19,8 @@
 | Trajectories captured (free haiku pass) | 95 (`haiku-full-v1`) |
 | Total spend to date | **~$54** API (calib $7.6 · screen $46.4) · sub-agents session-billed |
 | Output tokens collected | 4.0M (screen) + 0.4M (haiku) |
-| `verified: true` entries | **0 / 95** (audit pending) |
+| AI-audit (vs source text) | **95/95 pass** (3 corrected) |
+| Human `verified` | 0 / 95 (reserved for human sign-off) |
 
 ---
 

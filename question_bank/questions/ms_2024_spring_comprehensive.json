@@ -22,7 +22,9 @@
       "page": 1
     },
     "verified": false,
-    "notes": "MS comprehensive. Transcribed with solution from answer key."
+    "notes": "MS comprehensive. Transcribed with solution from answer key.",
+    "ai_audit": "pass",
+    "grading_type": "numeric"
   },
   {
     "id": "2024-spring-applied-q2",
@@ -47,7 +49,9 @@
       "page": 3
     },
     "verified": false,
-    "notes": "MS comprehensive. Transcribed with solution from answer key."
+    "notes": "MS comprehensive. Transcribed with solution from answer key.",
+    "ai_audit": "pass",
+    "grading_type": "numeric"
   },
   {
     "id": "2024-spring-probability-q3",
@@ -72,7 +76,9 @@
       "page": 4
     },
     "verified": false,
-    "notes": "MS comprehensive. Transcribed with solution from answer key."
+    "notes": "MS comprehensive. Transcribed with solution from answer key.",
+    "ai_audit": "pass",
+    "grading_type": "numeric"
   },
   {
     "id": "2024-spring-math-stat-q4",
@@ -96,7 +102,9 @@
       "page": 5
     },
     "verified": false,
-    "notes": "MS comprehensive. Transcribed with solution from answer key."
+    "notes": "MS comprehensive. Transcribed with solution from answer key.",
+    "ai_audit": "pass",
+    "grading_type": "numeric"
   },
   {
     "id": "2024-spring-applied-q5",
@@ -120,7 +128,9 @@
       "page": 6
     },
     "verified": false,
-    "notes": "MS comprehensive. Transcribed with solution from answer key."
+    "notes": "MS comprehensive. Transcribed with solution from answer key.",
+    "ai_audit": "pass",
+    "grading_type": "numeric"
   },
   {
     "id": "2024-spring-applied-q6",
@@ -146,6 +156,8 @@
       "page": 6
     },
     "verified": false,
-    "notes": "MS comprehensive. Transcribed with solution from answer key."
+    "notes": "MS comprehensive. Transcribed with solution from answer key.",
+    "ai_audit": "pass",
+    "grading_type": "numeric"
   }
 ]
