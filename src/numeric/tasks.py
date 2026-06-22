@@ -39,12 +39,14 @@ def gather(N: int, d_v: int = 16, seed: int = 0) -> Instance:
     return Instance(V=V, E=E, Y_star=Y_star, A_star=P, pi=pi)
 
 
-def oracle_qk(inst: Instance, N: int):
+def oracle_qk(inst: Instance):
     """Oracle (Q, K) that make softmax logits exactly the permutation pattern.
 
     q_i = one-hot(pi(i)), k_j = one-hot(j)  ->  q_i . k_j = [j == pi(i)].
     Used to exhibit weights for which softmax attention achieves A ~ P_pi.
+    N is inferred from the embedding E = [own (N) | ptr (N)].
     """
+    N = inst.E.shape[1] // 2
     K = inst.E[:, :N]            # own-index one-hots
     Q = inst.E[:, N:]            # source-pointer one-hots
     return Q, K

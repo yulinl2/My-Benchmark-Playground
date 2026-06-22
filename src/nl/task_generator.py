@@ -17,9 +17,31 @@ import argparse, json, random
 WORDS = ("mango cedar violet quartz harbor lantern willow cobalt ember "
          "marble pewter saffron thicket clover bramble nectar gravel "
          "cinder tundra zephyr almond brisket cobweb dapple").split()
-CITIES = ("Lisbon Cairo Oslo Tokyo Lima Accra Hanoi Quito Riga Doha Sofia "
-          "Tunis Minsk Dakar Amman Bogota Manila Vienna Nassau Maputo").split()
-NAMES = list("abcdefghijklmnopqrstuvwxyz")
+REAL_CITIES = ("Lisbon Cairo Oslo Tokyo Lima Accra Hanoi Quito Riga Doha Sofia "
+               "Tunis Minsk Dakar Amman Bogota Manila Vienna Nassau Maputo"
+               ).split()
+BASE_NAMES = list("abcdefghijklmnopqrstuvwxyz")
+
+
+def city_pool(n: int) -> list[str]:
+    """>= n distinct city-like tokens (real ones first, then synthetic), so the
+    requested instance size N is always honored deterministically."""
+    pool = list(REAL_CITIES)
+    i = 0
+    while len(pool) < n:
+        pool.append(f"Sector{i:04d}")
+        i += 1
+    return pool
+
+
+def name_pool(n: int) -> list[str]:
+    """>= n distinct variable names (single letters first, then synthetic)."""
+    pool = list(BASE_NAMES)
+    i = 0
+    while len(pool) < n:
+        pool.append(f"v{i:03d}")
+        i += 1
+    return pool
 
 
 def _code(rng):
@@ -49,14 +71,17 @@ def gather_nl(N: int, seed: int = 0) -> dict:
 def mqar_nl(N: int, k: int, seed: int = 0) -> dict:
     """In-context dictionary: N facts (k queried), then k questions."""
     rng = random.Random(seed)
-    cities = rng.sample(CITIES, k)
+    assert k <= N, "need at least k facts"
+    pool = city_pool(N)                         # ensures >= N distinct cities
+    cities = rng.sample(pool, k)
     codes = {c: _code(rng) for c in cities}
-    # distractor facts to pad to N total facts
-    pad_cities = [c for c in CITIES if c not in cities]
+    # distractor facts to pad to exactly N total facts
+    pad_cities = [c for c in pool if c not in cities]
     rng.shuffle(pad_cities)
     facts = [(c, codes[c]) for c in cities]
-    for c in pad_cities[: max(0, N - k)]:
+    for c in pad_cities[: N - k]:
         facts.append((c, _code(rng)))
+    assert len(facts) == N, (len(facts), N)
     rng.shuffle(facts)
     fact_lines = "\n".join(f"- The access code for {c} is {code}."
                            for c, code in facts)
@@ -78,7 +103,9 @@ def chain_nl(N: int, L: int, seed: int = 0) -> dict:
     """Variable-tracking: resolve a query var through an indirection chain of
     length L, among N total assignments (rest are distractors)."""
     rng = random.Random(seed)
-    chain_vars = rng.sample(NAMES, L + 1)               # v0 -> v1 -> ... -> vL
+    N = max(N, L + 1)
+    pool = name_pool(N)                                 # ensures >= N names
+    chain_vars = rng.sample(pool, L + 1)               # v0 -> v1 -> ... -> vL
     literal = rng.randint(10, 99)
     stmts = []
     # v0 = v1, v1 = v2, ..., v_{L-1} = vL, vL = literal
@@ -86,10 +113,11 @@ def chain_nl(N: int, L: int, seed: int = 0) -> dict:
         stmts.append(f"Let {a} = {b}.")
     stmts.append(f"Let {chain_vars[-1]} = {literal}.")
     # distractors: assignments among other names to other literals
-    others = [n for n in NAMES if n not in chain_vars]
+    others = [n for n in pool if n not in chain_vars]
     rng.shuffle(others)
-    for n in others[: max(0, N - (L + 1))]:
+    for n in others[: N - (L + 1)]:
         stmts.append(f"Let {n} = {rng.randint(10, 99)}.")
+    assert len(stmts) == N, (len(stmts), N)
     rng.shuffle(stmts)
     body = "  ".join(stmts)
     query = chain_vars[0]
@@ -132,6 +160,6 @@ if __name__ == "__main__":
         here = os.path.dirname(__file__)
         out = os.path.join(here, "..", "..", "results", "nl")
         os.makedirs(out, exist_ok=True)
-        with open(os.path.join(out, "suite.json"), "w") as f:
+        with open(os.path.join(out, "suite.json"), "w", encoding="utf-8") as f:
             json.dump(suite, f, indent=2)
         print(f"wrote {len(suite)} instances to results/nl/suite.json")

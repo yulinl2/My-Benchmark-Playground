@@ -7,7 +7,12 @@ For `Gather(N)`, optimal attention `A* = P_pi` has `rank = N`. A fixed linear he
 with capacity `H*m = 8` is rank-bounded, so its relative gather error has a floor
 `= 1 - Hm/N` (Eckart–Young). Softmax (logits `= beta*P_pi`) drives error to 0.
 
-| N | rank(A*) | Eckart–Young rel.err² (=1−Hm/N) | linear optimal rel.err | softmax (β=30) |
+`EckartYoung` is the rigorous lower bound on *any* rank-≤Hm map (singular-values
+only → deterministic); `concrete rel.err` is one deterministic rank-≤Hm map
+(P_pi with all but its first Hm columns zeroed, no SVD) — an achievable point
+that necessarily sits at or above the floor.
+
+| N | rank(A*) | Eckart–Young rel.err² (=1−Hm/N) | concrete rank-Hm rel.err | softmax (β=30) |
 |---|---|---|---|---|
 | 8 | 8 | 0.000 | 0.000 | 0.000000 |
 | 16 | 16 | 0.500 | 0.707 | 0.000000 |
@@ -22,17 +27,19 @@ Softmax error vs temperature (N=64): β=1 → 0.96, β=3 → 0.76, β=10 → 0.0
 
 ### Predictions P1/P2 — `train_curves.json`
 A single TRAINED softmax head (weights fixed after training) generalizes to
-held-out permutations; the OPTIMAL linear head (rank-`m` truncation, an upper
-bound on any trained linear head) collapses as `m/N`.
+held-out permutations; a CONCRETE deterministic rank-`m` map (an illustrative
+proxy, *not* a proven upper bound over all linear heads) collapses as `m/N`. The
+rigorous separation is the Frobenius-error bound above; this argmax curve is its
+intuitive companion.
 
-| N | softmax acc (held-out perms) | linear best acc | predicted floor 1−m/N |
+| N | softmax acc (held-out perms) | linear rank-m (concrete) acc | predicted floor 1−m/N |
 |---|---|---|---|
 | 8 | 1.000 | 1.000 | 0.000 |
 | 16 | 1.000 | 0.500 | 0.500 |
 | 32 | 1.000 | 0.250 | 0.750 |
 | 64 | 1.000 | 0.125 | 0.875 |
 
-Linear best accuracy `= m/N` exactly; softmax stays at 1.0. **Separation confirmed.**
+Concrete rank-m accuracy `= m/N`; softmax stays at 1.0. **Separation confirmed.**
 
 ## Tier 2 — NL self-containedness audit on Haiku — `haiku_verification.json`
 
@@ -42,8 +49,8 @@ prompt-only), graded deterministically:
 | Task | difficulties | accuracy |
 |---|---|---|
 | gather | N ∈ {8,16,32} | **1.00** |
-| mqar | k ∈ {4,8,16} | **1.00** |
-| chain | L ∈ {3,6,10} | **1.00** |
+| mqar | N=40, k ∈ {4,8,16} | **1.00** |
+| chain | N=30, L ∈ {3,6,10} | **1.00** |
 
 Interpretation: the NL lifts are genuinely solvable from the prompt alone by a
 random-access (softmax) model — the precondition for the architectural separation

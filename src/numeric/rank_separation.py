@@ -14,17 +14,24 @@ from tasks import gather
 
 
 def best_rankr_error(P: np.ndarray, r: int) -> float:
-    """Relative Frobenius error of the best rank-r approximation of P."""
+    """Eckart-Young LOWER bound on the relative Frobenius error of ANY rank-<=r
+    approximation of P. Uses only the singular VALUES of P (not the singular
+    vectors), so it is deterministic and version-independent even though P's SVD
+    basis is non-unique (a permutation has all singular values equal to 1)."""
     s = np.linalg.svd(P, compute_uv=False)
     err2 = float((s[r:] ** 2).sum())
     return err2 / float((s ** 2).sum())
 
 
-def linear_optimal_gather_error(P: np.ndarray, V: np.ndarray, r: int) -> float:
-    """Best achievable relative gather error ||A V - P V||/||P V|| over all
-    rank-<=r attention maps A (achieved by truncated SVD of P)."""
-    U, s, Vt = np.linalg.svd(P)
-    A = (U[:, :r] * s[:r]) @ Vt[:r]      # rank-r truncation of P
+def concrete_rankr_gather_error(P: np.ndarray, V: np.ndarray, r: int) -> float:
+    """Relative gather error of a CONCRETE, deterministic rank-<=r routing map:
+    P with all but its first r columns zeroed (a sub-permutation, rank <= r). No
+    SVD is used, so the result is reproducible across LAPACK/numpy builds. This is
+    one achievable rank-r map; its error necessarily sits at or above the
+    Eckart-Young lower bound, illustrating that a sensible low-rank routing still
+    fails. (It is not claimed to be the optimal rank-r map.)"""
+    A = P.copy()
+    A[:, r:] = 0.0
     num = np.linalg.norm(A @ V - P @ V)
     den = np.linalg.norm(P @ V)
     return float(num / den)
@@ -42,17 +49,17 @@ def main():
     Hm = 8   # one head, feature dim 8 (the fixed linear capacity)
     print(f"Linear capacity H*m = {Hm}\n")
     print(f"{'N':>5} {'rank(A*)':>9} {'EckartYoung':>12} {'1-Hm/N':>9} "
-          f"{'lin_opt_err':>12} {'softmax(b=30)':>14}")
+          f"{'concrete_err':>12} {'softmax(b=30)':>14}")
     for N in [8, 16, 32, 64, 128, 256]:
         inst = gather(N, d_v=16, seed=N)
         P, V = inst.A_star, inst.V
         ey = best_rankr_error(P, min(Hm, N))      # = (N-Hm)/N for N>=Hm
         floor = max(0.0, 1.0 - Hm / N)
-        lin = linear_optimal_gather_error(P, V, min(Hm, N))
+        lin = concrete_rankr_gather_error(P, V, min(Hm, N))
         sm = softmax_gather_error(P, V, beta=30.0)
         out["linear_rank_floor"].append(
-            {"N": N, "rank_A_star": matrix_rank(P), "eckart_young_rel": ey,
-             "one_minus_Hm_over_N": floor, "linear_optimal_rel_err": lin,
+            {"N": N, "rank_A_star": matrix_rank(P), "eckart_young_lower_rel": ey,
+             "one_minus_Hm_over_N": floor, "concrete_rankr_rel_err": lin,
              "softmax_rel_err_beta30": sm})
         print(f"{N:>5} {matrix_rank(P):>9} {ey:>12.4f} {floor:>9.4f} "
               f"{lin:>12.4f} {sm:>14.6f}")

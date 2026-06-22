@@ -31,13 +31,19 @@ SOLVER_TEMPLATE = (
 def aggregate(records: list[dict]) -> dict:
     """records: [{task, meta, response, ...}] -> per-task accuracy table."""
     here = os.path.dirname(__file__)
-    suite = json.load(open(os.path.join(here, "..", "..",
-                                        "results", "nl", "suite.json")))
+    with open(os.path.join(here, "..", "..", "results", "nl", "suite.json"),
+              encoding="utf-8") as f:
+        suite = json.load(f)
     by_key = {(s["task"], json.dumps(s["meta"], sort_keys=True)): s
               for s in suite}
     rows, buckets = [], defaultdict(list)
     for r in records:
         key = (r["task"], json.dumps(r["meta"], sort_keys=True))
+        if key not in by_key:
+            raise KeyError(
+                f"recorded response {key} has no matching instance in "
+                f"suite.json; regenerate the suite (task_generator.py --dump) "
+                f"and re-run the solver so responses and suite stay in sync.")
         inst = by_key[key]
         score = grade(r["response"], inst)
         rows.append({"task": r["task"], "meta": r["meta"], "score": score})
@@ -52,11 +58,13 @@ if __name__ == "__main__":
     path = sys.argv[1] if len(sys.argv) > 1 else os.path.join(
         os.path.dirname(__file__), "..", "..", "results", "nl",
         "haiku_responses.json")
-    records = json.load(open(path))["records"]
+    with open(path, encoding="utf-8") as f:
+        records = json.load(f)["records"]
     out = aggregate(records)
     here = os.path.dirname(__file__)
     dst = os.path.join(here, "..", "..", "results", "nl",
                        "haiku_verification.json")
-    json.dump(out, open(dst, "w"), indent=2)
+    with open(dst, "w", encoding="utf-8") as f:
+        json.dump(out, f, indent=2)
     print(json.dumps(out["per_task_accuracy"], indent=2))
     print(f"wrote {dst}")
