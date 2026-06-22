@@ -1,0 +1,185 @@
+[
+  {
+    "task": "gather",
+    "prompt": "You are given a list of labeled lines and an output order.\nLines:\n[1] harbor\n[2] cobweb\n[3] violet\n[4] brisket\n[5] thicket\n[6] dapple\n[7] ember\n[8] thicket\n\nOutput order (line numbers): 6, 8, 7, 5, 2, 3, 1, 4\n\nTask: print the CONTENTS of the lines in exactly the given output order, one word per line, nothing else.",
+    "answer": "dapple\nthicket\nember\nthicket\ncobweb\nviolet\nharbor\nbrisket",
+    "answer_list": [
+      "dapple",
+      "thicket",
+      "ember",
+      "thicket",
+      "cobweb",
+      "violet",
+      "harbor",
+      "brisket"
+    ],
+    "meta": {
+      "N": 8,
+      "seed": 108
+    }
+  },
+  {
+    "task": "gather",
+    "prompt": "You are given a list of labeled lines and an output order.\nLines:\n[1] dapple\n[2] zephyr\n[3] cinder\n[4] dapple\n[5] marble\n[6] mango\n[7] almond\n[8] quartz\n[9] dapple\n[10] harbor\n[11] nectar\n[12] nectar\n[13] cobalt\n[14] ember\n[15] clover\n[16] tundra\n\nOutput order (line numbers): 7, 3, 11, 12, 5, 1, 4, 15, 9, 6, 13, 8, 2, 10, 16, 14\n\nTask: print the CONTENTS of the lines in exactly the given output order, one word per line, nothing else.",
+    "answer": "almond\ncinder\nnectar\nnectar\nmarble\ndapple\ndapple\nclover\ndapple\nmango\ncobalt\nquartz\nzephyr\nharbor\ntundra\nember",
+    "answer_list": [
+      "almond",
+      "cinder",
+      "nectar",
+      "nectar",
+      "marble",
+      "dapple",
+      "dapple",
+      "clover",
+      "dapple",
+      "mango",
+      "cobalt",
+      "quartz",
+      "zephyr",
+      "harbor",
+      "tundra",
+      "ember"
+    ],
+    "meta": {
+      "N": 16,
+      "seed": 116
+    }
+  },
+  {
+    "task": "gather",
+    "prompt": "You are given a list of labeled lines and an output order.\nLines:\n[1] clover\n[2] harbor\n[3] clover\n[4] cedar\n[5] lantern\n[6] cedar\n[7] marble\n[8] quartz\n[9] cinder\n[10] mango\n[11] cobalt\n[12] bramble\n[13] ember\n[14] willow\n[15] bramble\n[16] lantern\n[17] brisket\n[18] tundra\n[19] thicket\n[20] cobalt\n[21] cobweb\n[22] brisket\n[23] nectar\n[24] zephyr\n[25] cinder\n[26] zephyr\n[27] cinder\n[28] saffron\n[29] thicket\n[30] tundra\n[31] pewter\n[32] willow\n\nOutput order (line numbers): 7, 14, 29, 21, 15, 24, 16, 30, 4, 8, 1, 11, 31, 13, 6, 9, 10, 23, 28, 32, 19, 3, 25, 17, 22, 12, 26, 27, 20, 2, 18, 5\n\nTask: print the CONTENTS of the lines in exactly the given output order, one word per line, nothing else.",
+    "answer": "marble\nwillow\nthicket\ncobweb\nbramble\nzephyr\nlantern\ntundra\ncedar\nquartz\nclover\ncobalt\npewter\nember\ncedar\ncinder\nmango\nnectar\nsaffron\nwillow\nthicket\nclover\ncinder\nbrisket\nbrisket\nbramble\nzephyr\ncinder\ncobalt\nharbor\ntundra\nlantern",
+    "answer_list": [
+      "marble",
+      "willow",
+      "thicket",
+      "cobweb",
+      "bramble",
+      "zephyr",
+      "lantern",
+      "tundra",
+      "cedar",
+      "quartz",
+      "clover",
+      "cobalt",
+      "pewter",
+      "ember",
+      "cedar",
+      "cinder",
+      "mango",
+      "nectar",
+      "saffron",
+      "willow",
+      "thicket",
+      "clover",
+      "cinder",
+      "brisket",
+      "brisket",
+      "bramble",
+      "zephyr",
+      "cinder",
+      "cobalt",
+      "harbor",
+      "tundra",
+      "lantern"
+    ],
+    "meta": {
+      "N": 32,
+      "seed": 132
+    }
+  },
+  {
+    "task": "mqar",
+    "prompt": "Use only the facts below.\nFacts:\n- The access code for Tunis is 9UY.\n- The access code for Riga is H8R.\n- The access code for Lima is 4VZ.\n- The access code for Vienna is NZG.\n- The access code for Oslo is 6AL.\n- The access code for Minsk is SWM.\n- The access code for Cairo is 0UY.\n- The access code for Dakar is PZ4.\n- The access code for Maputo is C48.\n- The access code for Manila is BVJ.\n- The access code for Sofia is UUL.\n- The access code for Accra is U2V.\n- The access code for Hanoi is S4U.\n- The access code for Quito is S1J.\n- The access code for Tokyo is PPK.\n- The access code for Bogota is PVJ.\n- The access code for Amman is RRP.\n- The access code for Nassau is T7R.\n- The access code for Doha is Z28.\n- The access code for Lisbon is UUR.\n\nQuestions:\n1. access code for Hanoi?\n2. access code for Minsk?\n3. access code for Oslo?\n4. access code for Lima?\n\nAnswer with one line per question as 'N. CODE', nothing else.",
+    "answer": "1. S4U\n2. SWM\n3. 6AL\n4. 4VZ",
+    "answer_map": {
+      "Hanoi": "S4U",
+      "Minsk": "SWM",
+      "Oslo": "6AL",
+      "Lima": "4VZ"
+    },
+    "meta": {
+      "N": 20,
+      "k": 4,
+      "seed": 204
+    }
+  },
+  {
+    "task": "mqar",
+    "prompt": "Use only the facts below.\nFacts:\n- The access code for Amman is PE9.\n- The access code for Accra is U2K.\n- The access code for Lima is FP6.\n- The access code for Bogota is V1B.\n- The access code for Doha is F3X.\n- The access code for Cairo is 9RK.\n- The access code for Vienna is W1Q.\n- The access code for Lisbon is C2U.\n- The access code for Riga is VGV.\n- The access code for Nassau is 8FU.\n- The access code for Manila is NSB.\n- The access code for Dakar is E9R.\n- The access code for Tokyo is 255.\n- The access code for Hanoi is 8EK.\n- The access code for Oslo is 8F9.\n- The access code for Quito is NPF.\n- The access code for Sofia is RBT.\n- The access code for Minsk is WZN.\n- The access code for Maputo is QGD.\n- The access code for Tunis is QBH.\n\nQuestions:\n1. access code for Manila?\n2. access code for Hanoi?\n3. access code for Maputo?\n4. access code for Dakar?\n5. access code for Riga?\n6. access code for Doha?\n7. access code for Amman?\n8. access code for Cairo?\n\nAnswer with one line per question as 'N. CODE', nothing else.",
+    "answer": "1. NSB\n2. 8EK\n3. QGD\n4. E9R\n5. VGV\n6. F3X\n7. PE9\n8. 9RK",
+    "answer_map": {
+      "Manila": "NSB",
+      "Hanoi": "8EK",
+      "Maputo": "QGD",
+      "Dakar": "E9R",
+      "Riga": "VGV",
+      "Doha": "F3X",
+      "Amman": "PE9",
+      "Cairo": "9RK"
+    },
+    "meta": {
+      "N": 20,
+      "k": 8,
+      "seed": 208
+    }
+  },
+  {
+    "task": "mqar",
+    "prompt": "Use only the facts below.\nFacts:\n- The access code for Tunis is 4HS.\n- The access code for Lima is DVP.\n- The access code for Hanoi is THV.\n- The access code for Manila is SGG.\n- The access code for Vienna is 0QZ.\n- The access code for Accra is 826.\n- The access code for Lisbon is HZJ.\n- The access code for Minsk is ELV.\n- The access code for Amman is YCH.\n- The access code for Cairo is LJD.\n- The access code for Maputo is QX7.\n- The access code for Bogota is W23.\n- The access code for Doha is AJJ.\n- The access code for Sofia is JWX.\n- The access code for Riga is 0AS.\n- The access code for Tokyo is VGX.\n- The access code for Nassau is YQK.\n- The access code for Quito is N55.\n- The access code for Dakar is H19.\n- The access code for Oslo is 7JW.\n\nQuestions:\n1. access code for Accra?\n2. access code for Maputo?\n3. access code for Dakar?\n4. access code for Doha?\n5. access code for Manila?\n6. access code for Bogota?\n7. access code for Nassau?\n8. access code for Lisbon?\n9. access code for Cairo?\n10. access code for Vienna?\n11. access code for Quito?\n12. access code for Riga?\n13. access code for Tokyo?\n14. access code for Amman?\n15. access code for Hanoi?\n16. access code for Lima?\n\nAnswer with one line per question as 'N. CODE', nothing else.",
+    "answer": "1. 826\n2. QX7\n3. H19\n4. AJJ\n5. SGG\n6. W23\n7. YQK\n8. HZJ\n9. LJD\n10. 0QZ\n11. N55\n12. 0AS\n13. VGX\n14. YCH\n15. THV\n16. DVP",
+    "answer_map": {
+      "Accra": "826",
+      "Maputo": "QX7",
+      "Dakar": "H19",
+      "Doha": "AJJ",
+      "Manila": "SGG",
+      "Bogota": "W23",
+      "Nassau": "YQK",
+      "Lisbon": "HZJ",
+      "Cairo": "LJD",
+      "Vienna": "0QZ",
+      "Quito": "N55",
+      "Riga": "0AS",
+      "Tokyo": "VGX",
+      "Amman": "YCH",
+      "Hanoi": "THV",
+      "Lima": "DVP"
+    },
+    "meta": {
+      "N": 20,
+      "k": 16,
+      "seed": 216
+    }
+  },
+  {
+    "task": "chain",
+    "prompt": "Let r = 96.  Let c = 30.  Let u = 85.  Let q = 14.  Let w = 42.  Let g = 21.  Let f = 29.  Let j = 23.  Let v = 77.  Let y = 53.  Let o = 39.  Let h = x.  Let k = 47.  Let t = 99.  Let i = 99.  Let d = 89.  Let m = 36.  Let x = g.  Let a = 37.  Let s = 10.  Let p = 41.  Let z = 77.  Let e = 45.  Let b = h.  Let l = 93.  Let n = 62.\n\nQuestion: What is the integer value of b? Answer with only the integer.",
+    "answer": "21",
+    "meta": {
+      "N": 30,
+      "L": 3,
+      "seed": 303
+    }
+  },
+  {
+    "task": "chain",
+    "prompt": "Let o = 77.  Let i = t.  Let h = 87.  Let f = 81.  Let n = q.  Let k = 45.  Let c = 45.  Let x = z.  Let s = 46.  Let e = 61.  Let r = 78.  Let g = i.  Let l = 84.  Let b = 73.  Let m = 99.  Let j = 16.  Let t = x.  Let v = 50.  Let y = 11.  Let w = 43.  Let d = 52.  Let q = g.  Let p = 66.  Let z = 58.  Let a = 88.  Let u = 38.\n\nQuestion: What is the integer value of n? Answer with only the integer.",
+    "answer": "58",
+    "meta": {
+      "N": 30,
+      "L": 6,
+      "seed": 306
+    }
+  },
+  {
+    "task": "chain",
+    "prompt": "Let v = i.  Let t = 48.  Let d = 16.  Let p = 22.  Let y = 70.  Let b = 47.  Let l = k.  Let f = j.  Let j = s.  Let c = g.  Let e = 62.  Let z = 57.  Let o = 49.  Let r = c.  Let s = q.  Let g = v.  Let w = 21.  Let q = l.  Let h = 21.  Let i = f.  Let x = 82.  Let a = 94.  Let m = 90.  Let k = 70.  Let u = 97.  Let n = 67.\n\nQuestion: What is the integer value of r? Answer with only the integer.",
+    "answer": "70",
+    "meta": {
+      "N": 30,
+      "L": 10,
+      "seed": 310
+    }
+  }
+]

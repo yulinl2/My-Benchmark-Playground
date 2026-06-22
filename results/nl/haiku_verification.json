@@ -1,0 +1,88 @@
+{
+  "model": "claude-haiku (in-session sub-agent)",
+  "rows": [
+    {
+      "task": "gather",
+      "meta": {
+        "N": 8,
+        "seed": 108
+      },
+      "score": 1.0
+    },
+    {
+      "task": "gather",
+      "meta": {
+        "N": 16,
+        "seed": 116
+      },
+      "score": 1.0
+    },
+    {
+      "task": "gather",
+      "meta": {
+        "N": 32,
+        "seed": 132
+      },
+      "score": 1.0
+    },
+    {
+      "task": "mqar",
+      "meta": {
+        "N": 20,
+        "k": 4,
+        "seed": 204
+      },
+      "score": 1.0
+    },
+    {
+      "task": "mqar",
+      "meta": {
+        "N": 20,
+        "k": 8,
+        "seed": 208
+      },
+      "score": 1.0
+    },
+    {
+      "task": "mqar",
+      "meta": {
+        "N": 20,
+        "k": 16,
+        "seed": 216
+      },
+      "score": 1.0
+    },
+    {
+      "task": "chain",
+      "meta": {
+        "N": 30,
+        "L": 3,
+        "seed": 303
+      },
+      "score": 1.0
+    },
+    {
+      "task": "chain",
+      "meta": {
+        "N": 30,
+        "L": 6,
+        "seed": 306
+      },
+      "score": 1.0
+    },
+    {
+      "task": "chain",
+      "meta": {
+        "N": 30,
+        "L": 10,
+        "seed": 310
+      },
+      "score": 1.0
+    }
+  ],
+  "per_task_accuracy": {
+    "gather": 1.0,
+    "mqar": 1.0,
+    "chain": 1.0
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "linear_feature_dim_m": 8,
+  "rows": [
+    {
+      "N": 8,
+      "softmax_heldout_acc": 1.0,
+      "linear_best_acc": 1.0,
+      "predicted_rank_floor_err": 0.0
+    },
+    {
+      "N": 16,
+      "softmax_heldout_acc": 1.0,
+      "linear_best_acc": 0.5,
+      "predicted_rank_floor_err": 0.5
+    },
+    {
+      "N": 32,
+      "softmax_heldout_acc": 1.0,
+      "linear_best_acc": 0.25,
+      "predicted_rank_floor_err": 0.75
+    },
+    {
+      "N": 64,
+      "softmax_heldout_acc": 1.0,
+      "linear_best_acc": 0.125,
+      "predicted_rank_floor_err": 0.875
+    }
+  ]
+}
