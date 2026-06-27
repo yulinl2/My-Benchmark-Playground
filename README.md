@@ -42,10 +42,11 @@ than a single hand-picked example.
 | `docs/00_research_proposal.md` | The full proposal: question, formalization, the two separation theorems (rank bound + recurrent-state communication bound), and the falsifiable predictions. |
 | `docs/01_task_family_spec.md`  | Formal definitions of the task family `T(N, k, ρ)` and its three concrete members (Gather/Permute, MQAR, Chain-Tracking). |
 | `docs/02_experimental_plan.md` | Numeric experiments, NL lift, and the Haiku sub-agent verification protocol. |
-| `docs/03_related_work.md`      | Literature anchors (linear attention, SSMs, MQAR/Zoology/Based, expressivity/communication lower bounds) and what is novel here. |
-| `src/numeric/`                 | numpy implementations: softmax vs. linear attention, the task generators, training/eval, and the analytic rank-separation demo. |
-| `src/nl/`                      | NL task generators + grader, and the sub-agent verification harness spec. |
-| `results/`                     | Committed outputs of the runs (numeric `.json`, NL `.json`). |
+| `docs/03_related_work.md`      | Literature anchors (linear attention, SSMs, MQAR/Zoology/Based, expressivity/communication lower bounds) with verified arXiv ids, and what is novel here. |
+| `docs/04_findings_generalization.md` | What is established so far: seven-family generator (breadth), multi-layer numeric result, and the Haiku scaling-sweep fingerprint (depth). |
+| `src/numeric/`                 | numpy: softmax vs. linear attention, generators with closed-form `A*`, the rank-separation proof (`rank_separation.py`), trained curves (`train.py`), and the multi-layer demo (`depth_separation.py`). |
+| `src/nl/`                      | NL generators (`task_generator.py` + `extra_tasks.py`), graders, the base-suite Haiku harness (`run_haiku_verification.py`), and the scaling sweep (`sweep.py`). |
+| `results/`                     | Committed run outputs (numeric `.json`, NL `.json`, `sweep_results.json`) + `RESULTS.md`. |
 
 ## Quick start
 

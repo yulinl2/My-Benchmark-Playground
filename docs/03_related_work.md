@@ -1,27 +1,36 @@
 # Related Work & Positioning
 
-Anchors for each pillar of the argument, and what is new here. (Citations are by
-author/title; arXiv ids to be filled during literature pass — flagged `[id?]`.)
+Anchors for each pillar of the argument, and what is new here. arXiv ids verified
+during the literature pass (June 2026).
 
 ## Linear / kernelized attention and SSMs
-- **Katharopoulos et al., 2020 — "Transformers are RNNs."** Establishes the
-  feature-map form `φ(q)^⊤φ(k)` and the equivalent linear-RNN recurrence with
-  fixed-size state. This is the object Theorem II constrains.
-- **RetNet, RWKV, GLA, "Based" (Arora et al.).** Modern linear-attention/SSM
-  variants; all carry an `N`-independent state, which is the property we exploit.
-- **Mamba / S4 (Gu et al.).** Selective SSMs; input-dependent gating softens but
-  does not remove the fixed-state bottleneck — still `O(state)` bits at the
-  prefix boundary, so Theorem II still applies (with a larger constant).
+- **Katharopoulos, Vyas, Pappas, Fleuret, 2020 — "Transformers are RNNs: Fast
+  Autoregressive Transformers with Linear Attention"** (arXiv:2006.16236).
+  Establishes the feature-map form `φ(q)^⊤φ(k)` and the equivalent linear-RNN
+  recurrence with fixed-size state — the object Theorem II constrains.
+- **RWKV (Peng et al., arXiv:2305.13048), RetNet (Sun et al., arXiv:2307.08621),
+  Gated Linear Attention (Yang et al., arXiv:2312.06635), "Based" (Arora et al.,
+  arXiv:2402.18668).** Modern linear-attention/SSM variants; all carry an
+  `N`-independent recurrent state, the property we exploit. Based explicitly
+  frames a **recall–throughput tradeoff** governed by state size — the empirical
+  shadow of our lower bound.
+- **Mamba / S4 (Gu & Dao, arXiv:2312.00752).** Selective SSMs; input-dependent
+  gating softens but does not remove the fixed-state bottleneck — still
+  `O(state)` bits at the prefix boundary, so Theorem II still applies (larger
+  constant).
 
 ## Associative recall as a separation diagnostic
-- **Arora et al. — "Zoology: Measuring and Improving Recall in Efficient Language
-  Models"** and the **MQAR** task. Empirically and theoretically: gap between
-  attention and gated-convolution/SSM models on recall scales with the number of
-  KV pairs; SSMs need state `∝ k`. We adopt MQAR as a literature anchor and
-  generalize it to the single-knob `Gather(N)` permutation kernel.
-- **Olsson et al. — "In-context Learning and Induction Heads."** Induction heads
-  are the softmax mechanism that solves copy/recall; explains *why* softmax
-  realizes the one-hot routing our `A*` requires.
+- **Arora et al., 2023 — "Zoology: Measuring and Improving Recall in Efficient
+  Language Models"** (arXiv:2312.04927) and the **MQAR** task. Across 17 models,
+  ~82% of the attention-vs-gated-convolution quality gap is explained by
+  in-context recall; the gap scales with the number of KV pairs and SSMs need
+  state `∝ k`. We adopt MQAR as a literature anchor and generalize it to the
+  single-knob `Gather(N)` permutation kernel.
+- **Olsson et al., 2022 — "In-context Learning and Induction Heads"**
+  (arXiv:2209.11895). Induction heads are the softmax mechanism that solves
+  copy/recall; explains *why* softmax realizes the one-hot routing our `A*`
+  requires. Consistent with our sweep: Haiku stays ~perfect on recall (mqar/chain/
+  kv) even at high difficulty.
 
 ## Expressivity / approximation theory of attention
 - **Eckart–Young–Mirsky theorem.** The exact tool behind Theorem I: best rank-`r`
@@ -30,10 +39,12 @@ author/title; arXiv ids to be filled during literature pass — flagged `[id?]`.
   INDEX / set-disjointness flavored arguments). The backbone of Theorem II:
   fixed-state sequence models are streaming algorithms; recall of a random
   permutation requires `Ω(N log N)` bits at the prefix cut.
-- **Sanford, Hsu, Telgarsky — "Representational Strengths and Limitations of
-  Transformers"** and related depth/width separations for attention. Companion
-  results showing softmax attention's representational power on
-  sparse/selection tasks; complements our linear-side lower bound.
+- **Sanford, Hsu, Telgarsky, 2023 — "Representational Strengths and Limitations of
+  Transformers"** (arXiv:2306.02896). Directly relevant: their sparse-averaging
+  (softmax cheap) vs. triple-detection (linear cost) separations use **the same
+  communication-complexity proof technique** that powers our Theorem II, and they
+  argue communication complexity is *the* lens for these models. Strong external
+  support for both the positive (softmax) and negative (fixed-state) sides.
 
 ## Long-context evaluation
 - **Needle-in-a-Haystack; RULER; LongBench.** Existing long-context benchmarks.

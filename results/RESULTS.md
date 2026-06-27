@@ -59,10 +59,40 @@ in `haiku_responses.json`.) This is a positive control, **not** a test of linear
 attention; the decisive cross-architecture run on open SSM/linear checkpoints is
 Tier 3 in `docs/02_experimental_plan.md`.
 
+## Tier 1b — Depth: multiple layers don't rescue linear — `depth_separation.json`
+
+Two-hop Gather (`T = P₂P₁`, rank N). Product of L rank-≤m row-stochastic maps
+stays rank ≤ m (8→8→5→1 for L=1,2,4,8 at m=8). Depth-2 softmax solves to ~0;
+depth-2 frozen linear stays at/above the floor:
+
+| N | softmax err | linear err | 1−Hm/N |
+|---|---|---|---|
+| 16 | 0.000000 | 0.876 | 0.500 |
+| 32 | 0.000000 | 0.980 | 0.750 |
+| 64 | 0.000000 | 1.000 | 0.875 |
+| 128 | 0.000000 | 1.000 | 0.938 |
+
+## Tier 2b — Haiku scaling sweep (degradation fingerprint, P3) — `sweep_results.json`
+
+Seven families, 27 instances, increasing difficulty, in-session Haiku sub-agents.
+Two regimes (full analysis in `docs/04_findings_generalization.md`):
+
+- **Recall-robust — softmax stays flat** (cleanest separation vs fixed-state):
+  `mqar` k16–k128 ≈ **1.00** (N≤256); `chain` L8–L64 **1.00**; `kv_lastwrite`
+  keys32–128 0.94–**1.00** (N≤384).
+- **High-rank-output — softmax degrades with N** (the P3 fingerprint, not a
+  small-N floor): `gather` 1.00→0.59→0.22 (N=64,128,256); `selective_copy`
+  1.00→0.81→0.09; `sort_by_key` 0.81→0.22→0.02 (N=32,64,128);
+  `multihop_map` 1.00,1.00,**0.00** (t=8,16,32, a deep-composition cliff).
+
 ## Reproduce
 ```bash
 python3 src/numeric/rank_separation.py
 python3 src/numeric/train.py
-python3 src/nl/task_generator.py --dump        # regenerate the suite
-python3 src/nl/run_haiku_verification.py        # grade recorded Haiku responses
+python3 src/numeric/depth_separation.py
+python3 src/nl/task_generator.py --dump        # regenerate the base suite
+python3 src/nl/extra_tasks.py --demo           # the four new families
+python3 src/nl/run_haiku_verification.py        # grade recorded base-suite responses
+python3 src/nl/sweep.py --emit <dir>            # emit sweep prompt files + spec
+python3 src/nl/sweep.py --grade-dir <dir>       # grade sweep answer files
 ```
