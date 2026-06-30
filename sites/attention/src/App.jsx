@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react'
-import { LineChart, GroupedBars, Legend } from './components/charts.jsx'
+import { LineChart, GroupedBars, Legend, Heatmap } from './components/charts.jsx'
 import { FAMILIES } from './generators.js'
 import rankSep from './data/rank_separation.json'
 import trainCurves from './data/train_curves.json'
@@ -13,6 +13,7 @@ const numIn = s => { const m = String(s).match(/\d+/); return m ? +m[0] : 0 }
 const SECTIONS = [
   { id: 'overview', grp: 'Start', label: 'Overview' },
   { id: 'theory', grp: 'The claim', label: 'Theory & rank explorer' },
+  { id: 'matrices', grp: 'The claim', label: 'Attention matrices' },
   { id: 'numeric', grp: 'The claim', label: 'Numeric proofs' },
   { id: 'depth', grp: 'The claim', label: 'Depth (multi-layer)' },
   { id: 'families', grp: 'Generalization', label: 'Task families (live)' },
@@ -43,6 +44,7 @@ export default function App() {
       <main className="main">
         {sec === 'overview' && <Overview go={setSec} />}
         {sec === 'theory' && <Theory />}
+        {sec === 'matrices' && <Matrices />}
         {sec === 'numeric' && <Numeric />}
         {sec === 'depth' && <Depth />}
         {sec === 'families' && <Families />}
@@ -144,6 +146,93 @@ function Theory() {
           (arXiv:2306.02896), and the empirical shadow of the recall-throughput tradeoff in “Based” (arXiv:2402.18668).</p>
         <div className="formula">overfit-vs-generalize: memorizing |S_N| = N! routings needs ≫ B bits; grow N and the
           model is forced off its memorized set, where the bound bites. Softmax <i>computes</i> the routing instead of storing it.</div>
+      </div>
+    </>
+  )
+}
+
+function mulberry32(a) {
+  return function () {
+    a |= 0; a = (a + 0x6D2B79F5) | 0
+    let t = Math.imul(a ^ (a >>> 15), 1 | a)
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296
+  }
+}
+
+function computeMatrices(N, m, seed) {
+  const r = mulberry32(((seed + 1) * 2654435761) >>> 0)
+  const pi = [...Array(N).keys()]
+  for (let i = N - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1));[pi[i], pi[j]] = [pi[j], pi[i]] }
+  const P = Array.from({ length: N }, (_, i) => Array.from({ length: N }, (_, j) => (j === pi[i] ? 1 : 0)))
+  // softmax attention: logits = beta * P  ->  sharp, ~one-hot
+  const beta = 9
+  const soft = P.map(row => {
+    const ex = row.map(v => Math.exp(beta * v)); const s = ex.reduce((a, b) => a + b, 0)
+    return ex.map(v => v / s)
+  })
+  // linear attention with m random features: phi(R e_{pi(i)}) . phi(R e_j), row-normalized -> rank <= m
+  const R = Array.from({ length: m }, () => Array.from({ length: N }, () => r() * 2 - 1))
+  const phiCol = k => R.map(rowm => { const x = rowm[k]; return x > 0 ? x + 1 : Math.exp(x) })
+  const Q = pi.map(p => phiCol(p))
+  const K = [...Array(N).keys()].map(j => phiCol(j))
+  const lin = Q.map(qi => {
+    const s = K.map(kj => qi.reduce((a, v, t) => a + v * kj[t], 0))
+    const sum = s.reduce((a, b) => a + b, 0) + 1e-9
+    return s.map(v => v / sum)
+  })
+  const fro = A => Math.sqrt(A.reduce((acc, row, i) => acc + row.reduce((b, v, j) => b + (v - P[i][j]) ** 2, 0), 0))
+  const Pnorm = Math.sqrt(N)
+  return { P, soft, lin, linErr: fro(lin) / Pnorm, softErr: fro(soft) / Pnorm, floor: Math.max(0, 1 - m / N) }
+}
+
+function Matrices() {
+  const [N, setN] = useState(12)
+  const [m, setM] = useState(3)
+  const [seed, setSeed] = useState(0)
+  const mm = Math.min(m, N)
+  const { P, soft, lin, linErr, softErr, floor } = useMemo(() => computeMatrices(N, mm, seed), [N, mm, seed])
+  const sz = 220
+  const Panel = ({ title, sub, matrix, accent, tag }) => (
+    <div className="card" style={{ margin: 0 }}>
+      <h3 style={{ marginTop: 0 }}>{title} {tag}</h3>
+      <Heatmap matrix={matrix} size={sz} accent={accent} />
+      <p className="note" style={{ marginBottom: 0 }}>{sub}</p>
+    </div>
+  )
+  return (
+    <>
+      <h1>Attention matrices — see the separation</h1>
+      <p className="lede">The proof in one picture. Each grid is the N×N attention matrix for a Gather(N) routing:
+        row i should send all its weight to the source column π(i). Bright = high weight. Drag N and the linear
+        feature dim m and watch what each architecture can actually draw.</p>
+      <div className="card">
+        <div className="controls">
+          <div className="control"><label>N (context length) = <span className="val">{N}</span></label>
+            <input type="range" min="4" max="28" value={N} onChange={e => setN(+e.target.value)} /></div>
+          <div className="control"><label>m (linear feature dim) = <span className="val">{mm}</span></label>
+            <input type="range" min="1" max="28" value={m} onChange={e => setM(+e.target.value)} /></div>
+          <div className="control"><label>seed</label>
+            <input className="seedbox" style={{ width: 64 }} type="number" value={seed} onChange={e => setSeed(+e.target.value || 0)} /></div>
+        </div>
+      </div>
+      <div className="grid3">
+        <Panel title="Target P_π" tag={<span className="tag good">rank {N}</span>} accent="#2fd07a"
+          matrix={P} sub="What the task demands: a permutation. One bright cell per row." />
+        <Panel title="Softmax" tag={<span className="tag soft">realizes it</span>} accent={C.soft}
+          matrix={soft} sub={`Sharpened logits → ≈ P_π. Rel. error ${softErr.toFixed(3)}.`} />
+        <Panel title="Linear (m feats)" tag={<span className="tag bad">rank ≤ {mm}</span>} accent={C.lin}
+          matrix={lin} sub={`A smear it can't sharpen past rank ${mm}. Rel. error ${linErr.toFixed(3)}.`} />
+      </div>
+      <div className="card">
+        <h3>What you're seeing</h3>
+        <p>Softmax can make each row a spike at the right column, so it draws the permutation almost exactly. The
+          linear map is a product of rank-{mm} feature matrices — its picture is forced to be a low-rank smear, and as
+          you shrink m below N it physically cannot place N independent spikes. The rigorous floor on the best possible
+          rank-≤m map is <span className="val">1 − m/N = {floor.toFixed(3)}</span> (Theorem I); the random-feature map
+          shown here sits above it.</p>
+        <p className="note">Tip: set m = N and the linear smear sharpens; drop m and the permutation dissolves while
+          softmax stays crisp. That gap, widening with N, is the whole thesis.</p>
       </div>
     </>
   )

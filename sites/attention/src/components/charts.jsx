@@ -92,3 +92,28 @@ export function Legend({ items }) {
     </div>
   )
 }
+
+export function Heatmap({ matrix, size = 200, accent = '#7c5cff' }) {
+  // matrix: N×N values in [0, ~1]; dark cell = 0, accent cell = max.
+  const n = matrix.length || 1
+  const cell = size / n
+  let max = 0
+  for (const row of matrix) for (const v of row) if (v > max) max = v
+  max = max || 1
+  const A = [10, 13, 20]
+  const B = [parseInt(accent.slice(1, 3), 16), parseInt(accent.slice(3, 5), 16), parseInt(accent.slice(5, 7), 16)]
+  const color = v => {
+    const t = Math.min(1, v / max)
+    const c = A.map((a, i) => Math.round(a + (B[i] - a) * t))
+    return `rgb(${c[0]},${c[1]},${c[2]})`
+  }
+  return (
+    <svg width={size} height={size} role="img" style={{ borderRadius: 6, display: 'block' }}>
+      <rect x="0" y="0" width={size} height={size} fill="#0a0d14" />
+      {matrix.map((row, i) => row.map((v, j) => (
+        v > 0.01 ? <rect key={i + '-' + j} x={j * cell} y={i * cell}
+          width={Math.max(1, cell - 0.5)} height={Math.max(1, cell - 0.5)} fill={color(v)} /> : null
+      )))}
+    </svg>
+  )
+}
