@@ -47,7 +47,7 @@ than a single hand-picked example.
 | `src/numeric/`                 | numpy: softmax vs. linear attention, generators with closed-form `A*`, the rank-separation proof (`rank_separation.py`), trained curves (`train.py`), and the multi-layer demo (`depth_separation.py`). |
 | `src/nl/`                      | NL generators (`task_generator.py` + `extra_tasks.py`), graders, the base-suite Haiku harness (`run_haiku_verification.py`), and the scaling sweep (`sweep.py`). |
 | `results/`                     | Committed run outputs (numeric `.json`, NL `.json`, `sweep_results.json`) + `RESULTS.md`. |
-| `app/`                         | Interactive React audit console (Vite). Reads the committed result JSONs; includes an interactive rank explorer and live in-browser task generators. `cd app && npm install && npm run dev` (prebuilt `dist/` also committed). |
+| audit console (React) | Interactive UI to navigate/audit this work — rank explorer, numeric proofs, the seven live task generators, and the Haiku sweep. Lives once on the `main` work-sites hub at `sites/attention/` and is published at **https://yulinl2.github.io/My-Benchmark-Playground/attention/** (noindex). |
 
 ## Quick start
 
