@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useMemo, useState, useEffect } from 'react'
 import { LineChart, GroupedBars, Legend, Heatmap } from './components/charts.jsx'
 import { FAMILIES } from './generators.js'
 import rankSep from './data/rank_separation.json'
@@ -18,6 +18,7 @@ const SECTIONS = [
   { id: 'numeric', grp: 'The claim', label: 'Numeric proofs' },
   { id: 'depth', grp: 'The claim', label: 'Depth (multi-layer)' },
   { id: 'families', grp: 'Generalization', label: 'Task families (live)' },
+  { id: 'pointerchase', grp: 'Generalization', label: 'Pointer chase' },
   { id: 'sweep', grp: 'Generalization', label: 'Haiku scaling sweep' },
   { id: 'repro', grp: 'Meta', label: 'Repo & reproduce' },
 ]
@@ -50,6 +51,7 @@ export default function App() {
         {sec === 'numeric' && <Numeric />}
         {sec === 'depth' && <Depth />}
         {sec === 'families' && <Families />}
+        {sec === 'pointerchase' && <PointerChase />}
         {sec === 'sweep' && <Sweep />}
         {sec === 'repro' && <Repro />}
       </main>
@@ -423,6 +425,102 @@ function Families() {
         <div className="card"><h3>Hidden answer key</h3><div className="prompt answer">{inst.answer}</div>
           <p className="note">Computed deterministically from the prompt — the optimum a faithful random-access reader achieves.</p></div>
       </div>
+    </>
+  )
+}
+
+function buildChain(L, seed) {
+  const r = mulberry32(((seed + 7) * 40503) >>> 0)
+  let pool = 'abcdefghijklmnopqrstuvwxyz'.split('')
+  for (let i = pool.length - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1));[pool[i], pool[j]] = [pool[j], pool[i]] }
+  const cv = pool.slice(0, L + 1)
+  const literal = String(10 + Math.floor(r() * 90))
+  const chain = []
+  for (let i = 0; i < L; i++) chain.push({ lhs: cv[i], rhs: cv[i + 1], lit: false })
+  chain.push({ lhs: cv[L], rhs: literal, lit: true })
+  const others = pool.slice(L + 1, L + 1 + Math.min(L + 1, pool.length - (L + 1)))
+  const distract = others.map(n => ({ lhs: n, rhs: String(10 + Math.floor(r() * 90)), lit: true }))
+  const all = [...chain, ...distract]
+  for (let i = all.length - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1));[all[i], all[j]] = [all[j], all[i]] }
+  return { stmts: all, trace: cv, literal, query: cv[0] }
+}
+
+function PointerChase() {
+  const [L, setL] = useState(6)
+  const [seed, setSeed] = useState(0)
+  const [step, setStep] = useState(0)
+  const [playing, setPlaying] = useState(false)
+  const { stmts, trace, literal, query } = useMemo(() => buildChain(L, seed), [L, seed])
+  useEffect(() => { setStep(0); setPlaying(false) }, [L, seed])
+  useEffect(() => {
+    if (!playing) return
+    if (step >= L) { setPlaying(false); return }
+    const id = setTimeout(() => setStep(s => s + 1), 750)
+    return () => clearTimeout(id)
+  }, [playing, step, L])
+  const visited = new Set(trace.slice(0, step + 1))
+  const curVar = trace[Math.min(step, L)]
+  const done = step >= L
+  return (
+    <>
+      <h1>Pointer chase — how softmax resolves a chain</h1>
+      <p className="lede">The Chain / multi-hop task: <code>{query}</code> points to another variable, which points to
+        another… ending at a literal. Each hop is one sharp attention lookup (an induction head). Play it: softmax
+        follows the chain by random access; a fixed-state model would have to hold the whole live binding table at once.</p>
+      <div className="card">
+        <div className="controls">
+          <div className="control"><label>chain length L = <span className="val">{L}</span></label>
+            <input type="range" min="2" max="14" value={L} onChange={e => setL(+e.target.value)} /></div>
+          <div className="control"><label>seed</label>
+            <input className="seedbox" style={{ width: 64 }} type="number" value={seed} onChange={e => setSeed(+e.target.value || 0)} /></div>
+          <div className="control"><label>&nbsp;</label>
+            <div className="pill-row" style={{ margin: 0 }}>
+              <span className="pill active" onClick={() => setPlaying(p => !p)}>{playing ? '⏸ pause' : '▶ play'}</span>
+              <span className="pill" onClick={() => { setPlaying(false); setStep(s => Math.min(L, s + 1)) }}>step ▸</span>
+              <span className="pill" onClick={() => { setPlaying(false); setStep(0) }}>↺ reset</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="grid2">
+        <div className="card">
+          <h3 style={{ marginTop: 0 }}>Assignments (shuffled — distractors mixed in)</h3>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 7 }}>
+            {stmts.map((s, i) => {
+              const isActive = s.lhs === curVar
+              const isOnChain = visited.has(s.lhs) && trace.includes(s.lhs)
+              return (
+                <span key={i} className="mono" style={{
+                  padding: '6px 10px', borderRadius: 8, fontSize: 13,
+                  border: '1px solid ' + (isActive ? '#7c5cff' : '#283349'),
+                  background: isActive ? 'rgba(124,92,255,.22)' : isOnChain ? 'rgba(47,208,122,.12)' : '#141a26',
+                  color: isActive ? '#fff' : isOnChain ? '#cdeed8' : '#8b97ab',
+                }}>Let {s.lhs} = {s.rhs}.</span>
+              )
+            })}
+          </div>
+        </div>
+        <div className="card">
+          <h3 style={{ marginTop: 0 }}>Resolution trace</h3>
+          <div className="mono" style={{ fontSize: 16, lineHeight: 2 }}>
+            {trace.slice(0, step + 1).map((v, i) => (
+              <span key={i}>
+                <span style={{ color: i === step && !done ? '#7c5cff' : '#2fd07a', fontWeight: 700 }}>{v}</span>
+                {i < step ? <span style={{ color: '#8b97ab' }}> → </span> : null}
+              </span>
+            ))}
+            {done ? <span style={{ color: '#8b97ab' }}> = <span style={{ color: '#f0b429', fontWeight: 700 }}>{literal}</span></span> : null}
+          </div>
+          <p className="note">hop {Math.min(step, L)} / {L}{done ? ` — resolved: ${query} = ${literal}` : ` — now following ${curVar}`}</p>
+          <div className="formula" style={{ marginTop: 8 }}>{done
+            ? `Softmax: ${L} sharp lookups (O(L) layers, or O(log L) with pointer-jumping). Answer = ${literal}.`
+            : `Reading the binding for "${curVar}" with one attention lookup…`}</div>
+        </div>
+      </div>
+      <p className="note">Each green hop is an induction-head-style copy: query the current name, attend to its single
+        defining line, jump to the value. Softmax can do this at any distance (random access). A fixed-state recurrence
+        must instead carry every live binding forward in O(1) memory — which is the Theorem II bottleneck once the table
+        outgrows the state.</p>
     </>
   )
 }
