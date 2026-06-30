@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noai, noimageai" />
+  <meta name="referrer" content="no-referrer" />
+  <link rel="icon" href="data:," />
+  <title>Work sites — hub</title>
+  <style>
+    :root{--bg:#0c0f17;--panel:#141a26;--panel2:#1b2433;--ink:#e6ebf2;--muted:#8b97ab;--line:#283349;--accent:#7c5cff;--soft:#3aa0ff}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+    .wrap{max-width:880px;margin:0 auto;padding:72px 24px 96px}
+    h1{font-size:30px;margin:0 0 8px}
+    .lede{color:var(--muted);max-width:640px;margin:0 0 36px}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    @media(max-width:680px){.grid{grid-template-columns:1fr}}
+    a.card{display:block;text-decoration:none;color:inherit;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px;transition:border-color .15s,transform .15s}
+    a.card:hover{border-color:var(--accent);transform:translateY(-2px)}
+    .tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--soft);background:rgba(58,160,255,.14);padding:3px 9px;border-radius:999px;margin-bottom:10px}
+    .card h2{font-size:18px;margin:0 0 6px}
+    .card p{color:var(--muted);font-size:14px;margin:0}
+    .path{color:var(--muted);font-family:ui-monospace,monospace;font-size:12px;margin-top:12px}
+    footer{color:var(--muted);font-size:12.5px;margin-top:40px;border-top:1px solid var(--line);padding-top:16px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Work sites</h1>
+    <p class="lede">A small hub of parallel projects, each served at its own path. Add a project by dropping a folder
+      under <code>sites/</code> and a build step in the deploy workflow.</p>
+    <div class="grid">
+      <a class="card" href="attention/">
+        <span class="tag">research · interactive</span>
+        <h2>Attention separation — audit console</h2>
+        <p>Softmax vs. linear attention: theorems, runnable numeric proofs, seven task families, and the Haiku scaling sweep.</p>
+        <div class="path">/attention/</div>
+      </a>
+      <a class="card" href="dotfiles/">
+        <span class="tag">demo</span>
+        <h2>mac-dotfiles — interactive demo</h2>
+        <p>A fake p10k terminal, live theme switcher, and lsd-style listings for the macOS zsh dotfiles.</p>
+        <div class="path">/dotfiles/</div>
+      </a>
+    </div>
+    <footer>Unlisted / noindex. Served from <code>main</code> via GitHub Pages; each project is built in CI from a single source.</footer>
+  </div>
+</body>
+</html>

@@ -1,46 +1,71 @@
-name: Deploy demo to GitHub Pages
+name: Deploy work-sites hub to GitHub Pages
 
-# Serves mac-dotfiles-yulin/demo/ as the site root:
-#   https://yulinl2.github.io/My-Benchmark-Playground/
+# One Pages site, many projects at subpaths. Built in CI from a single source per
+# project (no committed build output). Deploys from `main` via the GitHub Actions
+# source (the github-pages environment permits the default branch).
+#
+#   /            landing page (sites/landing/index.html)
+#   /attention/  the audit console (built from sites/attention, Vite)
+#   /dotfiles/   the dotfiles demo (static, mac-dotfiles-yulin/demo)
+#
+# To add a project: drop sites/<name>/, add a build+copy step below, and a card
+# in sites/landing/index.html.
+
 on:
   push:
     branches: [main]
     paths:
+      - "sites/**"
       - "mac-dotfiles-yulin/demo/**"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 
-# Allow the GITHUB_TOKEN to deploy to Pages (and auto-enable it the first time)
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# One deploy at a time; let an in-progress run finish
 concurrency:
   group: pages
   cancel-in-progress: false
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: sites/attention/package-lock.json
+      - name: Build attention console
+        working-directory: sites/attention
+        run: |
+          npm ci
+          npm run build
+      - name: Assemble site tree
+        run: |
+          rm -rf _site
+          mkdir -p _site/attention _site/dotfiles
+          cp -r sites/attention/dist/. _site/attention/
+          cp -r mac-dotfiles-yulin/demo/. _site/dotfiles/
+          cp sites/landing/index.html _site/index.html
+          touch _site/.nojekyll
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
   deploy:
+    needs: build
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
-        with:
-          enablement: true
-
-      - name: Upload demo as Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: mac-dotfiles-yulin/demo
-
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
