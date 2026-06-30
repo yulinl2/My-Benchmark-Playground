@@ -14,6 +14,7 @@ const SECTIONS = [
   { id: 'overview', grp: 'Start', label: 'Overview' },
   { id: 'theory', grp: 'The claim', label: 'Theory & rank explorer' },
   { id: 'matrices', grp: 'The claim', label: 'Attention matrices' },
+  { id: 'statebound', grp: 'The claim', label: 'State bottleneck (Thm II)' },
   { id: 'numeric', grp: 'The claim', label: 'Numeric proofs' },
   { id: 'depth', grp: 'The claim', label: 'Depth (multi-layer)' },
   { id: 'families', grp: 'Generalization', label: 'Task families (live)' },
@@ -45,6 +46,7 @@ export default function App() {
         {sec === 'overview' && <Overview go={setSec} />}
         {sec === 'theory' && <Theory />}
         {sec === 'matrices' && <Matrices />}
+        {sec === 'statebound' && <StateBottleneck />}
         {sec === 'numeric' && <Numeric />}
         {sec === 'depth' && <Depth />}
         {sec === 'families' && <Families />}
@@ -234,6 +236,79 @@ function Matrices() {
         <p className="note">Tip: set m = N and the linear smear sharpens; drop m and the permutation dissolves while
           softmax stays crisp. That gap, widening with N, is the whole thesis.</p>
       </div>
+    </>
+  )
+}
+
+function StateBottleneck() {
+  const [N, setN] = useState(64)
+  const [m, setM] = useState(16)
+  // round-robin assignment of N KV pairs into m fixed slots
+  const loads = Array.from({ length: m }, (_, j) => Math.floor(N / m) + (j < (N % m) ? 1 : 0))
+  const singles = loads.filter(l => l === 1).length
+  const collided = loads.filter(l => l >= 2).length
+  const recall = Math.min(1, m / N)
+  const Ns = [2, 4, 8, 16, 32, 64, 128, 256]
+  const bitsNeed = Math.round(N * Math.log2(Math.max(2, N)))
+  const bitsHave = m * 16   // ~fp16 per slot
+  const slotColor = l => (l === 0 ? '#1b2433' : l === 1 ? '#2fd07a' : '#ff6b6b')
+  return (
+    <>
+      <h1>State bottleneck — the streaming view (Theorem II)</h1>
+      <p className="lede">Linear attention is a recurrent net with a <b>fixed-size state</b>: it must squeeze the whole
+        prefix into <code>m</code> slots before any query. Softmax keeps every token in the KV cache (random access).
+        Here are <code>N</code> key→value pairs being written into <code>m</code> slots — drag both and watch
+        information collide.</p>
+      <div className="card">
+        <div className="controls">
+          <div className="control"><label>N (key→value pairs) = <span className="val">{N}</span></label>
+            <input type="range" min="2" max="256" value={N} onChange={e => setN(+e.target.value)} /></div>
+          <div className="control"><label>m (fixed state slots) = <span className="val">{m}</span></label>
+            <input type="range" min="1" max="64" value={m} onChange={e => setM(+e.target.value)} /></div>
+        </div>
+      </div>
+      <div className="grid2">
+        <div className="card">
+          <h3 style={{ marginTop: 0 }}>Fixed state — {m} slots, {N} pairs</h3>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
+            {loads.map((l, j) => (
+              <div key={j} title={`slot ${j}: ${l} pair(s)`} style={{
+                width: 22, height: 22, borderRadius: 4, background: slotColor(l),
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                fontSize: 11, fontWeight: 700, color: l >= 2 ? '#1b0f10' : '#0a0d14'
+              }}>{l >= 2 ? l : ''}</div>
+            ))}
+          </div>
+          <Legend items={[
+            { color: '#2fd07a', label: `singleton (recoverable) ×${singles}` },
+            { color: '#ff6b6b', label: `collided (overwrite/interference) ×${collided}` },
+          ]} />
+          <p className="note" style={{ marginBottom: 0 }}>{N <= m
+            ? 'N ≤ m: every pair gets its own slot — fully recoverable, like softmax.'
+            : `N > m: ${N - m} pairs must share slots. Once written, collided values interfere; recall degrades.`}</p>
+        </div>
+        <div className="card">
+          <h3 style={{ marginTop: 0 }}>Recall vs. number of pairs</h3>
+          <LineChart width={440} yMax={1} xLabel="N (pairs)" yLabel="recall accuracy" xTicks={[2, 16, 64, 256]}
+            series={[
+              { name: 'softmax (KV cache)', color: C.soft, points: Ns.map(n => ({ x: n, y: 1 })) },
+              { name: 'fixed state m', color: C.lin, points: Ns.map(n => ({ x: n, y: Math.min(1, m / n) })) },
+            ]} />
+          <Legend items={[
+            { color: C.soft, label: 'softmax: random access → flat at 1' },
+            { color: C.lin, label: 'fixed state: ≈ min(1, m/N)' },
+          ]} />
+        </div>
+      </div>
+      <div className="grid3">
+        <Kpi v={recall.toFixed(2)} l={`fixed-state recall at N=${N}, m=${m} (≈ m/N)`} />
+        <Kpi v="1.00" l="softmax recall (KV cache holds all N)" />
+        <Kpi v={`${bitsNeed} ▸ ${bitsHave}`} l={`bits needed (≈N·log₂N) vs available (≈m·16) — loss when needed > have`} />
+      </div>
+      <p className="note">This is the communication-complexity argument made tangible: specifying which value goes with
+        which of N keys needs ≈ N·log₂N bits at the prefix cut, but the state carries only ≈ m·(precision) bits. Grow N
+        past that and recall must fall — exactly the MQAR / “Based” recall–throughput curve, and why the Haiku sweep’s
+        recall families are the sharpest separation.</p>
     </>
   )
 }
