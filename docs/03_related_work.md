@@ -26,6 +26,17 @@ during the literature pass (June 2026).
   in-context recall; the gap scales with the number of KV pairs and SSMs need
   state `∝ k`. We adopt MQAR as a literature anchor and generalize it to the
   single-knob `Gather(N)` permutation kernel.
+- **Jelassi, Brandfonbrener, Kakade, Malach, 2024 — "Repeat After Me:
+  Transformers are Better than State Space Models at Copying"**
+  (arXiv:2402.01032). **Closest prior art to this program** (added during
+  self-audit): proves a 2-layer transformer copies exponentially long strings
+  while any fixed-state GSSM is information-theoretically limited, and
+  validates on pretrained LLMs. This is the Theorem-II separation shape applied
+  to a copy task (≈ `Gather` with identity routing), including the
+  pretrained-model validation strategy. Our novelty claims are tempered
+  accordingly — see `docs/05_self_audit.md` (C1): what remains distinct here is
+  the per-layer Eckart–Young rank framing on a permutation target, the
+  closed-form `A*` as a measurable artifact, and the generator packaging.
 - **Olsson et al., 2022 — "In-context Learning and Induction Heads"**
   (arXiv:2209.11895). Induction heads are the softmax mechanism that solves
   copy/recall; explains *why* softmax realizes the one-hot routing our `A*`

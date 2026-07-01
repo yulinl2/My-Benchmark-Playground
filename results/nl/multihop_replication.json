@@ -1,0 +1,26 @@
+{
+ "note": "Self-audit replication of the multihop_map t=32 'cliff' (original: t32 seed0 = 0.00, n=1). Fresh Haiku sub-agents.",
+ "runs": [
+  {
+   "id": "t32_s1",
+   "gold": "z",
+   "model": "z",
+   "correct": true
+  },
+  {
+   "id": "t32_s2",
+   "gold": "v021",
+   "model": "v021",
+   "correct": true,
+   "note": "agent used cycle-length detection (32 mod 21 = 11)"
+  },
+  {
+   "id": "t24_s1",
+   "gold": "o",
+   "model": "o",
+   "correct": true
+  }
+ ],
+ "prompts_regenerable": "extra_tasks.multihop_map_nl(domain=48, t=T, seed=S)",
+ "conclusion": "t=32 solved by 2/2 fresh seeds; the committed 0.00 was an n=1 outlier, not a depth cliff."
+}

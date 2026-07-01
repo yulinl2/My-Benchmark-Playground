@@ -43,7 +43,8 @@ than a single hand-picked example.
 | `docs/01_task_family_spec.md`  | Formal definitions of the task family `T(N, k, ρ)` and its three concrete members (Gather/Permute, MQAR, Chain-Tracking). |
 | `docs/02_experimental_plan.md` | Numeric experiments, NL lift, and the Haiku sub-agent verification protocol. |
 | `docs/03_related_work.md`      | Literature anchors (linear attention, SSMs, MQAR/Zoology/Based, expressivity/communication lower bounds) with verified arXiv ids, and what is novel here. |
-| `docs/04_findings_generalization.md` | What is established so far: seven-family generator (breadth), multi-layer numeric result, and the Haiku scaling-sweep fingerprint (depth). |
+| `docs/04_findings_generalization.md` | What is established so far: seven-family generator (breadth), multi-layer numeric result, and the Haiku scaling-sweep fingerprint (depth). ⚠ Read with the corrections banner. |
+| `docs/05_self_audit.md` | **Adversarial self-audit** of everything above: what holds (Thm I, two-regime finding), what was overstated (grader artifacts, n=1 cells), what's untested (no trained linear head), scope limits (residual streams vs the depth argument), and missing prior art (Jelassi et al. 2402.01032). |
 | `src/numeric/`                 | numpy: softmax vs. linear attention, generators with closed-form `A*`, the rank-separation proof (`rank_separation.py`), trained curves (`train.py`), and the multi-layer demo (`depth_separation.py`). |
 | `src/nl/`                      | NL generators (`task_generator.py` + `extra_tasks.py`), graders, the base-suite Haiku harness (`run_haiku_verification.py`), and the scaling sweep (`sweep.py`). |
 | `results/`                     | Committed run outputs (numeric `.json`, NL `.json`, `sweep_results.json`) + `RESULTS.md`. |

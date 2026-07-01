@@ -83,7 +83,12 @@ Two regimes (full analysis in `docs/04_findings_generalization.md`):
 - **High-rank-output — softmax degrades with N** (the P3 fingerprint, not a
   small-N floor): `gather` 1.00→0.59→0.22 (N=64,128,256); `selective_copy`
   1.00→0.81→0.09; `sort_by_key` 0.81→0.22→0.02 (N=32,64,128);
-  `multihop_map` 1.00,1.00,**0.00** (t=8,16,32, a deep-composition cliff).
+  `multihop_map` 1.00,1.00,0.00 (t=8,16,32).
+  **⚠ Self-audit corrections (`docs/05_self_audit.md`):** positional grading
+  overstates these — LCS re-grade: gather N256 0.22→**0.47**, selective_copy
+  N256 0.09→**0.90** (no collapse; grader artifact), sort N128 0.02→**0.49**.
+  The multihop t=32 "cliff" failed replication (2/2 fresh seeds correct);
+  withdrawn. Raw responses: `sweep_responses.json`, `multihop_replication.json`.
 
 ## Reproduce
 ```bash

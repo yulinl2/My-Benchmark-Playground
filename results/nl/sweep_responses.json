@@ -1,0 +1,167 @@
+{
+ "note": "Raw Haiku sub-agent answers for the scaling sweep (recovered from scratchpad during self-audit; grader inputs for sweep_results.json).",
+ "records": [
+  {
+   "id": "mqar__k16__s0",
+   "task": "mqar",
+   "label": "k16",
+   "response": "1. U55\n2. W6N\n3. G30\n4. L4C\n5. G9K\n6. WUZ\n7. 64M\n8. QLF\n9. EF9\n10. TLD\n11. JU5\n12. XMF\n13. 7MD\n14. 5R0\n15. 6KJ\n16. LYX\n"
+  },
+  {
+   "id": "mqar__k16__s1",
+   "task": "mqar",
+   "label": "k16",
+   "response": "1. T1Z\n2. BJ7\n3. BPP\n4. EVJ\n5. 111\n6. 0UH\n7. R2W\n8. YCK\n9. MYT\n10. 0QD\n11. JXY\n12. ENE\n13. 1S6\n14. EUX\n15. FRS\n16. E6L\n"
+  },
+  {
+   "id": "mqar__k32__s0",
+   "task": "mqar",
+   "label": "k32",
+   "response": "1. H7E\n2. ZHZ\n3. 417\n4. DJU\n5. N5L\n6. J7M\n7. CEF\n8. 7XM\n9. 21C\n10. ZG3\n11. 9U5\n12. 0XM\n13. T36\n14. 5QL\n15. FL4\n16. FDS\n17. PAM\n18. 05R\n19. HUX\n20. CF1\n21. B7W\n22. 5LY\n23. X6K\n24. C7R\n25. 25R\n26. 5P7\n27. GW4\n28. CB2\n29. 5YZ\n30. D31\n31. 589\n32. FJB\n"
+  },
+  {
+   "id": "mqar__k32__s1",
+   "task": "mqar",
+   "label": "k32",
+   "response": "1. MV1\n2. T3W\n3. 6AZ\n4. NVH\n5. 8ZD\n6. KRA\n7. ENE\n8. BPP\n9. RYN\n10. FH7\n11. RPX\n12. R2W\n13. EBB\n14. AYE\n15. 5UY\n16. 0CE\n17. 5G2\n18. 1W2\n19. JXY\n20. EVJ\n21. BNJ\n22. BJ7\n23. YCK\n24. U0H\n25. 1S6\n26. SN0\n27. 451\n28. 0QY\n29. SXN\n30. FRS\n31. PCY\n32. MYT\n"
+  },
+  {
+   "id": "mqar__k64__s0",
+   "task": "mqar",
+   "label": "k64",
+   "response": "1. 7WD\n2. YKN\n3. FEU\n4. ZX0\n5. B2G\n6. 31T\n7. 892\n8. 5RZ\n9. MZG\n10. 8KQ\n11. QS2\n12. SL0\n13. U55\n14. JU5\n15. 3AA\n16. JBC\n17. QG9\n18. W45\n19. XMC\n20. NTB\n21. WAD\n22. 3YV\n23. 7EP\n24. D00\n25. 17C\n26. F1H\n27. 80R\n28. E24\n29. LYX\n30. 7UB\n31. RS2\n32. HB6\n33. AMT\n34. CGN\n35. M2H\n36. 369\n37. NJN\n38. 8FW\n39. KV3\n40. 1HU\n41. HZF\n42. QLF\n43. 0V5\n44. 2XL\n45. 6KJ\n46. SC5\n47. 7MD\n48. S50\n49. 0WS\n50. UXN\n51. WR5\n52. DSH\n53. 7CK\n54. 5L7\n55. CMA\n56. Z6C\n57. 26R\n58. GAU\n59. 6G4\n60. 1CB\n61. AU4\n62. 7R5\n63. E4K\n64. P72\n"
+  },
+  {
+   "id": "mqar__k64__s1",
+   "task": "mqar",
+   "label": "k64",
+   "response": "1. V1E\n2. H7B\n3. 1AC\n4. SG8\n5. 3WP\n6. TEZ\n7. FX8\n8. N6D\n9. AUY\n10. T3K\n11. GPM\n12. MSC\n13. BB5\n14. YDT\n15. AAD\n16. TDH\n17. N0M\n18. UEZ\n19. RAA\n20. YX1\n21. XYR\n22. NJ4\n23. M7J\n24. JVL\n25. G24\n26. ZDT\n27. XW7\n28. 6QJ\n29. TCX\n30. 2WF\n31. CER\n32. KKA\n33. 0HF\n34. HMY\n35. 1KQ\n36. G6G\n37. AZR\n38. 8D3\n39. RSB\n40. L8M\n41. QY8\n42. PP5\n43. YE0\n44. PX1\n45. YNN\n46. CYS\n47. LRJ\n48. VAY\n49. 1RL\n50. 2QC\n51. XNS\n52. 6QN\n53. UY6\n54. K44\n55. ZAH\n56. 258\n57. 02D\n58. VH0\n59. 1E1\n60. AAG\n61. R92\n62. 51U\n63. XF4\n64. W2K\n"
+  },
+  {
+   "id": "mqar__k128__s0",
+   "task": "mqar",
+   "label": "k128",
+   "response": "1. B0W\n2. CN7\n3. 9E2\n4. T6G\n5. 90V\n6. 06R\n7. NWA\n8. KNT\n9. VTP\n10. 8FJ\n11. 5P7\n12. 8J7\n13. UZX\n14. AMZ\n15. MA9\n16. 25Z\n17. 4TD\n18. 580\n19. K0U\n20. WF3\n21. 4KR\n22. XRG\n23. X59\n24. 5M2\n25. VQP\n26. H8F\n27. QZY\n28. VPY\n29. XDT\n30. WNJ\n31. QS5\n32. M32\n33. UQS\n34. NS2\n35. 2AU\n36. D31\n37. 7W7\n38. RSL\n39. DGL\n40. YGM\n41. E3Q\n42. 4GA\n43. G7U\n44. 912\n45. JSW\n46. KM9\n47. KHB\n48. UC7\n49. WMM\n50. NCQ\n51. AFE\n52. 122\n53. CF1\n54. 41Z\n55. 6WR\n56. M22\n57. E0M\n58. 0BK\n59. N8K\n60. J08\n61. HA9\n62. BDQ\n63. QE1\n64. D3A\n65. 417\n66. 36W\n67. 8ZN\n68. MKS\n69. RCG\n70. 79H\n71. LL2\n72. J7Z\n73. ZXL\n74. 45C\n75. XXC\n76. LKV\n77. 96C\n78. Z9G\n79. 66W\n80. 4E4\n81. SYK\n82. C7R\n83. N5L\n84. C7C\n85. 0D0\n86. J8Q\n87. 21C\n88. T36\n89. V26\n90. KBZ\n91. MP5\n92. C2R\n93. VQV\n94. 8L6\n95. 2RS\n96. 9RT\n97. Z24\n98. B3Y\n99. XT2\n100. X73\n101. 9HM\n102. AQ5\n103. PAM\n104. 96X\n105. 4XG\n106. D2D\n107. 5PE\n108. GAT\n109. VM7\n110. P2X\n111. 51H\n112. U7G\n113. WS9\n114. NQG\n115. 0CM\n116. W45\n117. 7XM\n118. JPR\n119. H7E\n120. 02X\n121. B7W\n122. 3SC\n123. ZJU\n124. 0Z6\n125. E82\n126. 9QJ\n127. Q3A\n128. KSQ\n"
+  },
+  {
+   "id": "mqar__k128__s1",
+   "task": "mqar",
+   "label": "k128",
+   "response": "1. JHF\n2. TDH\n3. LU8\n4. TRA\n5. VAY\n6. W96\n7. UTG\n8. J8D\n9. KCF\n10. P5H\n11. GWL\n12. V1E\n13. PJ7\n14. UFQ\n15. FG4\n16. KKA\n17. AUY\n18. K6Y\n19. 1RL\n20. 0BZ\n21. NJ4\n22. 1FR\n23. E5H\n24. BB5\n25. AAG\n26. RMA\n27. SMH\n28. HMY\n29. MEQ\n30. 7Q4\n31. S4Q\n32. 5EX\n33. RRB\n34. YX1\n35. XRN\n36. TD3\n37. 585\n38. AV5\n39. E34\n40. 8GH\n41. KKP\n42. 51U\n43. FM6\n44. 3WP\n45. AAD\n46. 6QN\n47. 7YQ\n48. G6H\n49. XD7\n50. LYU\n51. TQJ\n52. 72C\n53. T3K\n54. 8D3\n55. UEZ\n56. TS7\n57. FSA\n58. 258\n59. 1AC\n60. 4H4\n61. 6L2\n62. JLU\n63. SG8\n64. ZAH\n65. N88\n66. YBB\n67. YPA\n68. CYS\n69. Q0C\n70. YDK\n71. 410\n72. 1KQ\n73. EFL\n74. 2J0\n75. FX8\n76. YL4\n77. R92\n78. LRJ\n79. GX1\n80. XF4\n81. FA6\n82. 2Z5\n83. YDT\n84. DBK\n85. H7B\n86. 1E1\n87. XWE\n88. 05S\n89. L8M\n90. 5FE\n91. N0M\n92. 5U5\n93. 99L\n94. 6DL\n95. TA3\n96. GBD\n97. S13\n98. GPM\n99. QYA\n100. JNX\n101. 0HF\n102. M7J\n103. UV0\n104. JVL\n105. 92L\n106. 98M\n107. MSC\n108. 7UA\n109. N6D\n110. RLR\n111. TCX\n112. 44L\n113. 2QC\n114. XNS\n115. V7G\n116. 6QJ\n117. VH6\n118. B9G\n119. K44\n120. 02D\n121. TEZ\n122. XW7\n123. 210\n124. K2L\n125. G24\n126. G6G\n127. DWN\n128. BLK\n"
+  },
+  {
+   "id": "chain__L8__s0",
+   "task": "chain",
+   "label": "L8",
+   "response": "55"
+  },
+  {
+   "id": "chain__L16__s0",
+   "task": "chain",
+   "label": "L16",
+   "response": "42"
+  },
+  {
+   "id": "chain__L32__s0",
+   "task": "chain",
+   "label": "L32",
+   "response": "17"
+  },
+  {
+   "id": "chain__L64__s0",
+   "task": "chain",
+   "label": "L64",
+   "response": "79"
+  },
+  {
+   "id": "gather__N64__s0",
+   "task": "gather",
+   "label": "N64",
+   "response": "violet\nnectar\nzephyr\nthicket\nzephyr\nmarble\nmango\nnectar\ncobalt\nviolet\ntundra\nember\nember\nquartz\nmarble\nbramble\ngravel\ndapple\nbrisket\ncedar\ngravel\nharbor\ncedar\nclover\nnectar\ncinder\nbrisket\nclover\nalmond\nviolet\ncobweb\nwillow\ngravel\nharbor\nnectar\nquartz\npewter\ndapple\nthicket\nwillow\ndapple\ncinder\nharbor\npewter\nzephyr\ncobweb\nmarble\nmango\nember\nzephyr\ncinder\nthicket\nquartz\nsaffron\ncobweb\ncobalt\nnectar\npewter\npewter\ntundra\nsaffron\nwillow\nalmond\ncinder\n"
+  },
+  {
+   "id": "gather__N128__s0",
+   "task": "gather",
+   "label": "N128",
+   "response": "clover\nviolet\npewter\nnectar\nmango\nnectar\nzephyr\nzephyr\nclover\nmarble\ntundra\nmarble\ndapple\ntundra\nlantern\nmarble\nbrisket\ncobalt\nzephyr\ncinder\nharbor\nember\ncobweb\nwillow\ncinder\ncobalt\nalmond\ncobalt\ncinder\nviolet\nzephyr\nmango\nthicket\npewter\ncobalt\ngravel\nthicket\ncinder\nharbor\nbramble\ncedar\ndapple\nharbor\nnectar\nalmond\ncinder\nviolet\nviolet\nquartz\nbramble\ndapple\ncinder\nthicket\ncinder\nviolet\nnectar\nsaffron\ncinder\nwillow\nbrisket\nharbor\ncinder\nbramble\nbrisket\ncedar\nnectar\nclover\nnectar\nbrisket\nviolet\nember\nviolet\ndapple\nwillow\ncinder\nmarble\ntundra\ngravel\nmarble\ngravel\nbrisket\ncobweb\nharbor\nwillow\ncobweb\ngravel\nlantern\nlantern\nbrisket\nwillow\ncobweb\ngravel\nember\ncedar\nbrisket\nviolet\nviolet\nbrisket\ntundra\nwillow\nzephyr\nember\nember\nbrisket\ntundra\nclover\ntundra\nember\nbramble\nnectar\nthicket\nzephyr\ncobalt\nmarble\ncedar\nquartz\ncinder\nthicket\ncobalt\nviolet\ncinder\nquartz\nmarble\ntundra\ncobalt\nmarble\nlantern\nwillow\nlantern\ncedar\nzephyr\nbrisket\nember\nnectar\nviolet\nviolet\nbrisket\nharbor\nharbor\ncedar\nviolet\ncobweb\ncinder\nbrisket\nthicket\ncobweb\ngravel\nember\ngravel\ncobalt\nwillow\nbrisket\ntundra\nclover\ntundra\nember\nbramble\nnectar\nbrisket\n"
+  },
+  {
+   "id": "gather__N256__s0",
+   "task": "gather",
+   "label": "N256",
+   "response": "saffron\nmango\nalmond\nlantern\nmarble\ndapple\nviolet\ncobalt\nwillow\ncedar\nwillow\ncobweb\ncobalt\ncedar\npewter\ndapple\nalmond\nharbor\ncedar\nzephyr\ndapple\nalmond\ncinder\ncinder\ncedar\nquartz\ncinder\ndapple\ntundra\nember\nzephyr\nquartz\ntundra\ntundra\nquartz\ngravel\nclover\nsaffron\ncinder\ncobalt\nquartz\ncedar\nsaffron\nmango\nmarble\nbrisket\npewter\ncobweb\ncinder\nmarble\nember\ndapple\nharbor\ncinder\nquartz\ngravel\nviolet\ncobalt\nbramble\nember\nmango\ncobweb\nviolet\nmarble\nnectar\npewter\nsaffron\nbrisket\nwillow\npewter\nzephyr\nalmond\nbrisket\nclover\nviolet\nnectar\nbrisket\nzephyr\nlantern\ntundra\nalmond\nnectar\nsaffron\nbrisket\nlantern\ncobalt\nbrisket\nbrisket\nclover\nlantern\nbrisket\ncobalt\ntundra\ndapple\ncinder\nwillow\nsaffron\nzephyr\nquartz\ncobweb\nthicket\nmarble\nquartz\nwillow\ncedar\nmarble\ncobweb\nviolet\nzephyr\nember\nsaffron\nquartz\nquartz\nceddar\nthicket\nquartz\nmango\nmarble\nwillow\nember\nlantern\nlantern\npewter\ngravel\nember\nquartz\nzephyr\nbramble\nbrisket\nlantern\nmango\nnectar\nbrisket\nclover\ntundra\ngravel\nmarble\nalmond\nsaffron\nthicket\nbrisket\nember\nharbor\ncinder\ncobweb\nmango\nbramble\ndapple\nviolet\npewter\ndapple\ncedar\ncinder\nember\nharbor\ncobalt\nwillow\nviolet\nbramble\ntundra\nclover\ntundra\nember\nbrisket\nnectar\ngravel\nember\ngravel\ncobalt\nwillow\nbrisket\ntundra\nclover\nclover\ncedar\nsaffron\nquartz\nzephyr\nmango\nwillow\nlantern\ncedar\nzephyr\nwillow\ncedar\nthicket\nmarble\nzephyr\nquartz\ncobweb\nsaffron\ncobalt\nlantern\ndapple\ncobalt\nthicket\nember\nharbor\ncedar\ncinder\nzephyr\nember\nclover\nlantern\nlantern\npewter\ngravel\nmarble\nclover\ncedar\nbrisket\nwillow\ncedar\nbrisket\ngravel\ncinder\ncinder\nthicket\nmarble\nwillow\nviolet\ncobweb\npewter\ncobweb\nviolet\nquartz\nmarble\nsaffron\nwillow\nzephyr\nbrisket\nquartz\ncobweb\nquartz\ncedar\nalmond\nviolet\ncobweb\nsaffron\nquartz\nmarble\nsaffron\nclover\nlantern\ncedar\ngravel\nbramble\ncedar\nzephyr\nquartz\ncobweb\nthicket\nwillow\nember\nsaffron\ndapple\nnectar\ntundra\nlantern\ncobweb\nbrisket\nwillow\ncedar\nbrisket\nlantern\nlantern\npewter\ngravel\nember\nquartz\nzephyr\nbramble\nbrisket\nlantern\nmango\nnectar\nbrisket\nclover\ntundra\ngravel\nmarble\nalmond\nsaffron\nthicket\nbrisket\nember\nharbor\ncinder\ncobweb\nmango\nbramble\ndapple\nviolet\npewter\ndapple\ncedar\ncinder\nember\nharbor\ncobalt\n"
+  },
+  {
+   "id": "selective_copy__N64__s0",
+   "task": "selective_copy",
+   "label": "N64",
+   "response": "thicket\nember\ngravel\nnectar\nnectar\nzephyr\ncinder\nzephyr\nharbor\nmarble\nviolet\nbrisket\nzephyr\nwillow\ncinder\ncobweb\nalmond\nnectar\ncobalt\ndapple\ncobweb\nwillow\ntundra\n"
+  },
+  {
+   "id": "selective_copy__N128__s0",
+   "task": "selective_copy",
+   "label": "N128",
+   "response": "ember\ngravel\nnectar\nmarble\nnectar\nsaffron\ntundra\ngravel\nharbor\nmarble\nharbor\nember\nmarble\nquartz\ndapple\nbrisket\npewter\ncinder\nsaffron\nzephyr\nwillow\nember\ncedar\ncinder\nmango\nviolet\ndapple\nbrisket\nalmond\nzephyr\ndapple\nviolet\nwillow\ncobalt\ncinder\nnectar\nmarble\nmarble\ncobweb\npewter\nwillow\nviolet\nzephyr\ntundra\nlantern\nlantern\nember\nharbor\nharbor\nviolet\nthicket\ncobweb\ngravel\ngravel\nbrisket\nbramble\nnectar\n"
+  },
+  {
+   "id": "selective_copy__N256__s0",
+   "task": "selective_copy",
+   "label": "N256",
+   "response": "clover\nmarble\nnectar\nwillow\nmarble\nquartz\ncobweb\ndapple\nviolet\npewter\nsaffron\nclover\npewter\nalmond\nnectar\ncinder\nmango\ndapple\nthicket\ncobweb\ncobalt\ndapple\ncobweb\ncobalt\ncobweb\nviolet\ngravel\nnectar\nmarble\ncinder\nmarble\ncobweb\nquartz\ncinder\ncinder\nmarble\nbramble\nviolet\nzephyr\nthicket\npewter\ntundra\ncobalt\nmarble\nlantern\nwillow\ncedar\nzephyr\nbrisket\nember\nnectar\nviolet\nbrisket\ncedar\nviolet\ncobweb\ncinder\nbrisket\nthicket\ncobweb\nember\ngravel\nbrisket\ntundra\nclover\ntundra\nember\nbramble\nnectar\nbrisket\nalmond\ncobweb\nsaffron\nviolet\npewter\nzephyr\nquartz\nnectar\nbrisket\ntundra\nalmond\npewter\nwillow\ncobalt\nmango\ndapple\nember\nquartz\nsaffron\nlantern\npewter\nclover\nquartz\nharbor\ncobweb\nquartz\ncobalt\ncedar\ntundra\nalmond\ncinder\nzephyr\nbrisket\nviolet\nmango\nquartz\nalmond\nwillow\nzephyr\ntundra\nquartz\nthicket\nviolet\nsaffron\nquartz\ncedar\nzephyr\nmango\nwillow\nlantern\ncobweb\nquartz\nnectar\nwillow\ndapple\ncedar\nbrisket\nmango\ncinder\nclover\nzephyr\nquartz\ncobweb\nthicket\nwillow\nember\nsaffron\ndapple\nnectar\ntundra\nlantern\ncobweb\nbrisket\nwillow\ncedar\nbrisket\nlantern\nlantern\nember\nquartz\nzephyr\nbramble\nbrisket\nlantern\nmango\nnectar\nbrisket\nclover\ntundra\ngravel\nmarble\nalmond\nsaffron\nthicket\nbrisket\nember\nharbor\ncinder\ncobweb\nmango\nbramble\ndapple\ncedar\ncinder\nember\nharbor\ncobalt\n"
+  },
+  {
+   "id": "sort_by_key__N32__s0",
+   "task": "sort_by_key",
+   "label": "N32",
+   "response": "harbor\ntundra\nnectar\nember\nviolet\ndapple\nwillow\ncinder\nharbor\ncinder\nember\ncobweb\nzephyr\nquartz\nmarble\nquartz\nbrisket\ncedar\nharbor\nzephyr\nthicket\ngravel\nclover\nnectar\nquartz\ngravel\nmarble\nnectar\npewter\nthicket\nmarble\nsaffron\n"
+  },
+  {
+   "id": "sort_by_key__N64__s0",
+   "task": "sort_by_key",
+   "label": "N64",
+   "response": "cobalt\npewter\nzephyr\nalmond\nnectar\nquartz\ncobweb\nsaffron\ngravel\nnectar\npewter\nalmond\nsaffron\nclover\nclover\ngravel\npewter\nwillow\ndapple\nviolet\nbrisket\nquartz\nthicket\nember\ncedar\nbramble\nmango\nnectar\ndapple\npewter\ncobweb\nviolet\nquartz\ntundra\nwillow\nzephyr\ncinder\nthicket\nmarble\nharbor\nthicket\nzephyr\ncinder\nquartz\nember\ncinder\nmango\ncinder\nwillow\nember\nviolet\ncinder\nember\nharbor\ngravel\nmarble\nnectar\ndapple\ncedar\nmarble\nmarble\nharbor\nzephyr\nharbor\ncedar\nember\nmarble\nnectar\nharbor\n"
+  },
+  {
+   "id": "sort_by_key__N128__s0",
+   "task": "sort_by_key",
+   "label": "N128",
+   "response": "cobalt\ncedar\ngravel\nwillow\nquartz\nzephyr\ntundra\ncinder\nbrisket\nviolet\nharbor\nlantern\nclover\ncobweb\nnectar\nzephyr\nember\ngravel\nzephyr\ntundra\nviolet\nzephyr\nember\nharbor\ncobalt\ncobalt\nbrisket\npewter\ncinder\ndapple\nwillow\ncinder\nzephyr\nclover\ndapple\nwillow\nwillow\ncinder\ncobalt\nmarble\nnectar\nviolet\nviolet\ndapple\nbramble\nsaffron\nthicket\npewter\ncedar\nmarble\ndapple\nmarble\nnectar\nquartz\ncobalt\nharbor\ncedar\nthicket\nthicket\npewter\nmarble\ntundra\nclover\nthicket\nzephyr\ncedar\ngravel\nbrisket\nlantern\ncobweb\ngravel\nharbor\nwillow\ncedar\nbrisket\npewter\nquartz\nbramble\ngravel\nalmond\ngravel\ncobweb\ncobweb\nmango\nviolet\nviolet\ncinder\ntundra\ntundra\nember\nbrisket\nalmond\nmarble\nzephyr\ngravel\nbramble\ntundra\nbrisket\n"
+  },
+  {
+   "id": "kv_lastwrite__keys32__s0",
+   "task": "kv_lastwrite",
+   "label": "keys32",
+   "response": "1. 589\n2. MKS\n3. Z9G\n4. ATC\n5. ZXL\n6. 22D\n7. QP9\n8. XT2\n9. XCE\n10. L0D\n11. QJW\n12. MLL\n13. 5LY\n14. 9JP\n15. 80R\n16. FJB\n"
+  },
+  {
+   "id": "kv_lastwrite__keys64__s0",
+   "task": "kv_lastwrite",
+   "label": "keys64",
+   "response": "1. M32\n2. TXQ\n3. WR5\n4. S9X\n5. EK5\n6. BUN\n7. 9BV\n8. DSH\n9. X3U\n10. NB0\n11. KM7\n12. QAM\n13. B56\n14. JUP\n15. JW5\n16. 1NW\n"
+  },
+  {
+   "id": "kv_lastwrite__keys128__s0",
+   "task": "kv_lastwrite",
+   "label": "keys128",
+   "response": "1. 1AZ\n2. 755\n3. RG1\n4. E10\n5. 7UB\n6. KY3\n7. 8W3\n8. 9BV\n9. XW5\n10. GMQ\n11. DT5\n12. VVA\n13. PYQ\n14. VK0\n15. 0KZ\n16. Z3C\n"
+  },
+  {
+   "id": "multihop_map__t8__s0",
+   "task": "multihop_map",
+   "label": "t8",
+   "response": "a"
+  },
+  {
+   "id": "multihop_map__t16__s0",
+   "task": "multihop_map",
+   "label": "t16",
+   "response": "v013"
+  },
+  {
+   "id": "multihop_map__t32__s0",
+   "task": "multihop_map",
+   "label": "t32",
+   "response": "v004"
+  }
+ ]
+}

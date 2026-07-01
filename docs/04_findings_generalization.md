@@ -1,5 +1,13 @@
 # Findings: Generalizing the Separation in Breadth and Depth
 
+> **⚠ Corrections from self-audit (`docs/05_self_audit.md`):**
+> (1) the `multihop_map t=32` "deep-composition cliff" **failed replication**
+> (2/2 fresh seeds correct; the 0.00 was an n=1 outlier) — claim withdrawn;
+> (2) the `selective_copy` "collapse" was a **grader alignment artifact**
+> (N256: 0.094 positional → 0.898 LCS); gather/sort degradation is real but
+> ~2× milder than the positional numbers below suggest. Tables are kept as
+> originally published; read them with the audit's re-grade.
+
 This document records what the program has actually established so far —
 numerically (proved + run) and empirically on a commercial softmax model
 (Haiku, via in-session sub-agents). It extends the original three tasks to a
@@ -81,9 +89,11 @@ Source: `src/nl/sweep.py`; data: `results/nl/sweep_results.json`.
    instances (Theorem I); confirming that gap is the Tier-3 cross-architecture
    experiment.
 
-3. **Deep composition cliff.** `multihop_map` is perfect through t=16 then fails
-   at t=32 — a depth-of-indirection limit even for softmax, interesting in its
-   own right and a candidate knob for a sharper future study.
+3. ~~**Deep composition cliff.**~~ **Withdrawn (self-audit).** The t=32 failure
+   was a single instance; replication with fresh seeds gives 2/2 correct at
+   t=32 (one solver even exploited the permutation's cycle structure). Pooled
+   accuracy at t=32 is 2/3 — high variance, no cliff. See
+   `results/nl/multihop_replication.json` and `docs/05_self_audit.md` (B3).
 
 ### Honest caveats
 
