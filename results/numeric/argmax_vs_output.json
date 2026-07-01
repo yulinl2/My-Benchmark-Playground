@@ -1,0 +1,40 @@
+{
+  "m": 4,
+  "rows": [
+    {
+      "N": 8,
+      "argmax_acc": 1.0,
+      "on_target_mass": 0.1875,
+      "output_rel_err": 0.8859550873054978,
+      "floor": 0.7071067811865476
+    },
+    {
+      "N": 16,
+      "argmax_acc": 1.0,
+      "on_target_mass": 0.09375,
+      "output_rel_err": 0.9530639931712775,
+      "floor": 0.8660254037844386
+    },
+    {
+      "N": 64,
+      "argmax_acc": 1.0,
+      "on_target_mass": 0.0234375,
+      "output_rel_err": 0.9839584225778906,
+      "floor": 0.9682458365518543
+    },
+    {
+      "N": 256,
+      "argmax_acc": 1.0,
+      "on_target_mass": 0.005859375,
+      "output_rel_err": 0.9965734502902451,
+      "floor": 0.9921567416492215
+    },
+    {
+      "N": 1024,
+      "argmax_acc": 1.0,
+      "on_target_mass": 0.00146484375,
+      "output_rel_err": 0.9989872022178801,
+      "floor": 0.998044963916957
+    }
+  ]
+}

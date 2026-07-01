@@ -191,10 +191,47 @@ committed instances. Documented; no action.
 1. ✅ Commit raw sweep answers + replication data (this commit).
 2. ✅ Annotate the two known-wrong claims (multihop cliff, selective_copy
    collapse) in docs/04 + RESULTS.md (this commit).
-3. Train a real linear-attention head (closes B1 / tests P2).
+3. ✅ Train a real linear-attention head (closes B1 / tests P2) — see the
+   addendum below; `src/numeric/train_linear.py`,
+   `results/numeric/trained_linear.json`.
 4. Re-scope the depth claim (A2) and add the Kronecker multi-head lemma (A1a).
 5. Add Jelassi et al. to docs/03 and rewrite the novelty section (C1). ✅
    citation added; rewrite pending.
 6. Switch sequence grading to LCS; re-issue all sweep tables (B2); ≥10 seeds
    for any cell used in a claim (B3/B4).
 7. Build the `O(log N)`-width softmax construction, or hedge (A4).
+
+---
+
+## Addendum (post-audit experiments): B1 closed, and P2 must be split
+
+**Trained linear head (B1 → closed).** A real elu+1 kernelized head trained by
+Adam on cross-entropy (fresh permutations each step, held-out eval, best-of-3
+seeds) across `m ∈ {2,8,32} × N ∈ {8,16,32,64}`:
+
+- Every `m<N` cell **saturates the Eckart–Young floor to ~3 decimals**
+  (`‖A−P‖²/N = 1−m/N`; output error `= √(1−m/N)`), and argmax accuracy lands at
+  `≈ m/N`. **P2's collapse is confirmed on actually-trained models**, and the
+  old truncation proxy turns out to predict trained behavior almost exactly.
+- `m>N` control cells train to ~perfect → capacity, not optimization, binds.
+  (At exactly `m=N`, training sometimes finds feature-collision local optima —
+  two keys sharing a feature direction, mass split 50/50; does not affect the
+  `m<N` conclusions.)
+
+**The metric split (new constructive proposition).** `argmax_vs_output.py`
+exhibits a rank-**4** nonnegative-feature head — keys on a circle,
+`s_ij = 1 + cos(θ_{π(i)}−θ_j)/2` — with **perfect argmax routing for every
+permutation at every N** (verified to N=1024), whose on-target mass is exactly
+`1.5/N` and whose output error rides the floor to 1. Consequences:
+
+- Argmax accuracy is **not rank-limited** → it is the wrong metric for the
+  separation; any table using it alone (including train.py's) is inconclusive
+  as evidence by itself.
+- The **output** `AV` (equivalently on-target mass / Frobenius error) **is**
+  rank-limited, and trained heads sit exactly on that limit.
+- P2, restated correctly: *a fixed-capacity linear model's gather **output
+  error** is pinned to the `1−Hm/N` floor (trained heads saturate it), and its
+  CE-trained argmax accuracy collapses as `m/N` — even though argmax routing
+  per se is achievable at rank 4.*
+- Slogan for the program: **fixed-state linear attention can know where to
+  look; it cannot move the information.**

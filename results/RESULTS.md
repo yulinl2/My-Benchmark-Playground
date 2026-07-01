@@ -90,11 +90,47 @@ Two regimes (full analysis in `docs/04_findings_generalization.md`):
   The multihop t=32 "cliff" failed replication (2/2 fresh seeds correct);
   withdrawn. Raw responses: `sweep_responses.json`, `multihop_replication.json`.
 
+## Tier 1c — Trained linear head + the metric split (audit remediation) — `trained_linear.json`, `argmax_vs_output.json`
+
+Closes `docs/05_self_audit.md` B1 (no trained linear baseline existed). A real
+elu+1 kernelized head (`W_Q, W_K` trained by Adam on CE, fresh permutations,
+held-out eval, best-of-3 seeds; `train_linear.py`):
+
+| N | m | argmax acc | on-target mass | ‖A−P‖²/N (floor) | output err (floor) |
+|---|---|---|---|---|---|
+| 16 | 2 | 0.125 | 0.125 | 0.875 (0.875) | 0.936 (0.935) |
+| 64 | 2 | 0.031 | 0.031 | 0.969 (0.969) | 0.984 (0.984) |
+| 16 | 8 | 0.500 | 0.497 | 0.500 (0.500) | 0.705 (0.707) |
+| 64 | 8 | 0.125 | 0.124 | 0.875 (0.875) | 0.936 (0.935) |
+| 16 | 32 | 1.000 | 0.994 | 0.000 (0.000) | 0.006 (0.000) |
+| 64 | 32 | 0.500 | 0.495 | 0.500 (0.500) | 0.704 (0.707) |
+
+**Findings.** (i) Trained heads **saturate the Eckart–Young floor** — every
+`m<N` cell sits on its bound to ~3 decimals: the theory floor is *tight* for
+CE-trained heads, and P2's collapse (`acc ≈ m/N`) is now empirically confirmed
+on real trained models, retroactively validating the truncation proxy.
+(ii) `m>N` control cells train to ~perfect, so capacity — not optimization —
+is the binding constraint. (At exactly `m=N`, training sometimes hits
+feature-collision local optima: 0.875 at 8/8, 0.906 at 32/32; noted, and the
+`m<N` conclusions are unaffected.)
+
+**The metric split (`argmax_vs_output.py`).** A constructive rank-**4**
+nonnegative-feature head (keys on a circle, `s_ij = 1 + cos(θ_{π(i)}−θ_j)/2`)
+achieves **argmax accuracy 1.000 for every N up to 1024**, while its on-target
+mass is exactly `1.5/N` and its output error rides the Theorem-I floor to 1.
+So argmax routing is **not** rank-limited — but the *output* `AV` is, and CE
+training never finds the circle trick (it optimizes mass, which is rank-capped).
+**Consequence:** P2 must be read as an *output-error* claim; argmax-accuracy
+tables alone cannot demonstrate the separation. Fixed-capacity linear attention
+can *know where to look* but cannot *move the information*.
+
 ## Reproduce
 ```bash
 python3 src/numeric/rank_separation.py
 python3 src/numeric/train.py
 python3 src/numeric/depth_separation.py
+python3 src/numeric/train_linear.py             # trained linear head (audit B1)
+python3 src/numeric/argmax_vs_output.py         # rank-4 argmax construction
 python3 src/nl/task_generator.py --dump        # regenerate the base suite
 python3 src/nl/extra_tasks.py --demo           # the four new families
 python3 src/nl/run_haiku_verification.py        # grade recorded base-suite responses
