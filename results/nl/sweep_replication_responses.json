@@ -1,0 +1,530 @@
+{
+ "note": "Raw Haiku answers for the fresh-seed replication sweep (audit item 6). Prompts regenerable from sweep.build_replication_spec().",
+ "records": [
+  {
+   "id": "gather__N64__r1",
+   "task": "gather",
+   "label": "N64",
+   "seed": 1,
+   "response": "mango\ngravel\nmango\nnectar\nmango\nquartz\ncobalt\nwillow\ncobalt\ndapple\nmango\nthicket\nalmond\nember\ndapple\nalmond\nnectar\nzephyr\nquartz\ncobalt\nember\ndapple\nmarble\nalmond\ndapple\ncobalt\nthicket\ntundra\nbramble\nharbor\nclover\ncobweb\nbramble\nbrisket\nbrisket\nwillow\nbramble\npewter\nmango\nnectar\nsaffron\nclover\ntundra\nquartz\nquartz\nmango\ncinder\ncobalt\nclover\ncinder\nviolet\nlantern\npewter\ndapple\nmango\nmango\ncobweb\nbramble\nnectar\ncinder\nmarble\nalmond\nthicket\nquartz\n"
+  },
+  {
+   "id": "gather__N64__r2",
+   "task": "gather",
+   "label": "N64",
+   "seed": 2,
+   "response": "dapple\ncedar\ncobweb\nmarble\nlantern\nember\ngravel\ntundra\nlantern\nbrisket\nmango\nharbor\ngravel\nthicket\ncobalt\nember\ncobalt\nviolet\nsaffron\nsaffron\ncedar\nmango\nviolet\ngravel\nsaffron\nzephyr\nclover\nlantern\nbrisket\nbramble\nzephyr\ncedar\nlantern\nthicket\nsaffron\ngravel\ndapple\npewter\nsaffron\nwillow\ngravel\nbrisket\nbramble\nsaffron\ncinder\ncinder\nsaffron\nlantern\nclover\ngravel\nbramble\nlantern\ncinder\nlantern\ndapple\ntundra\nclover\ndapple\nalmond\nthicket\nlantern\ngravel\npewter\nbramble\n"
+  },
+  {
+   "id": "gather__N64__r3",
+   "task": "gather",
+   "label": "N64",
+   "seed": 3,
+   "response": "harbor\nbrisket\nember\nmango\nthicket\nalmond\nwillow\nwillow\nviolet\nember\nsaffron\nharbor\nbrisket\nmango\ncobalt\ntundra\ntundra\nnectar\nnectar\nthicket\ncinder\ncedar\nharbor\nharbor\ngravel\nviolet\ncobalt\ntundra\nnectar\ncinder\ncobalt\nmarble\nzephyr\nclover\ndapple\nsaffron\nalmond\nnectar\nquartz\nharbor\nember\nzephyr\nnectar\ndapple\nclover\nalmond\ncinder\ngravel\nzephyr\ncobweb\ndapple\nmango\ncobweb\ntundra\nthicket\nnectar\ncinder\nclover\nalmond\nmarble\nlantern\nthicket\ncedar\nbramble\n"
+  },
+  {
+   "id": "gather__N64__r4",
+   "task": "gather",
+   "label": "N64",
+   "seed": 4,
+   "response": "dapple\npewter\ncobalt\nwillow\nmango\ngravel\ngravel\ncedar\ngravel\ntundra\nmarble\nlantern\ncinder\nviolet\nember\nmarble\nthicket\nmarble\ncobalt\ncobalt\nmango\nclover\nthicket\nalmond\nzephyr\nlantern\nember\nalmond\nviolet\nviolet\nbrisket\ndapple\nharbor\nzephyr\nmarble\nquartz\nwillow\nwillow\ncinder\nclover\nlantern\ncobalt\nclover\ncinder\nember\nthicket\nmarble\nnectar\nmango\nember\nember\nmarble\nlantern\nviolet\nmarble\nsaffron\ncobalt\nmarble\nbramble\nquartz\ncobweb\nmarble\nsaffron\n"
+  },
+  {
+   "id": "gather__N128__r1",
+   "task": "gather",
+   "label": "N128",
+   "seed": 1,
+   "response": "ember\nnectar\nmango\nbrisket\nclover\ntundra\nalmond\ndapple\ncobalt\nlantern\nviolet\nbrisket\nthicket\nlantern\nbrisket\ncobalt\nnectar\ntundra\nsaffron\nbrisket\ncinder\nthicket\nbramble\nbramble\nlantern\ncinder\nsaffron\ndapple\nbramble\ncobalt\nbrisket\nmango\ncobalt\nnectar\nlantern\ntundra\nbramble\ngravel\nclover\nmango\ngravel\nmango\nmarble\nquartz\nbramble\nwillow\nnectar\nlantern\ncobweb\nquartz\nbramble\ntundra\nalmond\ngravel\ncinder\ngravel\nsaffron\ncobweb\nmango\nnectar\nmango\ngravel\nmango\ndapple\nember\ndapple\nalmond\nmango\ncobalt\nsaffron\nthicket\nwillow\nmango\nclover\nbrisket\ndapple\nviolet\nwillow\nthicket\nquartz\nthicket\ncobweb\nquartz\ntundra\nthicket\nzephyr\ncobalt\ndapple\ndapple\ncedar\nmarble\ncinder\ncobalt\ndapple\nmarble\nmarble\ntundra\nnectar\ngravel\nzephyr\ncedar\ncobweb\nquartz\nsaffron\nthicket\ngravel\nsaffron\nbramble\ncinder\ncinder\ncobalt\nthicket\ngravel\nsaffron\ntundra\nsaffron\nbramble\nember\nbrisket\ndapple\nviolet\nwillow\nthicket\nquartz\nthicket\nalmond\nlantern\nlantern\ngravel\ncobalt\nmango\nwillow\nnectar\nnectar\ncedar\nmarble\ncobweb\nzephyr\ncobalt\nclover\nbrisket\nlantern\nsaffron\ntundra\nsaffron\nbramble\nember\nharbor\nsaffron\nalmond\ncobalt\ndapple\ncinder\ngravel\npewter\nmarble\nmarble\nbrisket\npewter\nnectar\nmango\nmango\ntundra\nnectar\ngravel\ngravel\nzephyr\ncedar\ncobweb\nquartz\nthicket\ngravel\nsaffron\ncobalt\ndapple\nmarble\nwillow\nharbor\nsaffron\nalmond\ncobalt\ndapple\ncinder\ngravel\npewter\nmarble\nmarble\nbrisket\npewter\nnectar\nmango\ntundra\nnectar\ngravel\nzephyr\ncedar\ncobweb\nquartz\nthicket\ntundra\n"
+  },
+  {
+   "id": "gather__N128__r2",
+   "task": "gather",
+   "label": "N128",
+   "seed": 2,
+   "response": "clover\ndapple\ngravel\ncobalt\ngravel\nalmond\nsaffron\nsaffron\nalmond\nnectar\nmango\ncedar\nbramble\nlantern\ngravel\nbrisket\ngravel\nbramble\nnectar\ntundra\nthicket\nember\nbrisket\nthicket\nviolet\nalmond\ncedar\nsaffron\nzephyr\npewter\ndapple\nzephyr\ndapple\ndapple\nbramble\nbrisket\nbrisket\nnectar\nlantern\nzephyr\nbrisket\ndapple\nbramble\ncinder\nviolet\npewter\nember\ncobalt\ntundra\nwillow\nsaffron\nzephyr\ncinder\ngravel\ncobweb\nember\nember\ncobalt\ngravel\ndapple\nsaffron\nlantern\ncobalt\nbramble\ntundra\nlantern\nzephyr\nsaffron\nlantern\nsaffron\nbramble\ngravel\nmarble\nnectar\nsaffron\nmango\nmarble\ncobweb\nharbor\nlantern\ntundra\ncinder\ntundra\ngravel\ndapple\nquartz\ndapple\nclover\ncinder\ncedar\nlantern\ngravel\nbramble\ncobweb\ngravel\nclover\nclover\ngravel\nviolet\nmarble\ndapple\ngravel\nember\nbrisket\nwillow\nsaffron\npewter\ncobalt\ncinder\ncedar\nsaffron\ntundra\nlantern\ngravel\nnectar\npewter\nmarble\nmango\ngravel\nmarble\npewter\ncedar\nwillow\ndapple\ngravel\nember\nthicket\nquartz\ncedar\nalmond\nbrisket\ngravel\n"
+  },
+  {
+   "id": "gather__N128__r3",
+   "task": "gather",
+   "label": "N128",
+   "seed": 3,
+   "response": "cobalt\nquartz\nclover\nwillow\ngravel\nzephyr\nalmond\nmango\nbrisket\nnectar\nsaffron\nthicket\nviolet\nnectar\nmango\nnectar\nquartz\ncobweb\nharbor\nalmond\npewter\ncobweb\nnectar\nbrisket\nviolet\nalmond\nzephyr\nclover\nember\ncinder\ncobalt\ngravel\ntundra\nnectar\nember\nclover\nsaffron\nharbor\nmarble\nalmond\ncobalt\nharbor\nzephyr\ncinder\ncinder\nember\ntundra\ncedar\ncedar\nclover\ncedar\nnectar\nharbor\ncedar\nmarble\nwillow\ntundra\nharbor\npewter\nquartz\ncinder\nmango\nalmond\nthicket\ntundra\ntundra\ncedar\nbrisket\ndapple\nmarble\nviolet\ntundra\ncobweb\nclover\nclover\nclover\nalmond\ntundra\nember\nviolet\ngravel\ncinder\ncinder\nmango\ncedar\ntundra\nember\ntundra\nviolet\nzephyr\nmango\nsaffron\nmango\ndapple\nember\nmarble\npewter\nnectar\nlantern\nthicket\nlantern\nember\ncobalt\nquartz\nzephyr\ncinder\nbramble\nsaffron\nbrisket\nthicket\ntundra\nzephyr\ncobweb\nthicket\nnectar\nthicket\ncedar\nzephyr\nwillow\ncinder\ncinder\nmango\nviolet\nquartz\nzephyr\ncedar\nmarble\nmango\nviolet\nquartz\nquartz\nharbor\n"
+  },
+  {
+   "id": "gather__N128__r4",
+   "task": "gather",
+   "label": "N128",
+   "seed": 4,
+   "response": "gravel\nviolet\npewter\nmango\ncobweb\ncinder\nclover\nember\nthicket\ntundra\nmango\ncobalt\npewter\nbramble\ndapple\nwillow\ncobalt\nzephyr\ngravel\nember\nviolet\nviolet\nmarble\nharbor\ncobweb\nzephyr\ncinder\nviolet\nmarble\nlantern\nnectar\nbramble\nember\nalmond\nthicket\nclover\nember\nsaffron\nalmond\nviolet\nbramble\nmarble\nalmond\ncobweb\nquartz\ncinder\npewter\ncedar\ndapple\ndapple\nmango\nmango\ncedar\nquartz\nmarble\ncedar\nsaffron\nclover\nclover\ncinder\npewter\nquartz\npewter\nmarble\nwillow\ncobweb\nalmond\nzephyr\ngravel\nlantern\nwillow\ntundra\nbrisket\nember\nmarble\nclover\nlantern\nember\nmarble\ncobalt\ncedar\ngravel\nthicket\nlantern\nalmond\nnectar\ncobalt\ncobalt\ncedar\nalmond\nwillow\npewter\nviolet\ncobalt\nlantern\nwillow\nember\npewter\nviolet\npewter\nmarble\nharbor\nmarble\nmarble\nmarble\ntundra\ncobalt\nsaffron\nember\nmarble\nnectar\ncinder\nmarble\nquartz\npewter\nmango\ndapple\nsaffron\nzephyr\nclover\nviolet\nalmond\nwillow\nbrisket\nlantern\n"
+  },
+  {
+   "id": "gather__N256__r1",
+   "task": "gather",
+   "label": "N256",
+   "seed": 1,
+   "response": "saffron\ncobalt\nnectar\nmango\nwillow\ndapple\nmango\nthicket\nmango\ngravel\ncobalt\ncinder\ngravel\npewter\nmango\nclover\nnectar\nwillow\nlantern\nbrisket\nviolet\nharbor\nthicket\ndapple\nzephyr\ntundra\ncedar\nwillow\ncinder\nharbor\ncedar\ncobweb\nember\ngravel\nmango\nclover\nmarble\nsaffron\nmango\nmango\nlantern\npewter\ngravel\ncinder\ntundra\ncinder\nbramble\nquartz\nclover\nalmond\nmarble\nsaffron\ncobalt\ncobweb\nwillow\nmarble\nsaffron\ncobweb\nclover\ncobalt\ndapple\ndapple\nnectar\nviolet\nviolet\nharbor\nclover\ncinder\nbrisket\nmango\ncobweb\ncobalt\ntundra\ncobalt\nmango\nharbor\ncobalt\nviolet\npewter\nclover\nbrisket\ngravel\nmarble\nsaffron\nbrisket\nbrisket\nalmond\nthicket\ncobalt\nmango\nthicket\nsaffron\ncedar\nbrisket\ntundra\ntundra\nthicket\nnectar\nember\nmarble\ncobalt\nnectar\npewter\npewter\nbramble\nlantern\nember\nzephyr\nbramble\nmarble\ncedar\ngravel\ntundra\nmango\ntundra\nlantern\nsaffron\nmango\nviolet\nsaffron\nlantern\nthicket\nthicket\nalmond\ngravel\ndapple\ncinder\nbramble\nalmond\nclover\ncobweb\ntundra\ndapple\nember\nalmond\nquartz\nmango\nmarble\nmango\nmarble\nlantern\nzephyr\ngravel\nember\nember\nmango\ndapple\nember\nlantern\nbramble\nclover\nclover\nember\nmango\nthicket\nmango\nalmond\ncobweb\nmarble\nmarble\nbrisket\nclover\nnectar\nnectar\nlantern\nbramble\ncinder\nlantern\nthicket\nalmond\nbrisket\ngravel\nquartz\nclover\nwillow\ncinder\ncinder\nbramble\ncobweb\ncinder\ncinder\nalmond\nquartz\ndapple\nwillow\nzephyr\ndapple\ngravel\nsaffron\ngravel\nbramble\ngravel\ncedar\nthicket\nquartz\nbramble\nwillow\nquartz\nthicket\ncobweb\nwillow\nnectar\ncedar\nember\nbrisket\nviolet\ngravel\nnectar\nnectar\nzephyr\nlantern\nquartz\nbrisket\nzephyr\ntundra\nnectar\ncedar\nmango\nember\nmarble\nbrisket\nalmond\nviolet\ngravel\ncinder\npewter\ndapple\nclover\ngravel\nalmond\ndapple\nzephyr\nquartz\nnectar\ncobalt\ndapple\ndapple\ncobalt\ncinder\nwillow\ncobalt\nlantern\nquartz\nsaffron\nthicket\ncobalt\nbramble\ntundra\nviolet\nbrisket\ngravel\ncinder\nzephyr\nbramble\nlantern\nmango\n"
+  },
+  {
+   "id": "gather__N256__r2",
+   "task": "gather",
+   "label": "N256",
+   "seed": 2,
+   "response": "clover\nmarble\ncobweb\ndapple\nzephyr\nthicket\nzephyr\nalmond\nharbor\ncobweb\npewter\ncedar\ngravel\nlantern\nsaffron\ngravel\ncobweb\nzephyr\npewter\npewter\nmango\nharbor\nmarble\nviolet\nbramble\ncedar\ngravel\nviolet\nzephyr\nquartz\nlantern\nharbor\nviolet\npewter\ncobweb\nember\nquartz\nsaffron\nmango\ndapple\ncedar\nember\nmango\ndapple\ngravel\nsaffron\nlantern\nember\nviolet\ngravel\ndapple\ncobalt\nbramble\nsaffron\nviolet\ncobalt\ntundra\ndapple\ncobalt\npewter\nmango\nnectar\ncedar\nbramble\nbrisket\nmarble\ncobalt\ncobweb\nbrisket\ncinder\ncedar\nmango\nsaffron\nwillow\ncobalt\nnectar\nlantern\nlantern\nclover\nmango\ncobalt\nember\nthicket\nmango\nclover\nthicket\nbramble\nquartz\nbramble\nsaffron\nbrisket\ngravel\ncedar\nsaffron\nharbor\nbramble\ncinder\ncedar\nbrisket\ncobweb\ncedar\nclover\nzephyr\ngravel\nmango\nsaffron\nharbor\ncedar\ntundra\ncinder\nember\ndapple\nbrisket\ngravel\ncobalt\nharbor\nzephyr\nlantern\ncobweb\ndapple\ncobalt\nember\nclover\nbramble\nwillow\nbrisket\nclover\nzephyr\ncinder\nalmond\nnectar\ncobalt\ngravel\nlantern\ntundra\nlantern\nsaffron\nbrisket\ngravel\nquartz\nlantern\nthicket\nharbor\nbramble\ncinder\nalmond\nember\nbramble\nviolet\nnectar\nnectar\nlantern\nquartz\nnectar\nalmond\ngravel\nzephyr\nalmond\nthicket\ngravel\nzephyr\npewter\ncobalt\nnectar\ngravel\nsaffron\nalmond\nalmond\nthicket\ntundra\nlantern\ncinder\nbrisket\nzephyr\nember\nmango\nbramble\ncinder\nbrisket\ntundra\ndapple\nnectar\nzephyr\nmango\ngravel\nviolet\nthicket\ncobweb\nsaffron\nember\nclover\ncobalt\nharbor\nharbor\nlantern\nwillow\ncedar\nmarble\ntundra\nlantern\nbramble\ncedar\ngravel\nwillow\ncobalt\nbrisket\ntundra\ngravel\nmarble\nbrisket\ncedar\ngravel\npewter\ncedar\nlantern\nmarble\nember\nember\ndapple\ngravel\nlantern\ncobweb\ncobweb\ngravel\ntundra\nember\ndapple\nquartz\ncobalt\nsaffron\nviolet\nember\nharbor\ndapple\nmango\nviolet\nmango\ngravel\ngravel\ncedar\nsaffron\ndapple\ndapple\ncedar\nquartz\nclover\nbrisket\nsaffron\ndapple\nbramble\npewter\nsaffron\ndapple\nember\ncedar\ntundra\n"
+  },
+  {
+   "id": "gather__N256__r3",
+   "task": "gather",
+   "label": "N256",
+   "seed": 3,
+   "response": "cobweb\nalmond\ntundra\npewter\nsaffron\ncobalt\nclover\nclover\ntundra\nnectar\ntundra\nsaffron\nalmond\nmango\nbrisket\nbrisket\nalmond\nquartz\nthicket\nthicket\nzephyr\ncinder\ncobalt\nbramble\nlantern\nember\nbrisket\nalmond\nclover\nthicket\nsaffron\ncinder\ncobweb\nquartz\npewter\nsaffron\nharbor\ntundra\nalmond\ntundra\nember\ncinder\nmarble\nalmond\ncobweb\nmango\npewter\ntundra\npewter\nalmond\nnectar\npewter\ngravel\npewter\nember\nalmond\ncedar\nmango\ndapple\nnectar\ncinder\nbramble\ntundra\nalmond\nalmond\ncedar\ncobweb\nviolet\nember\ncobweb\ncedar\nember\nclover\nbramble\npewter\ngravel\ntundra\nzephyr\nbramble\nalmond\nmarble\ngravel\ncinder\nbramble\nember\nlantern\nsaffron\nharbor\nviolet\ncinder\nzephyr\nquartz\ntundra\ncedar\ncedar\ncobalt\ncobalt\ndapple\nquartz\nnectar\nnectar\nlantern\nthicket\nwillow\npewter\nember\nember\nviolet\ntundra\nclover\nquartz\ndapple\nnectar\nthicket\npewter\nzephyr\nclover\ntundra\nsaffron\nember\nquartz\ncobalt\nwillow\ncedar\nharbor\ndapple\nharbor\ncinder\nmarble\nbrisket\nsaffron\nviolet\nalmond\nnectar\nthicket\nnectar\ncobweb\nzephyr\nharbor\nlantern\nthicket\nquartz\nalmond\nthicket\ncobweb\nzephyr\npewter\nmango\ncinder\ncobalt\ncinder\nmarble\nlantern\ncedar\nharbor\ndapple\ntundra\ngravel\nember\nmarble\nharbor\nzephyr\nember\nquartz\npewter\nbramble\ntundra\ntundra\ncobalt\nsaffron\npewter\nmango\npewter\npewter\ntundra\ncobalt\nzephyr\nsaffron\nthicket\nbrisket\nmango\nthicket\ncobweb\nember\ncobalt\npewter\ncobweb\nzephyr\nmarble\nmarble\nzephyr\nwillow\nalmond\npewter\nember\nviolet\nharbor\nnectar\nbrisket\nzephyr\nharbor\nzephyr\nalmond\ncobalt\nmango\nclover\ndapple\nquartz\ntundra\ncobweb\nbrisket\nalmond\nharbor\nbrisket\ncedar\nbrisket\nmango\nmango\ndapple\ncinder\ncedar\ntundra\nwillow\nzephyr\ngravel\ncedar\nmarble\nclover\nclover\nbrisket\nmango\ntundra\nsaffron\nember\nclover\nviolet\nmarble\nalmond\nwillow\ngravel\nclover\nmarble\nlantern\ngravel\nclover\ngravel\nlantern\nember\nmango\nquartz\nviolet\nzephyr\nwillow\nmarble\nzephyr\nthicket\n"
+  },
+  {
+   "id": "gather__N256__r4",
+   "task": "gather",
+   "label": "N256",
+   "seed": 4,
+   "response": "almond\nwillow\nbramble\ngravel\nnectar\nthicket\nbrisket\nember\nclover\nmango\npewter\ncedar\nmarble\nclover\nwillow\nsaffron\ncobalt\ndapple\ntundra\nwillow\ncinder\nclover\nbramble\nember\nalmond\nmango\ngravel\nalmond\npewter\nviolet\ncobalt\nclover\ncedar\nnectar\nviolet\nwillow\nalmond\nnectar\nmarble\ndapple\nmarble\nnectar\nharbor\nthicket\ndapple\nbramble\nwillow\nclover\nclover\nbrisket\ndapple\ncobalt\ncedar\ntundra\ngravel\nbrisket\ncinder\ncinder\nwillow\nbrisket\nember\nclover\nquartz\nthicket\nalmond\nzephyr\nthicket\nzephyr\nnectar\nbramble\nsaffron\ncedar\nbramble\ngravel\nclover\nsaffron\nwillow\ngravel\nlantern\nclover\nmango\nalmond\nlantern\nbramble\nbramble\ncobalt\nwillow\npewter\nmango\nviolet\nmango\npewter\nmarble\npewter\nharbor\nalmond\nclover\nzephyr\nbrisket\nviolet\nmarble\nzephyr\nwillow\nbramble\nmarble\nharbor\nember\nthicket\nzephyr\nlantern\npewter\ntundra\nmango\nsaffron\ncedar\nbramble\nlantern\nsaffron\nsaffron\nmarble\ntundra\nquartz\nbramble\nwillow\nclover\nwillow\nquartz\ncedar\ncedar\ncedar\ndapple\nlantern\nzephyr\nbrisket\nharbor\nzephyr\ncedar\ncinder\nnectar\ntundra\ncobalt\npewter\ncedar\nquartz\ngravel\nmarble\nclover\nalmond\nwillow\nnectar\nwillow\ncobalt\nbramble\nclover\nnectar\ncedar\ncobalt\nclover\nbramble\ncobalt\nalmond\nclover\nwillow\nnectar\nwillow\ncedar\ncedar\nember\nember\ncobalt\ngravel\nwillow\ncobalt\nclover\nember\nharbor\npewter\ncedar\npewter\ntundra\nquartz\ntundra\nthicket\nalmond\nalmond\ncobweb\ndapple\ncedar\nnectar\nthicket\nviolet\nclover\nwillow\ntundra\nlantern\npewter\nmarble\nbrisket\nnectar\nalmond\npewter\nclover\ngravel\nwillow\nalmond\nbrisket\nember\npewter\nthicket\nnectar\nviolet\nember\nalmond\nbrisket\nwillow\ncedar\nthicket\nzephyr\nharbor\nember\nbrisket\ncedar\nlantern\ncobweb\nalmond\nbramble\ntundra\nlantern\ncobalt\nharbor\nlantern\nmarble\nzephyr\nwillow\nbramble\ncedar\nthicket\nzephyr\ncedar\ncinder\nnectar\nthicket\nviolet\nclover\nwillow\ntundra\nlantern\npewter\nmarble\nbrisket\nnectar\nalmond\npewter\nclover\ngravel\nwillow\nalmond\nbrisket\nember\npewter\nthicket\nnectar\nviolet\nember\nalmond\nbrisket\nwillow\ncedar\nthicket\nzephyr\nharbor\nember\nbrisket\ncedar\nlantern\ncobweb\nalmond\nbramble\ntundra\nlantern\ncobalt\ndapple\nharbor\nviolet\nquartz\nsaffron\nlantern\nlantern\nsaffron\npewter\nquartz\nmarble\ndapple\ncinder\ncinder\nsaffron\nsaffron\nviolet\nviolet\nharbor\ncobalt\ncobalt\nquartz\ndapple\nthicket\nthicket\nalmond\nalmond\ncobweb\nthicket\nquartz\ntundra\npewter\ncedar\npewter\ntundra\nquartz\ntundra\nwillow\nwillow\ncobalt\ncobalt\ncedar\ncedar\ncedar\ndapple\nlantern\nzephyr\nbrisket\nharbor\nzephyr\ncedar\ncinder\nnectar\ntundra\ncobalt\npewter\ncedar\nquartz\ngravel\nmarble\nclover\nalmond\nwillow\nnectar\nwillow\ncobalt\nbramble\nclover\nnectar\ncedar\ncobalt\nclover\nbramble\ncobalt\nalmond\nclover\nwillow\nnectar\nwillow\ncedar\ncedar\nember\nember\ncobalt\ngravel\nwillow\ncobalt\nclover\nember\nharbor\npewter\ncedar\npewter\ntundra\nquartz\ntundra\nthicket\nalmond\nalmond\ncobweb\ndapple\ncedar\n"
+  },
+  {
+   "id": "gather__N256__r5",
+   "task": "gather",
+   "label": "N256",
+   "seed": 5,
+   "response": "quartz\nnectar\nnectar\ntundra\nbramble\nthicket\nsaffron\nalmond\nmarble\nbrisket\nharbor\nwillow\ncobalt\nalmond\nalmond\ncinder\nclover\nember\npewter\ngravel\nviolet\nmango\ncobweb\ncinder\nwillow\ncinder\nbrisket\nmarble\npewter\nviolet\nnectar\nlantern\nviolet\nnectar\nclover\nember\nwillow\nmarble\nember\nzephyr\nsaffron\ncinder\nquartz\nalmond\nbrisket\nsaffron\nnectar\nsaffron\nember\nember\ncobweb\ncobweb\nlantern\ntundra\ndapple\nlantern\nharbor\ncobweb\ncedar\nsaffron\ntundra\nthicket\nmango\npewter\nviolet\nsaffron\ngravel\ngravel\nmango\nlantern\ncinder\nsaffron\ncobalt\nlantern\nnectar\nsaffron\nquartz\ncobalt\nlantern\nharbor\ncinder\nnectar\ncinder\ntundra\nmango\ngravel\ncinder\ngravel\nsaffron\nviolet\nsaffron\ncobweb\ntundra\nbrisket\ncedar\nmarble\nsaffron\ncinder\ncobweb\nbrisket\nember\nnectar\nember\ncobweb\ncobweb\nmarble\npewter\nalmond\nlantern\ntundra\nmango\nnectar\ncinder\nember\npewter\nbrisket\nember\nbramble\nmarble\ngravel\nalmond\nbrisket\nsaffron\nsaffron\nember\nalmond\nsaffron\ndapple\nclover\nsaffron\nlantern\ncobweb\nbramble\nsaffron\nzephyr\ntundra\nmango\nzephyr\nbrisket\ncobweb\npewter\nviolet\nmarble\nsaffron\nmarble\nnectar\ncobweb\npewter\nlantern\nnectar\nnectar\ncobweb\nlantern\ncedar\nember\nmango\ndapple\nsaffron\nthicket\nmango\ncinder\nclover\nsaffron\nthicket\ntundra\nmango\nbramble\ncedar\ncobweb\nlantern\nzephyr\nwillow\nquartz\ncobalt\nbramble\nsaffron\ngravel\nsaffron\ngravel\nember\nbramble\nquartz\ntundra\ndapple\nsaffron\nmarble\ncedar\nclover\nviolet\nwillow\npewter\ngravel\nzephyr\nsaffron\nharbor\npewter\nember\ncobweb\ncinder\nviolet\nmarble\nbrisket\npewter\nmarble\nlantern\nviolet\nalmond\nharbor\ndapple\ncobweb\nmarble\nnectar\nlantern\ndapple\ncedar\nviolet\nzephyr\ncinder\nthicket\ncedar\ncobalt\ndapple\nzephyr\nsaffron\nember\nbramble\nalmond\nclover\nharbor\ncedar\nalmond\ncedar\nnectar\npewter\nwillow\nharbor\ndapple\ntundra\nharbor\nalmond\nclover\nquartz\nlantern\nclover\nsaffron\nharbor\ncedar\nclover\nmarble\nharbor\nbramble\nzephyr\nlantern\ngravel\nbramble\nnectar\ncobweb\ndapple\npewter\nnectar\nember\nmarble\nnectar\nthicket\nharbor\nquartz\nthicket\ncinder\nlantern\nalmond\nnectar\npewter\nlantern\nviolet\nnectar\nember\ngravel\ncinder\ngravel\nsaffron\nviolet\nsaffron\ncobweb\ntundra\nbrisket\ncedar\nmarble\nsaffron\ncinder\ncobweb\nbrisket\nember\nnectar\nember\ncobweb\ncobweb\nmarble\npewter\nalmond\nlantern\ntundra\nmango\nnectar\ncinder\nember\npewter\nbrisket\nember\nbramble\nmarble\ngravel\nalmond\nbrisket\nsaffron\nsaffron\nember\nalmond\nsaffron\ndapple\nclover\nsaffron\nlantern\ncobweb\nbramble\nsaffron\nzephyr\ntundra\nmango\nzephyr\nbrisket\ncobweb\npewter\nviolet\nmarble\nsaffron\nmarble\nnectar\ncobweb\npewter\nlantern\nnectar\nnectar\ncobweb\nlantern\ncedar\nember\nmango\ndapple\nsaffron\nthicket\nmango\ncinder\nclover\nsaffron\nthicket\ntundra\nmango\nbramble\ncedar\ncobweb\nlantern\nzephyr\nwillow\nquartz\ncobalt\nbramble\nsaffron\ngravel\nsaffron\ngravel\nember\nbramble\nquartz\ntundra\ndapple\nsaffron\nmarble\ncedar\nclover\nviolet\nwillow\npewter\ngravel\nzephyr\nsaffron\nharbor\npewter\nember\ncobweb\ncinder\nviolet\nmarble\nbrisket\npewter\nmarble\nlantern\nviolet\nalmond\nharbor\ndapple\ncobweb\nmarble\nnectar\nlantern\ndapple\ncedar\nviolet\nzephyr\ncinder\nthicket\ncedar\ncobalt\ndapple\nzephyr\nsaffron\nember\nbramble\nalmond\nclover\nharbor\ncedar\nalmond\ncedar\nnectar\npewter\nwillow\nharbor\ndapple\ntundra\nharbor\nalmond\nclover\nquartz\nlantern\nclover\nsaffron\nharbor\ncedar\nclover\nmarble\nharbor\nbramble\nzephyr\nlantern\ngravel\nbramble\nnectar\ncobweb\ndapple\npewter\nnectar\nember\nmarble\nnectar\nthicket\nharbor\nquartz\nthicket\ncinder\nlantern\nalmond\nnectar\npewter\nlantern\nviolet\nnectar\nember\ngravel\ncinder\ngravel\n"
+  },
+  {
+   "id": "gather__N256__r6",
+   "task": "gather",
+   "label": "N256",
+   "seed": 6,
+   "response": "lantern\nviolet\nnectar\nmango\npewter\ncedar\nwillow\nbramble\nnectar\nclover\nbramble\nzephyr\ncobalt\nmango\ncinder\nbrisket\ntundra\nwillow\nember\nbramble\nmarble\nsaffron\nalmond\nbramble\nsaffron\ngravel\nsaffron\nalmond\nnectar\nzephyr\nbramble\nzephyr\nmarble\ngravel\nnectar\nclover\nmarble\npewter\nzephyr\nmarble\nzephyr\nember\ngravel\nzephyr\nwillow\nalmond\ndapple\nzephyr\nalmond\ntundra\ngravel\nbrisket\nlantern\nmarble\ncobweb\nwillow\nlantern\nmango\ndapple\ndapple\nbramble\nclover\nthicket\nmango\nclover\nclover\ntundra\ncobalt\nnectar\nnectar\ncedar\nember\ndapple\ndapple\nsaffron\nsaffron\ncobweb\nnectar\nember\nmarble\nquartz\ncedar\nnectar\nsaffron\nbrisket\nlantern\nzephyr\nthicket\ncobalt\nviolet\nzephyr\nbrisket\nlantern\nmarble\nthicket\nviolet\nsaffron\nbrisket\nbrisket\nmango\nember\nharbor\nharbor\nquartz\ncedar\nharbor\nmango\nzephyr\ncedar\nzephyr\nzephyr\nharbor\nzephyr\nsaffron\nwillow\nzephyr\nzephyr\nember\nmarble\ncobweb\nthicket\nquartz\ncinder\nnectar\nalmond\nbramble\ndapple\nclover\ndapple\nbrisket\ncobalt\nwillow\nalmond\nquartz\nviolet\nquartz\nmango\nmango\ncobweb\ncinder\nbrisket\ncinder\nthicket\nbramble\nbramble\nzephyr\nlantern\nalmond\nlantern\nalmond\nember\ncinder\ntundra\ntundra\nviolet\nviolet\ncobalt\nharbor\nwillow\nwillow\nwillow\nclover\nwillow\nmango\nalmond\nquartz\nquartz\nwillow\nmango\nalmond\nalmond\nharbor\nwillow\nharbor\nmango\nalmond\nviolet\nlantern\nzephyr\nalmond\nember\nalmond\nbramble\nnectar\ncobweb\nmango\nalmond\nharbor\nwillow\nbramble\nviolet\nzephyr\ncobalt\nquartz\nsaffron\nsaffron\nharbor\nbrisket\nalmond\ncobalt\nzephyr\npewter\nharbor\ncedar\nalmond\nbrisket\nquartz\ncobweb\nquartz\ncedar\nalmond\nnectar\nbramble\ndapple\nviolet\nalmond\nmango\ncobweb\ncinder\nharbor\nzephyr\nzephyr\nharbor\nzephyr\nsaffron\nwillow\nzephyr\nzephyr\nember\npewter\nalmond\nthicket\nnectar\ndapple\nlantern\nmango\nzephyr\nbramble\ncedar\nlantern\nmango\nzephyr\ntundra\nquartz\nbrisket\ncobweb\nsaffron\nsaffron\nnectar\ntundra\ncedar\nwillow\nharbor\nember\nzephyr\nmango\nclover\ngravel\nnectar\nviolet\nnectar\ncobalt\nquartz\nsaffron\nsaffron\nharbor\nbrisket\nalmond\ncobalt\nzephyr\npewter\nharbor\ncedar\nalmond\nbrisket\nquartz\ncobweb\nquartz\ncedar\nalmond\nnectar\nbramble\ndapple\nviolet\nalmond\nmango\ncobweb\ncinder\nharbor\nzephyr\nzephyr\nharbor\nzephyr\nsaffron\nwillow\nzephyr\nzephyr\nember\npewter\nalmond\nthicket\nnectar\ndapple\nlantern\nmango\nzephyr\nbramble\ncedar\nlantern\nmango\nzephyr\ntundra\nquartz\nbrisket\ncobweb\nsaffron\nsaffron\nnectar\ntundra\ncedar\nwillow\nharbor\nember\nzephyr\nmango\nclover\ngravel\nnectar\nviolet\nnectar\ncobalt\nquartz\nsaffron\nsaffron\nharbor\nbrisket\nalmond\ncobalt\nzephyr\npewter\nharbor\ncedar\nalmond\nbrisket\nquartz\ncobweb\nquartz\ncedar\nalmond\nnectar\nbramble\ndapple\nviolet\nalmond\nmango\ncobweb\ncinder\nharbor\nzephyr\nzephyr\nharbor\nzephyr\nsaffron\nwillow\nzephyr\nzephyr\nember\npewter\nalmond\nthicket\nnectar\ndapple\nlantern\nmango\nzephyr\nbramble\ncedar\nlantern\nmango\nzephyr\ntundra\nquartz\nbrisket\ncobweb\nsaffron\nsaffron\nnectar\ntundra\ncedar\nwillow\nharbor\nember\nzephyr\nmango\nclover\ngravel\nnectar\nviolet\nnectar\ncobalt\nquartz\nsaffron\nsaffron\nharbor\nbrisket\nalmond\ncobalt\nzephyr\npewter\nharbor\ncedar\nalmond\nbrisket\nquartz\ncobweb\nquartz\ncedar\nalmond\nnectar\nbramble\ndapple\nviolet\nalmond\nmango\ncobweb\ncinder\nharbor\nzephyr\nzephyr\nharbor\nzephyr\nsaffron\nwillow\nzephyr\nzephyr\nember\npewter\nalmond\nthicket\nnectar\ndapple\n"
+  },
+  {
+   "id": "gather__N256__r7",
+   "task": "gather",
+   "label": "N256",
+   "seed": 7,
+   "response": "cobalt\nquartz\ndapple\nzephyr\nzephyr\nbramble\nbrisket\nwillow\nmango\nnectar\nlantern\nharbor\nbramble\ncinder\nzephyr\ncedar\nthicket\ncedar\nalmond\nviolet\nthicket\ncobalt\ntundra\ncobalt\nharbor\nsaffron\nnectar\nviolet\nthicket\ngravel\nharbor\nviolet\nquartz\nbrisket\nbrisket\nviolet\nember\nmarble\nnectar\nalmond\nquartz\nbrisket\ncedar\nthicket\nlantern\ncinder\nviolet\ncedar\nzephyr\nclover\ncinder\nthicket\nbrisket\nthicket\ntundra\npewter\ncinder\nharbor\nnectar\ndapple\nnectar\nsaffron\nlantern\nviolet\ngravel\ntundra\nlantern\ncedar\nquartz\nthicket\nsaffron\nviolet\ndapple\nmarble\nharbor\nsaffron\nviolet\nnectar\nember\ntundra\ntundra\ncinder\nclover\ncinder\ncobalt\nclover\ncobweb\ncedar\nmarble\nember\ncedar\nsaffron\nquartz\ncobweb\nmarble\nember\nharbor\nnectar\nlantern\nwillow\ncobweb\nharbor\nquartz\ndapple\nharbor\ngravel\nzephyr\ncobalt\nclover\nviolet\nmarble\nnectar\nbrisket\ntundra\nsaffron\ncobweb\ncobweb\ncedar\ncobalt\nmarble\nthicket\nquartz\nviolet\ndapple\nmarble\ncobweb\ncobalt\nviolet\nbramble\ncinder\ncedar\nnectar\nquartz\nember\ncinder\nharbor\nharbor\ncedar\nbramble\ndapple\nquartz\nharbor\nthicket\nthicket\nnectar\ncinder\nember\ncinder\nember\ncobweb\nclover\nsaffron\nbrisket\nthicket\ncobalt\nharbor\nviolet\nlantern\nharbor\ncobalt\nbrisket\ncobalt\nmango\nnectar\ntundra\nlantern\nember\nmarble\nmango\nharbor\nclover\ncinder\nsaffron\nzephyr\ntundra\npewter\nharbor\ncobweb\ngravel\nzephyr\nalmond\nbrisket\ndapple\ncedar\nbramble\nbrisket\ncinder\nthicket\nthicket\nthicket\nthicket\nquartz\nnectar\nalmond\nthicket\ncedar\nwillow\nviolet\nwillow\nbramble\nlantern\nquartz\npewter\nzephyr\ncedar\nquartz\nmango\ntundra\nharbor\ncinder\nquartz\nsaffron\nzephyr\nmango\nviolet\nwillow\nzephyr\nthicket\nharbor\nalmond\nember\nsaffron\nzephyr\nsaffron\nnectar\nquartz\nquartz\nnectar\nbramble\nnectar\nnectar\nmarble\nviolet\nharbor\nquartz\ndapple\npewter\ndapple\nember\nnectar\ncobweb\nlantern\ngravel\nmango\nwillow\ngravel\nsaffron\nharbor\ncobweb\ncinder\nmango\npewter\npewter\ncobweb\nsaffron\nzephyr\nnectar\ntundra\nbramble\nviolet\nviolet\nember\nnectar\ncobweb\nbrisket\nviolet\ncedar\ndapple\ncobweb\nmarble\nalmond\ntundra\nbrisket\nbramble\nmarble\ncobweb\nthicket\nbrisket\nsaffron\nmango\nbramble\nsaffron\nlantern\nzephyr\nquartz\nnectar\ncedar\nwillow\nmarble\nharbor\ndapple\ncobalt\nthicket\nthicket\nnectar\nviolet\nlantern\nbramble\nthicket\ncinder\nember\nharbor\nclover\ncinder\nember\ncobweb\nclover\nsaffron\nbrisket\nthicket\ncobalt\nharbor\nviolet\nlantern\nharbor\ncobalt\nbrisket\ncobalt\nmango\nnectar\ntundra\nlantern\nember\nmarble\nmango\nharbor\nclover\ncinder\nsaffron\nzephyr\ntundra\npewter\nharbor\ncobweb\ngravel\nzephyr\nalmond\nbrisket\ndapple\ncedar\nbramble\nbrisket\ncinder\nthicket\nthicket\nthicket\nthicket\nquartz\nnectar\nalmond\nthicket\ncedar\nwillow\nviolet\nwillow\nbramble\nlantern\nquartz\npewter\nzephyr\ncedar\nquartz\nmango\ntundra\nharbor\ncinder\nquartz\nsaffron\nzephyr\nmango\nviolet\nwillow\nzephyr\nthicket\nharbor\nalmond\nember\nsaffron\nzephyr\nsaffron\nnectar\nquartz\nquartz\nnectar\nbramble\nnectar\nnectar\nmarble\nviolet\nharbor\nquartz\ndapple\npewter\ndapple\nember\nnectar\ncobweb\nlantern\ngravel\nmango\nwillow\ngravel\nsaffron\nharbor\ncobweb\ncinder\nmango\n"
+  },
+  {
+   "id": "gather__N256__r8",
+   "task": "gather",
+   "label": "N256",
+   "seed": 8,
+   "response": "harbor\nviolet\nwillow\nquartz\nwillow\nlantern\ngravel\nviolet\nmarble\nmarble\ncedar\nlantern\nquartz\nharbor\nlantern\ncobalt\nharbor\nmango\nsaffron\nsaffron\nquartz\nbramble\ngravel\nclover\ntundra\nharbor\nlantern\nwillow\ncobalt\npewter\ngravel\nmango\nzephyr\nquartz\nquartz\ntundra\ncedar\ngravel\nnectar\nmarble\ncobalt\ndapple\nbramble\nsaffron\nmarble\nmarble\nzephyr\nalmond\ncinder\nlantern\nthicket\nviolet\nthicket\nwillow\nclover\ndapple\ncobalt\npewter\ncobweb\ncobweb\nwillow\nquartz\nsaffron\npewter\nsaffron\nmango\nalmond\nnectar\ngravel\nquartz\nsaffron\npewter\nsaffron\nmango\nalmond\ncobalt\nmango\nmarble\nquartz\ndapple\nmarble\nviolet\ndapple\npewter\nlantern\nlantern\npewter\nclover\nbramble\nquartz\nviolet\nwillow\nzephyr\ncinder\npewter\nbramble\ncinder\ncobalt\nsaffron\ncobalt\nmango\nmarble\npewter\ncobalt\nember\ncedar\nclover\nember\nthicket\nmarble\ncobweb\nclover\nlantern\nbrisket\nthicket\nquartz\nlantern\nbrisket\nmango\nwillow\nlantern\nmarble\nquartz\nmango\nthicket\npewter\nlantern\ntundra\nclover\ncobalt\nharbor\nclover\ntundra\nbramble\nclover\nclover\nviolet\ntundra\nviolet\nmarble\ncobweb\nquartz\ncedar\nviolet\nbrisket\nquartz\ngravel\ngravel\nsaffron\nharbor\ngravel\nnectar\ncobweb\nharbor\nzephyr\nviolet\nwillow\nmango\nharbor\npewter\nthicket\nbrisket\ntundra\nquartz\ndapple\nmarble\nsaffron\npewter\nsaffron\nmango\nalmond\nnectar\nwillow\ncedar\nzephyr\ncedar\ntundra\nlantern\nlantern\npewter\nclover\nbramble\nquartz\nviolet\nwillow\nzephyr\ncobalt\nnectar\nnectar\nharbor\nthicket\nquartz\nquartz\ntundra\ndapple\nbramble\nalmond\nharbor\ndapple\nbramble\ngravel\ndapple\nviolet\ncobweb\nnectar\ntundra\nthicket\nsaffron\nbramble\ncobalt\ncedar\nwillow\ncedar\nbramble\nquartz\nquartz\nwillow\ndapple\nmango\ncobweb\nzephyr\nzephyr\nmango\nalmond\nsaffron\nclover\ngravel\nviolet\ndapple\nzephyr\ngravel\ncobweb\ntundra\nwillow\ngravel\ncobalt\npewter\ngravel\nthicket\ndapple\ngravel\nalmond\nwillow\nmango\nmarble\nzephyr\nmarble\nviolet\ndapple\npewter\nthicket\ncobalt\nalmond\nmarble\nviolet\ncinder\npewter\ncobweb\nlantern\nbrisket\nthicket\ntundra\nquartz\nzephyr\nquartz\ncinder\ncobalt\nsaffron\ncobalt\nmango\nmarble\npewter\ncobalt\nember\ncedar\nclover\nember\nthicket\nmarble\ncobweb\nclover\nlantern\nbrisket\nthicket\nquartz\nlantern\nbrisket\nmango\nwillow\nlantern\nmarble\nquartz\nmango\nthicket\npewter\nlantern\ntundra\nclover\ncobalt\nharbor\nclover\ntundra\nbramble\nclover\nclover\nviolet\ntundra\nviolet\nmarble\ncobweb\nquartz\ncedar\nviolet\nbrisket\nquartz\ngravel\ngravel\nsaffron\nharbor\ngravel\nnectar\ncobweb\nharbor\nzephyr\nviolet\nwillow\nmango\nharbor\npewter\nthicket\nbrisket\ntundra\nquartz\ndapple\nmarble\nsaffron\npewter\nsaffron\nmango\nalmond\n"
+  },
+  {
+   "id": "gather__N256__r9",
+   "task": "gather",
+   "label": "N256",
+   "seed": 9,
+   "response": "willow\nharbor\nclover\nwillow\nmango\nquartz\nalmond\nzephyr\nbramble\ndapple\nthicket\nbramble\ncedar\nclover\nclover\ncinder\nwillow\nwillow\nharbor\nmango\nharbor\nwillow\nharbor\ncinder\ncobweb\nviolet\nzephyr\nmarble\ndapple\ndapple\ntundra\ncobweb\nquartz\nlantern\nember\nbramble\nwillow\nclover\nviolet\nquartz\nzephyr\nnectar\nquartz\nlantern\ntundra\ncobweb\nlantern\nwillow\nharbor\nmango\npewter\nmango\nsaffron\nwillow\nwillow\nharbor\ngravel\ncobweb\ncobweb\ndapple\ncinder\nember\ntundra\nthicket\nquartz\ngravel\nlantern\nquartz\nmango\ncinder\nlantern\ntundra\ncinder\nviolet\nthicket\nember\ndapple\ncedar\ncedar\nclover\ncedar\nmango\ncobalt\nzephyr\nquartz\nclover\nthicket\nwillow\nmarble\ndapple\nzephyr\ncedar\ndapple\nthicket\ndapple\ndapple\ngravel\nquartz\nharbor\nzephyr\ntundra\nember\nsaffron\nlantern\nviolet\nbramble\nember\ncedar\nalmond\ncobweb\nviolet\nviolet\nmango\ncobalt\nviolet\nmango\ngravel\npewter\nbrisket\nclover\nmarble\ncobalt\nember\ntundra\nmarble\nbramble\nalmond\ndapple\npewter\nthicket\ncedar\nlantern\nsaffron\npewter\nbramble\nthicket\ncinder\ncedar\nviolet\ncinder\nquartz\nquartz\ndapple\nlantern\nzephyr\ngravel\nember\ncedar\nmango\nmango\nzephyr\ncobalt\nwillow\ncedar\nwillow\nthicket\ntundra\nnectar\ncobweb\ncobweb\nquartz\nmango\nharbor\nsaffron\ncedar\nbrisket\nthicket\npewter\nviolet\nsaffron\ncobalt\ntundra\ncobalt\nember\nsaffron\nbrisket\nmarble\nmango\ndapple\ntundra\nsaffron\nclover\nthicket\nwillow\nthicket\nember\nbrisket\nviolet\nthicket\ncobalt\ncobweb\ngravel\nharbor\nmango\nember\nmarble\nwillow\ntundra\nnectar\npewter\nember\nlantern\ncedar\ncedar\npewter\ntundra\ncobalt\nviolet\nsaffron\ncobweb\nthicket\ncinder\ngravel\ndapple\nbramble\ntundra\nzephyr\nthicket\nquartz\nviolet\nmango\ngravel\ndapple\ncedar\nmango\nclover\nmarble\npewter\ncedar\nalmond\nquartz\nbrisket\nzephyr\nbrisket\nsaffron\nlantern\nlantern\nlantern\nthicket\nharbor\nnectar\nmango\ncedar\ngravel\nquartz\nalmond\nwillow\nclover\ncobweb\nbramble\nsaffron\ncobalt\nclover\ntundra\nzephyr\ncobalt"
+  },
+  {
+   "id": "gather__N256__r10",
+   "task": "gather",
+   "label": "N256",
+   "seed": 10,
+   "response": "clover\ncobalt\nviolet\nnectar\nzephyr\nthicket\nember\nbramble\ncobalt\nnectar\npewter\nmarble\nthicket\nbrisket\nbramble\nmango\nzephyr\ncinder\nlantern\nclover\nlantern\nnectar\nzephyr\npewter\ntundra\nwillow\ncobalt\nquartz\ncobalt\nalmond\nbramble\nnectar\nlantern\ntundra\nmarble\nwillow\nclover\ngravel\nviolet\nlantern\nmarble\nsaffron\nalmond\nnectar\npewter\nbramble\nbrisket\ncedar\ncobalt\nthicket\nharbor\ncobalt\nquartz\nbramble\nbrisket\npewter\nnectar\ncobweb\nbramble\ncinder\ncobalt\nviolet\ncedar\nzephyr\nlantern\nbrisket\nquartz\nwillow\nalmond\nmango\ndapple\nbramble\nlantern\nharbor\nharbor\nsaffron\nnectar\nclover\nviolet\nthicket\ntundra\nclover\nalmond\nthicket\nwillow\ngravel\nzephyr\nharbor\nthicket\nbramble\nalmond\ncinder\nalmond\nnectar\nnectar\nharbor\nlantern\nnectar\nbrisket\nbramble\nember\nclover\nclover\nbramble\nmango\nclover\nzephyr\nclover\nthicket\nalmond\nwillow\nclover\nzephyr\nclover\nquartz\nclover\nclover\ngravel\ngravel\nalmond\nsaffron\nwillow\ngravel\ndapple\nclover\nbramble\nbrisket\ndapple\ncinder\nwillow\nember\nzephyr\nsaffron\nquartz\nalmond\nalmond\nmango\nwillow\nclover\nzephyr\nclover\nthicket\nalmond\nwillow\nviolet\nclover\nviolet\ncobalt\nquartz\ncobalt\ncedar\ncedar\nnectar\nmarble\nzephyr\nbrisket\nviolet\ncinder\nviolet\nharbor\nthicket\ntundra\nsaffron\nzephyr\nharbor\nquartz\nquartz\nbramble\nlantern\nwillow\nsaffron\nclover\nclover\nbramble\ncobalt\nbrisket\nember\nharbor\nzephyr\ngravel\nlantern\nquartz\nember\nbramble\nmarble\nlantern\nbrisket\nalmond\nlantern\nlantern\nnectar\nsaffron\npewter\nclover\ncobalt\nmango\ncinder\ncobweb\ncedar\npewter\npewter\ncobalt\nviolet\nember\nbramble\nthicket\ntundra\nlantern\nthicket\nnectar\nbrisket\ncobalt\ndapple\ngravel\nember\ngravel\nnectar\nzephyr\nnectar\nviolet\nlantern\nnectar\nbrisket\nbramble\nthicket\nharbor\nclover\ncinder\ntundra\nsaffron\ncinder\nthicket\nnectar\ncobweb\nlantern\ncinder\nbramble\nquartz\nclover\ncedar\nmango\nbramble\ncinder\nviolet\ncedar\nsaffron\nviolet\nharbor\nquartz\nzephyr\nbramble\nnectar\nharbor\nbramble\nclover\ngravel\nbramble\npewter\ndapple\nember\ncobweb\nbramble\nclover\npewter\nalmond\ngravel\ngravel\nharbor\ndapple\ncobalt\npewter\nzephyr\ncedar\nbrisket\nwillow\nalmond\ntundra\ntundra\nalmond\nnectar\nmango\nquartz\nmarble\nclover\ncobalt\ncobweb\nmarble\nviolet\ncedar\nzephyr\ncinder\nquartz\nmarble\nlantern\nbrisket\nnectar\nharbor\nsaffron\nzephyr\nthicket\nwillow\nsaffron\nlantern\nviolet\ntundra\nwillow\nclover\nwillow\nquartz\nbrisket\nmarble\nbramble\ndapple\ncobweb\ngravel\ndapple\nclover\nbramble\nbrisket\ndapple\ncinder\nwillow\nember\nzephyr\nsaffron\nquartz\nalmond\nalmond\nmango\nwillow\nclover\nzephyr\nclover\nthicket\nalmond\nwillow\nviolet\nclover\nviolet\n"
+  },
+  {
+   "id": "sort_by_key__N32__r1",
+   "task": "sort_by_key",
+   "label": "N32",
+   "seed": 1,
+   "response": "thicket\nember\nalmond\nzephyr\nbramble\nmango\ntundra\ntundra\nquartz\nnectar\nwillow\nalmond\nmango\npewter\nmango\ncobweb\nquartz\nember\nthicket\nharbor\nmango\nclover\nviolet\nbramble\nnectar\ncinder\nnectar\nmango\ndapple\nmango\ncobalt\nquartz\n"
+  },
+  {
+   "id": "sort_by_key__N32__r2",
+   "task": "sort_by_key",
+   "label": "N32",
+   "seed": 2,
+   "response": "brisket\nwillow\nbramble\nviolet\nzephyr\nmarble\nsaffron\nlantern\ndapple\nlantern\nmango\nbramble\nember\ngravel\ntundra\nsaffron\ndapple\ngravel\nalmond\ncedar\nclover\ncinder\nember\nsaffron\npewter\nthicket\nzephyr\ncedar\nbrisket\nthicket\nviolet\ncedar\n"
+  },
+  {
+   "id": "sort_by_key__N32__r3",
+   "task": "sort_by_key",
+   "label": "N32",
+   "seed": 3,
+   "response": "thicket\nsaffron\ncinder\ncinder\ncobalt\nember\nmango\ncobalt\ntundra\nmango\ncobweb\nharbor\nnectar\nzephyr\ndapple\ncinder\nharbor\ngravel\nharbor\nnectar\nalmond\nalmond\nviolet\nalmond\nnectar\ntundra\ncinder\nzephyr\nnectar\nwillow\nthicket\ncobalt\n"
+  },
+  {
+   "id": "sort_by_key__N32__r4",
+   "task": "sort_by_key",
+   "label": "N32",
+   "seed": 4,
+   "response": "cedar\nwillow\nmarble\nlantern\nmarble\nthicket\nmango\nharbor\nsaffron\nalmond\nviolet\nnectar\nember\nmango\nquartz\ncobalt\nmarble\nember\ngravel\nquartz\ncobalt\ndapple\nember\nlantern\nember\nwillow\nmarble\nviolet\nthicket\ncinder\ncinder"
+  },
+  {
+   "id": "sort_by_key__N64__r1",
+   "task": "sort_by_key",
+   "label": "N64",
+   "seed": 1,
+   "response": "bramble\ndapple\nmango\nthicket\nalmond\nlantern\ncobweb\ndapple\nclover\ncobalt\nbrisket\nthicket\nthicket\nember\nmango\nmarble\nalmond\nclover\nbramble\nquartz\nbrisket\nnectar\nquartz\ncinder\ncobalt\nsaffron\ndapple\ndapple\nclover\npewter\nmango\nmarble\nquartz\nalmond\nmango\nnectar\nnectar\ndapple\nmango\ncobweb\ntundra\nquartz\nbramble\ncobalt\nmango\nwillow\nalmond\npewter\nmango\nbramble\nharbor\nwillow\nquartz\nnectar\nviolet\nember\nmango\ncinder\ncinder\ntundra\ngravel\ncobalt\ncobalt\nzephyr\n"
+  },
+  {
+   "id": "sort_by_key__N64__r2",
+   "task": "sort_by_key",
+   "label": "N64",
+   "seed": 2,
+   "response": "clover\nbramble\ndapple\nsaffron\ngravel\nsaffron\nlantern\nbrisket\ncinder\ngravel\ntundra\npewter\ngravel\nlantern\nmango\nsaffron\ncobweb\npewter\ndapple\nclover\nbramble\ngravel\ncedar\ngravel\nbrisket\ncobalt\nharbor\nclover\nviolet\nthicket\nlantern\nalmond\ncobalt\nlantern\ngravel\ndapple\nember\nlantern\nthicket\nzephyr\nember\nlantern\ncinder\nbramble\nlantern\ngravel\nsaffron\nzephyr\ncedar\nwillow\ncedar\nthicket\ntundra\nmango\nsaffron\ndapple\nbrisket\nsaffron\nbramble\nsaffron\nmarble\ncinder\nlantern\nviolet\n"
+  },
+  {
+   "id": "sort_by_key__N64__r3",
+   "task": "sort_by_key",
+   "label": "N64",
+   "seed": 3,
+   "response": "mango\nharbor\nnectar\ndapple\ncedar\ntundra\nthicket\ndapple\nwillow\nnectar\nember\ncinder\nember\nmango\nnectar\ngravel\ncobalt\nquartz\nalmond\ndapple\ntundra\nthicket\nnectar\nsaffron\ntundra\nmarble\nthicket\nember\nclover\nviolet\nalmond\ncinder\nclover\ncobalt\nclover\nmarble\nharbor\nviolet\nbrisket\nzephyr\nbramble\ncinder\ntundra\nsaffron\ncedar\nmango\ncobalt\nwillow\nharbor\ncobweb\nthicket\nharbor\nalmond\nalmond\ngravel\nharbor\ncobweb\nnectar\nlantern\nbrisket\nnectar\ncinder\nzephyr\nzephyr\n"
+  },
+  {
+   "id": "sort_by_key__N64__r4",
+   "task": "sort_by_key",
+   "label": "N64",
+   "seed": 4,
+   "response": "clover\ngravel\nsaffron\nviolet\nmarble\nzephyr\ndapple\nalmond\nmarble\nviolet\nquartz\npewter\nmarble\nmango\nlantern\ntundra\nthicket\nnectar\ngravel\nclover\nmarble\nsaffron\nmarble\ncinder\nember\ncobalt\nember\nwillow\ncobweb\ncobalt\ncinder\nember\nnectar\nbrisket\nlantern\ncobalt\nalmond\nmarble\ncinder\nquartz\ncobalt\ncobalt\nwillow\nthicket\nmarble\nmango\nember\nzephyr\nlantern\nclover\nbramble\nmarble\nember\ncedar\nlantern\ngravel\nmango\nmarble\ndapple\nthicket\nviolet\nharbor\nviolet\n"
+  },
+  {
+   "id": "sort_by_key__N128__r1",
+   "task": "sort_by_key",
+   "label": "N128",
+   "seed": 1,
+   "response": "cobweb\ntundra\nmango\nwillow\nthicket\ngravel\nmarble\nbramble\nbrisket\nlantern\ntundra\nlantern\nalmond\nnectar\ntundra\nnectar\nbramble\nalmond\nbrisket\ncinder\ncinder\ngravel\nquartz\nmango\nmango\nlantern\nwillow\ndapple\ngravel\nquartz\nsaffron\nquartz\ndapple\ntundra\nember\nthicket\nsaffron\ngravel\ncobalt\ncobalt\ncobweb\npewter\nmango\ncobalt\ndapple\ncobalt\nquartz\nthicket\nbrisket\nlantern\nclover\nviolet\ncedar\ncobalt\nclover\nwillow\nquartz\ndapple\nnectar\ncobweb\ncobalt\nmango\npewter\ndapple\ncinder\ngravel\nclover\ngravel\nbrisket\nwillow\nmarble\nmarble\ntundra\nnectar\ngravel\nthicket\ntundra\ncedar\nnectar\ncobalt\ndapple\nthicket\nclover\nbrisket\nlantern\nsaffron\ncinder\ncobweb\nbrisket\ndapple\nsaffron\nviolet\nbramble\nbrisket\ngravel\nquartz\nlantern\ngravel\nthicket\nsaffron\nnectar\ndapple\nmango\nnectar\ncedar\nmarble\ncobweb\nzephyr\ntundra\ntundra\nthicket\nalmond\nlantern\nlantern\ngravel\ncobalt\nmango\nwillow\ncinder\ncinder\ncobalt\nthicket\ngravel\nsaffron\ntundra\nsaffron\nbramble\nember\nbrisket\nharbor\n"
+  },
+  {
+   "id": "sort_by_key__N128__r2",
+   "task": "sort_by_key",
+   "label": "N128",
+   "seed": 2,
+   "response": "ember\nthicket\npewter\ncobweb\ntundra\ngravel\nthicket\nwillow\ncedar\ncinder\nmarble\nclover\ncobalt\nsaffron\nbrisket\nalmond\nlantern\npewter\nalmond\nmango\nlantern\ndapple\nmarble\nlantern\nlantern\nsaffron\ndapple\ntundra\ncobweb\nsaffron\nalmond\nember\ngravel\ncinder\nbrisket\ntundra\nmarble\ngravel\nbrisket\nbrisket\nbramble\nsaffron\ngravel\ncedar\ndapple\nsaffron\ncobweb\nbramble\nharbor\ncinder\nnectar\ncobalt\nnectar\nwillow\ntundra\nalmond\nbramble\nviolet\nsaffron\nzephyr\nclover\ngravel\ncinder\nzephyr\ngravel\nbramble\ngravel\nviolet\nbrisket\nsaffron\nzephyr\ntundra\nbramble\ngravel\nbramble\nbramble\nlantern\npewter\nviolet\nbrisket\nlantern\ngravel\ncobalt\ngravel\ngravel\ntundra\ncinder\nsaffron\nclover\ndapple\nzephyr\nember\nember\nquartz\ndapple\nbrisket\nzephyr\ncedar\ndapple\nlantern\nember\nquartz\nthicket\ndapple\nnectar\ndapple\npewter\nbramble\nlantern\nmango\nnectar\nnectar\nwillow\ngravel\ncedar\ngravel\nlantern\ngravel\nmango\nmarble\nsaffron\nclover\ncobalt\ndapple\ngravel\ncedar\ncobalt\nsaffron\n"
+  },
+  {
+   "id": "sort_by_key__N128__r3",
+   "task": "sort_by_key",
+   "label": "N128",
+   "seed": 3,
+   "response": "marble\nharbor\ncinder\ndapple\ndapple\nnectar\nwillow\nzephyr\ncobweb\nmarble\nviolet\nzephyr\ncedar\nzephyr\nviolet\nzephyr\ncinder\nbrisket\nalmond\nsaffron\ncinder\ncobalt\nnectar\ngravel\nlantern\nalmond\nember\nbrisket\nviolet\nharbor\nsaffron\npewter\ntundra\ntundra\nharbor\nthicket\ncinder\ncobalt\nviolet\nmango\nember\ncedar\nalmond\ntundra\ncobweb\npewter\ncinder\nclover\ncobalt\ncobweb\nthicket\nharbor\nquartz\nmarble\nbrisket\nquartz\nquartz\nmango\nember\nthicket\nnectar\ncinder\nember\nthicket\ncedar\ncinder\nharbor\nsaffron\nalmond\nthicket\ntundra\ngravel\nlantern\nclover\nmango\nalmond\nnectar\ncobweb\ntundra\nwillow\nnectar\nmarble\ncedar\nbramble\nthicket\nmango\nmango\nharbor\nzephyr\ncinder\ntundra\nsaffron\nclover\ngravel\nalmond\nviolet\ntundra\nquartz\nnectar\nquartz\ntundra\nnectar\ncobalt\nzephyr\nclover\nzephyr\nnectar\nviolet\ntundra\nclover\ncedar\nember\nclover\nmango\nmarble\ncedar\nmango\nalmond\npewter\ncobweb\ncobalt\n"
+  },
+  {
+   "id": "sort_by_key__N128__r4",
+   "task": "sort_by_key",
+   "label": "N128",
+   "seed": 4,
+   "response": "zephyr\nthicket\npewter\nmango\nclover\nmarble\nviolet\nclover\ncinder\ngravel\nmarble\nzephyr\npewter\nmarble\ncedar\nsaffron\nember\nalmond\npewter\nember\nclover\ncobalt\npewter\nnectar\nember\npewter\nmango\nmarble\nalmond\nzephyr\ncinder\nnectar\nclover\ncedar\nlantern\nquartz\nviolet\nviolet\nharbor\nquartz\nwillow\ncobalt\nwillow\ntundra\nquartz\ngravel\ncobweb\nlantern\nquartz\nwillow\nlantern\npewter\ncobalt\nalmond\nmarble\nmarble\ncedar\ncobalt\nclover\ncobalt\ntundra\ndapple\nharbor\nmarble\nzephyr\nalmond\nlantern\nember\nbramble\nwillow\ndapple\nsaffron\nthicket\nbrisket\nmarble\nwillow\nbramble\nclover\nsaffron\nviolet\nmarble\nmango\nbrisket\nember\nbrisket\ncinder\ncinder\ngravel\nmango\nviolet\nalmond\nember\nlantern\nalmond\nbramble\nember\ncobalt\nember\nmarble\nwillow\nmango\nember\ncobweb\ncobweb\nnectar\nlantern\npewter\nmarble\ndapple\ncedar\ncedar\nviolet\ndapple\ncobweb\ncobalt\nharbor\nalmond\nviolet\ncinder\nsaffron\ngravel\nbramble\nbrisket\nalmond\npewter\nmarble\n"
+  },
+  {
+   "id": "sort_by_key__N128__r5",
+   "task": "sort_by_key",
+   "label": "N128",
+   "seed": 5,
+   "response": "nectar\nember\nsaffron\nmango\nmango\ncedar\nalmond\npewter\ncobalt\nbramble\nzephyr\nalmond\nquartz\ncedar\nclover\nember\nlantern\nzephyr\nember\nlantern\ngravel\nmango\nmango\ntundra\nwillow\ngravel\nzephyr\nquartz\ncobalt\nwillow\ncedar\nviolet\nwillow\nbramble\ncinder\ndapple\nmarble\nthicket\nsaffron\nmarble\ndapple\nharbor\nember\nbramble\ncobweb\nclover\nsaffron\nviolet\nnectar\nthicket\nlantern\nviolet\ngravel\nharbor\nnectar\ndapple\nwillow\ncobweb\nwillow\nlantern\ncinder\nmarble\nharbor\nsaffron\nzephyr\ncobweb\nmango\ndapple\nsaffron\nsaffron\nmarble\nnectar\nwillow\nthicket\nmango\nsaffron\ncobalt\nsaffron\nmango\nmango\ntundra\nember\nmarble\nlantern\nbrisket\nzephyr\ncobweb\nquartz\nthicket\nthicket\ncobalt\nharbor\ngravel\nquartz\nharbor\ntundra\nclover\nmango\nlantern\ncinder\ncobweb\nbrisket\ncobweb\nzephyr\npewter\nbramble\npewter\nlantern\nlantern\ndapple\nmarble\ncedar\npewter\nember\nsaffron\ntundra\nwillow\nbramble\nwillow\nlantern\nzephyr\npewter\nviolet\n"
+  },
+  {
+   "id": "sort_by_key__N128__r6",
+   "task": "sort_by_key",
+   "label": "N128",
+   "seed": 6,
+   "response": "willow\ntundra\nbrisket\ncobalt\ntundra\nquartz\nbrisket\nnectar\ncobalt\ndapple\nzephyr\nviolet\ngravel\nviolet\nalmond\nsaffron\nmango\nzephyr\nmango\nbramble\nmarble\nzephyr\ncedar\nviolet\ngravel\ncobalt\nbrisket\ncedar\nviolet\ndapple\nember\nnectar\nharbor\ndapple\nquartz\nmarble\nwillow\nthicket\ncobweb\ndapple\npewter\nharbor\nthicket\nmarble\nmango\nzephyr\nnectar\nnectar\nzephyr\nsaffron\nclover\nsaffron\nlantern\nsaffron\ncinder\nember\nwillow\nsaffron\nember\nwillow\ngravel\ngravel\nsaffron\nwillow\nthicket\ncinder\nquartz\nalmond\nzephyr\ntundra\nclover\nviolet\ndapple\nquartz\nbramble\nbrisket\npewter\nclover\nwillow\npewter\nclover\nbramble\ntundra\nzephyr\nbrisket\nviolet\nember\nember\ngravel\ntundra\ncinder\nbrisket\nalmond\nmarble\nbrisket\ngravel\nwillow\nharbor\nmango\ncobweb\ncedar\nwillow\nthicket\nquartz\nbrisket\nalmond\nthicket\ntundra\nlantern\nwillow\ncinder\ncobweb\nquartz\nmango\nbramble\ngravel\ncobweb\nbrisket\nalmond\nnectar\nmarble\nnectar\nclover\ncobweb\nzephyr\nnectar\nclover\n"
+  },
+  {
+   "id": "sort_by_key__N128__r7",
+   "task": "sort_by_key",
+   "label": "N128",
+   "seed": 7,
+   "response": "cinder\nharbor\nthicket\npewter\nharbor\ntundra\ncinder\nbramble\nbrisket\nnectar\ncinder\ncinder\nquartz\ncobweb\nbramble\nviolet\nalmond\nmarble\npewter\npewter\nviolet\nbrisket\nalmond\nzephyr\nmarble\ncedar\ntundra\ntundra\ntundra\nviolet\nzephyr\nmarble\nbrisket\ncobalt\nalmond\ncedar\nlantern\ncedar\nclover\nnectar\nalmond\ntundra\ncobalt\ncinder\nbrisket\nbrisket\ncobweb\nnectar\nsaffron\nviolet\nquartz\nbramble\ncobweb\ndapple\ncobalt\ntundra\ntundra\nviolet\ncedar\nlantern\nthicket\ncobweb\ncedar\ngravel\ncobalt\nclover\nmarble\ncinder\nsaffron\npewter\nbramble\nquartz\nnectar\nwillow\nquartz\ncobweb\nthicket\ntundra\ntundra\ntundra\ncedar\nbramble\ncobalt\nzephyr\ncinder\nmarble\nquartz\nwillow\nlantern\ntundra\ngravel\nquartz\ntundra\nsaffron\ncedar\nviolet\ncedar\nclover\ncinder\ntundra\nclover\nbrisket\nharbor\nnectar\ncobweb\nviolet\nclover\npewter\nwillow\ndapple\ncedar\ngravel\nalmond\nviolet\ncedar\nember\nmarble\npewter\nmarble\nsaffron\ntundra\nclover\nviolet\nharbor\nclover\nviolet\nviolet\n"
+  },
+  {
+   "id": "sort_by_key__N128__r8",
+   "task": "sort_by_key",
+   "label": "N128",
+   "seed": 8,
+   "response": "thicket\ncinder\nzephyr\nviolet\nsaffron\nember\nwillow\nbramble\nharbor\nbrisket\nwillow\nquartz\nharbor\nbrisket\nharbor\nviolet\nwillow\nbrisket\nthicket\nviolet\nzephyr\ngravel\nbramble\ngravel\nmarble\ntundra\nlantern\ncobweb\nquartz\nalmond\ntundra\nthicket\nnectar\ntundra\nbramble\nmarble\nquartz\nviolet\nthicket\nquartz\ngravel\ntundra\ncedar\ncinder\nember\nquartz\nmarble\nmarble\npewter\nwillow\npewter\nsaffron\nlantern\nthicket\ntundra\ncobalt\nwillow\nthicket\nmango\ngravel\nmarble\nember\nsaffron\nclover\ncinder\nsaffron\ncobweb\nclover\nthicket\ncobalt\ngravel\ncobalt\nnectar\nnectar\nbrisket\nclover\nnectar\ncobweb\nember\ncedar\nnectar\ncobweb\nalmond\nmango\ncedar\nmarble\ngravel\ncobweb\ncobweb\nharbor\ncedar\ngravel\npewter\nthicket\nzephyr\nharbor\ncobalt\nharbor\nthicket\nwillow\ndapple\nwillow\ncobweb\ncobweb\ncinder\ncobweb\ncobalt\nnectar\nlantern\ncobalt\nmango\ndapple\ncobweb\nquartz\nthicket\nmango\nzephyr\ncobalt\nnectar\nmango\nclover\nsaffron\nbramble\nlantern\nbrisket\nviolet\n"
+  },
+  {
+   "id": "sort_by_key__N128__r9",
+   "task": "sort_by_key",
+   "label": "N128",
+   "seed": 9,
+   "response": "lantern\nviolet\nnectar\nwillow\nsaffron\nthicket\ndapple\ngravel\nquartz\ncobweb\nsaffron\nmango\nember\nmarble\nzephyr\ndapple\ncobalt\nwillow\nember\nclover\nlantern\nzephyr\nsaffron\nbramble\nalmond\ngravel\nviolet\nharbor\npewter\ncedar\npewter\nquartz\ncobweb\ncedar\nmango\ncobalt\ndapple\ncinder\nnectar\ntundra\nviolet\nclover\nzephyr\nclover\nviolet\ncobalt\nquartz\nthicket\nwillow\nviolet\nmango\nwillow\nzephyr\ncinder\nember\nbrisket\npewter\ntundra\ndapple\nharbor\nbrisket\nzephyr\ntundra\nclover\ndapple\nthicket\nzephyr\nmango\nmango\ncedar\ncobweb\nharbor\ntundra\ngravel\ngravel\ncedar\npewter\nwillow\nlantern\nmango\nquartz\nbramble\ntundra\nquartz\ndapple\nlantern\ncobweb\nbrisket\ncedar\nbramble\nthicket\nquartz\nthicket\nviolet\nsaffron\nclover\ncedar\nviolet\nwillow\nlantern\ncobweb\nwillow\ntundra\nbramble\nharbor\ncedar\ncinder\nbrisket\nharbor\nlantern\nzephyr\nharbor\ncedar\nthicket\ncobweb\n"
+  },
+  {
+   "id": "sort_by_key__N128__r10",
+   "task": "sort_by_key",
+   "label": "N128",
+   "seed": 10,
+   "response": "zephyr\nbramble\nbramble\npewter\ncinder\nharbor\nalmond\nmarble\ncobalt\nwillow\nclover\nbramble\nlantern\nmarble\ncinder\nviolet\nember\ncinder\ncedar\ntundra\nlantern\nquartz\nbrisket\nlantern\nbrisket\ncobalt\nbramble\nharbor\ngravel\ndapple\nbramble\npewter\nnectar\ncedar\nlantern\nzephyr\nsaffron\nclover\nviolet\nzephyr\nlantern\nwillow\ntundra\nclover\nember\nzephyr\nalmond\nharbor\nclover\npewter\nbrisket\nquartz\npewter\nnectar\nbramble\ncinder\nember\nviolet\nmarble\nthicket\ntundra\nnectar\nbramble\nbrisket\nsaffron\nnectar\nbrisket\ncedar\nharbor\nclover\nquartz\ncedar\nnectar\nclover\nviolet\nthicket\ncobalt\nalmond\nlantern\npewter\nsaffron\nclover\ncobalt\ncedar\ncedar\ntundra\nwillow\ngravel\nbrisket\nbramble\nharbor\nsaffron\nsaffron\nlantern\nclover\ncobalt\nsaffron\nbrisket\nzephyr\nthicket\nsaffron\nember\nharbor\nember\ncobalt\nlantern\ncobalt\nmango\ntundra\nmarble\nnectar\ncobalt\nlantern\nmango\nbramble\nmarble\nbrisket\nmango\nnectar\nthicket\ncobalt\ncedar\nthicket\ncobweb\ngravel\n"
+  },
+  {
+   "id": "selective_copy__N64__r1",
+   "task": "selective_copy",
+   "label": "N64",
+   "seed": 1,
+   "response": "quartz\nnectar\nnectar\nthicket\nquartz\nmango\nclover\nbramble\ndapple\ncobalt\nquartz\nmango\nmango\nthicket\nbrisket\nwillow\nclover\ngravel\ncobalt\nnectar\nbrisket\nclover\nalmond\nlantern\nalmond\nquartz\npewter\ndapple\n"
+  },
+  {
+   "id": "selective_copy__N64__r2",
+   "task": "selective_copy",
+   "label": "N64",
+   "seed": 2,
+   "response": "cedar\nviolet\nbrisket\nzephyr\ntundra\nbrisket\nlantern\nalmond\ndapple\nsaffron\nsaffron\nbramble\ngravel\ncobalt\nmango\npewter\nlantern\ngravel\ngravel\nbrisket\nlantern\nclover\ndapple\ngravel\ntundra\nsaffron\nlantern\nthicket\ndapple\n"
+  },
+  {
+   "id": "selective_copy__N64__r3",
+   "task": "selective_copy",
+   "label": "N64",
+   "seed": 3,
+   "response": "harbor\nsaffron\nzephyr\nalmond\ntundra\nnectar\ncobalt\ncinder\ncinder\nnectar\nalmond\nharbor\nharbor\ngravel\nthicket\ndapple\nviolet\nmarble\nmango\nember\nnectar\nzephyr\nclover\nthicket\nbramble\nharbor\nsaffron\ncedar\nnectar\nbrisket\nmarble\n"
+  },
+  {
+   "id": "selective_copy__N64__r4",
+   "task": "selective_copy",
+   "label": "N64",
+   "seed": 4,
+   "response": "cobalt\nquartz\ndapple\nviolet\nthicket\ncedar\ncobalt\ngravel\nember\nlantern\nwillow\nember\nwillow\nlantern\nmarble\nmarble\ndapple\nviolet\nzephyr\npewter\nbrisket\ncobalt\nviolet\ncinder\nmango\ntundra\ncobweb\nmarble\nclover\nzephyr\nclover\nbramble\n"
+  },
+  {
+   "id": "selective_copy__N128__r1",
+   "task": "selective_copy",
+   "label": "N128",
+   "seed": 1,
+   "response": "violet\nwillow\nquartz\nthicket\nzephyr\nmango\ncobweb\ncobalt\ntundra\nquartz\npewter\nmango\nwillow\nclover\ndapple\ngravel\ncobalt\nnectar\ncinder\ncobalt\ncobalt\nbrisket\nbramble\nmarble\nmango\nclover\ncinder\nalmond\nquartz\nlantern\nmarble\npewter\ndapple\ncobweb\nclover\ngravel\ntundra\nnectar\ndapple\nthicket\nlantern\ncinder\ndapple\nsaffron\nviolet\nbrisket\ngravel\nmango\nnectar\ncedar\ncobweb\nzephyr\ntundra\nthicket\nalmond\nlantern\ncobalt\nmango\nwillow\ncobalt\nthicket\nsaffron\nbrisket\n"
+  },
+  {
+   "id": "selective_copy__N128__r2",
+   "task": "selective_copy",
+   "label": "N128",
+   "seed": 2,
+   "response": "cedar\nviolet\nlantern\nmarble\nember\nzephyr\nwillow\nzephyr\ncedar\ntundra\nlantern\nclover\ngravel\nbramble\nember\nbramble\npewter\nthicket\nlantern\ncinder\nlantern\ncobalt\nlantern\nharbor\nbrisket\ncinder\nbramble\nclover\nsaffron\nbramble\nlantern\nthicket\ncobweb\nalmond\ngravel\nnectar\nember\nnectar\nsaffron\nbramble\nsaffron\ntundra\ndapple\ndapple\nbramble\nnectar\ncobalt\npewter\nlantern\nember\nmarble\ngravel\ncinder\nmarble\ndapple\nnectar\ngravel\nzephyr\npewter\ndapple\nmango\ncedar\nalmond\ntundra\ncobalt\nbrisket\ngravel\n"
+  },
+  {
+   "id": "selective_copy__N128__r3",
+   "task": "selective_copy",
+   "label": "N128",
+   "seed": 3,
+   "response": "cinder\nharbor\nnectar\nalmond\ntundra\nzephyr\nnectar\ncobalt\nnectar\nthicket\nalmond\nharbor\ncobalt\ngravel\nthicket\nmango\nviolet\nlantern\nmarble\nmango\nzephyr\ndapple\ncobweb\nthicket\ndapple\nharbor\nquartz\nwillow\nclover\nalmond\ngravel\ncinder\ntundra\npewter\nmango\nzephyr\ncobweb\ncinder\ntundra\nalmond\nmarble\nviolet\nnectar\nalmond\nnectar\nmarble\nclover\ntundra\npewter\ncinder\ncobalt\nmarble\nmango\nviolet\nquartz\ncinder\ncedar\n"
+  },
+  {
+   "id": "selective_copy__N128__r4",
+   "task": "selective_copy",
+   "label": "N128",
+   "seed": 4,
+   "response": "marble\nquartz\ndapple\nthicket\nnectar\nviolet\nviolet\nmango\nthicket\nmarble\ncedar\ncobalt\ncinder\nsaffron\nember\nlantern\nquartz\nwillow\nmango\nalmond\nember\nwillow\nmarble\ndapple\nsaffron\nviolet\nzephyr\npewter\nbrisket\ncobalt\nlantern\ncobalt\nnectar\nember\nviolet\nmarble\nmango\nmarble\nzephyr\nmarble\nclover\nmarble\ngravel\nnectar\nbrisket\nviolet\nalmond\nalmond\nclover\ndapple\npewter\ncinder\ncobalt\ntundra\nquartz\nlantern\nmarble\nmango\ncobweb\nviolet\nbrisket\npewter\npewter\nalmond\nclover\nzephyr\n"
+  },
+  {
+   "id": "selective_copy__N256__r1",
+   "task": "selective_copy",
+   "label": "N256",
+   "seed": 1,
+   "response": "tundra\nviolet\nquartz\nalmond\nwillow\nclover\nzephyr\nmango\ndapple\ntundra\npewter\nmango\nmango\nalmond\nbrisket\nwillow\nclover\ndapple\nmango\nsaffron\ncobalt\nbrisket\ncobalt\nmarble\nmango\ncinder\nalmond\nquartz\nlantern\nquartz\ndapple\ncobweb\ngravel\ngravel\nbrisket\nwillow\ntundra\ntundra\ncedar\ncobalt\nthicket\nclover\nbrisket\nsaffron\ncinder\ndapple\nbramble\nbrisket\nquartz\ngravel\ncedar\nmarble\ncobweb\nzephyr\nalmond\nlantern\nlantern\ngravel\ncobalt\nwillow\ncinder\nsaffron\ntundra\nsaffron\nbramble\nember\nbrisket\nzephyr\nmango\ndapple\ngravel\ngravel\ncinder\nnectar\nsaffron\nwillow\ngravel\nnectar\nsaffron\nmango\ncinder\nzephyr\nzephyr\nbramble\nmango\nlantern\ncinder\ntundra\nviolet\nbrisket\nviolet\nlantern\nsaffron\nviolet\nlantern\nlantern\nbrisket\nember\nalmond\nmarble\ncobweb\npewter\nmango\nclover\nember\nember\ndapple\ngravel\nwillow\nzephyr\nthicket\nharbor\nbramble\ncinder\ngravel\ngravel\nalmond\nmango\nbrisket\npewter\nbrisket\nalmond\ndapple\nmarble\nharbor\nviolet\nviolet\n"
+  },
+  {
+   "id": "selective_copy__N256__r2",
+   "task": "selective_copy",
+   "label": "N256",
+   "seed": 2,
+   "response": "cedar\nviolet\nviolet\nsaffron\nlantern\nbrisket\nmarble\nzephyr\ntundra\nclover\nalmond\ndapple\ngravel\ncinder\ncedar\nsaffron\nbramble\nthicket\nclover\ncinder\nlantern\ncobalt\ncobalt\nmango\npewter\nlantern\nharbor\ngravel\ngravel\ncinder\nlantern\nclover\ndapple\ngravel\nsaffron\nlantern\nbramble\nalmond\ngravel\nnectar\nnectar\nbramble\nbramble\nsaffron\ntundra\ndapple\nbrisket\ncobalt\ncobweb\nlantern\nzephyr\nember\ncobweb\ngravel\ncinder\nalmond\ntundra\nwillow\nsaffron\nzephyr\npewter\ndapple\nquartz\ncedar\ncedar\ntundra\ncobalt\nharbor\ncobalt\ncedar\nsaffron\nbrisket\nmango\ncedar\nlantern\ngravel\nthicket\ncedar\nharbor\ncedar\nsaffron\nzephyr\ndapple\ndapple\nquartz\nmango\nbramble\ncinder\ndapple\ncedar\nthicket\nharbor\nbrisket\nbrisket\npewter\nquartz\nmango\nbramble\ntundra\nnectar\ngravel\nharbor\nember\nclover\nmango\nbrisket\nember\nharbor\nalmond\ncobalt\ngravel\ncobweb\ncedar\ncobalt\nbramble\nviolet\nember\nviolet\ntundra\ncobalt\nzephyr\nzephyr\nember\nember\ngravel\nmango\nharbor\nthicket\nclover\nquartz\nviolet\n"
+  },
+  {
+   "id": "selective_copy__N256__r3",
+   "task": "selective_copy",
+   "label": "N256",
+   "seed": 3,
+   "response": "cobalt\nharbor\nnectar\ntundra\nzephyr\nmango\nnectar\nember\ncinder\nnectar\ndapple\nmango\nbrisket\ntundra\nmarble\nmango\nember\nnectar\ndapple\nthicket\nclover\ndapple\ntundra\nquartz\ncedar\nharbor\nwillow\nember\nbrisket\nalmond\nclover\nthicket\nsaffron\nclover\ntundra\nmango\nember\nzephyr\nbrisket\ncobweb\npewter\ncinder\ntundra\ntundra\nquartz\ncobweb\nwillow\nalmond\ntundra\nviolet\nnectar\nsaffron\nclover\nmarble\nclover\nquartz\ncedar\nzephyr\nthicket\ncobweb\ntundra\npewter\ncobalt\nzephyr\ncinder\ncedar\nember\nharbor\npewter\nharbor\nthicket\nbramble\ngravel\nalmond\nzephyr\nbrisket\ngravel\nclover\ncobalt\nmarble\ngravel\npewter\nmango\nthicket\nharbor\nbramble\nsaffron\nsaffron\nzephyr\ncobweb\ntundra\nbrisket\nlantern\npewter\nzephyr\nmarble\nthicket\ndapple\ncobalt\nember\nbrisket\nquartz\nzephyr\npewter\ncobalt\nviolet\ndapple\nalmond\nwillow\ntundra\nember\ncobalt\ncedar\ngravel\npewter\ntundra\nlantern\nember\npewter\n"
+  },
+  {
+   "id": "selective_copy__N256__r4",
+   "task": "selective_copy",
+   "label": "N256",
+   "seed": 4,
+   "response": "cobalt\nmarble\nquartz\nthicket\nnectar\nviolet\nviolet\nthicket\ncinder\nmarble\ncobalt\nquartz\nember\nmango\nember\nwillow\nlantern\nalmond\ndapple\nsaffron\nzephyr\npewter\nthicket\nlantern\ncobalt\nviolet\nmarble\nmarble\nwillow\nclover\nzephyr\nmarble\nbramble\ncobalt\nember\ncedar\ncedar\nbramble\nalmond\nnectar\ncobweb\npewter\nbrisket\nwillow\nlantern\nclover\nzephyr\nbrisket\npewter\nmarble\nclover\nwillow\nquartz\nbramble\nmarble\nmango\nsaffron\nlantern\nsaffron\nmarble\nquartz\nbramble\nwillow\nquartz\ncedar\nlantern\nzephyr\ncinder\ntundra\npewter\ncedar\nquartz\ngravel\nnectar\nwillow\nbramble\nnectar\ncedar\nalmond\nclover\nwillow\nnectar\ncedar\ncedar\nember\ncobalt\ngravel\nwillow\ncobalt\nember\nharbor\ncedar\npewter\ntundra\nquartz\ntundra\nthicket\nalmond\ndapple\nnectar\nthicket\nclover\nwillow\ntundra\nbrisket\ngravel\nwillow\nbrisket\nember\nthicket\nember\nwillow\nlantern\ncobweb\nalmond\nbramble\n"
+  },
+  {
+   "id": "selective_copy__N256__r5",
+   "task": "selective_copy",
+   "label": "N256",
+   "seed": 5,
+   "response": "saffron\nalmond\ncobalt\nquartz\ncinder\nquartz\ntundra\nmango\nclover\nember\nlantern\nthicket\nlantern\nviolet\nharbor\nzephyr\nzephyr\nbramble\nharbor\nmango\nwillow\nlantern\nlantern\nmarble\npewter\ncinder\nbrisket\nwillow\ncobweb\nmango\nlantern\nharbor\ntundra\nzephyr\nbrisket\nviolet\nmarble\nnectar\ncobweb\npewter\ncedar\nmango\ndapple\nsaffron\nmango\ncinder\nclover\nsaffron\ntundra\nmango\ncobweb\nzephyr\ncobalt\nbramble\nsaffron\nsaffron\nember\ndapple\nmarble\nclover\nviolet\npewter\ngravel\nharbor\npewter\nember\nmarble\npewter\nalmond\ndapple\ncobweb\nnectar\nlantern\ncedar\ncinder\nthicket\ndapple\nzephyr\nember\nbramble\nalmond\ncedar\nalmond\nwillow\nalmond\nquartz\nharbor\ncedar\nmarble\nbramble\nzephyr\ngravel\nbramble\nnectar\ncobweb\ndapple\nmarble\nnectar\nthicket\nquartz\ncinder\nlantern\nnectar\ngravel\ngravel\nsaffron\ncobweb\ntundra\ncedar\ncinder\nbrisket\nember\nember\ncobweb\nmarble\nalmond\ntundra\nmango\nember\npewter\nmarble\nalmond\nbrisket\nsaffron\nember\nalmond\nsaffron\nlantern\n"
+  },
+  {
+   "id": "selective_copy__N256__r6",
+   "task": "selective_copy",
+   "label": "N256",
+   "seed": 6,
+   "response": "tundra\nviolet\nember\nharbor\nbrisket\ntundra\nnectar\nsaffron\npewter\nmango\nember\nnectar\ndapple\ncinder\nquartz\nwillow\ndapple\nember\nzephyr\nviolet\nclover\nsaffron\nclover\nbramble\nquartz\nwillow\ngravel\nalmond\nalmond\nclover\nmarble\nquartz\nviolet\ngravel\ngravel\nwillow\nquartz\nzephyr\nbrisket\nthicket\nnectar\ncobalt\ncobweb\ngravel\nmango\ncinder\nzephyr\nsaffron\ngravel\nthicket\ncedar\nlantern\nbramble\nbrisket\nbramble\nviolet\nclover\ncobweb\nclover\nviolet\nwillow\ndapple\nbrisket\nnectar\ndapple\nmango\nquartz\nwillow\nember\ngravel\npewter\ngravel\nember\nclover\nzephyr\nnectar\nember\nzephyr\nharbor\nthicket\nmarble\nbramble\npewter\nsaffron\nbrisket\nthicket\nzephyr\nember\nalmond\nnectar\ndapple\ncinder\nzephyr\nzephyr\nquartz\nbrisket\nsaffron\nnectar\ngravel\nnectar\ncobalt\nsaffron\nbrisket\nalmond\ncobalt\ncedar\nbrisket\nquartz\ncobweb\nquartz\ncedar\nalmond\nbramble\nviolet\nmango\ncobweb\nharbor\nalmond\nalmond\nharbor\nbramble\n"
+  },
+  {
+   "id": "selective_copy__N256__r7",
+   "task": "selective_copy",
+   "label": "N256",
+   "seed": 7,
+   "response": "harbor\nalmond\nquartz\nsaffron\nclover\nclover\nviolet\nviolet\ncinder\nquartz\ncobalt\nalmond\ntundra\nthicket\ncedar\ncobalt\ncedar\ncinder\nclover\ncinder\nmarble\ncinder\nlantern\ntundra\nalmond\nquartz\ncobweb\nviolet\ncedar\nwillow\nclover\nbramble\nbramble\ncobalt\ncobweb\nviolet\nmarble\ngravel\ndapple\nzephyr\nnectar\nclover\npewter\npewter\nsaffron\nzephyr\nbramble\nember\nnectar\ncobweb\nbrisket\nviolet\ncedar\ncobweb\nmarble\nbrisket\nbramble\nbrisket\nzephyr\nquartz\nnectar\ncedar\nwillow\ndapple\ncobalt\nthicket\nlantern\nbramble\nthicket\ncinder\nharbor\ncinder\ncobweb\nbrisket\nthicket\ncobalt\nharbor\nviolet\nlantern\nharbor\nbrisket\nmango\ntundra\nember\ncinder\ncobweb\nalmond\nbrisket\ndapple\nbramble\ncinder\nthicket\nthicket\nthicket\nquartz\nnectar\nalmond\nthicket\nwillow\nzephyr\ncedar\nharbor\ncinder\nsaffron\nviolet\nwillow\nalmond\nember\nnectar\nbramble\nnectar\nnectar\nharbor\ndapple\ncobweb\nlantern\nmango\ncobweb\ncinder\nmango\n"
+  },
+  {
+   "id": "selective_copy__N256__r8",
+   "task": "selective_copy",
+   "label": "N256",
+   "seed": 8,
+   "response": "cobalt\nwillow\ncobweb\nviolet\ngravel\nwillow\nthicket\nbramble\nnectar\nbramble\nwillow\ncobalt\nember\ngravel\nclover\nquartz\nthicket\nquartz\nbrisket\ncedar\ncobalt\ncobweb\nalmond\ngravel\nwillow\ntundra\nharbor\nzephyr\ncinder\ncedar\ncobweb\nwillow\nharbor\ntundra\nbramble\nmarble\ncinder\nclover\nzephyr\nquartz\npewter\ncobweb\nsaffron\nnectar\ngravel\nmarble\nbrisket\ngravel\ncinder\nsaffron\ncobalt\nmarble\ncobalt\nember\nclover\nember\nmarble\nclover\nlantern\nthicket\nquartz\nlantern\nbrisket\nmango\nlantern\nquartz\nthicket\ntundra\nbramble\nclover\nquartz\ngravel\ngravel\nsaffron\nharbor\ngravel\nharbor\nzephyr\nviolet\nthicket\npewter\nnectar\ncedar\nzephyr\ncedar\nlantern\nquartz\nharbor\nquartz\ntundra\ndapple\nbramble\nalmond\nharbor\ndapple\nbramble\ndapple\nviolet\ncobweb\nnectar\nthicket\nbramble\ncobalt\nwillow\nwillow\nquartz\nzephyr\nsaffron\nclover\ngravel\ngravel\ncobweb\nwillow\ngravel\ncobalt\npewter\ngravel\nthicket\ndapple\ngravel\nalmond\nwillow\nmango\nmarble\npewter\nmarble\nviolet\n"
+  },
+  {
+   "id": "selective_copy__N256__r9",
+   "task": "selective_copy",
+   "label": "N256",
+   "seed": 9,
+   "response": "bramble\nmango\npewter\ngravel\nbramble\nzephyr\nviolet\ncobweb\ncedar\ndapple\nthicket\nbramble\ndapple\nlantern\nlantern\ncobalt\nquartz\nharbor\ntundra\nviolet\ndapple\nmarble\nwillow\nbrisket\ncobalt\ndapple\nclover\nviolet\nember\nwillow\npewter\ncedar\ncobweb\nmango\nclover\nthicket\nnectar\nharbor\ncobalt\ndapple\nquartz\nquartz\ntundra\nmango\nharbor\ncinder\ntundra\nnectar\ncinder\nwillow\nviolet\nthicket\nalmond\ncobweb\ntundra\nharbor\nlantern\ncedar\nember\ncinder\nbrisket\nharbor\ndapple\nember\ndapple\ntundra\ncedar\nquartz\ncobweb\nthicket\nzephyr\ngravel\nsaffron\nquartz\nthicket\nwillow\nzephyr\npewter\nmango\ncobalt\nember\nalmond\nquartz\ncinder\nclover\nnectar\ncobweb\ndapple\nclover\nalmond\nquartz\ngravel\nsaffron\nharbor\nbrisket\nmarble\ncedar\nlantern\nlantern\nquartz\ncedar\nbramble\nthicket\nmarble\nzephyr\nmarble\nnectar\ncinder\nember\ndapple\ncinder\nmarble\nviolet\nbramble\nharbor\ncinder\ncobweb\nzephyr\nzephyr\nnectar\nquartz\ncedar\ngravel\nmango\ntundra\ncinder\nthicket\nember\ncinder\nviolet\n"
+  },
+  {
+   "id": "selective_copy__N256__r10",
+   "task": "selective_copy",
+   "label": "N256",
+   "seed": 10,
+   "response": "cedar\nclover\nnectar\ntundra\nwillow\nbramble\nnectar\nalmond\ncedar\ngravel\ncobalt\nsaffron\nharbor\nsaffron\nbrisket\nlantern\nbrisket\nmarble\nsaffron\nharbor\nbramble\nthicket\ncedar\nmarble\ncinder\ncobalt\nalmond\ntundra\ngravel\nclover\ncedar\ncedar\nbrisket\nviolet\nviolet\nthicket\ntundra\nsaffron\nzephyr\nquartz\nquartz\nsaffron\nclover\nbramble\nember\nharbor\nbramble\nlantern\nalmond\nnectar\npewter\ncobalt\ncinder\ncobweb\ncobalt\nviolet\nbramble\ntundra\nbrisket\ndapple\ngravel\nnectar\nnectar\nbrisket\nbramble\nclover\ncinder\ncinder\ncobweb\nlantern\nclover\ncedar\nmango\ncinder\ncedar\nsaffron\nviolet\nharbor\nzephyr\nbramble\nharbor\nclover\nember\ncobweb\nalmond\ngravel\ncobalt\npewter\nzephyr\ncedar\nalmond\ntundra\ntundra\nalmond\nmarble\nclover\ncobalt\ncobweb\nmarble\ncedar\nquartz\nlantern\nbrisket\nnectar\nthicket\nwillow\nsaffron\nlantern\nviolet\ntundra\nwillow\nquartz\nbrisket\ndapple\ncobweb\ngravel\nclover\nbramble\nbrisket\nember\nsaffron\nquartz\nalmond\nclover\nzephyr\nwillow\n"
+  },
+  {
+   "id": "multihop_map__t8__r1",
+   "task": "multihop_map",
+   "label": "t8",
+   "seed": 1,
+   "response": "v010"
+  },
+  {
+   "id": "multihop_map__t8__r2",
+   "task": "multihop_map",
+   "label": "t8",
+   "seed": 2,
+   "response": "n"
+  },
+  {
+   "id": "multihop_map__t8__r3",
+   "task": "multihop_map",
+   "label": "t8",
+   "seed": 3,
+   "response": "p"
+  },
+  {
+   "id": "multihop_map__t8__r4",
+   "task": "multihop_map",
+   "label": "t8",
+   "seed": 4,
+   "response": "p"
+  },
+  {
+   "id": "multihop_map__t16__r1",
+   "task": "multihop_map",
+   "label": "t16",
+   "seed": 1,
+   "response": "v008"
+  },
+  {
+   "id": "multihop_map__t16__r2",
+   "task": "multihop_map",
+   "label": "t16",
+   "seed": 2,
+   "response": "v007"
+  },
+  {
+   "id": "multihop_map__t16__r3",
+   "task": "multihop_map",
+   "label": "t16",
+   "seed": 3,
+   "response": "u"
+  },
+  {
+   "id": "multihop_map__t16__r4",
+   "task": "multihop_map",
+   "label": "t16",
+   "seed": 4,
+   "response": "v014"
+  },
+  {
+   "id": "multihop_map__t32__r1",
+   "task": "multihop_map",
+   "label": "t32",
+   "seed": 1,
+   "response": "z"
+  },
+  {
+   "id": "multihop_map__t32__r2",
+   "task": "multihop_map",
+   "label": "t32",
+   "seed": 2,
+   "response": "v021"
+  },
+  {
+   "id": "multihop_map__t32__r3",
+   "task": "multihop_map",
+   "label": "t32",
+   "seed": 3,
+   "response": "w"
+  },
+  {
+   "id": "multihop_map__t32__r4",
+   "task": "multihop_map",
+   "label": "t32",
+   "seed": 4,
+   "response": "p"
+  },
+  {
+   "id": "multihop_map__t32__r5",
+   "task": "multihop_map",
+   "label": "t32",
+   "seed": 5,
+   "response": "v017\n"
+  },
+  {
+   "id": "multihop_map__t32__r6",
+   "task": "multihop_map",
+   "label": "t32",
+   "seed": 6,
+   "response": "v019"
+  },
+  {
+   "id": "multihop_map__t32__r7",
+   "task": "multihop_map",
+   "label": "t32",
+   "seed": 7,
+   "response": "v013"
+  },
+  {
+   "id": "multihop_map__t32__r8",
+   "task": "multihop_map",
+   "label": "t32",
+   "seed": 8,
+   "response": "i"
+  },
+  {
+   "id": "multihop_map__t32__r9",
+   "task": "multihop_map",
+   "label": "t32",
+   "seed": 9,
+   "response": "p"
+  },
+  {
+   "id": "multihop_map__t32__r10",
+   "task": "multihop_map",
+   "label": "t32",
+   "seed": 10,
+   "response": "v011"
+  },
+  {
+   "id": "mqar__k128__r2",
+   "task": "mqar",
+   "label": "k128",
+   "seed": 2,
+   "response": "1. 92Q\n2. 6VE\n3. D40\n4. ZB6\n5. RN9\n6. PG8\n7. 1U3\n8. M5E\n9. HWZ\n10. YL9\n11. 0LV\n12. Y5F\n13. J1P\n14. 8WK\n15. 6QC\n16. SXV\n17. BN8\n18. BE6\n19. ZVB\n20. PKR\n21. D1Z\n22. 3G2\n23. 4GL\n24. 9S4\n25. 2QU\n26. XUJ\n27. BVD\n28. 0N7\n29. WGY\n30. K4E\n31. HCX\n32. HZ0\n33. QRM\n34. 75M\n35. 121\n36. 13S\n37. CRQ\n38. MUB\n39. WSX\n40. 5BL\n41. SWP\n42. AVF\n43. MVH\n44. 90J\n45. RZ5\n46. PDL\n47. DKX\n48. V8U\n49. YDR\n50. MZF\n51. JMX\n52. SA7\n53. X4X\n54. ZH3\n55. XC7\n56. F92\n57. Y3W\n58. G5E\n59. DHL\n60. 2GR\n61. NUW\n62. VPA\n63. QDD\n64. T56\n65. JQE\n66. 9WE\n67. HRG\n68. RD6\n69. 5NB\n70. 574\n71. 1KU\n72. YGA\n73. 6KC\n74. EVE\n75. 9T6\n76. Q81\n77. QBR\n78. 61R\n79. 80T\n80. QVJ\n81. WCP\n82. WP1\n83. 8NR\n84. 4NB\n85. 528\n86. 1W2\n87. YV1\n88. Z9Y\n89. JPK\n90. ZJ7\n91. 661\n92. VU1\n93. VVK\n94. 3AX\n95. TTY\n96. EU4\n97. A6F\n98. 1S6\n99. PRV\n100. KMK\n101. HYL\n102. V9P\n103. PGT\n104. ABZ\n105. 5L6\n106. 4N0\n107. 77Q\n108. N4M\n109. ZRX\n110. BF1\n111. AXG\n112. XJN\n113. V0P\n114. Z7P\n115. DQD\n116. 1U8\n117. 8AA\n118. 7G7\n119. WBG\n120. 5K2\n121. RG8\n122. 8EH\n123. MGG\n124. RJ4\n125. Y2F\n126. S18\n127. 0Q2\n128. JRE\n"
+  },
+  {
+   "id": "mqar__k128__r3",
+   "task": "mqar",
+   "label": "k128",
+   "seed": 3,
+   "response": "1. 9FQ\n2. C0W\n3. 827\n4. 83M\n5. AL4\n6. JZH\n7. G6M\n8. 3PX\n9. 780\n10. MTQ\n11. JK5\n12. V7Z\n13. YXL\n14. PG7\n15. LSS\n16. 4FB\n17. 2YZ\n18. R9A\n19. M0S\n20. 5MD\n21. DH4\n22. XR8\n23. GKQ\n24. 2VZ\n25. L7H\n26. QQV\n27. 31P\n28. NUM\n29. YTE\n30. A2L\n31. 8HC\n32. LBP\n33. 9YL\n34. 6LM\n35. GW3\n36. W9S\n37. NQQ\n38. 1M7\n39. DGF\n40. PUJ\n41. BT6\n42. 2Z5\n43. YHT\n44. FKT\n45. 3HF\n46. GZK\n47. EF4\n48. T3W\n49. HFL\n50. KF1\n51. CMT\n52. 4J7\n53. 3LB\n54. NS5\n55. 2S9\n56. B2G\n57. UZG\n58. PFL\n59. 60W\n60. JB9\n61. HX1\n62. L03\n63. JSS\n64. 1HW\n65. QCB\n66. 7M8\n67. SAS\n68. ZUB\n69. EJS\n70. EUA\n71. 17W\n72. UHE\n73. TET\n74. Z7X\n75. YCT\n76. HDK\n77. KPG\n78. 1W4\n79. FH8\n80. Q2T\n81. BLP\n82. CG8\n83. ZS3\n84. FVR\n85. HM5\n86. 4T7\n87. GJ2\n88. QYF\n89. 30W\n90. V1F\n91. 6ZP\n92. ZQ6\n93. 72Z\n94. JME\n95. YN3\n96. R2V\n97. CLB\n98. VNN\n99. 618\n100. WDV\n101. 6QB\n102. L1Q\n103. 575\n104. 92M\n105. N8S\n106. 7AY\n107. KYE\n108. Q5B\n109. Q6L\n110. GVK\n111. GPR\n112. F66\n113. 01M\n114. 25Y\n115. HZZ\n116. X4D\n117. 2PV\n118. 77A\n119. F22\n120. LP8\n121. NEC\n122. 81L\n123. ZW9\n124. 0XR\n125. BT5\n126. 6XW\n127. 34W\n128. VNS\n"
+  },
+  {
+   "id": "mqar__k128__r4",
+   "task": "mqar",
+   "label": "k128",
+   "seed": 4,
+   "response": "1. R9G\n2. 2L5\n3. UDT\n4. FTD\n5. D73\n6. J8G\n7. ZC6\n8. 4M8\n9. H3A\n10. LZW\n11. 2XQ\n12. YS9\n13. S0G\n14. 5TD\n15. CN5\n16. 7XG\n17. QMB\n18. VAP\n19. EW4\n20. AMJ\n21. 20W\n22. RMA\n23. XC2\n24. PJ6\n25. A0K\n26. WZU\n27. EE0\n28. N6A\n29. 1ZF\n30. EKR\n31. 77X\n32. 5VQ\n33. Q3T\n34. QAM\n35. Y4Q\n36. SU4\n37. K83\n38. ARG\n39. ESU\n40. 1H1\n41. 7BW\n42. P09\n43. BVP\n44. GKW\n45. LVK\n46. EH1\n47. G7R\n48. 9LX\n49. ZDH\n50. MPL\n51. 9DP\n52. BK1\n53. K95\n54. BX4\n55. VWR\n56. 4RB\n57. 152\n58. 9F4\n59. DKW\n60. WNK\n61. M5F\n62. JNE\n63. QE3\n64. SX2\n65. EXR\n66. SCW\n67. QR2\n68. N5B\n69. VNK\n70. S2D\n71. Y04\n72. FNK\n73. BJP\n74. 7ZJ\n75. JB9\n76. 647\n77. KN4\n78. T7A\n79. S85\n80. ESG\n81. 0P2\n82. LZU\n83. 7H3\n84. 92X\n85. 9L3\n86. YRK\n87. PM8\n88. RQ1\n89. CFU\n90. YUU\n91. WLS\n92. MRX\n93. WZ4\n94. QD0\n95. 2GG\n96. 82P\n97. A70\n98. CKW\n99. L62\n100. PAB\n101. A6D\n102. FXE\n103. L7R\n104. T59\n105. 2XZ\n106. 9Y4\n107. CAM\n108. ZFS\n109. MG0\n110. DA0\n111. FL2\n112. KPE\n113. K7Y\n114. RYR\n115. 2R8\n116. 4HC\n117. FZD\n118. DKQ\n119. F2C\n120. WBU\n121. 1Z5\n122. PYT\n123. B03\n124. LJU\n125. AAG\n126. 5Z0\n127. 33A\n128. 5GW\n"
+  }
+ ]
+}

@@ -70,6 +70,101 @@ def instance_for(entry):
     return GEN[entry["task"]](entry["kwargs"])
 
 
+def build_replication_spec():
+    """Audit item 6 (docs/05 B2/B3/B4): fresh-seed replication of the cells
+    used in claims. Headline cells get 10 fresh seeds; supporting cells get 4
+    (pooled with the original seed-0 run -> n=5); the headline recall cell
+    (mqar k128) gets 3 more (pooled n=5). Seeds are disjoint from the original
+    sweep (which used seed 0, and 0/1 for mqar)."""
+    spec = []
+
+    def add(task, label, seeds, **kw):
+        for s in seeds:
+            k = dict(kw); k["seed"] = s
+            spec.append({"id": f"{task}__{label}__r{s}", "task": task,
+                         "label": label, "kwargs": k})
+
+    HEAD = range(1, 11)      # 10 fresh seeds for headline cells
+    SUPP = range(1, 5)       # 4 fresh seeds for supporting cells
+    add("gather", "N64", SUPP, N=64)
+    add("gather", "N128", SUPP, N=128)
+    add("gather", "N256", HEAD, N=256)
+    add("sort_by_key", "N32", SUPP, N=32)
+    add("sort_by_key", "N64", SUPP, N=64)
+    add("sort_by_key", "N128", HEAD, N=128)
+    add("selective_copy", "N64", SUPP, N=64, keep_rate=0.5)
+    add("selective_copy", "N128", SUPP, N=128, keep_rate=0.5)
+    add("selective_copy", "N256", HEAD, N=256, keep_rate=0.5)
+    add("multihop_map", "t8", SUPP, domain=48, t=8)
+    add("multihop_map", "t16", SUPP, domain=48, t=16)
+    add("multihop_map", "t32", HEAD, domain=48, t=32)
+    add("mqar", "k128", range(2, 5), N=256, k=128)
+    return spec
+
+
+def emit_replication(dirpath):
+    os.makedirs(dirpath, exist_ok=True)
+    spec = build_replication_spec()
+    for e in spec:
+        inst = instance_for(e)
+        with open(os.path.join(dirpath, e["id"] + ".txt"), "w",
+                  encoding="utf-8") as f:
+            f.write(inst["prompt"])
+    print(f"emitted {len(spec)} replication prompts to {dirpath}")
+
+
+def grade_replication(answers_dir):
+    """Grade replication answers; sequence tasks scored BOTH ways (positional +
+    LCS, audit B2). Writes per-cell mean/sd/n to sweep_replicated.json."""
+    from grading import grade_seq_lcs
+    from collections import defaultdict
+    import statistics
+    SEQ = {"gather", "sort_by_key", "selective_copy"}
+    rows, cells = [], defaultdict(list)
+    missing = 0
+    for e in build_replication_spec():
+        path = os.path.join(answers_dir, e["id"] + ".txt")
+        if not os.path.exists(path):
+            missing += 1
+            continue
+        inst = instance_for(e)
+        with open(path, encoding="utf-8") as f:
+            resp = f.read()
+        pos = grade(resp, inst)
+        lcs = grade_seq_lcs(resp, inst) if e["task"] in SEQ else None
+        rows.append({"id": e["id"], "task": e["task"], "label": e["label"],
+                     "seed": e["kwargs"]["seed"], "positional": pos,
+                     "lcs": lcs})
+        cells[(e["task"], e["label"])].append((pos, lcs))
+    summary = []
+    for (task, label), vals in sorted(cells.items()):
+        pos = [v[0] for v in vals]
+        entry = {"task": task, "label": label, "n_fresh_seeds": len(vals),
+                 "positional_mean": statistics.mean(pos),
+                 "positional_sd": statistics.pstdev(pos)}
+        if vals[0][1] is not None:
+            lcs = [v[1] for v in vals]
+            entry["lcs_mean"] = statistics.mean(lcs)
+            entry["lcs_sd"] = statistics.pstdev(lcs)
+        summary.append(entry)
+        line = (f"  {task:15} {label:6} n={len(vals):>2} "
+                f"pos={entry['positional_mean']:.3f}±{entry['positional_sd']:.3f}")
+        if "lcs_mean" in entry:
+            line += f"  lcs={entry['lcs_mean']:.3f}±{entry['lcs_sd']:.3f}"
+        print(line)
+    here = os.path.dirname(__file__)
+    dst = os.path.join(here, "..", "..", "results", "nl",
+                       "sweep_replicated.json")
+    with open(dst, "w", encoding="utf-8") as f:
+        json.dump({"model": "claude-haiku (in-session sub-agent)",
+                   "note": "fresh-seed replication of claim cells (audit item "
+                           "6); sequence tasks scored positionally AND by LCS",
+                   "rows": rows, "cells": summary}, f, indent=1)
+    if missing:
+        print(f"  ({missing} answers missing — those cells incomplete)")
+    print(f"wrote results/nl/sweep_replicated.json ({len(rows)} runs)")
+
+
 def emit(dirpath):
     os.makedirs(dirpath, exist_ok=True)
     spec = build_spec()
@@ -123,8 +218,14 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--emit")
     ap.add_argument("--grade-dir")
+    ap.add_argument("--emit-rep")
+    ap.add_argument("--grade-rep-dir")
     a = ap.parse_args()
     if a.emit:
         emit(a.emit)
     if a.grade_dir:
         grade_dir(a.grade_dir)
+    if a.emit_rep:
+        emit_replication(a.emit_rep)
+    if a.grade_rep_dir:
+        grade_replication(a.grade_rep_dir)

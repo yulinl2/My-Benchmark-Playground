@@ -1,12 +1,15 @@
 # Findings: Generalizing the Separation in Breadth and Depth
 
-> **⚠ Corrections from self-audit (`docs/05_self_audit.md`):**
-> (1) the `multihop_map t=32` "deep-composition cliff" **failed replication**
-> (2/2 fresh seeds correct; the 0.00 was an n=1 outlier) — claim withdrawn;
-> (2) the `selective_copy` "collapse" was a **grader alignment artifact**
-> (N256: 0.094 positional → 0.898 LCS); gather/sort degradation is real but
-> ~2× milder than the positional numbers below suggest. Tables are kept as
-> originally published; read them with the audit's re-grade.
+> **⚠ Corrections from self-audit (`docs/05_self_audit.md`), finalized by the
+> 75-run fresh-seed replication (`results/nl/sweep_replicated.json`):**
+> (1) the `multihop_map t=32` "cliff" is **refuted** — 12/13 correct overall;
+> (2) under LCS grading and replication, `selective_copy` and `sort_by_key`
+> show **no real degradation** (LCS ≥ 0.93 at their largest sizes) and the only
+> genuine degradation is `gather N=256` (LCS 0.74 ± 0.18). §3's single-seed
+> positional table is **superseded** by RESULTS.md Tier-2c. Net: Haiku is
+> at/near ceiling across the whole tested range — the softmax positive control
+> is stronger than this document originally reported, and the "graceful
+> degradation frontier" was mostly measurement artifact.
 
 This document records what the program has actually established so far —
 numerically (proved + run) and empirically on a commercial softmax model

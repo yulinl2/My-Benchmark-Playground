@@ -200,8 +200,18 @@ committed instances. Documented; no action.
    corollary labeled heuristic; P2 restated per the metric split.
 5. ✅ Add Jelassi et al. to docs/03 and rewrite the novelty section (C1) —
    novelty repositioned as reframing/instrumentation of a known separation.
-6. Switch sequence grading to LCS; re-issue all sweep tables (B2); ≥10 seeds
-   for any cell used in a claim (B3/B4).
+6. ✅ Switch sequence grading to LCS; replicate claim cells with ≥10 seeds
+   (B2/B3/B4) — `grade_seq_lcs` in grading.py; 75 fresh-seed Haiku runs
+   (`sweep.py --emit-rep/--grade-rep-dir`; data `sweep_replicated.json`, raw
+   answers `sweep_replication_responses.json`). **Outcome — the P3 narrative is
+   substantially revised:** multihop t=32 is 12/13 correct overall (cliff
+   definitively refuted); selective_copy and sort_by_key sit at LCS ≥ 0.93
+   through their largest sizes (no real degradation); the only genuine
+   degradation is gather N=256 (LCS 0.74±0.18). Under proper measurement,
+   Haiku is at/near ceiling across the whole tested range — the softmax
+   positive control is stronger than first reported, and the earlier
+   "degradation frontier" was mostly grader artifact + n=1 noise. Tier-2b's
+   original table is superseded by Tier-2c in RESULTS.md.
 7. ✅ Build the `O(log N)`-width softmax construction (A4/B5) —
    `src/numeric/softmax_logwidth.py`: random sign codes, `d = K·ln N`,
    `β = 3·ln N`. Measured at N=4096, d=67: softmax output error 0.0000

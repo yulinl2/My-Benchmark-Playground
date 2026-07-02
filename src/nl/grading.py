@@ -46,6 +46,26 @@ def grade_seq_words(model_out: str, inst: dict) -> float:
     return grade_gather(model_out, inst)
 
 
+def _lcs_len(a: list, b: list) -> int:
+    dp = [[0] * (len(b) + 1) for _ in range(len(a) + 1)]
+    for i in range(len(a)):
+        for j in range(len(b)):
+            dp[i + 1][j + 1] = dp[i][j] + 1 if a[i] == b[j] \
+                else max(dp[i][j + 1], dp[i + 1][j])
+    return dp[-1][-1]
+
+
+def grade_seq_lcs(model_out: str, inst: dict) -> float:
+    """Alignment-robust scoring for sequence tasks (audit B2): longest common
+    subsequence with the gold list, normalized by gold length. Unlike the
+    positional grader, one inserted/dropped line early does not zero everything
+    after it. Primary metric for replicated sweep results."""
+    out = _extract_answer_block(model_out)
+    words = [w.lower() for w in re.findall(r"[A-Za-z]+", out)]
+    gold = [w.lower() for w in inst["answer_list"]]
+    return _lcs_len(words, gold) / len(gold) if gold else 0.0
+
+
 def grade_kv_lastwrite(model_out: str, inst: dict) -> float:
     out = _extract_answer_block(model_out)
     found = dict(re.findall(r"(\d+)\s*[.):]\s*([0-9A-Za-z]{2,4})", out))

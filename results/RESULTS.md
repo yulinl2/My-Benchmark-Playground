@@ -124,6 +124,34 @@ training never finds the circle trick (it optimizes mass, which is rank-capped).
 tables alone cannot demonstrate the separation. Fixed-capacity linear attention
 can *know where to look* but cannot *move the information*.
 
+## Tier 2c — Replicated sweep with LCS grading (audit item 6) — `sweep_replicated.json`
+
+75 fresh-seed Haiku runs (10 seeds on headline cells, 4 on supporting; raw
+answers in `sweep_replication_responses.json`). Sequence tasks scored both
+positionally and by LCS (alignment-robust). **This supersedes the single-seed
+Tier-2b table** and revises the P3 narrative:
+
+| cell | n | positional | LCS |
+|---|---|---|---|
+| gather N64 / N128 / N256 | 4/4/10 | 0.98 / 0.61 / 0.55±0.33 | **1.00 / 0.94 / 0.74±0.18** |
+| selective_copy N64→N256 | 4/4/10 | 0.84 / 0.81 / 0.60 | **0.99 / 0.99 / 0.97** |
+| sort_by_key N32→N128 | 4/4/10 | 0.87 / 0.93 / 0.47 | **0.99 / 1.00 / 0.93** |
+| multihop t8 / t16 / t32 | 4/4/10 | **1.00 / 1.00 / 1.00** | — |
+| mqar k128 | 3 (+2 orig) | **1.00** | — |
+
+**Revised findings.** (i) `multihop t=32` is **12/13 correct** across all runs —
+the original 0.00 cliff is definitively refuted. (ii) Under proper grading and
+replication, **Haiku is at or near ceiling across the entire tested range**
+(k=128, L=64, t=32, N up to 256): selective_copy and sort_by_key barely degrade
+(LCS ≥ 0.93 everywhere). The only genuine degradation signal is `gather N=256`
+(LCS 0.74 ± 0.18, instance-dependent). (iii) Positional scores carry huge
+variance (sd up to 0.33) — alignment artifacts dominate them; LCS is the
+primary metric going forward. **Net effect: the earlier "graceful degradation
+frontier" (P3) was mostly measurement artifact; the softmax positive control is
+even stronger than first reported — robust exactly where fixed-state models
+provably fail — while the "softmax budget" side-story shrinks to the largest
+gather cell.**
+
 ## Tier 1d — Softmax at O(log N) width (audit A4/B5) — `softmax_logwidth.json`
 
 The missing softmax-side construction: random ±1 codes of width `d = K·ln N`,
