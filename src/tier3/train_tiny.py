@@ -98,15 +98,23 @@ class TinyLM(nn.Module):
         return self.head(self.nf(x[:, -1]))       # predict at the query position
 
 
-def run(kind, K, d=64, steps=1500, B=64, n_keys=96, n_vals=96, lr=3e-4, seed=0):
+def run(kind, K, d=64, steps=1500, B=64, n_keys=96, n_vals=96, lr=2e-3, seed=0):
     torch.manual_seed(seed)
     dev = "cpu"
     model = TinyLM(n_keys + n_vals, d=d, kind=kind, T=2 * K + 1).to(dev)
     opt = torch.optim.AdamW(model.parameters(), lr=lr)
+    warm = max(50, steps // 20)
     for step in range(steps):
+        # warmup + cosine decay (the regime where tiny models learn MQAR)
+        s = (step + 1) / warm if step < warm else \
+            0.02 + 0.98 * 0.5 * (1 + math.cos(math.pi * (step - warm) / max(1, steps - warm)))
+        for g in opt.param_groups:
+            g["lr"] = lr * s
         seq, tgt = make_batch(B, K, n_keys, n_vals, dev)
         loss = F.cross_entropy(model(seq), tgt + n_keys)
         opt.zero_grad(); loss.backward(); opt.step()
+        if (step + 1) % 500 == 0:
+            print(f"    [{kind} K={K}] step {step+1} loss={loss.item():.3f}", flush=True)
     # eval on fresh maps
     model.eval(); hits = tot = 0
     with torch.no_grad():
