@@ -169,6 +169,27 @@ and logit scale for Gather(N); any linear head at that width is pinned at
 `√(1−d/N)`. This replaces the earlier width-2N oracle (whose width grew with N)
 and closes the width confound flagged in the self-audit.
 
+## Tier 3 — Cross-architecture (CPU pilot) — `results/tier3/`, `docs/06_tier3_pilot.md`
+
+Pile-matched pairs (architecture the only variable). Zero-shot pretrained:
+no binding elicitable at ~150M from any mixer (error-mode diagnostic:
+prior-emission, not retrieval); at ~410M binding emerges architecture-ordered
+(softmax 0.50 vs SSM 0.19 at k=8); SSMs uniquely print exact-0.000 cells.
+**Task-trained (decisive)** — identical 2-layer residual stacks (126k params,
+short conv, fresh maps every batch), mixer the only difference:
+
+| K | softmax | linear |
+|---|---|---|
+| 8 | 1.000 | 0.989 |
+| 16 | 1.000 | 0.972 |
+| **32** | **0.999** | **0.342** |
+| 64 | 0.019 | 0.013 |
+
+Softmax flat to K=32 while linear exhausts its d=64 state (0.342 ≈ ⅓ of
+bindings retained — graceful capacity exhaustion); K=64 is a trainability
+frontier for both (no claim). **P4 demonstrated in task-trained form**, and
+the residual-stream loophole (audit A2) closed empirically.
+
 ## Reproduce
 ```bash
 python3 src/numeric/rank_separation.py
@@ -177,6 +198,8 @@ python3 src/numeric/depth_separation.py
 python3 src/numeric/train_linear.py             # trained linear head (audit B1)
 python3 src/numeric/argmax_vs_output.py         # rank-4 argmax construction
 python3 src/numeric/softmax_logwidth.py         # O(log N)-width softmax (audit A4)
+python3 src/tier3/run_pilot.py                  # zero-shot pretrained pairs (needs torch)
+python3 src/tier3/train_tiny.py                 # task-trained tiny grid (needs torch)
 python3 src/nl/task_generator.py --dump        # regenerate the base suite
 python3 src/nl/extra_tasks.py --demo           # the four new families
 python3 src/nl/run_haiku_verification.py        # grade recorded base-suite responses

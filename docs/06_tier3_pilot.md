@@ -71,21 +71,60 @@ empirically probes the audit-A2 gap: the frozen rank-product argument does not
 cover residual architectures, but Theorem II (fixed state) predicts the linear
 mixer still caps when K outgrows its state.
 
-> **Status: run in progress** (`results/tier3/trained_tiny_mqar.json` pending —
-> a container restart killed the first run; relaunched). Table to be inserted
-> on completion.
+**Getting the architecture trainable took three diagnosed failures** — kept
+here because each is a benchmarking lesson:
+
+1. *Sparse supervision*: with loss on a single final position, BOTH mixers
+   plateau at exactly 1/K at every K and every LR/budget ("emit some present
+   value", no binding). Fix: the Zoology shape — m query-answer pairs, loss at
+   every answer position.
+2. *m=K and 10k-step budgets do NOT fix K≥16* — the cliff was not supervision
+   density or budget.
+3. *Previous-token circuit formation*: with learned absolute positions, the
+   layer-1 half of the induction circuit must be learned position-by-position;
+   K=16 was un-trainable at any probed budget. Fix: the kernel-2 causal
+   depthwise conv that Zoology/Based include in every architecture (both
+   mixers receive it). Softmax K=16 went 0.10 → **1.000** instantly.
+
+**Final grid** (2 layers, d=64, 2 heads, short conv, 1500 steps, fresh maps
+every batch; eval on 2,560 fresh sequences):
+
+| K | softmax | linear (elu+1) |
+|---|---|---|
+| 8 | 1.000 | 0.989 |
+| 16 | 1.000 | 0.972 |
+| **32** | **0.999** | **0.342** |
+| 64 | 0.019 | 0.013 |
+
+**Lesson C (the decisive cell).** At K=32 the two identical stacks separate
+cleanly: softmax at ceiling, linear at 0.342 — an order of magnitude above
+chance (1/32) but holding only ~⅓ of the bindings: **graceful capacity
+exhaustion**, exactly the fixed-state signature (state must grow with K;
+d=64 holds ~16–20 bindings). And because these are residual+MLP stacks trained
+end-to-end, this empirically closes the audit-A2 loophole: residual streams do
+not rescue the linear mixer once K outgrows its state.
+
+**Lesson C′ (honest frontier).** K=64 defeats BOTH mixers under this recipe
+(another trainability wall at T=144, presumably positional/circuit-formation
+again) — so no architectural claim is made there. Extending the curve is GPU/
+recipe work, not more CPU probing.
 
 ---
 
-## Verdict so far
+## Verdict
 
-- **P4, zero-shot form:** partially supported — architecture-ordered where
-  capability exists (Tier B, k=8), fixed-state exact-zero saturation observed
-  (both scales), but full "softmax flat" curves need ≥1B models (GPU tier) or
-  task training (Tier C).
-- **Methodological export:** benchmark scores at the 100M zero-shot tier are
-  format artifacts; error-mode analysis (binding vs prior-emission) should
-  accompany any small-model recall claim.
+- **P4: demonstrated in its task-trained form.** At K=32, identical residual
+  stacks separate: softmax 0.999 vs linear 0.342 (Tier C) — softmax flat while
+  fixed state exhausts. Zero-shot pretrained tiers are directionally
+  consistent (architecture-ordered at 410M where capability exists; exact-0
+  SSM cells at both scales) but capability-limited beyond small k.
+- **The audit-A2 residual-stream loophole is closed empirically:** trained
+  2-layer residual+MLP stacks with a linear mixer still cap at state capacity.
+- **Methodological exports** (each cost us a wrong preliminary conclusion
+  before being diagnosed): zero-shot 100M scores are format artifacts (check
+  binding vs prior-emission); sparse supervision produces universal 1/K
+  plateaus (check supervision density before claiming "can't learn X");
+  learned-APE induction has trainability cliffs in T (include the standard
+  short conv before comparing mixers).
 - The **GPU milestone** remains for large-k pretrained curves (1.4B/2.8B
-  pairs), but the CPU pilot has already produced the qualitative signature the
-  theory predicts.
+  pairs) and K≥64 task-trained cells.

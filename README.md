@@ -47,6 +47,7 @@ than a single hand-picked example.
 | `docs/05_self_audit.md` | **Adversarial self-audit** of everything above: what holds (Thm I, two-regime finding), what was overstated (grader artifacts, n=1 cells), what's untested (no trained linear head), scope limits (residual streams vs the depth argument), and missing prior art (Jelassi et al. 2402.01032). |
 | `src/numeric/`                 | numpy: softmax vs. linear attention, generators with closed-form `A*`, the rank-separation proof (`rank_separation.py`), trained curves (`train.py`), and the multi-layer demo (`depth_separation.py`). |
 | `src/nl/`                      | NL generators (`task_generator.py` + `extra_tasks.py`), graders, the base-suite Haiku harness (`run_haiku_verification.py`), and the scaling sweep (`sweep.py`). |
+| `src/tier3/` | **Cross-architecture pilot (CPU)**: zero-shot Pile-matched pairs (`run_pilot.py`, Pythia vs Mamba vs RWKV) and the task-trained tiny-model grid (`train_tiny.py`, Zoology protocol). See `docs/06_tier3_pilot.md`. |
 | `results/`                     | Committed run outputs (numeric `.json`, NL `.json`, `sweep_results.json`) + `RESULTS.md`. |
 | audit console (React) | Interactive UI to navigate/audit this work — rank explorer, numeric proofs, the seven live task generators, and the Haiku sweep. Lives once on the `main` work-sites hub at `sites/attention/` and is published at **https://yulinl2.github.io/My-Benchmark-Playground/attention/** (noindex). |
 
@@ -56,6 +57,7 @@ than a single hand-picked example.
 python3 src/numeric/rank_separation.py      # analytic: permutation needs rank N
 python3 src/numeric/train.py                 # empirical: linear head plateaus, softmax solves
 python3 src/nl/task_generator.py --demo      # print sample NL instances
+python3 src/tier3/train_tiny.py               # task-trained separation grid (torch)
 ```
 
 See `docs/02_experimental_plan.md` for the Haiku sub-agent runs and
