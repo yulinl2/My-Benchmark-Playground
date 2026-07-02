@@ -1,0 +1,63 @@
+{
+  "task": "associative recall, completion form",
+  "value_style": "words",
+  "protocol": "2 seeds x 8 queries per k; greedy 6 tokens; exact prefix match",
+  "rows": [
+    {
+      "model": "EleutherAI/pythia-410m",
+      "value_style": "words",
+      "k": 8,
+      "acc": 0.5,
+      "n": 16
+    },
+    {
+      "model": "EleutherAI/pythia-410m",
+      "value_style": "words",
+      "k": 16,
+      "acc": 0.0625,
+      "n": 16
+    },
+    {
+      "model": "EleutherAI/pythia-410m",
+      "value_style": "words",
+      "k": 32,
+      "acc": 0.0625,
+      "n": 16
+    },
+    {
+      "model": "EleutherAI/pythia-410m",
+      "value_style": "words",
+      "k": 64,
+      "acc": 0.0625,
+      "n": 16
+    },
+    {
+      "model": "state-spaces/mamba-370m-hf",
+      "value_style": "words",
+      "k": 8,
+      "acc": 0.1875,
+      "n": 16
+    },
+    {
+      "model": "state-spaces/mamba-370m-hf",
+      "value_style": "words",
+      "k": 16,
+      "acc": 0.0625,
+      "n": 16
+    },
+    {
+      "model": "state-spaces/mamba-370m-hf",
+      "value_style": "words",
+      "k": 32,
+      "acc": 0.0,
+      "n": 16
+    },
+    {
+      "model": "state-spaces/mamba-370m-hf",
+      "value_style": "words",
+      "k": 64,
+      "acc": 0.0625,
+      "n": 16
+    }
+  ]
+}
