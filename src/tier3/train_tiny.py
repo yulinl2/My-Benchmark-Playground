@@ -31,19 +31,28 @@ import torch.nn.functional as F
 torch.manual_seed(0)
 
 
-def make_batch(B, K, n_keys, n_vals, device):
-    """MQAR: [k1 v1 ... kK vK q] -> value bound to q. Keys distinct per seq."""
+def make_batch(B, K, n_keys, n_vals, device, m=None):
+    """MQAR with MULTI-QUERY supervision (the Zoology shape): sequence =
+    [k1 v1 ... kK vK  q1 a1 q2 a2 ... qm am]; loss at every answer position
+    (m supervised tokens per sequence, not 1 — the dense signal induction
+    circuits need to form). Keys distinct per sequence; fresh map each batch."""
+    m = m or min(K, 8)
     keys = torch.stack([torch.randperm(n_keys)[:K] for _ in range(B)])  # (B,K)
     vals = torch.randint(0, n_vals, (B, K))
-    qi = torch.randint(0, K, (B,))
-    q = keys[torch.arange(B), qi]
-    tgt = vals[torch.arange(B), qi]
-    # token ids: keys occupy [0, n_keys), values [n_keys, n_keys+n_vals)
-    seq = torch.empty(B, 2 * K + 1, dtype=torch.long)
+    qi = torch.stack([torch.randperm(K)[:m] for _ in range(B)])          # (B,m)
+    bidx = torch.arange(B).unsqueeze(1)
+    qk = keys[bidx, qi]                    # (B,m) query key tokens
+    qa = vals[bidx, qi] + n_keys           # (B,m) answer value tokens
+    T = 2 * K + 2 * m
+    seq = torch.empty(B, T, dtype=torch.long)
     seq[:, 0:2 * K:2] = keys
     seq[:, 1:2 * K:2] = vals + n_keys
-    seq[:, -1] = q
-    return seq.to(device), tgt.to(device)
+    seq[:, 2 * K::2] = qk
+    seq[:, 2 * K + 1::2] = qa
+    # labels: -100 everywhere except query positions, which predict the answer
+    lab = torch.full((B, T), -100, dtype=torch.long)
+    lab[:, 2 * K::2] = qa
+    return seq.to(device), lab.to(device)
 
 
 class Mixer(nn.Module):
@@ -95,13 +104,14 @@ class TinyLM(nn.Module):
         x = self.emb(seq) + self.pos(torch.arange(seq.shape[1], device=seq.device))
         for b in self.blocks:
             x = b(x)
-        return self.head(self.nf(x[:, -1]))       # predict at the query position
+        return self.head(self.nf(x))               # logits at every position
 
 
 def run(kind, K, d=64, steps=1500, B=64, n_keys=96, n_vals=96, lr=2e-3, seed=0):
     torch.manual_seed(seed)
     dev = "cpu"
-    model = TinyLM(n_keys + n_vals, d=d, kind=kind, T=2 * K + 1).to(dev)
+    m = min(K, 8)
+    model = TinyLM(n_keys + n_vals, d=d, kind=kind, T=2 * K + 2 * m).to(dev)
     opt = torch.optim.AdamW(model.parameters(), lr=lr)
     warm = max(50, steps // 20)
     for step in range(steps):
@@ -110,17 +120,21 @@ def run(kind, K, d=64, steps=1500, B=64, n_keys=96, n_vals=96, lr=2e-3, seed=0):
             0.02 + 0.98 * 0.5 * (1 + math.cos(math.pi * (step - warm) / max(1, steps - warm)))
         for g in opt.param_groups:
             g["lr"] = lr * s
-        seq, tgt = make_batch(B, K, n_keys, n_vals, dev)
-        loss = F.cross_entropy(model(seq), tgt + n_keys)
+        seq, lab = make_batch(B, K, n_keys, n_vals, dev, m=m)
+        logits = model(seq)
+        loss = F.cross_entropy(logits.reshape(-1, logits.shape[-1]),
+                               lab.reshape(-1), ignore_index=-100)
         opt.zero_grad(); loss.backward(); opt.step()
         if (step + 1) % 500 == 0:
             print(f"    [{kind} K={K}] step {step+1} loss={loss.item():.3f}", flush=True)
-    # eval on fresh maps
+    # eval on fresh maps: accuracy over supervised (answer) positions
     model.eval(); hits = tot = 0
     with torch.no_grad():
         for _ in range(20):
-            seq, tgt = make_batch(128, K, n_keys, n_vals, dev)
-            hits += (model(seq).argmax(-1) == tgt + n_keys).sum().item(); tot += 128
+            seq, lab = make_batch(128, K, n_keys, n_vals, dev, m=m)
+            pred = model(seq).argmax(-1)
+            sel = lab != -100
+            hits += (pred[sel] == lab[sel]).sum().item(); tot += sel.sum().item()
     return hits / tot, sum(p.numel() for p in model.parameters())
 
 
