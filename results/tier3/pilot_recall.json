@@ -1,0 +1,96 @@
+{
+  "task": "associative recall, completion form",
+  "protocol": "3 seeds x 8 queries per k; greedy 6 tokens; exact prefix match",
+  "rows": [
+    {
+      "model": "EleutherAI/pythia-160m",
+      "k": 4,
+      "acc": 0.3333333333333333,
+      "n": 12
+    },
+    {
+      "model": "EleutherAI/pythia-160m",
+      "k": 8,
+      "acc": 0.20833333333333334,
+      "n": 24
+    },
+    {
+      "model": "EleutherAI/pythia-160m",
+      "k": 16,
+      "acc": 0.125,
+      "n": 24
+    },
+    {
+      "model": "EleutherAI/pythia-160m",
+      "k": 32,
+      "acc": 0.041666666666666664,
+      "n": 24
+    },
+    {
+      "model": "EleutherAI/pythia-160m",
+      "k": 64,
+      "acc": 0.08333333333333333,
+      "n": 24
+    },
+    {
+      "model": "state-spaces/mamba-130m-hf",
+      "k": 4,
+      "acc": 0.5833333333333334,
+      "n": 12
+    },
+    {
+      "model": "state-spaces/mamba-130m-hf",
+      "k": 8,
+      "acc": 0.20833333333333334,
+      "n": 24
+    },
+    {
+      "model": "state-spaces/mamba-130m-hf",
+      "k": 16,
+      "acc": 0.16666666666666666,
+      "n": 24
+    },
+    {
+      "model": "state-spaces/mamba-130m-hf",
+      "k": 32,
+      "acc": 0.0,
+      "n": 24
+    },
+    {
+      "model": "state-spaces/mamba-130m-hf",
+      "k": 64,
+      "acc": 0.0,
+      "n": 24
+    },
+    {
+      "model": "RWKV/rwkv-4-169m-pile",
+      "k": 4,
+      "acc": 0.08333333333333333,
+      "n": 12
+    },
+    {
+      "model": "RWKV/rwkv-4-169m-pile",
+      "k": 8,
+      "acc": 0.08333333333333333,
+      "n": 24
+    },
+    {
+      "model": "RWKV/rwkv-4-169m-pile",
+      "k": 16,
+      "acc": 0.0,
+      "n": 24
+    },
+    {
+      "model": "RWKV/rwkv-4-169m-pile",
+      "k": 32,
+      "acc": 0.0,
+      "n": 24
+    },
+    {
+      "model": "RWKV/rwkv-4-169m-pile",
+      "k": 64,
+      "acc": 0.0,
+      "n": 24
+    }
+  ]
+}
