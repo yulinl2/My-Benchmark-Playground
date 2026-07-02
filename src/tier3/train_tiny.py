@@ -59,11 +59,17 @@ class Mixer(nn.Module):
     def __init__(self, d, heads, kind):
         super().__init__()
         self.h, self.dk, self.kind = heads, d // heads, kind
+        # Short causal depthwise conv (kernel 2), as in Zoology/Based — given to
+        # EVERY mixer incl. the softmax baseline. It supplies the previous-token
+        # composition that induction circuits otherwise must learn position-by-
+        # position under learned APE (the K=8->16 trainability cliff).
+        self.conv = nn.Conv1d(d, d, 2, padding=1, groups=d, bias=False)
         self.qkv = nn.Linear(d, 3 * d, bias=False)
         self.out = nn.Linear(d, d, bias=False)
 
     def forward(self, x):
         B, T, D = x.shape
+        x = x + self.conv(x.transpose(1, 2))[:, :, :T].transpose(1, 2)
         q, k, v = self.qkv(x).chunk(3, -1)
         q, k, v = (t.view(B, T, self.h, self.dk).transpose(1, 2) for t in (q, k, v))
         if self.kind == "softmax":
