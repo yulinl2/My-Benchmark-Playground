@@ -1,62 +1,61 @@
 {
-  "protocol": "2-layer residual stacks, identical except the mixer; d=64, 1200 steps, fresh maps every batch; eval on 2560 fresh sequences",
+  "protocol": "2-layer residual stacks, identical except the mixer; d=64, 1500 steps, fresh maps every batch; eval on 2560 fresh sequences",
   "rows": [
     {
       "K": 8,
       "kind": "softmax",
-      "acc": 0.12734375,
+      "acc": 1.0,
       "d": 64,
-      "params": 125248
+      "params": 126208
     },
     {
       "K": 8,
       "kind": "linear",
-      "acc": 0.125,
+      "acc": 0.153076171875,
       "d": 64,
-      "params": 125248
+      "params": 126208
     },
     {
       "K": 16,
       "kind": "softmax",
-      "acc": 0.076171875,
+      "acc": 0.083642578125,
       "d": 64,
-      "params": 126272
+      "params": 127232
     },
     {
       "K": 16,
       "kind": "linear",
-      "acc": 0.069921875,
+      "acc": 0.08427734375,
       "d": 64,
-      "params": 126272
+      "params": 127232
     },
     {
       "K": 32,
       "kind": "softmax",
-      "acc": 0.038671875,
+      "acc": 0.0390625,
       "d": 64,
-      "params": 128320
+      "params": 129280
     },
     {
       "K": 32,
       "kind": "linear",
-      "acc": 0.027734375,
+      "acc": 0.03974609375,
       "d": 64,
-      "params": 128320
+      "params": 129280
     },
     {
       "K": 64,
       "kind": "softmax",
-      "acc": 0.020703125,
+      "acc": 0.01962890625,
       "d": 64,
-      "params": 132416
+      "params": 133376
     },
     {
       "K": 64,
       "kind": "linear",
-      "acc": 0.01171875,
+      "acc": 0.010595703125,
       "d": 64,
-      "params": 132416
+      "params": 133376
     }
-  ],
-  "note": "SUPERSEDED baseline kept for the record: this grid used single-final-position supervision and both mixers plateaued at exactly 1/K (emit-a-present-value without binding) \u2014 the supervision-density lesson. The multi-query grid that replaces it is the decisive one."
+  ]
 }
