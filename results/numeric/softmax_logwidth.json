@@ -1,0 +1,84 @@
+{
+  "rows": [
+    {
+      "N": 64,
+      "K": 4,
+      "d": 17,
+      "beta_mult": 3.0,
+      "argmax_acc": 1.0,
+      "on_target_mass": 0.9871077423869987,
+      "output_rel_err": 0.02117204041764053,
+      "linear_floor_same_width": 0.8569568250501305
+    },
+    {
+      "N": 64,
+      "K": 8,
+      "d": 34,
+      "beta_mult": 3.0,
+      "argmax_acc": 1.0,
+      "on_target_mass": 0.9977928057340038,
+      "output_rel_err": 0.0030862237107778094,
+      "linear_floor_same_width": 0.6846531968814576
+    },
+    {
+      "N": 256,
+      "K": 4,
+      "d": 23,
+      "beta_mult": 3.0,
+      "argmax_acc": 1.0,
+      "on_target_mass": 0.9964918640208161,
+      "output_rel_err": 0.007276508517242435,
+      "linear_floor_same_width": 0.9540210951546092
+    },
+    {
+      "N": 256,
+      "K": 8,
+      "d": 45,
+      "beta_mult": 3.0,
+      "argmax_acc": 1.0,
+      "on_target_mass": 0.9996805789839318,
+      "output_rel_err": 0.0004443370703503898,
+      "linear_floor_same_width": 0.9078649403958718
+    },
+    {
+      "N": 1024,
+      "K": 4,
+      "d": 28,
+      "beta_mult": 3.0,
+      "argmax_acc": 1.0,
+      "on_target_mass": 0.9989337750015371,
+      "output_rel_err": 0.0037063086317396603,
+      "linear_floor_same_width": 0.9862333648787187
+    },
+    {
+      "N": 1024,
+      "K": 8,
+      "d": 56,
+      "beta_mult": 3.0,
+      "argmax_acc": 1.0,
+      "on_target_mass": 0.9999577922884022,
+      "output_rel_err": 7.785752675905926e-05,
+      "linear_floor_same_width": 0.9722718241315028
+    },
+    {
+      "N": 4096,
+      "K": 4,
+      "d": 34,
+      "beta_mult": 3.0,
+      "argmax_acc": 1.0,
+      "on_target_mass": 0.999732600497258,
+      "output_rel_err": 0.0012397268832839614,
+      "linear_floor_same_width": 0.995840960570512
+    },
+    {
+      "N": 4096,
+      "K": 8,
+      "d": 67,
+      "beta_mult": 3.0,
+      "argmax_acc": 1.0,
+      "on_target_mass": 0.9999944323222865,
+      "output_rel_err": 7.586938493891223e-06,
+      "linear_floor_same_width": 0.9917875670348968
+    }
+  ]
+}

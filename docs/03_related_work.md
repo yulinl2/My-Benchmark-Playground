@@ -65,19 +65,38 @@ during the literature pass (June 2026).
 
 ---
 
-## What is novel here
-1. **Single-knob, closed-form-`A*` family.** Reducing the separation to an
-   Eckart–Young statement on a permutation matrix (Theorem I) — a three-line
-   proof that the relative gather error of any fixed `(H,m)` linear read-out is
-   `≥ 1 − Hm/N`.
-2. **Overfit-vs-generalize corollary.** Tying the streaming lower bound (Theorem
-   II) explicitly to the pretrain-memorization-vs-generalization bind, matching
-   the user's framing that fixed capacity cannot balance both as the task space
-   grows.
-3. **Numeric→NL lift with a self-containedness audit.** Turning the construction
-   into a *benchmark generator* whose NL instances are validated on commercial
-   softmax models (Haiku) via in-session sub-agents, so that any failure is
-   attributable to architecture rather than missing knowledge.
+## What is novel here (rewritten after self-audit C1)
+
+The **separation itself is not novel**: fixed-state models provably fail at
+copy/recall while transformers don't — formally in Zoology (state ∝ k for MQAR)
+and, closest to this program, Jelassi et al. 2024 (exponential-length copying,
+including pretrained-LLM validation). Claims of the form "we separate softmax
+from linear attention" must therefore be positioned as *reframings and
+instrumentation* of a known separation. What we believe is distinct, with
+appropriate hedging pending a deeper literature pass:
+
+1. **The per-layer Eckart–Young framing on a permutation target.** Casting the
+   single-layer limitation as a three-line rank statement (`error ≥ 1 − Hm/N`
+   against `P_π`) with a **closed-form optimal attention matrix as a measurable
+   artifact** — enabling attention-level (not just output-level) evaluation.
+   Empirically the floor is *tight*: CE-trained heads saturate it to ~3
+   decimals (`results/numeric/trained_linear.json`).
+2. **The argmax/output metric split (constructive).** A rank-4
+   nonnegative-feature head routes *any* permutation perfectly by argmax at any
+   `N` while its output stays pinned to the floor
+   (`src/numeric/argmax_vs_output.py`). Consequence: argmax-accuracy tables
+   cannot demonstrate this class of separation; output error can. We have not
+   found this stated elsewhere in this form — flagged as potentially novel,
+   pending literature check.
+3. **Generator packaging with a self-containedness audit.** A single-knob,
+   seven-family generator whose NL instances carry deterministic answer keys
+   and are validated on commercial softmax models before any architectural
+   conclusion is drawn — so failures are attributable to architecture, not
+   knowledge. (Individual families overlap existing diagnostics: MQAR is
+   imported, `chain` ≈ RULER's variable tracking, `gather/sort/selective_copy`
+   relate to the copying literature.)
+4. **Overfit-vs-generalize framing** of the streaming bound (heuristic; see
+   docs/00).
 
 ## Open questions / risks
 - Do input-dependent SSM gates (Mamba-2) effectively raise the rank ceiling on

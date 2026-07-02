@@ -63,14 +63,21 @@ prefix is compressed into `O(m·d)` numbers **independent of `N`**.
 The limitation we exploit lives in **exactly one place**: the per-layer
 attention map is **rank-bounded by `m`** (matrix view) ⇔ the recurrence carries a
 **state of `N`-independent size** (streaming view). Softmax has neither bound:
-its map can be full-rank, and it is non-recurrent (random access).
+its map can be full-rank, and it is non-recurrent (random access). The softmax
+side is **cheap, constructively** (self-audit A4, closed): with random sign
+codes of width `d = O(log N)` and logit scale `O(log N)`, softmax drives the
+gather output error to ≈0 — measured at `N = 4096` with `d = 67`: softmax error
+0.0000 while *any* linear head at the **same width** is pinned `≥ 0.992`
+(`src/numeric/softmax_logwidth.py`).
 
 > Multi-head and multi-layer do **not** remove the bound — they raise the
-> constant. `H` heads give an effective rank `≤ H·m` per layer; `L` layers
-> compose maps but cannot synthesize an exact high-rank one-hot routing from a
-> bounded product of rank-bounded stochastic maps without error that we lower-bound
-> below. The whole point is that for **any fixed `(H, L, m, d)`** we can pick `N`
-> large enough to break it.
+> constant. `H` heads give an effective rank `≤ H·m` per layer (this holds with
+> per-head output projections via the Kronecker lemma in §4). For depth, the
+> rank-product argument covers only frozen residual-free stacks; real
+> multi-layer models are constrained by Theorem II (see the corrected remark in
+> §4). The intended claim shape remains: for **any fixed `(H, L, m, d)`** there
+> is an `N` large enough to break it — proved per-layer, informal for deep
+> residual stacks.
 
 ---
 
@@ -120,12 +127,22 @@ while a softmax read-out drives `A → P_π` and `\mathcal E → 0`. This is the
 clean, fully provable kernel of the separation, demonstrated numerically in
 `src/numeric/rank_separation.py`.
 
-**Remark (why depth doesn't save it cheaply).** A depth-`L` linear network
-composes `A = A_L⋯A_1`. Each `A_ℓ` is row-stochastic with `rank ≤ Hm`. A product
-of `L` rank-`(Hm)` matrices has rank `≤ Hm`, so the read-out map handed to `V`
-still has rank `≤ Hm` — depth alone does not raise the rank ceiling. (Depth helps
-only by *recomputing* keys/queries from intermediate features; that is the regime
-Theorem II addresses.)
+**Lemma (multi-head with output projections; added in self-audit A1a).** Real
+multi-head output is `Σ_h A_h V W_h`, not `A·V` for a single `A`. The bound
+survives: as an operator on `vec(V)` the model computes `Σ_h (W_h^⊤ ⊗ A_h)`,
+each summand of rank `≤ m·d_v`, so the total rank is `≤ H·m·d_v`, while the
+target `I_{d_v} ⊗ P_π` has `N·d_v` unit singular values. Eckart–Young then
+gives the same floor `1 − Hm/N`.
+
+**Remark (depth — scope corrected in self-audit A2).** For a *frozen,
+residual-free* stack, `A = A_L⋯A_1` with each `A_ℓ` row-stochastic of rank
+`≤ Hm`, and a product of rank-`(Hm)` matrices has rank `≤ Hm` — depth alone
+does not raise the rank ceiling (demonstrated in `depth_separation.py`).
+**This argument does NOT cover real architectures**: with residual streams the
+per-layer map is `I + (low rank)` — full rank — and inter-layer MLPs recompute
+features. For real multi-layer linear models the burden falls entirely on
+Theorem II (fixed recurrent state), which is architecture-agnostic but stated
+informally below.
 
 ---
 
@@ -134,25 +151,36 @@ Theorem II addresses.)
 Theorem I freezes the keys/values. To cover *adaptive* multi-layer linear models
 (which recompute features per layer), use the streaming view.
 
-**Theorem 2 (informal; streaming lower bound).** Consider answering, after
-reading the whole prompt, an arbitrary query "what is `v_{π(i)}`?" Any
-linear-attention/SSM stack with total recurrent state of `B` bits processes the
-prompt left-to-right and must, at the boundary just before the queries, have
-summarized the prefix into `B` bits. Specifying a uniformly random `π ∈ S_N`
-together with `Θ(\log b)`-bit values requires `Θ(N\log N)` bits to answer
-arbitrary subsequent gather queries. By a standard one-way communication /
-streaming argument (the same shape as the associative-recall lower bounds of
-Arora et al., *Zoology*), if `B = o(N\log N)` the expected number of correctly
-answered queries is bounded away from the maximum; the per-query error is
-`≥ 1 − B/Θ(N\log N)`. Softmax attention is **non-recurrent** (random access over
-the KV cache) and therefore is not subject to this prefix-compression bound — it
-pays memory `O(N)` (the KV cache) by design.
+**Theorem 2 (informal; streaming lower bound).** Any linear-attention/SSM stack
+with total recurrent state of `B` bits processes the prompt left-to-right; at
+any cut it has summarized the prefix into `B` bits. Two cases (cut placement
+corrected in self-audit A3):
+
+- **Clean-cut tasks (MQAR, kv_lastwrite):** all queries come after the facts,
+  so at the boundary before the queries the model must hold enough of the
+  key→value table to answer arbitrary queries — `Θ(k·log)` bits; with `B`
+  fixed, per-query error is bounded away from zero once `k` outgrows `B`. This
+  is the shape of the formal bounds in Zoology and Jelassi et al.
+  (arXiv:2402.01032).
+- **Interleaved tasks (Gather as encoded, pointers inline):** the correct
+  argument is a *live-set* one: for a uniformly random `π`, at the midpoint cut
+  Θ(N) source values whose destination slots lie beyond the cut must all be
+  held simultaneously, so `B = o(N·d_v·prec)` forces information loss on Θ(N)
+  outputs.
+
+Either way, for a fixed model `B` is constant and the bound bites at large
+`N`/`k`. Softmax attention is **non-recurrent** (random access over the KV
+cache) and is not subject to prefix compression — it pays `O(N)` memory by
+design. *(This theorem is stated informally; the analogous formal results are
+in Zoology and Jelassi et al. The precision caveat — `B = O(H·m·d·prec)` — is
+required for the information-theoretic statement.)*
 
 For a fixed model, `B = O(H·m·d·\text{(precision)})` is constant, so for
 `N` large the bound bites: **fixed-state linear attention provably loses
 information about long self-contained routing tasks.**
 
-**Pretrain-fit vs. generalization corollary.** One could try to beat Theorem I by
+**Pretrain-fit vs. generalization corollary *(heuristic sketch, not a proof —
+self-audit A3)*.** One could try to beat Theorem I by
 *memorizing* the finite training set (overfitting `π`'s seen in pretraining). But
 the task family is parameterized so the number of distinct routings `|S_N| = N!`
 explodes; any finite linear model can memorize only `2^B / poly` of them. Driving
@@ -208,9 +236,15 @@ experiments serve three specific, falsifiable purposes (detailed in
 - **P1 (numeric, provable+empirical).** A linear-attention read-out's relative
   gather error is `≥ 1 − Hm/N`; a softmax read-out reaches `≈ 0`. → tested in
   `src/numeric/`.
-- **P2 (numeric, training).** Trained end-to-end on a fresh-`π` distribution, a
-  fixed linear model's accuracy is capped and *decreases* as `N` grows past
-  `Hm`; softmax stays high. → `src/numeric/train.py`.
+- **P2 (numeric, training; restated after self-audit — see docs/05 addendum).**
+  Trained end-to-end on a fresh-`π` distribution, a fixed linear model's gather
+  **output error** is pinned to the `1−Hm/N` floor (trained heads *saturate* it
+  — `src/numeric/train_linear.py`), and its CE-trained argmax accuracy collapses
+  as `m/N`; softmax stays high on both. **Caveat (proved constructively,
+  `src/numeric/argmax_vs_output.py`):** argmax accuracy per se is *not*
+  rank-limited — a rank-4 head routes any permutation perfectly by argmax while
+  its output stays at the floor — so the separation claim lives in the output
+  metric, never in argmax tables alone.
 - **P3 (NL, sub-agent).** Haiku solves the NL lifts at high accuracy while `N`
   is within context budget (self-containedness holds); accuracy falls only as
   `N` approaches the budget, not at a fixed small `N`. → `src/nl/` + `results/`.

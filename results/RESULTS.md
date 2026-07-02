@@ -124,6 +124,23 @@ training never finds the circle trick (it optimizes mass, which is rank-capped).
 tables alone cannot demonstrate the separation. Fixed-capacity linear attention
 can *know where to look* but cannot *move the information*.
 
+## Tier 1d — Softmax at O(log N) width (audit A4/B5) — `softmax_logwidth.json`
+
+The missing softmax-side construction: random ±1 codes of width `d = K·ln N`,
+queries `β·c_{π(i)}` with `β = 3·ln N`. Same-width comparison (5 trials/cell):
+
+| N | d = 8·ln N | softmax argmax | softmax out err | linear floor at same d |
+|---|---|---|---|---|
+| 64 | 34 | 1.000 | 0.0031 | ≥ 0.685 |
+| 256 | 45 | 1.000 | 0.0004 | ≥ 0.908 |
+| 1024 | 56 | 1.000 | 0.0001 | ≥ 0.972 |
+| 4096 | 67 | 1.000 | 0.0000 | ≥ 0.992 |
+
+**Same width budget, opposite outcomes.** Softmax needs only logarithmic width
+and logit scale for Gather(N); any linear head at that width is pinned at
+`√(1−d/N)`. This replaces the earlier width-2N oracle (whose width grew with N)
+and closes the width confound flagged in the self-audit.
+
 ## Reproduce
 ```bash
 python3 src/numeric/rank_separation.py
@@ -131,6 +148,7 @@ python3 src/numeric/train.py
 python3 src/numeric/depth_separation.py
 python3 src/numeric/train_linear.py             # trained linear head (audit B1)
 python3 src/numeric/argmax_vs_output.py         # rank-4 argmax construction
+python3 src/numeric/softmax_logwidth.py         # O(log N)-width softmax (audit A4)
 python3 src/nl/task_generator.py --dump        # regenerate the base suite
 python3 src/nl/extra_tasks.py --demo           # the four new families
 python3 src/nl/run_haiku_verification.py        # grade recorded base-suite responses

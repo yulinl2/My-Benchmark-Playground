@@ -194,12 +194,20 @@ committed instances. Documented; no action.
 3. ✅ Train a real linear-attention head (closes B1 / tests P2) — see the
    addendum below; `src/numeric/train_linear.py`,
    `results/numeric/trained_linear.json`.
-4. Re-scope the depth claim (A2) and add the Kronecker multi-head lemma (A1a).
-5. Add Jelassi et al. to docs/03 and rewrite the novelty section (C1). ✅
-   citation added; rewrite pending.
+4. ✅ Re-scope the depth claim (A2) and add the Kronecker multi-head lemma
+   (A1a) — docs/00 §2/§4 rewritten (frozen residual-free scope stated; lemma
+   added); Theorem II cut argument fixed per A3 (clean-cut vs live-set);
+   corollary labeled heuristic; P2 restated per the metric split.
+5. ✅ Add Jelassi et al. to docs/03 and rewrite the novelty section (C1) —
+   novelty repositioned as reframing/instrumentation of a known separation.
 6. Switch sequence grading to LCS; re-issue all sweep tables (B2); ≥10 seeds
    for any cell used in a claim (B3/B4).
-7. Build the `O(log N)`-width softmax construction, or hedge (A4).
+7. ✅ Build the `O(log N)`-width softmax construction (A4/B5) —
+   `src/numeric/softmax_logwidth.py`: random sign codes, `d = K·ln N`,
+   `β = 3·ln N`. Measured at N=4096, d=67: softmax output error 0.0000
+   (argmax 1.000) while ANY linear head at the same width is pinned
+   `≥ 0.992`. The width confound in train.py (B5) is thereby resolved:
+   softmax genuinely needs only logarithmic width.
 
 ---
 
