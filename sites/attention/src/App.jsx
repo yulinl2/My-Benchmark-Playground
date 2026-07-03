@@ -6,7 +6,11 @@ import trainCurves from './data/train_curves.json'
 import depthSep from './data/depth_separation.json'
 import sweep from './data/sweep_results.json'
 
-const C = { soft: '#3aa0ff', lin: '#ff6b6b', floor: '#f0b429', good: '#2fd07a', warn: '#f0b429', bad: '#ff6b6b' }
+// Series colors: validated categorical slots (dark steps) on the panel surface —
+// validate_palette.js: worst-adjacent CVD ΔE 35.9, all >= 3:1 vs #141a26.
+// Status colors are the fixed status palette; a status-colored mark is always
+// paired with its printed value, so color never carries meaning alone.
+const C = { soft: '#3987e5', lin: '#e66767', floor: '#c98500', good: '#0ca30c', warn: '#fab219', bad: '#d03b3b' }
 const scoreColor = v => (v >= 0.95 ? C.good : v >= 0.5 ? C.warn : C.bad)
 const numIn = s => { const m = String(s).match(/\d+/); return m ? +m[0] : 0 }
 
@@ -197,10 +201,14 @@ function Matrices() {
   const mm = Math.min(m, N)
   const { P, soft, lin, linErr, softErr, floor } = useMemo(() => computeMatrices(N, mm, seed), [N, mm, seed])
   const sz = 220
-  const Panel = ({ title, sub, matrix, accent, tag }) => (
+  // one-hue sequential ramp for all three panels (magnitude); identity is
+  // carried by the title + tag chip, not by recoloring the ramp per panel.
+  // Rows are scaled to their max — the standard way to read attention maps.
+  const rowScale = A => A.map(row => { const mx = Math.max(...row) || 1; return row.map(v => v / mx) })
+  const Panel = ({ title, sub, matrix, tag }) => (
     <div className="card" style={{ margin: 0 }}>
       <h3 style={{ marginTop: 0 }}>{title} {tag}</h3>
-      <Heatmap matrix={matrix} size={sz} accent={accent} />
+      <Heatmap matrix={rowScale(matrix)} size={sz} />
       <p className="note" style={{ marginBottom: 0 }}>{sub}</p>
     </div>
   )
@@ -221,11 +229,11 @@ function Matrices() {
         </div>
       </div>
       <div className="grid3">
-        <Panel title="Target P_π" tag={<span className="tag good">rank {N}</span>} accent="#2fd07a"
+        <Panel title="Target P_π" tag={<span className="tag good">rank {N}</span>}
           matrix={P} sub="What the task demands: a permutation. One bright cell per row." />
-        <Panel title="Softmax" tag={<span className="tag soft">realizes it</span>} accent={C.soft}
+        <Panel title="Softmax" tag={<span className="tag soft">realizes it</span>}
           matrix={soft} sub={`Sharpened logits → ≈ P_π. Rel. error ${softErr.toFixed(3)}.`} />
-        <Panel title="Linear (m feats)" tag={<span className="tag bad">rank ≤ {mm}</span>} accent={C.lin}
+        <Panel title="Linear (m feats)" tag={<span className="tag bad">rank ≤ {mm}</span>}
           matrix={lin} sub={`A smear it can't sharpen past rank ${mm}. Rel. error ${linErr.toFixed(3)}.`} />
       </div>
       <div className="card">
@@ -253,7 +261,7 @@ function StateBottleneck() {
   const Ns = [2, 4, 8, 16, 32, 64, 128, 256]
   const bitsNeed = Math.round(N * Math.log2(Math.max(2, N)))
   const bitsHave = m * 16   // ~fp16 per slot
-  const slotColor = l => (l === 0 ? '#1b2433' : l === 1 ? '#2fd07a' : '#ff6b6b')
+  const slotColor = l => (l === 0 ? '#1b2433' : l === 1 ? C.good : C.bad)
   return (
     <>
       <h1>State bottleneck — the streaming view (Theorem II)</h1>
@@ -277,13 +285,13 @@ function StateBottleneck() {
               <div key={j} title={`slot ${j}: ${l} pair(s)`} style={{
                 width: 22, height: 22, borderRadius: 4, background: slotColor(l),
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                fontSize: 11, fontWeight: 700, color: l >= 2 ? '#1b0f10' : '#0a0d14'
+                fontSize: 11, fontWeight: 700, color: '#fff'
               }}>{l >= 2 ? l : ''}</div>
             ))}
           </div>
           <Legend items={[
-            { color: '#2fd07a', label: `singleton (recoverable) ×${singles}` },
-            { color: '#ff6b6b', label: `collided (overwrite/interference) ×${collided}` },
+            { color: C.good, label: `singleton (recoverable) ×${singles}` },
+            { color: C.bad, label: `collided (overwrite/interference) ×${collided}` },
           ]} />
           <p className="note" style={{ marginBottom: 0 }}>{N <= m
             ? 'N ≤ m: every pair gets its own slot — fully recoverable, like softmax.'
@@ -493,7 +501,7 @@ function PointerChase() {
                 <span key={i} className="mono" style={{
                   padding: '6px 10px', borderRadius: 8, fontSize: 13,
                   border: '1px solid ' + (isActive ? '#7c5cff' : '#283349'),
-                  background: isActive ? 'rgba(124,92,255,.22)' : isOnChain ? 'rgba(47,208,122,.12)' : '#141a26',
+                  background: isActive ? 'rgba(124,92,255,.22)' : isOnChain ? 'rgba(12,163,12,.14)' : '#141a26',
                   color: isActive ? '#fff' : isOnChain ? '#cdeed8' : '#8b97ab',
                 }}>Let {s.lhs} = {s.rhs}.</span>
               )
@@ -505,11 +513,11 @@ function PointerChase() {
           <div className="mono" style={{ fontSize: 16, lineHeight: 2 }}>
             {trace.slice(0, step + 1).map((v, i) => (
               <span key={i}>
-                <span style={{ color: i === step && !done ? '#7c5cff' : '#2fd07a', fontWeight: 700 }}>{v}</span>
+                <span style={{ color: i === step && !done ? '#7c5cff' : C.good, fontWeight: 700 }}>{v}</span>
                 {i < step ? <span style={{ color: '#8b97ab' }}> → </span> : null}
               </span>
             ))}
-            {done ? <span style={{ color: '#8b97ab' }}> = <span style={{ color: '#f0b429', fontWeight: 700 }}>{literal}</span></span> : null}
+            {done ? <span style={{ color: '#8b97ab' }}> = <span style={{ color: C.floor, fontWeight: 700 }}>{literal}</span></span> : null}
           </div>
           <p className="note">hop {Math.min(step, L)} / {L}{done ? ` — resolved: ${query} = ${literal}` : ` — now following ${curVar}`}</p>
           <div className="formula" style={{ marginTop: 8 }}>{done
