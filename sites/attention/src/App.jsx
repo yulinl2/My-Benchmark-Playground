@@ -5,6 +5,8 @@ import rankSep from './data/rank_separation.json'
 import trainCurves from './data/train_curves.json'
 import depthSep from './data/depth_separation.json'
 import sweep from './data/sweep_results.json'
+import sweepRep from './data/sweep_replicated.json'
+import tier3 from './data/trained_tiny_mqar.json'
 
 // Series colors: validated categorical slots (dark steps) on the panel surface —
 // validate_palette.js: worst-adjacent CVD ΔE 35.9, all >= 3:1 vs #141a26.
@@ -24,6 +26,7 @@ const SECTIONS = [
   { id: 'families', grp: 'Generalization', label: 'Task families (live)' },
   { id: 'pointerchase', grp: 'Generalization', label: 'Pointer chase' },
   { id: 'sweep', grp: 'Generalization', label: 'Haiku scaling sweep' },
+  { id: 'tier3', grp: 'Generalization', label: 'Tier-3: trained cross-arch' },
   { id: 'repro', grp: 'Meta', label: 'Repo & reproduce' },
 ]
 
@@ -57,6 +60,7 @@ export default function App() {
         {sec === 'families' && <Families />}
         {sec === 'pointerchase' && <PointerChase />}
         {sec === 'sweep' && <Sweep />}
+        {sec === 'tier3' && <Tier3 />}
         {sec === 'repro' && <Repro />}
       </main>
     </div>
@@ -573,7 +577,55 @@ function Sweep() {
       <p className="note">Graceful budget-limited decay as N grows — not a fixed small-N floor. Theory predicts a fixed-capacity linear model collapses earlier and faster on the same instances.</p>
       <div className="grid2">{output.map(Panel)}</div>
 
-      <h2>All instances</h2>
+      <h2>Replication (fresh seeds) — what survived, what was an artifact</h2>
+      <p className="note">Every claim cell re-run on 4–10 fresh seeds, and sequence tasks re-scored with an
+        alignment-robust LCS grader alongside the strict positional one. Two corrections to the single-seed story
+        above: <b>(1)</b> the multihop t32 “cliff” (0.00) did <b>not</b> replicate — 1.000 across 10 fresh seeds; the
+        original was a formatting artifact. <b>(2)</b> much of the sequence-task decay is positional-grading artifact
+        (one dropped line zeroes everything after it): under LCS the decay is far milder — the honest routing signal.</p>
+      <div className="grid2">
+        {['gather', 'selective_copy', 'sort_by_key'].map(t => {
+          const cells = sweepRep.cells.filter(c => c.task === t && c.lcs_mean != null)
+            .sort((a, b) => numIn(a.label) - numIn(b.label))
+          return (
+            <div className="card" key={t}>
+              <h3>{t} — positional vs LCS (mean over fresh seeds)</h3>
+              <GroupedBars width={440} height={230}
+                groups={cells.map(c => ({
+                  label: c.label,
+                  bars: [
+                    { key: 'pos', value: c.positional_mean, sd: c.positional_sd, n: c.n_fresh_seeds },
+                    { key: 'lcs', value: c.lcs_mean, sd: c.lcs_sd, n: c.n_fresh_seeds },
+                  ],
+                }))}
+                colorFor={k => (k === 'lcs' ? C.soft : C.floor)}
+                tipFor={(g, b) => [
+                  { text: `${t} ${g.label}` },
+                  { color: b.key === 'lcs' ? C.soft : C.floor, text: `${b.key === 'lcs' ? 'LCS' : 'positional'} ${b.value.toFixed(3)} ± ${b.sd.toFixed(3)} (n=${b.n})` },
+                ]} />
+              <Legend items={[
+                { color: C.floor, label: 'positional (strict order)' },
+                { color: C.soft, label: 'LCS (alignment-robust)' },
+              ]} />
+            </div>
+          )
+        })}
+        <div className="card">
+          <h3>Replicated point estimates (n = fresh seeds)</h3>
+          <table>
+            <thead><tr><th>cell</th><th>n</th><th>positional</th><th>LCS</th></tr></thead>
+            <tbody>{sweepRep.cells.slice().sort((a, b) => a.task.localeCompare(b.task) || numIn(a.label) - numIn(b.label)).map((c, i) => (
+              <tr key={i}><td className="mono">{c.task} {c.label}</td><td className="mono">{c.n_fresh_seeds}</td>
+                <td className="mono">{c.positional_mean.toFixed(3)} ± {c.positional_sd.toFixed(3)}</td>
+                <td className="mono">{c.lcs_mean != null ? `${c.lcs_mean.toFixed(3)} ± ${c.lcs_sd.toFixed(3)}` : '—'}</td></tr>
+            ))}</tbody>
+          </table>
+          <p className="note" style={{ marginBottom: 0 }}>multihop t32: 1.000 ± 0.000 over 10 fresh seeds — the
+            single-seed 0.00 above is retracted as an artifact, not a capability cliff.</p>
+        </div>
+      </div>
+
+      <h2>All instances (original single-seed run — kept for the record)</h2>
       <div className="card">
         <table>
           <thead><tr><th>task</th><th>difficulty</th><th>meta</th><th>accuracy</th></tr></thead>
@@ -590,6 +642,52 @@ function Sweep() {
   )
 }
 
+function Tier3() {
+  const byKind = kind => tier3.rows.filter(r => r.kind === kind).sort((a, b) => a.K - b.K)
+  const sm = byKind('softmax'), lin = byKind('linear')
+  const gapK = 32
+  const smK = sm.find(r => r.K === gapK), linK = lin.find(r => r.K === gapK)
+  return (
+    <>
+      <h1>Tier-3 — the trained cross-architecture separation (P4)</h1>
+      <p className="lede">The decisive test: two <b>identical</b> 2-layer residual stacks (~127K params, d=64), differing
+        <b> only</b> in the mixer — softmax attention vs linear attention — each <b>trained from scratch</b> on MQAR with
+        fresh key→value maps every batch (the Zoology protocol), then evaluated on 2,560 fresh sequences. No pretraining,
+        no prompt-format luck: pure architecture.</p>
+      <div className="card">
+        <h3>Recall accuracy vs number of KV pairs (K)</h3>
+        <LineChart width={560} height={300} yMax={1} xLabel="K (key→value pairs)" yLabel="recall accuracy"
+          xTicks={[8, 16, 32, 64]}
+          series={[
+            { name: 'softmax mixer', color: C.soft, points: sm.map(r => ({ x: r.K, y: r.acc })) },
+            { name: 'linear mixer', color: C.lin, points: lin.map(r => ({ x: r.K, y: r.acc })) },
+          ]} />
+        <Legend items={[
+          { color: C.soft, label: 'softmax mixer (same params, same training)' },
+          { color: C.lin, label: 'linear mixer' },
+        ]} />
+        <p className="note">{tier3.protocol}</p>
+      </div>
+      <div className="grid3">
+        <Kpi v={smK ? smK.acc.toFixed(3) : '—'} l={`softmax at K=${gapK}`} />
+        <Kpi v={linK ? linK.acc.toFixed(3) : '—'} l={`linear at K=${gapK} — same params, same training`} />
+        <Kpi v={smK && linK ? (smK.acc - linK.acc).toFixed(3) : '—'} l="the architecture gap at K=32" />
+      </div>
+      <div className="card">
+        <h3>Reading the curve honestly</h3>
+        <p>K=8/16: both mixers solve the task — the state is big enough. <b>K=32: softmax 0.999, linear 0.342</b> — the
+          fixed-state bottleneck bites exactly where Theorem II predicts (state can no longer hold all K bindings),
+          while softmax's KV cache doesn't care. K=64: <i>both</i> collapse — that cell is an optimization/budget limit
+          of the tiny d=64 model (softmax fails too), so it is <i>not</i> evidence of the separation; the separation
+          claim rests on K=32.</p>
+        <p className="note">Full protocol, zero-shot pilots (Pythia vs Mamba vs RWKV at 160M/410M) and scope caveats:
+          <code> docs/06_tier3_pilot.md</code> on the research branch. Source: <code>src/tier3/train_tiny.py</code>;
+          data: <code>results/tier3/trained_tiny_mqar.json</code>.</p>
+      </div>
+    </>
+  )
+}
+
 function Repro() {
   const files = [
     ['docs/00_research_proposal.md', 'Question, formalization, two separation theorems, falsifiable predictions'],
@@ -597,6 +695,10 @@ function Repro() {
     ['docs/02_experimental_plan.md', 'Numeric / NL / Tier-3 plan'],
     ['docs/03_related_work.md', 'Literature anchors with verified arXiv ids'],
     ['docs/04_findings_generalization.md', 'Breadth + depth findings, sweep analysis'],
+    ['docs/05_self_audit.md', 'Adversarial self-audit: what holds, what was overstated, scope limits'],
+    ['docs/06_tier3_pilot.md', 'Tier-3 protocol + results (zero-shot pilots, task-trained grid)'],
+    ['src/tier3/', 'Cross-architecture pilot + task-trained tiny models (torch)'],
+    ['tests/run_tests.py', '36-check suite: generator/grader/theorem/spec contracts (CI-gated)'],
     ['src/numeric/rank_separation.py', 'Theorem I, runnable'],
     ['src/numeric/train.py', 'Trained-head curves'],
     ['src/numeric/depth_separation.py', 'Multi-layer demo'],
