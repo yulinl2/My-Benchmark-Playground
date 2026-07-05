@@ -30,12 +30,18 @@ jobs:
       - run: pip install numpy
       - name: Test suite (36 checks)
         run: python3 tests/run_tests.py
-      - name: Numeric experiments end-to-end (regenerate + verify clean tree)
+      - name: Numeric experiments end-to-end (regenerate + tolerance drift check)
         run: |
+          cp results/numeric/rank_separation.json /tmp/rank_committed.json
+          cp results/numeric/depth_separation.json /tmp/depth_committed.json
+          cp results/nl/suite.json /tmp/suite_committed.json
           python3 src/numeric/rank_separation.py
           python3 src/numeric/depth_separation.py
           python3 src/nl/task_generator.py --dump
-          # committed artifacts must be byte-identical to regenerated ones
-          git diff --exit-code results/numeric/rank_separation.json \
-                               results/numeric/depth_separation.json \
-                               results/nl/suite.json
+          # numeric artifacts: structural compare with float tolerance
+          # (byte-identical is too strict across libm/BLAS builds — last-ULP
+          # differences failed run #1); suite.json is pure text -> exact
+          python3 tests/check_artifact_drift.py \
+            /tmp/rank_committed.json results/numeric/rank_separation.json \
+            /tmp/depth_committed.json results/numeric/depth_separation.json
+          cmp /tmp/suite_committed.json results/nl/suite.json
