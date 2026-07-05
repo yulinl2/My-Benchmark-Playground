@@ -1,0 +1,41 @@
+name: Research CI
+
+# Coverage + robustness gate for the research line: generator contracts
+# (incl. reference-solver self-containedness), grader properties, numeric
+# theorem checks, and sweep-spec integrity. Tier-3 torch training is NOT run
+# here (too heavy for CI); its results are committed artifacts.
+
+on:
+  push:
+    branches:
+      - claude/long-context-task-distribution-2iydu1
+      - research/**
+    paths:
+      - "src/**"
+      - "tests/**"
+      - ".github/workflows/research-ci.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install numpy
+      - name: Test suite (36 checks)
+        run: python3 tests/run_tests.py
+      - name: Numeric experiments end-to-end (regenerate + verify clean tree)
+        run: |
+          python3 src/numeric/rank_separation.py
+          python3 src/numeric/depth_separation.py
+          python3 src/nl/task_generator.py --dump
+          # committed artifacts must be byte-identical to regenerated ones
+          git diff --exit-code results/numeric/rank_separation.json \
+                               results/numeric/depth_separation.json \
+                               results/nl/suite.json
