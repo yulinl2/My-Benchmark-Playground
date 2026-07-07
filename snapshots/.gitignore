@@ -1,0 +1,12 @@
+# Virtual environments
+**/.venv/
+# Raw downloaded datasets (large, re-downloadable from HuggingFace)
+**/task/environment/data/amazon-purchases-2019-2020_dirty.csv
+**/task/environment/data/survey_dirty.csv
+**/task/environment/data/.cache/
+# Large intermediate / output transaction files (re-creatable by re-running)
+**/amazon-purchases-2019-2020-filtered.csv
+**/survey_feature_engineered.csv
+**/output/run.log
+__pycache__/
+**/user_category_period_aggregated_extensive.csv

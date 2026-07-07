@@ -1,0 +1,82 @@
+{
+  "_source_adapter": "harbor/claude-code trajectory.json (kind/title derived from function_name)",
+  "config": "claude-skills",
+  "model": "claude-opus-4-8",
+  "reward": 0.95,
+  "anti_cheat_read": {
+    "status": "PASS",
+    "evidence": "0 hits of /solution|/tests|expected*|ground_truth|answer_key across full trajectory"
+  },
+  "anti_cheat_write": {
+    "status": "PASS",
+    "evidence": "writes only to agent scratch: ['/app/scripts/step1_clean.py', '/app/scripts/step2_anomaly.py', '/app/scripts/step3_features.py', '/app/scripts/step4_did_prep.py', '/app/scripts/step5_did_report.py']"
+  },
+  "tool_breakdown": {
+    "total": 35,
+    "by_kind": {
+      "execute": 22,
+      "read": 8,
+      "edit": 5
+    },
+    "by_title": {
+      "Bash": 22,
+      "Read": 8,
+      "Write": 5
+    }
+  },
+  "agentic_floor": {
+    "n_tool_calls": 35,
+    "verdict": "above",
+    "evidence": "35 tool calls; input/data reads present=True"
+  },
+  "struggle": {
+    "retries": 0,
+    "rewrites": 0,
+    "reversals": 0,
+    "exploration_loop": 8,
+    "verdict": "struggle"
+  },
+  "verbatim_final": "All headers match the specification exactly. The full pipeline is complete. Here's a summary of what was delivered.\n\n## Pipeline complete \u2014 all 7 artifacts in `/app/output/`\n\nI ran the analysis end-to-end using the four provided skills (data_cleaning \u2192 time_series_anomaly_detection \u2192 feature_engineering \u2192 did_causal_analysis).\n\n### Step 1 \u2014 Data cleaning\n**Purchases** (`amazon-purchases-2019-2020-filtered.csv`, 485K \u2192 438K rows): removed 3,909 exact-duplicate rows; recovered 776 missing categories via an ASIN\u2192Category lookup; dropped ~42K rows still missing the critical `Category` key; capped only absurd quantity entry-errors (99.99th pct = 25, 40 rows) \u2014 deliberately *not* globally winsorizing price (would destroy high-value category signal) nor aggressively capping quantity (would erase the very COVID stockpiling I'm detecting); added `Spend = Price \u00d7 Quantity`.\n**Survey** (`survey_cleaned.csv`, 5,027 rows): flagged 50 corrupt household-size values (impossible sizes 31\u201360) \u2192 mode-imputed; mode-imputed `howmany` (50 missing) and `marijuana` (150 missing). Zero nulls remain.\n\n### Step 2 \u2014 Anomaly detection\nProphet counterfactuals on daily category spend, trained on all pre-March-2020 history, scored against March 2020 (deviation index \u2212100\u2192100). All 243 categories scored in `category_anomaly_index.csv`. Results are textbook COVID-onset signals:\n- **Top surges:** Protective Gloves (+55.8), Toilet Paper (+38.5), Skin-Cleaning Agent/sanitizer (+35.1), shelf-stable food (soup, sn",
+  "memorization_signal": {
+    "status": "PASS",
+    "evidence": "agent sampled input data before writing solver"
+  },
+  "filesystem_pollution": {
+    "status": "PASS",
+    "evidence": "writes confined to /app|/root|/tmp; no root-level pip outside venv"
+  },
+  "self_doubt": {
+    "status": "none",
+    "evidence": "decisive final message"
+  },
+  "skill_invocation": {
+    "status": "VERIFIED",
+    "skills_read": [
+      "/app/skills/data_cleaning/SKILL.md",
+      "/app/skills/did_causal_analysis/SKILL.md",
+      "/app/skills/feature_engineering/SKILL.md",
+      "/app/skills/time_series_anomaly_detection/SKILL.md"
+    ],
+    "sub_files_read": [],
+    "discovery_method": "Read SKILL.md",
+    "evidence": "skills_read=4 sub_files=0"
+  },
+  "skill_misuse": {
+    "partial_follow_through": false,
+    "top_level_only": true,
+    "evidence": "read SKILL.md but no references/*.md"
+  },
+  "failure_bucket": "hard",
+  "format_vs_reasoning": "reasoning_loss",
+  "verdict": "CLEAN",
+  "tokens": {
+    "in": 2373668,
+    "out": 30826,
+    "cached": 2280885,
+    "cost_usd": 2.4866725
+  },
+  "failed_tests": [
+    "test_cross_file_consistency (P2)"
+  ],
+  "failure_evidence": "Only miss (18/19). Skill's Prophet pipeline wrote cleaned extensive-purchase file missing 228 respondent IDs present in cleaned survey file (assert extensive_ids==clean_ids, Missing:228 Extra:0). A cross-file data-completeness loss, not a format loss. P2 bucket -> 0.95."
+}

@@ -1,0 +1,82 @@
+{
+  "_source_adapter": "harbor/claude-code trajectory.json (kind/title derived from function_name)",
+  "config": "claude-noskills",
+  "model": "claude-opus-4-8",
+  "reward": 0.7846,
+  "anti_cheat_read": {
+    "status": "PASS",
+    "evidence": "0 hits of /solution|/tests|expected*|ground_truth|answer_key across full trajectory"
+  },
+  "anti_cheat_write": {
+    "status": "PASS",
+    "evidence": "writes only to agent scratch: ['/root/build_taxonomy.py', '/root/l1_map.py', '/root/lib_tax.py', '/root/output/README_methodology.md', '/root/verify.py']"
+  },
+  "tool_breakdown": {
+    "total": 87,
+    "by_kind": {
+      "execute": 56,
+      "read": 7,
+      "edit": 24
+    },
+    "by_title": {
+      "Bash": 56,
+      "Read": 7,
+      "Write": 5,
+      "Edit": 19
+    }
+  },
+  "agentic_floor": {
+    "n_tool_calls": 87,
+    "verdict": "above",
+    "evidence": "87 tool calls; input/data reads present=True"
+  },
+  "struggle": {
+    "retries": 1,
+    "rewrites": 0,
+    "reversals": 1,
+    "exploration_loop": 1,
+    "verdict": "struggle"
+  },
+  "verbatim_final": "Done. I've unified the three platform taxonomies into a single 5-level catalog.\n\n## What was delivered\n\n`/root/output/`:\n- **`unified_taxonomy_full.csv`** \u2014 11,085 rows (one per source path): `source, category_path, depth, unified_level_1\u20265`\n- **`unified_taxonomy_hierarchy.csv`** \u2014 the unified tree itself, 1,832 nodes as paths from low\u2192high granularity\n- **`README_methodology.md`** \u2014 methodology + rule-compliance table\n\n## Approach\n\n1. **Normalize** every segment (lowercase, `&`\u2192`and`, strip punctuation, lemmatize).\n2. **Embed** each full path with `all-MiniLM-L6-v2`.\n3. **L1 = curated (15 departments):** the 53 distinct source top-segments are well-known retail departments. Pure embedding clustering merged unrelated ones (books+hardware+toys in one blob), so I hand-mapped the 53 \u2192 15 canonical departments \u2014 guaranteeing the 10\u201320 rule and clean cross-source mixing.\n4. **L2\u2013L5 = automatic:** recursive KMeans on path embeddings, **gated by source depth** (a depth-2 source path fills only L1\u2013L2, depth-5 fills L1\u2013L5) \u2192 a genuine variable-depth pyramid. Each node is a leaf or has 3\u201320 children.\n5. **Naming:** vocabulary drawn from each node's level **+ the next** (so redundant repeats like `clothing > clothing` don't collapse siblings), words assigned **globally unique per sibling set**, ancestor words excluded (lemma-aware), Title-cased, \u22645 words, ` | `-joined.\n\n## Rule compliance (all verified by `verify.py`)\n\n| Rule | Result |\n|---|---|\n| 1 \u2014 L1 10-20; 3-20 children/parent | \u2705",
+  "memorization_signal": {
+    "status": "PASS",
+    "evidence": "agent sampled input data before writing solver"
+  },
+  "filesystem_pollution": {
+    "status": "PASS",
+    "evidence": "writes confined to /app|/root|/tmp; no root-level pip outside venv"
+  },
+  "self_doubt": {
+    "status": "none",
+    "evidence": "decisive final message"
+  },
+  "skill_invocation": {
+    "status": "N/A",
+    "skills_read": [],
+    "sub_files_read": [],
+    "discovery_method": "none",
+    "evidence": "skills_read=0 sub_files=0"
+  },
+  "skill_misuse": {
+    "partial_follow_through": false,
+    "top_level_only": false,
+    "evidence": "n/a"
+  },
+  "failure_bucket": "hard",
+  "format_vs_reasoning": "format_loss",
+  "verdict": "CLEAN",
+  "tokens": {
+    "in": 7352815,
+    "out": 87134,
+    "cached": 7223515,
+    "cost_usd": 6.59316125
+  },
+  "failed_tests": [
+    "test_full_mapping_format (P1)",
+    "test_path_representativeness (P1)",
+    "test_depth_filtering (P0)",
+    "test_prefix_removal (P0)",
+    "test_hierarchy_coverage (P0)"
+  ],
+  "failure_evidence": "17/22 (3 P0 + 2 P1). Clustering/naming/lemmatization/dedup/balance all PASS; misses are output-contract encoding: kept full ancestor-prefixed leaf names (27,875 prefix violations), 15 unified_level_1 labels at 0% path coverage, some branches depth>5. Sound taxonomy, wrong path-encoding convention that the skill spells out (with-skills=1.0)."
+}
