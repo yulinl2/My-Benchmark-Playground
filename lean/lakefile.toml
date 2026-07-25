@@ -1,0 +1,11 @@
+name = "QualOracles"
+version = "0.1.0"
+defaultTargets = ["QualOracles"]
+
+# Deliberately dependency-free so it builds in the qual-bank CI container with no
+# network fetch. The Mathlib-dependent measure-theoretic statements live in
+# QualOracles/Mathlib/ and are documented, not built, until Mathlib is vendored.
+# See lean/README.md for the two-tier rationale.
+
+[[lean_lib]]
+name = "QualOracles"
