@@ -62,8 +62,19 @@ theorem near_miss_mean : (1 - p) / p = 1/9 := by native_decide
     not evidence the student used the right parametrisation. -/
 theorem near_miss_var_coincides : geomVar p = 10/81 := by native_decide
 
-/-- pmf of `N` on `{1,2,...}`: `P(N = k) = (1/10)^(k-1) * (9/10)`. -/
-def pmf (k : Nat) : Rat := (1/10 : Rat) ^ (k - 1) * (9/10)
+/-- pmf of `N` on `{1,2,...}`: `P(N = k) = (1/10)^(k-1) * (9/10)`, and `0` off the support.
+
+    The `k = 0` guard is load-bearing, not decoration: `Nat` subtraction **saturates**, so
+    without it `pmf 0` would reduce to `(1/10)^0 * (9/10) = 9/10` — i.e. the function would
+    silently claim `P(N = 0) = 0.9` for a variable supported on `{1,2,…}`. -/
+def pmf (k : Nat) : Rat := if k = 0 then 0 else (1/10 : Rat) ^ (k - 1) * (9/10)
+
+/-- The guard above, pinned: `N` puts no mass at `0`. -/
+theorem pmf_zero : pmf 0 = 0 := by native_decide
+
+/-- …and the support values are unchanged by the guard. -/
+theorem pmf_one : pmf 1 = 9/10 := by native_decide
+theorem pmf_two : pmf 2 = 9/100 := by native_decide
 
 /-- Tail identity `P(N > n) = 10^(-n)`, in the finite form
     `1 - Σ_{k=1}^{n} P(N=k) = (1/10)^n`, checked at several `n`. -/

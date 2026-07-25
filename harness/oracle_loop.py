@@ -214,6 +214,16 @@ def parse_critique(txt: str) -> dict:
 
 
 def substantive(critique: dict) -> bool:
+    """Does this critique block convergence?
+
+    FAILS CLOSED. An unparseable/malformed critique is treated as blocking, never as
+    "no defects found". Otherwise a truncated or non-JSON reply would silently mark an
+    oracle `converged=True` on the strength of a reply nobody could read - a false green
+    in exactly the tool whose job is to stop false greens.
+    """
+    if critique.get("verdict") != "no_substantive_defects":
+        if critique.get("verdict") in ("unparseable", None):
+            return True
     return any(d.get("severity") in ("high", "medium")
                for d in critique.get("defects", []))
 
@@ -280,6 +290,12 @@ def run_loop(q: dict, provider: str, max_rounds: int, emit_only: bool = False) -
         "producing_model": "claude-opus-5" if provider == "inline" else provider,
         "rounds_used": max(x["round"] for x in rounds) if rounds else 0,
         "converged": converged,
+        "unparseable_critiques": [
+            x["round"] for x in rounds
+            if x["phase"] == "critique"
+            and isinstance(x["content"], dict)
+            and x["content"].get("verdict") == "unparseable"
+        ],
         "oracle_markdown": draft,
         "author_solution_present": bool(author),
         "status": "PROPOSAL" if not author else "CHECK_AGAINST_AUTHOR",
@@ -310,10 +326,18 @@ def main(argv: list[str]) -> int:
     ap.add_argument("--list-gaps", action="store_true",
                     help="list questions with no author solution and exit")
     ap.add_argument("--emit-packets", action="store_true",
-                    help="inline provider: write round-0 prompt packets and exit")
+                    help="inline provider: write prompt packets to oracles/packets/ and exit")
     ap.add_argument("--ingest", action="store_true",
-                    help="inline provider: consume replies/ and advance the loop")
+                    help="inline provider: consume oracles/replies/ and advance the loop "
+                         "(this is already the default for --provider inline; the flag "
+                         "just states the intent explicitly)")
     a = ap.parse_args(argv)
+
+    if a.emit_packets and a.ingest:
+        ap.error("--emit-packets and --ingest are mutually exclusive: the first writes "
+                 "prompts, the second consumes answers.")
+    if (a.emit_packets or a.ingest) and a.provider != "inline":
+        ap.error("--emit-packets/--ingest apply only to --provider inline.")
 
     qs = load_questions()
     gaps = oracle_gaps(qs)
