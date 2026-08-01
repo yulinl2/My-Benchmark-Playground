@@ -1,0 +1,23 @@
+{
+  "note": "Live responses from in-session Haiku sub-agents (Max-plan, no tools, prompt-only). Captured by the orchestrator and graded by src/nl/run_haiku_verification.py. meta matches results/nl/suite.json exactly.",
+  "records": [
+    {"task": "gather", "meta": {"N": 8, "seed": 108},
+     "response": "<answer>\ndapple\nthicket\nember\nthicket\ncobweb\nviolet\nharbor\nbrisket\n</answer>"},
+    {"task": "gather", "meta": {"N": 16, "seed": 116},
+     "response": "<answer>\nalmond\ncinder\nnectar\nnectar\nmarble\ndapple\ndapple\nclover\ndapple\nmango\ncobalt\nquartz\nzephyr\nharbor\ntundra\nember\n</answer>"},
+    {"task": "gather", "meta": {"N": 32, "seed": 132},
+     "response": "<answer>\nmarble\nwillow\nthicket\ncobweb\nbramble\nzephyr\nlantern\ntundra\ncedar\nquartz\nclover\ncobalt\npewter\nember\ncedar\ncinder\nmango\nnectar\nsaffron\nwillow\nthicket\nclover\ncinder\nbrisket\nbrisket\nbramble\nzephyr\ncinder\ncobalt\nharbor\ntundra\nlantern\n</answer>"},
+    {"task": "mqar", "meta": {"N": 40, "k": 4, "seed": 204},
+     "response": "<answer>\n1. LS4\n2. 8SW\n3. M6A\n4. U4V\n</answer>"},
+    {"task": "mqar", "meta": {"N": 40, "k": 8, "seed": 208},
+     "response": "<answer>\n1. 8EK\n2. QGD\n3. NSB\n4. PE9\n5. 9RK\n6. E9R\n7. D11\n8. F3X\n</answer>"},
+    {"task": "mqar", "meta": {"N": 40, "k": 16, "seed": 216},
+     "response": "<answer>\n1. 0QZ\n2. QX7\n3. H19\n4. 0AS\n5. HZJ\n6. THV\n7. YQK\n8. YCH\n9. N55\n10. DVP\n11. W23\n12. 826\n13. LJD\n14. SGG\n15. AJJ\n16. VGX\n</answer>"},
+    {"task": "chain", "meta": {"N": 30, "L": 3, "seed": 303},
+     "response": "<answer>21</answer>"},
+    {"task": "chain", "meta": {"N": 30, "L": 6, "seed": 306},
+     "response": "<answer>36</answer>"},
+    {"task": "chain", "meta": {"N": 30, "L": 10, "seed": 310},
+     "response": "<answer>70</answer>"}
+  ]
+}

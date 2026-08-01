@@ -1,0 +1,125 @@
+{
+  "protocol": "elu+1 linear attention, W_Q/W_K trained by Adam on CE over fresh permutations; held-out eval; floors are Eckart-Young (soft metrics only)",
+  "rows": [
+    {
+      "N": 8,
+      "m": 2,
+      "argmax_acc": 0.25,
+      "on_target_mass": 0.24922759332389288,
+      "frob_err2_over_N": 0.7500048731982188,
+      "output_rel_err": 0.8648928745072514,
+      "floor_frob": 0.75,
+      "floor_out": 0.8660254037844386
+    },
+    {
+      "N": 16,
+      "m": 2,
+      "argmax_acc": 0.125,
+      "on_target_mass": 0.12462370530764823,
+      "frob_err2_over_N": 0.8750023146412289,
+      "output_rel_err": 0.9359201282301403,
+      "floor_frob": 0.875,
+      "floor_out": 0.9354143466934853
+    },
+    {
+      "N": 32,
+      "m": 2,
+      "argmax_acc": 0.0625,
+      "on_target_mass": 0.062319442212173934,
+      "frob_err2_over_N": 0.9375010551305958,
+      "output_rel_err": 0.9688057589789558,
+      "floor_frob": 0.9375,
+      "floor_out": 0.9682458365518543
+    },
+    {
+      "N": 64,
+      "m": 2,
+      "argmax_acc": 0.03125,
+      "on_target_mass": 0.031159993638524557,
+      "frob_err2_over_N": 0.968750521499413,
+      "output_rel_err": 0.9841899751551355,
+      "floor_frob": 0.96875,
+      "floor_out": 0.9842509842514764
+    },
+    {
+      "N": 8,
+      "m": 8,
+      "argmax_acc": 0.875,
+      "on_target_mass": 0.8700066704280857,
+      "frob_err2_over_N": 0.12503473608910046,
+      "output_rel_err": 0.35327515006172777,
+      "floor_frob": 0.0,
+      "floor_out": 0.0
+    },
+    {
+      "N": 16,
+      "m": 8,
+      "argmax_acc": 0.5,
+      "on_target_mass": 0.49655901488149984,
+      "frob_err2_over_N": 0.500030031134379,
+      "output_rel_err": 0.7052498680498771,
+      "floor_frob": 0.5,
+      "floor_out": 0.7071067811865476
+    },
+    {
+      "N": 32,
+      "m": 8,
+      "argmax_acc": 0.250244140625,
+      "on_target_mass": 0.24811150879442623,
+      "frob_err2_over_N": 0.7500186894457497,
+      "output_rel_err": 0.8667888560806487,
+      "floor_frob": 0.75,
+      "floor_out": 0.8660254037844386
+    },
+    {
+      "N": 64,
+      "m": 8,
+      "argmax_acc": 0.1253662109375,
+      "on_target_mass": 0.12421954828176052,
+      "frob_err2_over_N": 0.875005753244815,
+      "output_rel_err": 0.9355053616611803,
+      "floor_frob": 0.875,
+      "floor_out": 0.9354143466934853
+    },
+    {
+      "N": 8,
+      "m": 32,
+      "argmax_acc": 1.0,
+      "on_target_mass": 0.9966391167196398,
+      "frob_err2_over_N": 1.3281228910599452e-05,
+      "output_rel_err": 0.003642984828129044,
+      "floor_frob": 0.0,
+      "floor_out": 0.0
+    },
+    {
+      "N": 16,
+      "m": 32,
+      "argmax_acc": 1.0,
+      "on_target_mass": 0.9942858331749233,
+      "frob_err2_over_N": 3.710675006398887e-05,
+      "output_rel_err": 0.006092645727301602,
+      "floor_frob": 0.0,
+      "floor_out": 0.0
+    },
+    {
+      "N": 32,
+      "m": 32,
+      "argmax_acc": 0.90625,
+      "on_target_mass": 0.8986665845221826,
+      "frob_err2_over_N": 0.0938193420745042,
+      "output_rel_err": 0.31014854196571395,
+      "floor_frob": 0.0,
+      "floor_out": 0.0
+    },
+    {
+      "N": 64,
+      "m": 32,
+      "argmax_acc": 0.50048828125,
+      "on_target_mass": 0.49508249562058615,
+      "frob_err2_over_N": 0.5000583886890009,
+      "output_rel_err": 0.7037915574717153,
+      "floor_frob": 0.5,
+      "floor_out": 0.7071067811865476
+    }
+  ]
+}

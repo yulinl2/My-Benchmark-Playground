@@ -1,0 +1,401 @@
+[
+  {
+    "id": "mqar__k16__s0",
+    "task": "mqar",
+    "label": "k16",
+    "kwargs": {
+      "N": 160,
+      "k": 16,
+      "seed": 0
+    },
+    "meta": {
+      "N": 160,
+      "k": 16,
+      "seed": 0
+    }
+  },
+  {
+    "id": "mqar__k16__s1",
+    "task": "mqar",
+    "label": "k16",
+    "kwargs": {
+      "N": 160,
+      "k": 16,
+      "seed": 1
+    },
+    "meta": {
+      "N": 160,
+      "k": 16,
+      "seed": 1
+    }
+  },
+  {
+    "id": "mqar__k32__s0",
+    "task": "mqar",
+    "label": "k32",
+    "kwargs": {
+      "N": 160,
+      "k": 32,
+      "seed": 0
+    },
+    "meta": {
+      "N": 160,
+      "k": 32,
+      "seed": 0
+    }
+  },
+  {
+    "id": "mqar__k32__s1",
+    "task": "mqar",
+    "label": "k32",
+    "kwargs": {
+      "N": 160,
+      "k": 32,
+      "seed": 1
+    },
+    "meta": {
+      "N": 160,
+      "k": 32,
+      "seed": 1
+    }
+  },
+  {
+    "id": "mqar__k64__s0",
+    "task": "mqar",
+    "label": "k64",
+    "kwargs": {
+      "N": 160,
+      "k": 64,
+      "seed": 0
+    },
+    "meta": {
+      "N": 160,
+      "k": 64,
+      "seed": 0
+    }
+  },
+  {
+    "id": "mqar__k64__s1",
+    "task": "mqar",
+    "label": "k64",
+    "kwargs": {
+      "N": 160,
+      "k": 64,
+      "seed": 1
+    },
+    "meta": {
+      "N": 160,
+      "k": 64,
+      "seed": 1
+    }
+  },
+  {
+    "id": "mqar__k128__s0",
+    "task": "mqar",
+    "label": "k128",
+    "kwargs": {
+      "N": 256,
+      "k": 128,
+      "seed": 0
+    },
+    "meta": {
+      "N": 256,
+      "k": 128,
+      "seed": 0
+    }
+  },
+  {
+    "id": "mqar__k128__s1",
+    "task": "mqar",
+    "label": "k128",
+    "kwargs": {
+      "N": 256,
+      "k": 128,
+      "seed": 1
+    },
+    "meta": {
+      "N": 256,
+      "k": 128,
+      "seed": 1
+    }
+  },
+  {
+    "id": "chain__L8__s0",
+    "task": "chain",
+    "label": "L8",
+    "kwargs": {
+      "N": 96,
+      "L": 8,
+      "seed": 0
+    },
+    "meta": {
+      "N": 96,
+      "L": 8,
+      "seed": 0
+    }
+  },
+  {
+    "id": "chain__L16__s0",
+    "task": "chain",
+    "label": "L16",
+    "kwargs": {
+      "N": 96,
+      "L": 16,
+      "seed": 0
+    },
+    "meta": {
+      "N": 96,
+      "L": 16,
+      "seed": 0
+    }
+  },
+  {
+    "id": "chain__L32__s0",
+    "task": "chain",
+    "label": "L32",
+    "kwargs": {
+      "N": 96,
+      "L": 32,
+      "seed": 0
+    },
+    "meta": {
+      "N": 96,
+      "L": 32,
+      "seed": 0
+    }
+  },
+  {
+    "id": "chain__L64__s0",
+    "task": "chain",
+    "label": "L64",
+    "kwargs": {
+      "N": 128,
+      "L": 64,
+      "seed": 0
+    },
+    "meta": {
+      "N": 128,
+      "L": 64,
+      "seed": 0
+    }
+  },
+  {
+    "id": "gather__N64__s0",
+    "task": "gather",
+    "label": "N64",
+    "kwargs": {
+      "N": 64,
+      "seed": 0
+    },
+    "meta": {
+      "N": 64,
+      "seed": 0
+    }
+  },
+  {
+    "id": "gather__N128__s0",
+    "task": "gather",
+    "label": "N128",
+    "kwargs": {
+      "N": 128,
+      "seed": 0
+    },
+    "meta": {
+      "N": 128,
+      "seed": 0
+    }
+  },
+  {
+    "id": "gather__N256__s0",
+    "task": "gather",
+    "label": "N256",
+    "kwargs": {
+      "N": 256,
+      "seed": 0
+    },
+    "meta": {
+      "N": 256,
+      "seed": 0
+    }
+  },
+  {
+    "id": "selective_copy__N64__s0",
+    "task": "selective_copy",
+    "label": "N64",
+    "kwargs": {
+      "N": 64,
+      "keep_rate": 0.5,
+      "seed": 0
+    },
+    "meta": {
+      "N": 64,
+      "kept": 23,
+      "seed": 0
+    }
+  },
+  {
+    "id": "selective_copy__N128__s0",
+    "task": "selective_copy",
+    "label": "N128",
+    "kwargs": {
+      "N": 128,
+      "keep_rate": 0.5,
+      "seed": 0
+    },
+    "meta": {
+      "N": 128,
+      "kept": 58,
+      "seed": 0
+    }
+  },
+  {
+    "id": "selective_copy__N256__s0",
+    "task": "selective_copy",
+    "label": "N256",
+    "kwargs": {
+      "N": 256,
+      "keep_rate": 0.5,
+      "seed": 0
+    },
+    "meta": {
+      "N": 256,
+      "kept": 127,
+      "seed": 0
+    }
+  },
+  {
+    "id": "sort_by_key__N32__s0",
+    "task": "sort_by_key",
+    "label": "N32",
+    "kwargs": {
+      "N": 32,
+      "seed": 0
+    },
+    "meta": {
+      "N": 32,
+      "seed": 0
+    }
+  },
+  {
+    "id": "sort_by_key__N64__s0",
+    "task": "sort_by_key",
+    "label": "N64",
+    "kwargs": {
+      "N": 64,
+      "seed": 0
+    },
+    "meta": {
+      "N": 64,
+      "seed": 0
+    }
+  },
+  {
+    "id": "sort_by_key__N128__s0",
+    "task": "sort_by_key",
+    "label": "N128",
+    "kwargs": {
+      "N": 128,
+      "seed": 0
+    },
+    "meta": {
+      "N": 128,
+      "seed": 0
+    }
+  },
+  {
+    "id": "kv_lastwrite__keys32__s0",
+    "task": "kv_lastwrite",
+    "label": "keys32",
+    "kwargs": {
+      "N": 96,
+      "n_keys": 32,
+      "n_queries": 16,
+      "seed": 0
+    },
+    "meta": {
+      "N": 96,
+      "n_keys": 32,
+      "n_queries": 16,
+      "seed": 0
+    }
+  },
+  {
+    "id": "kv_lastwrite__keys64__s0",
+    "task": "kv_lastwrite",
+    "label": "keys64",
+    "kwargs": {
+      "N": 192,
+      "n_keys": 64,
+      "n_queries": 16,
+      "seed": 0
+    },
+    "meta": {
+      "N": 192,
+      "n_keys": 64,
+      "n_queries": 16,
+      "seed": 0
+    }
+  },
+  {
+    "id": "kv_lastwrite__keys128__s0",
+    "task": "kv_lastwrite",
+    "label": "keys128",
+    "kwargs": {
+      "N": 384,
+      "n_keys": 128,
+      "n_queries": 16,
+      "seed": 0
+    },
+    "meta": {
+      "N": 384,
+      "n_keys": 128,
+      "n_queries": 16,
+      "seed": 0
+    }
+  },
+  {
+    "id": "multihop_map__t8__s0",
+    "task": "multihop_map",
+    "label": "t8",
+    "kwargs": {
+      "domain": 48,
+      "t": 8,
+      "seed": 0
+    },
+    "meta": {
+      "domain": 48,
+      "t": 8,
+      "seed": 0
+    }
+  },
+  {
+    "id": "multihop_map__t16__s0",
+    "task": "multihop_map",
+    "label": "t16",
+    "kwargs": {
+      "domain": 48,
+      "t": 16,
+      "seed": 0
+    },
+    "meta": {
+      "domain": 48,
+      "t": 16,
+      "seed": 0
+    }
+  },
+  {
+    "id": "multihop_map__t32__s0",
+    "task": "multihop_map",
+    "label": "t32",
+    "kwargs": {
+      "domain": 48,
+      "t": 32,
+      "seed": 0
+    },
+    "meta": {
+      "domain": 48,
+      "t": 32,
+      "seed": 0
+    }
+  }
+]

@@ -1,0 +1,185 @@
+[
+  {
+    "task": "gather",
+    "prompt": "You are given a list of labeled lines and an output order.\nLines:\n[1] harbor\n[2] cobweb\n[3] violet\n[4] brisket\n[5] thicket\n[6] dapple\n[7] ember\n[8] thicket\n\nOutput order (line numbers): 6, 8, 7, 5, 2, 3, 1, 4\n\nTask: print the CONTENTS of the lines in exactly the given output order, one word per line, nothing else.",
+    "answer": "dapple\nthicket\nember\nthicket\ncobweb\nviolet\nharbor\nbrisket",
+    "answer_list": [
+      "dapple",
+      "thicket",
+      "ember",
+      "thicket",
+      "cobweb",
+      "violet",
+      "harbor",
+      "brisket"
+    ],
+    "meta": {
+      "N": 8,
+      "seed": 108
+    }
+  },
+  {
+    "task": "gather",
+    "prompt": "You are given a list of labeled lines and an output order.\nLines:\n[1] dapple\n[2] zephyr\n[3] cinder\n[4] dapple\n[5] marble\n[6] mango\n[7] almond\n[8] quartz\n[9] dapple\n[10] harbor\n[11] nectar\n[12] nectar\n[13] cobalt\n[14] ember\n[15] clover\n[16] tundra\n\nOutput order (line numbers): 7, 3, 11, 12, 5, 1, 4, 15, 9, 6, 13, 8, 2, 10, 16, 14\n\nTask: print the CONTENTS of the lines in exactly the given output order, one word per line, nothing else.",
+    "answer": "almond\ncinder\nnectar\nnectar\nmarble\ndapple\ndapple\nclover\ndapple\nmango\ncobalt\nquartz\nzephyr\nharbor\ntundra\nember",
+    "answer_list": [
+      "almond",
+      "cinder",
+      "nectar",
+      "nectar",
+      "marble",
+      "dapple",
+      "dapple",
+      "clover",
+      "dapple",
+      "mango",
+      "cobalt",
+      "quartz",
+      "zephyr",
+      "harbor",
+      "tundra",
+      "ember"
+    ],
+    "meta": {
+      "N": 16,
+      "seed": 116
+    }
+  },
+  {
+    "task": "gather",
+    "prompt": "You are given a list of labeled lines and an output order.\nLines:\n[1] clover\n[2] harbor\n[3] clover\n[4] cedar\n[5] lantern\n[6] cedar\n[7] marble\n[8] quartz\n[9] cinder\n[10] mango\n[11] cobalt\n[12] bramble\n[13] ember\n[14] willow\n[15] bramble\n[16] lantern\n[17] brisket\n[18] tundra\n[19] thicket\n[20] cobalt\n[21] cobweb\n[22] brisket\n[23] nectar\n[24] zephyr\n[25] cinder\n[26] zephyr\n[27] cinder\n[28] saffron\n[29] thicket\n[30] tundra\n[31] pewter\n[32] willow\n\nOutput order (line numbers): 7, 14, 29, 21, 15, 24, 16, 30, 4, 8, 1, 11, 31, 13, 6, 9, 10, 23, 28, 32, 19, 3, 25, 17, 22, 12, 26, 27, 20, 2, 18, 5\n\nTask: print the CONTENTS of the lines in exactly the given output order, one word per line, nothing else.",
+    "answer": "marble\nwillow\nthicket\ncobweb\nbramble\nzephyr\nlantern\ntundra\ncedar\nquartz\nclover\ncobalt\npewter\nember\ncedar\ncinder\nmango\nnectar\nsaffron\nwillow\nthicket\nclover\ncinder\nbrisket\nbrisket\nbramble\nzephyr\ncinder\ncobalt\nharbor\ntundra\nlantern",
+    "answer_list": [
+      "marble",
+      "willow",
+      "thicket",
+      "cobweb",
+      "bramble",
+      "zephyr",
+      "lantern",
+      "tundra",
+      "cedar",
+      "quartz",
+      "clover",
+      "cobalt",
+      "pewter",
+      "ember",
+      "cedar",
+      "cinder",
+      "mango",
+      "nectar",
+      "saffron",
+      "willow",
+      "thicket",
+      "clover",
+      "cinder",
+      "brisket",
+      "brisket",
+      "bramble",
+      "zephyr",
+      "cinder",
+      "cobalt",
+      "harbor",
+      "tundra",
+      "lantern"
+    ],
+    "meta": {
+      "N": 32,
+      "seed": 132
+    }
+  },
+  {
+    "task": "mqar",
+    "prompt": "Use only the facts below.\nFacts:\n- The access code for Sector0002 is 1D7.\n- The access code for Tunis is Y0B.\n- The access code for Sector0000 is CAQ.\n- The access code for Sector0017 is LS4.\n- The access code for Sofia is ZZY.\n- The access code for Cairo is VUD.\n- The access code for Accra is M6A.\n- The access code for Sector0014 is NKL.\n- The access code for Nassau is JNH.\n- The access code for Sector0006 is R1X.\n- The access code for Dakar is U4V.\n- The access code for Sector0015 is NUB.\n- The access code for Amman is C4N.\n- The access code for Sector0008 is DWU.\n- The access code for Tokyo is PPK.\n- The access code for Sector0013 is FY3.\n- The access code for Sector0011 is AXP.\n- The access code for Lisbon is 0UY.\n- The access code for Quito is R1L.\n- The access code for Sector0010 is NWG.\n- The access code for Sector0016 is 3Q0.\n- The access code for Sector0003 is U2V.\n- The access code for Sector0012 is J6K.\n- The access code for Oslo is C48.\n- The access code for Maputo is T7R.\n- The access code for Sector0004 is P76.\n- The access code for Sector0005 is 8SW.\n- The access code for Hanoi is PAM.\n- The access code for Sector0009 is PVJ.\n- The access code for Minsk is S1J.\n- The access code for Sector0001 is JCS.\n- The access code for Sector0018 is DBQ.\n- The access code for Sector0007 is RRP.\n- The access code for Vienna is 9UY.\n- The access code for Sector0019 is QAN.\n- The access code for Bogota is NZG.\n- The access code for Doha is V04.\n- The access code for Lima is G8F.\n- The access code for Riga is BNV.\n- The access code for Manila is Z5V.\n\nQuestions:\n1. access code for Sector0017?\n2. access code for Sector0005?\n3. access code for Accra?\n4. access code for Dakar?\n\nAnswer with one line per question as 'N. CODE', nothing else.",
+    "answer": "1. LS4\n2. 8SW\n3. M6A\n4. U4V",
+    "answer_map": {
+      "Sector0017": "LS4",
+      "Sector0005": "8SW",
+      "Accra": "M6A",
+      "Dakar": "U4V"
+    },
+    "meta": {
+      "N": 40,
+      "k": 4,
+      "seed": 204
+    }
+  },
+  {
+    "task": "mqar",
+    "prompt": "Use only the facts below.\nFacts:\n- The access code for Sector0008 is FP6.\n- The access code for Sector0015 is PE9.\n- The access code for Sector0001 is LF3.\n- The access code for Sofia is V1B.\n- The access code for Sector0016 is GEE.\n- The access code for Tokyo is QGD.\n- The access code for Sector0019 is GC7.\n- The access code for Quito is ELN.\n- The access code for Cairo is 7J2.\n- The access code for Lisbon is 0BC.\n- The access code for Sector0011 is V8T.\n- The access code for Vienna is NSB.\n- The access code for Hanoi is QBH.\n- The access code for Dakar is 178.\n- The access code for Lima is WZN.\n- The access code for Sector0006 is WBX.\n- The access code for Sector0010 is GUZ.\n- The access code for Sector0002 is SWZ.\n- The access code for Sector0012 is AC8.\n- The access code for Oslo is TW3.\n- The access code for Sector0007 is KEM.\n- The access code for Sector0005 is L6L.\n- The access code for Minsk is 9RK.\n- The access code for Doha is X1U.\n- The access code for Sector0017 is 3SD.\n- The access code for Sector0014 is D11.\n- The access code for Accra is 8FU.\n- The access code for Manila is E9R.\n- The access code for Riga is T5A.\n- The access code for Sector0000 is Y9F.\n- The access code for Amman is DNC.\n- The access code for Nassau is KG9.\n- The access code for Sector0003 is K49.\n- The access code for Sector0004 is RWL.\n- The access code for Maputo is XNH.\n- The access code for Sector0018 is C2U.\n- The access code for Tunis is TAY.\n- The access code for Sector0009 is F3X.\n- The access code for Sector0013 is 8EK.\n- The access code for Bogota is U2K.\n\nQuestions:\n1. access code for Sector0013?\n2. access code for Tokyo?\n3. access code for Vienna?\n4. access code for Sector0015?\n5. access code for Minsk?\n6. access code for Manila?\n7. access code for Sector0014?\n8. access code for Sector0009?\n\nAnswer with one line per question as 'N. CODE', nothing else.",
+    "answer": "1. 8EK\n2. QGD\n3. NSB\n4. PE9\n5. 9RK\n6. E9R\n7. D11\n8. F3X",
+    "answer_map": {
+      "Sector0013": "8EK",
+      "Tokyo": "QGD",
+      "Vienna": "NSB",
+      "Sector0015": "PE9",
+      "Minsk": "9RK",
+      "Manila": "E9R",
+      "Sector0014": "D11",
+      "Sector0009": "F3X"
+    },
+    "meta": {
+      "N": 40,
+      "k": 8,
+      "seed": 208
+    }
+  },
+  {
+    "task": "mqar",
+    "prompt": "Use only the facts below.\nFacts:\n- The access code for Bogota is YCH.\n- The access code for Sector0006 is NX4.\n- The access code for Sector0008 is PW7.\n- The access code for Sector0013 is KK1.\n- The access code for Riga is HDE.\n- The access code for Minsk is 21C.\n- The access code for Sector0019 is YJ1.\n- The access code for Manila is SGG.\n- The access code for Nassau is XZE.\n- The access code for Doha is Y17.\n- The access code for Hanoi is LJD.\n- The access code for Sector0011 is ERH.\n- The access code for Sector0018 is DVP.\n- The access code for Sector0000 is LQ9.\n- The access code for Sector0010 is W23.\n- The access code for Sector0003 is 8ZM.\n- The access code for Sector0016 is Y7Z.\n- The access code for Vienna is N55.\n- The access code for Sofia is 965.\n- The access code for Sector0004 is QX7.\n- The access code for Oslo is UJA.\n- The access code for Dakar is THV.\n- The access code for Sector0001 is R7C.\n- The access code for Sector0015 is AJJ.\n- The access code for Sector0014 is KLT.\n- The access code for Accra is VGU.\n- The access code for Amman is VGX.\n- The access code for Tokyo is FLA.\n- The access code for Sector0007 is SFZ.\n- The access code for Quito is B88.\n- The access code for Cairo is HZJ.\n- The access code for Lima is H19.\n- The access code for Sector0012 is XAX.\n- The access code for Lisbon is WV8.\n- The access code for Tunis is 826.\n- The access code for Sector0009 is YQK.\n- The access code for Sector0005 is CF0.\n- The access code for Sector0002 is 0AS.\n- The access code for Sector0017 is 0QZ.\n- The access code for Maputo is MCX.\n\nQuestions:\n1. access code for Sector0017?\n2. access code for Sector0004?\n3. access code for Lima?\n4. access code for Sector0002?\n5. access code for Cairo?\n6. access code for Dakar?\n7. access code for Sector0009?\n8. access code for Bogota?\n9. access code for Vienna?\n10. access code for Sector0018?\n11. access code for Sector0010?\n12. access code for Tunis?\n13. access code for Hanoi?\n14. access code for Manila?\n15. access code for Sector0015?\n16. access code for Amman?\n\nAnswer with one line per question as 'N. CODE', nothing else.",
+    "answer": "1. 0QZ\n2. QX7\n3. H19\n4. 0AS\n5. HZJ\n6. THV\n7. YQK\n8. YCH\n9. N55\n10. DVP\n11. W23\n12. 826\n13. LJD\n14. SGG\n15. AJJ\n16. VGX",
+    "answer_map": {
+      "Sector0017": "0QZ",
+      "Sector0004": "QX7",
+      "Lima": "H19",
+      "Sector0002": "0AS",
+      "Cairo": "HZJ",
+      "Dakar": "THV",
+      "Sector0009": "YQK",
+      "Bogota": "YCH",
+      "Vienna": "N55",
+      "Sector0018": "DVP",
+      "Sector0010": "W23",
+      "Tunis": "826",
+      "Hanoi": "LJD",
+      "Manila": "SGG",
+      "Sector0015": "AJJ",
+      "Amman": "VGX"
+    },
+    "meta": {
+      "N": 40,
+      "k": 16,
+      "seed": 216
+    }
+  },
+  {
+    "task": "chain",
+    "prompt": "Let i = 12.  Let j = 36.  Let m = 47.  Let t = 45.  Let u = 77.  Let o = 37.  Let a = 23.  Let f = 39.  Let h = x.  Let p = 44.  Let q = 41.  Let v000 = 30.  Let e = 29.  Let y = 41.  Let b = h.  Let c = 85.  Let v001 = 93.  Let v = 55.  Let l = 91.  Let v003 = 98.  Let w = 26.  Let s = 77.  Let g = 21.  Let v002 = 45.  Let r = 99.  Let z = 53.  Let k = 14.  Let n = 99.  Let d = 42.  Let x = g.\n\nQuestion: What is the integer value of b? Answer with only the integer.",
+    "answer": "21",
+    "meta": {
+      "N": 30,
+      "L": 3,
+      "seed": 303
+    }
+  },
+  {
+    "task": "chain",
+    "prompt": "Let l = 50.  Let r = 44.  Let e = 80.  Let k = 17.  Let v002 = 38.  Let t = 36.  Let i = y.  Let f = 84.  Let d = 47.  Let n = q.  Let o = 74.  Let s = 11.  Let m = 77.  Let z = g.  Let a = 43.  Let j = 45.  Let q = z.  Let g = i.  Let c = 61.  Let u = 73.  Let v = 99.  Let v000 = 34.  Let x = 66.  Let h = 35.  Let p = 45.  Let y = t.  Let v001 = 78.  Let w = 27.  Let b = 15.  Let v003 = 76.\n\nQuestion: What is the integer value of n? Answer with only the integer.",
+    "answer": "36",
+    "meta": {
+      "N": 30,
+      "L": 6,
+      "seed": 306
+    }
+  },
+  {
+    "task": "chain",
+    "prompt": "Let e = 71.  Let p = 47.  Let k = 70.  Let d = 84.  Let v = i.  Let h = 21.  Let j = s.  Let c = g.  Let q = l.  Let s = q.  Let x = 16.  Let v001 = 52.  Let n = 63.  Let l = k.  Let o = 48.  Let m = 27.  Let f = j.  Let v002 = 97.  Let b = 57.  Let v003 = 54.  Let y = 45.  Let i = f.  Let a = 90.  Let r = c.  Let t = 62.  Let g = v.  Let w = 70.  Let z = 67.  Let u = 62.  Let v000 = 21.\n\nQuestion: What is the integer value of r? Answer with only the integer.",
+    "answer": "70",
+    "meta": {
+      "N": 30,
+      "L": 10,
+      "seed": 310
+    }
+  }
+]

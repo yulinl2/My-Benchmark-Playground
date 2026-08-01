@@ -1,0 +1,208 @@
+# Results (captured in this branch)
+
+## Tier 1 — Numeric (numpy)
+
+### Separation Theorem I — `rank_separation.json`
+For `Gather(N)`, optimal attention `A* = P_pi` has `rank = N`. A fixed linear head
+with capacity `H*m = 8` is rank-bounded, so its relative gather error has a floor
+`= 1 - Hm/N` (Eckart–Young). Softmax (logits `= beta*P_pi`) drives error to 0.
+
+`EckartYoung` is the rigorous lower bound on *any* rank-≤Hm map (singular-values
+only → deterministic); `concrete rel.err` is one deterministic rank-≤Hm map
+(P_pi with all but its first Hm columns zeroed, no SVD) — an achievable point
+that necessarily sits at or above the floor.
+
+| N | rank(A*) | Eckart–Young rel.err² (=1−Hm/N) | concrete rank-Hm rel.err | softmax (β=30) |
+|---|---|---|---|---|
+| 8 | 8 | 0.000 | 0.000 | 0.000000 |
+| 16 | 16 | 0.500 | 0.707 | 0.000000 |
+| 32 | 32 | 0.750 | 0.875 | 0.000000 |
+| 64 | 64 | 0.875 | 0.933 | 0.000000 |
+| 128 | 128 | 0.938 | 0.967 | 0.000000 |
+| 256 | 256 | 0.969 | 0.983 | 0.000000 |
+
+Softmax error vs temperature (N=64): β=1 → 0.96, β=3 → 0.76, β=10 → 0.003,
+β≥30 → 0.000. The one-hot routing is realized once logits are sharp enough
+(sharpness budget grows only like `log N`).
+
+### Predictions P1/P2 — `train_curves.json`
+A single TRAINED softmax head (weights fixed after training) generalizes to
+held-out permutations; a CONCRETE deterministic rank-`m` map (an illustrative
+proxy, *not* a proven upper bound over all linear heads) collapses as `m/N`. The
+rigorous separation is the Frobenius-error bound above; this argmax curve is its
+intuitive companion.
+
+| N | softmax acc (held-out perms) | linear rank-m (concrete) acc | predicted floor 1−m/N |
+|---|---|---|---|
+| 8 | 1.000 | 1.000 | 0.000 |
+| 16 | 1.000 | 0.500 | 0.500 |
+| 32 | 1.000 | 0.250 | 0.750 |
+| 64 | 1.000 | 0.125 | 0.875 |
+
+Concrete rank-m accuracy `= m/N`; softmax stays at 1.0. **Separation confirmed.**
+
+## Tier 2 — NL self-containedness audit on Haiku — `haiku_verification.json`
+
+Nine NL instances solved by **in-session Haiku sub-agents** (Max-plan, no tools,
+prompt-only), graded deterministically:
+
+| Task | difficulties | accuracy |
+|---|---|---|
+| gather | N ∈ {8,16,32} | **1.00** |
+| mqar | N=40, k ∈ {4,8,16} | **1.00** |
+| chain | N=30, L ∈ {3,6,10} | **1.00** |
+
+Interpretation: the NL lifts are genuinely solvable from the prompt alone by a
+random-access (softmax) model — the precondition for the architectural separation
+to be attributable to *architecture*, not missing knowledge. (Haiku raw responses
+in `haiku_responses.json`.) This is a positive control, **not** a test of linear
+attention; the decisive cross-architecture run on open SSM/linear checkpoints is
+Tier 3 in `docs/02_experimental_plan.md`.
+
+## Tier 1b — Depth: multiple layers don't rescue linear — `depth_separation.json`
+
+Two-hop Gather (`T = P₂P₁`, rank N). Product of L rank-≤m row-stochastic maps
+stays rank ≤ m (8→8→5→1 for L=1,2,4,8 at m=8). Depth-2 softmax solves to ~0;
+depth-2 frozen linear stays at/above the floor:
+
+| N | softmax err | linear err | 1−Hm/N |
+|---|---|---|---|
+| 16 | 0.000000 | 0.876 | 0.500 |
+| 32 | 0.000000 | 0.980 | 0.750 |
+| 64 | 0.000000 | 1.000 | 0.875 |
+| 128 | 0.000000 | 1.000 | 0.938 |
+
+## Tier 2b — Haiku scaling sweep (degradation fingerprint, P3) — `sweep_results.json`
+
+Seven families, 27 instances, increasing difficulty, in-session Haiku sub-agents.
+Two regimes (full analysis in `docs/04_findings_generalization.md`):
+
+- **Recall-robust — softmax stays flat** (cleanest separation vs fixed-state):
+  `mqar` k16–k128 ≈ **1.00** (N≤256); `chain` L8–L64 **1.00**; `kv_lastwrite`
+  keys32–128 0.94–**1.00** (N≤384).
+- **High-rank-output — softmax degrades with N** (the P3 fingerprint, not a
+  small-N floor): `gather` 1.00→0.59→0.22 (N=64,128,256); `selective_copy`
+  1.00→0.81→0.09; `sort_by_key` 0.81→0.22→0.02 (N=32,64,128);
+  `multihop_map` 1.00,1.00,0.00 (t=8,16,32).
+  **⚠ Self-audit corrections (`docs/05_self_audit.md`):** positional grading
+  overstates these — LCS re-grade: gather N256 0.22→**0.47**, selective_copy
+  N256 0.09→**0.90** (no collapse; grader artifact), sort N128 0.02→**0.49**.
+  The multihop t=32 "cliff" failed replication (2/2 fresh seeds correct);
+  withdrawn. Raw responses: `sweep_responses.json`, `multihop_replication.json`.
+
+## Tier 1c — Trained linear head + the metric split (audit remediation) — `trained_linear.json`, `argmax_vs_output.json`
+
+Closes `docs/05_self_audit.md` B1 (no trained linear baseline existed). A real
+elu+1 kernelized head (`W_Q, W_K` trained by Adam on CE, fresh permutations,
+held-out eval, best-of-3 seeds; `train_linear.py`):
+
+| N | m | argmax acc | on-target mass | ‖A−P‖²/N (floor) | output err (floor) |
+|---|---|---|---|---|---|
+| 16 | 2 | 0.125 | 0.125 | 0.875 (0.875) | 0.936 (0.935) |
+| 64 | 2 | 0.031 | 0.031 | 0.969 (0.969) | 0.984 (0.984) |
+| 16 | 8 | 0.500 | 0.497 | 0.500 (0.500) | 0.705 (0.707) |
+| 64 | 8 | 0.125 | 0.124 | 0.875 (0.875) | 0.936 (0.935) |
+| 16 | 32 | 1.000 | 0.994 | 0.000 (0.000) | 0.006 (0.000) |
+| 64 | 32 | 0.500 | 0.495 | 0.500 (0.500) | 0.704 (0.707) |
+
+**Findings.** (i) Trained heads **saturate the Eckart–Young floor** — every
+`m<N` cell sits on its bound to ~3 decimals: the theory floor is *tight* for
+CE-trained heads, and P2's collapse (`acc ≈ m/N`) is now empirically confirmed
+on real trained models, retroactively validating the truncation proxy.
+(ii) `m>N` control cells train to ~perfect, so capacity — not optimization —
+is the binding constraint. (At exactly `m=N`, training sometimes hits
+feature-collision local optima: 0.875 at 8/8, 0.906 at 32/32; noted, and the
+`m<N` conclusions are unaffected.)
+
+**The metric split (`argmax_vs_output.py`).** A constructive rank-**4**
+nonnegative-feature head (keys on a circle, `s_ij = 1 + cos(θ_{π(i)}−θ_j)/2`)
+achieves **argmax accuracy 1.000 for every N up to 1024**, while its on-target
+mass is exactly `1.5/N` and its output error rides the Theorem-I floor to 1.
+So argmax routing is **not** rank-limited — but the *output* `AV` is, and CE
+training never finds the circle trick (it optimizes mass, which is rank-capped).
+**Consequence:** P2 must be read as an *output-error* claim; argmax-accuracy
+tables alone cannot demonstrate the separation. Fixed-capacity linear attention
+can *know where to look* but cannot *move the information*.
+
+## Tier 2c — Replicated sweep with LCS grading (audit item 6) — `sweep_replicated.json`
+
+75 fresh-seed Haiku runs (10 seeds on headline cells, 4 on supporting; raw
+answers in `sweep_replication_responses.json`). Sequence tasks scored both
+positionally and by LCS (alignment-robust). **This supersedes the single-seed
+Tier-2b table** and revises the P3 narrative:
+
+| cell | n | positional | LCS |
+|---|---|---|---|
+| gather N64 / N128 / N256 | 4/4/10 | 0.98 / 0.61 / 0.55±0.33 | **1.00 / 0.94 / 0.74±0.18** |
+| selective_copy N64→N256 | 4/4/10 | 0.84 / 0.81 / 0.60 | **0.99 / 0.99 / 0.97** |
+| sort_by_key N32→N128 | 4/4/10 | 0.87 / 0.93 / 0.47 | **0.99 / 1.00 / 0.93** |
+| multihop t8 / t16 / t32 | 4/4/10 | **1.00 / 1.00 / 1.00** | — |
+| mqar k128 | 3 (+2 orig) | **1.00** | — |
+
+**Revised findings.** (i) `multihop t=32` is **12/13 correct** across all runs —
+the original 0.00 cliff is definitively refuted. (ii) Under proper grading and
+replication, **Haiku is at or near ceiling across the entire tested range**
+(k=128, L=64, t=32, N up to 256): selective_copy and sort_by_key barely degrade
+(LCS ≥ 0.93 everywhere). The only genuine degradation signal is `gather N=256`
+(LCS 0.74 ± 0.18, instance-dependent). (iii) Positional scores carry huge
+variance (sd up to 0.33) — alignment artifacts dominate them; LCS is the
+primary metric going forward. **Net effect: the earlier "graceful degradation
+frontier" (P3) was mostly measurement artifact; the softmax positive control is
+even stronger than first reported — robust exactly where fixed-state models
+provably fail — while the "softmax budget" side-story shrinks to the largest
+gather cell.**
+
+## Tier 1d — Softmax at O(log N) width (audit A4/B5) — `softmax_logwidth.json`
+
+The missing softmax-side construction: random ±1 codes of width `d = K·ln N`,
+queries `β·c_{π(i)}` with `β = 3·ln N`. Same-width comparison (5 trials/cell):
+
+| N | d = 8·ln N | softmax argmax | softmax out err | linear floor at same d |
+|---|---|---|---|---|
+| 64 | 34 | 1.000 | 0.0031 | ≥ 0.685 |
+| 256 | 45 | 1.000 | 0.0004 | ≥ 0.908 |
+| 1024 | 56 | 1.000 | 0.0001 | ≥ 0.972 |
+| 4096 | 67 | 1.000 | 0.0000 | ≥ 0.992 |
+
+**Same width budget, opposite outcomes.** Softmax needs only logarithmic width
+and logit scale for Gather(N); any linear head at that width is pinned at
+`√(1−d/N)`. This replaces the earlier width-2N oracle (whose width grew with N)
+and closes the width confound flagged in the self-audit.
+
+## Tier 3 — Cross-architecture (CPU pilot) — `results/tier3/`, `docs/06_tier3_pilot.md`
+
+Pile-matched pairs (architecture the only variable). Zero-shot pretrained:
+no binding elicitable at ~150M from any mixer (error-mode diagnostic:
+prior-emission, not retrieval); at ~410M binding emerges architecture-ordered
+(softmax 0.50 vs SSM 0.19 at k=8); SSMs uniquely print exact-0.000 cells.
+**Task-trained (decisive)** — identical 2-layer residual stacks (126k params,
+short conv, fresh maps every batch), mixer the only difference:
+
+| K | softmax | linear |
+|---|---|---|
+| 8 | 1.000 | 0.989 |
+| 16 | 1.000 | 0.972 |
+| **32** | **0.999** | **0.342** |
+| 64 | 0.019 | 0.013 |
+
+Softmax flat to K=32 while linear exhausts its d=64 state (0.342 ≈ ⅓ of
+bindings retained — graceful capacity exhaustion); K=64 is a trainability
+frontier for both (no claim). **P4 demonstrated in task-trained form**, and
+the residual-stream loophole (audit A2) closed empirically.
+
+## Reproduce
+```bash
+python3 src/numeric/rank_separation.py
+python3 src/numeric/train.py
+python3 src/numeric/depth_separation.py
+python3 src/numeric/train_linear.py             # trained linear head (audit B1)
+python3 src/numeric/argmax_vs_output.py         # rank-4 argmax construction
+python3 src/numeric/softmax_logwidth.py         # O(log N)-width softmax (audit A4)
+python3 src/tier3/run_pilot.py                  # zero-shot pretrained pairs (needs torch)
+python3 src/tier3/train_tiny.py                 # task-trained tiny grid (needs torch)
+python3 src/nl/task_generator.py --dump        # regenerate the base suite
+python3 src/nl/extra_tasks.py --demo           # the four new families
+python3 src/nl/run_haiku_verification.py        # grade recorded base-suite responses
+python3 src/nl/sweep.py --emit <dir>            # emit sweep prompt files + spec
+python3 src/nl/sweep.py --grade-dir <dir>       # grade sweep answer files
+```

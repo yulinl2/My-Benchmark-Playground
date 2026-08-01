@@ -1,0 +1,47 @@
+name: Research CI
+
+# Coverage + robustness gate for the research line: generator contracts
+# (incl. reference-solver self-containedness), grader properties, numeric
+# theorem checks, and sweep-spec integrity. Tier-3 torch training is NOT run
+# here (too heavy for CI); its results are committed artifacts.
+
+on:
+  push:
+    branches:
+      - claude/long-context-task-distribution-2iydu1
+      - research/**
+    paths:
+      - "src/**"
+      - "tests/**"
+      - ".github/workflows/research-ci.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install numpy
+      - name: Test suite (36 checks)
+        run: python3 tests/run_tests.py
+      - name: Numeric experiments end-to-end (regenerate + tolerance drift check)
+        run: |
+          cp results/numeric/rank_separation.json /tmp/rank_committed.json
+          cp results/numeric/depth_separation.json /tmp/depth_committed.json
+          cp results/nl/suite.json /tmp/suite_committed.json
+          python3 src/numeric/rank_separation.py
+          python3 src/numeric/depth_separation.py
+          python3 src/nl/task_generator.py --dump
+          # numeric artifacts: structural compare with float tolerance
+          # (byte-identical is too strict across libm/BLAS builds — last-ULP
+          # differences failed run #1); suite.json is pure text -> exact
+          python3 tests/check_artifact_drift.py \
+            /tmp/rank_committed.json results/numeric/rank_separation.json \
+            /tmp/depth_committed.json results/numeric/depth_separation.json
+          cmp /tmp/suite_committed.json results/nl/suite.json
